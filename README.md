@@ -7,16 +7,22 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 
 | Página | Archivo |
 |---|---|
-| Inicio (presupuesto por pasos) | `index.html` |
+| Inicio (promo DS Copilot Course, servicios, experiencias, tienda, presupuesto por pasos) | `index.html` |
 | Coches de competición | `competicion.html` |
 | Restomod | `restomod.html` |
-| Pintura (con comparador antes/después) | `pintura.html` |
-| Modificaciones performance | `performance.html` |
-| Tienda: coches en venta (Wallapop) + merchandising | `tienda.html` |
+| Pintura (con comparador cabina / terminado) | `pintura.html` |
+| Banco de potencia | `banco-de-potencia.html` |
+| Experiencias (portada) | `experiencias.html` |
+| DS Pilot Weekend – Circuit / Rally / Slalom | `ds-pilot-weekend-circuit.html`, `ds-pilot-weekend-rally.html`, `ds-pilot-weekend-slalom.html` |
+| Cursos (portada) | `cursos.html` |
+| DS Copilot Course (compra de plaza) | `ds-copilot-course.html` |
+| Tienda: merchandising + coches en venta (Wallapop) | `tienda.html` |
 | Fichas de producto | `camiseta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |
-| Quiénes somos | `nosotros.html` |
-| Contacto (formulario, mapa y horario) | `contacto.html` |
+| Quiénes somos (en el pie) | `nosotros.html` |
+| Contacto (en el pie) | `contacto.html` |
 | Aviso legal, privacidad y cookies | `legal.html` |
+
+Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · **Tienda** (destacada como botón).
 
 ## Pensada para convertir
 
@@ -62,26 +68,22 @@ Si la detección automática del perfil falla, abre el perfil de Wallapop en el 
 - «Lo quiero» abre un pedido rápido con recogida en el taller o envío a domicilio. El pedido llega a Google Sheets (formulario `pedido`) y por email.
 - **Cobro online (opcional):** crea un Payment Link de Stripe, PayPal u otra pasarela por producto y pégalo en `payLinks` dentro de `assets/js/config.js`. Tras confirmar el pedido aparecerá el botón «Pagar ahora».
 - **Precios orientativos** (25 €, 22 € y 6 €): cámbialos en `tools/build.py` (`PRODUCTS`) y regenera la web.
-- Si tenéis fotos reales del producto, guárdalas como `assets/img/camiseta-deyscom.jpg`, `gorra-deyscom.jpg` y `pegatinas-deyscom.jpg`. Sustituyen al mockup automáticamente.
+- Los mockups llevan el logotipo real vectorizado y cambian de color en vivo (camiseta negra, blanca o rosa; gorra con visera a juego; pegatinas en varias versiones).
 
-## 4. Fotos
+## 4. Fotos, logotipo y SEO
 
-La web funciona sin fotos con un fondo gráfico de marca. Para ponerle **vuestras fotos de Instagram**, solo hay que guardar archivos con estos nombres en `assets/img/` (JPG horizontales de unos 1600 px y menos de 300 KB). Aparecen solas, sin tocar código:
-
-| Dónde | Archivo |
-|---|---|
-| Hero de la home | `hero.jpg` |
-| Tarjetas de la home | `home-competicion.jpg`, `home-restomod.jpg`, `home-pintura.jpg`, `home-performance.jpg`, `home-tienda.jpg`, `home-equipo.jpg` |
-| Hero de cada servicio | `competicion-hero.jpg`, `restomod-hero.jpg`, `pintura-hero.jpg`, `performance-hero.jpg`, `nosotros-hero.jpg`, `tienda-hero.jpg` |
-| Bloque de introducción | `competicion-intro.jpg`, `restomod-intro.jpg`, `pintura-intro.jpg`, `performance-intro.jpg`, `nosotros-historia.jpg` |
-| Galerías (5 por página) | `competicion-1.jpg` … `competicion-5.jpg` (igual para `restomod-`, `pintura-`, `performance-` y `nosotros-`) |
-| Antes / después | `pintura-antes.jpg`, `pintura-despues.jpg` |
-| Imagen al compartir en redes | `og-deyscom.jpg` (1200×630) |
+- Las fotos están en `assets/img/fotos/` con **nombres descriptivos para SEO** (por ejemplo `bmw-e36-rally-tierra-deyscom-motorsport.jpg`), en JPG + WebP y en dos tamaños (1600 px y 800 px). Se sirven con `<picture>`, `srcset`, `width`/`height`, *lazy loading* y un texto `alt` descriptivo. Se han eliminado los metadatos EXIF (incluida la ubicación GPS).
+- Los textos alternativos y tamaños están en `tools/images.json`. Para añadir fotos nuevas: optimízalas con el mismo patrón de nombres, añádelas a `images.json` y úsalas por su nombre en `tools/build.py`.
+- **Logotipo**: vectorizado en SVG a partir del archivo original (`assets/img/logo-deyscom-motorsport-blanco.svg` / `-negro.svg`, más un PNG para redes y Google). En la web se pinta en línea, así que se ve nítido a cualquier tamaño y cambia de color según el fondo (también en el merchandising).
+- **Tipografía**: el logo usa Futura. Como Futura es de pago para web, los títulos usan **Jost**, su alternativa libre en Google Fonts. Si tenéis licencia web de Futura, basta con cambiar `--f-display` en `assets/css/styles.css`.
+- **SEO de cada página**: título y descripción únicos, palabras clave, canonical, `hreflang`, Open Graph y Twitter con la foto de la página, geolocalización, precarga de la imagen principal y datos estructurados de schema.org (`AutoRepair`, `Service`, `Product`, `Course`, `FAQPage`, `BreadcrumbList`, `ItemList`, `WebSite`). Además: `sitemap.xml` con prioridades y `robots.txt`.
 
 ## 5. Editar contenidos
 
 - **Teléfono, WhatsApp, email, horario, redes y pagos:** `assets/js/config.js`.
-- **Textos, servicios, FAQs y productos:** `tools/build.py`. Después ejecuta:
+- **Textos, servicios, experiencias, curso, FAQs y productos:** `tools/build.py`.
+- **Precios del curso y las experiencias:** diccionario `PRICES` en `tools/build.py`. Ahora mismo ponen «Consultar»; si escribís un número, aparece el precio en la página y en Google.
+- **Compra directa del curso o de las experiencias:** pegad un enlace de pago (Stripe Payment Link, PayPal…) en `payLinks` dentro de `assets/js/config.js`. El botón «Comprar mi plaza» llevará directamente al pago. Si está vacío, abre el formulario de reserva, que llega a Google Sheets. Después ejecuta:
   ```bash
   python3 tools/build.py
   ```

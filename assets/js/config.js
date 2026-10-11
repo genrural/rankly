@@ -17,9 +17,14 @@ window.DEYSCOM = {
   // Horario: 0 = domingo … 6 = sábado. [apertura, cierre] en horas decimales.
   hours: { 1: [7, 15], 2: [7, 15], 3: [7, 15], 4: [7, 15], 5: [7, 15] },
 
-  // Enlaces de pago opcionales por producto (Stripe Payment Links, Bizum, PayPal…).
-  // Si se rellenan, tras confirmar el pedido aparece el botón "Pagar ahora".
+  // Enlaces de pago opcionales (Stripe Payment Links, PayPal…).
+  // Curso y experiencias: si se rellenan, el botón "Comprar mi plaza" lleva directamente al pago.
+  // Merch: tras confirmar el pedido aparece el botón "Pagar ahora".
   payLinks: {
+    "ds-copilot-course": "",
+    "ds-pilot-weekend-circuit": "",
+    "ds-pilot-weekend-rally": "",
+    "ds-pilot-weekend-slalom": "",
     "camiseta-deyscom": "",
     "gorra-deyscom": "",
     "pegatinas-deyscom": ""

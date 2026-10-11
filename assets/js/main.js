@@ -27,6 +27,13 @@
   $$('a[href^="tel:"]').forEach(function (a) { a.addEventListener("click", function () { track("phone_click"); }); });
   $$('a[href^="mailto:"]').forEach(function (a) { a.addEventListener("click", function () { track("email_click"); }); });
 
+  /* ---------- Compra directa (cursos / experiencias) ---------- */
+  $$("[data-buy]").forEach(function (a) {
+    var url = CFG.payLinks && CFG.payLinks[a.getAttribute("data-buy")];
+    if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+    a.addEventListener("click", function () { track("begin_checkout", { item: a.getAttribute("data-buy") }); });
+  });
+
   /* ---------- Redes ---------- */
   $$("[data-social]").forEach(function (a) {
     var url = CFG.social && CFG.social[a.getAttribute("data-social")];
@@ -181,9 +188,9 @@
     qty.addEventListener("input", update);
     $$('input[name="color"]', pdp).forEach(function (r) {
       r.addEventListener("change", function () {
-        stage.style.setProperty("--garment", r.getAttribute("data-garment"));
-        stage.style.setProperty("--print", r.getAttribute("data-print"));
-        if (r.getAttribute("data-brim")) stage.style.setProperty("--brim", r.getAttribute("data-brim"));
+        (r.getAttribute("data-style") || "").split(";").forEach(function (d) {
+          var kv = d.split(":"); if (kv.length === 2) stage.style.setProperty(kv[0].trim(), kv[1].trim());
+        });
         var n = $("[data-color-name]", pdp); if (n) n.textContent = r.value;
       });
     });

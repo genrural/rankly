@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /google-apps-script/
+Disallow: /tools/
+
+Sitemap: https://deyscom.com/sitemap.xml

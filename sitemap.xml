@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://deyscom.com/</loc></url><url><loc>https://deyscom.com/nosotros.html</loc></url><url><loc>https://deyscom.com/contacto.html</loc></url><url><loc>https://deyscom.com/tienda.html</loc></url><url><loc>https://deyscom.com/legal.html</loc></url><url><loc>https://deyscom.com/competicion.html</loc></url><url><loc>https://deyscom.com/restomod.html</loc></url><url><loc>https://deyscom.com/pintura.html</loc></url><url><loc>https://deyscom.com/performance.html</loc></url><url><loc>https://deyscom.com/camiseta-deyscom.html</loc></url><url><loc>https://deyscom.com/gorra-deyscom.html</loc></url><url><loc>https://deyscom.com/pegatinas-deyscom.html</loc></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://deyscom.com/</loc><lastmod>2026-10-11</lastmod><priority>1.0</priority></url>
+<url><loc>https://deyscom.com/experiencias.html</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+<url><loc>https://deyscom.com/cursos.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+<url><loc>https://deyscom.com/ds-copilot-course.html</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+<url><loc>https://deyscom.com/nosotros.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/contacto.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/tienda.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+<url><loc>https://deyscom.com/competicion.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+<url><loc>https://deyscom.com/restomod.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+<url><loc>https://deyscom.com/pintura.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+<url><loc>https://deyscom.com/banco-de-potencia.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+<url><loc>https://deyscom.com/ds-pilot-weekend-circuit.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/ds-pilot-weekend-rally.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/ds-pilot-weekend-slalom.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/camiseta-deyscom.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/gorra-deyscom.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+<url><loc>https://deyscom.com/pegatinas-deyscom.html</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+</urlset>

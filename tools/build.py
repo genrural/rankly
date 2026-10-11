@@ -5,6 +5,9 @@ Generador estático de la web de Deyscom Motorsport.
 Todas las páginas comparten cabecera, pie y bloques; el contenido vive aquí.
 Uso:  python3 tools/build.py      → escribe los .html en la raíz del repo.
 """
+import json
+import re
+from datetime import date
 from pathlib import Path
 from html import escape
 
@@ -14,7 +17,34 @@ PHONE = "+34615972233"
 PHONE_TXT = "(+34) 615 97 22 33"
 EMAIL = "info@deyscom.com"
 ADDRESS = "C/ Canal de Isabel II, 2 · Nave 3 · 28180 Torrelaguna (Madrid)"
-VERSION = "1"
+VERSION = "2"
+TODAY = date.today().isoformat()
+
+# Fotos optimizadas (tools/images.json se genera al procesar las fotos: alt, ancho y alto)
+IMG = json.loads((Path(__file__).parent / "images.json").read_text(encoding="utf-8"))
+# Logotipo vectorial (colores con --logo-a / --logo-b)
+_LOGO_SVG = (Path(__file__).parent / "logo.svg").read_text(encoding="utf-8")
+LOGO_VB = re.search(r'viewBox="([^"]+)"', _LOGO_SVG).group(1)
+LOGO_PATHS = re.search(r"</title>(.*)</svg>", _LOGO_SVG, re.S).group(1)
+
+
+def logo_svg(cls="logo__svg", label=True):
+    aria = 'role="img" aria-label="Deyscom Motorsport"' if label else 'aria-hidden="true"'
+    return f'<svg class="{cls}" viewBox="{LOGO_VB}" {aria}>{LOGO_PATHS}</svg>'
+
+
+def pic(name, cls="", eager=False, sizes="(max-width: 800px) 100vw, 50vw"):
+    """<picture> responsive con WebP + JPG, ancho/alto y alt SEO."""
+    m = IMG[name]
+    base = f"assets/img/fotos/{name}"
+    load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
+    return (f'<picture><source type="image/webp" srcset="{base}-800.webp 800w, {base}.webp {m["w"]}w" sizes="{sizes}">'
+            f'<img class="{cls}" src="{base}.jpg" srcset="{base}-800.jpg 800w, {base}.jpg {m["w"]}w" sizes="{sizes}" '
+            f'width="{m["w"]}" height="{m["h"]}" alt="{escape(m["alt"])}" {load}></picture>')
+
+
+def img_url(name):
+    return f"{SITE}/assets/img/fotos/{name}.jpg"
 
 # ------------------------------------------------------------------ iconos
 I = {
@@ -58,21 +88,45 @@ SOCIAL = [
     ("wallapop", "Wallapop", "deyscomm", "Coches y piezas a la venta."),
 ]
 
+
+I.update({
+    "grad": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>',
+    "cal": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+    "users": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>',
+    "map": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m1 6 7-4 8 4 7-4v16l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg>',
+    "award": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>',
+    "book": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M8 7h8M8 11h6"/></svg>',
+    "mic": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg>',
+    "chart": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 6-7"/></svg>',
+    "ticket": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-3a2 2 0 0 0 0-4z"/><path d="M13 5v14" stroke-dasharray="2 2"/></svg>',
+})
+
 NAV = [
     ("competicion.html", "Competición"),
     ("restomod.html", "Restomod"),
     ("pintura.html", "Pintura"),
-    ("performance.html", "Performance"),
-    ("tienda.html", "Tienda"),
-    ("nosotros.html", "Quiénes somos"),
-    ("contacto.html", "Contacto"),
+    ("banco-de-potencia.html", "Banco de potencia"),
+    ("experiencias.html", "Experiencias"),
+    ("cursos.html", "Cursos"),
 ]
+FOOTER_NAV = NAV + [("tienda.html", "Tienda"), ("nosotros.html", "Quiénes somos"), ("contacto.html", "Contacto")]
+
+# ---------------------------------------------------------------- precios (None = "Consultar")
+PRICES = {
+    "ds-pilot-weekend-circuit": None,
+    "ds-pilot-weekend-rally": None,
+    "ds-pilot-weekend-slalom": None,
+    "ds-copilot-course": None,
+}
 
 
-def logo():
-    return ('<a class="logo" href="index.html" aria-label="Deyscom Motorsport — inicio">'
-            '<span class="logo__word">DEYS<span>COM</span></span>'
-            '<span class="logo__sub">Motorsport</span></a>')
+def price_html(slug):
+    p = PRICES.get(slug)
+    return f"{p} €" if p else "Consultar"
+
+
+def logo(href="index.html"):
+    return f'<a class="logo" href="{href}" aria-label="Deyscom Motorsport — inicio">{logo_svg()}</a>'
 
 
 def social_links():
@@ -81,48 +135,94 @@ def social_links():
     ) + "</div>"
 
 
-def head(title, desc, slug, topic):
+ORG_LD = {
+    "@context": "https://schema.org",
+    "@type": ["AutoRepair", "SportsActivityLocation"],
+    "@id": SITE + "/#organizacion",
+    "name": "Deyscom Motorsport",
+    "legalName": "Deyscom Motorsport S.L.",
+    "url": SITE + "/",
+    "logo": SITE + "/assets/img/logo-deyscom-motorsport.png",
+    "image": SITE + "/assets/img/og-deyscom-motorsport.jpg",
+    "telephone": PHONE,
+    "email": EMAIL,
+    "priceRange": "€€",
+    "address": {"@type": "PostalAddress", "streetAddress": "C/ Canal de Isabel II, 2, Nave 3", "postalCode": "28180",
+                "addressLocality": "Torrelaguna", "addressRegion": "Madrid", "addressCountry": "ES"},
+    "areaServed": "ES",
+    "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
+                                   "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                   "opens": "07:00", "closes": "15:00"}],
+    "sameAs": ["https://www.instagram.com/deyscom_motorsport/", "https://www.facebook.com/deyscom/",
+               "https://www.tiktok.com/@deyscom_motorsport", "https://www.youtube.com/channel/UCBdUbFXBtKdeDkqQ5_S5C6g",
+               "https://es.wallapop.com/user/deyscomm-467502343"],
+}
+
+
+def ld(obj):
+    return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+
+
+def breadcrumbs_ld(slug, name, parent=None):
+    items = [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": SITE + "/"}]
+    if parent:
+        items.append({"@type": "ListItem", "position": 2, "name": parent[1], "item": f"{SITE}/{parent[0]}"})
+    items.append({"@type": "ListItem", "position": len(items) + 1, "name": name, "item": f"{SITE}/{slug}.html"})
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
+
+
+PAGES_META = {}  # slug -> (title, desc) para el sitemap
+
+
+def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
+    PAGES_META[slug] = (title, desc)
     canonical = f"{SITE}/" + ("" if slug == "index" else f"{slug}.html")
+    og = f"{SITE}/assets/img/og-deyscom-motorsport.jpg" if image == "og" else img_url(image)
+    preload = ""
+    if image != "og":
+        b = f"assets/img/fotos/{image}"
+        preload = f'<link rel="preload" as="image" type="image/webp" imagesrcset="{b}-800.webp 800w, {b}.webp 1600w" imagesizes="100vw">\n'
+    lds = ld(ORG_LD) + "".join(ld(x) for x in extra_ld)
     return f"""<!doctype html>
-<html lang="es">
+<html lang="es-ES">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(desc)}">
+{f'<meta name="keywords" content="{escape(keywords)}">' if keywords else ''}
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Deyscom Motorsport">
+<meta name="geo.region" content="ES-MD">
+<meta name="geo.placename" content="Torrelaguna, Madrid">
+<meta name="geo.position" content="40.8277;-3.5381">
+<meta name="ICBM" content="40.8277, -3.5381">
 <link rel="canonical" href="{canonical}">
-<meta name="theme-color" content="#050506">
+<link rel="alternate" hreflang="es-ES" href="{canonical}">
+<meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Deyscom Motorsport">
 <meta property="og:title" content="{escape(title)}">
 <meta property="og:description" content="{escape(desc)}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{SITE}/assets/img/og-deyscom.jpg">
+<meta property="og:image" content="{og}">
+<meta property="og:image:alt" content="{escape(title)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{escape(title)}">
+<meta name="twitter:description" content="{escape(desc)}">
+<meta name="twitter:image" content="{og}">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/logo-deyscom-motorsport.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v={VERSION}">
-<script type="application/ld+json">{LD_JSON}</script>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{preload}<link rel="stylesheet" href="assets/css/styles.css?v={VERSION}">
+{lds}
 </head>
 <body data-topic="{escape(topic)}">
 <a class="skip-link" href="#main">Saltar al contenido</a>
 """
-
-
-LD_JSON = (
-    '{"@context":"https://schema.org","@type":"AutoRepair","name":"Deyscom Motorsport",'
-    '"url":"' + SITE + '","logo":"' + SITE + '/assets/img/logo-deyscom.png","image":"' + SITE + '/assets/img/og-deyscom.jpg",'
-    '"telephone":"' + PHONE + '","email":"' + EMAIL + '",'
-    '"address":{"@type":"PostalAddress","streetAddress":"C/ Canal de Isabel II, 2, Nave 3","postalCode":"28180",'
-    '"addressLocality":"Torrelaguna","addressRegion":"Madrid","addressCountry":"ES"},'
-    '"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:00"}],'
-    '"sameAs":["https://www.instagram.com/deyscom_motorsport/","https://www.facebook.com/deyscom/",'
-    '"https://www.tiktok.com/@deyscom_motorsport","https://www.youtube.com/channel/UCBdUbFXBtKdeDkqQ5_S5C6g",'
-    '"https://es.wallapop.com/user/deyscomm-467502343"]}'
-)
 
 
 def header(slug):
@@ -131,11 +231,14 @@ def header(slug):
         f'<span class="nav__num">{i:02d}</span>{t}</a>'
         for i, (h, t) in enumerate(NAV, 1)
     )
+    shop_cur = ' aria-current="page"' if slug in ("tienda",) or slug in PRODUCTS else ""
+    links += f'<a class="nav__shop" href="tienda.html"{shop_cur}>{I["bag"]} Tienda</a>'
+    links += f'<div class="nav__extra"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="tel:{PHONE}">{PHONE_TXT}</a></div>'
     return f"""<div class="topbar">
   <div class="container">
     <div class="topbar__left">
       <span><i class="status-dot"></i> <span data-open-status>L-V 07:00–15:00</span></span>
-      <span class="topbar__hide-sm">{I['pin']} Torrelaguna · Madrid</span>
+      <a class="topbar__hide-sm topbar__promo" href="ds-copilot-course.html">{I['grad']} Nuevo: DS Copilot Course con certificación</a>
     </div>
     <div class="topbar__right">
       <a href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
@@ -148,7 +251,7 @@ def header(slug):
     {logo()}
     <nav class="nav" id="nav" aria-label="Principal">{links}</nav>
     <div class="header__cta">
-      <a class="btn btn--ghost" href="tel:{PHONE}">{I['phone']} Llamar</a>
+      <a class="btn btn--icon-sm header__shop" href="tienda.html" aria-label="Tienda">{I['bag']}</a>
       <a class="btn btn--primary-sm" href="contacto.html#presupuesto">Pide presupuesto</a>
       <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
@@ -159,20 +262,28 @@ def header(slug):
 
 
 def footer():
-    nav = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV)
+    col1 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV[:4])
+    col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [
+        ("experiencias.html", "Experiencias"), ("ds-pilot-weekend-circuit.html", "DS Pilot Weekend · Circuit"),
+        ("ds-pilot-weekend-rally.html", "DS Pilot Weekend · Rally"), ("ds-pilot-weekend-slalom.html", "DS Pilot Weekend · Slalom"),
+        ("cursos.html", "Cursos"), ("ds-copilot-course.html", "DS Copilot Course"), ("tienda.html", "Tienda")])
     return f"""</main>
 <footer class="footer">
   <div class="container">
-    <div class="footer__giant" aria-hidden="true">DEYS<span>COM</span> MOTORSPORT</div>
+    <div class="footer__giant" aria-hidden="true">{logo_svg("footer__logo", False)}</div>
     <div class="footer__grid">
       <div>
         {logo()}
-        <p class="mt-2 max-60">Taller de preparación, competición, restomod, pintura y performance en Torrelaguna (Madrid). Coches que se conducen con el corazón.</p>
+        <p class="mt-2 max-60">Taller motorsport en Torrelaguna (Madrid): coches de competición, restomod, pintura, banco de potencia, experiencias de pilotaje y cursos de copiloto.</p>
         <div class="mt-2">{social_links()}</div>
       </div>
       <div>
         <h4>Taller</h4>
-        <ul>{nav}</ul>
+        <ul>{col1}<li><a href="nosotros.html">Quiénes somos</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+      </div>
+      <div>
+        <h4>Vive Deyscom</h4>
+        <ul>{col2}</ul>
       </div>
       <div>
         <h4>Contacto</h4>
@@ -180,17 +291,14 @@ def footer():
           <li><a href="tel:{PHONE}">{PHONE_TXT}</a></li>
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li><a data-wa="" data-loc="footer" href="#">WhatsApp directo</a></li>
-          <li>C/ Canal de Isabel II, 2 · Nave 3<br>28180 Torrelaguna · Madrid</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Calle+Canal+de+Isabel+II+2+Torrelaguna" target="_blank" rel="noopener">C/ Canal de Isabel II, 2 · Nave 3<br>28180 Torrelaguna · Madrid</a></li>
         </ul>
-      </div>
-      <div>
-        <h4>Horario</h4>
-        {hours_table()}
+        <div class="mt-2">{hours_table()}</div>
       </div>
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> Deyscom Motorsport S.L. · Todos los derechos reservados</span>
-      <nav aria-label="Legal"><a href="legal.html#aviso">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#cookies">Cookies</a></nav>
+      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="legal.html#aviso">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#cookies">Cookies</a></nav>
     </div>
   </div>
 </footer>
@@ -220,10 +328,10 @@ def hours_table():
 
 
 # ------------------------------------------------------------------ bloques
-def art(label, x="70%", y="30%", img=None, alt=""):
-    pic = f'<img src="assets/img/{img}" alt="{escape(alt)}" loading="lazy" data-optional>' if img else ""
+def art(label, x="70%", y="30%", img=None, alt="", sizes="(max-width: 800px) 100vw, 50vw"):
+    photo = pic(img, sizes=sizes) if img in IMG else ""
     return (f'<div class="art" style="--x:{x};--y:{y}" aria-hidden="true"><div class="art__label">{label}</div>'
-            f'<div class="art__stripe"></div><div class="art__stripe"></div></div>{pic}')
+            f'<div class="art__stripe"></div><div class="art__stripe"></div></div>{photo}')
 
 
 def ticker(words, dark=False):
@@ -231,25 +339,25 @@ def ticker(words, dark=False):
     return f'<div class="ticker{" ticker--dark" if dark else ""}"><div class="ticker__track">{items}</div></div>'
 
 
-def page_hero(eyebrow, lines, lead, number, img, chips, topic, cta="Pide presupuesto", page=True):
+def hero(eyebrow, lines, lead, number, img, chips, topic, cta=("Pide presupuesto", "#presupuesto"), page=True, h1_extra=""):
     h1 = "".join(f'<span class="line"><span>{l}</span></span>' for l in lines)
     chips_html = "".join(f'<span class="chip">{c}</span>' for c in chips)
-    pic = f'<img src="assets/img/{img}" alt="" data-optional>' if img else ""
+    photo = pic(img, eager=True, sizes="100vw") if img in IMG else ""
     return f"""<section class="hero{" page-hero" if page else ""}">
-  <div class="hero__bg">{pic}</div>
+  <div class="hero__bg">{photo}</div>
   <div class="hero__grid"></div>
   <div class="hero__speed" aria-hidden="true"></div>
   <div class="hero__number" aria-hidden="true">{number}</div>
   <div class="container hero__inner">
     <span class="eyebrow">{eyebrow}</span>
-    <h1>{h1}</h1>
+    <h1{h1_extra}>{h1}</h1>
     <div class="hero__bottom">
       <div>
         <p class="lead">{lead}</p>
         <div class="hero__badges">{chips_html}</div>
       </div>
-      <div class="btn-row" style="justify-content:flex-end">
-        <a class="btn" href="#presupuesto">{cta} {I['arrow']}</a>
+      <div class="btn-row hero__ctas">
+        <a class="btn" href="{cta[1]}">{cta[0]} {I['arrow']}</a>
         <a class="btn btn--wa" data-wa="{escape(topic)}" data-loc="hero" href="#">{I['wa']} WhatsApp</a>
       </div>
     </div>
@@ -266,21 +374,21 @@ def cards(items):
     return f'<div class="cards">{out}</div>'
 
 
-def process(steps, pink=True):
-    s = "".join(
-        f'<div class="step reveal" data-delay="{i}"><span class="step__n">Fase 0{i + 1}</span><h3>{t}</h3><p>{d}</p></div>'
+def process(steps, label="Fase"):
+    return "".join(
+        f'<div class="step reveal" data-delay="{i}"><span class="step__n">{label} 0{i + 1}</span><h3>{t}</h3><p>{d}</p></div>'
         for i, (t, d) in enumerate(steps)
     )
-    return s
 
 
-def gallery(slug, caps, word):
-    items = "".join(
-        f'<figure class="gallery__item reveal" style="margin:0">{art(word, f"{20 + i * 15}%", "40%", f"{slug}-{i + 1}.jpg", c)}'
-        f'<figcaption class="gallery__cap">{c}</figcaption></figure>'
-        for i, c in enumerate(caps)
+def gallery(items, word):
+    """items: lista de (foto, pie)."""
+    out = "".join(
+        f'<figure class="gallery__item reveal">{art(word, f"{20 + i * 15}%", "40%", img, cap, "(max-width: 760px) 50vw, 33vw")}'
+        f'<figcaption class="gallery__cap">{cap}</figcaption></figure>'
+        for i, (img, cap) in enumerate(items)
     )
-    return f'<div class="gallery">{items}</div>'
+    return f'<div class="gallery">{out}</div>'
 
 
 def faq(items):
@@ -289,28 +397,35 @@ def faq(items):
     ) + "</div>"
 
 
-def mega_cta(title_html, text, topic):
+def faq_ld(items):
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in items]}
+
+
+def mega_cta(title_html, text, topic, primary=("Pide presupuesto", "contacto.html#presupuesto")):
     return f"""<section class="section section--pink mega-cta">
   <div class="mega-cta__flag" aria-hidden="true"></div>
   <div class="container">
     <h2 class="reveal">{title_html}</h2>
     <p class="lead mt-2" style="color:#111">{text}</p>
     <div class="btn-row">
-      <a class="btn btn--dark" href="contacto.html#presupuesto">Pide presupuesto {I['arrow']}</a>
+      <a class="btn btn--dark" href="{primary[1]}">{primary[0]} {I['arrow']}</a>
       <a class="btn btn--wa" data-wa="{escape(topic)}" data-loc="megacta" href="#">{I['wa']} WhatsApp</a>
-      <a class="btn btn--ghost" style="--fg:#000;box-shadow:inset 0 0 0 2px #000" href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
+      <a class="btn btn--ghost btn--ghost-dark" href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
     </div>
   </div>
 </section>
 """
 
 
-def success_block(title="¡Bandera a cuadros!", text="Hemos recibido tu solicitud. Te contactamos en menos de 24 h laborables."):
+def success_block(title="¡Bandera a cuadros!", text="Hemos recibido tu solicitud. Te contactamos en menos de 24 h laborables.", pay=False):
+    pay_btn = f'<a class="btn" data-pay hidden href="#" target="_blank" rel="noopener">{I["ticket"]} Pagar ahora</a>' if pay else ""
     return f"""<div class="form-success" role="status" aria-live="polite">
   <div class="form-success__icon">{I['check']}</div>
   <h3>{title}</h3>
   <p data-success-note>{text}</p>
   <div class="btn-row" style="justify-content:center">
+    {pay_btn}
     <a class="btn btn--wa" data-success-wa href="#" target="_blank" rel="noopener">{I['wa']} Acelerar por WhatsApp</a>
   </div>
 </div>"""
@@ -322,11 +437,31 @@ def consent():
             '<div class="hp" aria-hidden="true"><label>No rellenar<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>')
 
 
-def service_form(service, topic, options, title="Cuéntanos tu proyecto", sub="Respuesta en menos de 24 h laborables. Sin compromiso."):
-    pills = "".join(
-        f'<label class="pill"><input type="radio" name="interes" value="{escape(o)}"{" required" if i == 0 else ""}><span>{o}</span></label>'
+def legend(text, req=False):
+    return f'<legend class="field"><span class="lbl">{text}{" <span class=pink>*</span>" if req else ""}</span></legend>'
+
+
+def pills(name, options, req=False, checked=None):
+    return "".join(
+        f'<label class="pill"><input type="radio" name="{name}" value="{escape(o)}"{" required" if req and i == 0 else ""}{" checked" if o == checked else ""}><span>{o}</span></label>'
         for i, o in enumerate(options)
     )
+
+
+def tel_input(id_):
+    return f'<input class="input" id="{id_}" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9 +()\\-]{{9,}}" placeholder="600 000 000">'
+
+
+def contact_list():
+    return f"""<ul class="contact-list">
+  <li><span class="ic">{I['wa']}</span><div><small>WhatsApp · respuesta rápida</small><a data-wa="" data-loc="contactlist" href="#">Escríbenos ahora</a></div></li>
+  <li><span class="ic">{I['phone']}</span><div><small>Teléfono</small><a href="tel:{PHONE}">{PHONE_TXT}</a></div></li>
+  <li><span class="ic">{I['mail']}</span><div><small>Email</small><a href="mailto:{EMAIL}">{EMAIL}</a></div></li>
+  <li><span class="ic">{I['clock']}</span><div><small>Horario</small><strong>Lunes a viernes · 07:00 – 15:00</strong></div></li>
+</ul>"""
+
+
+def service_form(service, topic, options, title="Cuéntanos tu proyecto", sub="Respuesta en menos de 24 h laborables. Sin compromiso."):
     return f"""<section class="section section--ink" id="presupuesto">
   <div class="container form-wrap">
     <div class="reveal">
@@ -336,12 +471,12 @@ def service_form(service, topic, options, title="Cuéntanos tu proyecto", sub="R
       {contact_list()}
     </div>
     <div class="form-card reveal" data-delay="1" data-form-wrap>
-      <form class="form-body" data-lead="{escape(service.lower())}" novalidate>
+      <form class="form-body" data-lead="{escape(topic)}" novalidate>
         <input type="hidden" name="servicio" value="{escape(service)}">
         <div class="form-grid">
-          <fieldset class="pills full"><legend class="field"><span style="font-family:var(--f-display);font-style:italic;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.9rem;color:#fff">¿Qué necesitas? <span class="pink">*</span></span></legend>{pills}</fieldset>
+          <fieldset class="pills full">{legend("¿Qué necesitas?", True)}{pills("interes", options, True)}</fieldset>
           <div class="field"><label for="n-{topic}">Nombre <span class="req">*</span></label><input class="input" id="n-{topic}" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
-          <div class="field"><label for="t-{topic}">Teléfono <span class="req">*</span></label><input class="input" id="t-{topic}" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9 +()\\-]{{9,}}" placeholder="600 000 000"></div>
+          <div class="field"><label for="t-{topic}">Teléfono <span class="req">*</span></label>{tel_input("t-" + topic)}</div>
           <div class="field"><label for="e-{topic}">Email</label><input class="input" id="e-{topic}" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
           <div class="field"><label for="v-{topic}">Vehículo</label><input class="input" id="v-{topic}" name="vehiculo" placeholder="Marca, modelo y año"></div>
           <div class="field full"><label for="m-{topic}">Tu proyecto</label><textarea class="textarea" id="m-{topic}" name="mensaje" placeholder="Cuéntanos qué tienes en mente, objetivos, plazos…"></textarea></div>
@@ -358,15 +493,6 @@ def service_form(service, topic, options, title="Cuéntanos tu proyecto", sub="R
   </div>
 </section>
 """
-
-
-def contact_list():
-    return f"""<ul class="contact-list">
-  <li><span class="ic">{I['wa']}</span><div><small>WhatsApp · respuesta rápida</small><a data-wa="" data-loc="contactlist" href="#">Escríbenos ahora</a></div></li>
-  <li><span class="ic">{I['phone']}</span><div><small>Teléfono</small><a href="tel:{PHONE}">{PHONE_TXT}</a></div></li>
-  <li><span class="ic">{I['mail']}</span><div><small>Email</small><a href="mailto:{EMAIL}">{EMAIL}</a></div></li>
-  <li><span class="ic">{I['clock']}</span><div><small>Horario</small><strong>Lunes a viernes · 07:00 – 15:00</strong></div></li>
-</ul>"""
 
 
 def split(eyebrow, title, body_html, label, img, tag, rev=False, x="60%"):
@@ -387,8 +513,9 @@ def feature_list(items):
 
 
 def social_wall():
+    cls = {"instagram": "ig", "tiktok": "tt", "youtube": "yt", "facebook": "fb"}
     tiles = "".join(
-        f'<a class="social-tile social-tile--{ {"instagram": "ig", "tiktok": "tt", "youtube": "yt", "facebook": "fb", "wallapop": "fb"}[k] } reveal" data-delay="{i % 4}" data-social="{k}" href="#">'
+        f'<a class="social-tile social-tile--{cls[k]} reveal" data-delay="{i % 4}" data-social="{k}" href="#">'
         f'{I[k]}<div><b>{n}</b><span>{h} · {d}</span></div></a>'
         for i, (k, n, h, d) in enumerate(SOCIAL[:4])
     )
@@ -404,40 +531,48 @@ def social_wall():
 """
 
 
+def section_head(eyebrow, title, text="", pink=False):
+    t = f'<p class="lead {"" if pink else "muted "}reveal" data-delay="1">{text}</p>' if text else ""
+    return f'<div class="section__head"><div class="reveal"><span class="eyebrow">{eyebrow}</span><h2>{title}</h2></div>{t}</div>'
+
+
 # ------------------------------------------------------------------ páginas de servicio
 SERVICES = {
     "competicion": dict(
-        title="Coches de competición · Preparación rally y circuito | Deyscom Motorsport",
-        desc="Preparamos, mantenemos y asistimos coches de competición de rally, montaña y circuito en Madrid. Seguridad, set-up, asistencia en carrera y alquiler de coches de competición.",
-        topic="coches de competición",
+        title="Preparación de coches de competición en Madrid · Rally, Slalom y Circuito | Deyscom Motorsport",
+        desc="Preparamos, mantenemos y asistimos coches de competición de rally, slalom, montaña y circuito en Torrelaguna (Madrid): jaulas de seguridad, set-up, asistencia en carrera y alquiler.",
+        keywords="preparación coches competición Madrid, taller rally Madrid, jaula de seguridad, asistencia rally, alquiler coche rally, slalom, Torrelaguna",
+        topic="coches de competición", name="Coches de competición",
         eyebrow="Coches de competición",
         lines=["Nacidos", "<span class='pink'>para</span>", "<span class='outline'>competir</span>"],
-        lead="Rally, montaña, circuito o subida: preparamos tu coche desde la carrocería desnuda hasta la línea de salida y te acompañamos tramo a tramo.",
-        number="01",
-        chips=["Rally · Montaña · Circuito", "Asistencia en carrera", "Alquiler de coches de competición"],
-        ticker=["Preparación integral", "Seguridad", "Set-up", "Asistencia", "Mantenimiento", "Alquiler"],
+        lead="Rally, slalom, montaña o circuito: preparamos tu coche desde la carrocería desnuda hasta la línea de salida y te acompañamos tramo a tramo.",
+        number="01", hero="bmw-e36-competicion-taller-deyscom-motorsport",
+        chips=["Rally · Slalom · Circuito", "Asistencia en carrera", "Alquiler de coches de competición"],
+        ticker=["Preparación integral", "Jaulas de seguridad", "Set-up", "Asistencia", "Mantenimiento", "Alquiler"],
         intro=("Del garaje al podio", "Un coche de carreras <span class='pink'>no se compra</span>, se construye",
                "<p class='lead'>Cada preparación empieza con una conversación: qué campeonato, qué reglamento, qué presupuesto y qué piloto. A partir de ahí diseñamos el coche contigo, pieza a pieza.</p>"
                + feature_list([
                    ("Proyecto a medida", "Planificación por fases para ajustarnos al reglamento y a tu presupuesto."),
-                   ("Seguridad primero", "Arcos de seguridad, baquets, arneses, extinción y cortacorrientes."),
+                   ("Seguridad primero", "Jaulas de seguridad, baquets, arneses, extinción y cortacorrientes."),
                    ("Puesta a punto", "Geometría, reglajes de suspensión y set-up según superficie."),
-               ]), "RACE", "competicion-intro.jpg", "Race ready"),
+               ]), "RACE", "jaula-seguridad-multipunto-coche-competicion", "Race ready"),
         cards=[
-            ("flag", "Preparación integral", "Construcción de coches de rally, montaña y circuito desde cero o a partir de tu base."),
-            ("shield", "Seguridad", "Montaje de arcos, baquets, arneses, extintores y cortacorrientes según reglamento."),
+            ("flag", "Preparación integral", "Construcción de coches de rally, slalom, montaña y circuito desde cero o a partir de tu base."),
+            ("shield", "Seguridad", "Montaje de jaulas, baquets, arneses, extintores y cortacorrientes según reglamento."),
             ("gauge", "Set-up y reglajes", "Alturas, geometrías, amortiguación y diferenciales afinados para cada tramo."),
             ("wrench", "Mantenimiento entre pruebas", "Revisiones, desmontajes y reconstrucciones para salir siempre al 100%."),
             ("truck", "Asistencia en carrera", "Nuestro equipo contigo en el parque de asistencia, en cada tramo."),
-            ("key", "Alquiler de coches", "¿Quieres correr sin tener coche propio? Te alquilamos uno listo para competir."),
+            ("key", "Alquiler de coches", "¿Quieres correr sin coche propio? Te alquilamos uno listo para competir."),
         ],
         steps=[("Briefing", "Campeonato, reglamento, objetivos y presupuesto."), ("Diseño", "Plan de preparación por fases y lista de piezas."),
-               ("Construcción", "Taller, montaje y pruebas en banco y en pista."), ("Carrera", "Asistencia, datos y mantenimiento entre pruebas.")],
-        gallery=["Tramo de tierra", "Interior y jaula", "Parque de asistencia", "Detalle motor", "Salida"],
+               ("Construcción", "Taller, montaje y pruebas."), ("Carrera", "Asistencia, datos y mantenimiento entre pruebas.")],
+        gallery=[("jaula-seguridad-soldada-preparacion-rally", "Jaula soldada"), ("peugeot-206-rally-deyscom-motorsport-asistencia", "Parque de asistencia"),
+                 ("panel-interruptores-cortacorrientes-coche-competicion", "Electrónica de carreras"), ("bmw-e36-rally-parque-cerrado-motor", "Parque cerrado"),
+                 ("suzuki-vitara-competicion-decoracion-deyscom", "Suzuki Vitara de competición")],
         word="RALLY",
         faq=[
-            ("¿Preparáis coches para cualquier campeonato?", "Trabajamos rally, montaña, circuito y regularidad. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."),
-            ("¿Puedo alquilar un coche de competición?", "Sí. Tenemos opción de alquiler de coches de competición. Escríbenos con la prueba y fechas y te contamos disponibilidad y condiciones."),
+            ("¿Preparáis coches para cualquier campeonato?", "Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."),
+            ("¿Puedo alquilar un coche de competición?", "Sí. Tenemos alquiler de coches de competición y, si es tu primera vez, nuestras experiencias DS Pilot Weekend son la mejor forma de empezar."),
             ("¿Ofrecéis asistencia durante la carrera?", "Sí, podemos acompañarte en el parque de asistencia con equipo y material para resolver cualquier incidencia."),
             ("¿Puedo hacer la preparación por fases?", "Claro. Muchos pilotos empiezan por seguridad y fiabilidad y evolucionan el coche temporada a temporada."),
         ],
@@ -445,22 +580,23 @@ SERVICES = {
         mega="Tu próxima <span class='outline'>salida</span> empieza aquí",
     ),
     "restomod": dict(
-        title="Restomod · Clásicos con alma y mecánica moderna | Deyscom Motorsport",
-        desc="Restomod en Madrid: restauramos clásicos y youngtimers con mecánica, frenos, suspensión y electrónica modernas. Proyectos únicos hechos a mano en Torrelaguna.",
-        topic="un proyecto restomod",
+        title="Restomod y restauración de clásicos en Madrid | Deyscom Motorsport",
+        desc="Restomod y restauración de clásicos y todoterrenos en Madrid: chasis, mecánica moderna, frenos, suspensión, interior y pintura. Proyectos únicos hechos a mano en Torrelaguna.",
+        keywords="restomod Madrid, restauración coches clásicos Madrid, restauración Land Rover Defender, BMW E30 restomod, restauración todoterreno",
+        topic="un proyecto restomod", name="Restomod",
         eyebrow="Restomod",
         lines=["El alma", "de un <span class='pink'>clásico</span>", "<span class='outline'>el pulso de hoy</span>"],
         lead="Respetamos la esencia del coche que siempre soñaste y le damos la mecánica, la seguridad y la fiabilidad de un coche moderno. Uno solo. El tuyo.",
-        number="02",
-        chips=["Clásicos y youngtimers", "Proyectos 100% a medida", "Seguimiento con fotos y vídeo"],
-        ticker=["Restauración", "Chasis", "Motor moderno", "Frenos", "Interior a medida", "Pintura"],
+        number="02", hero="bmw-e30-clasicos-restomod-deyscom",
+        chips=["Clásicos, youngtimers y 4x4", "Proyectos 100% a medida", "Seguimiento con fotos y vídeo"],
+        ticker=["Restauración", "Chasis", "Mecánica moderna", "Frenos", "Interior a medida", "Pintura"],
         intro=("Lo mejor de dos épocas", "Ni original, ni moderno: <span class='pink'>único</span>",
                "<p class='lead'>Un restomod no es solo restaurar. Es decidir contigo qué conservar, qué mejorar y cómo quieres que se sienta al volante.</p>"
                + feature_list([
                    ("Diagnóstico de la base", "Revisamos chasis, carrocería y mecánica antes de empezar."),
                    ("Diseño del proyecto", "Definimos estética, prestaciones y presupuesto por fases."),
                    ("Diario de obra", "Te enviamos fotos y vídeos del proceso para que vivas cada avance."),
-               ]), "CLASSIC", "restomod-intro.jpg", "Hecho a mano", True, "35%"),
+               ]), "CLASSIC", "restauracion-todoterreno-clasico-motor", "Hecho a mano", True, "35%"),
         cards=[
             ("layers", "Restauración de chasis", "Saneado, tratamiento anticorrosión y refuerzos donde hace falta."),
             ("bolt", "Mecánica actualizada", "Motores, inyección y transmisiones modernas o reconstrucción del original."),
@@ -471,10 +607,12 @@ SERVICES = {
         ],
         steps=[("Idea", "Nos cuentas el coche y el sueño. Si aún no lo tienes, te ayudamos a buscarlo."), ("Proyecto", "Diseño, presupuesto por fases y calendario."),
                ("Taller", "Desmontaje, chapa, mecánica, pintura y montaje."), ("Entrega", "Rodaje, ajustes finales y entrega de tu coche.")],
-        gallery=["Antes de empezar", "Carrocería desnuda", "Motor", "Interior", "Entrega"],
+        gallery=[("land-rover-defender-restomod-deyscom", "Land Rover Defender"), ("restomod-todoterreno-clasico-taller-deyscom", "4x4 clásico en obra"),
+                 ("land-rover-defender-restomod-verde", "Defender terminado"), ("bmw-clasicos-restomod-taller-deyscom", "BMW clásicos"),
+                 ("ford-ranger-preparacion-offroad-deyscom", "Ford Ranger offroad")],
         word="RESTO",
         faq=[
-            ("¿Con qué coches trabajáis?", "Clásicos y youngtimers de todo tipo. Cuéntanos el modelo y valoramos el proyecto sin compromiso."),
+            ("¿Con qué coches trabajáis?", "Clásicos, youngtimers y todoterrenos de todo tipo: BMW, Land Rover, Nissan Patrol… Cuéntanos el modelo y valoramos el proyecto sin compromiso."),
             ("¿Cuánto cuesta un restomod?", "Depende del estado de la base y del nivel de modificación. Por eso trabajamos por fases y con presupuesto cerrado para cada una."),
             ("¿Cuánto tarda?", "Un restomod completo suele llevar meses. Te damos un calendario realista desde el principio y te enviamos avances."),
             ("¿Me ayudáis a encontrar el coche base?", "Sí, podemos asesorarte en la compra y revisar el coche antes de que lo compres."),
@@ -483,80 +621,86 @@ SERVICES = {
         mega="Hagamos tu <span class='outline'>clásico</span> eterno",
     ),
     "pintura": dict(
-        title="Pintura de coches y decoraciones de competición | Deyscom Motorsport",
-        desc="Pintura completa y parcial, chapa, colores especiales y decoraciones de competición en Torrelaguna (Madrid). Acabados de exposición para calle y pista.",
-        topic="pintura",
+        title="Taller de pintura y chapa en Madrid · Cabina y decoraciones racing | Deyscom Motorsport",
+        desc="Pintura completa y parcial en cabina, chapa, colores especiales, pintura de chasis y decoraciones de competición en Torrelaguna (Madrid). Acabados de exposición.",
+        keywords="taller pintura coches Madrid, cabina de pintura, pintura chasis, decoración coche rally, chapa y pintura Torrelaguna",
+        topic="pintura", name="Pintura",
         eyebrow="Pintura",
         lines=["Color", "<span class='pink'>que se</span>", "<span class='outline'>escucha</span>"],
-        lead="Chapa, pintura y decoraciones con acabado de exposición. Desde un retoque perfecto hasta un cambio de color completo o una decoración de competición que no pase desapercibida.",
-        number="03",
-        chips=["Pintura completa y parcial", "Decoraciones de competición", "Colores especiales"],
-        ticker=["Chapa", "Pintura completa", "Colores especiales", "Decoraciones", "Pulido", "Llantas"],
+        lead="Chapa, pintura en cabina y decoraciones con acabado de exposición. Desde un chasis completo hasta un cambio de color o una decoración de competición que no pase desapercibida.",
+        number="03", hero="cabina-pintura-chasis-rosa",
+        chips=["Pintura en cabina", "Chasis y piezas", "Decoraciones de competición"],
+        ticker=["Chapa", "Pintura completa", "Chasis", "Colores especiales", "Decoraciones", "Pulido"],
         intro=("Obsesión por el detalle", "La primera impresión <span class='pink'>se pinta</span>",
                "<p class='lead'>Preparamos cada superficie como si fuera a un concurso. Porque la pintura no solo se ve: protege y define el carácter del coche.</p>"
                + feature_list([
                    ("Preparación impecable", "Desmontaje, chapa, aparejo y lijado antes de un solo gramo de color."),
                    ("Color a tu medida", "Originales de fábrica, colores especiales y combinaciones bitono."),
                    ("Decoración racing", "Diseñamos y aplicamos la decoración de tu coche de competición."),
-               ]), "PAINT", "pintura-intro.jpg", "Acabado espejo"),
+               ]), "PAINT", "subchasis-pintado-rosa-deyscom", "Rosa Deyscom"),
         cards=[
             ("spray", "Pintura completa", "Cambio de color o restauración del original con desmontaje de piezas."),
+            ("layers", "Chasis y subchasis", "Pintura de chasis, subchasis, brazos y piezas mecánicas en cabina."),
             ("wrench", "Chapa y reparación", "Golpes, óxido y reparaciones estructurales hechas como deben."),
             ("star", "Colores especiales", "Perlados, mates, tricapa y tonos a medida."),
-            ("flag", "Decoraciones de competición", "Diseño y aplicación de libreas para rally y circuito."),
-            ("disc", "Llantas y piezas", "Pintura de llantas, pinzas, cubiertas y detalles."),
+            ("flag", "Decoraciones de competición", "Diseño y aplicación de decoraciones para rally, slalom y circuito."),
             ("eye", "Pulido y protección", "Corrección de pintura y protección para que dure."),
         ],
         steps=[("Valoración", "Vemos el coche y el acabado que buscas."), ("Preparación", "Desmontaje, chapa, aparejo y lijado."),
-               ("Pintura", "Color, barniz y secado controlado."), ("Acabado", "Pulido, montaje y control de calidad.")],
-        gallery=["Cabina", "Color", "Decoración", "Detalle", "Pulido"],
+               ("Pintura", "Color, barniz y secado en cabina."), ("Acabado", "Pulido, montaje y control de calidad.")],
+        gallery=[("cabina-pintura-subchasis-rosa-deyscom", "Subchasis en cabina"), ("nissan-patrol-restaurado-pintura-verde", "Nissan Patrol terminado"),
+                 ("piezas-pintadas-rosa-cabina-pintura", "Piezas en rosa"), ("peugeot-206-decoracion-deyscom-sport", "Decoración DS"),
+                 ("bmw-e36-competicion-decoracion-rosa", "Decoración de competición")],
         word="COLOR",
         faq=[
-            ("¿Pintáis solo una pieza o el coche entero?", "Ambas cosas: desde un paragolpes o una aleta hasta pintura completa con cambio de color."),
+            ("¿Pintáis solo una pieza o el coche entero?", "Ambas cosas: desde un paragolpes o un subchasis hasta pintura completa con cambio de color."),
             ("¿Hacéis decoraciones de competición?", "Sí. Te ayudamos a diseñar la decoración y la aplicamos en pintura o vinilo, según lo que mejor encaje."),
             ("¿Cuánto tarda una pintura completa?", "Depende del estado de la chapa y del desmontaje necesario. Tras ver el coche te damos un plazo concreto."),
             ("¿Igualáis el color original?", "Sí, trabajamos con el código de color del fabricante y ajustamos el tono para que la pieza no se distinga."),
         ],
-        form_opts=["Pintura completa", "Pieza o reparación", "Decoración competición", "Llantas / detalles", "Otro"],
+        form_opts=["Pintura completa", "Pieza o reparación", "Chasis / mecánica", "Decoración competición", "Otro"],
         mega="Dale a tu coche <span class='outline'>el color</span> que merece",
     ),
-    "performance": dict(
-        title="Modificaciones performance · Escapes, potencia y chasis | Deyscom Motorsport",
-        desc="Modificaciones performance en Madrid: escapes, admisión, reprogramación, suspensión, frenos y embragues. Más potencia, mejor respuesta y más diversión al volante.",
-        topic="modificaciones performance",
-        eyebrow="Modificaciones performance",
-        lines=["Más", "<span class='pink'>respuesta.</span>", "<span class='outline'>Más sonrisa.</span>"],
-        lead="Escapes, admisión, potencia, suspensión y frenos. Mejoramos tu coche de calle o de tandas con piezas de calidad y un objetivo claro: que disfrutes cada curva.",
-        number="04",
-        chips=["Escapes a medida", "Suspensión y frenos", "Potencia y fiabilidad"],
-        ticker=["Escapes", "Admisión", "Potencia", "Suspensión", "Frenos", "Embragues"],
-        intro=("Calle, tandas o track day", "Potencia <span class='pink'>con cabeza</span>",
-               "<p class='lead'>No se trata de montar piezas, sino de que el coche funcione como un conjunto. Analizamos tu uso y te proponemos un plan por etapas.</p>"
+    "banco-de-potencia": dict(
+        title="Banco de potencia en Madrid · Medición de CV, par y puesta a punto | Deyscom Motorsport",
+        desc="Banco de potencia en Torrelaguna (Madrid): mide los CV y el par reales de tu coche, diagnostica pérdidas, compara antes y después de cada modificación y afina tu coche de calle o competición.",
+        keywords="banco de potencia Madrid, medir CV coche, banco de rodillos, prueba de potencia, curva de par, puesta a punto banco, dyno Madrid",
+        topic="el banco de potencia", name="Banco de potencia",
+        eyebrow="Banco de potencia",
+        lines=["Los números", "<span class='pink'>no</span>", "<span class='outline'>mienten</span>"],
+        lead="Descubre cuántos caballos y cuánto par tiene de verdad tu coche. Medimos, diagnosticamos y afinamos con datos reales, sin suposiciones.",
+        number="04", hero="motor-caja-cambios-desmontado-taller",
+        chips=["Potencia y par reales", "Antes / después", "Coches de calle y competición"],
+        ticker=["Potencia", "Par motor", "Curvas", "Diagnóstico", "Puesta a punto", "Antes / después"],
+        intro=("Datos, no sensaciones", "¿Cuántos CV tiene <span class='pink'>de verdad</span> tu coche?",
+               "<p class='lead'>El banco de potencia es la herramienta que convierte sensaciones en datos. Sabrás exactamente cómo rinde tu motor y qué ha aportado cada modificación.</p>"
                + feature_list([
-                   ("Plan por etapas", "Empieza por lo que más se nota y crece cuando quieras."),
-                   ("Piezas de calidad", "Trabajamos con marcas contrastadas y montaje profesional."),
-                   ("Fiabilidad", "Más prestaciones sin renunciar a usar tu coche cada día."),
-               ]), "POWER", "performance-intro.jpg", "Stage up", True, "40%"),
+                   ("Medición real", "Potencia y par en todo el rango de revoluciones, con su curva completa."),
+                   ("Diagnóstico", "Detectamos pérdidas de potencia, fallos de mezcla o encendido y problemas de transmisión."),
+                   ("Informe", "Te llevas tus gráficas para comparar en el futuro."),
+               ]), "DYNO", "motor-admision-deyscom-peugeot-206", "Medido en banco", True, "40%"),
         cards=[
-            ("wind", "Escapes", "Montaje y fabricación de escapes: sonido, peso y flujo a tu gusto."),
-            ("bolt", "Admisión y potencia", "Admisión, intercooler, turbo y puesta a punto del motor."),
-            ("cpu", "Electrónica", "Reprogramación y gestión del motor adaptada a tus modificaciones."),
-            ("gauge", "Suspensión", "Coilovers, barras, silentblocks y geometría para mejor paso por curva."),
-            ("disc", "Frenos", "Kits de freno, latiguillos, pastillas y líquidos de alto rendimiento."),
-            ("layers", "Transmisión", "Embragues reforzados, volantes motor y autoblocantes."),
+            ("gauge", "Medición de potencia", "CV y par reales de tu coche, medidos en banco y con su curva completa."),
+            ("chart", "Antes y después", "Mide antes y después de cada modificación para ver qué ha aportado."),
+            ("cpu", "Puesta a punto", "Ajuste del coche en banco para sacar el máximo rendimiento con fiabilidad."),
+            ("eye", "Diagnóstico", "Encuentra pérdidas de potencia, tirones o fallos que no se ven en carretera."),
+            ("flag", "Competición", "Verificación de la preparación antes de la temporada o de una prueba."),
+            ("wind", "Admisión, escape y mecánica", "Te asesoramos sobre qué mejorar según los datos del banco."),
         ],
-        steps=[("Uso", "¿Calle, tandas o competición? Definimos el objetivo."), ("Propuesta", "Plan por etapas con piezas y presupuesto."),
-               ("Montaje", "Instalación profesional y puesta a punto."), ("Prueba", "Comprobación en carretera y entrega.")],
-        gallery=["Escape", "Admisión", "Frenos", "Suspensión", "Motor"],
-        word="TUNED",
+        steps=[("Revisión", "Comprobamos el coche y lo dejamos listo para medir con seguridad."), ("Medición", "Varias pasadas para obtener potencia y par fiables."),
+               ("Análisis", "Revisamos las curvas contigo y detectamos qué se puede mejorar."), ("Informe", "Te llevas tus gráficas y nuestras recomendaciones.")],
+        gallery=[("colector-escape-motor-competicion", "Colector de escape"), ("radiador-intercooler-preparacion-motor", "Refrigeración"),
+                 ("soporte-motor-poliuretano-competicion", "Soportes de poliuretano"), ("muelles-suspension-dobinsons-preparacion", "Suspensión"),
+                 ("motor-competicion-desmontado-palet", "Motor de competición")],
+        word="POWER",
         faq=[
-            ("¿Las modificaciones son legales?", "Te asesoramos sobre qué piezas requieren homologación o reforma y cómo hacerlo correctamente."),
-            ("¿Montáis piezas que traiga yo?", "Sí, valoramos la pieza y te decimos si es adecuada para tu coche antes de montarla."),
-            ("¿Fabricáis escapes a medida?", "Sí, montamos y adaptamos escapes según el sonido y las prestaciones que busques."),
-            ("¿Afecta a la fiabilidad?", "Una modificación bien planteada y bien montada no tiene por qué. Por eso trabajamos por etapas y con piezas contrastadas."),
+            ("¿Qué coches podéis medir en el banco?", "Coches de calle, preparados y de competición. Escríbenos con el modelo y la tracción y te confirmamos disponibilidad y precio."),
+            ("¿Cuánto dura una sesión?", "Una medición suele llevar poco tiempo, aunque depende del coche y de si hacemos diagnóstico o puesta a punto. Te lo concretamos al reservar."),
+            ("¿Es seguro para el motor?", "Sí. Antes de medir revisamos niveles, estado del coche y fijaciones, y la medición se hace con el coche bien sujeto y refrigerado."),
+            ("¿Me dais las gráficas?", "Sí, te llevas las curvas de potencia y par para que puedas comparar después de futuras modificaciones."),
         ],
-        form_opts=["Escape", "Potencia / reprogramación", "Suspensión", "Frenos", "Plan completo"],
-        mega="¿Listo para <span class='outline'>subir de nivel</span>?",
+        form_opts=["Medir potencia", "Antes / después de modificar", "Diagnóstico", "Puesta a punto", "Otro"],
+        mega="¿Cuántos <span class='outline'>caballos</span> tienes?",
     ),
 }
 
@@ -570,49 +714,47 @@ def service_page(slug):
     if slug == "pintura":
         extra = f"""<section class="section section--tight">
   <div class="container">
-    <div class="section__head"><div class="reveal"><span class="eyebrow">Antes / después</span><h2>Desliza y <span class="outline">compara</span></h2></div>
-    <p class="lead muted reveal">Arrastra el control para ver la transformación. (Sustituye las imágenes por tus propios trabajos en <code>assets/img/pintura-antes.jpg</code> y <code>pintura-despues.jpg</code>.)</p></div>
+    {section_head("Proceso real", "De la cabina <span class='outline'>a la calle</span>", "Desliza para ver el Nissan Patrol en la cabina de pintura y terminado.")}
     <div class="ba reveal">
-      <div class="ba__layer ba__before">{art("ANTES", "30%", "40%", "pintura-antes.jpg", "Antes")}</div>
-      <div class="ba__layer ba__after">{art("DESPUÉS", "70%", "40%", "pintura-despues.jpg", "Después")}</div>
-      <span class="ba__lbl ba__lbl--l">Antes</span><span class="ba__lbl ba__lbl--r">Después</span>
+      <div class="ba__layer ba__before">{art("CABINA", "30%", "40%", "nissan-patrol-cabina-pintura-verde", "", "100vw")}</div>
+      <div class="ba__layer ba__after">{art("FINAL", "70%", "40%", "nissan-patrol-pintura-verde-terminado", "", "100vw")}</div>
+      <span class="ba__lbl ba__lbl--l">En cabina</span><span class="ba__lbl ba__lbl--r">Terminado</span>
       <div class="ba__handle"></div>
-      <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">
+      <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar en cabina y terminado">
     </div>
   </div>
 </section>"""
-    html = head(s["title"], s["desc"], slug, s["topic"]) + header(slug)
-    html += page_hero(s["eyebrow"], s["lines"], s["lead"], s["number"], f"{slug}-hero.jpg", s["chips"], s["topic"])
+    service_ld = {"@context": "https://schema.org", "@type": "Service", "name": s["name"], "serviceType": s["name"],
+                  "description": s["desc"], "provider": {"@id": SITE + "/#organizacion"}, "areaServed": "ES",
+                  "image": img_url(s["hero"]), "url": f"{SITE}/{slug}.html"}
+    html = head(s["title"], s["desc"], slug, s["topic"], s["hero"],
+                [service_ld, breadcrumbs_ld(slug, s["name"]), faq_ld(s["faq"])], s["keywords"]) + header(slug)
+    html += hero(s["eyebrow"], s["lines"], s["lead"], s["number"], s["hero"], s["chips"], s["topic"])
     html += ticker(s["ticker"])
     html += f'<section class="section"><div class="container">{split(e, t, body, label, img, tag, rev, x)}</div></section>'
     html += f"""<section class="section section--ink">
   <div class="container">
-    <div class="section__head">
-      <div class="reveal"><span class="eyebrow">Qué hacemos</span><h2>Todo lo que <span class="outline">necesitas</span></h2></div>
-      <p class="lead muted reveal" data-delay="1">Un solo taller para todo el proyecto. Sin intermediarios, sin sorpresas y con trato directo con quien trabaja en tu coche.</p>
-    </div>
+    {section_head("Qué hacemos", "Todo lo que <span class='outline'>necesitas</span>", "Un solo taller para todo el proyecto. Sin intermediarios, sin sorpresas y con trato directo con quien trabaja en tu coche.")}
     {cards(s["cards"])}
   </div>
 </section>
 <section class="section section--pink">
   <div class="container">
-    <div class="section__head"><div><span class="eyebrow" style="color:#000">Cómo trabajamos</span><h2>De la idea <span class="outline" style="-webkit-text-stroke-color:#000">a la meta</span></h2></div>
-    <p class="lead" style="color:#111">Proceso claro, presupuesto cerrado por fases y comunicación constante.</p></div>
+    {section_head("Cómo trabajamos", "De la idea <span class='outline'>a la meta</span>", "Proceso claro, presupuesto cerrado y comunicación constante.", True)}
     <div class="process">{process(s["steps"])}</div>
   </div>
 </section>
 {extra}
 <section class="section">
   <div class="container">
-    <div class="section__head"><div class="reveal"><span class="eyebrow">Trabajos</span><h2>Desde <span class="outline">el taller</span></h2></div>
-    <p class="lead muted reveal" data-delay="1">Más proyectos cada semana en nuestro <a class="pink" data-social="instagram" href="#">Instagram</a> y <a class="pink" data-social="tiktok" href="#">TikTok</a>.</p></div>
-    {gallery(slug, s["gallery"], s["word"])}
+    {section_head("Trabajos reales", "Desde <span class='outline'>el taller</span>", "Más proyectos cada semana en nuestro <a class='pink' data-social='instagram' href='#'>Instagram</a> y <a class='pink' data-social='tiktok' href='#'>TikTok</a>.")}
+    {gallery(s["gallery"], s["word"])}
   </div>
 </section>
 {service_form(s["eyebrow"], slug, s["form_opts"])}
 <section class="section">
   <div class="container">
-    <div class="section__head"><div class="reveal"><span class="eyebrow">Preguntas frecuentes</span><h2>Lo que <span class="outline">nos preguntáis</span></h2></div></div>
+    {section_head("Preguntas frecuentes", "Lo que <span class='outline'>nos preguntáis</span>")}
     {faq(s["faq"])}
   </div>
 </section>
@@ -621,383 +763,530 @@ def service_page(slug):
     return html + footer()
 
 
-# ------------------------------------------------------------------ inicio
-def home():
-    svc = [
-        ("competicion.html", "01", "Competición", "Preparación, seguridad, asistencia y alquiler de coches de rally, montaña y circuito.", "RACE", "home-competicion.jpg", "75%"),
-        ("restomod.html", "02", "Restomod", "Clásicos con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "home-restomod.jpg", "30%"),
-        ("pintura.html", "03", "Pintura", "Chapa, pintura completa, colores especiales y decoraciones racing.", "PAINT", "home-pintura.jpg", "60%"),
-        ("performance.html", "04", "Performance", "Escapes, potencia, suspensión y frenos. Más respuesta, más diversión.", "POWER", "home-performance.jpg", "40%"),
-        ("tienda.html", "05", "Tienda", "Coches y piezas a la venta, y merchandising oficial Deyscom.", "SHOP", "home-tienda.jpg", "70%"),
-    ]
-    svc_html = "".join(
-        f'<a class="svc reveal" data-delay="{i % 3}" href="{h}"><div class="svc__media">{art(w, x, "30%", img, t)}</div>'
-        f'<span class="svc__num">{n}</span><h3>{t}</h3><p>{d}</p><span class="svc__go">Descubrir {I["arrow"]}</span></a>'
-        for i, (h, n, t, d, w, img, x) in enumerate(svc)
-    )
-    choices = [
-        ("flag", "Competición", "Rally, montaña, circuito"),
-        ("star", "Restomod", "Clásico + mecánica moderna"),
-        ("spray", "Pintura", "Chapa, color, decoración"),
-        ("bolt", "Performance", "Escape, potencia, chasis"),
-        ("key", "Alquiler", "Coche de competición"),
-        ("wrench", "Otro", "Cuéntanos tu idea"),
-    ]
-    choice_html = "".join(
-        f'<label class="choice"><input type="radio" name="servicio" value="{t}"{" required" if i == 0 else ""}>'
-        f'<span class="choice__box">{I[ic]}<b>{t}</b><span>{d}</span></span></label>'
-        for i, (ic, t, d) in enumerate(choices)
-    )
-    budgets = ["< 3.000 €", "3.000 – 10.000 €", "10.000 – 30.000 €", "> 30.000 €", "Aún no lo sé"]
-    budget_html = "".join(f'<label class="pill"><input type="radio" name="presupuesto" value="{b}"><span>{b}</span></label>' for b in budgets)
-    plazos = ["Lo antes posible", "1 – 3 meses", "Para la próxima temporada", "Sin prisa"]
-    plazo_html = "".join(f'<label class="pill"><input type="radio" name="plazo" value="{b}"><span>{b}</span></label>' for b in plazos)
+# ------------------------------------------------------------------ experiencias y cursos
+CARS = {
+    "Peugeot 206 1.6 XS": dict(power="118 CV", img="peugeot-206-decoracion-deyscom-sport",
+                               specs=["1.6 gasolina", "118 CV", "Tracción delantera"],
+                               desc="Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza."),
+    "BMW E36": dict(power="135 CV", img="bmw-e36-rally-tierra-deyscom-motorsport",
+                    specs=["135 CV", "Propulsión trasera", "Preparado Deyscom"],
+                    desc="Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos."),
+}
 
-    html = head("Deyscom Motorsport · Competición, Restomod, Pintura y Performance en Madrid",
-                "Taller motorsport en Torrelaguna (Madrid): coches de competición, restomod, pintura y modificaciones performance. Pide presupuesto o escríbenos por WhatsApp.",
-                "index", "vuestros servicios") + header("index")
-    html += f"""<section class="hero">
-  <div class="hero__bg"><img src="assets/img/hero.jpg" alt="" data-optional></div>
-  <div class="hero__grid"></div>
-  <div class="hero__speed" aria-hidden="true"></div>
-  <div class="container hero__inner">
-    <span class="eyebrow">Torrelaguna · Madrid · Motorsport workshop</span>
-    <h1><span class="line"><span>Hechos</span></span><span class="line"><span>para <span class="pink">correr.</span></span></span><span class="line"><span class="outline">Pensados para ti.</span></span></h1>
-    <div class="hero__bottom">
-      <div>
-        <p class="lead">Coches de competición, restomods, pintura y modificaciones performance. Un taller de apasionados donde cada coche se trata como si fuera nuestro.</p>
-        <div class="hero__badges">
-          <span class="chip"><b>●</b> Competición</span><span class="chip"><b>●</b> Restomod</span><span class="chip"><b>●</b> Pintura</span><span class="chip"><b>●</b> Performance</span>
-        </div>
-      </div>
-      <div class="btn-row" style="justify-content:flex-end">
-        <a class="btn" href="#presupuesto">Empieza tu proyecto {I['arrow']}</a>
-        <a class="btn btn--wa" data-wa="" data-loc="hero" href="#">{I['wa']} WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-{ticker(["Competición", "Restomod", "Pintura", "Performance", "Asistencia en carrera", "Hecho en Madrid"])}
+EXPERIENCES = {
+    "ds-pilot-weekend-circuit": dict(
+        name="DS Pilot Weekend – Circuit", short="Circuit", tag="Circuito del Jarama",
+        title="DS Pilot Weekend Circuit · Fin de semana de piloto en el Circuito del Jarama | Deyscom Motorsport",
+        desc="Vive un fin de semana como piloto en el Circuito del Jarama con Deyscom Motorsport: coche de competición, equipo técnico, briefing y tandas en pista. Reserva tu plaza.",
+        keywords="experiencia piloto Jarama, conducir coche competición circuito, regalo experiencia circuito Madrid, curso pilotaje Jarama, DS Pilot Weekend",
+        hero="coche-circuito-dorsal-35-taller-deyscom", card="bmw-e36-competicion-taller-deyscom-motorsport",
+        lines=["Piloto", "<span class='pink'>por un</span>", "<span class='outline'>fin de semana</span>"],
+        lead="Un fin de semana completo viviendo el Circuito del Jarama como un piloto más: paddock, briefing, coche de competición y pista.",
+        teaser="Un fin de semana como piloto en el Circuito del Jarama.",
+        chips=["Circuito del Jarama", "Fin de semana completo", "Coche de competición"],
+        story=("La experiencia", "Del paddock <span class='pink'>a la recta</span> del Jarama",
+               "<p class='lead'>El Jarama es historia viva del motor en España. Durante un fin de semana serás parte de nuestro equipo: llegarás al paddock, te equiparás, escucharás el briefing y saldrás a pista con un coche de competición preparado por Deyscom.</p>"
+               "<p class='muted'>Nuestro equipo te acompaña en todo momento: te explicamos la trazada, las referencias de frenada y cómo sacar lo mejor del coche, tanda a tanda, para que vuelvas a casa con la sensación de haber sido piloto de verdad.</p>"),
+        program=[("Sábado · Paddock", "Bienvenida, equipación, briefing técnico y de seguridad y primeras tandas para conocer el coche y el trazado."),
+                 ("Sábado · Pista", "Tandas con explicaciones de trazada, frenada y referencias. Feedback de nuestro equipo entre tandas."),
+                 ("Domingo · Ritmo", "Más tandas para encadenar vueltas y ganar confianza y ritmo."),
+                 ("Domingo · Cierre", "Análisis de tu fin de semana con el equipo y foto en el paddock.")],
+        includes=["Fin de semana completo en el Circuito del Jarama", "Coche de competición preparado por Deyscom", "Briefing técnico y de seguridad",
+                  "Acompañamiento de nuestro equipo en pista y paddock", "Asistencia mecánica durante todo el fin de semana"],
+        cars=None,
+        faq=[("¿Necesito experiencia previa?", "No. Adaptamos el fin de semana a tu nivel; solo necesitas carnet de conducir y muchas ganas."),
+             ("¿Dónde es?", "En el Circuito del Jarama (San Sebastián de los Reyes, Madrid), a unos 40 minutos de nuestro taller."),
+             ("¿Puedo regalarlo?", "Sí, es un regalo perfecto para cualquier apasionado del motor. Escríbenos y te preparamos la reserva a su nombre."),
+             ("¿Cuándo son las próximas fechas?", "Las fechas dependen del calendario del circuito. Reserva tu plaza y te confirmamos la próxima edición disponible.")],
+    ),
+    "ds-pilot-weekend-rally": dict(
+        name="DS Pilot Weekend – Rally", short="Rally", tag="Rally federado",
+        title="DS Pilot Weekend Rally · Corre un rally federado con Peugeot 206 o BMW E36 | Deyscom Motorsport",
+        desc="Apúntate a un rally federado con Deyscom Motorsport y conduce nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Coche, asistencia y equipo incluidos.",
+        keywords="correr un rally, alquiler coche rally, rally federado experiencia, Peugeot 206 rally alquiler, BMW E36 rally, DS Pilot Weekend",
+        hero="bmw-e36-rally-tierra-deyscom-motorsport", card="peugeot-206-rally-deyscom-motorsport-asistencia",
+        lines=["Tu primer", "<span class='pink'>rally</span>", "<span class='outline'>de verdad</span>"],
+        lead="Apúntate a un rally federado y vive la experiencia completa al volante de nuestro Peugeot 206 1.6 XS de 118 CV o del BMW E36 de 135 CV.",
+        teaser="Corre un rally federado con nuestro 206 o nuestro BMW E36.",
+        chips=["Rally federado", "Peugeot 206 · 118 CV", "BMW E36 · 135 CV"],
+        story=("La experiencia", "Tramos, asistencia <span class='pink'>y adrenalina</span>",
+               "<p class='lead'>No es una tanda ni una exhibición: es un rally federado de verdad. Verificaciones, parque de asistencia, tramos cronometrados y la emoción de cruzar la meta.</p>"
+               "<p class='muted'>Nosotros ponemos el coche preparado, el equipo y la asistencia; tú pones las ganas. Te acompañamos con la inscripción y los trámites para que solo tengas que pensar en conducir.</p>"),
+        program=[("Antes del rally", "Te ayudamos con la inscripción y la licencia, y preparamos el coche que elijas."),
+                 ("Sábado · Verificaciones", "Verificaciones administrativas y técnicas, briefing y reconocimiento."),
+                 ("Día de carrera", "Tramos cronometrados con nuestro equipo de asistencia en cada reagrupamiento."),
+                 ("Meta", "Podio final, fotos y la sensación de haber corrido un rally de verdad.")],
+        includes=["Inscripción en un rally federado (gestión con nuestro equipo)", "Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparado",
+                  "Asistencia mecánica durante todo el rally", "Briefing y acompañamiento del equipo Deyscom", "Ayuda con la licencia federativa"],
+        cars=["Peugeot 206 1.6 XS", "BMW E36"],
+        faq=[("¿Necesito licencia?", "Para competir en un rally federado necesitas licencia federativa. Te ayudamos a tramitarla antes de la prueba."),
+             ("¿Y el copiloto?", "En rally se corre con copiloto. Puedes traer el tuyo o consultarnos. Y si quieres formarte como copiloto, tienes nuestro DS Copilot Course."),
+             ("¿Qué coche me recomendáis?", "El Peugeot 206 es ideal para empezar por su nobleza; el BMW E36, de propulsión, es para quien busca sensaciones más intensas."),
+             ("¿Qué pasa si hay daños en el coche?", "Te explicamos las condiciones de uso y la fianza antes de reservar, para que todo esté claro desde el principio.")],
+    ),
+    "ds-pilot-weekend-slalom": dict(
+        name="DS Pilot Weekend – Slalom", short="Slalom", tag="Slalom",
+        title="DS Pilot Weekend Slalom · Experiencia de slalom con Peugeot 206 o BMW E36 | Deyscom Motorsport",
+        desc="Vive una experiencia única de slalom con Deyscom Motorsport al volante del Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Precisión, conos y cronómetro.",
+        keywords="experiencia slalom, slalom coche Madrid, alquiler coche slalom, conducir Peugeot 206 competición, BMW E36 slalom, DS Pilot Weekend",
+        hero="bmw-e36-competicion-decoracion-rosa", card="peugeot-206-slalom-deyscom-motorsport",
+        lines=["Precisión", "<span class='pink'>contra el</span>", "<span class='outline'>cronómetro</span>"],
+        lead="Conos, cronómetro y un coche de competición. Vive una experiencia única de slalom con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV.",
+        teaser="Conos, cronómetro y una experiencia única al volante.",
+        chips=["Slalom", "Peugeot 206 · 118 CV", "BMW E36 · 135 CV"],
+        story=("La experiencia", "Cada décima <span class='pink'>cuenta</span>",
+               "<p class='lead'>El slalom es la puerta de entrada perfecta a la competición: un recorrido marcado con conos, el cronómetro en marcha y tú buscando la trazada perfecta.</p>"
+               "<p class='muted'>Es técnico, divertido y muy seguro. Nuestro equipo te enseña a mirar lejos, a frenar en el punto justo y a mover el coche con precisión, manga a manga.</p>"),
+        program=[("Briefing", "Presentación del recorrido, normas de seguridad y explicación del coche."),
+                 ("Reconocimiento", "Recorrido a pie y primeras vueltas para memorizar el trazado."),
+                 ("Mangas cronometradas", "Varias mangas con feedback de nuestro equipo entre cada una."),
+                 ("Resultados", "Tus tiempos, tu evolución y foto con el coche.")],
+        includes=["Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparado", "Briefing técnico y de seguridad", "Mangas cronometradas",
+                  "Acompañamiento y consejos del equipo Deyscom", "Asistencia mecánica"],
+        cars=["Peugeot 206 1.6 XS", "BMW E36"],
+        faq=[("¿Necesito experiencia?", "No. El slalom es ideal para empezar: es técnico, seguro y se aprende muchísimo en poco tiempo."),
+             ("¿Necesito licencia?", "Depende de si la prueba es federada o una jornada privada. Te lo indicamos al confirmar la fecha y te ayudamos con lo necesario."),
+             ("¿Puedo venir acompañado?", "Sí, tus acompañantes pueden venir a verte y vivir el ambiente."),
+             ("¿Puedo regalarlo?", "Sí, es un regalo perfecto. Escríbenos y preparamos la reserva a nombre de quien quieras.")],
+    ),
+}
 
-<section class="section">
-  <div class="container">
-    <div class="section__head">
-      <div class="reveal"><span class="eyebrow">Qué hacemos</span><h2>Un taller.<br><span class="outline">Cinco pasiones.</span></h2></div>
-      <p class="lead muted reveal" data-delay="1">Desde un coche de rally listo para el primer tramo hasta un clásico que vuelve a nacer. Elige por dónde quieres empezar.</p>
-    </div>
-    <div class="services">{svc_html}</div>
-  </div>
-</section>
+COURSE = dict(
+    slug="ds-copilot-course", name="DS Copilot Course",
+    title="DS Copilot Course · Curso de copiloto de rally con certificación y diploma | Deyscom Motorsport",
+    desc="Curso de copiloto de rally de fin de semana completo con certificación y diploma: teoría y práctica con un profesor y una profesora, y horas prácticas en un tramo cerrado en Guadalajara en exclusiva.",
+    keywords="curso copiloto rally, curso de copiloto Madrid, formación copiloto rally Guadalajara, notas de rally, libro de ruta, curso copiloto certificado, DS Copilot Course",
+    hero="piloto-copiloto-rally-interior-coche-competicion",
+)
 
-<section class="section section--ink section--tight">
-  <div class="container">
-    <div class="usp">
-      <div class="usp__item reveal"><div class="usp__big">1<span>:</span>1</div><h3>Trato directo</h3><p>Hablas con quien trabaja en tu coche. Sin intermediarios.</p></div>
-      <div class="usp__item reveal" data-delay="1"><div class="usp__big">24<span>h</span></div><h3>Respuesta rápida</h3><p>Contestamos tu solicitud en menos de 24 h laborables.</p></div>
-      <div class="usp__item reveal" data-delay="2"><div class="usp__big">100<span>%</span></div><h3>A medida</h3><p>Cada proyecto se diseña para tu coche, tu uso y tu presupuesto.</p></div>
-      <div class="usp__item reveal" data-delay="3"><div class="usp__big">07<span>:</span>00</div><h3>Madrugamos</h3><p>Abrimos de lunes a viernes a las 7. Tu coche, cuanto antes en pista.</p></div>
-    </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="container">
-    {split("Quiénes somos", "Gasolina <span class='pink'>en las venas</span>",
-           "<p class='lead'>Deyscom Motorsport nace de una idea sencilla: hacer los coches que a nosotros nos gustaría conducir. Competimos, restauramos, pintamos y preparamos con la misma obsesión por el detalle.</p>"
-           "<p class='muted'>Desde nuestra nave en Torrelaguna trabajamos para pilotos, coleccionistas y apasionados de toda España. Cada proyecto se vive, se documenta y se comparte.</p>"
-           f"<div class='btn-row mt-2'><a class='btn btn--ghost' href='nosotros.html'>Conócenos {I['arrow']}</a></div>",
-           "TEAM", "home-equipo.jpg", "El equipo", False, "65%")}
-  </div>
-</section>
+def cars_block(names):
+    out = ""
+    for i, n in enumerate(names):
+        c = CARS[n]
+        specs = "".join(f"<li>{x}</li>" for x in c["specs"])
+        out += (f'<label class="carpick reveal" data-delay="{i}"><input type="radio" name="coche" value="{n}" form="reserva-form"{" checked" if i == 0 else ""}>'
+                f'<span class="carpick__box"><span class="carpick__media">{art(n.split()[0].upper(), "60%", "30%", c["img"], n, "(max-width: 760px) 100vw, 50vw")}</span>'
+                f'<span class="carpick__body"><span class="carpick__power">{c["power"]}</span><b>{n}</b><span class="muted">{c["desc"]}</span><ul class="car__specs">{specs}</ul>'
+                f'<span class="carpick__sel">{I["check"]} Elegido</span></span></span></label>')
+    return f'<div class="carpicks">{out}</div>'
 
-<section class="section section--pink">
-  <div class="container">
-    <div class="section__head"><div><span class="eyebrow" style="color:#000">Cómo trabajamos</span><h2>Tu proyecto <span class="outline" style="-webkit-text-stroke-color:#000">en 4 fases</span></h2></div>
-    <p class="lead" style="color:#111">Claridad desde el primer día: sabes qué se hace, cuánto cuesta y cuándo estará listo.</p></div>
-    <div class="process">{process([("Hablamos", "Nos cuentas tu idea por WhatsApp, teléfono o formulario."), ("Valoramos", "Vemos el coche y te damos un presupuesto claro, por fases."), ("Trabajamos", "Manos a la obra, con fotos y vídeos del avance."), ("Disfrutas", "Entrega, ajustes y seguimiento. Nos vemos en la pista.")])}</div>
-  </div>
-</section>
 
-<section class="section section--ink" id="presupuesto">
+def booking_box(slug, name, kind="experience"):
+    """Caja lateral de compra/reserva (sticky)."""
+    is_course = kind == "course"
+    bullets = ([("award", "Certificación y diploma"), ("cal", "Fin de semana completo"), ("users", "Profesor y profesora"), ("map", "Tramo cerrado en Guadalajara")]
+               if is_course else [("cal", "Fin de semana"), ("shield", "Seguridad y briefing"), ("wrench", "Asistencia Deyscom"), ("users", "Plazas limitadas")])
+    li = "".join(f"<li>{I[ic]} {t}</li>" for ic, t in bullets)
+    return f"""<aside class="buybox reveal">
+  <span class="buybox__tag">{"Curso" if is_course else "Experiencia"}</span>
+  <h3>{name}</h3>
+  <div class="buybox__price"><small>Precio</small><span>{price_html(slug)}</span></div>
+  <ul class="buybox__list">{li}</ul>
+  <a class="btn btn--block" data-buy="{slug}" href="#reserva">{I['ticket']} {"Comprar mi plaza" if is_course else "Reservar plaza"}</a>
+  <a class="btn btn--wa btn--block mt-1" data-wa="{escape(name)}" data-loc="buybox" href="#">{I['wa']} Preguntar por WhatsApp</a>
+  <p class="buybox__note">Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.</p>
+</aside>"""
+
+
+def booking_form(slug, name, cars=None, kind="experience"):
+    car_field = ""
+    if cars:
+        car_field = f'<p class="full muted" style="margin:0">Coche elegido arriba (puedes cambiarlo).</p>'
+    level = ["Nunca he competido", "Tandas / track days", "Ya he competido"] if kind == "experience" else ["Ninguna", "He hecho algún rally", "Soy piloto"]
+    extra = ""
+    if kind == "experience" and cars:
+        extra = f'<fieldset class="pills full">{legend("¿Tienes licencia federativa?")}{pills("licencia", ["Sí", "No", "No lo sé"])}</fieldset>'
+    if kind == "course":
+        extra = f'<div class="field"><label for="r-plazas">Plazas</label><select class="select input" id="r-plazas" name="plazas"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>'
+    return f"""<section class="section section--ink" id="reserva">
   <div class="container form-wrap">
     <div class="reveal">
-      <span class="eyebrow">Presupuesto en 60 segundos</span>
-      <h2>Arranca <span class="outline">tu proyecto</span></h2>
-      <p class="lead mt-2">Tres pasos rápidos y te llamamos con una propuesta. Sin compromiso.</p>
+      <span class="eyebrow">{"Compra tu plaza" if kind == "course" else "Reserva"}</span>
+      <h2>{"Asegura <span class='outline'>tu plaza</span>" if kind == "course" else "Reserva <span class='outline'>tu fin de semana</span>"}</h2>
+      <p class="lead mt-2">Déjanos tus datos y te confirmamos la próxima fecha disponible, el precio final y la forma de pago. Sin compromiso hasta que confirmes.</p>
       {contact_list()}
     </div>
     <div class="form-card reveal" data-delay="1" data-form-wrap>
-      <form class="form-body" data-lead="presupuesto-home" data-steps novalidate>
-        <div class="stepper" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="fstep">
-          <div class="fstep__title">¿Qué quieres hacer?</div>
-          <p class="fstep__sub">Paso 1 de 3 · Elige una opción</p>
-          <div class="choice-grid">{choice_html}</div>
-          <div class="fstep__nav"><span></span><button class="btn" type="button" data-next>Siguiente {I['arrow']}</button></div>
+      <form class="form-body" id="reserva-form" data-lead="{slug}" novalidate>
+        <input type="hidden" name="servicio" value="{escape(name)}">
+        <div class="form-grid">
+          {car_field}
+          <div class="field"><label for="r-n">Nombre <span class="req">*</span></label><input class="input" id="r-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
+          <div class="field"><label for="r-t">Teléfono <span class="req">*</span></label>{tel_input("r-t")}</div>
+          <div class="field"><label for="r-e">Email <span class="req">*</span></label><input class="input" id="r-e" name="email" type="email" autocomplete="email" required placeholder="tu@email.com"></div>
+          <div class="field"><label for="r-f">Fecha preferida</label><input class="input" id="r-f" name="fecha_preferida" placeholder="Mes o fin de semana"></div>
+          <fieldset class="pills full">{legend("Tu experiencia")}{pills("experiencia_previa", level)}</fieldset>
+          {extra}
+          <label class="check full"><input type="checkbox" name="regalo" value="sí"> <span>Es un regalo 🎁</span></label>
+          <div class="field full"><label for="r-m">Comentarios</label><textarea class="textarea" id="r-m" name="mensaje" placeholder="¿Algo que debamos saber?"></textarea></div>
+          {consent()}
         </div>
-        <div class="fstep">
-          <div class="fstep__title">Tu coche y tu idea</div>
-          <p class="fstep__sub">Paso 2 de 3 · Cuanto más nos cuentes, mejor</p>
-          <div class="form-grid">
-            <div class="field"><label for="h-veh">Vehículo</label><input class="input" id="h-veh" name="vehiculo" placeholder="Marca y modelo"></div>
-            <div class="field"><label for="h-anio">Año</label><input class="input" id="h-anio" name="anio" inputmode="numeric" placeholder="Ej. 1998"></div>
-            <fieldset class="pills full"><legend class="field"><span style="font-family:var(--f-display);font-style:italic;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.9rem;color:#fff">Presupuesto aproximado</span></legend>{budget_html}</fieldset>
-            <fieldset class="pills full"><legend class="field"><span style="font-family:var(--f-display);font-style:italic;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.9rem;color:#fff">¿Para cuándo?</span></legend>{plazo_html}</fieldset>
-            <div class="field full"><label for="h-msg">Cuéntanos más</label><textarea class="textarea" id="h-msg" name="mensaje" placeholder="Objetivos, campeonato, color, piezas…"></textarea></div>
-          </div>
-          <div class="fstep__nav"><button class="btn btn--ghost" type="button" data-prev>Atrás</button><button class="btn" type="button" data-next>Siguiente {I['arrow']}</button></div>
-        </div>
-        <div class="fstep">
-          <div class="fstep__title">¿Dónde te contactamos?</div>
-          <p class="fstep__sub">Paso 3 de 3 · Último paso</p>
-          <div class="form-grid">
-            <div class="field full"><label for="h-n">Nombre <span class="req">*</span></label><input class="input" id="h-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
-            <div class="field"><label for="h-t">Teléfono <span class="req">*</span></label><input class="input" id="h-t" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9 +()\\-]{{9,}}" placeholder="600 000 000"></div>
-            <div class="field"><label for="h-e">Email</label><input class="input" id="h-e" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
-            {consent()}
-          </div>
-          <div class="fstep__nav"><button class="btn btn--ghost" type="button" data-prev>Atrás</button><button class="btn" type="submit">Enviar {I['arrow']}</button></div>
-          <div class="form-msg" role="alert"></div>
-        </div>
+        <div class="form-foot mt-2"><button class="btn" type="submit">{I['ticket']} {"Comprar mi plaza" if kind == "course" else "Reservar plaza"}</button><small>🔒 No se cobra nada hasta confirmar.</small></div>
+        <div class="form-msg" role="alert"></div>
       </form>
-      {success_block()}
+      {success_block("¡Plaza solicitada!", "Te contactamos para confirmar fecha, precio y forma de pago.", pay=True)}
     </div>
   </div>
-</section>
+</section>"""
 
-{social_wall()}
 
-<section class="section section--ink">
+def includes_list(items):
+    return '<ul class="includes">' + "".join(f"<li>{I['check']}<span>{x}</span></li>" for x in items) + "</ul>"
+
+
+def timeline(items):
+    return '<ol class="timeline">' + "".join(
+        f'<li class="reveal"><span class="timeline__dot"></span><b>{t}</b><p>{d}</p></li>' for t, d in items) + "</ol>"
+
+
+def exp_card(slug, e, big=False):
+    return f"""<a class="exp reveal{" exp--big" if big else ""}" href="{slug}.html">
+  <div class="exp__media">{art(e["short"].upper(), "60%", "30%", e["card"], e["name"], "(max-width: 900px) 100vw, 33vw")}</div>
+  <span class="exp__tag">{e["tag"]}</span>
+  <div class="exp__body"><span class="exp__kicker">DS Pilot Weekend</span><h3>{e["short"]}</h3><p>{e["teaser"]}</p>
+  <span class="svc__go">Descubrir {I["arrow"]}</span></div>
+</a>"""
+
+
+def experience_page(slug):
+    e = EXPERIENCES[slug]
+    product_ld = {"@context": "https://schema.org", "@type": "Product", "name": e["name"], "description": e["desc"],
+                  "image": img_url(e["hero"]), "brand": {"@type": "Brand", "name": "Deyscom Motorsport"}, "category": "Experiencia de conducción",
+                  "url": f"{SITE}/{slug}.html"}
+    if PRICES.get(slug):
+        product_ld["offers"] = {"@type": "Offer", "price": str(PRICES[slug]), "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "url": f"{SITE}/{slug}.html"}
+    html = head(e["title"], e["desc"], slug, e["name"], e["hero"],
+                [product_ld, breadcrumbs_ld(slug, e["name"], ("experiencias.html", "Experiencias")), faq_ld(e["faq"])], e["keywords"]) + header(slug)
+    html += hero("DS Pilot Weekend · " + e["short"], e["lines"], e["lead"], e["short"][:2].upper(), e["hero"], e["chips"], e["name"], ("Reservar plaza", "#reserva"))
+    html += ticker(["DS Pilot Weekend", e["short"], "Vive la competición", "Equipo Deyscom", e["tag"]], dark=True)
+    st = e["story"]
+    cars = ""
+    if e["cars"]:
+        cars = f"""<section class="section section--ink">
   <div class="container">
-    <div class="section__head"><div class="reveal"><span class="eyebrow">Preguntas frecuentes</span><h2>Antes de <span class="outline">arrancar</span></h2></div></div>
-    {faq([
-        ("¿Dónde estáis?", "En C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid). A unos 50 minutos de Madrid capital."),
-        ("¿Cuál es vuestro horario?", "De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras y te respondemos en horario de taller."),
-        ("¿Hacéis presupuestos sin compromiso?", "Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial. Para presupuestos cerrados solemos necesitar ver el coche."),
-        ("¿Trabajáis con clientes de fuera de Madrid?", "Sí, trabajamos con clientes de toda España. Podemos coordinar el transporte de tu coche hasta el taller."),
-        ("¿Vendéis coches y piezas?", "Sí, publicamos coches y piezas a la venta en nuestra tienda, conectada con nuestro perfil de Wallapop."),
-    ])}
+    {section_head("Elige tu coche", "Dos coches, <span class='outline'>dos caracteres</span>", "Preparados y mantenidos en nuestro taller de Torrelaguna. Elige con cuál quieres vivir la experiencia.")}
+    {cars_block(e["cars"])}
+  </div>
+</section>"""
+    others = "".join(exp_card(s, x) for s, x in EXPERIENCES.items() if s != slug)
+    html += f"""<section class="section">
+  <div class="container exp-layout">
+    <div>
+      <span class="eyebrow reveal">{st[0]}</span>
+      <h2 class="reveal">{st[1]}</h2>
+      <div class="mt-2 reveal">{st[2]}</div>
+      <h3 class="mt-3 reveal">Qué incluye</h3>
+      {includes_list(e["includes"])}
+      <h3 class="mt-3 reveal">Programa del fin de semana</h3>
+      <p class="muted small">Programa orientativo: se concreta en cada edición.</p>
+      {timeline(e["program"])}
+    </div>
+    {booking_box(slug, e["name"])}
   </div>
 </section>
-
-{mega_cta("¿Arrancamos <span class='outline'>motores?</span>", "Escríbenos por WhatsApp, llámanos o pide presupuesto. Te respondemos en menos de 24 h laborables.", "")}
+{cars}
+{booking_form(slug, e["name"], e["cars"])}
+<section class="section">
+  <div class="container">
+    {section_head("Preguntas frecuentes", "Antes de <span class='outline'>arrancar</span>")}
+    {faq(e["faq"])}
+  </div>
+</section>
+<section class="section section--ink section--tight">
+  <div class="container">
+    {section_head("Más experiencias", "Sigue <span class='outline'>acelerando</span>")}
+    <div class="exps exps--2">{others}</div>
+  </div>
+</section>
+{mega_cta("¿Te <span class='outline'>atreves?</span>", "Plazas limitadas por edición. Reserva ahora y te confirmamos la fecha.", e["name"], ("Reservar plaza", "#reserva"))}
 """
     return html + footer()
 
 
-# ------------------------------------------------------------------ nosotros
-def nosotros():
-    html = head("Quiénes somos · Deyscom Motorsport | Taller motorsport en Torrelaguna",
-                "Conoce Deyscom Motorsport: un equipo de apasionados del motor en Torrelaguna (Madrid) especializado en competición, restomod, pintura y performance.",
-                "nosotros", "vuestro taller") + header("nosotros")
-    html += page_hero("Quiénes somos", ["Pasión", "<span class='pink'>con</span>", "<span class='outline'>octanaje</span>"],
-                      "Somos Deyscom Motorsport, un taller de Torrelaguna (Madrid) donde la competición, la restauración y la preparación se viven a fondo, sin atajos.",
-                      "DM", "nosotros-hero.jpg", ["Torrelaguna · Madrid", "Taller motorsport", "Clientes de toda España"], "vuestro taller", "Habla con nosotros")
-    html += ticker(["Pasión", "Detalle", "Honestidad", "Velocidad", "Equipo", "Carácter"], dark=True)
-    html += f"""<section class="section">
+def experiencias():
+    faqs = [("¿Qué es el DS Pilot Weekend?", "Es nuestra línea de experiencias para vivir la competición desde dentro: un fin de semana con coche de competición, equipo y asistencia Deyscom en circuito, rally o slalom."),
+            ("¿Necesito experiencia?", "No. Adaptamos cada experiencia a tu nivel. Para rally federado hace falta licencia, y te ayudamos a tramitarla."),
+            ("¿Se puede regalar?", "Sí. Es uno de los regalos favoritos de los apasionados del motor. Indícalo en la reserva."),
+            ("¿Qué coches se usan?", "En rally y slalom, nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. En circuito, un coche de competición preparado por Deyscom.")]
+    html = head("Experiencias de pilotaje DS Pilot Weekend · Circuito, Rally y Slalom | Deyscom Motorsport",
+                "Experiencias de pilotaje en Madrid: DS Pilot Weekend Circuit en el Jarama, Rally federado y Slalom con nuestro Peugeot 206 o BMW E36. Vive la competición desde dentro.",
+                "experiencias", "las experiencias DS Pilot Weekend", "bmw-e36-peugeot-206-coches-competicion-deyscom",
+                [breadcrumbs_ld("experiencias", "Experiencias"), faq_ld(faqs),
+                 {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
+                     {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}.html", "name": x["name"]} for i, (s, x) in enumerate(EXPERIENCES.items())]}],
+                "experiencias pilotaje Madrid, conducir coche de competición, regalo experiencia motor, experiencia rally, experiencia circuito Jarama, slalom") + header("experiencias")
+    html += hero("Experiencias · DS Pilot Weekend", ["Vive la", "<span class='pink'>competición</span>", "<span class='outline'>desde dentro</span>"],
+                 "Tres formas de sentirte piloto por un fin de semana: circuito, rally federado o slalom. Coche de competición, equipo y asistencia Deyscom.",
+                 "DS", "bmw-e36-peugeot-206-coches-competicion-deyscom", ["Circuit", "Rally", "Slalom"], "las experiencias DS Pilot Weekend", ("Elige tu experiencia", "#experiencias"))
+    html += ticker(["DS Pilot Weekend", "Circuit", "Rally", "Slalom", "Jarama", "Peugeot 206", "BMW E36"])
+    html += f"""<section class="section" id="experiencias">
   <div class="container">
-    {split("Nuestra historia", "Del <span class='pink'>paddock</span> al taller",
-           "<p class='lead'>Deyscom Motorsport nació de las ganas de hacer las cosas a nuestra manera: con tiempo, con cariño y con la exigencia de quien también se pone el casco.</p>"
-           "<p class='muted'>Hoy preparamos coches de competición, damos vida a restomods, pintamos y modificamos coches de calle para que cada cliente disfrute de su coche como nunca. Lo hacemos desde nuestra nave en Torrelaguna, con trato cercano y comunicación constante.</p>"
-           "<p class='muted'>Compartimos cada proyecto en redes porque estamos orgullosos de lo que hacemos y porque creemos que la transparencia es la mejor garantía.</p>",
-           "STORY", "nosotros-historia.jpg", "Desde Torrelaguna")}
+    {section_head("Elige tu experiencia", "Tres formas de <span class='outline'>acelerar</span>", "Cada experiencia es un fin de semana completo con nuestro equipo. Tú eliges el escenario.")}
+    <div class="exps">{"".join(exp_card(s, x) for s, x in EXPERIENCES.items())}</div>
   </div>
 </section>
 <section class="section section--ink">
   <div class="container">
-    <div class="section__head"><div class="reveal"><span class="eyebrow">Valores</span><h2>Lo que <span class="outline">nos mueve</span></h2></div>
-    <p class="lead muted reveal" data-delay="1">Cuatro reglas que aplicamos a cada coche que entra por la puerta.</p></div>
-    {cards([
-        ("helmet", "Lo vivimos", "Somos pilotos, aficionados y mecánicos. Entendemos lo que significa tu coche."),
-        ("eye", "Transparencia", "Fotos, vídeos y presupuestos claros. Sabes en todo momento qué se hace."),
-        ("shield", "Seguridad", "En competición y en calle, la seguridad nunca es negociable."),
-        ("star", "Detalle", "Lo que no se ve importa tanto como lo que se ve."),
-        ("gauge", "Mejora continua", "Cada carrera y cada proyecto nos hacen mejores."),
-        ("flag", "Compromiso", "Plazos realistas y palabra cumplida."),
-    ])}
+    {section_head("Nuestros coches", "Los protagonistas", "En rally y slalom eliges entre dos coches muy distintos, preparados en nuestro taller.")}
+    <div class="carpicks carpicks--static">{"".join(f'<div class="carpick"><span class="carpick__box"><span class="carpick__media">{art(n.split()[0].upper(), "60%", "30%", c["img"], n)}</span><span class="carpick__body"><span class="carpick__power">{c["power"]}</span><b>{n}</b><span class="muted">{c["desc"]}</span></span></span></div>' for n, c in CARS.items())}</div>
+  </div>
+</section>
+<section class="section section--pink">
+  <div class="container">
+    {section_head("Cómo funciona", "De la reserva <span class='outline'>a la meta</span>", "", True)}
+    <div class="process">{process([("Reserva", "Elige experiencia y déjanos tus datos."), ("Confirmamos", "Te damos fecha, precio y todos los detalles."), ("Preparamos", "Coche, inscripción y equipo listos para ti."), ("Pilotas", "Vive el fin de semana como un piloto más.")], "Paso")}</div>
+  </div>
+</section>
+{course_promo(compact=True)}
+<section class="section">
+  <div class="container">
+    {section_head("Preguntas frecuentes", "Todo <span class='outline'>claro</span>")}
+    {faq(faqs)}
+  </div>
+</section>
+{mega_cta("Regala <span class='outline'>adrenalina</span>", "Las experiencias DS Pilot Weekend son el regalo perfecto para cualquier apasionado del motor.", "regalar una experiencia DS Pilot Weekend", ("Ver experiencias", "#experiencias"))}
+"""
+    return html + footer()
+
+
+def course_promo(compact=False):
+    feats = [("award", "Certificación y diploma", "Acredita tu formación como copiloto."),
+             ("cal", "Fin de semana completo", "Teoría y práctica en dos días intensos."),
+             ("users", "Profesor y profesora", "Formación impartida por dos docentes con experiencia."),
+             ("map", "Tramo cerrado en Guadalajara", "Horas prácticas en un tramo cerrado solo para nosotros.")]
+    f = "".join(f'<li><span class="ic">{I[ic]}</span><div><b>{t}</b><span>{d}</span></div></li>' for ic, t, d in feats)
+    return f"""<section class="course-promo{" course-promo--compact" if compact else ""}">
+  <div class="course-promo__bg">{pic(COURSE["hero"], sizes="100vw")}</div>
+  <div class="container course-promo__inner">
+    <div class="reveal">
+      <span class="course-promo__badge">{I['grad']} Nuevo · Plazas limitadas</span>
+      <h2>DS <span class="pink">Copilot</span><br><span class="outline">Course</span></h2>
+      <p class="lead">Nuestro primer curso de copiloto de rally: un fin de semana completo de teoría y práctica, con certificación y diploma, y horas reales en un tramo cerrado en Guadalajara solo para nuestros alumnos.</p>
+      <div class="btn-row mt-2">
+        <a class="btn" href="ds-copilot-course.html">Quiero ser copiloto {I['arrow']}</a>
+        <a class="btn btn--ghost" href="ds-copilot-course.html#reserva">{I['ticket']} Comprar plaza</a>
+      </div>
+    </div>
+    <ul class="course-promo__feats reveal" data-delay="1">{f}</ul>
+  </div>
+</section>"""
+
+
+def course_page():
+    c = COURSE
+    slug = c["slug"]
+    faqs = [("¿Necesito experiencia previa?", "No. El curso está pensado tanto para quien empieza desde cero como para copilotos y pilotos que quieren mejorar su método."),
+            ("¿Qué incluye la certificación?", "Al completar el curso recibes un diploma acreditativo de Deyscom Motorsport con la formación realizada."),
+            ("¿Dónde se hace la práctica?", "En un tramo cerrado en la provincia de Guadalajara, reservado única y exclusivamente para nuestros alumnos."),
+            ("¿Quién imparte el curso?", "Un profesor y una profesora con experiencia en el mundo del rally, que te acompañan en la teoría y en la práctica."),
+            ("¿Cómo se compra la plaza?", "Pulsa «Comprar mi plaza», completa tus datos y te confirmamos la fecha y el pago. Las plazas son limitadas en cada edición.")]
+    syllabus = [("book", "El papel del copiloto", "Funciones, responsabilidades y trabajo en equipo con el piloto."),
+                ("mic", "Notas y dictado", "Cómo se toman, se escriben y se cantan las notas a ritmo de carrera."),
+                ("map", "Libro de ruta y reconocimientos", "Lectura del road book, referencias y método de reconocimiento."),
+                ("clock", "Carnet de ruta y controles", "Controles horarios, tiempos, penalizaciones y gestión de la jornada."),
+                ("shield", "Reglamento y seguridad", "Normativa básica, equipamiento y protocolos de seguridad."),
+                ("users", "Comunicación y presión", "Comunicación con el piloto, gestión del estrés y de los imprevistos.")]
+    course_ld = {"@context": "https://schema.org", "@type": "Course", "name": c["name"], "description": c["desc"],
+                 "provider": {"@type": "Organization", "name": "Deyscom Motorsport", "sameAs": SITE + "/"},
+                 "image": img_url(c["hero"]), "url": f"{SITE}/{slug}.html", "inLanguage": "es", "educationalCredentialAwarded": "Diploma Deyscom Motorsport",
+                 "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "onsite", "courseWorkload": "PT2D",
+                                       "location": {"@type": "Place", "name": "Tramo cerrado", "address": {"@type": "PostalAddress", "addressRegion": "Guadalajara", "addressCountry": "ES"}}}}
+    if PRICES.get(slug):
+        course_ld["offers"] = {"@type": "Offer", "price": str(PRICES[slug]), "priceCurrency": "EUR", "category": "Paid", "availability": "https://schema.org/LimitedAvailability"}
+    html = head(c["title"], c["desc"], slug, c["name"], c["hero"],
+                [course_ld, breadcrumbs_ld(slug, c["name"], ("cursos.html", "Cursos")), faq_ld(faqs)], c["keywords"]) + header(slug)
+    html += hero("Curso de copiloto de rally", ["DS", "<span class='pink'>Copilot</span>", "<span class='outline'>Course</span>"],
+                 "Fin de semana completo de teoría y práctica con certificación y diploma, impartido por un profesor y una profesora, con horas prácticas en un tramo cerrado en Guadalajara solo para nosotros.",
+                 "CO", c["hero"], ["Certificación + diploma", "Fin de semana completo", "Tramo cerrado en Guadalajara"], c["name"], ("Comprar mi plaza", "#reserva"))
+    html += ticker(["Notas", "Libro de ruta", "Controles horarios", "Tramo cerrado", "Certificación", "Diploma"])
+    syl = "".join(f'<article class="card reveal" data-delay="{i % 3}"><div class="card__icon">{I[ic]}</div><span class="step__n">Módulo 0{i + 1}</span><h3>{t}</h3><p>{d}</p></article>' for i, (ic, t, d) in enumerate(syllabus))
+    html += f"""<section class="section">
+  <div class="container exp-layout">
+    <div>
+      <span class="eyebrow reveal">El curso</span>
+      <h2 class="reveal">La otra mitad <span class="pink">del coche</span></h2>
+      <div class="mt-2 reveal">
+        <p class="lead">Un buen copiloto gana rallies. En el DS Copilot Course aprenderás a tomar y cantar notas, a manejar el libro de ruta y los controles horarios, y a ser la voz en la que confía tu piloto.</p>
+        <p class="muted">Es un fin de semana completo e intensivo: teoría en aula y práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado única y exclusivamente para nuestros alumnos. Te lo imparten un profesor y una profesora, y al terminar recibes tu certificación y diploma.</p>
+      </div>
+      <h3 class="mt-3 reveal">Qué incluye</h3>
+      {includes_list(["Fin de semana completo de formación", "Teoría en aula y práctica en coche de rally", "Horas prácticas en un tramo cerrado en Guadalajara, exclusivo para el curso",
+                      "Un profesor y una profesora durante todo el curso", "Certificación y diploma acreditativo", "Material del curso"])}
+      <h3 class="mt-3 reveal">Programa</h3>
+      <p class="muted small">Programa orientativo: se concreta en cada edición.</p>
+      {timeline([("Sábado · Teoría", "El papel del copiloto, notas, libro de ruta, carnet de ruta, controles horarios, reglamento y seguridad."),
+                 ("Sábado · Primeras prácticas", "Toma y lectura de notas, primeros dictados y trabajo con el piloto."),
+                 ("Domingo · Tramo cerrado", "Horas prácticas en el tramo cerrado de Guadalajara, dentro del coche de rally y a ritmo real."),
+                 ("Domingo · Certificación", "Evaluación, feedback personalizado y entrega de diplomas.")])}
+    </div>
+    {booking_box(slug, c["name"], "course")}
+  </div>
+</section>
+<section class="section section--ink">
+  <div class="container">
+    {section_head("Temario", "Qué vas a <span class='outline'>aprender</span>", "Seis módulos para salir del curso preparado para tu primer rally como copiloto.")}
+    <div class="cards">{syl}</div>
   </div>
 </section>
 <section class="section">
   <div class="container">
-    <div class="section__head"><div class="reveal"><span class="eyebrow">El taller</span><h2>Nuestra <span class="outline">casa</span></h2></div>
-    <p class="lead muted reveal" data-delay="1">Nave 3, Canal de Isabel II, Torrelaguna. Ven a vernos (mejor con cita previa).</p></div>
-    {gallery("nosotros", ["La nave", "Zona de trabajo", "Equipo", "Herramienta", "En pista"], "DEYSCOM")}
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Para quién es</span>
+        <h2>Para ti, <span class="outline">si…</span></h2>
+        <div class="mt-2">{feature_list([("Quieres empezar en los rallies", "Como copiloto es la forma más directa y accesible de entrar en la competición."),
+                                          ("Ya eres copiloto", "Y quieres pulir tu método, tus notas y tu gestión de la jornada."),
+                                          ("Eres piloto", "Y quieres entender a tu copiloto para formar un equipo más rápido."),
+                                          ("Te apasiona el motor", "Y buscas vivir un rally desde dentro, con certificación incluida.")])}</div>
+        <a class="btn mt-2" href="#reserva">{I['ticket']} Comprar mi plaza</a>
+      </div>
+      <div class="split__media reveal" data-delay="1">{art("COPILOT", "50%", "35%", "bmw-e36-rally-tierra-deyscom-motorsport", "Tramo")}<span class="split__tag">Tramo cerrado · Guadalajara</span></div>
+    </div>
   </div>
 </section>
-{social_wall()}
-{mega_cta("Ven a <span class='outline'>conocernos</span>", "Pide cita y tómate un café con nosotros mientras hablamos de tu coche.", "visitar el taller")}
+{booking_form(slug, c["name"], kind="course")}
+<section class="section">
+  <div class="container">
+    {section_head("Preguntas frecuentes", "Resolvemos <span class='outline'>tus dudas</span>")}
+    {faq(faqs)}
+  </div>
+</section>
+{mega_cta("Tu piloto <span class='outline'>te espera</span>", "Plazas limitadas en cada edición del DS Copilot Course.", "el DS Copilot Course", ("Comprar mi plaza", "#reserva"))}
 """
     return html + footer()
 
 
-# ------------------------------------------------------------------ contacto
-def contacto():
-    html = head("Contacto · Deyscom Motorsport | Torrelaguna, Madrid",
-                "Contacta con Deyscom Motorsport: (+34) 615 97 22 33 · info@deyscom.com · C/ Canal de Isabel II, 2 Nave 3, 28180 Torrelaguna (Madrid). L-V 07:00-15:00.",
-                "contacto", "un presupuesto") + header("contacto")
-    opts = ["Competición", "Restomod", "Pintura", "Performance", "Alquiler", "Tienda / compra", "Otro"]
-    sel = "".join(f'<option value="{o}">{o}</option>' for o in opts)
-    html += f"""<section class="hero page-hero" style="min-height:52svh">
-  <div class="hero__bg"></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
-  <div class="hero__number" aria-hidden="true">GO</div>
-  <div class="container hero__inner">
-    <span class="eyebrow">Contacto</span>
-    <h1><span class="line"><span>Hablemos</span></span><span class="line"><span class="outline">de motor</span></span></h1>
-    <div class="btn-row mt-2">
-      <a class="btn btn--wa" data-wa="" data-loc="contact-hero" href="#">{I['wa']} WhatsApp</a>
-      <a class="btn" href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
-      <a class="btn btn--ghost" href="mailto:{EMAIL}">{I['mail']} {EMAIL}</a>
-    </div>
-  </div>
-</section>
-<section class="section" id="presupuesto">
+def cursos():
+    html = head("Cursos de motorsport · Curso de copiloto de rally certificado | Deyscom Motorsport",
+                "Cursos de Deyscom Motorsport: DS Copilot Course, curso de copiloto de rally con certificación y diploma, teoría y práctica en tramo cerrado en Guadalajara.",
+                "cursos", "los cursos", COURSE["hero"], [breadcrumbs_ld("cursos", "Cursos")],
+                "cursos motorsport, curso copiloto rally, formación rally Madrid, curso copiloto certificado") + header("cursos")
+    html += hero("Cursos Deyscom", ["Aprende", "<span class='pink'>de quien</span>", "<span class='outline'>compite</span>"],
+                 "Formación práctica y certificada para dar el salto a la competición. Empezamos con nuestro curso estrella: el DS Copilot Course.",
+                 "CU", "peugeot-206-rally-deyscom-motorsport-asistencia", ["Certificación + diploma", "Teoría + práctica", "Plazas limitadas"], "los cursos",
+                 ("Ver DS Copilot Course", "ds-copilot-course.html"))
+    html += course_promo()
+    html += f"""<section class="section">
   <div class="container form-wrap">
     <div class="reveal">
-      <span class="eyebrow">Datos de contacto</span>
-      <h2>Te <span class="outline">esperamos</span></h2>
-      <ul class="contact-list">
-        <li><span class="ic">{I['phone']}</span><div><small>Teléfono</small><a href="tel:{PHONE}">{PHONE_TXT}</a></div></li>
-        <li><span class="ic">{I['wa']}</span><div><small>WhatsApp</small><a data-wa="" data-loc="contact-list" href="#">Escríbenos ahora</a></div></li>
-        <li><span class="ic">{I['mail']}</span><div><small>Email</small><a href="mailto:{EMAIL}">{EMAIL}</a></div></li>
-        <li><span class="ic">{I['pin']}</span><div><small>Ubicación</small><a href="https://www.google.com/maps/search/?api=1&query=Deyscom+Motorsport+Calle+Canal+de+Isabel+II+2+Torrelaguna" target="_blank" rel="noopener">C/ Canal de Isabel II, 2 · Nave 3<br>28180 Torrelaguna · Madrid</a></div></li>
-        <li><span class="ic">{I['clock']}</span><div style="width:100%"><small>Horario de apertura</small>{hours_table()}</div></li>
-      </ul>
-      <div class="mt-3">{social_links()}</div>
+      <span class="eyebrow">Próximamente</span>
+      <h2>Más cursos <span class="outline">en camino</span></h2>
+      <p class="lead mt-2">Estamos preparando nuevas formaciones. Déjanos tu contacto y serás el primero en enterarte de las próximas fechas y cursos.</p>
     </div>
     <div class="form-card reveal" data-delay="1" data-form-wrap>
-      <form class="form-body" data-lead="contacto" novalidate>
-        <div class="fstep__title">Pide presupuesto</div>
-        <p class="fstep__sub">Te respondemos en menos de 24 h laborables.</p>
+      <form class="form-body" data-lead="cursos-aviso" novalidate>
+        <input type="hidden" name="servicio" value="Aviso nuevos cursos">
         <div class="form-grid">
-          <div class="field"><label for="c-n">Nombre <span class="req">*</span></label><input class="input" id="c-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
-          <div class="field"><label for="c-t">Teléfono <span class="req">*</span></label><input class="input" id="c-t" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9 +()\\-]{{9,}}" placeholder="600 000 000"></div>
-          <div class="field"><label for="c-e">Email</label><input class="input" id="c-e" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
-          <div class="field"><label for="c-s">Servicio <span class="req">*</span></label><select class="select input" id="c-s" name="servicio" required><option value="">Elige…</option>{sel}</select></div>
-          <div class="field full"><label for="c-v">Vehículo</label><input class="input" id="c-v" name="vehiculo" placeholder="Marca, modelo y año"></div>
-          <div class="field full"><label for="c-m">Mensaje <span class="req">*</span></label><textarea class="textarea" id="c-m" name="mensaje" required placeholder="Cuéntanos tu proyecto"></textarea></div>
+          <div class="field"><label for="cu-n">Nombre <span class="req">*</span></label><input class="input" id="cu-n" name="nombre" required autocomplete="name"></div>
+          <div class="field"><label for="cu-t">Teléfono <span class="req">*</span></label>{tel_input("cu-t")}</div>
+          <div class="field full"><label for="cu-e">Email</label><input class="input" id="cu-e" name="email" type="email" autocomplete="email"></div>
+          <fieldset class="pills full">{legend("¿Qué te interesa?")}{pills("interes", ["Copiloto", "Pilotaje", "Mecánica de competición", "Otro"])}</fieldset>
           {consent()}
         </div>
-        <div class="form-foot mt-2"><button class="btn" type="submit">Enviar solicitud {I['arrow']}</button><small>🔒 Datos protegidos</small></div>
+        <div class="form-foot mt-2"><button class="btn" type="submit">Avisadme {I['arrow']}</button></div>
         <div class="form-msg" role="alert"></div>
       </form>
-      {success_block()}
+      {success_block("¡Apuntado!", "Te avisaremos con las próximas fechas y cursos.")}
     </div>
   </div>
 </section>
-<section class="section section--tight section--ink">
-  <div class="container">
-    <div class="map reveal"><iframe title="Mapa Deyscom Motorsport" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps?q=Calle+Canal+de+Isabel+II+2,+28180+Torrelaguna,+Madrid&output=embed"></iframe></div>
-    <div class="btn-row mt-2"><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=Calle+Canal+de+Isabel+II+2,+28180+Torrelaguna,+Madrid" target="_blank" rel="noopener">{I['pin']} Cómo llegar</a></div>
-  </div>
-</section>
+{mega_cta("¿Empezamos <span class='outline'>a cantar notas?</span>", "Reserva tu plaza en el DS Copilot Course.", "el DS Copilot Course", ("Comprar mi plaza", "ds-copilot-course.html#reserva"))}
 """
     return html + footer()
 
 
-# ------------------------------------------------------------------ tienda / merch
+# ------------------------------------------------------------------ merch
 def mock_svg(kind):
-    """Mockups vectoriales con el logotipo. El color se controla con --garment / --print."""
-    word = ('<text x="0" y="0" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-style="italic" font-weight="900" '
-            'text-anchor="middle" fill="var(--print,#fff)">DEYS<tspan fill="#ff66c4">COM</tspan></text>')
-    sub = ('<text x="0" y="0" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-style="italic" font-weight="600" '
-           'text-anchor="middle" letter-spacing="6" fill="var(--print,#fff)" opacity=".7">MOTORSPORT</text>')
+    """Mockups vectoriales con el logotipo real. Colores: --garment, --logo-a, --logo-b, --brim."""
+    def lg(x, y, w):
+        h = w * 97 / 301
+        return f'<svg x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}" viewBox="{LOGO_VB}">{LOGO_PATHS}</svg>'
     if kind == "camiseta":
         return f"""<svg class="mock" viewBox="0 0 400 420" role="img" aria-label="Camiseta Deyscom Motorsport">
   <path d="M120 30 L160 18 Q200 48 240 18 L280 30 L370 80 L340 150 L300 132 L300 400 L100 400 L100 132 L60 150 L30 80 Z" fill="var(--garment,#0b0b0d)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-  <path d="M160 18 Q200 48 240 18" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="5"/>
-  <path d="M100 132 L100 150 M300 132 L300 150" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
-  <g transform="translate(200 180) skewX(-6)" font-size="54">{word}</g>
-  <g transform="translate(200 202)" font-size="13">{sub}</g>
-  <rect x="150" y="225" width="100" height="5" fill="#ff66c4" transform="skewX(-20)"/>
+  <path d="M160 18 Q200 48 240 18" fill="none" stroke="rgba(127,127,127,.4)" stroke-width="5"/>
+  {lg(200, 170, 150)}
 </svg>"""
     if kind == "gorra":
         return f"""<svg class="mock" viewBox="0 0 400 320" role="img" aria-label="Gorra Deyscom Motorsport">
   <path d="M70 200 Q60 70 200 60 Q340 70 330 200 Z" fill="var(--garment,#0b0b0d)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-  <path d="M200 60 L200 200 M135 72 Q120 140 125 200 M265 72 Q280 140 275 200" stroke="rgba(255,255,255,.1)" stroke-width="2" fill="none"/>
-  <circle cx="200" cy="62" r="7" fill="var(--garment,#0b0b0d)" stroke="rgba(255,255,255,.25)"/>
+  <path d="M200 60 L200 112 M135 72 Q120 140 125 200 M265 72 Q280 140 275 200" stroke="rgba(127,127,127,.25)" stroke-width="2" fill="none"/>
+  <circle cx="200" cy="62" r="7" fill="var(--garment,#0b0b0d)" stroke="rgba(127,127,127,.4)"/>
   <path d="M60 200 Q200 180 340 200 Q380 215 370 245 Q200 215 30 245 Q20 215 60 200 Z" fill="var(--brim,#ff66c4)"/>
-  <g transform="translate(200 150) skewX(-6)" font-size="44">{word}</g>
-  <g transform="translate(200 170)" font-size="10">{sub}</g>
+  {lg(200, 148, 150)}
 </svg>"""
-    # pegatinas
     return f"""<svg class="mock" viewBox="0 0 400 360" role="img" aria-label="Pegatinas Deyscom Motorsport">
   <g transform="rotate(-8 200 140)">
-    <rect x="50" y="80" width="300" height="120" rx="18" fill="#fff" filter="drop-shadow(0 10px 18px rgba(0,0,0,.5))"/>
-    <rect x="62" y="92" width="276" height="96" rx="10" fill="var(--garment,#0b0b0d)"/>
-    <g transform="translate(200 148) skewX(-6)" font-size="56">{word}</g>
-    <g transform="translate(200 170)" font-size="12">{sub}</g>
+    <rect x="40" y="70" width="320" height="130" rx="18" fill="#fff" filter="drop-shadow(0 10px 18px rgba(0,0,0,.5))"/>
+    <rect x="52" y="82" width="296" height="106" rx="10" fill="var(--garment,#0b0b0d)"/>
+    {lg(200, 135, 240)}
   </g>
-  <g transform="rotate(10 120 280)">
-    <rect x="40" y="235" width="160" height="70" rx="12" fill="#ff66c4" filter="drop-shadow(0 8px 14px rgba(0,0,0,.5))"/>
-    <text x="120" y="282" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="34" text-anchor="middle" fill="#000">DEYSCOM</text>
+  <g transform="rotate(9 130 280)" style="--logo-a:#000;--logo-b:#fff">
+    <rect x="40" y="238" width="180" height="70" rx="12" fill="#ff66c4" filter="drop-shadow(0 8px 14px rgba(0,0,0,.5))"/>
+    {lg(130, 273, 140)}
   </g>
-  <g transform="rotate(-6 290 290)">
-    <circle cx="290" cy="285" r="52" fill="#fff" filter="drop-shadow(0 8px 14px rgba(0,0,0,.5))"/>
-    <circle cx="290" cy="285" r="44" fill="#000"/>
-    <text x="290" y="296" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="900" font-size="34" text-anchor="middle" fill="#ff66c4">DM</text>
+  <g transform="rotate(-6 300 285)" style="--logo-a:#000;--logo-b:#ff66c4">
+    <rect x="232" y="250" width="140" height="64" rx="12" fill="#fff" filter="drop-shadow(0 8px 14px rgba(0,0,0,.5))"/>
+    {lg(302, 282, 110)}
   </g>
 </svg>"""
 
 
 PRODUCTS = {
     "camiseta-deyscom": dict(
-        kind="camiseta", name="Camiseta Deyscom Motorsport", short="Camiseta",
-        price=25, tag="Más vendido",
+        kind="camiseta", name="Camiseta Deyscom Motorsport", short="Camiseta", price=25, tag="Más vendido",
         desc="La camiseta oficial del equipo. Algodón grueso, corte regular y el logo Deyscom Motorsport en el pecho. Para el paddock, el taller o el día a día.",
-        colors=[("Negro", "#0b0b0d", "#ffffff"), ("Blanco", "#f2f2f4", "#0b0b0d"), ("Rosa", "#ff66c4", "#0b0b0d")],
+        colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4"), ("Blanco", "#f2f2f4", "#000000", "#ff66c4"), ("Rosa", "#ff66c4", "#000000", "#ffffff")],
         sizes=["S", "M", "L", "XL", "XXL"],
         features=["100% algodón, gramaje alto", "Logo Deyscom Motorsport en el pecho", "Corte unisex regular", "Lavado a 30 °C del revés"],
     ),
     "gorra-deyscom": dict(
-        kind="gorra", name="Gorra Deyscom Motorsport", short="Gorra",
-        price=22, tag="Paddock",
+        kind="gorra", name="Gorra Deyscom Motorsport", short="Gorra", price=22, tag="Paddock",
         desc="Gorra de seis paneles con visera curva y logo bordado. Cierre ajustable para que te quede perfecta en pista y fuera de ella.",
-        colors=[("Negro / Rosa", "#0b0b0d", "#ffffff", "#ff66c4"), ("Negro total", "#0b0b0d", "#ffffff", "#0b0b0d"), ("Rosa / Negro", "#ff66c4", "#0b0b0d", "#0b0b0d")],
+        colors=[("Negro / Rosa", "#0b0b0d", "#ffffff", "#ff66c4", "#ff66c4"), ("Negro total", "#0b0b0d", "#ffffff", "#ff66c4", "#0b0b0d"), ("Rosa / Negro", "#ff66c4", "#000000", "#ffffff", "#0b0b0d")],
         sizes=["Talla única ajustable"],
         features=["Logo bordado", "Visera curva", "Cierre trasero ajustable", "Talla única"],
     ),
     "pegatinas-deyscom": dict(
-        kind="pegatinas", name="Pack de pegatinas Deyscom", short="Pegatinas",
-        price=6, tag="Pack",
+        kind="pegatinas", name="Pack de pegatinas Deyscom Motorsport", short="Pegatinas", price=6, tag="Pack",
         desc="Pack de pegatinas de vinilo con el logo Deyscom Motorsport: para el coche, el casco, la caja de herramientas o el portátil. Resistentes a la intemperie.",
-        colors=[("Clásico negro", "#0b0b0d", "#ffffff"), ("Rosa", "#ff66c4", "#0b0b0d")],
+        colors=[("Negro", "#000000", "#ffffff", "#ff66c4"), ("Blanco", "#ffffff", "#000000", "#ff66c4")],
         sizes=["Pack 3 uds", "Pack 6 uds", "Pegatina grande parabrisas"],
         features=["Vinilo de exterior resistente al agua y UV", "Corte a contorno", "Varios tamaños en el pack", "Ideal para coche, casco y taller"],
     ),
 }
 
 
+def color_style(c):
+    st = f"--garment:{c[1]};--logo-a:{c[2]};--logo-b:{c[3]}"
+    return st + (f";--brim:{c[4]}" if len(c) > 4 else "")
+
+
 def product_card(slug, p):
-    c = p["colors"][0]
-    style = f"--garment:{c[1]};--print:{c[2]}" + (f";--brim:{c[3]}" if len(c) > 3 else "")
     return f"""<a class="product reveal" href="{slug}.html">
-  <div class="product__media" style="{style}"><span class="product__tag">{p['tag']}</span>{mock_svg(p['kind'])}</div>
+  <div class="product__media" style="{color_style(p['colors'][0])}"><span class="product__tag">{p['tag']}</span>{mock_svg(p['kind'])}</div>
   <div class="product__body"><h3>{p['name']}</h3><span class="product__price">{p['price']} €</span></div>
   <span class="svc__go">Ver producto {I['arrow']}</span>
 </a>"""
 
 
 def tienda():
-    html = head("Tienda · Coches en venta y merchandising | Deyscom Motorsport",
-                "Coches de competición, clásicos y piezas a la venta, conectados con nuestro Wallapop. Y merchandising oficial Deyscom Motorsport: camisetas, gorras y pegatinas.",
-                "tienda", "la tienda") + header("tienda")
-    html += f"""<section class="hero page-hero" style="min-height:60svh">
-  <div class="hero__bg"><img src="assets/img/tienda-hero.jpg" alt="" data-optional></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
-  <div class="hero__number" aria-hidden="true">05</div>
-  <div class="container hero__inner">
-    <span class="eyebrow">Tienda Deyscom</span>
-    <h1><span class="line"><span>Llévate</span></span><span class="line"><span class="pink">un trozo</span></span><span class="line"><span class="outline">de Deyscom</span></span></h1>
-    <div class="hero__bottom">
-      <p class="lead">Coches y piezas a la venta, revisados por nuestro taller, y el merchandising oficial del equipo.</p>
-      <div class="btn-row" style="justify-content:flex-end">
-        <a class="btn" href="#coches">{I['car']} Coches en venta</a>
-        <a class="btn btn--ghost" href="#merch">{I['bag']} Merchandising</a>
-      </div>
-    </div>
+    html = head("Tienda Deyscom Motorsport · Coches en venta y merchandising oficial",
+                "Tienda Deyscom Motorsport: coches de competición, clásicos y piezas a la venta conectados con Wallapop, y merchandising oficial: camisetas, gorras y pegatinas.",
+                "tienda", "la tienda", "peugeot-206-decoracion-deyscom-sport", [breadcrumbs_ld("tienda", "Tienda")],
+                "comprar coche de rally, coches competición en venta, merchandising motorsport, camiseta Deyscom, gorra Deyscom") + header("tienda")
+    html += hero("Tienda Deyscom", ["Llévate", "<span class='pink'>un trozo</span>", "<span class='outline'>de Deyscom</span>"],
+                 "Coches y piezas a la venta, revisados por nuestro taller, y el merchandising oficial del equipo.", "05",
+                 "peugeot-206-decoracion-deyscom-sport", ["Coches y piezas", "Camisetas · Gorras · Pegatinas", "Envío o recogida en taller"], "la tienda",
+                 ("Ver merchandising", "#merch"))
+    html += ticker(["Coches", "Piezas", "Camisetas", "Gorras", "Pegatinas", "Wallapop"])
+    html += f"""<section class="section section--ink" id="merch">
+  <div class="container">
+    {section_head("Merchandising oficial", "Viste <span class='outline'>el equipo</span>", "Camisetas, gorras y pegatinas con el logo Deyscom Motorsport. Recógelas en el taller o te las enviamos a casa.")}
+    <div class="products">{"".join(product_card(s, p) for s, p in PRODUCTS.items())}</div>
   </div>
 </section>
-{ticker(["Coches", "Piezas", "Camisetas", "Gorras", "Pegatinas", "Wallapop"])}
 <section class="section" id="coches">
   <div class="container">
     <div class="section__head">
@@ -1020,16 +1309,7 @@ def tienda():
     </div>
   </div>
 </section>
-<section class="section section--ink" id="merch">
-  <div class="container">
-    <div class="section__head">
-      <div class="reveal"><span class="eyebrow">Merchandising oficial</span><h2>Viste <span class="outline">el equipo</span></h2></div>
-      <p class="lead muted reveal" data-delay="1">Camisetas, gorras y pegatinas con el logo Deyscom Motorsport. Recógelas en el taller o te las enviamos a casa.</p>
-    </div>
-    <div class="products">{"".join(product_card(s, p) for s, p in PRODUCTS.items())}</div>
-  </div>
-</section>
-<section class="section">
+<section class="section section--ink">
   <div class="container form-wrap">
     <div class="reveal">
       <span class="eyebrow">¿Buscas algo concreto?</span>
@@ -1041,10 +1321,10 @@ def tienda():
       <form class="form-body" data-lead="busqueda" novalidate>
         <input type="hidden" name="servicio" value="Tienda · búsqueda">
         <div class="form-grid">
-          <div class="field full"><label for="b-q">¿Qué buscas? <span class="req">*</span></label><input class="input" id="b-q" name="vehiculo" required placeholder="Ej. Clio Williams para rally, pinzas Brembo…"></div>
+          <div class="field full"><label for="b-q">¿Qué buscas? <span class="req">*</span></label><input class="input" id="b-q" name="vehiculo" required placeholder="Ej. BMW E36 para rally, pinzas de freno…"></div>
           <div class="field"><label for="b-p">Presupuesto</label><input class="input" id="b-p" name="presupuesto" placeholder="Hasta…"></div>
           <div class="field"><label for="b-n">Nombre <span class="req">*</span></label><input class="input" id="b-n" name="nombre" required autocomplete="name"></div>
-          <div class="field full"><label for="b-t">Teléfono <span class="req">*</span></label><input class="input" id="b-t" name="telefono" type="tel" required autocomplete="tel" pattern="[0-9 +()\\-]{{9,}}" placeholder="600 000 000"></div>
+          <div class="field full"><label for="b-t">Teléfono <span class="req">*</span></label>{tel_input("b-t")}</div>
           {consent()}
         </div>
         <div class="form-foot mt-2"><button class="btn" type="submit">Avisadme {I['arrow']}</button></div>
@@ -1061,33 +1341,31 @@ def tienda():
 def product_page(slug):
     p = PRODUCTS[slug]
     c0 = p["colors"][0]
-    style = f"--garment:{c0[1]};--print:{c0[2]}" + (f";--brim:{c0[3]}" if len(c0) > 3 else "")
     swatches = "".join(
-        f'<label class="swatch" title="{c[0]}"><input type="radio" name="color" value="{c[0]}" data-garment="{c[1]}" data-print="{c[2]}"'
-        f'{f" data-brim={chr(34)}{c[3]}{chr(34)}" if len(c) > 3 else ""}{" checked" if i == 0 else ""} required>'
-        f'<span style="background:{c[1]}{f";box-shadow:inset -14px 0 0 {c[3]}" if len(c) > 3 else ""}"></span></label>'
+        f'<label class="swatch" title="{c[0]}"><input type="radio" name="color" value="{c[0]}" data-style="{color_style(c)}"{" checked" if i == 0 else ""} required>'
+        f'<span style="background:{c[1]}"></span></label>'
         for i, c in enumerate(p["colors"])
     )
     sizes = "".join(
-        f'<label class="pill"><input type="radio" name="talla" value="{s}"{" checked" if len(p["sizes"]) == 1 or s == "M" else ""} required><span>{s}</span></label>'
+        f'<label class="pill"><input type="radio" name="talla" value="{s}"{" checked" if len(p["sizes"]) == 1 or s == "M" or (s == p["sizes"][0] and p["kind"] == "pegatinas") else ""} required><span>{s}</span></label>'
         for s in p["sizes"]
     )
     feats = "".join(f"<li>{I['check']} {f}</li>" for f in p["features"])
     others = "".join(product_card(s, q) for s, q in PRODUCTS.items() if s != slug)
-    ld = ('{"@context":"https://schema.org","@type":"Product","name":"' + p["name"] + '","brand":{"@type":"Brand","name":"Deyscom Motorsport"},'
-          '"description":"' + p["desc"] + '","offers":{"@type":"Offer","priceCurrency":"EUR","price":"' + str(p["price"]) + '","availability":"https://schema.org/InStock","url":"' + SITE + '/' + slug + '.html"}}')
-
-    html = head(f"{p['name']} · Tienda oficial | Deyscom Motorsport", p["desc"], slug, p["name"]) + header("tienda")
-    html += f"""<script type="application/ld+json">{ld}</script>
-<section class="section product-page">
+    prod_ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "description": p["desc"], "sku": slug,
+               "image": SITE + "/assets/img/og-deyscom-motorsport.jpg", "brand": {"@type": "Brand", "name": "Deyscom Motorsport"},
+               "offers": {"@type": "Offer", "priceCurrency": "EUR", "price": str(p["price"]), "availability": "https://schema.org/InStock", "url": f"{SITE}/{slug}.html",
+                          "seller": {"@id": SITE + "/#organizacion"}}}
+    html = head(f"{p['name']} · Merchandising oficial | Deyscom Motorsport", p["desc"], slug, p["name"], "og",
+                [prod_ld, breadcrumbs_ld(slug, p["name"], ("tienda.html", "Tienda"))], f"{p['short'].lower()} Deyscom Motorsport, merchandising motorsport, {p['short'].lower()} rally") + header(slug)
+    html += f"""<section class="section product-page">
   <div class="container">
     <nav class="crumbs" aria-label="Migas"><a href="index.html">Inicio</a> / <a href="tienda.html#merch">Tienda</a> / <span>{p['short']}</span></nav>
     <div class="pdp" data-product data-price="{p['price']}">
       <div class="pdp__gallery">
-        <div class="pdp__stage" data-mock style="{style}">
+        <div class="pdp__stage" data-mock style="{color_style(c0)}">
           <span class="product__tag">{p['tag']}</span>
           {mock_svg(p['kind'])}
-          <img src="assets/img/{slug}.jpg" alt="{escape(p['name'])}" data-optional>
         </div>
         <ul class="pdp__trust">
           <li>{I['truck']} Envío a toda España o recogida en taller</li>
@@ -1120,7 +1398,7 @@ def product_page(slug):
             <p class="fstep__sub">Te confirmamos disponibilidad y forma de pago por WhatsApp o email.</p>
             <div class="form-grid">
               <div class="field"><label for="p-n">Nombre <span class="req">*</span></label><input class="input" id="p-n" name="nombre" autocomplete="name" required></div>
-              <div class="field"><label for="p-t">Teléfono <span class="req">*</span></label><input class="input" id="p-t" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9 +()\\-]{{9,}}" placeholder="600 000 000"></div>
+              <div class="field"><label for="p-t">Teléfono <span class="req">*</span></label>{tel_input("p-t")}</div>
               <div class="field full"><label for="p-e">Email</label><input class="input" id="p-e" name="email" type="email" autocomplete="email"></div>
               <fieldset class="pills full"><legend class="field"><span class="pdp__lbl">Entrega</span></legend>
                 <label class="pill"><input type="radio" name="entrega" value="Recogida en taller" checked data-ship="0"><span>Recogida en taller (gratis)</span></label>
@@ -1135,15 +1413,14 @@ def product_page(slug):
         </form>
         <ul class="pdp__feats">{feats}</ul>
         <div class="btn-row mt-2"><a class="btn btn--wa" data-wa="{escape(p['name'])}" data-loc="pdp" href="#">{I['wa']} Pregúntanos por WhatsApp</a></div>
-        {success_block("¡Pedido recibido!", "Te contactamos para confirmar talla, disponibilidad, pago y entrega.")}
-        <a class="btn mt-2" data-pay hidden href="#" target="_blank" rel="noopener">Pagar ahora {I['arrow']}</a>
+        {success_block("¡Pedido recibido!", "Te contactamos para confirmar talla, disponibilidad, pago y entrega.", pay=True)}
       </div>
     </div>
   </div>
 </section>
 <section class="section section--ink section--tight">
   <div class="container">
-    <div class="section__head"><div><span class="eyebrow">Completa el look</span><h2>También <span class="outline">te gustará</span></h2></div></div>
+    {section_head("Completa el look", "También <span class='outline'>te gustará</span>")}
     <div class="products products--2">{others}</div>
   </div>
 </section>
@@ -1151,18 +1428,282 @@ def product_page(slug):
     return html + footer()
 
 
-# ------------------------------------------------------------------ legal
+# ------------------------------------------------------------------ inicio
+def home():
+    svc = [
+        ("competicion.html", "01", "Competición", "Preparación, seguridad, asistencia y alquiler de coches de rally, slalom y circuito.", "RACE", "peugeot-206-rally-deyscom-motorsport-asistencia", "75%"),
+        ("restomod.html", "02", "Restomod", "Clásicos y 4x4 con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "land-rover-defender-restomod-deyscom", "30%"),
+        ("pintura.html", "03", "Pintura", "Cabina de pintura, chapa, chasis, colores especiales y decoraciones racing.", "PAINT", "cabina-pintura-chasis-rosa", "60%"),
+        ("banco-de-potencia.html", "04", "Banco de potencia", "Mide los CV y el par reales de tu coche y compara antes y después.", "DYNO", "motor-caja-cambios-desmontado-taller", "40%"),
+        ("tienda.html", "05", "Tienda", "Coches y piezas a la venta, y merchandising oficial Deyscom.", "SHOP", "peugeot-206-decoracion-deyscom-sport", "70%"),
+    ]
+    svc_html = "".join(
+        f'<a class="svc reveal" data-delay="{i % 3}" href="{h}"><div class="svc__media">{art(w, x, "30%", img, t, "(max-width: 980px) 100vw, 50vw")}</div>'
+        f'<span class="svc__num">{n}</span><h3>{t}</h3><p>{d}</p><span class="svc__go">Descubrir {I["arrow"]}</span></a>'
+        for i, (h, n, t, d, w, img, x) in enumerate(svc)
+    )
+    choices = [("flag", "Competición", "Rally, slalom, circuito"), ("star", "Restomod", "Clásico + mecánica moderna"),
+               ("spray", "Pintura", "Chapa, color, decoración"), ("gauge", "Banco de potencia", "Medir CV y par"),
+               ("helmet", "Experiencia", "DS Pilot Weekend"), ("grad", "Curso copiloto", "DS Copilot Course")]
+    choice_html = "".join(
+        f'<label class="choice"><input type="radio" name="servicio" value="{t}"{" required" if i == 0 else ""}>'
+        f'<span class="choice__box">{I[ic]}<b>{t}</b><span>{d}</span></span></label>'
+        for i, (ic, t, d) in enumerate(choices)
+    )
+    home_faq = [
+        ("¿Dónde estáis?", "En C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid). A unos 50 minutos de Madrid capital."),
+        ("¿Cuál es vuestro horario?", "De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras."),
+        ("¿Hacéis presupuestos sin compromiso?", "Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial."),
+        ("¿Puedo correr sin tener coche propio?", "Sí: con nuestras experiencias DS Pilot Weekend en circuito, rally o slalom, o con el alquiler de nuestros coches de competición."),
+        ("¿Cómo me apunto al curso de copiloto?", "Entra en la página del DS Copilot Course y pulsa «Comprar mi plaza». Las plazas son limitadas."),
+    ]
+    html = head("Deyscom Motorsport · Taller de competición, restomod, pintura y banco de potencia en Madrid",
+                "Taller motorsport en Torrelaguna (Madrid): preparación de coches de competición, restomod, pintura, banco de potencia, experiencias DS Pilot Weekend y curso de copiloto DS Copilot Course.",
+                "index", "vuestros servicios", "bmw-e36-rally-tierra-deyscom-motorsport",
+                [{"@context": "https://schema.org", "@type": "WebSite", "name": "Deyscom Motorsport", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
+                "taller competición Madrid, preparación rally Madrid, restomod Madrid, banco de potencia Madrid, curso copiloto rally, experiencia pilotaje, Torrelaguna") + header("index")
+    html += hero("Torrelaguna · Madrid · Motorsport", ["Hechos", "para <span class='pink'>correr.</span>", "<span class='outline'>Pensados para ti.</span>"],
+                 "Coches de competición, restomods, pintura, banco de potencia, experiencias de pilotaje y cursos. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
+                 "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
+    html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "DS Pilot Weekend", "DS Copilot Course"])
+    html += course_promo()
+    html += f"""
+<section class="section">
+  <div class="container">
+    {section_head("Qué hacemos", "Un taller.<br><span class='outline'>Cinco pasiones.</span>", "Desde un coche de rally listo para el primer tramo hasta un clásico que vuelve a nacer. Elige por dónde quieres empezar.")}
+    <div class="services">{svc_html}</div>
+  </div>
+</section>
+
+<section class="section section--ink">
+  <div class="container">
+    {section_head("Experiencias · DS Pilot Weekend", "Sé piloto <span class='outline'>un fin de semana</span>", "Circuito del Jarama, rally federado o slalom con nuestro Peugeot 206 o BMW E36. Sin coche propio, con todo el equipo Deyscom.")}
+    <div class="exps">{"".join(exp_card(s, x) for s, x in EXPERIENCES.items())}</div>
+    <div class="btn-row mt-3"><a class="btn" href="experiencias.html">Ver todas las experiencias {I['arrow']}</a></div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="usp">
+      <div class="usp__item reveal"><div class="usp__big">1<span>:</span>1</div><h3>Trato directo</h3><p>Hablas con quien trabaja en tu coche. Sin intermediarios.</p></div>
+      <div class="usp__item reveal" data-delay="1"><div class="usp__big">24<span>h</span></div><h3>Respuesta rápida</h3><p>Contestamos tu solicitud en menos de 24 h laborables.</p></div>
+      <div class="usp__item reveal" data-delay="2"><div class="usp__big">100<span>%</span></div><h3>A medida</h3><p>Cada proyecto se diseña para tu coche, tu uso y tu presupuesto.</p></div>
+      <div class="usp__item reveal" data-delay="3"><div class="usp__big">07<span>:</span>00</div><h3>Madrugamos</h3><p>Abrimos de lunes a viernes a las 7. Tu coche, cuanto antes en pista.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink shop-teaser">
+  <div class="container">
+    <div class="section__head">
+      <div class="reveal"><span class="eyebrow">Tienda Deyscom</span><h2>Viste <span class="outline">el equipo</span></h2></div>
+      <div class="reveal" data-delay="1"><p class="lead muted">Merchandising oficial y coches y piezas a la venta, revisados por nuestro taller.</p>
+        <div class="btn-row mt-1"><a class="btn" href="tienda.html">{I['bag']} Entrar en la tienda</a><a class="btn btn--ghost" href="tienda.html#coches">{I['car']} Coches en venta</a></div></div>
+    </div>
+    <div class="products">{"".join(product_card(s, p) for s, p in PRODUCTS.items())}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {split("Quiénes somos", "Gasolina <span class='pink'>en las venas</span>",
+           "<p class='lead'>Deyscom Motorsport nace de una idea sencilla: hacer los coches que a nosotros nos gustaría conducir. Competimos, restauramos, pintamos y preparamos con la misma obsesión por el detalle.</p>"
+           "<p class='muted'>Desde nuestra nave en Torrelaguna trabajamos para pilotos, coleccionistas y apasionados de toda España. Cada proyecto se vive, se documenta y se comparte.</p>"
+           f"<div class='btn-row mt-2'><a class='btn btn--ghost' href='nosotros.html'>Conócenos {I['arrow']}</a></div>",
+           "TEAM", "bmw-e36-peugeot-206-coches-competicion-deyscom", "Equipo Deyscom", False, "65%")}
+  </div>
+</section>
+
+<section class="section section--pink">
+  <div class="container">
+    {section_head("Cómo trabajamos", "Tu proyecto <span class='outline'>en 4 fases</span>", "Claridad desde el primer día: sabes qué se hace, cuánto cuesta y cuándo estará listo.", True)}
+    <div class="process">{process([("Hablamos", "Nos cuentas tu idea por WhatsApp, teléfono o formulario."), ("Valoramos", "Vemos el coche y te damos un presupuesto claro."), ("Trabajamos", "Manos a la obra, con fotos y vídeos del avance."), ("Disfrutas", "Entrega, ajustes y seguimiento. Nos vemos en la pista.")])}</div>
+  </div>
+</section>
+
+<section class="section section--ink" id="presupuesto">
+  <div class="container form-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Presupuesto en 60 segundos</span>
+      <h2>Arranca <span class="outline">tu proyecto</span></h2>
+      <p class="lead mt-2">Tres pasos rápidos y te llamamos con una propuesta. Sin compromiso.</p>
+      {contact_list()}
+    </div>
+    <div class="form-card reveal" data-delay="1" data-form-wrap>
+      <form class="form-body" data-lead="presupuesto-home" data-steps novalidate>
+        <div class="stepper" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="fstep">
+          <div class="fstep__title">¿Qué quieres hacer?</div>
+          <p class="fstep__sub">Paso 1 de 3 · Elige una opción</p>
+          <div class="choice-grid">{choice_html}</div>
+          <div class="fstep__nav"><span></span><button class="btn" type="button" data-next>Siguiente {I['arrow']}</button></div>
+        </div>
+        <div class="fstep">
+          <div class="fstep__title">Tu coche y tu idea</div>
+          <p class="fstep__sub">Paso 2 de 3 · Cuanto más nos cuentes, mejor</p>
+          <div class="form-grid">
+            <div class="field"><label for="h-veh">Vehículo</label><input class="input" id="h-veh" name="vehiculo" placeholder="Marca y modelo"></div>
+            <div class="field"><label for="h-anio">Año</label><input class="input" id="h-anio" name="anio" inputmode="numeric" placeholder="Ej. 1998"></div>
+            <fieldset class="pills full">{legend("Presupuesto aproximado")}{pills("presupuesto", ["< 3.000 €", "3.000 – 10.000 €", "10.000 – 30.000 €", "> 30.000 €", "Aún no lo sé"])}</fieldset>
+            <fieldset class="pills full">{legend("¿Para cuándo?")}{pills("plazo", ["Lo antes posible", "1 – 3 meses", "Próxima temporada", "Sin prisa"])}</fieldset>
+            <div class="field full"><label for="h-msg">Cuéntanos más</label><textarea class="textarea" id="h-msg" name="mensaje" placeholder="Objetivos, campeonato, color, piezas…"></textarea></div>
+          </div>
+          <div class="fstep__nav"><button class="btn btn--ghost" type="button" data-prev>Atrás</button><button class="btn" type="button" data-next>Siguiente {I['arrow']}</button></div>
+        </div>
+        <div class="fstep">
+          <div class="fstep__title">¿Dónde te contactamos?</div>
+          <p class="fstep__sub">Paso 3 de 3 · Último paso</p>
+          <div class="form-grid">
+            <div class="field full"><label for="h-n">Nombre <span class="req">*</span></label><input class="input" id="h-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
+            <div class="field"><label for="h-t">Teléfono <span class="req">*</span></label>{tel_input("h-t")}</div>
+            <div class="field"><label for="h-e">Email</label><input class="input" id="h-e" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
+            {consent()}
+          </div>
+          <div class="fstep__nav"><button class="btn btn--ghost" type="button" data-prev>Atrás</button><button class="btn" type="submit">Enviar {I['arrow']}</button></div>
+          <div class="form-msg" role="alert"></div>
+        </div>
+      </form>
+      {success_block()}
+    </div>
+  </div>
+</section>
+
+{social_wall()}
+
+<section class="section section--ink">
+  <div class="container">
+    {section_head("Preguntas frecuentes", "Antes de <span class='outline'>arrancar</span>")}
+    {faq(home_faq)}
+  </div>
+</section>
+
+{mega_cta("¿Arrancamos <span class='outline'>motores?</span>", "Escríbenos por WhatsApp, llámanos o pide presupuesto. Te respondemos en menos de 24 h laborables.", "")}
+"""
+    return html + footer()
+
+
+# ------------------------------------------------------------------ nosotros / contacto / legal
+def nosotros():
+    html = head("Quiénes somos · Deyscom Motorsport, taller motorsport en Torrelaguna (Madrid)",
+                "Conoce Deyscom Motorsport: un equipo de apasionados del motor en Torrelaguna (Madrid) especializado en competición, restomod, pintura, banco de potencia, experiencias y formación.",
+                "nosotros", "vuestro taller", "peugeot-206-preparacion-rally-taller-torrelaguna", [breadcrumbs_ld("nosotros", "Quiénes somos")]) + header("nosotros")
+    html += hero("Quiénes somos", ["Pasión", "<span class='pink'>con</span>", "<span class='outline'>octanaje</span>"],
+                 "Somos Deyscom Motorsport, un taller de Torrelaguna (Madrid) donde la competición, la restauración y la preparación se viven a fondo, sin atajos.",
+                 "DM", "peugeot-206-preparacion-rally-taller-torrelaguna", ["Torrelaguna · Madrid", "Taller motorsport", "Clientes de toda España"], "vuestro taller", ("Habla con nosotros", "contacto.html"))
+    html += ticker(["Pasión", "Detalle", "Honestidad", "Velocidad", "Equipo", "Carácter"], dark=True)
+    html += f"""<section class="section">
+  <div class="container">
+    {split("Nuestra historia", "Del <span class='pink'>paddock</span> al taller",
+           "<p class='lead'>Deyscom Motorsport nació de las ganas de hacer las cosas a nuestra manera: con tiempo, con cariño y con la exigencia de quien también se pone el casco.</p>"
+           "<p class='muted'>Hoy preparamos coches de competición, damos vida a restomods, pintamos, medimos en banco de potencia y llevamos a nuevos pilotos y copilotos a vivir la competición desde dentro. Lo hacemos desde nuestra nave en Torrelaguna, con trato cercano y comunicación constante.</p>"
+           "<p class='muted'>Compartimos cada proyecto en redes porque estamos orgullosos de lo que hacemos y porque creemos que la transparencia es la mejor garantía.</p>",
+           "STORY", "bmw-e36-compact-competicion-taller", "Desde Torrelaguna")}
+  </div>
+</section>
+<section class="section section--ink">
+  <div class="container">
+    {section_head("Valores", "Lo que <span class='outline'>nos mueve</span>", "Las reglas que aplicamos a cada coche que entra por la puerta.")}
+    {cards([
+        ("helmet", "Lo vivimos", "Somos pilotos, aficionados y mecánicos. Entendemos lo que significa tu coche."),
+        ("eye", "Transparencia", "Fotos, vídeos y presupuestos claros. Sabes en todo momento qué se hace."),
+        ("shield", "Seguridad", "En competición y en calle, la seguridad nunca es negociable."),
+        ("star", "Detalle", "Lo que no se ve importa tanto como lo que se ve."),
+        ("grad", "Formación", "Compartimos lo que sabemos con cursos y experiencias."),
+        ("flag", "Compromiso", "Plazos realistas y palabra cumplida."),
+    ])}
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    {section_head("El taller", "Nuestra <span class='outline'>casa</span>", "Nave 3, Canal de Isabel II, Torrelaguna. Ven a vernos (mejor con cita previa).")}
+    {gallery([("bmw-e36-preparacion-competicion-taller", "Preparación"), ("desmontaje-mecanica-elevador-taller-deyscom", "Zona de trabajo"),
+              ("coche-circuito-dorsal-35-taller-deyscom", "Coches de cliente"), ("bmw-e36-competicion-taller-deyscom-motorsport", "BMW E36"),
+              ("bmw-clasicos-restomod-taller-deyscom", "Clásicos")], "DEYSCOM")}
+  </div>
+</section>
+{social_wall()}
+{mega_cta("Ven a <span class='outline'>conocernos</span>", "Pide cita y tómate un café con nosotros mientras hablamos de tu coche.", "visitar el taller", ("Contactar", "contacto.html"))}
+"""
+    return html + footer()
+
+
+def contacto():
+    html = head("Contacto · Deyscom Motorsport | Taller en Torrelaguna, Madrid",
+                "Contacta con Deyscom Motorsport: (+34) 615 97 22 33 · info@deyscom.com · C/ Canal de Isabel II, 2 Nave 3, 28180 Torrelaguna (Madrid). Lunes a viernes 07:00-15:00.",
+                "contacto", "un presupuesto", "og", [breadcrumbs_ld("contacto", "Contacto")]) + header("contacto")
+    opts = ["Competición", "Restomod", "Pintura", "Banco de potencia", "Experiencia DS Pilot Weekend", "DS Copilot Course", "Tienda / compra", "Otro"]
+    sel = "".join(f'<option value="{o}">{o}</option>' for o in opts)
+    html += f"""<section class="hero page-hero" style="min-height:52svh">
+  <div class="hero__bg"></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
+  <div class="hero__number" aria-hidden="true">GO</div>
+  <div class="container hero__inner">
+    <span class="eyebrow">Contacto</span>
+    <h1><span class="line"><span>Hablemos</span></span><span class="line"><span class="outline">de motor</span></span></h1>
+    <div class="btn-row mt-2">
+      <a class="btn btn--wa" data-wa="" data-loc="contact-hero" href="#">{I['wa']} WhatsApp</a>
+      <a class="btn" href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
+      <a class="btn btn--ghost" href="mailto:{EMAIL}">{I['mail']} {EMAIL}</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="presupuesto">
+  <div class="container form-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Datos de contacto</span>
+      <h2>Te <span class="outline">esperamos</span></h2>
+      <ul class="contact-list">
+        <li><span class="ic">{I['phone']}</span><div><small>Teléfono</small><a href="tel:{PHONE}">{PHONE_TXT}</a></div></li>
+        <li><span class="ic">{I['wa']}</span><div><small>WhatsApp</small><a data-wa="" data-loc="contact-list" href="#">Escríbenos ahora</a></div></li>
+        <li><span class="ic">{I['mail']}</span><div><small>Email</small><a href="mailto:{EMAIL}">{EMAIL}</a></div></li>
+        <li><span class="ic">{I['pin']}</span><div><small>Ubicación</small><a href="https://www.google.com/maps/search/?api=1&query=Calle+Canal+de+Isabel+II+2+Torrelaguna" target="_blank" rel="noopener">C/ Canal de Isabel II, 2 · Nave 3<br>28180 Torrelaguna · Madrid</a></div></li>
+        <li><span class="ic">{I['clock']}</span><div style="width:100%"><small>Horario de apertura</small>{hours_table()}</div></li>
+      </ul>
+      <div class="mt-3">{social_links()}</div>
+    </div>
+    <div class="form-card reveal" data-delay="1" data-form-wrap>
+      <form class="form-body" data-lead="contacto" novalidate>
+        <div class="fstep__title">Pide presupuesto</div>
+        <p class="fstep__sub">Te respondemos en menos de 24 h laborables.</p>
+        <div class="form-grid">
+          <div class="field"><label for="c-n">Nombre <span class="req">*</span></label><input class="input" id="c-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
+          <div class="field"><label for="c-t">Teléfono <span class="req">*</span></label>{tel_input("c-t")}</div>
+          <div class="field"><label for="c-e">Email</label><input class="input" id="c-e" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
+          <div class="field"><label for="c-s">Servicio <span class="req">*</span></label><select class="select input" id="c-s" name="servicio" required><option value="">Elige…</option>{sel}</select></div>
+          <div class="field full"><label for="c-v">Vehículo</label><input class="input" id="c-v" name="vehiculo" placeholder="Marca, modelo y año"></div>
+          <div class="field full"><label for="c-m">Mensaje <span class="req">*</span></label><textarea class="textarea" id="c-m" name="mensaje" required placeholder="Cuéntanos tu proyecto"></textarea></div>
+          {consent()}
+        </div>
+        <div class="form-foot mt-2"><button class="btn" type="submit">Enviar solicitud {I['arrow']}</button><small>🔒 Datos protegidos</small></div>
+        <div class="form-msg" role="alert"></div>
+      </form>
+      {success_block()}
+    </div>
+  </div>
+</section>
+<section class="section section--tight section--ink">
+  <div class="container">
+    <div class="map reveal"><iframe title="Mapa de Deyscom Motorsport en Torrelaguna" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=Calle+Canal+de+Isabel+II+2,+28180+Torrelaguna,+Madrid&output=embed"></iframe></div>
+    <div class="btn-row mt-2"><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=Calle+Canal+de+Isabel+II+2,+28180+Torrelaguna,+Madrid" target="_blank" rel="noopener">{I['pin']} Cómo llegar</a></div>
+  </div>
+</section>
+"""
+    return html + footer()
+
+
 def legal():
-    html = head("Aviso legal y privacidad | Deyscom Motorsport", "Aviso legal, política de privacidad y cookies de Deyscom Motorsport S.L.", "legal", "información") + header("legal")
+    html = head("Aviso legal, privacidad y cookies | Deyscom Motorsport", "Aviso legal, política de privacidad y política de cookies de Deyscom Motorsport S.L.", "legal", "información") + header("legal")
+    html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
     html += f"""<section class="section"><div class="container prose" style="max-width:860px">
 <span class="eyebrow">Legal</span>
-<h1 style="font-size:clamp(2.6rem,7vw,5rem)">Aviso legal <span class="outline">y privacidad</span></h1>
+<h1 style="font-size:clamp(2.4rem,6vw,4.4rem)">Aviso legal <span class="outline">y privacidad</span></h1>
 <p class="muted mt-2"><em>Texto base orientativo. Revísalo con vuestro asesor antes de publicar.</em></p>
 <h2 id="aviso">Aviso legal</h2>
 <p>Titular: Deyscom Motorsport S.L. · CIF B09939471 · Domicilio: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid) · Email: <a href="mailto:{EMAIL}">{EMAIL}</a> · Teléfono: {PHONE_TXT}.</p>
 <p>El acceso a este sitio web atribuye la condición de usuario e implica la aceptación de estas condiciones. Los contenidos (textos, imágenes, logotipos y diseño) son propiedad de Deyscom Motorsport S.L. o de sus legítimos titulares y no pueden reproducirse sin autorización.</p>
 <h2 id="privacidad">Política de privacidad</h2>
-<p><strong>Responsable:</strong> Deyscom Motorsport S.L. <strong>Finalidad:</strong> atender tus solicitudes de información, presupuestos y pedidos. <strong>Legitimación:</strong> tu consentimiento al enviar el formulario. <strong>Destinatarios:</strong> no se ceden datos a terceros salvo obligación legal; los datos se almacenan en Google Workspace (Google Sheets) como encargado del tratamiento. <strong>Conservación:</strong> el tiempo necesario para atender tu solicitud y los plazos legales. <strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a>, y reclamar ante la AEPD (www.aepd.es).</p>
+<p><strong>Responsable:</strong> Deyscom Motorsport S.L. <strong>Finalidad:</strong> atender tus solicitudes de información, presupuestos, reservas, inscripciones a cursos y pedidos. <strong>Legitimación:</strong> tu consentimiento al enviar el formulario y, en su caso, la ejecución del contrato. <strong>Destinatarios:</strong> no se ceden datos a terceros salvo obligación legal; los datos se almacenan en Google Workspace (Google Sheets) como encargado del tratamiento. <strong>Conservación:</strong> el tiempo necesario para atender tu solicitud y los plazos legales. <strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a>, y reclamar ante la AEPD (www.aepd.es).</p>
 <h2 id="cookies">Cookies</h2>
 <p>Esta web solo utiliza almacenamiento técnico de sesión para recordar el origen de tu visita al enviar un formulario. Si se añaden herramientas de analítica o publicidad (Google Analytics, Meta Pixel), se mostrará un banner para solicitar tu consentimiento.</p>
 </div></section>
@@ -1171,15 +1712,28 @@ def legal():
 
 
 def main():
-    pages = {"index": home(), "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda(), "legal": legal()}
+    pages = {"index": home(), "experiencias": experiencias(), "cursos": cursos(), "ds-copilot-course": course_page(),
+             "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda(), "legal": legal()}
     for s in SERVICES:
         pages[s] = service_page(s)
+    for s in EXPERIENCES:
+        pages[s] = experience_page(s)
     for s in PRODUCTS:
         pages[s] = product_page(s)
+    for old in ("performance",):  # páginas retiradas
+        f = ROOT / f"{old}.html"
+        if f.exists():
+            f.unlink()
     for name, html in pages.items():
+        html = re.sub(r"\n\s*\n", "\n", html)
         (ROOT / f"{name}.html").write_text(html, encoding="utf-8")
-    urls = "".join(f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc></url>" for n in pages)
-    (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n', encoding="utf-8")
+    prio = {"index": "1.0", "ds-copilot-course": "0.9", "experiencias": "0.9", "competicion": "0.8", "restomod": "0.8", "pintura": "0.8",
+            "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8"}
+    urls = "".join(
+        f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority></url>\n"
+        for n in pages if n != "legal")
+    (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))
 
 
