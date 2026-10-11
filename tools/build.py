@@ -270,7 +270,6 @@ def footer():
     return f"""</main>
 <footer class="footer">
   <div class="container">
-    <div class="footer__giant" aria-hidden="true">{logo_svg("footer__logo", False)}</div>
     <div class="footer__grid">
       <div>
         {logo()}
@@ -388,7 +387,7 @@ def gallery(items, word):
         f'<figcaption class="gallery__cap">{cap}</figcaption></figure>'
         for i, (img, cap) in enumerate(items)
     )
-    return f'<div class="gallery">{out}</div>'
+    return f'<div class="gallery{" gallery--8" if len(items) == 8 else ""}">{out}</div>'
 
 
 def faq(items):
@@ -546,7 +545,7 @@ SERVICES = {
         eyebrow="Coches de competición",
         lines=["Nacidos", "<span class='pink'>para</span>", "<span class='outline'>competir</span>"],
         lead="Rally, slalom, montaña o circuito: preparamos tu coche desde la carrocería desnuda hasta la línea de salida y te acompañamos tramo a tramo.",
-        number="01", hero="bmw-e36-competicion-taller-deyscom-motorsport",
+        number="01", hero="mitsubishi-lancer-evo-rally-taller-deyscom",
         chips=["Rally · Slalom · Circuito", "Asistencia en carrera", "Alquiler de coches de competición"],
         ticker=["Preparación integral", "Jaulas de seguridad", "Set-up", "Asistencia", "Mantenimiento", "Alquiler"],
         intro=("Del garaje al podio", "Un coche de carreras <span class='pink'>no se compra</span>, se construye",
@@ -566,9 +565,10 @@ SERVICES = {
         ],
         steps=[("Briefing", "Campeonato, reglamento, objetivos y presupuesto."), ("Diseño", "Plan de preparación por fases y lista de piezas."),
                ("Construcción", "Taller, montaje y pruebas."), ("Carrera", "Asistencia, datos y mantenimiento entre pruebas.")],
-        gallery=[("jaula-seguridad-soldada-preparacion-rally", "Jaula soldada"), ("peugeot-206-rally-deyscom-motorsport-asistencia", "Parque de asistencia"),
-                 ("panel-interruptores-cortacorrientes-coche-competicion", "Electrónica de carreras"), ("bmw-e36-rally-parque-cerrado-motor", "Parque cerrado"),
-                 ("suzuki-vitara-competicion-decoracion-deyscom", "Suzuki Vitara de competición")],
+        gallery=[("baquet-sparco-arneses-jaula-competicion", "Baquet y arneses"), ("soldadura-jaula-seguridad-competicion", "Soldadura de jaula"),
+                 ("plano-jaula-seguridad-diseno-competicion", "Diseño de la jaula"), ("volante-interior-coche-competicion", "Puesto de pilotaje"),
+                 ("extintor-baquet-sparco-coche-competicion", "Seguridad homologada"), ("jaula-seguridad-soldada-preparacion-rally", "Jaula soldada"),
+                 ("renault-clio-competicion-taller-deyscom", "Renault Clio de competición"), ("peugeot-206-rally-deyscom-motorsport-asistencia", "Parque de asistencia")],
         word="RALLY",
         faq=[
             ("¿Preparáis coches para cualquier campeonato?", "Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."),
@@ -596,7 +596,7 @@ SERVICES = {
                    ("Diagnóstico de la base", "Revisamos chasis, carrocería y mecánica antes de empezar."),
                    ("Diseño del proyecto", "Definimos estética, prestaciones y presupuesto por fases."),
                    ("Diario de obra", "Te enviamos fotos y vídeos del proceso para que vivas cada avance."),
-               ]), "CLASSIC", "restauracion-todoterreno-clasico-motor", "Hecho a mano", True, "35%"),
+               ]), "CLASSIC", "todoterreno-chasis-restauracion-completa", "Hecho a mano", True, "35%"),
         cards=[
             ("layers", "Restauración de chasis", "Saneado, tratamiento anticorrosión y refuerzos donde hace falta."),
             ("bolt", "Mecánica actualizada", "Motores, inyección y transmisiones modernas o reconstrucción del original."),
@@ -607,9 +607,10 @@ SERVICES = {
         ],
         steps=[("Idea", "Nos cuentas el coche y el sueño. Si aún no lo tienes, te ayudamos a buscarlo."), ("Proyecto", "Diseño, presupuesto por fases y calendario."),
                ("Taller", "Desmontaje, chapa, mecánica, pintura y montaje."), ("Entrega", "Rodaje, ajustes finales y entrega de tu coche.")],
-        gallery=[("land-rover-defender-restomod-deyscom", "Land Rover Defender"), ("restomod-todoterreno-clasico-taller-deyscom", "4x4 clásico en obra"),
-                 ("land-rover-defender-restomod-verde", "Defender terminado"), ("bmw-clasicos-restomod-taller-deyscom", "BMW clásicos"),
-                 ("ford-ranger-preparacion-offroad-deyscom", "Ford Ranger offroad")],
+        gallery=[("eje-trasero-suspension-restauracion-4x4", "Eje y suspensión 4x4"), ("land-rover-defender-restomod-deyscom", "Land Rover Defender"),
+                 ("bmw-e30-restauracion-elevador-taller", "BMW E30 en restauración"), ("pickup-clasico-restauracion-taller", "Pick-up clásico"),
+                 ("jeep-wrangler-preparacion-offroad-deyscom", "Jeep Wrangler"), ("restomod-todoterreno-clasico-taller-deyscom", "4x4 clásico en obra"),
+                 ("land-rover-defender-restomod-verde", "Defender terminado"), ("chasis-tubular-buggy-preparacion", "Chasis tubular")],
         word="RESTO",
         faq=[
             ("¿Con qué coches trabajáis?", "Clásicos, youngtimers y todoterrenos de todo tipo: BMW, Land Rover, Nissan Patrol… Cuéntanos el modelo y valoramos el proyecto sin compromiso."),
@@ -678,7 +679,7 @@ SERVICES = {
                    ("Medición real", "Potencia y par en todo el rango de revoluciones, con su curva completa."),
                    ("Diagnóstico", "Detectamos pérdidas de potencia, fallos de mezcla o encendido y problemas de transmisión."),
                    ("Informe", "Te llevas tus gráficas para comparar en el futuro."),
-               ]), "DYNO", "motor-admision-deyscom-peugeot-206", "Medido en banco", True, "40%"),
+               ]), "DYNO", "banco-de-potencia-curva-potencia-par", "Curva real", True, "40%"),
         cards=[
             ("gauge", "Medición de potencia", "CV y par reales de tu coche, medidos en banco y con su curva completa."),
             ("chart", "Antes y después", "Mide antes y después de cada modificación para ver qué ha aportado."),
@@ -689,9 +690,10 @@ SERVICES = {
         ],
         steps=[("Revisión", "Comprobamos el coche y lo dejamos listo para medir con seguridad."), ("Medición", "Varias pasadas para obtener potencia y par fiables."),
                ("Análisis", "Revisamos las curvas contigo y detectamos qué se puede mejorar."), ("Informe", "Te llevas tus gráficas y nuestras recomendaciones.")],
-        gallery=[("colector-escape-motor-competicion", "Colector de escape"), ("radiador-intercooler-preparacion-motor", "Refrigeración"),
-                 ("soporte-motor-poliuretano-competicion", "Soportes de poliuretano"), ("muelles-suspension-dobinsons-preparacion", "Suspensión"),
-                 ("motor-competicion-desmontado-palet", "Motor de competición")],
+        gallery=[("banco-de-potencia-medicion-deyscom", "Sala del banco de potencia"), ("motor-competicion-detalle-admision", "Admisión"),
+                 ("caja-cambios-competicion-preparacion", "Transmisión"), ("colector-escape-motor-competicion", "Colector de escape"),
+                 ("latiguillos-freno-competicion-detalle", "Frenos"), ("motor-admision-deyscom-peugeot-206", "Motor Deyscom"),
+                 ("radiador-intercooler-preparacion-motor", "Refrigeración"), ("soporte-motor-poliuretano-competicion", "Soportes de poliuretano")],
         word="POWER",
         faq=[
             ("¿Qué coches podéis medir en el banco?", "Coches de calle, preparados y de competición. Escríbenos con el modelo y la tracción y te confirmamos disponibilidad y precio."),
@@ -829,7 +831,7 @@ EXPERIENCES = {
         title="DS Pilot Weekend Slalom · Experiencia de slalom con Peugeot 206 o BMW E36 | Deyscom Motorsport",
         desc="Vive una experiencia única de slalom con Deyscom Motorsport al volante del Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Precisión, conos y cronómetro.",
         keywords="experiencia slalom, slalom coche Madrid, alquiler coche slalom, conducir Peugeot 206 competición, BMW E36 slalom, DS Pilot Weekend",
-        hero="bmw-e36-competicion-decoracion-rosa", card="peugeot-206-slalom-deyscom-motorsport",
+        hero="bmw-e36-competicion-decoracion-rosa", card="renault-clio-rs-competicion-slalom",
         lines=["Precisión", "<span class='pink'>contra el</span>", "<span class='outline'>cronómetro</span>"],
         lead="Conos, cronómetro y un coche de competición. Vive una experiencia única de slalom con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV.",
         teaser="Conos, cronómetro y una experiencia única al volante.",
@@ -1431,10 +1433,10 @@ def product_page(slug):
 # ------------------------------------------------------------------ inicio
 def home():
     svc = [
-        ("competicion.html", "01", "Competición", "Preparación, seguridad, asistencia y alquiler de coches de rally, slalom y circuito.", "RACE", "peugeot-206-rally-deyscom-motorsport-asistencia", "75%"),
+        ("competicion.html", "01", "Competición", "Preparación, seguridad, asistencia y alquiler de coches de rally, slalom y circuito.", "RACE", "mitsubishi-lancer-evo-rally-taller-deyscom", "60%"),
         ("restomod.html", "02", "Restomod", "Clásicos y 4x4 con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "land-rover-defender-restomod-deyscom", "30%"),
         ("pintura.html", "03", "Pintura", "Cabina de pintura, chapa, chasis, colores especiales y decoraciones racing.", "PAINT", "cabina-pintura-chasis-rosa", "60%"),
-        ("banco-de-potencia.html", "04", "Banco de potencia", "Mide los CV y el par reales de tu coche y compara antes y después.", "DYNO", "motor-caja-cambios-desmontado-taller", "40%"),
+        ("banco-de-potencia.html", "04", "Banco de potencia", "Mide los CV y el par reales de tu coche y compara antes y después.", "DYNO", "banco-de-potencia-medicion-deyscom", "40%"),
         ("tienda.html", "05", "Tienda", "Coches y piezas a la venta, y merchandising oficial Deyscom.", "SHOP", "peugeot-206-decoracion-deyscom-sport", "70%"),
     ]
     svc_html = "".join(
@@ -1617,9 +1619,10 @@ def nosotros():
 <section class="section">
   <div class="container">
     {section_head("El taller", "Nuestra <span class='outline'>casa</span>", "Nave 3, Canal de Isabel II, Torrelaguna. Ven a vernos (mejor con cita previa).")}
-    {gallery([("bmw-e36-preparacion-competicion-taller", "Preparación"), ("desmontaje-mecanica-elevador-taller-deyscom", "Zona de trabajo"),
-              ("coche-circuito-dorsal-35-taller-deyscom", "Coches de cliente"), ("bmw-e36-competicion-taller-deyscom-motorsport", "BMW E36"),
-              ("bmw-clasicos-restomod-taller-deyscom", "Clásicos")], "DEYSCOM")}
+    {gallery([("nave-taller-deyscom-coches-competicion", "La nave"), ("soldadura-chispas-taller-deyscom", "Manos a la obra"),
+              ("elevadores-taller-deyscom-torrelaguna", "Zona de elevadores"), ("mazda-mx5-preparacion-taller-deyscom", "Coches de cliente"),
+              ("jeep-wrangler-elevador-taller-deyscom", "4x4 en el elevador"), ("bmw-e36-preparacion-competicion-taller", "Preparación"),
+              ("coche-circuito-dorsal-35-taller-deyscom", "Circuito"), ("bmw-clasicos-restomod-taller-deyscom", "Clásicos")], "DEYSCOM")}
   </div>
 </section>
 {social_wall()}

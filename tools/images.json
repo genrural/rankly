@@ -54,16 +54,6 @@
   "w": 1200,
   "h": 1600
  },
- "peugeot-206-slalom-deyscom-motorsport": {
-  "alt": "Peugeot 206 de slalom con decoración de Deyscom Motorsport",
-  "w": 1536,
-  "h": 1024
- },
- "bmw-e36-competicion-deyscom-motorsport": {
-  "alt": "BMW E36 de competición con decoración de Deyscom Motorsport",
-  "w": 1600,
-  "h": 800
- },
  "bmw-e36-rally-tierra-deyscom-motorsport": {
   "alt": "BMW E36 de Deyscom Motorsport saltando en un tramo de rally de tierra",
   "w": 1600,
@@ -73,11 +63,6 @@
   "alt": "Radiador e intercooler montados durante una preparación de motor",
   "w": 900,
   "h": 1600
- },
- "suzuki-vitara-competicion-decoracion-deyscom": {
-  "alt": "Suzuki Vitara de competición con decoración Deyscom",
-  "w": 1535,
-  "h": 1024
  },
  "colector-escape-motor-competicion": {
   "alt": "Colector de escape en un motor de competición",
@@ -212,6 +197,151 @@
  "bmw-e36-competicion-decoracion-rosa": {
   "alt": "BMW E36 de competición con decoración y llantas rosas",
   "w": 1200,
+  "h": 1600
+ },
+ "mitsubishi-lancer-evo-rally-taller-deyscom": {
+  "alt": "Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport",
+  "w": 1600,
+  "h": 1067
+ },
+ "jeep-wrangler-preparacion-offroad-deyscom": {
+  "alt": "Jeep Wrangler con preparación offroad en Deyscom",
+  "w": 1067,
+  "h": 1600
+ },
+ "mitsubishi-lancer-evo-competicion-detalle": {
+  "alt": "Detalle frontal de un Mitsubishi Lancer Evo de competición",
+  "w": 1600,
+  "h": 1067
+ },
+ "pickup-clasico-restauracion-taller": {
+  "alt": "Pick-up clásico negro en restauración en el taller",
+  "w": 1067,
+  "h": 1600
+ },
+ "todoterreno-chasis-restauracion-completa": {
+  "alt": "Chasis de todoterreno en restauración completa",
+  "w": 1067,
+  "h": 1600
+ },
+ "eje-trasero-suspension-restauracion-4x4": {
+  "alt": "Eje trasero y suspensión de un 4x4 en restauración",
+  "w": 1600,
+  "h": 1067
+ },
+ "volante-interior-coche-competicion": {
+  "alt": "Volante e interior de un coche de competición",
+  "w": 1067,
+  "h": 1600
+ },
+ "renault-clio-competicion-taller-deyscom": {
+  "alt": "Renault Clio de competición en el taller de Deyscom",
+  "w": 1600,
+  "h": 1067
+ },
+ "extintor-baquet-sparco-coche-competicion": {
+  "alt": "Extintor y baquet Sparco en un coche de competición",
+  "w": 1600,
+  "h": 1067
+ },
+ "renault-clio-rs-competicion-slalom": {
+  "alt": "Renault Clio RS preparado para competición",
+  "w": 1600,
+  "h": 1067
+ },
+ "jaula-seguridad-renault-clio-competicion": {
+  "alt": "Jaula de seguridad en un Renault Clio de competición",
+  "w": 1067,
+  "h": 1600
+ },
+ "baquet-sparco-arneses-jaula-competicion": {
+  "alt": "Baquet Sparco con arneses y jaula de seguridad",
+  "w": 1600,
+  "h": 1067
+ },
+ "nave-taller-deyscom-coches-competicion": {
+  "alt": "Nave del taller de Deyscom con coches de competición",
+  "w": 1067,
+  "h": 1600
+ },
+ "soldadura-jaula-seguridad-competicion": {
+  "alt": "Soldadura de una jaula de seguridad para competición",
+  "w": 1067,
+  "h": 1600
+ },
+ "soldadura-bajos-coche-taller-deyscom": {
+  "alt": "Soldadura en los bajos de un coche en el taller",
+  "w": 1067,
+  "h": 1600
+ },
+ "soldadura-chispas-taller-deyscom": {
+  "alt": "Mecánico soldando con chispas en el taller de Deyscom",
+  "w": 1067,
+  "h": 1600
+ },
+ "bmw-e30-restauracion-elevador-taller": {
+  "alt": "BMW E30 en restauración sobre el elevador",
+  "w": 1067,
+  "h": 1600
+ },
+ "plano-jaula-seguridad-diseno-competicion": {
+  "alt": "Plano de diseño de una jaula de seguridad de competición",
+  "w": 1067,
+  "h": 1600
+ },
+ "banco-de-potencia-medicion-deyscom": {
+  "alt": "Medición de un coche en el banco de potencia de Deyscom",
+  "w": 1067,
+  "h": 1600
+ },
+ "banco-de-potencia-curva-potencia-par": {
+  "alt": "Curva de potencia y par en la pantalla del banco de potencia",
+  "w": 1067,
+  "h": 1600
+ },
+ "chasis-tubular-buggy-preparacion": {
+  "alt": "Chasis tubular de buggy en preparación",
+  "w": 1069,
+  "h": 1600
+ },
+ "caja-cambios-competicion-preparacion": {
+  "alt": "Caja de cambios de competición en preparación",
+  "w": 1069,
+  "h": 1600
+ },
+ "latiguillos-freno-competicion-detalle": {
+  "alt": "Latiguillos de freno de competición",
+  "w": 1069,
+  "h": 1600
+ },
+ "elevadores-taller-deyscom-torrelaguna": {
+  "alt": "Elevadores del taller de Deyscom en Torrelaguna",
+  "w": 1069,
+  "h": 1600
+ },
+ "pickup-offroad-alineacion-elevador": {
+  "alt": "Pick-up offroad en el elevador de alineación",
+  "w": 1069,
+  "h": 1600
+ },
+ "alineacion-direccion-todoterreno": {
+  "alt": "Alineación de dirección de un todoterreno",
+  "w": 1069,
+  "h": 1600
+ },
+ "mazda-mx5-preparacion-taller-deyscom": {
+  "alt": "Mazda MX-5 en preparación en el taller de Deyscom",
+  "w": 1069,
+  "h": 1600
+ },
+ "motor-competicion-detalle-admision": {
+  "alt": "Detalle de admisión de un motor de competición",
+  "w": 1069,
+  "h": 1600
+ },
+ "jeep-wrangler-elevador-taller-deyscom": {
+  "alt": "Jeep Wrangler sobre el elevador del taller",
+  "w": 1069,
   "h": 1600
  }
 }

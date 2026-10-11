@@ -1023,3 +1023,15 @@ picture { display: contents; }
 .gallery__item::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.8)); pointer-events: none; }
 .gallery__item img { z-index: 0 !important; }
 .gallery__cap { z-index: 2; }
+
+/* Galería de 8 fotos */
+.gallery--8 { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; }
+.gallery--8 .gallery__item, .gallery--8 .gallery__item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+.gallery--8 .gallery__item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery--8 .gallery__item:nth-child(6) { grid-column: span 2; }
+@media (max-width: 760px) {
+  .gallery--8 { grid-template-columns: 1fr 1fr; grid-auto-rows: 170px; }
+  .gallery--8 .gallery__item:nth-child(6) { grid-column: span 1; }
+}
+.footer { padding-top: 70px; }
+.gallery__item { margin: 0; }
