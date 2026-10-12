@@ -1266,3 +1266,24 @@ body.cc-open .mobile-cta { display: none; }
 .gdpr { margin: 0; font-size: .74rem; line-height: 1.5; color: #7d7d8a; }
 .gdpr b { color: #a9a9b6; font-weight: 600; }
 .gdpr a { color: var(--pink); text-decoration: underline; }
+
+/* Comparador cabina / terminado (arrastre con ratón, dedo o teclado) */
+.ba { cursor: ew-resize; touch-action: pan-y; -webkit-user-select: none; -webkit-touch-callout: none; }
+.ba img { pointer-events: none; -webkit-user-drag: none; }
+.ba__before img { object-position: 50% 62%; }
+.ba__after img { object-position: 50% 55%; }
+.ba.is-hinting .ba__after, .ba.is-hinting .ba__handle { transition: clip-path .5s var(--ease), left .5s var(--ease); }
+.ba__range { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); pointer-events: none; z-index: 0; inset: auto; }
+.ba__handle { width: 4px; box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
+.ba__handle::after { content: "⟷"; font-size: 1.5rem; letter-spacing: 0; width: 56px; height: 56px; box-shadow: 0 6px 20px rgba(0,0,0,.45); transition: transform .2s var(--ease); }
+.ba.is-dragging .ba__handle::after, .ba:hover .ba__handle::after { transform: translate(-50%, -50%) scale(1.08); }
+.ba:has(.ba__range:focus-visible) .ba__handle::after { outline: 3px solid #fff; outline-offset: 3px; }
+.ba__hint { position: absolute; z-index: 5; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 6px 12px; border-radius: 100px; background: rgba(0,0,0,.6); color: #fff; font-size: .8rem; pointer-events: none; white-space: nowrap; }
+@media (max-width: 600px) { .ba { aspect-ratio: 4 / 3; } .ba__handle::after { width: 48px; height: 48px; } }
+.ba__hint { transition: opacity .3s; } .ba.was-used .ba__hint { opacity: 0; }
+/* Orden de capas del comparador: el recorte (clip-path) crea un contexto de apilamiento propio */
+.ba__layer { isolation: isolate; }
+.ba__before { z-index: 1; }
+.ba__after { z-index: 2; }
+.ba__lbl, .ba__hint { z-index: 4; }
+.ba__handle { z-index: 5; }

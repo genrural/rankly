@@ -818,13 +818,14 @@ def service_page(slug):
     if slug == "pintura":
         extra = f"""<section class="section section--tight">
   <div class="container">
-    {section_head("Proceso real", "De la cabina <span class='outline'>a la calle</span>", "Desliza para ver el Nissan Patrol en la cabina de pintura y terminado.")}
+    {section_head("Proceso real", "De la cabina <span class='outline'>a la calle</span>", "Arrastra el control (o desliza con el dedo) para ver el Nissan Patrol en la cabina de pintura y terminado.")}
     <div class="ba reveal">
       <div class="ba__layer ba__before">{art("CABINA", "30%", "40%", "nissan-patrol-cabina-pintura-verde", "", "100vw")}</div>
       <div class="ba__layer ba__after">{art("FINAL", "70%", "40%", "nissan-patrol-pintura-verde-terminado", "", "100vw")}</div>
       <span class="ba__lbl ba__lbl--l">En cabina</span><span class="ba__lbl ba__lbl--r">Terminado</span>
       <div class="ba__handle"></div>
-      <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar en cabina y terminado">
+      <span class="ba__hint" aria-hidden="true">Arrastra para comparar</span>
+      <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparador: arrastra o usa las flechas para ver el Nissan Patrol en cabina y terminado">
     </div>
   </div>
 </section>"""

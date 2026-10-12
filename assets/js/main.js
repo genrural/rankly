@@ -107,8 +107,35 @@
 
   /* ---------- Antes / Después ---------- */
   $$(".ba").forEach(function (ba) {
-    var r = $(".ba__range", ba);
-    if (r) r.addEventListener("input", function () { ba.style.setProperty("--pos", r.value + "%"); });
+    var r = $(".ba__range", ba), dragging = false, hinted = false;
+    function set(p) {
+      p = Math.max(0, Math.min(100, p));
+      ba.style.setProperty("--pos", p + "%");
+      if (r) { r.value = Math.round(p); r.setAttribute("aria-valuetext", Math.round(p) + "% en cabina"); }
+    }
+    function fromEvent(e) { var b = ba.getBoundingClientRect(); return (e.clientX - b.left) / b.width * 100; }
+    ba.addEventListener("pointerdown", function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      dragging = true; ba.classList.add("is-dragging", "was-used");
+      try { ba.setPointerCapture(e.pointerId); } catch (x) { /* nada */ }
+      set(fromEvent(e)); e.preventDefault();
+    });
+    ba.addEventListener("pointermove", function (e) { if (dragging) set(fromEvent(e)); });
+    ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (t) {
+      ba.addEventListener(t, function () { dragging = false; ba.classList.remove("is-dragging"); });
+    });
+    if (r) r.addEventListener("input", function () { ba.classList.add("was-used"); set(Number(r.value)); });
+    // Pista de movimiento la primera vez que se ve
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      var o = new IntersectionObserver(function (en) {
+        if (!en[0].isIntersecting || hinted) return; hinted = true; o.disconnect();
+        var keys = [50, 30, 70, 50], i = 0;
+        ba.classList.add("is-hinting");
+        (function step() { if (dragging || i >= keys.length) { ba.classList.remove("is-hinting"); return; } set(keys[i++]); setTimeout(step, 520); })();
+      }, { threshold: .6 });
+      o.observe(ba);
+    }
+    set(50);
   });
 
   /* ---------- Burbuja de WhatsApp ---------- */
