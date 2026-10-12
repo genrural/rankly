@@ -117,5 +117,7 @@ Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de
 
 - Datos de la sociedad en `COMPANY` (`tools/build.py`): DEYSCOM MOTORSPORT, S.L., CIF B09939471, Registro Mercantil de Madrid, hoja M-764451. Conviene completar tomo y folio con la nota simple del Registro.
 - La política de cancelación de experiencias y cursos está en `CANCEL_POLICY` (`tools/build.py`): **revisadla y ajustadla** a vuestras condiciones reales.
-- Aviso de cookies propio con **Google Consent Mode v2**. Para medir, rellenad `GTM_ID` (recomendado) o `GA4_ID` en `tools/build.py` y regenerad la web.
+- Aviso de cookies propio con **Google Consent Mode v2**, conectado a **GA4 (G-LLGMMVL7M1)**. Si más adelante usáis GTM, rellenad `GTM_ID` y vaciad `GA4_ID` en `tools/build.py`.
+- Verificación de **Google Search Console** incluida en todas las páginas (`GSC_VERIFICATION`). Tras publicar, enviad `https://deyscom.com/sitemap.xml` (incluye las imágenes).
+- Eventos enviados a GA4: `generate_lead` (formularios, con el nombre del formulario), `whatsapp_click`, `phone_click`, `email_click`, `begin_checkout`, `form_step` y `consent_update`. Marcad `generate_lead`, `whatsapp_click` y `phone_click` como **eventos clave** en GA4.
 - `.htaccess` (Apache) y `_headers` (Netlify/Cloudflare): HTTPS, caché, compresión y cabeceras de seguridad. En `.htaccess` hay un hueco para las **redirecciones 301 de la web antigua**.

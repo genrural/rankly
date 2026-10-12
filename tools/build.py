@@ -20,7 +20,8 @@ ADDRESS = "C/ Canal de Isabel II, 2 · Nave 3 · 28180 Torrelaguna (Madrid)"
 VERSION = "3"
 # Etiquetas de medición. Rellena uno de los dos (GTM recomendado). Con ambos vacíos no se carga nada de Google.
 GTM_ID = ""   # p. ej. "GTM-XXXXXXX"
-GA4_ID = ""   # p. ej. "G-XXXXXXXXXX" (solo si no usáis GTM)
+GA4_ID = "G-LLGMMVL7M1"   # Google Analytics 4 · flujo deyscom.com
+GSC_VERIFICATION = "_x_mE5JlzHMblp_mzIOxFVX8XV2_VuzrmZg7E8Tc5Ks"   # Google Search Console
 TODAY = date.today().isoformat()
 
 # Fotos optimizadas (tools/images.json se genera al procesar las fotos: alt, ancho y alto)
@@ -237,6 +238,7 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 <meta name="description" content="{escape(desc)}">
 {f'<meta name="keywords" content="{escape(keywords)}">' if keywords else ''}
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="google-site-verification" content="{GSC_VERIFICATION}">
 <meta name="author" content="Deyscom Motorsport">
 <meta name="geo.region" content="ES-MD">
 <meta name="geo.placename" content="Torrelaguna, Madrid">
@@ -244,6 +246,7 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 <meta name="ICBM" content="40.8277, -3.5381">
 <link rel="canonical" href="{canonical}">
 <link rel="alternate" hreflang="es-ES" href="{canonical}">
+<link rel="alternate" hreflang="x-default" href="{canonical}">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
@@ -291,7 +294,8 @@ def consent_head():
                 "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
                 f"j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{GTM_ID}');</script>")
     elif GA4_ID:
-        tags = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
+        tags = ('<link rel="preconnect" href="https://www.googletagmanager.com">'
+                f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
                 f"<script>window.DM_USE_GTAG=true;gtag('js',new Date());gtag('config','{GA4_ID}');</script>")
     return f"<script>{js}</script>{tags}"
 
@@ -2296,10 +2300,16 @@ def main():
         (ROOT / f"{name}.html").write_text(html, encoding="utf-8")
     prio = {"index": "1.0", "ds-copilot-course": "0.9", "experiencias": "0.9", "competicion": "0.8", "restomod": "0.8", "pintura": "0.8",
             "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8", "blog": "0.7"}
+    def imgs_of(html):
+        found = []
+        for name in dict.fromkeys(re.findall(r'assets/img/(?:fotos|productos)/([a-z0-9-]+?)(?:-800|-600)?\.(?:jpg|webp)', html)):
+            folder = "productos" if (ROOT / f"assets/img/productos/{name}.jpg").exists() else "fotos"
+            found.append(f"<image:image><image:loc>{SITE}/assets/img/{folder}/{name}.jpg</image:loc></image:image>")
+        return "".join(found[:20])
     urls = "".join(
-        f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority></url>\n"
+        f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
         for n in pages if n not in ("404", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
-    (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
+    (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))
 
