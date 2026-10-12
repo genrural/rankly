@@ -108,6 +108,7 @@ NAV = [
     ("banco-de-potencia.html", "Banco de potencia"),
     ("experiencias.html", "Experiencias"),
     ("cursos.html", "Cursos"),
+    ("blog.html", "Blog"),
 ]
 FOOTER_NAV = NAV + [("tienda.html", "Tienda"), ("nosotros.html", "Quiénes somos"), ("contacto.html", "Contacto")]
 
@@ -150,6 +151,10 @@ ORG_LD = {
     "address": {"@type": "PostalAddress", "streetAddress": "C/ Canal de Isabel II, 2, Nave 3", "postalCode": "28180",
                 "addressLocality": "Torrelaguna", "addressRegion": "Madrid", "addressCountry": "ES"},
     "areaServed": "ES",
+    "founder": {"@type": "Person", "name": "Néstor Aguado", "url": SITE + "/nosotros.html#nestor-aguado"},
+    "employee": [{"@type": "Person", "name": "Héctor Guzmán", "jobTitle": "Marketing", "url": SITE + "/nosotros.html#hector-guzman"}],
+    "sponsor": [{"@type": "Organization", "name": n} for n in ("EBC Frenos", "HEL Performance", "Mishimoto", "King Elements")],
+    "knowsAbout": ["Preparación de coches de rally", "Restomod", "Pintura de automóviles", "Banco de potencia", "Formación de copilotos de rally"],
     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
                                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                                    "opens": "07:00", "closes": "15:00"}],
@@ -174,7 +179,38 @@ def breadcrumbs_ld(slug, name, parent=None):
 PAGES_META = {}  # slug -> (title, desc) para el sitemap
 
 
+
+# Títulos (≤ 65 car.) y descripciones (120-160 car.) optimizados para buscadores
+META = {
+    "index": ("Deyscom Motorsport · Taller de competición en Madrid", "Taller motorsport en Torrelaguna (Madrid): coches de competición, restomod, pintura, banco de potencia, experiencias de pilotaje y curso de copiloto."),
+    "competicion": ("Preparación de coches de competición en Madrid | Deyscom", "Preparamos coches de rally, slalom y circuito en Madrid: jaulas de seguridad, set-up, asistencia en carrera y alquiler de coches de competición."),
+    "restomod": ("Restomod y restauración de clásicos en Madrid | Deyscom", "Restomod y restauración de clásicos y 4x4 en Madrid: chasis, mecánica moderna, frenos, interior y pintura. Proyectos por fases hechos a mano."),
+    "pintura": ("Pintura de coches y decoraciones racing en Madrid | Deyscom", "Pintura en cabina, chapa, chasis, colores especiales y decoraciones de competición en Torrelaguna (Madrid). Acabados de exposición."),
+    "banco-de-potencia": ("Banco de potencia en Madrid: mide CV y par | Deyscom", "Banco de potencia en Torrelaguna (Madrid): mide los CV y el par reales de tu coche, diagnostica pérdidas y compara antes y después de modificar."),
+    "experiencias": ("Experiencias de pilotaje: circuito, rally y slalom | Deyscom", "DS Pilot Weekend: vive la competición en el Circuito del Jarama, en un rally federado o en slalom con nuestro Peugeot 206 o BMW E36."),
+    "ds-pilot-weekend-circuit": ("DS Pilot Weekend Circuit · Piloto en el Jarama | Deyscom", "Un fin de semana como piloto en el Circuito del Jarama: coche de competición, briefing, tandas en pista y equipo Deyscom. Reserva tu plaza."),
+    "ds-pilot-weekend-rally": ("DS Pilot Weekend Rally · Corre un rally federado | Deyscom", "Corre un rally federado con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Coche, asistencia y equipo Deyscom incluidos."),
+    "ds-pilot-weekend-slalom": ("DS Pilot Weekend Slalom · Experiencia de slalom | Deyscom", "Experiencia de slalom con el Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Conos, cronómetro y consejos del equipo Deyscom."),
+    "cursos": ("Cursos de motorsport y curso de copiloto | Deyscom", "Cursos de Deyscom Motorsport: DS Copilot Course, curso de copiloto de rally con certificación, teoría y práctica en tramo cerrado."),
+    "ds-copilot-course": ("Curso de copiloto de rally certificado · DS Copilot Course", "Curso de copiloto de rally de fin de semana: teoría y práctica en tramo cerrado en Guadalajara, profesor y profesora, certificación y diploma."),
+    "nosotros": ("Quiénes somos · Deyscom Motorsport, Torrelaguna", "Conoce a Deyscom Motorsport: Néstor Aguado, Héctor Guzmán y el equipo del taller de competición, restomod y pintura de Torrelaguna (Madrid)."),
+    "blog": ("Blog de motorsport: rally, copilotos y técnica | Deyscom", "Guías y experiencia real del taller: cómo empezar en los rallies, qué hace un copiloto, cómo leer el banco de potencia y qué es un restomod."),
+    "blog-como-empezar-en-los-rallies": ("Cómo empezar en los rallies: licencia, coche y presupuesto", "Guía para correr tu primer rally en España: licencia federativa, qué coche elegir, equipamiento obligatorio, copiloto y presupuesto."),
+    "blog-que-hace-un-copiloto-de-rally": ("Qué hace un copiloto de rally: notas y controles horarios", "El trabajo del copiloto de rally: cómo se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad."),
+    "blog-banco-de-potencia-como-leer-la-curva": ("Banco de potencia: cómo leer la curva de potencia y par", "Qué mide un banco de potencia, potencia en rueda frente a motor, la relación entre par y potencia y cómo comparar antes y después."),
+    "blog-que-es-un-restomod": ("Qué es un restomod y cómo plantearlo por fases", "Qué es un restomod, en qué se diferencia de una restauración y cómo plantearlo por fases: diagnóstico, mecánica, ITV y presupuesto."),
+    "camiseta-edicion-especial-el-molar-2026": ("Camiseta Edición Especial El Molar 2026 | Deyscom", "Edición limitada que celebra nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026, con nuestros patrocinadores."),
+    "camiseta-deyscom": ("Camiseta negra Deyscom Motorsport · Tienda oficial", "Camiseta oficial negra de Deyscom Motorsport con logo pequeño en el pecho y logo grande en la espalda. Envío o recogida en el taller."),
+    "sudadera-capucha-deyscom": ("Sudadera con capucha Deyscom Motorsport · Tienda", "Sudadera con capucha negra de Deyscom Motorsport con bolsillo canguro, logo en el pecho y logo grande en la espalda. Envío a toda España."),
+    "chaqueta-deyscom": ("Chaqueta negra Deyscom Motorsport · Tienda oficial", "Chaqueta negra de equipo Deyscom Motorsport con cremallera, logo pequeño arriba a la derecha y logo grande en la espalda."),
+    "gorra-deyscom": ("Gorra negra Deyscom Motorsport · Tienda oficial", "Gorra negra Deyscom Motorsport de seis paneles con logo bordado, visera curva y cierre ajustable. Envío o recogida en el taller."),
+    "pegatinas-deyscom": ("Pegatinas Deyscom Motorsport · Tienda oficial", "Pack de pegatinas de vinilo Deyscom Motorsport para el coche, el casco o el taller. Resistentes al agua y al sol. Envío a toda España."),
+    "tienda": ("Tienda Deyscom Motorsport · Merchandising y coches", "Merchandising oficial de Deyscom Motorsport, edición especial El Molar 2026 y coches y piezas en venta conectados con nuestro Wallapop."),
+    "contacto": ("Contacto · Deyscom Motorsport, Torrelaguna (Madrid)", "Contacta con Deyscom Motorsport: (+34) 615 97 22 33, info@deyscom.com. C/ Canal de Isabel II, 2 Nave 3, Torrelaguna. L-V de 07:00 a 15:00."),
+}
+
 def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
+    title, desc = META.get(slug, (title, desc))
     PAGES_META[slug] = (title, desc)
     canonical = f"{SITE}/" + ("" if slug == "index" else f"{slug}.html")
     og = f"{SITE}/assets/img/og-deyscom-motorsport.jpg" if image == "og" else img_url(image)
@@ -227,7 +263,7 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 
 def header(slug):
     links = "".join(
-        f'<a class="nav__link" href="{h}"{" aria-current=\"page\"" if h == slug + ".html" else ""}>'
+        f'<a class="nav__link" href="{h}"{" aria-current=\"page\"" if h == slug + ".html" or (h == "blog.html" and slug.startswith("blog-")) else ""}>'
         f'<span class="nav__num">{i:02d}</span>{t}</a>'
         for i, (h, t) in enumerate(NAV, 1)
     )
@@ -252,7 +288,7 @@ def header(slug):
     <nav class="nav" id="nav" aria-label="Principal">{links}</nav>
     <div class="header__cta">
       <a class="btn btn--icon-sm header__shop" href="tienda.html" aria-label="Tienda">{I['bag']}</a>
-      <a class="btn btn--primary-sm" href="contacto.html#presupuesto">Pide presupuesto</a>
+      <a class="btn btn--primary-sm" href="contacto.html#presupuesto">Presupuesto</a>
       <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
   </div>
@@ -266,7 +302,7 @@ def footer():
     col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [
         ("experiencias.html", "Experiencias"), ("ds-pilot-weekend-circuit.html", "DS Pilot Weekend · Circuit"),
         ("ds-pilot-weekend-rally.html", "DS Pilot Weekend · Rally"), ("ds-pilot-weekend-slalom.html", "DS Pilot Weekend · Slalom"),
-        ("cursos.html", "Cursos"), ("ds-copilot-course.html", "DS Copilot Course"), ("tienda.html", "Tienda")])
+        ("cursos.html", "Cursos"), ("ds-copilot-course.html", "DS Copilot Course"), ("tienda.html", "Tienda"), ("blog.html", "Blog")])
     return f"""</main>
 <footer class="footer">
   <div class="container">
@@ -568,7 +604,7 @@ SERVICES = {
         gallery=[("baquet-sparco-arneses-jaula-competicion", "Baquet y arneses"), ("soldadura-jaula-seguridad-competicion", "Soldadura de jaula"),
                  ("plano-jaula-seguridad-diseno-competicion", "Diseño de la jaula"), ("volante-interior-coche-competicion", "Puesto de pilotaje"),
                  ("extintor-baquet-sparco-coche-competicion", "Seguridad homologada"), ("jaula-seguridad-soldada-preparacion-rally", "Jaula soldada"),
-                 ("renault-clio-competicion-taller-deyscom", "Renault Clio de competición"), ("peugeot-206-rally-deyscom-motorsport-asistencia", "Parque de asistencia")],
+                 ("renault-clio-competicion-taller-deyscom", "Renault Clio de competición"), ("mecanicos-deyscom-box-resistencia", "Box en carrera de resistencia")],
         word="RALLY",
         faq=[
             ("¿Preparáis coches para cualquier campeonato?", "Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."),
@@ -650,7 +686,7 @@ SERVICES = {
         steps=[("Valoración", "Vemos el coche y el acabado que buscas."), ("Preparación", "Desmontaje, chapa, aparejo y lijado."),
                ("Pintura", "Color, barniz y secado en cabina."), ("Acabado", "Pulido, montaje y control de calidad.")],
         gallery=[("cabina-pintura-subchasis-rosa-deyscom", "Subchasis en cabina"), ("nissan-patrol-restaurado-pintura-verde", "Nissan Patrol terminado"),
-                 ("piezas-pintadas-rosa-cabina-pintura", "Piezas en rosa"), ("peugeot-206-decoracion-deyscom-sport", "Decoración DS"),
+                 ("piezas-pintadas-rosa-cabina-pintura", "Piezas en rosa"), ("bmw-e36-rotulado-deyscom-motorsport", "Rotulación Deyscom"),
                  ("bmw-e36-competicion-decoracion-rosa", "Decoración de competición")],
         word="COLOR",
         faq=[
@@ -767,10 +803,10 @@ def service_page(slug):
 
 # ------------------------------------------------------------------ experiencias y cursos
 CARS = {
-    "Peugeot 206 1.6 XS": dict(power="118 CV", img="peugeot-206-decoracion-deyscom-sport",
+    "Peugeot 206 1.6 XS": dict(power="118 CV", img="peugeot-206-1-6-xs-rally-deyscom-motorsport",
                                specs=["1.6 gasolina", "118 CV", "Tracción delantera"],
                                desc="Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza."),
-    "BMW E36": dict(power="135 CV", img="bmw-e36-rally-tierra-deyscom-motorsport",
+    "BMW E36": dict(power="135 CV", img="bmw-e36-rally-el-molar-deyscom",
                     specs=["135 CV", "Propulsión trasera", "Preparado Deyscom"],
                     desc="Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos."),
 }
@@ -781,7 +817,7 @@ EXPERIENCES = {
         title="DS Pilot Weekend Circuit · Fin de semana de piloto en el Circuito del Jarama | Deyscom Motorsport",
         desc="Vive un fin de semana como piloto en el Circuito del Jarama con Deyscom Motorsport: coche de competición, equipo técnico, briefing y tandas en pista. Reserva tu plaza.",
         keywords="experiencia piloto Jarama, conducir coche competición circuito, regalo experiencia circuito Madrid, curso pilotaje Jarama, DS Pilot Weekend",
-        hero="coche-circuito-dorsal-35-taller-deyscom", card="bmw-e36-competicion-taller-deyscom-motorsport",
+        hero="bmw-e36-atardecer-circuito-competicion", card="bmw-e36-competicion-circuito-curva",
         lines=["Piloto", "<span class='pink'>por un</span>", "<span class='outline'>fin de semana</span>"],
         lead="Un fin de semana completo viviendo el Circuito del Jarama como un piloto más: paddock, briefing, coche de competición y pista.",
         teaser="Un fin de semana como piloto en el Circuito del Jarama.",
@@ -806,7 +842,7 @@ EXPERIENCES = {
         title="DS Pilot Weekend Rally · Corre un rally federado con Peugeot 206 o BMW E36 | Deyscom Motorsport",
         desc="Apúntate a un rally federado con Deyscom Motorsport y conduce nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Coche, asistencia y equipo incluidos.",
         keywords="correr un rally, alquiler coche rally, rally federado experiencia, Peugeot 206 rally alquiler, BMW E36 rally, DS Pilot Weekend",
-        hero="bmw-e36-rally-tierra-deyscom-motorsport", card="peugeot-206-rally-deyscom-motorsport-asistencia",
+        hero="peugeot-206-rally-tierra-deyscom-motorsport", card="peugeot-206-rally-el-molar-tramo",
         lines=["Tu primer", "<span class='pink'>rally</span>", "<span class='outline'>de verdad</span>"],
         lead="Apúntate a un rally federado y vive la experiencia completa al volante de nuestro Peugeot 206 1.6 XS de 118 CV o del BMW E36 de 135 CV.",
         teaser="Corre un rally federado con nuestro 206 o nuestro BMW E36.",
@@ -831,7 +867,7 @@ EXPERIENCES = {
         title="DS Pilot Weekend Slalom · Experiencia de slalom con Peugeot 206 o BMW E36 | Deyscom Motorsport",
         desc="Vive una experiencia única de slalom con Deyscom Motorsport al volante del Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Precisión, conos y cronómetro.",
         keywords="experiencia slalom, slalom coche Madrid, alquiler coche slalom, conducir Peugeot 206 competición, BMW E36 slalom, DS Pilot Weekend",
-        hero="bmw-e36-competicion-decoracion-rosa", card="renault-clio-rs-competicion-slalom",
+        hero="peugeot-206-rally-comunidad-madrid-montana", card="bmw-e36-rotulado-deyscom-motorsport",
         lines=["Precisión", "<span class='pink'>contra el</span>", "<span class='outline'>cronómetro</span>"],
         lead="Conos, cronómetro y un coche de competición. Vive una experiencia única de slalom con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV.",
         teaser="Conos, cronómetro y una experiencia única al volante.",
@@ -1013,14 +1049,14 @@ def experiencias():
             ("¿Qué coches se usan?", "En rally y slalom, nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. En circuito, un coche de competición preparado por Deyscom.")]
     html = head("Experiencias de pilotaje DS Pilot Weekend · Circuito, Rally y Slalom | Deyscom Motorsport",
                 "Experiencias de pilotaje en Madrid: DS Pilot Weekend Circuit en el Jarama, Rally federado y Slalom con nuestro Peugeot 206 o BMW E36. Vive la competición desde dentro.",
-                "experiencias", "las experiencias DS Pilot Weekend", "bmw-e36-peugeot-206-coches-competicion-deyscom",
+                "experiencias", "las experiencias DS Pilot Weekend", "peugeot-206-rally-polvo-contraluz-deyscom",
                 [breadcrumbs_ld("experiencias", "Experiencias"), faq_ld(faqs),
                  {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
                      {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}.html", "name": x["name"]} for i, (s, x) in enumerate(EXPERIENCES.items())]}],
                 "experiencias pilotaje Madrid, conducir coche de competición, regalo experiencia motor, experiencia rally, experiencia circuito Jarama, slalom") + header("experiencias")
     html += hero("Experiencias · DS Pilot Weekend", ["Vive la", "<span class='pink'>competición</span>", "<span class='outline'>desde dentro</span>"],
                  "Tres formas de sentirte piloto por un fin de semana: circuito, rally federado o slalom. Coche de competición, equipo y asistencia Deyscom.",
-                 "DS", "bmw-e36-peugeot-206-coches-competicion-deyscom", ["Circuit", "Rally", "Slalom"], "las experiencias DS Pilot Weekend", ("Elige tu experiencia", "#experiencias"))
+                 "DS", "bmw-e36-rally-tierra-contraluz-deyscom", ["Circuit", "Rally", "Slalom"], "las experiencias DS Pilot Weekend", ("Elige tu experiencia", "#experiencias"))
     html += ticker(["DS Pilot Weekend", "Circuit", "Rally", "Slalom", "Jarama", "Peugeot 206", "BMW E36"])
     html += f"""<section class="section" id="experiencias">
   <div class="container">
@@ -1143,7 +1179,7 @@ def course_page():
                                           ("Te apasiona el motor", "Y buscas vivir un rally desde dentro, con certificación incluida.")])}</div>
         <a class="btn mt-2" href="#reserva">{I['ticket']} Comprar mi plaza</a>
       </div>
-      <div class="split__media reveal" data-delay="1">{art("COPILOT", "50%", "35%", "bmw-e36-rally-tierra-deyscom-motorsport", "Tramo")}<span class="split__tag">Tramo cerrado · Guadalajara</span></div>
+      <div class="split__media reveal" data-delay="1">{art("COPILOT", "50%", "35%", "copiloto-libro-de-ruta-rally-deyscom", "Copiloto")}<span class="split__tag">Tramo cerrado · Guadalajara</span></div>
     </div>
   </div>
 </section>
@@ -1166,7 +1202,7 @@ def cursos():
                 "cursos motorsport, curso copiloto rally, formación rally Madrid, curso copiloto certificado") + header("cursos")
     html += hero("Cursos Deyscom", ["Aprende", "<span class='pink'>de quien</span>", "<span class='outline'>compite</span>"],
                  "Formación práctica y certificada para dar el salto a la competición. Empezamos con nuestro curso estrella: el DS Copilot Course.",
-                 "CU", "peugeot-206-rally-deyscom-motorsport-asistencia", ["Certificación + diploma", "Teoría + práctica", "Plazas limitadas"], "los cursos",
+                 "CU", "copiloto-notas-rally-coche-competicion", ["Certificación + diploma", "Teoría + práctica", "Plazas limitadas"], "los cursos",
                  ("Ver DS Copilot Course", "ds-copilot-course.html"))
     html += course_promo()
     html += f"""<section class="section">
@@ -1199,62 +1235,138 @@ def cursos():
 
 
 # ------------------------------------------------------------------ merch
-def mock_svg(kind):
-    """Mockups vectoriales con el logotipo real. Colores: --garment, --logo-a, --logo-b, --brim."""
-    def lg(x, y, w):
-        h = w * 97 / 301
-        return f'<svg x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}" viewBox="{LOGO_VB}">{LOGO_PATHS}</svg>'
-    if kind == "camiseta":
-        return f"""<svg class="mock" viewBox="0 0 400 420" role="img" aria-label="Camiseta Deyscom Motorsport">
-  <path d="M120 30 L160 18 Q200 48 240 18 L280 30 L370 80 L340 150 L300 132 L300 400 L100 400 L100 132 L60 150 L30 80 Z" fill="var(--garment,#0b0b0d)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-  <path d="M160 18 Q200 48 240 18" fill="none" stroke="rgba(127,127,127,.4)" stroke-width="5"/>
-  {lg(200, 170, 150)}
-</svg>"""
+def _lg(x, y, w, extra=""):
+    h = w * 97 / 301
+    return f'<svg x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}" viewBox="{LOGO_VB}"{extra}>{LOGO_PATHS}</svg>'
+
+
+TEE = "M120 30 L160 18 Q200 48 240 18 L280 30 L370 80 L340 150 L300 132 L300 400 L100 400 L100 132 L60 150 L30 80 Z"
+LONG = "M128 34 L162 20 Q200 46 238 20 L272 34 L338 74 L384 360 L346 370 L308 170 L306 404 L94 404 L92 170 L54 370 L16 360 L62 74 Z"
+FONT = "Jost, Futura, Arial, sans-serif"
+
+
+def _txt(x, y, t, size, fill, weight=800, anchor="middle", spacing=0, italic=True, rotate=None, extra=""):
+    tr = f' transform="rotate({rotate} {x} {y})"' if rotate is not None else ""
+    return (f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" '
+            f'{"font-style=\"italic\" " if italic else ""}text-anchor="{anchor}" letter-spacing="{spacing}" fill="{fill}"{tr}{extra}>{t}</text>')
+
+
+def mock_svg(kind, view="front"):
+    """Mockups vectoriales con el logotipo real. kind: camiseta, chaqueta, sudadera, gorra, pegatinas, especial."""
+    lab = {"front": "delante", "back": "detrás"}[view]
+    cls = f"mock mock--{view}"
+    if kind in ("camiseta", "especial"):
+        name = "Camiseta" if kind == "camiseta" else "Camiseta Edición Especial El Molar 2026"
+        body = f'<path d="{TEE}" fill="#0b0b0d" stroke="rgba(255,255,255,.18)" stroke-width="2"/>'
+        if kind == "especial":
+            body = (f'<defs><clipPath id="tee-{view}"><path d="{TEE}"/></clipPath></defs>'
+                    f'<path d="{TEE}" fill="#ff66c4"/>'
+                    f'<g clip-path="url(#tee-{view})"><rect x="0" y="0" width="400" height="232" fill="#151518"/>'
+                    f'<rect x="0" y="232" width="400" height="12" fill="#0b0b0d"/>'
+                    f'<path d="M0 300 L400 270 L400 284 L0 314 Z" fill="rgba(0,0,0,.12)"/></g>'
+                    f'<path d="{TEE}" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2"/>')
+        neck = '<path d="M160 18 Q200 48 240 18" fill="none" stroke="rgba(127,127,127,.45)" stroke-width="5"/>'
+        if view == "back":
+            neck = '<path d="M160 18 Q200 30 240 18" fill="none" stroke="rgba(127,127,127,.45)" stroke-width="5"/>'
+        art = ""
+        if kind == "camiseta":
+            art = _lg(258, 92, 62) if view == "front" else _lg(200, 170, 210)
+        elif view == "front":
+            art = (_lg(258, 92, 62) + _txt(140, 98, "EBC FRENOS", 11, "#fff", spacing=.5) + _txt(140, 112, "HEL", 12, "#ff3b3b")
+                   + _txt(200, 168, "KING ELEMENTS", 14, "#fff", 900, spacing=1) + _txt(200, 186, "MISHIMOTO", 12, "#ff9a3d", 900, spacing=1.5)
+                   + _txt(200, 214, "II RALLYE COMUNIDAD DE MADRID · EL MOLAR 2026", 7.4, "#ff66c4", 700, spacing=.8)
+                   + _txt(72, 106, "EBC", 10, "#fff", rotate=-58) + _txt(330, 104, "HEL", 10, "#ff3b3b", rotate=58)
+                   + _txt(150, 352, "N. Aguado", 17, "#0b0b0d", 600, spacing=0) + _txt(250, 374, "H. Guzmán", 17, "#0b0b0d", 600))
+        else:
+            art = (_txt(200, 66, "PRIMER RALLY · FIRST RALLY", 11, "#ff66c4", 800, spacing=2)
+                   + _lg(200, 120, 190)
+                   + _txt(200, 196, "II RALLYE COMUNIDAD DE MADRID", 12, "#fff", 800, spacing=1)
+                   + _txt(200, 214, "EL MOLAR · 2026", 12, "#ff66c4", 900, spacing=2)
+                   + _txt(200, 300, "NÉSTOR AGUADO", 18, "#0b0b0d", 900, spacing=1) + _txt(200, 322, "HÉCTOR GUZMÁN", 18, "#0b0b0d", 900, spacing=1)
+                   + _txt(200, 360, "EBC FRENOS · HEL · MISHIMOTO · KING ELEMENTS", 8, "#0b0b0d", 800, spacing=1))
+        return f'<svg class="{cls}" viewBox="0 0 400 420" role="img" aria-label="{name} Deyscom Motorsport ({lab})">{body}{neck}{art}</svg>'
+    if kind in ("chaqueta", "sudadera"):
+        name = "Chaqueta" if kind == "chaqueta" else "Sudadera con capucha"
+        body = f'<path d="{LONG}" fill="#0b0b0d" stroke="rgba(255,255,255,.18)" stroke-width="2"/>'
+        cuffs = '<path d="M54 370 L16 360 L20 340 L58 350 Z M346 370 L384 360 L380 340 L342 350 Z" fill="#141417"/><rect x="94" y="388" width="212" height="16" fill="#141417"/>'
+        extra = ""
+        if kind == "chaqueta":
+            if view == "front":
+                extra = ('<path d="M162 20 L200 60 L238 20 L238 6 Q200 30 162 6 Z" fill="#141417" stroke="rgba(255,255,255,.2)"/>'
+                         '<line x1="200" y1="60" x2="200" y2="404" stroke="rgba(255,255,255,.35)" stroke-width="2.5" stroke-dasharray="3 3"/>'
+                         '<path d="M118 280 L170 274 M282 274 L230 280" stroke="rgba(255,255,255,.25)" stroke-width="2"/>' + _lg(262, 96, 58))
+            else:
+                extra = '<path d="M162 20 Q200 36 238 20 L238 6 Q200 22 162 6 Z" fill="#141417"/>' + _lg(200, 180, 200)
+        else:
+            if view == "front":
+                extra = ('<path d="M150 26 Q200 -20 250 26 Q236 70 200 74 Q164 70 150 26 Z" fill="#141417" stroke="rgba(255,255,255,.18)"/>'
+                         '<line x1="186" y1="72" x2="182" y2="130" stroke="#ddd" stroke-width="2"/><line x1="214" y1="72" x2="218" y2="130" stroke="#ddd" stroke-width="2"/>'
+                         '<path d="M130 300 L270 300 L286 372 L114 372 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2"/>' + _lg(262, 110, 58))
+            else:
+                extra = '<path d="M140 30 Q200 -40 260 30 Q244 96 200 100 Q156 96 140 30 Z" fill="#141417" stroke="rgba(255,255,255,.18)"/>' + _lg(200, 200, 200)
+        return f'<svg class="{cls}" viewBox="0 0 400 420" role="img" aria-label="{name} Deyscom Motorsport ({lab})">{body}{cuffs}{extra}</svg>'
     if kind == "gorra":
-        return f"""<svg class="mock" viewBox="0 0 400 320" role="img" aria-label="Gorra Deyscom Motorsport">
-  <path d="M70 200 Q60 70 200 60 Q340 70 330 200 Z" fill="var(--garment,#0b0b0d)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+        return f"""<svg class="{cls}" viewBox="0 0 400 320" role="img" aria-label="Gorra Deyscom Motorsport">
+  <path d="M70 200 Q60 70 200 60 Q340 70 330 200 Z" fill="#0b0b0d" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
   <path d="M200 60 L200 112 M135 72 Q120 140 125 200 M265 72 Q280 140 275 200" stroke="rgba(127,127,127,.25)" stroke-width="2" fill="none"/>
-  <circle cx="200" cy="62" r="7" fill="var(--garment,#0b0b0d)" stroke="rgba(127,127,127,.4)"/>
-  <path d="M60 200 Q200 180 340 200 Q380 215 370 245 Q200 215 30 245 Q20 215 60 200 Z" fill="var(--brim,#ff66c4)"/>
-  {lg(200, 148, 150)}
+  <circle cx="200" cy="62" r="7" fill="#0b0b0d" stroke="rgba(127,127,127,.4)"/>
+  <path d="M60 200 Q200 180 340 200 Q380 215 370 245 Q200 215 30 245 Q20 215 60 200 Z" fill="#141417" stroke="rgba(255,255,255,.18)"/>
+  {_lg(200, 148, 150)}
 </svg>"""
-    return f"""<svg class="mock" viewBox="0 0 400 360" role="img" aria-label="Pegatinas Deyscom Motorsport">
+    return f"""<svg class="{cls}" viewBox="0 0 400 360" role="img" aria-label="Pegatinas Deyscom Motorsport">
   <g transform="rotate(-8 200 140)">
     <rect x="40" y="70" width="320" height="130" rx="18" fill="#fff" filter="drop-shadow(0 10px 18px rgba(0,0,0,.5))"/>
     <rect x="52" y="82" width="296" height="106" rx="10" fill="var(--garment,#0b0b0d)"/>
-    {lg(200, 135, 240)}
+    {_lg(200, 135, 240)}
   </g>
   <g transform="rotate(9 130 280)" style="--logo-a:#000;--logo-b:#fff">
     <rect x="40" y="238" width="180" height="70" rx="12" fill="#ff66c4" filter="drop-shadow(0 8px 14px rgba(0,0,0,.5))"/>
-    {lg(130, 273, 140)}
+    {_lg(130, 273, 140)}
   </g>
   <g transform="rotate(-6 300 285)" style="--logo-a:#000;--logo-b:#ff66c4">
     <rect x="232" y="250" width="140" height="64" rx="12" fill="#fff" filter="drop-shadow(0 8px 14px rgba(0,0,0,.5))"/>
-    {lg(302, 282, 110)}
+    {_lg(302, 282, 110)}
   </g>
 </svg>"""
 
 
+SIZES = ["S", "M", "L", "XL", "XXL"]
 PRODUCTS = {
+    "camiseta-edicion-especial-el-molar-2026": dict(
+        kind="especial", name="Camiseta Edición Especial El Molar 2026", short="Edición especial", price=35, tag="Edición limitada",
+        desc="Edición especial para celebrar nuestro primer rally: el II Rallye Comunidad de Madrid – El Molar 2026, al que Néstor Aguado y Héctor Guzmán fueron juntos por primera vez. Diseño bicolor de inspiración racing con nuestros patrocinadores: EBC Frenos, HEL, Mishimoto y King Elements.",
+        colors=[("Negro / Rosa", "#151518", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
+        features=["Edición limitada · El Molar 2026", "Diseño bicolor negro y rosa Deyscom", "Patrocinadores: EBC Frenos, HEL, Mishimoto, King Elements", "Nombres de Néstor Aguado y Héctor Guzmán a la espalda"],
+    ),
     "camiseta-deyscom": dict(
         kind="camiseta", name="Camiseta Deyscom Motorsport", short="Camiseta", price=25, tag="Más vendido",
-        desc="La camiseta oficial del equipo. Algodón grueso, corte regular y el logo Deyscom Motorsport en el pecho. Para el paddock, el taller o el día a día.",
-        colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4"), ("Blanco", "#f2f2f4", "#000000", "#ff66c4"), ("Rosa", "#ff66c4", "#000000", "#ffffff")],
-        sizes=["S", "M", "L", "XL", "XXL"],
-        features=["100% algodón, gramaje alto", "Logo Deyscom Motorsport en el pecho", "Corte unisex regular", "Lavado a 30 °C del revés"],
+        desc="La camiseta oficial del equipo, en negro. Logo pequeño en el pecho y logo grande en la espalda, como la que llevamos en el taller y en el paddock.",
+        colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
+        features=["Color negro", "Logo pequeño en el pecho", "Logo grande en la espalda", "Corte unisex regular"],
+    ),
+    "sudadera-capucha-deyscom": dict(
+        kind="sudadera", name="Sudadera con capucha Deyscom Motorsport", short="Sudadera", price=45, tag="Nuevo",
+        desc="Sudadera con capucha negra con bolsillo canguro, logo pequeño en el pecho y logo grande en la espalda. Para las mañanas frías de tramo y las noches de taller.",
+        colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
+        features=["Color negro", "Capucha con cordones y bolsillo canguro", "Logo pequeño en el pecho", "Logo grande en la espalda"],
+    ),
+    "chaqueta-deyscom": dict(
+        kind="chaqueta", name="Chaqueta Deyscom Motorsport", short="Chaqueta", price=59, tag="Nuevo",
+        desc="Chaqueta negra de equipo con cremallera completa, logo pequeño arriba a la derecha y logo grande en la espalda. La que verás en nuestro box.",
+        colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
+        features=["Color negro", "Cremallera completa", "Logo pequeño arriba a la derecha", "Logo grande en la espalda"],
     ),
     "gorra-deyscom": dict(
         kind="gorra", name="Gorra Deyscom Motorsport", short="Gorra", price=22, tag="Paddock",
-        desc="Gorra de seis paneles con visera curva y logo bordado. Cierre ajustable para que te quede perfecta en pista y fuera de ella.",
-        colors=[("Negro / Rosa", "#0b0b0d", "#ffffff", "#ff66c4", "#ff66c4"), ("Negro total", "#0b0b0d", "#ffffff", "#ff66c4", "#0b0b0d"), ("Rosa / Negro", "#ff66c4", "#000000", "#ffffff", "#0b0b0d")],
-        sizes=["Talla única ajustable"],
-        features=["Logo bordado", "Visera curva", "Cierre trasero ajustable", "Talla única"],
+        desc="Gorra negra de seis paneles con visera curva y logo bordado. Cierre ajustable para que te quede perfecta en pista y fuera de ella.",
+        colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=["Talla única ajustable"], back=False,
+        features=["Color negro", "Logo bordado", "Visera curva", "Cierre trasero ajustable"],
     ),
     "pegatinas-deyscom": dict(
         kind="pegatinas", name="Pack de pegatinas Deyscom Motorsport", short="Pegatinas", price=6, tag="Pack",
         desc="Pack de pegatinas de vinilo con el logo Deyscom Motorsport: para el coche, el casco, la caja de herramientas o el portátil. Resistentes a la intemperie.",
         colors=[("Negro", "#000000", "#ffffff", "#ff66c4"), ("Blanco", "#ffffff", "#000000", "#ff66c4")],
-        sizes=["Pack 3 uds", "Pack 6 uds", "Pegatina grande parabrisas"],
+        sizes=["Pack 3 uds", "Pack 6 uds", "Pegatina grande parabrisas"], back=False,
         features=["Vinilo de exterior resistente al agua y UV", "Corte a contorno", "Varios tamaños en el pack", "Ideal para coche, casco y taller"],
     ),
 }
@@ -1266,7 +1378,7 @@ def color_style(c):
 
 
 def product_card(slug, p):
-    return f"""<a class="product reveal" href="{slug}.html">
+    return f"""<a class="product reveal{" product--special" if p['kind'] == 'especial' else ""}" href="{slug}.html">
   <div class="product__media" style="{color_style(p['colors'][0])}"><span class="product__tag">{p['tag']}</span>{mock_svg(p['kind'])}</div>
   <div class="product__body"><h3>{p['name']}</h3><span class="product__price">{p['price']} €</span></div>
   <span class="svc__go">Ver producto {I['arrow']}</span>
@@ -1276,11 +1388,11 @@ def product_card(slug, p):
 def tienda():
     html = head("Tienda Deyscom Motorsport · Coches en venta y merchandising oficial",
                 "Tienda Deyscom Motorsport: coches de competición, clásicos y piezas a la venta conectados con Wallapop, y merchandising oficial: camisetas, gorras y pegatinas.",
-                "tienda", "la tienda", "peugeot-206-decoracion-deyscom-sport", [breadcrumbs_ld("tienda", "Tienda")],
+                "tienda", "la tienda", "asistencia-deyscom-peugeot-206-rally", [breadcrumbs_ld("tienda", "Tienda")],
                 "comprar coche de rally, coches competición en venta, merchandising motorsport, camiseta Deyscom, gorra Deyscom") + header("tienda")
     html += hero("Tienda Deyscom", ["Llévate", "<span class='pink'>un trozo</span>", "<span class='outline'>de Deyscom</span>"],
                  "Coches y piezas a la venta, revisados por nuestro taller, y el merchandising oficial del equipo.", "05",
-                 "peugeot-206-decoracion-deyscom-sport", ["Coches y piezas", "Camisetas · Gorras · Pegatinas", "Envío o recogida en taller"], "la tienda",
+                 "bmw-e36-rally-tierra-contraluz-deyscom", ["Edición especial El Molar 2026", "Camisetas · Sudaderas · Chaquetas", "Envío o recogida en taller"], "la tienda",
                  ("Ver merchandising", "#merch"))
     html += ticker(["Coches", "Piezas", "Camisetas", "Gorras", "Pegatinas", "Wallapop"])
     html += f"""<section class="section section--ink" id="merch">
@@ -1343,6 +1455,7 @@ def tienda():
 def product_page(slug):
     p = PRODUCTS[slug]
     c0 = p["colors"][0]
+    single = len(p["colors"]) == 1
     swatches = "".join(
         f'<label class="swatch" title="{c[0]}"><input type="radio" name="color" value="{c[0]}" data-style="{color_style(c)}"{" checked" if i == 0 else ""} required>'
         f'<span style="background:{c[1]}"></span></label>'
@@ -1367,7 +1480,8 @@ def product_page(slug):
       <div class="pdp__gallery">
         <div class="pdp__stage" data-mock style="{color_style(c0)}">
           <span class="product__tag">{p['tag']}</span>
-          {mock_svg(p['kind'])}
+          {mock_svg(p['kind'])}{mock_svg(p['kind'], "back") if p.get("back") else ""}
+          {'<div class="pdp__views" role="group" aria-label="Vista"><button type="button" class="is-on" data-view="front">Delante</button><button type="button" data-view="back">Detrás</button></div>' if p.get("back") else ""}
         </div>
         <ul class="pdp__trust">
           <li>{I['truck']} Envío a toda España o recogida en taller</li>
@@ -1385,7 +1499,7 @@ def product_page(slug):
           <input type="hidden" name="producto" value="{escape(p['name'])}">
           <input type="hidden" name="precio_unidad" value="{p['price']}">
           <input type="hidden" name="total" value="{p['price']}" data-total-input>
-          <fieldset class="pills mt-2"><legend class="field"><span class="pdp__lbl">Color: <b data-color-name>{c0[0]}</b></span></legend><div class="swatches">{swatches}</div></fieldset>
+          {f'<input type="hidden" name="color" value="{c0[0]}"><p class="pdp__lbl mt-2">Color: <b>{c0[0]}</b></p>' if single else f'<fieldset class="pills mt-2"><legend class="field"><span class="pdp__lbl">Color: <b data-color-name>{c0[0]}</b></span></legend><div class="swatches">{swatches}</div></fieldset>'}
           <fieldset class="pills mt-2"><legend class="field"><span class="pdp__lbl">{"Talla" if p["kind"] != "pegatinas" else "Formato"}</span></legend>{sizes}</fieldset>
           <div class="pdp__row mt-2">
             <div class="qty" aria-label="Cantidad">
@@ -1434,10 +1548,10 @@ def product_page(slug):
 def home():
     svc = [
         ("competicion.html", "01", "Competición", "Preparación, seguridad, asistencia y alquiler de coches de rally, slalom y circuito.", "RACE", "mitsubishi-lancer-evo-rally-taller-deyscom", "60%"),
-        ("restomod.html", "02", "Restomod", "Clásicos y 4x4 con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "land-rover-defender-restomod-deyscom", "30%"),
+        ("restomod.html", "02", "Restomod", "Clásicos y 4x4 con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "todoterreno-chasis-restauracion-completa", "30%"),
         ("pintura.html", "03", "Pintura", "Cabina de pintura, chapa, chasis, colores especiales y decoraciones racing.", "PAINT", "cabina-pintura-chasis-rosa", "60%"),
         ("banco-de-potencia.html", "04", "Banco de potencia", "Mide los CV y el par reales de tu coche y compara antes y después.", "DYNO", "banco-de-potencia-medicion-deyscom", "40%"),
-        ("tienda.html", "05", "Tienda", "Coches y piezas a la venta, y merchandising oficial Deyscom.", "SHOP", "peugeot-206-decoracion-deyscom-sport", "70%"),
+        ("tienda.html", "05", "Tienda", "Coches y piezas a la venta, y merchandising oficial Deyscom.", "SHOP", "asistencia-deyscom-peugeot-206-rally", "50%"),
     ]
     svc_html = "".join(
         f'<a class="svc reveal" data-delay="{i % 3}" href="{h}"><div class="svc__media">{art(w, x, "30%", img, t, "(max-width: 980px) 100vw, 50vw")}</div>'
@@ -1461,12 +1575,12 @@ def home():
     ]
     html = head("Deyscom Motorsport · Taller de competición, restomod, pintura y banco de potencia en Madrid",
                 "Taller motorsport en Torrelaguna (Madrid): preparación de coches de competición, restomod, pintura, banco de potencia, experiencias DS Pilot Weekend y curso de copiloto DS Copilot Course.",
-                "index", "vuestros servicios", "bmw-e36-rally-tierra-deyscom-motorsport",
+                "index", "vuestros servicios", "peugeot-206-rally-polvo-contraluz-deyscom",
                 [{"@context": "https://schema.org", "@type": "WebSite", "name": "Deyscom Motorsport", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
                 "taller competición Madrid, preparación rally Madrid, restomod Madrid, banco de potencia Madrid, curso copiloto rally, experiencia pilotaje, Torrelaguna") + header("index")
     html += hero("Torrelaguna · Madrid · Motorsport", ["Hechos", "para <span class='pink'>correr.</span>", "<span class='outline'>Pensados para ti.</span>"],
                  "Coches de competición, restomods, pintura, banco de potencia, experiencias de pilotaje y cursos. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
-                 "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
+                 "", "peugeot-206-rally-polvo-contraluz-deyscom", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
     html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "DS Pilot Weekend", "DS Copilot Course"])
     html += course_promo()
     html += f"""
@@ -1513,7 +1627,7 @@ def home():
            "<p class='lead'>Deyscom Motorsport nace de una idea sencilla: hacer los coches que a nosotros nos gustaría conducir. Competimos, restauramos, pintamos y preparamos con la misma obsesión por el detalle.</p>"
            "<p class='muted'>Desde nuestra nave en Torrelaguna trabajamos para pilotos, coleccionistas y apasionados de toda España. Cada proyecto se vive, se documenta y se comparte.</p>"
            f"<div class='btn-row mt-2'><a class='btn btn--ghost' href='nosotros.html'>Conócenos {I['arrow']}</a></div>",
-           "TEAM", "bmw-e36-peugeot-206-coches-competicion-deyscom", "Equipo Deyscom", False, "65%")}
+           "TEAM", "equipo-deyscom-motorsport-atardecer", "Equipo Deyscom", False, "65%")}
   </div>
 </section>
 
@@ -1571,6 +1685,10 @@ def home():
   </div>
 </section>
 
+{molar_block()}
+
+{sponsors_strip()}
+
 {social_wall()}
 
 <section class="section section--ink">
@@ -1616,13 +1734,16 @@ def nosotros():
     ])}
   </div>
 </section>
+{team_block()}
+{molar_block()}
+{sponsors_strip("Patrocinadores")}
 <section class="section">
   <div class="container">
     {section_head("El taller", "Nuestra <span class='outline'>casa</span>", "Nave 3, Canal de Isabel II, Torrelaguna. Ven a vernos (mejor con cita previa).")}
     {gallery([("nave-taller-deyscom-coches-competicion", "La nave"), ("soldadura-chispas-taller-deyscom", "Manos a la obra"),
               ("elevadores-taller-deyscom-torrelaguna", "Zona de elevadores"), ("mazda-mx5-preparacion-taller-deyscom", "Coches de cliente"),
-              ("jeep-wrangler-elevador-taller-deyscom", "4x4 en el elevador"), ("bmw-e36-preparacion-competicion-taller", "Preparación"),
-              ("coche-circuito-dorsal-35-taller-deyscom", "Circuito"), ("bmw-clasicos-restomod-taller-deyscom", "Clásicos")], "DEYSCOM")}
+              ("jeep-wrangler-elevador-taller-deyscom", "4x4 en el elevador"), ("mecanicos-deyscom-box-resistencia", "En el box"),
+              ("equipo-deyscom-motorsport-circuito", "El equipo"), ("bmw-clasicos-restomod-taller-deyscom", "Clásicos")], "DEYSCOM")}
   </div>
 </section>
 {social_wall()}
@@ -1714,6 +1835,214 @@ def legal():
     return html + footer()
 
 
+
+# ------------------------------------------------------------------ patrocinadores, equipo y blog
+from blog_posts import AUTHORS, POSTS  # noqa: E402
+
+SPONSORS = [
+    ("EBC Frenos", "ebc-frenos.png", None),
+    ("HEL Performance", "hel-performance.png", None),
+    ("Mishimoto", "mishimoto.png", None),
+    ("King Elements", "king-elements.png", "https://www.kingelements.com/es/"),
+]
+
+
+def sponsors_strip(title="Nos acompañan"):
+    items = ""
+    for name, f, url in SPONSORS:
+        exists = (ROOT / "assets/img/patrocinadores" / f).exists()
+        inner = (f'<img src="assets/img/patrocinadores/{f}" alt="Logotipo de {name}, patrocinador de Deyscom Motorsport" loading="lazy">'
+                 if exists else f'<span class="sponsor__name">{name}</span>')
+        tag = "a" if url else "div"
+        attrs = f' href="{url}" target="_blank" rel="noopener sponsored"' if url else ""
+        items += f'<{tag} class="sponsor reveal"{attrs} title="{name}">{inner}</{tag}>'
+    return f"""<section class="section section--tight sponsors-sec">
+  <div class="container">
+    {section_head("Patrocinadores", title + " <span class='outline'>en pista</span>", "Marcas que confían en Deyscom Motorsport y nos ayudan a competir.")}
+    <div class="sponsors">{items}</div>
+  </div>
+</section>"""
+
+
+def molar_block():
+    return f"""<section class="section molar">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Nuestro primer rally · 2026</span>
+      <h2>II Rallye Comunidad de Madrid <span class="outline">El Molar</span></h2>
+      <div class="mt-2">
+        <p class="lead">En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally con el Peugeot 206 del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.</p>
+        <p class="muted">Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias DS Pilot Weekend, del DS Copilot Course y de la edición especial que hemos creado para celebrarlo.</p>
+        <div class="btn-row mt-2"><a class="btn" href="camiseta-edicion-especial-el-molar-2026.html">{I['bag']} Edición especial El Molar 2026</a><a class="btn btn--ghost" href="ds-pilot-weekend-rally.html">Corre tu primer rally</a></div>
+      </div>
+    </div>
+    <div class="split__media reveal" data-delay="1">{art("EL MOLAR", "50%", "35%", "peugeot-206-rally-el-molar-tramo", "El Molar 2026")}<span class="split__tag">El Molar · 2026</span></div>
+  </div>
+</section>"""
+
+
+def team_block():
+    cards_html = ""
+    for k in ("nestor", "hector"):
+        a = AUTHORS[k]
+        initials = "".join(w[0] for w in a["name"].split()[:2])
+        cards_html += (f'<article class="person reveal" id="{a["anchor"]}"><div class="person__avatar">{initials}</div>'
+                       f'<div><h3>{a["name"]}</h3><span class="person__role">{a["role"]}</span><p>{a["bio"]}</p></div></article>')
+    return f"""<section class="section section--ink">
+  <div class="container">
+    {section_head("El equipo", "Quién hay <span class='outline'>detrás</span>", "Personas reales, con nombre y apellidos, que viven el motor cada día en el taller y en las carreras.")}
+    <div class="people">{cards_html}</div>
+  </div>
+</section>"""
+
+
+def person_ld(k):
+    a = AUTHORS[k]
+    return {"@type": "Person", "name": a["name"], "jobTitle": a["role"], "url": f"{SITE}/nosotros.html#{a['anchor']}",
+            "worksFor": {"@id": SITE + "/#organizacion"}}
+
+
+def fmt_date(d):
+    meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    y, m, dd = d.split("-")
+    return f"{int(dd)} de {meses[int(m) - 1]} de {y}"
+
+
+def post_card(pst, big=False):
+    a = AUTHORS[pst["author"]]
+    return f"""<a class="post-card reveal{" post-card--big" if big else ""}" href="{pst['slug']}.html">
+  <div class="post-card__media">{art(pst['category'].upper(), "60%", "30%", pst['img'], pst['title'], "(max-width: 900px) 100vw, 50vw")}</div>
+  <div class="post-card__body">
+    <span class="post-card__cat">{pst['category']} · {pst['minutes']} min</span>
+    <h3>{pst['title']}</h3>
+    <p>{pst['desc']}</p>
+    <span class="post-card__meta">{a['name']} · {fmt_date(pst['date'])}</span>
+  </div>
+</a>"""
+
+
+def blog_index():
+    items = "".join(post_card(pp, i == 0) for i, pp in enumerate(POSTS))
+    blog_ld = {"@context": "https://schema.org", "@type": "Blog", "name": "Blog de Deyscom Motorsport", "url": f"{SITE}/blog.html",
+               "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"},
+               "blogPost": [{"@type": "BlogPosting", "headline": pp["title"], "url": f"{SITE}/{pp['slug']}.html", "datePublished": pp["date"]} for pp in POSTS]}
+    html = head("Blog de motorsport · Rally, copilotos, banco de potencia y restomod | Deyscom Motorsport",
+                "Guías y experiencia real del taller Deyscom Motorsport: cómo empezar en los rallies, qué hace un copiloto, cómo leer una curva de banco de potencia y qué es un restomod.",
+                "blog", "el blog", POSTS[0]["img"], [blog_ld, breadcrumbs_ld("blog", "Blog")],
+                "blog motorsport, blog rally, consejos rally, copiloto de rally, banco de potencia, restomod") + header("blog")
+    html += f"""<section class="hero page-hero" style="min-height:46svh">
+  <div class="hero__bg">{pic(POSTS[0]['img'], eager=True, sizes='100vw')}</div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <span class="eyebrow">Blog Deyscom</span>
+    <h1><span class="line"><span>Desde</span></span><span class="line"><span class="outline">el paddock</span></span></h1>
+    <p class="lead">Guías prácticas y experiencia real del taller y de nuestras carreras, escritas por el equipo de Deyscom Motorsport.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="posts">{items}</div>
+  </div>
+</section>
+{mega_cta("¿Tienes <span class='outline'>dudas?</span>", "Escríbenos y te ayudamos con tu proyecto, tu primer rally o tu formación como copiloto.", "una consulta del blog")}
+"""
+    return html + footer()
+
+
+def blog_post(pst):
+    a = AUTHORS[pst["author"]]
+    ed = AUTHORS.get(pst.get("editor"))
+    toc = "".join(f'<li><a href="#s{i + 1}">{t}</a></li>' for i, (t, _) in enumerate(pst["sections"]))
+    body = "".join(f'<h2 id="s{i + 1}">{t}</h2>{c}' for i, (t, c) in enumerate(pst["sections"]))
+    words = len(re.sub(r"<[^>]+>", " ", body).split())
+    sources = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in pst["sources"])
+    related = "".join(post_card(x) for x in POSTS if x["slug"] != pst["slug"])
+    m = IMG[pst["img"]]
+    art_ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": pst["title"], "description": pst["desc"],
+              "image": {"@type": "ImageObject", "url": img_url(pst["img"]), "width": m["w"], "height": m["h"]},
+              "datePublished": pst["date"], "dateModified": TODAY, "inLanguage": "es-ES", "wordCount": words,
+              "articleSection": pst["category"], "keywords": pst["keywords"],
+              "author": person_ld(pst["author"]), "publisher": {"@id": SITE + "/#organizacion"},
+              "mainEntityOfPage": f"{SITE}/{pst['slug']}.html",
+              "citation": [u for _, u in pst["sources"]]}
+    if ed:
+        art_ld["editor"] = person_ld(pst["editor"])
+    html = head(pst["title"] + " | Deyscom Motorsport", pst["desc"], pst["slug"], pst["title"], pst["img"],
+                [art_ld, breadcrumbs_ld(pst["slug"], pst["title"], ("blog.html", "Blog")), faq_ld(pst["faq"])], pst["keywords"]) + header(pst["slug"])
+    html = html.replace('<meta property="og:type" content="website">', f'<meta property="og:type" content="article">\n<meta property="article:published_time" content="{pst["date"]}">\n<meta property="article:modified_time" content="{TODAY}">\n<meta property="article:author" content="{a["name"]}">\n<meta property="article:section" content="{pst["category"]}">')
+    html += f"""<article class="post">
+  <header class="post__head">
+    <div class="container post__narrow">
+      <nav class="crumbs" aria-label="Migas"><a href="index.html">Inicio</a> / <a href="blog.html">Blog</a> / <span>{pst['category']}</span></nav>
+      <span class="eyebrow">{pst['category']} · {pst['minutes']} min de lectura</span>
+      <h1 class="post__title">{pst['h1']}</h1>
+      <p class="lead">{pst['desc']}</p>
+      <div class="post__meta">
+        <span class="person__avatar person__avatar--sm">{"".join(w[0] for w in a['name'].split()[:2])}</span>
+        <div><a href="nosotros.html#{a['anchor']}"><b>{a['name']}</b></a><span>{a['role']}</span>
+        <span>Publicado el <time datetime="{pst['date']}">{fmt_date(pst['date'])}</time> · Actualizado el <time datetime="{TODAY}">{fmt_date(TODAY)}</time>{f" · Edición: {ed['name']}" if ed else ""}</span></div>
+      </div>
+    </div>
+  </header>
+  <div class="container post__narrow">
+    <figure class="post__hero">{pic(pst['img'], eager=True, sizes="(max-width: 900px) 100vw, 860px")}<figcaption>{IMG[pst['img']]['alt']}</figcaption></figure>
+    <aside class="tldr" aria-label="Respuesta rápida"><span class="tldr__lbl">{I['bolt']} Respuesta rápida</span><p>{pst['tldr']}</p></aside>
+    <nav class="toc" aria-label="Índice"><b>En este artículo</b><ol>{toc}</ol></nav>
+    <div class="prose post__body">{body}
+      <h2 id="faq">Preguntas frecuentes</h2>
+      {faq(pst['faq'])}
+      <h2 id="fuentes">Fuentes y referencias</h2>
+      <ul class="sources">{sources}</ul>
+      <p class="small muted">Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.</p>
+    </div>
+    <aside class="author-box">
+      <span class="person__avatar">{"".join(w[0] for w in a['name'].split()[:2])}</span>
+      <div><span class="eyebrow">Sobre el autor</span><h3>{a['name']}</h3><span class="person__role">{a['role']}</span><p>{a['bio']}</p>
+      <a class="pink" href="nosotros.html#{a['anchor']}">Conoce al equipo {I['arrow']}</a></div>
+    </aside>
+  </div>
+</article>
+<section class="section section--ink section--tight">
+  <div class="container">
+    {section_head("Sigue leyendo", "Más del <span class='outline'>blog</span>")}
+    <div class="posts posts--3">{related}</div>
+  </div>
+</section>
+{mega_cta("¿Hablamos de <span class='outline'>tu proyecto?</span>", "Escríbenos y te respondemos en menos de 24 h laborables.", pst['title'])}
+"""
+    return html + footer()
+
+
+LLMS_TXT = f"""# Deyscom Motorsport
+
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
+
+- Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
+- Teléfono y WhatsApp: {PHONE_TXT}
+- Email: {EMAIL}
+- Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
+- Propietario: Néstor Aguado. Marketing: Héctor Guzmán.
+- Primer rally del equipo: II Rallye Comunidad de Madrid – El Molar 2026, con un Peugeot 206.
+- Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
+
+## Servicios
+- [Coches de competición]({SITE}/competicion.html): preparación, jaulas de seguridad, set-up, asistencia en carrera y alquiler.
+- [Restomod]({SITE}/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
+- [Pintura]({SITE}/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
+- [Banco de potencia]({SITE}/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
+
+## Experiencias y formación
+- [DS Pilot Weekend – Circuit]({SITE}/ds-pilot-weekend-circuit.html): fin de semana como piloto en el Circuito del Jarama.
+- [DS Pilot Weekend – Rally]({SITE}/ds-pilot-weekend-rally.html): rally federado con Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV).
+- [DS Pilot Weekend – Slalom]({SITE}/ds-pilot-weekend-slalom.html): slalom con Peugeot 206 1.6 XS o BMW E36.
+- [DS Copilot Course]({SITE}/ds-copilot-course.html): curso de copiloto de rally de fin de semana, teoría y práctica, impartido por un profesor y una profesora, horas prácticas en un tramo cerrado en Guadalajara, con certificación y diploma.
+
+## Tienda
+- [Tienda]({SITE}/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
+
+## Blog
+""" + "".join(f"- [{pp['title']}]({SITE}/{pp['slug']}.html): {pp['desc']}\n" for pp in POSTS)
+
+
 def main():
     pages = {"index": home(), "experiencias": experiencias(), "cursos": cursos(), "ds-copilot-course": course_page(),
              "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda(), "legal": legal()}
@@ -1723,6 +2052,10 @@ def main():
         pages[s] = experience_page(s)
     for s in PRODUCTS:
         pages[s] = product_page(s)
+    pages["blog"] = blog_index()
+    for pp in POSTS:
+        pages[pp["slug"]] = blog_post(pp)
+    (ROOT / "llms.txt").write_text(LLMS_TXT, encoding="utf-8")
     for old in ("performance",):  # páginas retiradas
         f = ROOT / f"{old}.html"
         if f.exists():
@@ -1731,7 +2064,7 @@ def main():
         html = re.sub(r"\n\s*\n", "\n", html)
         (ROOT / f"{name}.html").write_text(html, encoding="utf-8")
     prio = {"index": "1.0", "ds-copilot-course": "0.9", "experiencias": "0.9", "competicion": "0.8", "restomod": "0.8", "pintura": "0.8",
-            "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8"}
+            "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8", "blog": "0.7"}
     urls = "".join(
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority></url>\n"
         for n in pages if n != "legal")

@@ -17,12 +17,13 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Cursos (portada) | `cursos.html` |
 | DS Copilot Course (compra de plaza) | `ds-copilot-course.html` |
 | Tienda: merchandising + coches en venta (Wallapop) | `tienda.html` |
-| Fichas de producto | `camiseta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |
+| Fichas de producto | `camiseta-edicion-especial-el-molar-2026.html`, `camiseta-deyscom.html`, `sudadera-capucha-deyscom.html`, `chaqueta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |
+| Blog (4 artículos) | `blog.html`, `blog-como-empezar-en-los-rallies.html`, `blog-que-hace-un-copiloto-de-rally.html`, `blog-banco-de-potencia-como-leer-la-curva.html`, `blog-que-es-un-restomod.html` |
 | Quiénes somos (en el pie) | `nosotros.html` |
 | Contacto (en el pie) | `contacto.html` |
 | Aviso legal, privacidad y cookies | `legal.html` |
 
-Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · **Tienda** (destacada como botón).
+Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · Blog · **Tienda** (destacada como botón).
 
 ## Pensada para convertir
 
@@ -93,3 +94,15 @@ Si la detección automática del perfil falla, abre el perfil de Wallapop en el 
 ## 6. Analítica (opcional)
 
 Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de `tools/build.py`). Los eventos de conversión ya se envían al `dataLayer`. Si añadís cookies de analítica o publicidad, recordad incluir un banner de consentimiento.
+
+## 7. Blog, GEO y E-E-A-T
+
+- Los artículos están en `tools/blog_posts.py` (texto, autor, fecha, FAQ y fuentes). Para añadir uno, copia un bloque de `POSTS` y ejecuta `python3 tools/build.py`.
+- Cada artículo empieza con una **respuesta rápida** (lo que citan los buscadores con IA), tiene índice, preguntas frecuentes con datos estructurados `FAQPage`, **fuentes oficiales**, autor con nombre y cargo (`BlogPosting` + `Person`), fecha de publicación y actualización, y enlaces internos a servicios y experiencias.
+- `llms.txt` (en la raíz) resume el negocio, los servicios y los artículos para asistentes de IA.
+- Equipo con fichas en `nosotros.html#nestor-aguado` y `#hector-guzman`, enlazadas desde los artículos.
+
+## 8. Patrocinadores y merchandising
+
+- Logos en `assets/img/patrocinadores/` (EBC Frenos, HEL, Mishimoto y King Elements). La lista está en `SPONSORS` dentro de `tools/build.py`; solo King Elements lleva enlace (`rel="sponsored"`).
+- Merch: camiseta, sudadera, chaqueta y gorra en negro, con vista delante/detrás en la ficha; pegatinas y **edición especial El Molar 2026**. Los precios (35, 25, 45, 59, 22 y 6 €) son orientativos: cámbialos en `PRODUCTS`.

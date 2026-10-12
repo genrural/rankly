@@ -194,6 +194,12 @@
         var n = $("[data-color-name]", pdp); if (n) n.textContent = r.value;
       });
     });
+    $$("[data-view]", pdp).forEach(function (b) {
+      b.addEventListener("click", function () {
+        stage.setAttribute("data-show", b.getAttribute("data-view"));
+        $$("[data-view]", pdp).forEach(function (x) { x.classList.toggle("is-on", x === b); });
+      });
+    });
     var order = $("[data-order]", pdp);
     var openBtn = $("[data-open-order]", pdp);
     if (openBtn) openBtn.addEventListener("click", function () {

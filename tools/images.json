@@ -124,11 +124,6 @@
   "w": 1600,
   "h": 900
  },
- "peugeot-206-decoracion-deyscom-sport": {
-  "alt": "Peugeot 206 con la decoración DS de Deyscom Sport",
-  "w": 1600,
-  "h": 1138
- },
  "muelles-suspension-dobinsons-preparacion": {
   "alt": "Muelles de suspensión Dobinsons para preparación",
   "w": 900,
@@ -343,5 +338,135 @@
   "alt": "Jeep Wrangler sobre el elevador del taller",
   "w": 1069,
   "h": 1600
+ },
+ "piloto-peugeot-206-rally-comunidad-madrid": {
+  "alt": "Piloto dentro del Peugeot 206 de Deyscom antes de salir al tramo",
+  "w": 1200,
+  "h": 1600
+ },
+ "copiloto-notas-rally-coche-competicion": {
+  "alt": "Copiloto revisando las notas dentro del coche de rally",
+  "w": 1200,
+  "h": 1600
+ },
+ "copiloto-libro-de-ruta-rally-deyscom": {
+  "alt": "Copiloto con el libro de ruta en el Peugeot 206 de rally",
+  "w": 1200,
+  "h": 1600
+ },
+ "piloto-copiloto-peugeot-206-salida-rally": {
+  "alt": "Piloto y copiloto preparados en el Peugeot 206 de Deyscom",
+  "w": 1200,
+  "h": 1600
+ },
+ "asistencia-deyscom-peugeot-206-rally": {
+  "alt": "Equipo Deyscom en la asistencia del Peugeot 206 de rally",
+  "w": 1200,
+  "h": 1600
+ },
+ "peugeot-206-rally-tierra-deyscom-motorsport": {
+  "alt": "Peugeot 206 de Deyscom Motorsport derrapando en un tramo de tierra",
+  "w": 1600,
+  "h": 1067
+ },
+ "peugeot-206-rally-polvo-contraluz-deyscom": {
+  "alt": "Peugeot 206 de Deyscom Motorsport entre el polvo en un rally de tierra",
+  "w": 1600,
+  "h": 1067
+ },
+ "peugeot-206-rally-el-molar-tramo": {
+  "alt": "Peugeot 206 de Deyscom en el tramo del Rallye Comunidad de Madrid – El Molar",
+  "w": 1600,
+  "h": 1067
+ },
+ "peugeot-206-rally-comunidad-madrid-montana": {
+  "alt": "Peugeot 206 de Deyscom Motorsport en un tramo de montaña",
+  "w": 1600,
+  "h": 1067
+ },
+ "peugeot-206-1-6-xs-rally-deyscom-motorsport": {
+  "alt": "Peugeot 206 1.6 XS de Deyscom Motorsport en acción en rally",
+  "w": 1600,
+  "h": 1067
+ },
+ "bmw-e36-rally-tierra-contraluz-deyscom": {
+  "alt": "BMW E36 de Deyscom Motorsport en un tramo de tierra a contraluz",
+  "w": 1600,
+  "h": 1066
+ },
+ "bmw-e36-rally-el-molar-deyscom": {
+  "alt": "BMW E36 de Deyscom en el Rallye Comunidad de Madrid – El Molar",
+  "w": 1600,
+  "h": 1066
+ },
+ "equipo-deyscom-motorsport-circuito": {
+  "alt": "Equipo de Deyscom Motorsport en el circuito",
+  "w": 1200,
+  "h": 1600
+ },
+ "piloto-casco-interior-coche-competicion": {
+  "alt": "Piloto con casco dentro de un coche de competición",
+  "w": 1200,
+  "h": 1600
+ },
+ "equipo-deyscom-motorsport-atardecer": {
+  "alt": "Equipo Deyscom Motorsport al atardecer en el circuito",
+  "w": 1200,
+  "h": 1600
+ },
+ "bmw-e36-box-carrera-resistencia": {
+  "alt": "BMW E36 de competición en el box durante una carrera de resistencia",
+  "w": 1200,
+  "h": 1600
+ },
+ "piloto-arneses-coche-competicion-box": {
+  "alt": "Piloto con arneses en un coche de competición en el box",
+  "w": 1200,
+  "h": 1600
+ },
+ "bmw-e36-rotulado-deyscom-motorsport": {
+  "alt": "BMW E36 rotulado con el logotipo de Deyscom Motorsport",
+  "w": 1200,
+  "h": 1600
+ },
+ "mecanicos-deyscom-box-resistencia": {
+  "alt": "Mecánicos de Deyscom trabajando en el box en carrera de resistencia",
+  "w": 1200,
+  "h": 1600
+ },
+ "asistencia-box-deyscom-circuito": {
+  "alt": "Asistencia de Deyscom en el box del circuito",
+  "w": 1200,
+  "h": 1600
+ },
+ "bmw-e36-atardecer-circuito-competicion": {
+  "alt": "BMW E36 de competición rodando al atardecer en circuito",
+  "w": 1600,
+  "h": 1066
+ },
+ "coches-competicion-atardecer-circuito": {
+  "alt": "Coches de competición rodando al atardecer en circuito",
+  "w": 1600,
+  "h": 1066
+ },
+ "vw-golf-competicion-circuito-curva": {
+  "alt": "Volkswagen Golf de competición en una curva del circuito",
+  "w": 1600,
+  "h": 1066
+ },
+ "bmw-e36-competicion-circuito-curva": {
+  "alt": "BMW E36 de competición en una curva del circuito",
+  "w": 1600,
+  "h": 1066
+ },
+ "bmw-e36-carrera-resistencia-circuito": {
+  "alt": "BMW E36 en carrera de resistencia en circuito",
+  "w": 1600,
+  "h": 1066
+ },
+ "bmw-e36-circuito-velocidad-barrido": {
+  "alt": "BMW E36 de competición a alta velocidad en circuito",
+  "w": 1600,
+  "h": 1066
  }
 }
