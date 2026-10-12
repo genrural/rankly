@@ -156,6 +156,9 @@ ORG_LD = {
     "address": {"@type": "PostalAddress", "streetAddress": "C/ Canal de Isabel II, 2, Nave 3", "postalCode": "28180",
                 "addressLocality": "Torrelaguna", "addressRegion": "Madrid", "addressCountry": "ES"},
     "areaServed": "ES",
+    "geo": {"@type": "GeoCoordinates", "latitude": 40.8277, "longitude": -3.5381},
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Deyscom+Motorsport+Torrelaguna",
+    "vatID": "ESB09939471",
     "founder": {"@type": "Person", "name": "Néstor Aguado", "url": SITE + "/nosotros.html#nestor-aguado"},
     "employee": [{"@type": "Person", "name": "Héctor Guzmán", "jobTitle": "Marketing", "url": SITE + "/nosotros.html#hector-guzman"}],
     "sponsor": [{"@type": "Organization", "name": n} for n in ("EBC Frenos", "HEL Performance", "Mishimoto", "King Elements")],
@@ -301,7 +304,7 @@ def cookie_banner():
     return f"""<div class="cc" id="cc" role="dialog" aria-labelledby="cc-title" aria-describedby="cc-desc" hidden>
   <div class="cc__box">
     <p class="cc__title" id="cc-title">Tu privacidad, a tu ritmo</p>
-    <p class="cc__desc" id="cc-desc">Usamos cookies técnicas necesarias para que la web funcione y, solo si nos das permiso, cookies de analítica y publicidad de terceros. Puedes aceptarlas, rechazarlas o elegir cuáles. <a href="legal.html#cookies">Política de cookies</a></p>
+    <p class="cc__desc" id="cc-desc">Usamos cookies técnicas necesarias para que la web funcione y, solo si nos das permiso, cookies de analítica y publicidad de terceros. Puedes aceptarlas, rechazarlas o elegir cuáles. <a href="politica-cookies.html">Política de cookies</a></p>
     <div class="cc__prefs" hidden>
       <label class="cc__row"><span><b>Técnicas</b><small>Necesarias para el funcionamiento de la web y de los formularios. Siempre activas.</small></span><input type="checkbox" checked disabled><i class="cc__sw" aria-hidden="true"></i></label>
       {rows}
@@ -388,7 +391,7 @@ def footer():
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> Deyscom Motorsport S.L. · Todos los derechos reservados</span>
-      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="legal.html#aviso">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#cookies">Cookies</a><a href="legal.html#condiciones">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button></nav>
+      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="condiciones-compra.html">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button></nav>
     </div>
   </div>
 </footer>
@@ -524,7 +527,10 @@ def success_block(title="¡Bandera a cuadros!", text="Hemos recibido tu solicitu
 
 def consent():
     return ('<label class="check full"><input type="checkbox" name="consentimiento" value="sí" required> '
-            '<span>Acepto la <a href="legal.html#privacidad" target="_blank">política de privacidad</a> y que Deyscom Motorsport me contacte sobre mi solicitud.</span></label>'
+            '<span>Acepto la <a href="politica-privacidad.html" target="_blank">política de privacidad</a> y que Deyscom Motorsport me contacte sobre mi solicitud.</span></label>'
+            '<p class="gdpr full"><b>Responsable:</b> Deyscom Motorsport S.L. · <b>Finalidad:</b> responder a tu solicitud, presupuesto, reserva o pedido · '
+            '<b>Legitimación:</b> tu consentimiento y, en su caso, la ejecución del contrato · <b>Destinatarios:</b> no se ceden datos salvo obligación legal · '
+            '<b>Derechos:</b> acceso, rectificación, supresión y otros, en info@deyscom.com · <a href="politica-privacidad.html" target="_blank">Más información</a></p>'
             '<div class="hp" aria-hidden="true"><label>No rellenar<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>')
 
 
@@ -923,7 +929,7 @@ EXPERIENCES = {
         title="DS Pilot Weekend Slalom · Experiencia de slalom con Peugeot 206 o BMW E36 | Deyscom Motorsport",
         desc="Vive una experiencia única de slalom con Deyscom Motorsport al volante del Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Precisión, conos y cronómetro.",
         keywords="experiencia slalom, slalom coche Madrid, alquiler coche slalom, conducir Peugeot 206 competición, BMW E36 slalom, DS Pilot Weekend",
-        hero="peugeot-206-rally-comunidad-madrid-montana", card="peugeot-206-rally-polvo-contraluz-deyscom",
+        hero="bmw-e36-rally-el-molar-deyscom", card="peugeot-206-rally-comunidad-madrid-montana",
         lines=["Precisión", "<span class='pink'>contra el</span>", "<span class='outline'>cronómetro</span>"],
         lead="Conos, cronómetro y un coche de competición. Vive una experiencia única de slalom con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV.",
         teaser="Conos, cronómetro y una experiencia única al volante.",
@@ -1700,7 +1706,7 @@ def home():
     {split("Quiénes somos", "Gasolina <span class='pink'>en las venas</span>",
            "<p class='lead'>Deyscom Motorsport nace de una idea sencilla: hacer los coches que a nosotros nos gustaría conducir. Competimos, restauramos, pintamos y preparamos con la misma obsesión por el detalle.</p>"
            "<p class='muted'>Desde nuestra nave en Torrelaguna trabajamos para pilotos, coleccionistas y apasionados de toda España. Cada proyecto se vive, se documenta y se comparte.</p>"
-           f"<div class='btn-row mt-2'><a class='btn btn--ghost' href='nosotros.html'>Conócenos {I['arrow']}</a></div>",
+           f'<div class="btn-row mt-2"><a class="btn btn--ghost" href="nosotros.html">Conócenos {I["arrow"]}</a></div>',
            "TEAM", "equipo-deyscom-motorsport-atardecer", "Equipo Deyscom", False, "65%")}
   </div>
 </section>
@@ -1890,20 +1896,107 @@ def contacto():
     return html + footer()
 
 
-def legal():
-    html = head("Aviso legal, privacidad y cookies | Deyscom Motorsport", "Aviso legal, política de privacidad y política de cookies de Deyscom Motorsport S.L.", "legal", "información") + header("legal")
+# ------------------------------------------------------------------ textos legales
+COMPANY = dict(
+    name="DEYSCOM MOTORSPORT, S.L.", trade="Deyscom Motorsport", cif="B09939471",
+    address="C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), España",
+    registry="Inscrita en el Registro Mercantil de Madrid, hoja M-764451",
+)
+LEGAL_UPDATED = "12 de octubre de 2026"
+# Política de cancelación de experiencias y cursos (editable por Deyscom)
+CANCEL_POLICY = [
+    "Con más de 30 días de antelación a la fecha: devolución del 100 % del importe abonado.",
+    "Entre 30 y 15 días antes: devolución del 50 % o cambio a otra fecha disponible sin coste.",
+    "Con menos de 15 días: no hay devolución, salvo que la plaza la ocupe otra persona; puedes ceder tu plaza a quien quieras avisándonos antes.",
+    "Si Deyscom cancela por causas organizativas, meteorológicas o de seguridad, te ofreceremos una nueva fecha o la devolución íntegra.",
+]
+
+
+def legal_page(slug, title, desc, h1, body):
+    html = head(title, desc, slug, "información legal", "og", [breadcrumbs_ld(slug, h1.replace("<span class='outline'>", "").replace("</span>", ""))]) + header(slug)
     html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
-    html += f"""<section class="section"><div class="container prose" style="max-width:860px">
-<span class="eyebrow">Legal</span>
-<h1 style="font-size:clamp(2.4rem,6vw,4.4rem)">Aviso legal <span class="outline">y privacidad</span></h1>
-<p class="muted mt-2"><em>Texto base orientativo. Revísalo con vuestro asesor antes de publicar.</em></p>
-<h2 id="aviso">Aviso legal</h2>
-<p>Titular: Deyscom Motorsport S.L. · CIF B09939471 · Domicilio: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid) · Email: <a href="mailto:{EMAIL}">{EMAIL}</a> · Teléfono: {PHONE_TXT}.</p>
-<p>El acceso a este sitio web atribuye la condición de usuario e implica la aceptación de estas condiciones. Los contenidos (textos, imágenes, logotipos y diseño) son propiedad de Deyscom Motorsport S.L. o de sus legítimos titulares y no pueden reproducirse sin autorización.</p>
-<h2 id="privacidad">Política de privacidad</h2>
-<p><strong>Responsable:</strong> Deyscom Motorsport S.L. <strong>Finalidad:</strong> atender tus solicitudes de información, presupuestos, reservas, inscripciones a cursos y pedidos. <strong>Legitimación:</strong> tu consentimiento al enviar el formulario y, en su caso, la ejecución del contrato. <strong>Destinatarios:</strong> no se ceden datos a terceros salvo obligación legal; los datos se almacenan en Google Workspace (Google Sheets) como encargado del tratamiento. <strong>Conservación:</strong> el tiempo necesario para atender tu solicitud y los plazos legales. <strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a>, y reclamar ante la AEPD (www.aepd.es).</p>
-<h2 id="cookies">Política de cookies</h2>
+    nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if h == slug + ".html" else ""}>{t}</a>' for h, t in [
+        ("aviso-legal.html", "Aviso legal"), ("politica-privacidad.html", "Privacidad"), ("politica-cookies.html", "Cookies"), ("condiciones-compra.html", "Condiciones de compra")])
+    html += f"""<section class="section legal">
+  <div class="container prose" style="max-width:880px">
+    <nav class="legal-nav" aria-label="Textos legales">{nav}</nav>
+    <span class="eyebrow">Legal · Actualizado el {LEGAL_UPDATED}</span>
+    <h1 class="legal__title">{h1}</h1>
+    {body}
+  </div>
+</section>
+"""
+    return html + footer()
+
+
+def company_box():
+    c = COMPANY
+    return (f'<div class="legal-box"><p><strong>Titular:</strong> {c["name"]} ({c["trade"]})<br><strong>CIF:</strong> {c["cif"]}<br>'
+            f'<strong>Domicilio social:</strong> {c["address"]}<br><strong>Datos registrales:</strong> {c["registry"]}<br>'
+            f'<strong>Email:</strong> <a href="mailto:{EMAIL}">{EMAIL}</a> · <strong>Teléfono:</strong> {PHONE_TXT}</p></div>')
+
+
+def legal_pages():
+    pages = {}
+    pages["aviso-legal"] = legal_page("aviso-legal", "Aviso legal | Deyscom Motorsport", "Aviso legal de deyscom.com: datos identificativos de DEYSCOM MOTORSPORT, S.L., condiciones de uso, propiedad intelectual y responsabilidad.",
+        "Aviso <span class='outline'>legal</span>", f"""
+<h2>1. Datos identificativos</h2>
+<p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:</p>
+{company_box()}
+<h2>2. Objeto y condiciones de uso</h2>
+<p>Este sitio web informa sobre los servicios de taller de Deyscom Motorsport (preparación de coches de competición, restomod, pintura y banco de potencia), sus experiencias de conducción, sus cursos y su tienda, y permite contactar y solicitar presupuestos, reservas y pedidos. El acceso a la web es gratuito y atribuye la condición de usuario, que acepta este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos, a no emplearlos para actividades ilícitas y a facilitar datos veraces en los formularios.</p>
+<h2>3. Propiedad intelectual e industrial</h2>
+<p>Los textos, fotografías, diseños, logotipos, marcas y demás contenidos de esta web son titularidad de DEYSCOM MOTORSPORT, S.L. o de terceros que han autorizado su uso (incluidos fotógrafos y patrocinadores). Queda prohibida su reproducción, distribución, comunicación pública o transformación sin autorización expresa. Las marcas y logotipos de los patrocinadores pertenecen a sus respectivos titulares.</p>
+<h2>4. Responsabilidad</h2>
+<p>Deyscom Motorsport trabaja para que la información de la web sea correcta y esté actualizada, pero no garantiza la ausencia de errores ni de interrupciones del servicio. Los precios, plazos y programas de experiencias y cursos son orientativos hasta su confirmación expresa. Los artículos del blog tienen carácter divulgativo y no sustituyen a los reglamentos oficiales ni al asesoramiento profesional.</p>
+<h2>5. Enlaces externos</h2>
+<p>La web puede incluir enlaces a sitios de terceros (redes sociales, Wallapop, patrocinadores, federaciones). Deyscom Motorsport no se responsabiliza de sus contenidos ni de sus políticas de privacidad.</p>
+<h2>6. Legislación aplicable y jurisdicción</h2>
+<p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales que correspondan conforme a derecho; cuando el usuario sea consumidor, serán competentes los de su domicilio.</p>
+""")
+    pages["politica-privacidad"] = legal_page("politica-privacidad", "Política de privacidad | Deyscom Motorsport", "Cómo trata DEYSCOM MOTORSPORT, S.L. tus datos personales: finalidades, base legal, conservación, destinatarios, transferencias y tus derechos según el RGPD.",
+        "Política de <span class='outline'>privacidad</span>", f"""
+<p>En DEYSCOM MOTORSPORT, S.L. tratamos tus datos personales conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</p>
+<h2>1. Responsable del tratamiento</h2>
+{company_box()}
+<h2>2. Qué datos tratamos</h2>
+<p>Los que nos facilitas en los formularios, por WhatsApp, teléfono o email: nombre, teléfono, email, datos del vehículo, preferencias de reserva o pedido, dirección de envío y el contenido de tu mensaje. Además, datos técnicos de navegación según tus preferencias de cookies (ver la <a href="politica-cookies.html">política de cookies</a>) y el origen de tu visita (por ejemplo, la campaña desde la que llegas), que se guarda solo durante tu sesión y se adjunta a tu solicitud.</p>
+<h2>3. Finalidades y base legal</h2>
+<div class="table-wrap"><table class="cookie-table">
+<thead><tr><th>Finalidad</th><th>Base legal</th><th>Conservación</th></tr></thead>
+<tbody>
+<tr><td>Responder a consultas y solicitudes de presupuesto</td><td>Consentimiento (art. 6.1.a RGPD) y medidas precontractuales (art. 6.1.b)</td><td>Hasta resolver la consulta y, como máximo, 12 meses si no hay contratación</td></tr>
+<tr><td>Gestionar reservas de experiencias, cursos y pedidos de la tienda, incluida la emisión del diploma del curso</td><td>Ejecución del contrato (art. 6.1.b RGPD)</td><td>Durante la relación y después los plazos legales (fiscales y mercantiles, hasta 6 años)</td></tr>
+<tr><td>Prestar servicios de taller y emitir facturas</td><td>Ejecución del contrato y obligación legal (art. 6.1.b y 6.1.c)</td><td>Plazos legales de conservación</td></tr>
+<tr><td>Analítica de la web y medición de campañas</td><td>Consentimiento (art. 6.1.a), a través del aviso de cookies</td><td>Según la política de cookies</td></tr>
+<tr><td>Enviarte novedades de cursos y experiencias si lo solicitas</td><td>Consentimiento (art. 6.1.a)</td><td>Hasta que retires el consentimiento</td></tr>
+</tbody></table></div>
+<p>Los campos marcados con asterisco son obligatorios: sin ellos no podremos atender tu solicitud. No tomamos decisiones automatizadas ni elaboramos perfiles con efectos jurídicos sobre ti.</p>
+<h2>4. Destinatarios y encargados del tratamiento</h2>
+<p>No cedemos tus datos a terceros salvo obligación legal o cuando sea necesario para prestar el servicio que pides (por ejemplo, la inscripción en una prueba federada ante la organización y la federación correspondiente, o la empresa de transporte de un pedido). Trabajan con nosotros como encargados del tratamiento, con contrato y garantías adecuadas:</p>
+<ul>
+<li><strong>Google Ireland Ltd.</strong> (Google Workspace / Sheets y, si los aceptas, Google Analytics y Google Ads), donde se almacenan las solicitudes enviadas por la web.</li>
+<li><strong>Proveedor de alojamiento web</strong> de deyscom.com.</li>
+<li><strong>Pasarela de pago</strong>, cuando pagues online (por ejemplo Stripe o PayPal).</li>
+<li><strong>WhatsApp (Meta Platforms Ireland Ltd.)</strong>, únicamente si decides contactar por WhatsApp.</li>
+</ul>
+<h2>5. Transferencias internacionales</h2>
+<p>Algunos proveedores (Google, Meta, pasarelas de pago) pueden tratar datos fuera del Espacio Económico Europeo. En ese caso se amparan en el Marco de Privacidad de Datos UE-EE. UU. o en cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+<h2>6. Tus derechos</h2>
+<p>Puedes ejercer tus derechos de <strong>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</strong>, y <strong>retirar tu consentimiento</strong> en cualquier momento, escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a> o por correo postal a nuestro domicilio social, indicando el derecho que ejerces. Si consideras que no hemos atendido correctamente tu solicitud, puedes reclamar ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos</a>.</p>
+<h2>7. Menores de edad</h2>
+<p>La web no está dirigida a menores de 14 años. Para participar en experiencias de conducción es necesario ser mayor de edad y cumplir los requisitos indicados en cada una.</p>
+<h2>8. Seguridad</h2>
+<p>Aplicamos medidas técnicas y organizativas adecuadas para proteger tus datos frente a accesos no autorizados, pérdida o alteración.</p>
+<h2>9. Cambios en esta política</h2>
+<p>Podemos actualizar esta política para adaptarla a cambios legales o de nuestros servicios. Publicaremos siempre la versión vigente con su fecha de actualización.</p>
+""")
+    pages["politica-cookies"] = legal_page("politica-cookies", "Política de cookies | Deyscom Motorsport", "Qué cookies utiliza deyscom.com, para qué sirven, cuánto duran y cómo configurarlas. Modo de consentimiento v2 de Google aplicado.",
+        "Política de <span class='outline'>cookies</span>", f"""
 <p>Una cookie es un pequeño archivo que la web guarda en tu navegador. Usamos <strong>cookies y almacenamiento técnico</strong>, necesarios para que la web funcione, y solo con tu consentimiento <strong>cookies de analítica y publicidad</strong> de terceros. Aplicamos el <strong>modo de consentimiento v2 de Google</strong>: hasta que aceptas, las herramientas de Google funcionan sin cookies de analítica ni de publicidad.</p>
+<h2>Responsable</h2>
+{company_box()}
+<h2>Cookies que utilizamos</h2>
 <div class="table-wrap"><table class="cookie-table">
 <thead><tr><th>Nombre</th><th>Titular</th><th>Finalidad</th><th>Tipo</th><th>Duración</th></tr></thead>
 <tbody>
@@ -1912,17 +2005,37 @@ def legal():
 <tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Estadísticas de uso de la web</td><td>Analítica · requiere consentimiento</td><td>Hasta 2 años</td></tr>
 <tr><td>_gcl_au y similares</td><td>Google Ads</td><td>Medir la conversión de nuestras campañas</td><td>Publicidad · requiere consentimiento</td><td>Hasta 90 días</td></tr>
 </tbody></table></div>
-<p>Puedes cambiar o retirar tu consentimiento en cualquier momento desde <button type="button" class="linklike pink" data-cc-open>Configurar cookies</button> (también en el pie de página) o borrando las cookies de tu navegador. La lista de cookies de terceros puede variar según las herramientas que se activen; la mantendremos actualizada.</p>
-<h2 id="condiciones">Condiciones de compra</h2>
-<p><strong>Pedidos:</strong> los pedidos de la tienda, de las experiencias y del curso se confirman por WhatsApp o email, donde te indicamos disponibilidad, precio final, forma de pago y entrega o fecha. El contrato se perfecciona cuando confirmas y abonas el pedido.</p>
-<p><strong>Precios:</strong> incluyen IVA. Los gastos de envío, si los hay, se indican antes de confirmar.</p>
-<p><strong>Envíos y recogida:</strong> puedes recoger el pedido en el taller (C/ Canal de Isabel II, 2, Nave 3, Torrelaguna) o recibirlo en tu domicilio en España.</p>
-<p><strong>Desistimiento:</strong> en los productos de la tienda dispones de 14 días naturales desde la recepción para desistir de la compra, escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a>, salvo productos personalizados. En las experiencias y cursos con fecha determinada se aplicarán las condiciones de cancelación que te comuniquemos al reservar.</p>
-<p><strong>Garantía:</strong> los productos tienen la garantía legal de conformidad prevista en la normativa de consumo.</p>
-</div></section>
-"""
-    return html + footer()
-
+<p>El mapa de la página de contacto se carga desde Google Maps, que puede usar sus propias cookies cuando interactúas con él. La lista de cookies de terceros puede variar según las herramientas activas; la mantendremos actualizada.</p>
+<h2>Cómo gestionar o retirar tu consentimiento</h2>
+<p>Puedes cambiar tu elección en cualquier momento desde <button type="button" class="linklike pink" data-cc-open>Configurar cookies</button> (también disponible en el pie de todas las páginas). Además, puedes borrar o bloquear las cookies desde la configuración de tu navegador; si bloqueas las técnicas, algunas funciones de la web pueden no funcionar.</p>
+""")
+    cancel = "".join(f"<li>{x}</li>" for x in CANCEL_POLICY)
+    pages["condiciones-compra"] = legal_page("condiciones-compra", "Condiciones de compra y reserva | Deyscom Motorsport", "Condiciones de compra de la tienda Deyscom Motorsport y de reserva de experiencias y cursos: precios, pago, envíos, desistimiento, cancelaciones y garantía.",
+        "Condiciones de <span class='outline'>compra</span>", f"""
+<p>Estas condiciones regulan la compra de productos de la tienda y la reserva de experiencias y cursos de Deyscom Motorsport a través de esta web, WhatsApp, teléfono o email, conforme al Real Decreto Legislativo 1/2007 (Ley General para la Defensa de los Consumidores y Usuarios) y la LSSI-CE.</p>
+<h2>1. Vendedor</h2>
+{company_box()}
+<h2>2. Proceso de compra o reserva</h2>
+<p>Seleccionas el producto, experiencia o curso y envías tu solicitud. Te confirmamos por WhatsApp o email la disponibilidad, el precio final, la forma de pago y la entrega o fecha. El contrato queda perfeccionado cuando aceptas la confirmación y realizas el pago. Te enviaremos justificante de la compra.</p>
+<h2>3. Precios y pago</h2>
+<p>Los precios se indican en euros e incluyen el IVA. Los gastos de envío, si los hay, se comunican antes de confirmar. El pago puede realizarse por transferencia, Bizum, tarjeta a través de pasarela segura o en el taller, según se indique en la confirmación.</p>
+<h2>4. Envíos y recogida</h2>
+<p>Puedes recoger tu pedido en el taller (C/ Canal de Isabel II, 2, Nave 3, Torrelaguna) en horario de lunes a viernes de 07:00 a 15:00, o recibirlo en tu domicilio en España. El plazo estimado de entrega se indica en la confirmación y, salvo acuerdo distinto, no superará los 30 días.</p>
+<h2>5. Derecho de desistimiento (tienda)</h2>
+<p>Si eres consumidor, dispones de <strong>14 días naturales</strong> desde la recepción del producto para desistir de la compra sin necesidad de justificación. Comunícanoslo por escrito a <a href="mailto:{EMAIL}">{EMAIL}</a> (puedes usar el modelo de abajo) y devuélvenos el producto sin usar y en su estado original en los 14 días siguientes. Te reembolsaremos el importe, incluidos los gastos de envío estándar, en un máximo de 14 días desde que recibamos tu comunicación, por el mismo medio de pago. Los gastos de devolución corren de tu cuenta. No se admite el desistimiento de productos personalizados.</p>
+<div class="legal-box"><p><strong>Modelo de desistimiento:</strong> «A la atención de DEYSCOM MOTORSPORT, S.L., C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), {EMAIL}: le comunico que desisto de mi contrato de compra del siguiente producto: [producto], pedido el [fecha] / recibido el [fecha]. Nombre, dirección, firma (solo en papel) y fecha.»</p></div>
+<h2>6. Experiencias y cursos</h2>
+<p>Las experiencias DS Pilot Weekend y el DS Copilot Course son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
+<ul>{cancel}</ul>
+<p><strong>Requisitos:</strong> para conducir es necesario ser mayor de edad, tener carnet de conducir en vigor y, en pruebas federadas, la licencia correspondiente (te ayudamos a tramitarla). Debes seguir en todo momento las indicaciones de seguridad del equipo y de la organización. Deyscom podrá excluir de la actividad a quien ponga en riesgo su seguridad o la de terceros. Antes de la experiencia te informaremos de las condiciones de uso del coche, del seguro y, en su caso, de la fianza.</p>
+<h2>7. Garantía</h2>
+<p>Los productos tienen la garantía legal de conformidad de <strong>3 años</strong> desde la entrega prevista en la normativa de consumo. Si un producto llega dañado o no es conforme, escríbenos y lo sustituiremos, repararemos o reembolsaremos.</p>
+<h2>8. Atención al cliente y reclamaciones</h2>
+<p>Puedes contactar con nosotros en <a href="mailto:{EMAIL}">{EMAIL}</a> o en el {PHONE_TXT}. Disponemos de hojas de reclamaciones a disposición de los consumidores. También puedes acudir a la Junta Arbitral de Consumo de la Comunidad de Madrid.</p>
+<h2>9. Legislación aplicable</h2>
+<p>Estas condiciones se rigen por la legislación española. Si eres consumidor, serán competentes los juzgados de tu domicilio.</p>
+""")
+    return pages
 
 
 # ------------------------------------------------------------------ patrocinadores, equipo y blog
@@ -2142,9 +2255,28 @@ LLMS_TXT = f"""# Deyscom Motorsport
 """ + "".join(f"- [{pp['title']}]({SITE}/{pp['slug']}.html): {pp['desc']}\n" for pp in POSTS)
 
 
+def page_404():
+    html = head("Página no encontrada | Deyscom Motorsport", "La página que buscas no existe o ha cambiado de dirección. Vuelve al inicio de Deyscom Motorsport o escríbenos por WhatsApp.", "404", "la web")
+    html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    html += header("404") + f"""<section class="hero page-hero" style="min-height:70svh">
+  <div class="hero__bg">{pic("bmw-e36-rally-tierra-deyscom-motorsport", eager=True, sizes="100vw")}</div><div class="hero__grid"></div>
+  <div class="hero__number" aria-hidden="true">404</div>
+  <div class="container hero__inner">
+    <span class="eyebrow">Error 404</span>
+    <h1><span class="line"><span>Te has salido</span></span><span class="line"><span class="outline">del tramo</span></span></h1>
+    <p class="lead">La página que buscas no existe o ha cambiado de dirección. Vuelve a la pista desde aquí:</p>
+    <div class="btn-row mt-2"><a class="btn" href="index.html">Ir al inicio {I['arrow']}</a><a class="btn btn--ghost" href="tienda.html">{I['bag']} Tienda</a><a class="btn btn--wa" data-wa="" data-loc="404" href="#">{I['wa']} WhatsApp</a></div>
+  </div>
+</section>
+"""
+    return html + footer()
+
+
 def main():
     pages = {"index": home(), "experiencias": experiencias(), "cursos": cursos(), "ds-copilot-course": course_page(),
-             "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda(), "legal": legal()}
+             "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
+    pages.update(legal_pages())
+    pages["404"] = page_404()
     for s in SERVICES:
         pages[s] = service_page(s)
     for s in EXPERIENCES:
@@ -2155,7 +2287,7 @@ def main():
     for pp in POSTS:
         pages[pp["slug"]] = blog_post(pp)
     (ROOT / "llms.txt").write_text(LLMS_TXT, encoding="utf-8")
-    for old in ("performance",):  # páginas retiradas
+    for old in ("performance", "legal"):  # páginas retiradas
         f = ROOT / f"{old}.html"
         if f.exists():
             f.unlink()
@@ -2166,7 +2298,7 @@ def main():
             "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8", "blog": "0.7"}
     urls = "".join(
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority></url>\n"
-        for n in pages if n != "legal")
+        for n in pages if n not in ("404", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))

@@ -21,7 +21,8 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Blog (4 artículos) | `blog.html`, `blog-como-empezar-en-los-rallies.html`, `blog-que-hace-un-copiloto-de-rally.html`, `blog-banco-de-potencia-como-leer-la-curva.html`, `blog-que-es-un-restomod.html` |
 | Quiénes somos (en el pie) | `nosotros.html` |
 | Contacto (en el pie) | `contacto.html` |
-| Aviso legal, privacidad y cookies | `legal.html` |
+| Aviso legal · Privacidad · Cookies · Condiciones de compra | `aviso-legal.html`, `politica-privacidad.html`, `politica-cookies.html`, `condiciones-compra.html` |
+| Página de error | `404.html` |
 
 Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
 
@@ -111,3 +112,10 @@ Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de
 
 - Todas las imágenes pesan **menos de 100 KB**. Si añades fotos nuevas, ejecuta `python3 tools/optimize_images.py`: recomprime JPG y WebP hasta bajar del límite y actualiza `tools/images.json`.
 - Favicon generado a partir del logo: `favicon.ico`, `assets/img/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` y `site.webmanifest`.
+
+## 10. Textos legales, cookies y publicación
+
+- Datos de la sociedad en `COMPANY` (`tools/build.py`): DEYSCOM MOTORSPORT, S.L., CIF B09939471, Registro Mercantil de Madrid, hoja M-764451. Conviene completar tomo y folio con la nota simple del Registro.
+- La política de cancelación de experiencias y cursos está en `CANCEL_POLICY` (`tools/build.py`): **revisadla y ajustadla** a vuestras condiciones reales.
+- Aviso de cookies propio con **Google Consent Mode v2**. Para medir, rellenad `GTM_ID` (recomendado) o `GA4_ID` en `tools/build.py` y regenerad la web.
+- `.htaccess` (Apache) y `_headers` (Netlify/Cloudflare): HTTPS, caché, compresión y cabeceras de seguridad. En `.htaccess` hay un hueco para las **redirecciones 301 de la web antigua**.
