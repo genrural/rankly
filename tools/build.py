@@ -17,7 +17,10 @@ PHONE = "+34615972233"
 PHONE_TXT = "(+34) 615 97 22 33"
 EMAIL = "info@deyscom.com"
 ADDRESS = "C/ Canal de Isabel II, 2 · Nave 3 · 28180 Torrelaguna (Madrid)"
-VERSION = "2"
+VERSION = "3"
+# Etiquetas de medición. Rellena uno de los dos (GTM recomendado). Con ambos vacíos no se carga nada de Google.
+GTM_ID = ""   # p. ej. "GTM-XXXXXXX"
+GA4_ID = ""   # p. ej. "G-XXXXXXXXXX" (solo si no usáis GTM)
 TODAY = date.today().isoformat()
 
 # Fotos optimizadas (tools/images.json se genera al procesar las fotos: alt, ancho y alto)
@@ -33,7 +36,7 @@ LOGO_SYMBOL = f'<svg width="0" height="0" style="position:absolute" aria-hidden=
 
 def logo_svg(cls="logo__svg", label=True):
     aria = 'role="img" aria-label="Deyscom Motorsport"' if label else 'aria-hidden="true"'
-    return f'<svg class="{cls}" viewBox="{LOGO_VB}" {aria}><use href="#dm-logo"/></svg>'
+    return f'<svg class="{cls}" viewBox="{LOGO_VB}" {aria}>{LOGO_PATHS}</svg>'
 
 
 def pic(name, cls="", eager=False, sizes="(max-width: 800px) 100vw, 50vw"):
@@ -226,6 +229,7 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{consent_head()}
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(desc)}">
 {f'<meta name="keywords" content="{escape(keywords)}">' if keywords else ''}
@@ -263,8 +267,53 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 </head>
 <body data-topic="{escape(topic)}">
 <a class="skip-link" href="#main">Saltar al contenido</a>
-{LOGO_SYMBOL}
 """
+
+
+
+def consent_head():
+    """Google Consent Mode v2: todo denegado por defecto y se actualiza con la elección guardada."""
+    js = ("window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+          "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',"
+          "analytics_storage:'denied',personalization_storage:'denied',functionality_storage:'granted',"
+          "security_storage:'granted',wait_for_update:500});"
+          "gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);"
+          "try{var c=JSON.parse(localStorage.getItem('dm_consent')||'null');"
+          "if(c&&c.v===1){gtag('consent','update',{analytics_storage:c.a?'granted':'denied',"
+          "ad_storage:c.m?'granted':'denied',ad_user_data:c.m?'granted':'denied',"
+          "ad_personalization:c.m?'granted':'denied',personalization_storage:c.p?'granted':'denied'});}}catch(e){}")
+    tags = ""
+    if GTM_ID:
+        tags = ("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
+                "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
+                f"j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{GTM_ID}');</script>")
+    elif GA4_ID:
+        tags = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
+                f"<script>window.DM_USE_GTAG=true;gtag('js',new Date());gtag('config','{GA4_ID}');</script>")
+    return f"<script>{js}</script>{tags}"
+
+
+def cookie_banner():
+    cats = [("a", "Analítica", "Nos ayuda a saber cuántas personas visitan la web y qué páginas funcionan mejor (Google Analytics)."),
+            ("m", "Publicidad", "Permite medir nuestras campañas y mostrarte anuncios relevantes de Deyscom en Google y otras plataformas."),
+            ("p", "Personalización", "Recuerda preferencias para adaptar el contenido que ves.")]
+    rows = "".join(f'<label class="cc__row"><span><b>{t}</b><small>{d}</small></span><input type="checkbox" data-cc-cat="{k}"><i class="cc__sw" aria-hidden="true"></i></label>' for k, t, d in cats)
+    return f"""<div class="cc" id="cc" role="dialog" aria-labelledby="cc-title" aria-describedby="cc-desc" hidden>
+  <div class="cc__box">
+    <p class="cc__title" id="cc-title">Tu privacidad, a tu ritmo</p>
+    <p class="cc__desc" id="cc-desc">Usamos cookies técnicas necesarias para que la web funcione y, solo si nos das permiso, cookies de analítica y publicidad de terceros. Puedes aceptarlas, rechazarlas o elegir cuáles. <a href="legal.html#cookies">Política de cookies</a></p>
+    <div class="cc__prefs" hidden>
+      <label class="cc__row"><span><b>Técnicas</b><small>Necesarias para el funcionamiento de la web y de los formularios. Siempre activas.</small></span><input type="checkbox" checked disabled><i class="cc__sw" aria-hidden="true"></i></label>
+      {rows}
+    </div>
+    <div class="cc__btns">
+      <button type="button" class="cc__btn" data-cc="reject">Rechazar</button>
+      <button type="button" class="cc__btn cc__btn--line" data-cc="config">Configurar</button>
+      <button type="button" class="cc__btn cc__btn--line" data-cc="save" hidden>Guardar selección</button>
+      <button type="button" class="cc__btn" data-cc="accept">Aceptar todo</button>
+    </div>
+  </div>
+</div>"""
 
 
 def header(slug):
@@ -339,11 +388,12 @@ def footer():
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> Deyscom Motorsport S.L. · Todos los derechos reservados</span>
-      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="legal.html#aviso">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#cookies">Cookies</a></nav>
+      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="legal.html#aviso">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#cookies">Cookies</a><a href="legal.html#condiciones">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button></nav>
     </div>
   </div>
 </footer>
 
+{cookie_banner()}
 <div class="wa-float">
   <div class="wa-float__bubble">¿Hablamos? Te respondemos por WhatsApp 🏁</div>
   <a class="wa-float__btn" data-wa="" data-loc="float" href="#" aria-label="Escríbenos por WhatsApp">{I['wa']}</a>
@@ -873,7 +923,7 @@ EXPERIENCES = {
         title="DS Pilot Weekend Slalom · Experiencia de slalom con Peugeot 206 o BMW E36 | Deyscom Motorsport",
         desc="Vive una experiencia única de slalom con Deyscom Motorsport al volante del Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Precisión, conos y cronómetro.",
         keywords="experiencia slalom, slalom coche Madrid, alquiler coche slalom, conducir Peugeot 206 competición, BMW E36 slalom, DS Pilot Weekend",
-        hero="peugeot-206-rally-comunidad-madrid-montana", card="bmw-e36-rotulado-deyscom-motorsport",
+        hero="peugeot-206-rally-comunidad-madrid-montana", card="peugeot-206-rally-polvo-contraluz-deyscom",
         lines=["Precisión", "<span class='pink'>contra el</span>", "<span class='outline'>cronómetro</span>"],
         lead="Conos, cronómetro y un coche de competición. Vive una experiencia única de slalom con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV.",
         teaser="Conos, cronómetro y una experiencia única al volante.",
@@ -1243,7 +1293,7 @@ def cursos():
 # ------------------------------------------------------------------ merch
 def _lg(x, y, w, extra=""):
     h = w * 97 / 301
-    return f'<use href="#dm-logo" x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}"{extra}/>'
+    return f'<svg x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}" viewBox="{LOGO_VB}"{extra}>{LOGO_PATHS}</svg>'
 
 
 TEE = "M120 30 L160 18 Q200 48 240 18 L280 30 L370 80 L340 150 L300 132 L300 400 L100 400 L100 132 L60 150 L30 80 Z"
@@ -1852,8 +1902,23 @@ def legal():
 <p>El acceso a este sitio web atribuye la condición de usuario e implica la aceptación de estas condiciones. Los contenidos (textos, imágenes, logotipos y diseño) son propiedad de Deyscom Motorsport S.L. o de sus legítimos titulares y no pueden reproducirse sin autorización.</p>
 <h2 id="privacidad">Política de privacidad</h2>
 <p><strong>Responsable:</strong> Deyscom Motorsport S.L. <strong>Finalidad:</strong> atender tus solicitudes de información, presupuestos, reservas, inscripciones a cursos y pedidos. <strong>Legitimación:</strong> tu consentimiento al enviar el formulario y, en su caso, la ejecución del contrato. <strong>Destinatarios:</strong> no se ceden datos a terceros salvo obligación legal; los datos se almacenan en Google Workspace (Google Sheets) como encargado del tratamiento. <strong>Conservación:</strong> el tiempo necesario para atender tu solicitud y los plazos legales. <strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a>, y reclamar ante la AEPD (www.aepd.es).</p>
-<h2 id="cookies">Cookies</h2>
-<p>Esta web solo utiliza almacenamiento técnico de sesión para recordar el origen de tu visita al enviar un formulario. Si se añaden herramientas de analítica o publicidad (Google Analytics, Meta Pixel), se mostrará un banner para solicitar tu consentimiento.</p>
+<h2 id="cookies">Política de cookies</h2>
+<p>Una cookie es un pequeño archivo que la web guarda en tu navegador. Usamos <strong>cookies y almacenamiento técnico</strong>, necesarios para que la web funcione, y solo con tu consentimiento <strong>cookies de analítica y publicidad</strong> de terceros. Aplicamos el <strong>modo de consentimiento v2 de Google</strong>: hasta que aceptas, las herramientas de Google funcionan sin cookies de analítica ni de publicidad.</p>
+<div class="table-wrap"><table class="cookie-table">
+<thead><tr><th>Nombre</th><th>Titular</th><th>Finalidad</th><th>Tipo</th><th>Duración</th></tr></thead>
+<tbody>
+<tr><td>dm_consent</td><td>Deyscom</td><td>Recordar tu elección sobre cookies</td><td>Técnica (almacenamiento local)</td><td>13 meses</td></tr>
+<tr><td>dm_utm_*, dm_landing, dm_referrer</td><td>Deyscom</td><td>Saber desde dónde llegaste cuando envías un formulario</td><td>Técnica (sesión)</td><td>Hasta cerrar el navegador</td></tr>
+<tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Estadísticas de uso de la web</td><td>Analítica · requiere consentimiento</td><td>Hasta 2 años</td></tr>
+<tr><td>_gcl_au y similares</td><td>Google Ads</td><td>Medir la conversión de nuestras campañas</td><td>Publicidad · requiere consentimiento</td><td>Hasta 90 días</td></tr>
+</tbody></table></div>
+<p>Puedes cambiar o retirar tu consentimiento en cualquier momento desde <button type="button" class="linklike pink" data-cc-open>Configurar cookies</button> (también en el pie de página) o borrando las cookies de tu navegador. La lista de cookies de terceros puede variar según las herramientas que se activen; la mantendremos actualizada.</p>
+<h2 id="condiciones">Condiciones de compra</h2>
+<p><strong>Pedidos:</strong> los pedidos de la tienda, de las experiencias y del curso se confirman por WhatsApp o email, donde te indicamos disponibilidad, precio final, forma de pago y entrega o fecha. El contrato se perfecciona cuando confirmas y abonas el pedido.</p>
+<p><strong>Precios:</strong> incluyen IVA. Los gastos de envío, si los hay, se indican antes de confirmar.</p>
+<p><strong>Envíos y recogida:</strong> puedes recoger el pedido en el taller (C/ Canal de Isabel II, 2, Nave 3, Torrelaguna) o recibirlo en tu domicilio en España.</p>
+<p><strong>Desistimiento:</strong> en los productos de la tienda dispones de 14 días naturales desde la recepción para desistir de la compra, escribiendo a <a href="mailto:{EMAIL}">{EMAIL}</a>, salvo productos personalizados. En las experiencias y cursos con fecha determinada se aplicarán las condiciones de cancelación que te comuniquemos al reservar.</p>
+<p><strong>Garantía:</strong> los productos tienen la garantía legal de conformidad prevista en la normativa de consumo.</p>
 </div></section>
 """
     return html + footer()

@@ -10,7 +10,7 @@
   function track(event, data) {
     var payload = Object.assign({ event: event }, data || {});
     window.dataLayer.push(payload);
-    if (typeof window.gtag === "function") window.gtag("event", event, data || {});
+    if (window.DM_USE_GTAG && typeof window.gtag === "function") window.gtag("event", event, data || {});
     if (typeof window.fbq === "function" && event === "generate_lead") window.fbq("track", "Lead", data || {});
   }
 
@@ -117,6 +117,50 @@
     setTimeout(function () { wa.classList.add("show-bubble"); }, 6000);
     setTimeout(function () { wa.classList.remove("show-bubble"); }, 16000);
   }
+
+  /* ---------- Aviso de cookies · Google Consent Mode v2 ---------- */
+  (function () {
+    var box = $("#cc"); if (!box) return;
+    var KEY = "dm_consent", MAX_AGE = 1000 * 60 * 60 * 24 * 395; // se vuelve a preguntar a los 13 meses
+    var read = function () { try { var c = JSON.parse(localStorage.getItem(KEY) || "null"); return c && c.v === 1 && (Date.now() - c.t) < MAX_AGE ? c : null; } catch (e) { return null; } };
+    var prefs = $(".cc__prefs", box), saveBtn = $('[data-cc="save"]', box), cfgBtn = $('[data-cc="config"]', box);
+    var cats = $$("[data-cc-cat]", box);
+    function apply(c) {
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", {
+          analytics_storage: c.a ? "granted" : "denied",
+          ad_storage: c.m ? "granted" : "denied",
+          ad_user_data: c.m ? "granted" : "denied",
+          ad_personalization: c.m ? "granted" : "denied",
+          personalization_storage: c.p ? "granted" : "denied"
+        });
+      }
+      window.dataLayer.push({ event: "consent_update", consent_analytics: !!c.a, consent_ads: !!c.m, consent_personalization: !!c.p });
+    }
+    function save(a, m, p) {
+      var c = { v: 1, t: Date.now(), a: !!a, m: !!m, p: !!p };
+      try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) { /* sin almacenamiento */ }
+      apply(c); close();
+    }
+    function open(withPrefs) {
+      var c = read() || {};
+      cats.forEach(function (i) { i.checked = !!c[i.getAttribute("data-cc-cat")]; });
+      prefs.hidden = !withPrefs; saveBtn.hidden = !withPrefs; cfgBtn.hidden = !!withPrefs;
+      box.hidden = false; document.body.classList.add("cc-open");
+      setTimeout(function () { var f = $("button:not([hidden])", box); if (f) f.focus(); }, 50);
+    }
+    function close() { box.hidden = true; document.body.classList.remove("cc-open"); }
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-cc]"); if (!b) return;
+      var act = b.getAttribute("data-cc");
+      if (act === "accept") save(true, true, true);
+      else if (act === "reject") save(false, false, false);
+      else if (act === "config") { prefs.hidden = false; saveBtn.hidden = false; cfgBtn.hidden = true; }
+      else if (act === "save") { var v = {}; cats.forEach(function (i) { v[i.getAttribute("data-cc-cat")] = i.checked; }); save(v.a, v.m, v.p); }
+    });
+    $$("[data-cc-open]").forEach(function (b) { b.addEventListener("click", function () { open(true); }); });
+    if (!read()) open(false);
+  })();
 
   /* ---------- Año ---------- */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
