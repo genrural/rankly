@@ -1287,3 +1287,52 @@ body.cc-open .mobile-cta { display: none; }
 .ba__after { z-index: 2; }
 .ba__lbl, .ba__hint { z-index: 4; }
 .ba__handle { z-index: 5; }
+
+/* =========================================================
+   Submenús de Experiencias y Cursos
+   ========================================================= */
+.nav__item { position: relative; display: flex; align-items: center; }
+.nav__toggle { display: inline-grid; place-items: center; width: 22px; height: 30px; margin-left: -6px; padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; border-radius: 4px; }
+.nav__toggle svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+.nav__toggle:hover, .nav__item:hover .nav__toggle, .nav__item.is-open .nav__toggle { color: var(--pink); }
+.nav__sub a { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.nav__sub b { font-family: var(--f-display); font-style: italic; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; color: #fff; font-size: 1rem; line-height: 1.15; }
+.nav__sub small { color: var(--muted); font-size: .8rem; }
+.nav__sub a:hover b, .nav__sub a[aria-current="page"] b { color: var(--pink); }
+.nav__sub-all { flex-direction: row !important; align-items: center; gap: 6px !important; color: var(--pink); font-family: var(--f-display); font-style: italic; font-weight: 700; text-transform: uppercase; font-size: .85rem; letter-spacing: .06em; }
+.nav__sub-all svg { width: 16px; height: 16px; }
+
+@media (min-width: 1101px) {
+  .nav__sub {
+    position: absolute; top: calc(100% + 14px); left: -12px; min-width: 300px; z-index: 60;
+    display: grid; gap: 2px; padding: 10px; background: #0d0d11; border: 1px solid var(--line-2); border-top: 3px solid var(--pink); border-radius: 8px;
+    box-shadow: 0 24px 50px rgba(0,0,0,.55);
+    opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .2s, transform .2s var(--ease), visibility 0s .2s;
+  }
+  .nav__sub::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; } /* puente para no perder el hover */
+  .nav__sub a { padding: 10px 12px; border-radius: 6px; }
+  .nav__sub a:hover { background: var(--ink-3); }
+  .nav__sub-all { margin-top: 4px; border-top: 1px solid var(--line); border-radius: 0 0 6px 6px !important; }
+  .nav__item:hover .nav__sub, .nav__item:focus-within .nav__sub, .nav__item.is-open .nav__sub { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .2s var(--ease); }
+  .nav__item:hover .nav__toggle svg, .nav__item.is-open .nav__toggle svg { transform: rotate(180deg); }
+}
+@media (min-width: 1101px) and (max-width: 1500px) { .nav__toggle { width: 18px; margin-left: -5px; } }
+
+@media (max-width: 1100px) {
+  .nav { justify-content: flex-start; overflow-y: auto; padding-top: 96px; }
+  .nav__item { flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+  .nav__item > .nav__link { flex: 1; border-bottom: 0; }
+  .nav__toggle { width: 48px; height: 48px; margin: 0; color: #fff; border: 1px solid var(--line-2); border-radius: 50%; }
+  .nav__toggle svg { width: 20px; height: 20px; }
+  .nav__item.is-open .nav__toggle svg { transform: rotate(180deg); }
+  .nav__sub { display: none; flex-basis: 100%; padding: 0 0 14px 34px; }
+  .nav__item.is-open .nav__sub { display: grid; gap: 4px; animation: fade .3s var(--ease); }
+  .nav__sub a { padding: 9px 0; }
+  .nav__sub b { font-size: 1.1rem; }
+  .nav__sub-all { padding-top: 6px !important; }
+}
+@media (max-width: 1100px) {
+  body.nav-open .mobile-cta, body.nav-open .wa-float { display: none; }
+  body.nav-open { overflow: hidden; }
+  .nav { padding-bottom: 48px; }
+}

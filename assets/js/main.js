@@ -50,6 +50,27 @@
     $$(".nav a").forEach(function (a) { a.addEventListener("click", function () { document.body.classList.remove("nav-open"); }); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") document.body.classList.remove("nav-open"); });
   }
+  /* ---------- Submenús (Experiencias, Cursos) ---------- */
+  var subs = $$(".nav__item.has-sub");
+  function closeSubs(except) {
+    subs.forEach(function (it) { if (it !== except) { it.classList.remove("is-open"); $(".nav__toggle", it).setAttribute("aria-expanded", "false"); } });
+  }
+  subs.forEach(function (it) {
+    var btn = $(".nav__toggle", it);
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = !it.classList.contains("is-open");
+      closeSubs(it);
+      it.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open);
+    });
+    it.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeSubs(); btn.focus(); } });
+    it.addEventListener("focusout", function (e) { if (!it.contains(e.relatedTarget) && window.innerWidth > 1100) { it.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); } });
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item.has-sub") && window.innerWidth > 1100) closeSubs(); });
+  // En móvil se abre desplegado el apartado de la página actual
+  subs.forEach(function (it) { if ($('.nav__sub [aria-current="page"]', it) && window.innerWidth <= 1100) { it.classList.add("is-open"); $(".nav__toggle", it).setAttribute("aria-expanded", "true"); } });
+
   var header = $(".header");
   var onScroll = function () { if (header) header.classList.toggle("is-scrolled", window.scrollY > 20); };
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();

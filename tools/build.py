@@ -323,12 +323,39 @@ def cookie_banner():
 </div>"""
 
 
+MENU_CAPTION = {
+    "ds-pilot-weekend-circuit": "Fin de semana de piloto en el Jarama",
+    "ds-pilot-weekend-rally": "Rally federado con Peugeot 206 o BMW E36",
+    "ds-pilot-weekend-slalom": "Slalom con Peugeot 206 o BMW E36",
+}
+
+
+def subnav():
+    """Submenús del menú principal (se calculan en tiempo de ejecución)."""
+    return {
+        "experiencias.html": ([(f"{k}.html", e["name"], MENU_CAPTION.get(k, e["tag"])) for k, e in EXPERIENCES.items()], "Ver todas las experiencias"),
+        "cursos.html": ([(f"{COURSE['slug']}.html", COURSE["name"], "Curso de copiloto con certificación")], "Ver todos los cursos"),
+    }
+
+
 def header(slug):
-    links = "".join(
-        f'<a class="nav__link" href="{h}"{" aria-current=\"page\"" if h == slug + ".html" or (h == "blog.html" and slug.startswith("blog-")) else ""}>'
-        f'<span class="nav__num">{i:02d}</span>{t}</a>'
-        for i, (h, t) in enumerate(NAV, 1)
-    )
+    sub = subnav()
+    chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
+    links = ""
+    for i, (h, t) in enumerate(NAV, 1):
+        children = sub.get(h)
+        child_hrefs = [c[0] for c in children[0]] if children else []
+        cur = h == slug + ".html" or (slug + ".html") in child_hrefs
+        a = (f'<a class="nav__link" href="{h}"{" aria-current=\"page\"" if cur else ""}>'
+             f'<span class="nav__num">{i:02d}</span>{t}</a>')
+        if not children:
+            links += a
+            continue
+        sid = "sub-" + h.split(".")[0]
+        items = "".join(f'<a href="{ch}"{" aria-current=\"page\"" if ch == slug + ".html" else ""}><b>{cn}</b><small>{ct}</small></a>' for ch, cn, ct in children[0])
+        links += (f'<div class="nav__item has-sub">{a}'
+                  f'<button class="nav__toggle" type="button" aria-expanded="false" aria-controls="{sid}" aria-label="Ver {t.lower()}">{chev}</button>'
+                  f'<div class="nav__sub" id="{sid}">{items}<a class="nav__sub-all" href="{h}">{children[1]} {I["arrow"]}</a></div></div>')
     shop_cur = ' aria-current="page"' if slug in ("tienda",) or slug in PRODUCTS else ""
     links += f'<a class="nav__shop" href="tienda.html"{shop_cur}>{I["bag"]} Tienda</a>'
     links += f'<div class="nav__extra"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="tel:{PHONE}">{PHONE_TXT}</a></div>'
