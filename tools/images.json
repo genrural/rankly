@@ -1,14 +1,4 @@
 {
- "peugeot-206-rally-deyscom-motorsport-asistencia": {
-  "alt": "Peugeot 206 de rally de Deyscom Motorsport en el parque de asistencia",
-  "w": 900,
-  "h": 1600
- },
- "bmw-e36-peugeot-206-coches-competicion-deyscom": {
-  "alt": "BMW E36 y Peugeot 206 de competición de Deyscom Motorsport",
-  "w": 900,
-  "h": 1600
- },
  "piloto-copiloto-rally-interior-coche-competicion": {
   "alt": "Piloto y copiloto con casco dentro de un coche de rally",
   "w": 1600,
@@ -16,88 +6,53 @@
  },
  "jaula-seguridad-multipunto-coche-competicion": {
   "alt": "Jaula de seguridad multipunto en un coche de competición",
-  "w": 900,
-  "h": 1600
+  "w": 792,
+  "h": 1408
  },
  "jaula-seguridad-soldada-preparacion-rally": {
   "alt": "Jaula de seguridad soldada durante la preparación de un coche de rally",
-  "w": 1600,
-  "h": 900
+  "w": 1239,
+  "h": 696
  },
  "peugeot-206-preparacion-rally-taller-torrelaguna": {
   "alt": "Peugeot 206 en preparación para rally en el taller de Torrelaguna",
-  "w": 1600,
-  "h": 900
- },
- "bmw-e36-preparacion-competicion-taller": {
-  "alt": "BMW E36 en preparación para competición en el taller",
-  "w": 1600,
-  "h": 900
- },
- "panel-interruptores-cortacorrientes-coche-competicion": {
-  "alt": "Panel de interruptores y cortacorrientes de un coche de competición",
-  "w": 1200,
-  "h": 1600
- },
- "peugeot-206-vano-motor-jaula-preparacion": {
-  "alt": "Vano motor y jaula de un Peugeot 206 en preparación",
-  "w": 900,
-  "h": 1600
- },
- "panel-control-coche-rally-deyscom": {
-  "alt": "Panel de control iluminado en un coche de rally",
-  "w": 1200,
-  "h": 1600
- },
- "coche-circuito-dorsal-35-taller-deyscom": {
-  "alt": "Coche de circuito con el dorsal 35 en el taller de Deyscom",
-  "w": 1200,
-  "h": 1600
+  "w": 1408,
+  "h": 792
  },
  "bmw-e36-rally-tierra-deyscom-motorsport": {
   "alt": "BMW E36 de Deyscom Motorsport saltando en un tramo de rally de tierra",
-  "w": 1600,
-  "h": 767
+  "w": 1239,
+  "h": 593
  },
  "radiador-intercooler-preparacion-motor": {
   "alt": "Radiador e intercooler montados durante una preparación de motor",
-  "w": 900,
-  "h": 1600
+  "w": 696,
+  "h": 1239
  },
  "colector-escape-motor-competicion": {
   "alt": "Colector de escape en un motor de competición",
-  "w": 900,
-  "h": 1600
- },
- "desmontaje-mecanica-elevador-taller-deyscom": {
-  "alt": "Coche en el elevador durante el desmontaje de la mecánica",
-  "w": 900,
-  "h": 1600
+  "w": 696,
+  "h": 1239
  },
  "subchasis-pintado-rosa-deyscom": {
   "alt": "Subchasis pintado en rosa Deyscom",
-  "w": 900,
-  "h": 1600
+  "w": 696,
+  "h": 1239
  },
  "motor-admision-deyscom-peugeot-206": {
   "alt": "Motor con admisión Deyscom en un Peugeot 206",
-  "w": 900,
-  "h": 1600
+  "w": 792,
+  "h": 1408
  },
  "motor-caja-cambios-desmontado-taller": {
   "alt": "Motor y caja de cambios desmontados en el taller",
-  "w": 1600,
-  "h": 900
+  "w": 1239,
+  "h": 696
  },
  "soporte-motor-poliuretano-competicion": {
   "alt": "Soporte de motor de poliuretano para competición",
-  "w": 1200,
-  "h": 1600
- },
- "motor-competicion-desmontado-palet": {
-  "alt": "Motor de competición desmontado sobre un palet",
-  "w": 900,
-  "h": 1600
+  "w": 1056,
+  "h": 1408
  },
  "cabina-pintura-chasis-rosa": {
   "alt": "Chasis pintado en rosa dentro de la cabina de pintura",
@@ -114,85 +69,55 @@
   "w": 1600,
   "h": 720
  },
- "restauracion-todoterreno-clasico-motor": {
-  "alt": "Restauración de un todoterreno clásico con el motor al descubierto",
-  "w": 900,
-  "h": 1600
- },
  "restomod-todoterreno-clasico-taller-deyscom": {
   "alt": "Restomod de un todoterreno clásico en el taller de Deyscom",
-  "w": 1600,
-  "h": 900
- },
- "muelles-suspension-dobinsons-preparacion": {
-  "alt": "Muelles de suspensión Dobinsons para preparación",
-  "w": 900,
-  "h": 1600
+  "w": 1239,
+  "h": 696
  },
  "nissan-patrol-pintura-verde-terminado": {
   "alt": "Nissan Patrol recién pintado en verde",
-  "w": 1600,
-  "h": 900
+  "w": 1239,
+  "h": 696
  },
  "nissan-patrol-cabina-pintura-verde": {
   "alt": "Nissan Patrol pintándose en verde en la cabina de pintura",
-  "w": 1200,
-  "h": 1600
- },
- "bmw-e36-rally-parque-cerrado-motor": {
-  "alt": "BMW E36 de rally con el capó abierto en el parque cerrado",
-  "w": 900,
-  "h": 1600
- },
- "ford-ranger-preparacion-offroad-deyscom": {
-  "alt": "Ford Ranger con preparación offroad",
-  "w": 1600,
-  "h": 900
- },
- "ford-ranger-offroad-llantas-competicion": {
-  "alt": "Ford Ranger offroad con llantas de competición, vista lateral",
-  "w": 1600,
-  "h": 900
+  "w": 718,
+  "h": 959
  },
  "nissan-patrol-restaurado-pintura-verde": {
   "alt": "Nissan Patrol restaurado con pintura verde",
-  "w": 1600,
-  "h": 900
+  "w": 1408,
+  "h": 792
  },
  "bmw-clasicos-restomod-taller-deyscom": {
   "alt": "BMW clásicos en el taller de Deyscom",
-  "w": 900,
-  "h": 1600
+  "w": 696,
+  "h": 1239
  },
  "bmw-e36-compact-competicion-taller": {
   "alt": "BMW E36 de competición en el taller",
-  "w": 1200,
-  "h": 1600
- },
- "bmw-e36-competicion-taller-deyscom-motorsport": {
-  "alt": "BMW E36 de competición en el taller de Deyscom Motorsport",
-  "w": 1600,
-  "h": 900
+  "w": 817,
+  "h": 1090
  },
  "bmw-e30-clasicos-restomod-deyscom": {
   "alt": "BMW E30 clásicos para restomod en Deyscom",
-  "w": 1600,
-  "h": 900
+  "w": 1239,
+  "h": 696
  },
  "land-rover-defender-restomod-deyscom": {
   "alt": "Land Rover Defender restomod de Deyscom",
-  "w": 1600,
-  "h": 900
+  "w": 1090,
+  "h": 612
  },
  "land-rover-defender-restomod-verde": {
   "alt": "Land Rover Defender restomod verde con baca",
-  "w": 1600,
-  "h": 900
+  "w": 1090,
+  "h": 612
  },
  "bmw-e36-competicion-decoracion-rosa": {
   "alt": "BMW E36 de competición con decoración y llantas rosas",
-  "w": 1200,
-  "h": 1600
+  "w": 929,
+  "h": 1239
  },
  "mitsubishi-lancer-evo-rally-taller-deyscom": {
   "alt": "Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport",
@@ -204,11 +129,6 @@
   "w": 1067,
   "h": 1600
  },
- "mitsubishi-lancer-evo-competicion-detalle": {
-  "alt": "Detalle frontal de un Mitsubishi Lancer Evo de competición",
-  "w": 1600,
-  "h": 1067
- },
  "pickup-clasico-restauracion-taller": {
   "alt": "Pick-up clásico negro en restauración en el taller",
   "w": 1067,
@@ -216,13 +136,13 @@
  },
  "todoterreno-chasis-restauracion-completa": {
   "alt": "Chasis de todoterreno en restauración completa",
-  "w": 1067,
-  "h": 1600
+  "w": 825,
+  "h": 1239
  },
  "eje-trasero-suspension-restauracion-4x4": {
   "alt": "Eje trasero y suspensión de un 4x4 en restauración",
-  "w": 1600,
-  "h": 1067
+  "w": 1408,
+  "h": 938
  },
  "volante-interior-coche-competicion": {
   "alt": "Volante e interior de un coche de competición",
@@ -239,16 +159,6 @@
   "w": 1600,
   "h": 1067
  },
- "renault-clio-rs-competicion-slalom": {
-  "alt": "Renault Clio RS preparado para competición",
-  "w": 1600,
-  "h": 1067
- },
- "jaula-seguridad-renault-clio-competicion": {
-  "alt": "Jaula de seguridad en un Renault Clio de competición",
-  "w": 1067,
-  "h": 1600
- },
  "baquet-sparco-arneses-jaula-competicion": {
   "alt": "Baquet Sparco con arneses y jaula de seguridad",
   "w": 1600,
@@ -256,16 +166,11 @@
  },
  "nave-taller-deyscom-coches-competicion": {
   "alt": "Nave del taller de Deyscom con coches de competición",
-  "w": 1067,
-  "h": 1600
+  "w": 938,
+  "h": 1408
  },
  "soldadura-jaula-seguridad-competicion": {
   "alt": "Soldadura de una jaula de seguridad para competición",
-  "w": 1067,
-  "h": 1600
- },
- "soldadura-bajos-coche-taller-deyscom": {
-  "alt": "Soldadura en los bajos de un coche en el taller",
   "w": 1067,
   "h": 1600
  },
@@ -296,8 +201,8 @@
  },
  "chasis-tubular-buggy-preparacion": {
   "alt": "Chasis tubular de buggy en preparación",
-  "w": 1069,
-  "h": 1600
+  "w": 940,
+  "h": 1408
  },
  "caja-cambios-competicion-preparacion": {
   "alt": "Caja de cambios de competición en preparación",
@@ -311,18 +216,8 @@
  },
  "elevadores-taller-deyscom-torrelaguna": {
   "alt": "Elevadores del taller de Deyscom en Torrelaguna",
-  "w": 1069,
-  "h": 1600
- },
- "pickup-offroad-alineacion-elevador": {
-  "alt": "Pick-up offroad en el elevador de alineación",
-  "w": 1069,
-  "h": 1600
- },
- "alineacion-direccion-todoterreno": {
-  "alt": "Alineación de dirección de un todoterreno",
-  "w": 1069,
-  "h": 1600
+  "w": 827,
+  "h": 1239
  },
  "mazda-mx5-preparacion-taller-deyscom": {
   "alt": "Mazda MX-5 en preparación en el taller de Deyscom",
@@ -336,76 +231,61 @@
  },
  "jeep-wrangler-elevador-taller-deyscom": {
   "alt": "Jeep Wrangler sobre el elevador del taller",
-  "w": 1069,
-  "h": 1600
- },
- "piloto-peugeot-206-rally-comunidad-madrid": {
-  "alt": "Piloto dentro del Peugeot 206 de Deyscom antes de salir al tramo",
-  "w": 1200,
-  "h": 1600
+  "w": 940,
+  "h": 1408
  },
  "copiloto-notas-rally-coche-competicion": {
   "alt": "Copiloto revisando las notas dentro del coche de rally",
-  "w": 1200,
-  "h": 1600
+  "w": 1056,
+  "h": 1408
  },
  "copiloto-libro-de-ruta-rally-deyscom": {
   "alt": "Copiloto con el libro de ruta en el Peugeot 206 de rally",
-  "w": 1200,
-  "h": 1600
- },
- "piloto-copiloto-peugeot-206-salida-rally": {
-  "alt": "Piloto y copiloto preparados en el Peugeot 206 de Deyscom",
-  "w": 1200,
-  "h": 1600
+  "w": 1056,
+  "h": 1408
  },
  "asistencia-deyscom-peugeot-206-rally": {
   "alt": "Equipo Deyscom en la asistencia del Peugeot 206 de rally",
-  "w": 1200,
-  "h": 1600
+  "w": 817,
+  "h": 1090
  },
  "peugeot-206-rally-tierra-deyscom-motorsport": {
   "alt": "Peugeot 206 de Deyscom Motorsport derrapando en un tramo de tierra",
-  "w": 1600,
-  "h": 1067
+  "w": 1239,
+  "h": 825
  },
  "peugeot-206-rally-polvo-contraluz-deyscom": {
   "alt": "Peugeot 206 de Deyscom Motorsport entre el polvo en un rally de tierra",
-  "w": 1600,
-  "h": 1067
+  "w": 1090,
+  "h": 726
  },
  "peugeot-206-rally-el-molar-tramo": {
   "alt": "Peugeot 206 de Deyscom en el tramo del Rallye Comunidad de Madrid – El Molar",
-  "w": 1600,
-  "h": 1067
+  "w": 1090,
+  "h": 726
  },
  "peugeot-206-rally-comunidad-madrid-montana": {
   "alt": "Peugeot 206 de Deyscom Motorsport en un tramo de montaña",
-  "w": 1600,
-  "h": 1067
+  "w": 1090,
+  "h": 726
  },
  "peugeot-206-1-6-xs-rally-deyscom-motorsport": {
   "alt": "Peugeot 206 1.6 XS de Deyscom Motorsport en acción en rally",
-  "w": 1600,
-  "h": 1067
+  "w": 1090,
+  "h": 726
  },
  "bmw-e36-rally-tierra-contraluz-deyscom": {
   "alt": "BMW E36 de Deyscom Motorsport en un tramo de tierra a contraluz",
-  "w": 1600,
-  "h": 1066
+  "w": 1239,
+  "h": 825
  },
  "bmw-e36-rally-el-molar-deyscom": {
   "alt": "BMW E36 de Deyscom en el Rallye Comunidad de Madrid – El Molar",
-  "w": 1600,
-  "h": 1066
+  "w": 1239,
+  "h": 825
  },
  "equipo-deyscom-motorsport-circuito": {
   "alt": "Equipo de Deyscom Motorsport en el circuito",
-  "w": 1200,
-  "h": 1600
- },
- "piloto-casco-interior-coche-competicion": {
-  "alt": "Piloto con casco dentro de un coche de competición",
   "w": 1200,
   "h": 1600
  },
@@ -414,59 +294,24 @@
   "w": 1200,
   "h": 1600
  },
- "bmw-e36-box-carrera-resistencia": {
-  "alt": "BMW E36 de competición en el box durante una carrera de resistencia",
-  "w": 1200,
-  "h": 1600
- },
- "piloto-arneses-coche-competicion-box": {
-  "alt": "Piloto con arneses en un coche de competición en el box",
-  "w": 1200,
-  "h": 1600
- },
  "bmw-e36-rotulado-deyscom-motorsport": {
   "alt": "BMW E36 rotulado con el logotipo de Deyscom Motorsport",
-  "w": 1200,
-  "h": 1600
+  "w": 1056,
+  "h": 1408
  },
  "mecanicos-deyscom-box-resistencia": {
   "alt": "Mecánicos de Deyscom trabajando en el box en carrera de resistencia",
-  "w": 1200,
-  "h": 1600
- },
- "asistencia-box-deyscom-circuito": {
-  "alt": "Asistencia de Deyscom en el box del circuito",
-  "w": 1200,
-  "h": 1600
+  "w": 929,
+  "h": 1239
  },
  "bmw-e36-atardecer-circuito-competicion": {
   "alt": "BMW E36 de competición rodando al atardecer en circuito",
   "w": 1600,
   "h": 1066
  },
- "coches-competicion-atardecer-circuito": {
-  "alt": "Coches de competición rodando al atardecer en circuito",
-  "w": 1600,
-  "h": 1066
- },
- "vw-golf-competicion-circuito-curva": {
-  "alt": "Volkswagen Golf de competición en una curva del circuito",
-  "w": 1600,
-  "h": 1066
- },
  "bmw-e36-competicion-circuito-curva": {
   "alt": "BMW E36 de competición en una curva del circuito",
-  "w": 1600,
-  "h": 1066
- },
- "bmw-e36-carrera-resistencia-circuito": {
-  "alt": "BMW E36 en carrera de resistencia en circuito",
-  "w": 1600,
-  "h": 1066
- },
- "bmw-e36-circuito-velocidad-barrido": {
-  "alt": "BMW E36 de competición a alta velocidad en circuito",
-  "w": 1600,
-  "h": 1066
+  "w": 1408,
+  "h": 938
  }
 }

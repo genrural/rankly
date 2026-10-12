@@ -23,7 +23,7 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Contacto (en el pie) | `contacto.html` |
 | Aviso legal, privacidad y cookies | `legal.html` |
 
-Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · Blog · **Tienda** (destacada como botón).
+Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
 
 ## Pensada para convertir
 
@@ -105,4 +105,9 @@ Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de
 ## 8. Patrocinadores y merchandising
 
 - Logos en `assets/img/patrocinadores/` (EBC Frenos, HEL, Mishimoto y King Elements). La lista está en `SPONSORS` dentro de `tools/build.py`; solo King Elements lleva enlace (`rel="sponsored"`).
-- Merch: camiseta, sudadera, chaqueta y gorra en negro, con vista delante/detrás en la ficha; pegatinas y **edición especial El Molar 2026**. Los precios (35, 25, 45, 59, 22 y 6 €) son orientativos: cámbialos en `PRODUCTS`.
+- Merch: camiseta, sudadera, chaqueta y gorra en negro y **edición especial El Molar 2026**, con fotos reales de producto en `assets/img/productos/`; pegatinas solo en negro. Los precios (35, 25, 45, 59, 22 y 6 €) son orientativos: cámbialos en `PRODUCTS`.
+
+## 9. Peso de las imágenes y favicon
+
+- Todas las imágenes pesan **menos de 100 KB**. Si añades fotos nuevas, ejecuta `python3 tools/optimize_images.py`: recomprime JPG y WebP hasta bajar del límite y actualiza `tools/images.json`.
+- Favicon generado a partir del logo: `favicon.ico`, `assets/img/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` y `site.webmanifest`.

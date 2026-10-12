@@ -1189,3 +1189,30 @@ h1, h2 { hyphens: manual; }
 }
 @media (min-width: 1501px) { .header .container { max-width: 1440px; } }
 @media (min-width: 981px) { .posts { grid-template-columns: repeat(3, 1fr); } }
+
+/* Fotos reales de producto */
+.product__media--photo, .pdp__stage--photo { background: #2b2b2e; }
+.product__media--photo img, .pdp__stage--photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.product:hover .product__media--photo img { transform: scale(1.04); }
+.pdp__stage--photo img { object-fit: contain; }
+.product__media--photo .product__tag, .pdp__stage--photo .product__tag { z-index: 3; }
+
+/* Equipo */
+.team { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(24px, 4vw, 60px); align-items: start; }
+.team > * { min-width: 0; }
+@media (max-width: 900px) { .team { grid-template-columns: 1fr; } }
+.team-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.team-photos__item { margin: 0; position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); }
+.team-photos__item:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
+.team-photos__item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.team-roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.team-roles li { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.team-roles .ic { width: 46px; height: 46px; display: grid; place-items: center; border-radius: var(--radius); background: var(--pink-soft); color: var(--pink); }
+.team-roles svg { width: 22px; height: 22px; }
+.team-roles b { display: block; color: #fff; font-family: var(--f-display); font-style: italic; text-transform: uppercase; font-size: 1.05rem; }
+.team-roles span { color: var(--muted); font-size: .92rem; }
+.team-leads { margin-top: 26px; display: grid; gap: 8px; }
+.team-leads .eyebrow { margin-bottom: 4px; }
+.lead-person { color: var(--muted); font-size: .95rem; scroll-margin-top: 110px; }
+.lead-person b { color: #fff; }
+.team-photos__item:first-child img { object-position: 50% 72%; }

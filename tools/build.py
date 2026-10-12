@@ -28,9 +28,12 @@ LOGO_VB = re.search(r'viewBox="([^"]+)"', _LOGO_SVG).group(1)
 LOGO_PATHS = re.search(r"</title>(.*)</svg>", _LOGO_SVG, re.S).group(1)
 
 
+LOGO_SYMBOL = f'<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dm-logo" viewBox="{LOGO_VB}">{LOGO_PATHS}</symbol></svg>'
+
+
 def logo_svg(cls="logo__svg", label=True):
     aria = 'role="img" aria-label="Deyscom Motorsport"' if label else 'aria-hidden="true"'
-    return f'<svg class="{cls}" viewBox="{LOGO_VB}" {aria}>{LOGO_PATHS}</svg>'
+    return f'<svg class="{cls}" viewBox="{LOGO_VB}" {aria}><use href="#dm-logo"/></svg>'
 
 
 def pic(name, cls="", eager=False, sizes="(max-width: 800px) 100vw, 50vw"):
@@ -108,7 +111,6 @@ NAV = [
     ("banco-de-potencia.html", "Banco de potencia"),
     ("experiencias.html", "Experiencias"),
     ("cursos.html", "Cursos"),
-    ("blog.html", "Blog"),
 ]
 FOOTER_NAV = NAV + [("tienda.html", "Tienda"), ("nosotros.html", "Quiénes somos"), ("contacto.html", "Contacto")]
 
@@ -248,8 +250,11 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 <meta name="twitter:title" content="{escape(title)}">
 <meta name="twitter:description" content="{escape(desc)}">
 <meta name="twitter:image" content="{og}">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/logo-deyscom-motorsport.png">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -258,6 +263,7 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 </head>
 <body data-topic="{escape(topic)}">
 <a class="skip-link" href="#main">Saltar al contenido</a>
+{LOGO_SYMBOL}
 """
 
 
@@ -1237,7 +1243,7 @@ def cursos():
 # ------------------------------------------------------------------ merch
 def _lg(x, y, w, extra=""):
     h = w * 97 / 301
-    return f'<svg x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}" viewBox="{LOGO_VB}"{extra}>{LOGO_PATHS}</svg>'
+    return f'<use href="#dm-logo" x="{x - w / 2:.1f}" y="{y - h / 2:.1f}" width="{w}" height="{h:.1f}"{extra}/>'
 
 
 TEE = "M120 30 L160 18 Q200 48 240 18 L280 30 L370 80 L340 150 L300 132 L300 400 L100 400 L100 132 L60 150 L30 80 Z"
@@ -1333,30 +1339,35 @@ def mock_svg(kind, view="front"):
 SIZES = ["S", "M", "L", "XL", "XXL"]
 PRODUCTS = {
     "camiseta-edicion-especial-el-molar-2026": dict(
+        photo=True,
         kind="especial", name="Camiseta Edición Especial El Molar 2026", short="Edición especial", price=35, tag="Edición limitada",
-        desc="Edición especial para celebrar nuestro primer rally: el II Rallye Comunidad de Madrid – El Molar 2026, al que Néstor Aguado y Héctor Guzmán fueron juntos por primera vez. Diseño bicolor de inspiración racing con nuestros patrocinadores: EBC Frenos, HEL, Mishimoto y King Elements.",
+        desc="Edición especial para celebrar nuestro primer rally: el II Rallye Comunidad de Madrid – El Molar 2026, al que Néstor Aguado y Héctor Guzmán fueron juntos por primera vez. Diseño bicolor negro y rosa de inspiración racing, con nuestros patrocinadores en pecho y mangas, y las firmas de Néstor y Héctor con el dorsal NH1.",
         colors=[("Negro / Rosa", "#151518", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
-        features=["Edición limitada · El Molar 2026", "Diseño bicolor negro y rosa Deyscom", "Patrocinadores: EBC Frenos, HEL, Mishimoto, King Elements", "Nombres de Néstor Aguado y Héctor Guzmán a la espalda"],
+        features=["Edición limitada · El Molar 2026", "Diseño bicolor negro y rosa Deyscom", "Patrocinadores: Mishimoto, EBC Frenos, HEL, King Elements y GT2i", "Firmas de Néstor y Héctor con el dorsal NH1"],
     ),
     "camiseta-deyscom": dict(
+        photo=True,
         kind="camiseta", name="Camiseta Deyscom Motorsport", short="Camiseta", price=25, tag="Más vendido",
         desc="La camiseta oficial del equipo, en negro. Logo pequeño en el pecho y logo grande en la espalda, como la que llevamos en el taller y en el paddock.",
         colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
         features=["Color negro", "Logo pequeño en el pecho", "Logo grande en la espalda", "Corte unisex regular"],
     ),
     "sudadera-capucha-deyscom": dict(
+        photo=True,
         kind="sudadera", name="Sudadera con capucha Deyscom Motorsport", short="Sudadera", price=45, tag="Nuevo",
         desc="Sudadera con capucha negra con bolsillo canguro, logo pequeño en el pecho y logo grande en la espalda. Para las mañanas frías de tramo y las noches de taller.",
         colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
         features=["Color negro", "Capucha con cordones y bolsillo canguro", "Logo pequeño en el pecho", "Logo grande en la espalda"],
     ),
     "chaqueta-deyscom": dict(
+        photo=True,
         kind="chaqueta", name="Chaqueta Deyscom Motorsport", short="Chaqueta", price=59, tag="Nuevo",
         desc="Chaqueta negra de equipo con cremallera completa, logo pequeño arriba a la derecha y logo grande en la espalda. La que verás en nuestro box.",
         colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=SIZES, back=True,
         features=["Color negro", "Cremallera completa", "Logo pequeño arriba a la derecha", "Logo grande en la espalda"],
     ),
     "gorra-deyscom": dict(
+        photo=True,
         kind="gorra", name="Gorra Deyscom Motorsport", short="Gorra", price=22, tag="Paddock",
         desc="Gorra negra de seis paneles con visera curva y logo bordado. Cierre ajustable para que te quede perfecta en pista y fuera de ella.",
         colors=[("Negro", "#0b0b0d", "#ffffff", "#ff66c4")], sizes=["Talla única ajustable"], back=False,
@@ -1365,7 +1376,7 @@ PRODUCTS = {
     "pegatinas-deyscom": dict(
         kind="pegatinas", name="Pack de pegatinas Deyscom Motorsport", short="Pegatinas", price=6, tag="Pack",
         desc="Pack de pegatinas de vinilo con el logo Deyscom Motorsport: para el coche, el casco, la caja de herramientas o el portátil. Resistentes a la intemperie.",
-        colors=[("Negro", "#000000", "#ffffff", "#ff66c4"), ("Blanco", "#ffffff", "#000000", "#ff66c4")],
+        colors=[("Negro", "#000000", "#ffffff", "#ff66c4")],
         sizes=["Pack 3 uds", "Pack 6 uds", "Pegatina grande parabrisas"], back=False,
         features=["Vinilo de exterior resistente al agua y UV", "Corte a contorno", "Varios tamaños en el pack", "Ideal para coche, casco y taller"],
     ),
@@ -1377,9 +1388,23 @@ def color_style(c):
     return st + (f";--brim:{c[4]}" if len(c) > 4 else "")
 
 
+def product_photo(slug, p, eager=False, big=False):
+    """Foto real del producto (delante y detrás) en WebP + JPG."""
+    b = f"assets/img/productos/{slug}"
+    sizes = "(max-width: 900px) 100vw, 600px" if big else "(max-width: 600px) 100vw, 33vw"
+    load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
+    return (f'<picture><source type="image/webp" srcset="{b}-600.webp 600w, {b}.webp 1024w" sizes="{sizes}">'
+            f'<img class="product__photo" src="{b}.jpg" srcset="{b}-600.jpg 600w, {b}.jpg 1024w" sizes="{sizes}" width="1024" height="1024" '
+            f'alt="{escape(p["name"])}: vista delantera y trasera" {load}></picture>')
+
+
+def product_visual(slug, p, **kw):
+    return product_photo(slug, p, **kw) if p.get("photo") else mock_svg(p["kind"])
+
+
 def product_card(slug, p):
     return f"""<a class="product reveal{" product--special" if p['kind'] == 'especial' else ""}" href="{slug}.html">
-  <div class="product__media" style="{color_style(p['colors'][0])}"><span class="product__tag">{p['tag']}</span>{mock_svg(p['kind'])}</div>
+  <div class="product__media{" product__media--photo" if p.get("photo") else ""}" style="{color_style(p['colors'][0])}"><span class="product__tag">{p['tag']}</span>{product_visual(slug, p)}</div>
   <div class="product__body"><h3>{p['name']}</h3><span class="product__price">{p['price']} €</span></div>
   <span class="svc__go">Ver producto {I['arrow']}</span>
 </a>"""
@@ -1468,7 +1493,7 @@ def product_page(slug):
     feats = "".join(f"<li>{I['check']} {f}</li>" for f in p["features"])
     others = "".join(product_card(s, q) for s, q in PRODUCTS.items() if s != slug)
     prod_ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "description": p["desc"], "sku": slug,
-               "image": SITE + "/assets/img/og-deyscom-motorsport.jpg", "brand": {"@type": "Brand", "name": "Deyscom Motorsport"},
+               "image": f"{SITE}/assets/img/productos/{slug}.jpg" if p.get("photo") else SITE + "/assets/img/og-deyscom-motorsport.jpg", "brand": {"@type": "Brand", "name": "Deyscom Motorsport"},
                "offers": {"@type": "Offer", "priceCurrency": "EUR", "price": str(p["price"]), "availability": "https://schema.org/InStock", "url": f"{SITE}/{slug}.html",
                           "seller": {"@id": SITE + "/#organizacion"}}}
     html = head(f"{p['name']} · Merchandising oficial | Deyscom Motorsport", p["desc"], slug, p["name"], "og",
@@ -1478,10 +1503,9 @@ def product_page(slug):
     <nav class="crumbs" aria-label="Migas"><a href="index.html">Inicio</a> / <a href="tienda.html#merch">Tienda</a> / <span>{p['short']}</span></nav>
     <div class="pdp" data-product data-price="{p['price']}">
       <div class="pdp__gallery">
-        <div class="pdp__stage" data-mock style="{color_style(c0)}">
+        <div class="pdp__stage{" pdp__stage--photo" if p.get("photo") else ""}" data-mock style="{color_style(c0)}">
           <span class="product__tag">{p['tag']}</span>
-          {mock_svg(p['kind'])}{mock_svg(p['kind'], "back") if p.get("back") else ""}
-          {'<div class="pdp__views" role="group" aria-label="Vista"><button type="button" class="is-on" data-view="front">Delante</button><button type="button" data-view="back">Detrás</button></div>' if p.get("back") else ""}
+          {product_photo(slug, p, eager=True, big=True) if p.get("photo") else mock_svg(p['kind'])}
         </div>
         <ul class="pdp__trust">
           <li>{I['truck']} Envío a toda España o recogida en taller</li>
@@ -1575,12 +1599,12 @@ def home():
     ]
     html = head("Deyscom Motorsport · Taller de competición, restomod, pintura y banco de potencia en Madrid",
                 "Taller motorsport en Torrelaguna (Madrid): preparación de coches de competición, restomod, pintura, banco de potencia, experiencias DS Pilot Weekend y curso de copiloto DS Copilot Course.",
-                "index", "vuestros servicios", "peugeot-206-rally-polvo-contraluz-deyscom",
+                "index", "vuestros servicios", "bmw-e36-rally-tierra-deyscom-motorsport",
                 [{"@context": "https://schema.org", "@type": "WebSite", "name": "Deyscom Motorsport", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
                 "taller competición Madrid, preparación rally Madrid, restomod Madrid, banco de potencia Madrid, curso copiloto rally, experiencia pilotaje, Torrelaguna") + header("index")
     html += hero("Torrelaguna · Madrid · Motorsport", ["Hechos", "para <span class='pink'>correr.</span>", "<span class='outline'>Pensados para ti.</span>"],
                  "Coches de competición, restomods, pintura, banco de potencia, experiencias de pilotaje y cursos. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
-                 "", "peugeot-206-rally-polvo-contraluz-deyscom", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
+                 "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
     html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "DS Pilot Weekend", "DS Copilot Course"])
     html += course_promo()
     html += f"""
@@ -1882,16 +1906,26 @@ def molar_block():
 
 
 def team_block():
-    cards_html = ""
-    for k in ("nestor", "hector"):
-        a = AUTHORS[k]
-        initials = "".join(w[0] for w in a["name"].split()[:2])
-        cards_html += (f'<article class="person reveal" id="{a["anchor"]}"><div class="person__avatar">{initials}</div>'
-                       f'<div><h3>{a["name"]}</h3><span class="person__role">{a["role"]}</span><p>{a["bio"]}</p></div></article>')
+    roles = [("wrench", "Mecánica y preparación", "Motores, transmisiones, suspensiones y montaje de coches de competición."),
+             ("spray", "Chapa y pintura", "Cabina de pintura, chasis, carrocería y decoraciones."),
+             ("truck", "Asistencia en carrera", "El equipo que se desplaza con los coches a rallies y circuitos."),
+             ("gauge", "Banco y puesta a punto", "Mediciones, diagnóstico y ajustes con datos reales."),
+             ("grad", "Formación y experiencias", "Profesores, copilotos y pilotos de nuestras experiencias y cursos."),
+             ("mic", "Comunicación", "Fotos, vídeos y redes para contar cada proyecto.")]
+    roles_html = "".join(f'<li><span class="ic">{I[ic]}</span><div><b>{t}</b><span>{d}</span></div></li>' for ic, t, d in roles)
+    leads = "".join(f'<span class="lead-person" id="{AUTHORS[k]["anchor"]}"><b>{AUTHORS[k]["name"]}</b> · {AUTHORS[k]["role"]}</span>' for k in ("nestor", "hector"))
+    photos = "".join(f'<figure class="team-photos__item reveal">{pic(n, sizes="(max-width: 760px) 100vw, 50vw")}</figure>'
+                     for n in ("equipo-deyscom-motorsport-atardecer", "equipo-deyscom-motorsport-circuito", "mecanicos-deyscom-box-resistencia"))
     return f"""<section class="section section--ink">
   <div class="container">
-    {section_head("El equipo", "Quién hay <span class='outline'>detrás</span>", "Personas reales, con nombre y apellidos, que viven el motor cada día en el taller y en las carreras.")}
-    <div class="people">{cards_html}</div>
+    {section_head("El equipo", "Mucha gente <span class='outline'>detrás</span>", "Deyscom no es una persona: es un equipo de mecánicos, preparadores, chapistas, pintores, técnicos de asistencia, formadores y gente de comunicación que vive el motor cada día, en el taller y en las carreras.")}
+    <div class="team">
+      <div class="team-photos">{photos}</div>
+      <div class="reveal">
+        <ul class="team-roles">{roles_html}</ul>
+        <div class="team-leads"><span class="eyebrow">Al frente</span>{leads}</div>
+      </div>
+    </div>
   </div>
 </section>"""
 
