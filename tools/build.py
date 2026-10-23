@@ -17,7 +17,7 @@ PHONE = "+34615972233"
 PHONE_TXT = "(+34) 615 97 22 33"
 EMAIL = "info@deyscom.com"
 ADDRESS = "C/ Canal de Isabel II, 2 · Nave 3 · 28180 Torrelaguna (Madrid)"
-VERSION = "4"
+VERSION = "5"
 # Etiquetas de medición. Rellena uno de los dos (GTM recomendado). Con ambos vacíos no se carga nada de Google.
 GTM_ID = ""   # p. ej. "GTM-XXXXXXX"
 GA4_ID = "G-LLGMMVL7M1"   # Google Analytics 4 · flujo deyscom.com
@@ -1109,6 +1109,7 @@ def booking_box(slug, name, kind="experience"):
   <h3>{name}</h3>
   <div class="buybox__price"><small>Precio</small><span>{price_html(slug)}</span></div>
   <ul class="buybox__list">{li}</ul>
+  <div class="buybox__dates" data-dates="{slug}" hidden><small>Próximas fechas</small><ul></ul></div>
   <a class="btn btn--block" data-buy="{slug}" href="#reserva">{I['ticket']} {"Comprar mi plaza" if is_course else "Reservar plaza"}</a>
   <a class="btn btn--wa btn--block mt-1" data-wa="{escape(name)}" data-loc="buybox" href="#">{I['wa']} Preguntar por WhatsApp</a>
   <p class="buybox__note">Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.</p>
@@ -1141,6 +1142,7 @@ def booking_form(slug, name, cars=None, kind="experience"):
           <div class="field"><label for="r-n">Nombre <span class="req">*</span></label><input class="input" id="r-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
           <div class="field"><label for="r-t">Teléfono <span class="req">*</span></label>{tel_input("r-t")}</div>
           <div class="field"><label for="r-e">Email <span class="req">*</span></label><input class="input" id="r-e" name="email" type="email" autocomplete="email" required placeholder="tu@email.com"></div>
+          <div class="field full" data-ed-field="{slug}" hidden><label for="r-ed">Elige fecha</label><select class="select input" id="r-ed" name="edicion"></select><input type="hidden" name="fecha_elegida"></div>
           <div class="field"><label for="r-f">Fecha preferida</label><input class="input" id="r-f" name="fecha_preferida" placeholder="Mes o fin de semana"></div>
           <fieldset class="pills full">{legend("Tu experiencia")}{pills("experiencia_previa", level)}</fieldset>
           {extra}
@@ -2598,7 +2600,7 @@ def sale_page():
 
 # ------------------------------------------------------------------ área privada / CRM
 def crm_page():
-    nav = [("panel", "Panel", "gauge"), ("leads", "Leads", "users"), ("pipeline", "Pipeline", "flag")]
+    nav = [("panel", "Panel", "gauge"), ("leads", "Leads", "users"), ("pipeline", "Pipeline", "flag"), ("calendario", "Calendario", "cal"), ("pedidos", "Pedidos", "bag")]
     nav_html = "".join(f'<button type="button" class="crm-nav__btn" data-view="{k}">{I[ic]}<span>{t}</span>{"<em id=\"crm-badge-new\" hidden></em>" if k == "leads" else ""}</button>' for k, t, ic in nav)
     nav_html += f'<button type="button" class="crm-nav__btn" data-view="usuarios" data-admin hidden>{I["shield"]}<span>Usuarios</span></button>'
     nav_html += f'<button type="button" class="crm-nav__btn" data-view="cuenta">{I["wrench"]}<span>Mi cuenta</span></button>'
@@ -2665,6 +2667,7 @@ def crm_page():
       <select class="cin" id="f-estado" aria-label="Estado"></select>
       <select class="cin" id="f-servicio" aria-label="Servicio"></select>
       <select class="cin" id="f-origen" aria-label="Origen"></select>
+      <select class="cin" id="f-etiqueta" aria-label="Etiqueta"></select>
       <select class="cin" id="f-periodo" aria-label="Periodo"><option value="">Siempre</option><option value="7">Últimos 7 días</option><option value="30">Últimos 30 días</option><option value="90">Últimos 90 días</option><option value="365">Último año</option></select>
       <button class="cbtn cbtn--ghost cbtn--sm" type="button" id="crm-export">Exportar CSV</button>
     </div>
@@ -2678,6 +2681,8 @@ def crm_page():
         <div class="crm-box"><h2>Por servicio</h2><div id="crm-by-service"></div></div>
         <div class="crm-box"><h2>Por origen</h2><div id="crm-by-origin"></div></div>
         <div class="crm-box"><h2>Por estado</h2><div id="crm-by-status"></div></div>
+        <div class="crm-box crm-box--span2"><h2>Rendimiento por canal</h2><div class="crm-table-wrap crm-table-wrap--flat" id="crm-channels"></div></div>
+        <div class="crm-box"><h2>Próximas ediciones</h2><ul class="crm-list" id="crm-next-ed"></ul></div>
       </div>
     </section>
 
@@ -2692,6 +2697,20 @@ def crm_page():
     <section class="crm-view" id="view-pipeline" hidden>
       <p class="crm-muted crm-hint">Arrastra las tarjetas entre columnas para cambiar el estado (en el móvil, ábrelas y cambia el estado).</p>
       <div class="crm-board" id="crm-board"></div>
+    </section>
+
+    <section class="crm-view" id="view-calendario" hidden>
+      <div class="crm-cal-head"><p class="crm-muted">Fechas de experiencias y cursos con sus plazas. Las ediciones abiertas y visibles se muestran en la web con las plazas libres, y aparecen en los formularios de reserva.</p>
+        <button class="cbtn cbtn--pink cbtn--sm" type="button" data-new-ed>+ Nueva edición</button></div>
+      <div id="crm-cal"></div>
+    </section>
+
+    <section class="crm-view" id="view-pedidos" hidden>
+      <div class="crm-kpis crm-kpis--4" id="crm-orders-kpis"></div>
+      <div class="crm-table-wrap"><table class="crm-table" id="crm-orders">
+        <thead><tr><th>Fecha</th><th>Cliente</th><th>Producto</th><th>Detalle</th><th>Total</th><th>Entrega</th><th>Envío</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
     </section>
 
     <section class="crm-view" id="view-usuarios" hidden>
@@ -2709,6 +2728,8 @@ def crm_page():
         </div>
         <button class="cbtn cbtn--pink" type="submit">Crear y generar contraseña</button>
       </form>
+      <div class="crm-box"><h2>Emails automáticos</h2><p class="crm-muted">Cada día a las 08:00 se envía a los usuarios un resumen con los leads nuevos, las llamadas de hoy y las atrasadas, y el día 1 de cada mes un informe por canal y servicio (se activan con <code>activarResumenes</code> en el Apps Script).</p>
+        <button class="cbtn cbtn--sm" type="button" id="crm-digest">Enviar el resumen de hoy ahora</button></div>
     </section>
 
     <section class="crm-view" id="view-cuenta" hidden>
@@ -2751,6 +2772,46 @@ def crm_page():
     <div class="crm-dialog__btns"><button class="cbtn cbtn--ghost" type="button" id="crm-new-cancel">Cancelar</button><button class="cbtn cbtn--pink" type="submit">Crear lead</button></div>
   </form>
 </dialog>
+<dialog class="crm-dialog" id="crm-ed">
+  <form id="crm-ed-form" class="crm-form">
+    <h2 id="crm-ed-title">Nueva edición</h2>
+    <input type="hidden" name="id">
+    <div class="dw-grid">
+      <label class="dw-full">Experiencia o curso<select class="cin" name="producto" required>{"".join(f'<option value="{k}">{v}</option>' for k, v in [("ds-pilot-weekend-circuit", "DS Pilot Weekend – Circuit"), ("ds-pilot-weekend-rally", "DS Pilot Weekend – Rally"), ("ds-pilot-weekend-slalom", "DS Pilot Weekend – Slalom"), ("ds-copilot-course", "DS Copilot Course"), ("alquiler-coche-de-rally", "Alquiler de coche de rally")])}</select></label>
+      <label class="dw-full">Nombre visible (opcional)<input class="cin" name="nombre" placeholder="Ej. DS Copilot Course · Noviembre"></label>
+      <label>Inicio *<input class="cin" name="inicio" type="date" required></label>
+      <label>Fin<input class="cin" name="fin" type="date"></label>
+      <label>Lugar<input class="cin" name="lugar" placeholder="Circuito del Jarama"></label>
+      <label>Plazas (vacío = sin límite)<input class="cin" name="plazas" type="number" min="0"></label>
+      <label>Precio (€)<input class="cin" name="precio" inputmode="decimal"></label>
+      <label>Estado<select class="cin" name="estado"><option>Abierta</option><option>Completa</option><option>Cerrada</option><option>Cancelada</option></select></label>
+      <label class="dw-full crm-check"><input type="checkbox" name="visible" checked> Mostrar en la web</label>
+      <label class="dw-full">Notas internas<textarea class="cin" name="notas" rows="2"></textarea></label>
+    </div>
+    <div id="crm-ed-ins"></div>
+    <div class="crm-dialog__btns"><button class="cbtn cbtn--danger" type="button" id="crm-ed-del" hidden>Borrar</button><button class="cbtn cbtn--ghost" type="button" id="crm-ed-cancel">Cancelar</button><button class="cbtn cbtn--pink" type="submit">Guardar</button></div>
+  </form>
+</dialog>
+
+<dialog class="crm-dialog crm-dialog--wide" id="crm-quote">
+  <form id="crm-quote-form" class="crm-form">
+    <h2>Nuevo presupuesto</h2>
+    <p class="crm-muted" id="q-for"></p>
+    <div class="q-head"><span>Concepto</span><span>Cant.</span><span>Precio (sin IVA)</span><span></span></div>
+    <div id="q-lines"></div>
+    <button class="cbtn cbtn--sm cbtn--ghost" type="button" id="q-add">+ Añadir línea</button>
+    <div class="dw-grid mt">
+      <label>IVA<select class="cin" id="q-iva"><option value="21">21 %</option><option value="10">10 %</option><option value="0">Sin IVA</option></select></label>
+      <label>Validez (días)<input class="cin" id="q-validez" type="number" min="1" value="30"></label>
+      <label class="dw-full">Observaciones<textarea class="cin" id="q-notas" rows="2" placeholder="Plazos, condiciones, piezas incluidas…"></textarea></label>
+      <label class="dw-full">Email del cliente<input class="cin" id="q-email" type="email"></label>
+      <label class="dw-full crm-check"><input type="checkbox" id="q-send"> Enviar el PDF por email al cliente</label>
+    </div>
+    <p class="q-totals" id="q-totals"></p>
+    <div class="crm-dialog__btns"><button class="cbtn cbtn--ghost" type="button" id="q-cancel">Cancelar</button><button class="cbtn cbtn--pink" type="submit">Crear PDF</button></div>
+  </form>
+</dialog>
+<datalist id="crm-tags"></datalist>
 <div class="crm-toast" id="crm-toast" role="status" aria-live="polite"></div>
 <script src="assets/js/config.js?v={VERSION}"></script>
 <script src="assets/js/crm.js?v={VERSION}"></script>

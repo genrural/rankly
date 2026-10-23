@@ -31,6 +31,9 @@ window.DEYSCOM = {
     "pegatinas-deyscom": ""
   },
 
+  // Enlace para pedir reseñas en Google (Google Business Profile → «Pedir reseñas»). Lo usa la plantilla de WhatsApp del CRM.
+  googleReview: "",
+
   social: {
     instagram: "https://www.instagram.com/deyscom_motorsport/",
     facebook: "https://www.facebook.com/deyscom/",

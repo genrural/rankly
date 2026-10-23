@@ -24,9 +24,16 @@ var LEAD_COLUMNS = [
   'id', 'recibido', 'fecha', 'formulario', 'servicio', 'nombre', 'telefono', 'email', 'vehiculo', 'anio',
   'presupuesto', 'plazo', 'mensaje', 'pagina', 'landing', 'referrer',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid',
-  'estado', 'valor', 'proxima_accion', 'asignado', 'actualizado'
+  'estado', 'valor', 'proxima_accion', 'asignado', 'etiquetas', 'edicion', 'envio', 'actualizado'
 ];
 var ACTIVITY_COLUMNS = ['lead_id', 'fecha', 'usuario', 'tipo', 'texto'];
+var EDITIONS_SHEET = 'Ediciones';
+var EDITION_COLUMNS = ['id', 'producto', 'nombre', 'inicio', 'fin', 'lugar', 'plazas', 'precio', 'estado', 'visible', 'notas'];
+var QUOTES_SHEET = 'Presupuestos';
+var QUOTE_COLUMNS = ['numero', 'lead_id', 'fecha', 'cliente', 'email', 'lineas', 'base', 'iva', 'total', 'validez', 'notas', 'estado', 'pdf_id', 'usuario'];
+var CRM_URL = 'https://deyscom.com/crm.html';
+var EMPRESA = { nombre: 'DEYSCOM MOTORSPORT, S.L.', cif: 'B09939471', direccion: 'C/ Canal de Isabel II, 2, Nave 3 · 28180 Torrelaguna (Madrid)',
+  telefono: '(+34) 615 97 22 33', email: 'info@deyscom.com', web: 'deyscom.com' };
 
 // ---------------- CRM: usuarios y seguridad ----------------
 var ESTADOS = ['Nuevo', 'Contactado', 'Presupuesto enviado', 'Negociación', 'Ganado', 'Perdido'];
@@ -34,7 +41,7 @@ var SESSION_SECONDS = 21600;       // la sesión caduca tras 6 h sin actividad
 var MAX_LOGIN_FAILS = 5;           // intentos fallidos antes de bloquear 15 minutos
 var HASH_ROUNDS = 400;
 // Campos que se pueden editar desde el CRM
-var EDITABLE = ['estado', 'valor', 'proxima_accion', 'asignado', 'nombre', 'telefono', 'email', 'servicio', 'vehiculo', 'anio', 'presupuesto', 'plazo', 'mensaje'];
+var EDITABLE = ['estado', 'valor', 'proxima_accion', 'asignado', 'etiquetas', 'edicion', 'envio', 'nombre', 'telefono', 'email', 'servicio', 'vehiculo', 'anio', 'presupuesto', 'plazo', 'mensaje', 'plazas'];
 
 /**
  * 1) Cambia los emails de abajo (el tuyo y el del cliente).
@@ -126,7 +133,15 @@ function handleApi_(req) {
   switch (req.api) {
     case 'me': return { ok: true, user: s };
     case 'logout': CacheService.getScriptCache().remove('tok_' + req.token); return { ok: true };
-    case 'leads': return { ok: true, user: s, estados: ESTADOS, leads: readLeads_(), activity: readActivity_() };
+    case 'leads': return { ok: true, user: s, estados: ESTADOS, leads: readLeads_(), activity: readActivity_(), ediciones: readEditions_(), presupuestos: readQuotes_() };
+    case 'saveEdicion': return withLock_(function () { return saveEdition_(req.fields || {}, s); });
+    case 'deleteEdicion':
+      if (!admin) return { ok: false, error: 'Solo el administrador puede borrar ediciones.' };
+      return withLock_(function () { return deleteEdition_(req.id, s); });
+    case 'quote': return withLock_(function () { return createQuote_(req, s); });
+    case 'quotePdf': return quotePdf_(req.numero);
+    case 'quoteStatus': return withLock_(function () { return quoteStatus_(req.numero, req.estado, s); });
+    case 'digest': return { ok: true, sent: resumenDiario(true) };
     case 'update': return withLock_(function () { return updateLead_(req.id, req.fields || {}, s); });
     case 'note': return withLock_(function () { return addNote_(req.id, req.text, s); });
     case 'create': return withLock_(function () { return createLead_(req.fields || {}, s); });
@@ -336,6 +351,7 @@ function doPost(e) {
 // ---------------- STOCK / WALLAPOP ----------------
 function doGet(e) {
   var action = e && e.parameter && e.parameter.action;
+  if (action === 'ediciones') return json_({ ok: true, ediciones: publicEditions_(e.parameter.producto) });
   if (action === 'stock') {
     var refresh = e.parameter.refresh === '1';
     return json_(getStock_(refresh));
@@ -464,6 +480,274 @@ function json_(obj) {
 function setup() {
   leadsSheet_();
   getSheet_(ACTIVITY_SHEET, ACTIVITY_COLUMNS);
+  getSheet_(EDITIONS_SHEET, EDITION_COLUMNS);
+  getSheet_(QUOTES_SHEET, QUOTE_COLUMNS);
   getSheet_(STOCK_SHEET, ['title', 'price', 'image', 'url', 'year', 'km', 'fuel', 'description', 'visible']);
   Logger.log(JSON.stringify(getStock_(true)).slice(0, 1000));
+}
+
+
+// ---------------- EDICIONES (fechas y plazas de experiencias y cursos) ----------------
+function sheetObjects_(name, cols) {
+  var sh = getSheet_(name, cols);
+  var last = sh.getLastRow();
+  if (last < 2) return { sheet: sh, rows: [] };
+  var head = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+  var rows = sh.getRange(2, 1, last - 1, head.length).getDisplayValues().map(function (r, i) {
+    var o = { _row: i + 2 }; head.forEach(function (h, j) { if (h) o[h] = r[j]; }); return o;
+  });
+  return { sheet: sh, head: head, rows: rows };
+}
+
+function seatsTaken_() {
+  var taken = {};
+  readLeads_().forEach(function (l) {
+    if (!l.edicion || l.estado === 'Perdido') return;
+    var n = parseInt(l.plazas, 10); if (!(n > 0)) n = 1;
+    taken[l.edicion] = (taken[l.edicion] || 0) + n;
+  });
+  return taken;
+}
+
+function readEditions_() {
+  var taken = seatsTaken_();
+  return sheetObjects_(EDITIONS_SHEET, EDITION_COLUMNS).rows.map(function (r) {
+    delete r._row; r.ocupadas = taken[r.id] || 0; return r;
+  });
+}
+
+function publicEditions_(producto) {
+  var today = Utilities.formatDate(new Date(), 'Europe/Madrid', 'yyyy-MM-dd');
+  return readEditions_().filter(function (r) {
+    return (!producto || r.producto === producto) && String(r.visible).toLowerCase() !== 'no' &&
+      ['Cerrada', 'Cancelada'].indexOf(r.estado) === -1 && r.inicio >= today;
+  }).map(function (r) {
+    var plazas = parseInt(r.plazas, 10) || 0;
+    var libres = plazas ? Math.max(0, plazas - r.ocupadas) : null;
+    return { id: r.id, producto: r.producto, nombre: r.nombre, inicio: r.inicio, fin: r.fin, lugar: r.lugar, precio: r.precio,
+      plazas: plazas, libres: libres, completa: r.estado === 'Completa' || libres === 0 };
+  }).sort(function (a, b) { return a.inicio < b.inicio ? -1 : 1; });
+}
+
+function saveEdition_(f, s) {
+  var T = sheetObjects_(EDITIONS_SHEET, EDITION_COLUMNS);
+  if (!f.producto || !f.inicio) return { ok: false, error: 'Producto y fecha de inicio son obligatorios.' };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(f.inicio) || (f.fin && !/^\d{4}-\d{2}-\d{2}$/.test(f.fin))) return { ok: false, error: 'Fechas no válidas.' };
+  var row = f.id ? T.rows.filter(function (r) { return r.id === f.id; })[0] : null;
+  var id = row ? row.id : 'ed' + Utilities.getUuid().slice(0, 6);
+  var vals = EDITION_COLUMNS.map(function (c) {
+    var v = c === 'id' ? id : (f[c] !== undefined ? f[c] : (row ? row[c] : ''));
+    if (c === 'estado' && !v) v = 'Abierta';
+    return ['id', 'inicio', 'fin'].indexOf(c) > -1 ? text_(v) : clean_(v);
+  });
+  if (row) T.sheet.getRange(row._row, 1, 1, vals.length).setValues([vals]);
+  else T.sheet.appendRow(vals);
+  logActivity_('edicion:' + id, s, row ? 'edicion' : 'creado', (row ? 'Edición modificada: ' : 'Edición creada: ') + (f.nombre || f.producto) + ' · ' + f.inicio);
+  return { ok: true, id: id };
+}
+
+function deleteEdition_(id, s) {
+  var T = sheetObjects_(EDITIONS_SHEET, EDITION_COLUMNS);
+  var row = T.rows.filter(function (r) { return r.id === id; })[0];
+  if (!row) return { ok: false, error: 'Edición no encontrada.' };
+  T.sheet.deleteRow(row._row);
+  logActivity_('edicion:' + id, s, 'borrado', 'Edición borrada');
+  return { ok: true };
+}
+
+// ---------------- PRESUPUESTOS EN PDF ----------------
+function readQuotes_() {
+  return sheetObjects_(QUOTES_SHEET, QUOTE_COLUMNS).rows.map(function (r) { delete r._row; return r; });
+}
+
+function quotesFolder_() {
+  var props = PropertiesService.getScriptProperties();
+  var id = props.getProperty('QUOTES_FOLDER');
+  if (id) { try { return DriveApp.getFolderById(id); } catch (e) { /* borrada: se crea otra */ } }
+  var f = DriveApp.createFolder('Presupuestos Deyscom Motorsport');
+  props.setProperty('QUOTES_FOLDER', f.getId());
+  return f;
+}
+
+function nextQuoteNumber_() {
+  var year = Utilities.formatDate(new Date(), 'Europe/Madrid', 'yyyy');
+  var max = 0;
+  readQuotes_().forEach(function (q) { var m = String(q.numero).match(/^P-(\d{4})-(\d+)$/); if (m && m[1] === year) max = Math.max(max, +m[2]); });
+  return 'P-' + year + '-' + ('00' + (max + 1)).slice(-3);
+}
+
+function money_(n) { return (Math.round(n * 100) / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €'; }
+function escHtml_(t) { return String(t === undefined || t === null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+function quoteHtml_(q) {
+  var rows = q.lineas.map(function (l) {
+    return '<tr><td>' + escHtml_(l.concepto) + '</td><td class="n">' + escHtml_(l.cantidad) + '</td><td class="n">' + money_(l.precio) + '</td><td class="n">' + money_(l.cantidad * l.precio) + '</td></tr>';
+  }).join('');
+  return '<html><head><meta charset="utf-8"><style>' +
+    'body{font-family:Arial,Helvetica,sans-serif;color:#111;font-size:11pt;margin:0}' +
+    '.top{border-bottom:4px solid #ff66c4;padding-bottom:12px;margin-bottom:18px}' +
+    '.brand{font-size:24pt;font-weight:bold;font-style:italic;letter-spacing:1px}.brand span{color:#ff66c4}' +
+    '.small{font-size:9pt;color:#555}h1{font-size:16pt;margin:0 0 4px}' +
+    'table{width:100%;border-collapse:collapse}th{background:#111;color:#fff;text-align:left;padding:7px;font-size:9pt}td{padding:7px;border-bottom:1px solid #ddd;vertical-align:top}' +
+    '.n{text-align:right;white-space:nowrap}.tot td{border:0;padding:4px 7px}.tot .big td{font-size:14pt;font-weight:bold;border-top:2px solid #111}' +
+    '.box{background:#f6f6f6;padding:10px;margin-top:16px;font-size:9.5pt}' +
+    '</style></head><body>' +
+    '<table class="top"><tr><td><div class="brand">DEYS<span>COM</span> MOTORSPORT</div><div class="small">' + escHtml_(EMPRESA.nombre) + ' · CIF ' + EMPRESA.cif + '<br>' +
+    escHtml_(EMPRESA.direccion) + '<br>' + EMPRESA.telefono + ' · ' + EMPRESA.email + ' · ' + EMPRESA.web + '</div></td>' +
+    '<td class="n"><h1>PRESUPUESTO</h1><b>' + escHtml_(q.numero) + '</b><br><span class="small">Fecha: ' + escHtml_(q.fechaTxt) + '<br>Válido hasta: ' + escHtml_(q.validezTxt) + '</span></td></tr></table>' +
+    '<p><b>Cliente:</b> ' + escHtml_(q.cliente) + (q.email ? ' · ' + escHtml_(q.email) : '') + (q.telefono ? ' · ' + escHtml_(q.telefono) : '') +
+    (q.vehiculo ? '<br><b>Vehículo:</b> ' + escHtml_(q.vehiculo) : '') + (q.servicio ? '<br><b>Servicio:</b> ' + escHtml_(q.servicio) : '') + '</p>' +
+    '<table><tr><th>Concepto</th><th class="n">Cant.</th><th class="n">Precio</th><th class="n">Importe</th></tr>' + rows + '</table>' +
+    '<table class="tot" style="width:45%;margin-left:55%;margin-top:10px"><tr><td>Base imponible</td><td class="n">' + money_(q.base) + '</td></tr>' +
+    '<tr><td>IVA (' + q.ivaPct + '%)</td><td class="n">' + money_(q.iva) + '</td></tr><tr class="big"><td>Total</td><td class="n">' + money_(q.total) + '</td></tr></table>' +
+    (q.notas ? '<div class="box"><b>Observaciones</b><br>' + escHtml_(q.notas).replace(/\n/g, '<br>') + '</div>' : '') +
+    '<p class="small" style="margin-top:22px">Presupuesto sin compromiso. Los trabajos no previstos que aparezcan durante la reparación se comunicarán y presupuestarán antes de realizarse. ' +
+    'Para aceptarlo, responde a este email o escríbenos al ' + EMPRESA.telefono + '.</p></body></html>';
+}
+
+function createQuote_(req, s) {
+  var L = leadsSheet_();
+  var row = findRow_(L, req.lead_id);
+  if (row < 0) return { ok: false, error: 'Lead no encontrado.' };
+  var cur = L.sheet.getRange(row, 1, 1, L.headers.length).getDisplayValues()[0];
+  var lead = {}; L.headers.forEach(function (h, j) { lead[h] = cur[j]; });
+  var lineas = (req.lineas || []).map(function (l) {
+    return { concepto: String(l.concepto || '').slice(0, 300), cantidad: Number(l.cantidad) || 0, precio: Number(l.precio) || 0 };
+  }).filter(function (l) { return l.concepto && l.cantidad; });
+  if (!lineas.length) return { ok: false, error: 'Añade al menos una línea.' };
+  var ivaPct = req.iva === undefined ? 21 : Number(req.iva) || 0;
+  var base = lineas.reduce(function (t, l) { return t + l.cantidad * l.precio; }, 0);
+  var iva = Math.round(base * ivaPct) / 100, total = Math.round((base + iva) * 100) / 100;
+  var now = new Date(), dias = Number(req.validez) || 30;
+  var q = { numero: nextQuoteNumber_(), cliente: lead.nombre, email: req.email || lead.email, telefono: lead.telefono, vehiculo: lead.vehiculo, servicio: lead.servicio,
+    lineas: lineas, base: base, iva: iva, total: total, ivaPct: ivaPct, notas: req.notas || '',
+    fechaTxt: Utilities.formatDate(now, 'Europe/Madrid', 'dd/MM/yyyy'),
+    validezTxt: Utilities.formatDate(new Date(now.getTime() + dias * 86400000), 'Europe/Madrid', 'dd/MM/yyyy') };
+  var pdf = Utilities.newBlob(quoteHtml_(q), 'text/html', q.numero + '.html').getAs('application/pdf').setName('Presupuesto ' + q.numero + ' - ' + (lead.nombre || '') + '.pdf');
+  var file = quotesFolder_().createFile(pdf);
+  getSheet_(QUOTES_SHEET, QUOTE_COLUMNS).appendRow([q.numero, text_(req.lead_id), text_(Utilities.formatDate(now, 'Europe/Madrid', 'yyyy-MM-dd')), clean_(q.cliente), clean_(q.email),
+    JSON.stringify(lineas), base, iva, total, text_(Utilities.formatDate(new Date(now.getTime() + dias * 86400000), 'Europe/Madrid', 'yyyy-MM-dd')), clean_(q.notas),
+    req.enviar ? 'Enviado' : 'Creado', file.getId(), clean_(s.nombre)]);
+  var sent = false;
+  if (req.enviar && q.email) {
+    MailApp.sendEmail({ to: q.email, replyTo: EMPRESA.email, name: 'Deyscom Motorsport',
+      subject: 'Presupuesto ' + q.numero + ' · Deyscom Motorsport',
+      htmlBody: '<p>Hola ' + escHtml_(String(lead.nombre || '').split(' ')[0]) + ',</p><p>Te enviamos el presupuesto que nos pediste' + (lead.servicio ? ' para <b>' + escHtml_(lead.servicio) + '</b>' : '') +
+        '. Lo tienes adjunto en PDF.</p><p>Total: <b>' + money_(total) + '</b> (IVA incluido). Válido hasta el ' + q.validezTxt + '.</p>' +
+        '<p>Cualquier duda, responde a este email o escríbenos por WhatsApp al ' + EMPRESA.telefono + '.</p><p>¡Un saludo!<br><b>Deyscom Motorsport</b></p>',
+      attachments: [pdf] });
+    sent = true;
+  }
+  var upd = { valor: String(total) };
+  if (['Nuevo', 'Contactado'].indexOf(lead.estado) > -1) upd.estado = 'Presupuesto enviado';
+  updateLead_(req.lead_id, upd, s);
+  logActivity_(req.lead_id, s, 'presupuesto', 'Presupuesto ' + q.numero + ' · ' + money_(total) + (sent ? ' · enviado a ' + q.email : ''));
+  return { ok: true, numero: q.numero, total: total, sent: sent, pdf: Utilities.base64Encode(pdf.getBytes()) };
+}
+
+function quotePdf_(numero) {
+  var q = readQuotes_().filter(function (x) { return x.numero === numero; })[0];
+  if (!q || !q.pdf_id) return { ok: false, error: 'Presupuesto no encontrado.' };
+  return { ok: true, numero: numero, pdf: Utilities.base64Encode(DriveApp.getFileById(q.pdf_id).getBlob().getBytes()) };
+}
+
+function quoteStatus_(numero, estado, s) {
+  if (['Creado', 'Enviado', 'Aceptado', 'Rechazado'].indexOf(estado) === -1) return { ok: false, error: 'Estado no válido.' };
+  var T = sheetObjects_(QUOTES_SHEET, QUOTE_COLUMNS);
+  var row = T.rows.filter(function (r) { return r.numero === numero; })[0];
+  if (!row) return { ok: false, error: 'Presupuesto no encontrado.' };
+  T.sheet.getRange(row._row, T.head.indexOf('estado') + 1).setValue(estado);
+  logActivity_(row.lead_id, s, 'presupuesto', 'Presupuesto ' + numero + ' → ' + estado);
+  if (estado === 'Aceptado') updateLead_(row.lead_id, { estado: 'Ganado', valor: String(row.total).replace(',', '.') }, s);
+  return { ok: true };
+}
+
+// ---------------- RESUMEN DIARIO E INFORME MENSUAL ----------------
+/** Ejecuta UNA vez: programa el resumen diario (08:00) y el informe mensual (día 1). */
+function activarResumenes() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (['resumenDiario', 'informeMensual'].indexOf(t.getHandlerFunction()) > -1) ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('resumenDiario').timeBased().everyDays(1).atHour(8).inTimezone('Europe/Madrid').create();
+  ScriptApp.newTrigger('informeMensual').timeBased().onMonthDay(1).atHour(9).inTimezone('Europe/Madrid').create();
+  Logger.log('Resumen diario (08:00) e informe mensual (día 1, 09:00) activados.');
+}
+
+function digestRecipients_() {
+  var users = loadUsers_();
+  var list = Object.keys(users).filter(function (k) { return users[k].activo && k.indexOf('@ejemplo.com') === -1; });
+  if (NOTIFY_EMAIL && list.indexOf(NOTIFY_EMAIL) === -1) list.push(NOTIFY_EMAIL);
+  return list;
+}
+
+function leadTime_(l) {
+  var d = l.recibido ? new Date(l.recibido) : null;
+  if (d && !isNaN(d)) return d.getTime();
+  var m = String(l.fecha || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  return m ? new Date(+m[3], +m[2] - 1, +m[1]).getTime() : 0;
+}
+
+function leadLine_(l, extra) {
+  return '<li><b>' + escHtml_(l.nombre || 'Sin nombre') + '</b> · ' + escHtml_(l.servicio || l.formulario || '') + (l.telefono ? ' · ' + escHtml_(l.telefono) : '') + (extra ? ' · ' + extra : '') + '</li>';
+}
+
+/** Email de las 08:00: leads nuevos de las últimas 24 h, llamadas de hoy y atrasadas. */
+function resumenDiario(force) {
+  var leads = readLeads_();
+  var today = Utilities.formatDate(new Date(), 'Europe/Madrid', 'yyyy-MM-dd');
+  var since = Date.now() - 86400000;
+  var nuevos = leads.filter(function (l) { return leadTime_(l) >= since; });
+  var sinContactar = leads.filter(function (l) { return l.estado === 'Nuevo' && leadTime_(l) < since; });
+  var abiertos = leads.filter(function (l) { return ['Ganado', 'Perdido'].indexOf(l.estado) === -1 && /^\d{4}-\d{2}-\d{2}$/.test(l.proxima_accion); });
+  var hoy = abiertos.filter(function (l) { return l.proxima_accion === today; });
+  var tarde = abiertos.filter(function (l) { return l.proxima_accion < today; });
+  if (!force && !nuevos.length && !hoy.length && !tarde.length && !sinContactar.length) return false;
+  var sec = function (t, arr, fn) { return arr.length ? '<h3 style="margin:18px 0 6px">' + t + ' (' + arr.length + ')</h3><ul>' + arr.slice(0, 25).map(fn).join('') + '</ul>' : ''; };
+  var html = '<div style="font-family:Arial,sans-serif;max-width:620px"><h2 style="border-bottom:3px solid #ff66c4;padding-bottom:6px">Resumen del día · Deyscom Motorsport</h2>' +
+    sec('🆕 Leads nuevos (24 h)', nuevos, function (l) { return leadLine_(l); }) +
+    sec('📅 Llamadas para hoy', hoy, function (l) { return leadLine_(l, escHtml_(l.estado)); }) +
+    sec('⚠️ Atrasadas', tarde, function (l) { return leadLine_(l, 'desde ' + l.proxima_accion); }) +
+    sec('⏳ Siguen sin contactar', sinContactar, function (l) { return leadLine_(l); }) +
+    ((nuevos.length + hoy.length + tarde.length + sinContactar.length) ? '' : '<p>Todo al día. 🏁</p>') +
+    '<p style="margin-top:22px"><a href="' + CRM_URL + '" style="background:#ff66c4;color:#000;padding:10px 16px;text-decoration:none;font-weight:bold">Abrir el CRM</a></p></div>';
+  var to = digestRecipients_();
+  if (!to.length) return false;
+  MailApp.sendEmail({ to: to.join(','), name: 'CRM Deyscom', subject: '🏁 Resumen del día: ' + nuevos.length + ' nuevos · ' + (hoy.length + tarde.length) + ' llamadas pendientes', htmlBody: html });
+  return true;
+}
+
+function originName_(l) {
+  var ref = String(l.referrer || '').toLowerCase();
+  if (l.formulario === 'crm-manual' || ref.indexOf('manual') === 0) return 'Manual';
+  if (l.gclid) return 'Google Ads';
+  if (l.fbclid) return 'Meta Ads';
+  if (l.utm_source) return l.utm_source;
+  var map = [['google', 'Google orgánico'], ['bing', 'Bing'], ['instagram', 'Instagram'], ['facebook', 'Facebook'], ['tiktok', 'TikTok'], ['youtube', 'YouTube'],
+    ['chatgpt', 'ChatGPT'], ['openai', 'ChatGPT'], ['perplexity', 'Perplexity'], ['wallapop', 'Wallapop']];
+  for (var i = 0; i < map.length; i++) if (ref.indexOf(map[i][0]) > -1) return map[i][1];
+  return ref ? 'Otras webs' : 'Directo';
+}
+
+/** Email del día 1: resumen del mes anterior por canal y servicio. */
+function informeMensual() {
+  var now = new Date();
+  var start = new Date(now.getFullYear(), now.getMonth() - 1, 1).getTime(), end = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+  var mes = Utilities.formatDate(new Date(start), 'Europe/Madrid', 'MMMM yyyy');
+  var leads = readLeads_().filter(function (l) { var t = leadTime_(l); return t >= start && t < end; });
+  var table = function (fn) {
+    var o = {};
+    leads.forEach(function (l) { var k = fn(l); o[k] = o[k] || { n: 0, g: 0, v: 0 }; o[k].n++; if (l.estado === 'Ganado') { o[k].g++; o[k].v += parseFloat(String(l.valor).replace(',', '.')) || 0; } });
+    return '<table style="border-collapse:collapse;width:100%"><tr style="background:#111;color:#fff"><th align="left" style="padding:6px">Canal</th><th>Leads</th><th>Ganados</th><th>Conversión</th><th align="right" style="padding:6px">Valor ganado</th></tr>' +
+      Object.keys(o).sort(function (a, b) { return o[b].n - o[a].n; }).map(function (k) {
+        return '<tr><td style="padding:6px;border-bottom:1px solid #ddd">' + escHtml_(k) + '</td><td align="center">' + o[k].n + '</td><td align="center">' + o[k].g + '</td><td align="center">' +
+          Math.round(o[k].g / o[k].n * 100) + '%</td><td align="right" style="padding:6px">' + money_(o[k].v) + '</td></tr>';
+      }).join('') + '</table>';
+  };
+  var won = leads.filter(function (l) { return l.estado === 'Ganado'; });
+  var html = '<div style="font-family:Arial,sans-serif;max-width:680px"><h2 style="border-bottom:3px solid #ff66c4;padding-bottom:6px">Informe de ' + mes + ' · Deyscom Motorsport</h2>' +
+    '<p><b>' + leads.length + '</b> leads · <b>' + won.length + '</b> ganados · <b>' + money_(won.reduce(function (t, l) { return t + (parseFloat(String(l.valor).replace(',', '.')) || 0); }, 0)) + '</b> de valor ganado.</p>' +
+    '<h3>Por canal</h3>' + table(originName_) + '<h3>Por servicio</h3>' + table(function (l) { return l.servicio || l.formulario || 'Sin servicio'; }) +
+    '<p style="margin-top:22px"><a href="' + CRM_URL + '">Abrir el CRM</a></p></div>';
+  var to = digestRecipients_();
+  if (to.length) MailApp.sendEmail({ to: to.join(','), name: 'CRM Deyscom', subject: '📊 Informe de ' + mes + ': ' + leads.length + ' leads, ' + won.length + ' ganados', htmlBody: html });
 }

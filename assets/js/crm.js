@@ -13,13 +13,32 @@
   var ESTADOS = ["Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido"];
   var CERRADOS = ["Ganado", "Perdido"];
   var INTERNAL = ["id", "recibido", "fecha", "formulario", "pagina", "landing", "referrer", "utm_source", "utm_medium", "utm_campaign",
-    "utm_term", "utm_content", "gclid", "fbclid", "estado", "valor", "proxima_accion", "asignado", "actualizado", "consentimiento", "nombre", "telefono", "email"];
+    "utm_term", "utm_content", "gclid", "fbclid", "estado", "valor", "proxima_accion", "asignado", "actualizado", "consentimiento", "nombre", "telefono", "email",
+    "etiquetas", "edicion", "envio"];
   var LABELS = { servicio: "Servicio", vehiculo: "Vehículo", anio: "Año", presupuesto: "Presupuesto", plazo: "Plazo", mensaje: "Mensaje",
     coche: "Coche", licencia: "Licencia", experiencia_previa: "Experiencia", regalo: "Regalo", fecha_preferida: "Fecha preferida",
     plazas: "Plazas", prueba: "Prueba", interes: "Interés", uso: "Uso", producto: "Producto", talla: "Talla", color: "Color",
     cantidad: "Cantidad", total: "Total", entrega: "Entrega", direccion: "Dirección" };
 
-  var state = { token: null, user: null, leads: [], activity: [], view: "panel", filters: { q: "", estado: "", servicio: "", origen: "", periodo: "" }, openId: null, demo: false };
+  var PRODUCTOS = { "ds-pilot-weekend-circuit": "DS Pilot Weekend – Circuit", "ds-pilot-weekend-rally": "DS Pilot Weekend – Rally",
+    "ds-pilot-weekend-slalom": "DS Pilot Weekend – Slalom", "ds-copilot-course": "DS Copilot Course", "alquiler-coche-de-rally": "Alquiler de coche de rally" };
+  var ENVIOS = ["Pendiente de pago", "Pagado", "Preparando", "Enviado", "Entregado", "Cancelado"];
+  var ED_ESTADOS = ["Abierta", "Completa", "Cerrada", "Cancelada"];
+  var DIRECCION = "C/ Canal de Isabel II, 2, Nave 3, Torrelaguna (L-V 07:00–15:00)";
+  // Plantillas de WhatsApp: {nombre}, {servicio}, {yo}, {edicion}, {resena}. "para" filtra por servicio (vacío = todos).
+  var PLANTILLAS = [
+    { n: "Primer contacto", t: "¡Hola {nombre}! Soy {yo}, de Deyscom Motorsport. Hemos recibido tu solicitud de {servicio}. ¿Te viene bien que te llamemos hoy o mañana para concretar?" },
+    { n: "Pedir fotos del coche", para: /competici|restomod|pintura|banco|chapa|venta|busqueda/i, t: "¡Hola {nombre}! Para darte un presupuesto ajustado de {servicio}, ¿nos mandas unas fotos del coche con buena luz y nos dices modelo y año? ¡Gracias!" },
+    { n: "Cita en el taller", t: "¡Hola {nombre}! Te esperamos en el taller: " + DIRECCION + ". ¿Qué día te viene bien para pasarte?" },
+    { n: "Presupuesto enviado", t: "¡Hola {nombre}! Te acabamos de enviar por email el presupuesto de {servicio}. Cualquier duda, nos dices por aquí." },
+    { n: "Seguimiento del presupuesto", t: "¡Hola {nombre}! ¿Pudiste ver el presupuesto de {servicio}? Si quieres ajustamos algo o lo vemos juntos en el taller." },
+    { n: "Confirmar plaza", para: /pilot|copilot|alquiler|curso|experiencia/i, t: "¡Hola {nombre}! Te confirmamos tu plaza en {servicio}{edicion}. Ahora te mandamos los datos de pago y todo lo que necesitas llevar. ¡Va a ser brutal!" },
+    { n: "Pedido enviado", para: /pedido|tienda/i, t: "¡Hola {nombre}! Tu pedido de la tienda Deyscom ya está en camino. ¡Gracias por vestir el equipo! 🏁" },
+    { n: "Pedir reseña en Google", t: "¡Hola {nombre}! Gracias por confiar en Deyscom Motorsport. ¿Nos dejarías una reseña en Google? Nos ayuda muchísimo 🙏{resena}" }
+  ];
+
+  var state = { token: null, user: null, leads: [], activity: [], ediciones: [], presupuestos: [], view: "panel",
+    filters: { q: "", estado: "", servicio: "", origen: "", periodo: "", etiqueta: "" }, openId: null, demo: false };
 
   /* ---------------- utilidades ---------------- */
   function esc(v) {
@@ -53,7 +72,13 @@
     return fmtDate(d);
   }
   function money(n) { return (Number(n) || 0).toLocaleString("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }); }
-  function num(v) { var n = parseFloat(String(v || "").replace(/\./g, "").replace(",", ".").replace(/[^\d.-]/g, "")); return isNaN(n) ? 0 : n; }
+  function money2(n) { return (Number(n) || 0).toLocaleString("es-ES", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function num(v) {
+    var t = String(v === undefined || v === null ? "" : v).replace(/[^\d.,-]/g, "");
+    if (t.indexOf(",") > -1) t = t.replace(/\./g, "").replace(",", ".");          // 1.234,56
+    else if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, "");           // 1.234
+    var n = parseFloat(t); return isNaN(n) ? 0 : n;
+  }
   function phoneDigits(p) {
     var d = String(p || "").replace(/[^\d+]/g, "");
     if (d.indexOf("+") === 0) return d.slice(1);
@@ -74,6 +99,25 @@
     try { return new URL(ref).hostname.replace(/^www\./, ""); } catch (e) { return "Otro"; }
   }
   function service(l) { return l.servicio || l.formulario || "Sin servicio"; }
+  function productOf(l) {
+    if (PRODUCTOS[l.formulario]) return l.formulario;
+    for (var k in PRODUCTOS) if (PRODUCTOS[k] === l.servicio) return k;
+    return "";
+  }
+  function isOrder(l) { return l.formulario === "pedido" || /pedido tienda/i.test(l.servicio || ""); }
+  function tags(l) { return String(l.etiquetas || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean); }
+  function edById(id) { return state.ediciones.filter(function (e) { return e.id === id; })[0]; }
+  function edLabel(e) {
+    if (!e) return "";
+    var a = parseDate(e.inicio), b = parseDate(e.fin);
+    var f = fmtDate(a) + (b && e.fin !== e.inicio ? " – " + fmtDate(b) : "");
+    return (e.nombre || PRODUCTOS[e.producto] || e.producto) + " · " + f + (e.lugar ? " · " + e.lugar : "");
+  }
+  function seats(e) { var p = parseInt(e.plazas, 10) || 0; return { plazas: p, ocupadas: Number(e.ocupadas) || 0, libres: p ? Math.max(0, p - (Number(e.ocupadas) || 0)) : null }; }
+  function b64ToBlob(b64, type) { var bin = atob(b64), arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i); return new Blob([arr], { type: type }); }
+  function download(blob, name) { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000); }
+  function showDlg(d) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+  function hideDlg(d) { if (d.close) d.close(); else d.removeAttribute("open"); }
   function estadoClass(e) { return "st st--" + (ESTADOS.indexOf(e) > -1 ? ESTADOS.indexOf(e) : 0); }
   function toast(msg, bad) {
     var t = $("#crm-toast");
@@ -121,7 +165,14 @@
       act.push({ lead_id: l.id, fecha: d.toISOString(), usuario: "web", tipo: "creado", texto: "Lead recibido desde " + l.pagina });
       if (e !== "Nuevo") act.push({ lead_id: l.id, fecha: new Date(d.getTime() + 7200000).toISOString(), usuario: l.asignado, tipo: "nota", texto: "Llamado. Le enviamos información por WhatsApp." });
     });
-    return { leads: leads, activity: act };
+    var dd = function (n) { return ymd(new Date(now + n * 86400000)); };
+    var eds = [
+      { id: "ed1", producto: "ds-copilot-course", nombre: "DS Copilot Course", inicio: dd(16), fin: dd(17), lugar: "Guadalajara", plazas: "12", precio: "", estado: "Abierta", visible: "sí", notas: "" },
+      { id: "ed2", producto: "ds-pilot-weekend-circuit", nombre: "DS Pilot Weekend – Circuit", inicio: dd(23), fin: dd(24), lugar: "Circuito del Jarama", plazas: "8", precio: "", estado: "Abierta", visible: "sí", notas: "" },
+      { id: "ed3", producto: "ds-pilot-weekend-slalom", nombre: "DS Pilot Weekend – Slalom", inicio: dd(37), fin: dd(37), lugar: "Madrid", plazas: "10", precio: "", estado: "Abierta", visible: "sí", notas: "" },
+      { id: "ed4", producto: "ds-pilot-weekend-rally", nombre: "DS Pilot Weekend – Rally", inicio: dd(52), fin: dd(53), lugar: "Rally por confirmar", plazas: "2", precio: "", estado: "Abierta", visible: "sí", notas: "" }];
+    leads.forEach(function (l) { var p = l.formulario; var e = eds.filter(function (x) { return x.producto === p; })[0]; if (e && l.estado !== "Perdido") l.edicion = e.id; if (p === "pedido") { l.producto = "Camiseta Deyscom"; l.talla = "L"; l.color = "Negro"; l.cantidad = "1"; l.total = "29.00"; l.entrega = "Envío a domicilio"; l.envio = l.estado === "Ganado" ? "Entregado" : "Pagado"; } });
+    return { leads: leads, activity: act, ediciones: eds, presupuestos: [] };
   }
   var demoMem = null;
   function demoDb() {
@@ -129,6 +180,13 @@
     var raw = read("dm_crm_demo");
     if (raw) { try { demoMem = JSON.parse(raw); return demoMem; } catch (e) { /* reinicia */ } }
     demoMem = demoSeed(); store("dm_crm_demo", JSON.stringify(demoMem)); return demoMem;
+  }
+  function demoQuoteHtml(q, l) {
+    var rows = q.lineas.map(function (x) { return "<tr><td>" + esc(x.concepto) + "</td><td align=right>" + x.cantidad + "</td><td align=right>" + money(x.precio) + "</td><td align=right>" + money(x.cantidad * x.precio) + "</td></tr>"; }).join("");
+    return '<html><head><meta charset="utf-8"><title>Presupuesto ' + esc(q.numero) + '</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:30px auto;color:#111}h1{border-bottom:4px solid #ff66c4;padding-bottom:8px}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #ddd}th{background:#111;color:#fff;text-align:left}</style></head><body>' +
+      "<h1>DEYSCOM MOTORSPORT · Presupuesto " + esc(q.numero) + "</h1><p><b>Cliente:</b> " + esc(l.nombre) + " · " + esc(q.email || "") + "<br><b>Fecha:</b> " + esc(q.fecha) + "</p>" +
+      "<table><tr><th>Concepto</th><th>Cant.</th><th>Precio</th><th>Importe</th></tr>" + rows + "</table><p style='text-align:right'>Base " + money(q.base) + " · IVA " + money(q.iva) + "<br><b style='font-size:20px'>Total " + money(q.total) + "</b></p>" +
+      (q.notas ? "<p><b>Observaciones:</b> " + esc(q.notas) + "</p>" : "") + "<p style='color:#777;font-size:12px'>Vista de demostración. Con Google Sheets conectado se genera un PDF real, se guarda en Drive y se puede enviar por email.</p></body></html>";
   }
   function demoApi(action, p) {
     var db = demoDb();
@@ -139,7 +197,28 @@
     switch (action) {
       case "login": return { ok: true, token: "demo", user: user };
       case "logout": return { ok: true };
-      case "leads": return { ok: true, user: user, estados: ESTADOS, leads: db.leads, activity: db.activity };
+      case "leads":
+        db.ediciones = db.ediciones || []; db.presupuestos = db.presupuestos || [];
+        var taken = {}; db.leads.forEach(function (l) { if (l.edicion && l.estado !== "Perdido") taken[l.edicion] = (taken[l.edicion] || 0) + (parseInt(l.plazas, 10) || 1); });
+        db.ediciones.forEach(function (e) { e.ocupadas = taken[e.id] || 0; });
+        return { ok: true, user: user, estados: ESTADOS, leads: db.leads, activity: db.activity, ediciones: db.ediciones, presupuestos: db.presupuestos };
+      case "saveEdicion":
+        var f = p.fields, ex = db.ediciones.filter(function (e) { return e.id === f.id; })[0];
+        if (ex) Object.assign(ex, f); else { f.id = "ed" + Date.now().toString(36); db.ediciones.push(f); }
+        save(); return { ok: true, id: f.id || ex.id };
+      case "deleteEdicion": db.ediciones = db.ediciones.filter(function (e) { return e.id !== p.id; }); save(); return { ok: true };
+      case "quote":
+        var ql = find(p.lead_id), base = p.lineas.reduce(function (t, x) { return t + x.cantidad * x.precio; }, 0), tot = Math.round(base * (1 + (Number(p.iva) || 0) / 100) * 100) / 100;
+        var numq = "P-" + new Date().getFullYear() + "-" + ("00" + (db.presupuestos.length + 1)).slice(-3);
+        var qq = { numero: numq, lead_id: p.lead_id, fecha: ymd(new Date()), cliente: ql.nombre, email: p.email, lineas: p.lineas, base: base, iva: tot - base, total: tot, notas: p.notas, estado: p.enviar ? "Enviado" : "Creado" };
+        db.presupuestos.push(qq); ql.valor = String(tot); if (["Nuevo", "Contactado"].indexOf(ql.estado) > -1) ql.estado = "Presupuesto enviado";
+        log(p.lead_id, "presupuesto", "Presupuesto " + numq + " · " + money(tot) + (p.enviar ? " · (demo: no se envía email)" : "")); save();
+        return { ok: true, numero: numq, total: tot, sent: false, html: demoQuoteHtml(qq, ql) };
+      case "quotePdf": var qd = db.presupuestos.filter(function (x) { return x.numero === p.numero; })[0]; return qd ? { ok: true, html: demoQuoteHtml(qd, find(qd.lead_id) || {}) } : { ok: false, error: "No encontrado" };
+      case "quoteStatus":
+        var qs = db.presupuestos.filter(function (x) { return x.numero === p.numero; })[0]; if (!qs) return { ok: false, error: "No encontrado" };
+        qs.estado = p.estado; if (p.estado === "Aceptado") { var lw = find(qs.lead_id); if (lw) lw.estado = "Ganado"; } log(qs.lead_id, "presupuesto", "Presupuesto " + p.numero + " → " + p.estado); save(); return { ok: true };
+      case "digest": return { ok: true, sent: false };
       case "update":
         var l = find(p.id); if (!l) return { ok: false, error: "No encontrado" };
         var ch = [];
@@ -217,6 +296,8 @@
       state.leads.forEach(function (l) { l._date = leadDate(l); if (!l.estado) l.estado = "Nuevo"; });
       state.leads.sort(function (a, b) { return b._date - a._date; });
       state.activity = res.activity || [];
+      state.ediciones = (res.ediciones || []).sort(function (a, b) { return a.inicio < b.inicio ? -1 : 1; });
+      state.presupuestos = res.presupuestos || [];
       fillFilters(); render();
       $("#crm-sync").textContent = "Actualizado " + new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
     }).catch(function (e) { toast(e.message, true); }).then(function () { busy(false); });
@@ -225,7 +306,7 @@
     state.view = v;
     $$("[data-view]").forEach(function (b) { b.classList.toggle("is-active", b.getAttribute("data-view") === v); if (b.getAttribute("data-view") === v) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
     $$(".crm-view").forEach(function (s) { s.hidden = s.id !== "view-" + v; });
-    $("#crm-title").textContent = { panel: "Panel", leads: "Leads", pipeline: "Pipeline", usuarios: "Usuarios", cuenta: "Mi cuenta" }[v];
+    $("#crm-title").textContent = { panel: "Panel", leads: "Leads", pipeline: "Pipeline", calendario: "Calendario", pedidos: "Pedidos", usuarios: "Usuarios", cuenta: "Mi cuenta" }[v];
     $("#crm-filters").hidden = !(v === "leads" || v === "pipeline");
     document.body.classList.remove("nav-open");
     render();
@@ -247,8 +328,11 @@
     opts($("#f-estado"), ESTADOS, "Todos los estados");
     opts($("#f-servicio"), uniq(service), "Todos los servicios");
     opts($("#f-origen"), uniq(origin), "Todos los orígenes");
+    var allTags = {}; state.leads.forEach(function (l) { tags(l).forEach(function (t) { allTags[t] = 1; }); });
+    opts($("#f-etiqueta"), Object.keys(allTags).sort(), "Todas las etiquetas");
+    $("#crm-tags").innerHTML = Object.keys(allTags).sort().map(function (t) { return '<option value="' + esc(t) + '">'; }).join("");
   }
-  ["q", "estado", "servicio", "origen", "periodo"].forEach(function (k) {
+  ["q", "estado", "servicio", "origen", "periodo", "etiqueta"].forEach(function (k) {
     var el = $("#f-" + k);
     el.addEventListener(k === "q" ? "input" : "change", function () { state.filters[k] = el.value; render(); });
   });
@@ -260,6 +344,7 @@
       if (f.servicio && service(l) !== f.servicio) return false;
       if (f.origen && origin(l) !== f.origen) return false;
       if (since && l._date.getTime() < since) return false;
+      if (f.etiqueta && tags(l).indexOf(f.etiqueta) === -1) return false;
       if (q) {
         var hay = [l.nombre, l.telefono, l.email, l.servicio, l.vehiculo, l.mensaje, l.asignado].join(" ").toLowerCase();
         if (hay.indexOf(q) === -1) return false;
@@ -269,11 +354,19 @@
   }
 
   /* ---------------- render ---------------- */
+  function recountSeats() {
+    var taken = {};
+    state.leads.forEach(function (l) { if (l.edicion && l.estado !== "Perdido") taken[l.edicion] = (taken[l.edicion] || 0) + (parseInt(l.plazas, 10) > 0 ? parseInt(l.plazas, 10) : 1); });
+    state.ediciones.forEach(function (e) { e.ocupadas = taken[e.id] || 0; });
+  }
   function render() {
     if (!state.user) return;
+    recountSeats();
     if (state.view === "panel") renderPanel();
     if (state.view === "leads") renderLeads();
     if (state.view === "pipeline") renderPipeline();
+    if (state.view === "calendario") renderCalendar();
+    if (state.view === "pedidos") renderOrders();
     var nuevos = state.leads.filter(function (l) { return l.estado === "Nuevo"; }).length;
     var badge = $("#crm-badge-new"); badge.textContent = nuevos; badge.hidden = !nuevos;
   }
@@ -333,6 +426,18 @@
       return '<li><button type="button" data-open="' + esc(l.id) + '"><span class="crm-date' + (late ? " is-late" : isToday ? " is-today" : "") + '">' + (late ? "Atrasado · " : isToday ? "Hoy · " : "") + fmtDate(parseDate(l._next)) +
         "</span><b>" + esc(l.nombre) + "</b><small>" + esc(service(l)) + " · " + esc(l.estado) + "</small></button></li>";
     }).join("") : '<li class="crm-empty">No hay próximas acciones. Ponlas en cada lead para no olvidar ninguna llamada.</li>';
+    var ch = {};
+    L.forEach(function (l) { var k = origin(l).split(" · ")[0]; ch[k] = ch[k] || { n: 0, g: 0, v: 0 }; ch[k].n++; if (l.estado === "Ganado") { ch[k].g++; ch[k].v += num(l.valor); } });
+    $("#crm-channels").innerHTML = Object.keys(ch).length ? '<table class="crm-mini"><thead><tr><th>Canal</th><th>Leads</th><th>Ganados</th><th>Conv.</th><th>Valor ganado</th></tr></thead><tbody>' +
+      Object.keys(ch).sort(function (a, b) { return ch[b].n - ch[a].n; }).map(function (k) {
+        var c = ch[k]; return "<tr><td>" + esc(k) + "</td><td>" + c.n + "</td><td>" + c.g + "</td><td>" + Math.round(c.g / c.n * 100) + "%</td><td>" + money(c.v) + "</td></tr>";
+      }).join("") + "</tbody></table>" : '<p class="crm-empty">Sin datos todavía.</p>';
+    var nextEd = state.ediciones.filter(function (e) { return e.inicio >= today && ["Cerrada", "Cancelada"].indexOf(e.estado) === -1; }).slice(0, 5);
+    $("#crm-next-ed").innerHTML = nextEd.length ? nextEd.map(function (e) {
+      var st = seats(e);
+      return '<li><button type="button" data-ed="' + esc(e.id) + '"><span class="crm-date">' + fmtDate(parseDate(e.inicio)) + "</span><b>" + esc(e.nombre || PRODUCTOS[e.producto] || e.producto) +
+        "</b><small>" + (st.plazas ? st.ocupadas + " / " + st.plazas + " plazas" + (st.libres === 0 ? " · COMPLETA" : "") : st.ocupadas + " inscritos") + "</small></button></li>";
+    }).join("") : '<li class="crm-empty">No hay ediciones programadas. Créalas en Calendario para mostrar fechas y plazas en la web.</li>';
     $("#crm-latest").innerHTML = L.slice(0, 6).map(function (l) {
       return '<li><button type="button" data-open="' + esc(l.id) + '"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + "</span><b>" + esc(l.nombre) + "</b><small>" + esc(service(l)) + " · " + ago(l._date) + "</small></button></li>";
     }).join("") || '<li class="crm-empty">Todavía no hay leads.</li>';
@@ -390,7 +495,7 @@
   function byId(id) { return state.leads.filter(function (l) { return l.id === id; })[0]; }
   document.addEventListener("click", function (e) {
     var t = e.target.closest && e.target.closest("[data-open]");
-    if (t && !e.target.closest("a")) openDrawer(t.getAttribute("data-open"));
+    if (t && !e.target.closest("a, select, input, textarea, label")) openDrawer(t.getAttribute("data-open"));
   });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeDrawer();
@@ -420,13 +525,35 @@
     var timeline = acts.map(function (a) {
       return '<li class="tl tl--' + esc(a.tipo) + '"><div><b>' + esc(a.usuario || "—") + "</b> · <span>" + fmtDate(parseDate(a.fecha), true) + "</span></div><p>" + esc(a.texto).replace(/\n/g, "<br>") + "</p></li>";
     }).join("") || '<li class="crm-empty">Sin actividad todavía.</li>';
+    var prod = productOf(l);
+    var edOpts = state.ediciones.filter(function (e) { return !prod || e.producto === prod || e.id === l.edicion; }).map(function (e) {
+      var st = seats(e); return '<option value="' + esc(e.id) + '"' + (e.id === l.edicion ? " selected" : "") + ">" + esc(edLabel(e)) + (st.plazas ? " (" + st.libres + " libres)" : "") + "</option>";
+    }).join("");
+    var tpls = PLANTILLAS.filter(function (t) { return !t.para || t.para.test(service(l) + " " + l.formulario); });
+    var quotes = state.presupuestos.filter(function (q) { return q.lead_id === id; });
+    var em = String(l.email || "").toLowerCase();
+    var dups = state.leads.filter(function (x) { return x.id !== id && ((ph.length > 8 && phoneDigits(x.telefono) === ph) || (em && String(x.email || "").toLowerCase() === em)); });
+    var next = parseDate(l.proxima_accion), gcal = "";
+    if (next) {
+      var d0 = ymd(next).replace(/-/g, ""), d1 = ymd(new Date(next.getTime() + 86400000)).replace(/-/g, "");
+      gcal = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Deyscom · " + (l.nombre || "") + " · " + service(l)) +
+        "&dates=" + d0 + "/" + d1 + "&details=" + encodeURIComponent("Tel: " + (l.telefono || "—") + "\nEmail: " + (l.email || "—") + "\nEstado: " + l.estado + "\n" + location.href.split("#")[0]);
+    }
     var estOpts = ESTADOS.map(function (e) { return '<option' + (e === l.estado ? " selected" : "") + ">" + esc(e) + "</option>"; }).join("");
     $("#crm-drawer-body").innerHTML =
       '<div class="dw-head"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + '</span><h2 id="crm-drawer-title">' + esc(l.nombre || "Sin nombre") + "</h2>" +
       '<p class="crm-muted">' + esc(service(l)) + " · recibido " + fmtDate(l._date, true) + "</p>" +
       '<div class="dw-actions">' +
       (l.telefono ? '<a class="cbtn cbtn--wa" href="' + esc(wa) + '" target="_blank" rel="noopener">WhatsApp</a><a class="cbtn" href="tel:' + esc("+" + ph) + '">Llamar</a>' : "") +
-      (l.email ? '<a class="cbtn" href="mailto:' + esc(l.email) + "?subject=" + encodeURIComponent("Deyscom Motorsport · " + service(l)) + '">Email</a>' : "") + "</div></div>" +
+      (l.email ? '<a class="cbtn" href="mailto:' + esc(l.email) + "?subject=" + encodeURIComponent("Deyscom Motorsport · " + service(l)) + '">Email</a>' : "") +
+      '<button class="cbtn" type="button" id="dw-quote">Presupuesto</button>' +
+      (gcal ? '<a class="cbtn" href="' + esc(gcal) + '" target="_blank" rel="noopener">📅 Calendar</a>' : "") + "</div>" +
+      (l.telefono && tpls.length ? '<div class="dw-tpl"><select class="cin" id="dw-tpl">' + tpls.map(function (t, i) { return '<option value="' + i + '">' + esc(t.n) + "</option>"; }).join("") +
+        '</select><button class="cbtn cbtn--wa" type="button" id="dw-tpl-go">Enviar plantilla</button></div>' : "") +
+      (tags(l).length ? '<div class="dw-tags">' + tags(l).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" : "") +
+      (dups.length ? '<div class="dw-dups"><b>⚠️ Esta persona tiene ' + dups.length + (dups.length === 1 ? " solicitud más" : " solicitudes más") + ":</b> " +
+        dups.map(function (x) { return '<button type="button" class="linkbtn" data-open="' + esc(x.id) + '">' + esc(service(x)) + " · " + fmtDate(x._date) + "</button>"; }).join(", ") + "</div>" : "") +
+      "</div>" +
       '<form class="dw-form" id="dw-form"><div class="dw-grid">' +
       '<label>Estado<select name="estado">' + estOpts + "</select></label>" +
       '<label>Valor estimado (€)<input name="valor" inputmode="decimal" value="' + esc(l.valor) + '" placeholder="0"></label>' +
@@ -435,7 +562,15 @@
       '<label>Nombre<input name="nombre" value="' + esc(l.nombre) + '"></label>' +
       '<label>Teléfono<input name="telefono" type="tel" value="' + esc(l.telefono) + '"></label>' +
       '<label class="dw-full">Email<input name="email" type="email" value="' + esc(l.email) + '"></label>' +
+      (prod || l.edicion ? '<label class="dw-full">Edición (fecha y plazas)<select name="edicion"><option value="">Sin asignar</option>' + edOpts + "</select></label>" : "") +
+      (isOrder(l) ? '<label class="dw-full">Estado del envío<select name="envio">' + ENVIOS.map(function (e) { return "<option" + (e === (l.envio || "Pendiente de pago") ? " selected" : "") + ">" + e + "</option>"; }).join("") + "</select></label>" : "") +
+      '<label class="dw-full">Etiquetas (separadas por comas)<input name="etiquetas" list="crm-tags" value="' + esc(l.etiquetas) + '" placeholder="VIP, regalo, rally 2027…"></label>' +
       '</div><button class="cbtn cbtn--pink" type="submit">Guardar cambios</button></form>' +
+      '<h3>Presupuestos</h3>' + (quotes.length ? '<ul class="dw-quotes">' + quotes.map(function (q) {
+        return '<li><b>' + esc(q.numero) + "</b><span>" + fmtDate(parseDate(q.fecha)) + " · " + money2(num(q.total)) + '</span><select class="cin" data-qstatus="' + esc(q.numero) + '">' +
+          ["Creado", "Enviado", "Aceptado", "Rechazado"].map(function (e) { return "<option" + (e === q.estado ? " selected" : "") + ">" + e + "</option>"; }).join("") +
+          '</select><button class="cbtn cbtn--sm" type="button" data-qpdf="' + esc(q.numero) + '">PDF</button></li>';
+      }).join("") + "</ul>" : '<p class="crm-muted">Aún no hay presupuestos. Créalo con el botón «Presupuesto».</p>') +
       '<h3>Solicitud</h3><dl class="dw-dl">' + (extra || '<div><dd class="crm-muted">Sin más datos.</dd></div>') + "</dl>" +
       '<h3>Notas y actividad</h3><form class="dw-note" id="dw-note"><textarea name="text" rows="3" placeholder="Ej. Llamado, le mando presupuesto el lunes…" required></textarea><button class="cbtn" type="submit">Añadir nota</button></form>' +
       '<ul class="dw-tl">' + timeline + "</ul>" +
@@ -462,6 +597,24 @@
         toast("Nota añadida"); openDrawer(id);
       }).catch(function (e) { toast(e.message, true); btn.disabled = false; });
     });
+    $("#dw-quote").addEventListener("click", function () { openQuote(id); });
+    var tg = $("#dw-tpl-go");
+    if (tg) tg.addEventListener("click", function () {
+      var t = tpls[+$("#dw-tpl").value]; var e = edById(l.edicion);
+      var txt = t.t.replace(/\{nombre\}/g, (l.nombre || "").split(" ")[0]).replace(/\{servicio\}/g, service(l))
+        .replace(/\{yo\}/g, (state.user.nombre || "el equipo").split(" ")[0]).replace(/\{edicion\}/g, e ? " (" + edLabel(e).split(" · ").slice(1).join(" · ") + ")" : "")
+        .replace(/\{resena\}/g, CFG.googleReview ? " " + CFG.googleReview : "");
+      window.open("https://wa.me/" + ph + "?text=" + encodeURIComponent(txt), "_blank", "noopener");
+      api("note", { id: id, text: "WhatsApp enviado · plantilla «" + t.n + "»" }).then(function (res) { state.activity.push(res.activity); if (state.openId === id) openDrawer(id); }).catch(function () {});
+    });
+    $$("[data-qstatus]").forEach(function (sel) {
+      sel.addEventListener("change", function () {
+        var n = sel.getAttribute("data-qstatus"), est = sel.value;
+        api("quoteStatus", { numero: n, estado: est }).then(function () { toast("Presupuesto " + n + ": " + est); return load(); }).then(function () { if (state.openId === id) openDrawer(id); })
+          .catch(function (e) { toast(e.message, true); });
+      });
+    });
+    $$("[data-qpdf]").forEach(function (b) { b.addEventListener("click", function () { quotePdf(b.getAttribute("data-qpdf")); }); });
     var del = $("#dw-delete");
     if (del) del.addEventListener("click", function () {
       if (!confirm("¿Borrar este lead definitivamente? Esta acción no se puede deshacer.")) return;
@@ -476,6 +629,149 @@
     render(); if (state.openId === id) openDrawer(id);
     api("update", { id: id, fields: fields }).then(function () { toast(okMsg || "Guardado"); })
       .catch(function (e) { Object.keys(prev).forEach(function (k) { l[k] = prev[k]; }); render(); if (state.openId === id) openDrawer(id); toast(e.message, true); });
+  }
+
+  /* ---------------- calendario de ediciones ---------------- */
+  function renderCalendar() {
+    var today = ymd(new Date());
+    var future = state.ediciones.filter(function (e) { return (e.fin || e.inicio) >= today; });
+    var past = state.ediciones.filter(function (e) { return (e.fin || e.inicio) < today; }).reverse();
+    var card = function (e) {
+      var st = seats(e), pct = st.plazas ? Math.min(100, st.ocupadas / st.plazas * 100) : 0;
+      var full = st.libres === 0 || e.estado === "Completa";
+      return '<button type="button" class="ed-card' + (full ? " is-full" : "") + (["Cerrada", "Cancelada"].indexOf(e.estado) > -1 ? " is-off" : "") + '" data-ed="' + esc(e.id) + '">' +
+        '<span class="ed-card__date"><b>' + (parseDate(e.inicio) ? parseDate(e.inicio).getDate() : "?") + "</b>" + (parseDate(e.inicio) ? parseDate(e.inicio).toLocaleString("es-ES", { month: "short" }) : "") + "</span>" +
+        '<span class="ed-card__body"><b>' + esc(e.nombre || PRODUCTOS[e.producto] || e.producto) + "</b><small>" + esc(edLabel(e).split(" · ").slice(1).join(" · ")) + (e.precio ? " · " + esc(e.precio) + " €" : "") + "</small>" +
+        (st.plazas ? '<span class="ed-bar"><i style="width:' + pct + '%"></i></span><small>' + st.ocupadas + " de " + st.plazas + " plazas" + (full ? " · <b class=\"pink\">COMPLETA</b>" : " · quedan " + st.libres) + "</small>"
+          : "<small>" + st.ocupadas + " inscritos · sin límite de plazas</small>") +
+        '</span><span class="st st--' + (e.estado === "Abierta" ? 4 : e.estado === "Completa" ? 0 : 5) + '">' + esc(e.estado || "Abierta") + (String(e.visible).toLowerCase() === "no" ? " · oculta" : "") + "</span></button>";
+    };
+    var months = {};
+    future.forEach(function (e) { var d = parseDate(e.inicio); var k = d ? d.toLocaleString("es-ES", { month: "long", year: "numeric" }) : "Sin fecha"; (months[k] = months[k] || []).push(e); });
+    $("#crm-cal").innerHTML = (Object.keys(months).length ? Object.keys(months).map(function (k) {
+      return '<section class="ed-month"><h2>' + esc(k) + '</h2><div class="ed-list">' + months[k].map(card).join("") + "</div></section>";
+    }).join("") : '<div class="crm-box"><p class="crm-empty">No hay ediciones programadas. Crea la primera con «+ Nueva edición»: las fechas y plazas libres aparecerán en la web y en los formularios de reserva.</p></div>') +
+      (past.length ? '<details class="ed-past"><summary>Ediciones pasadas (' + past.length + ")</summary><div class=\"ed-list\">" + past.map(card).join("") + "</div></details>" : "");
+  }
+  var edDlg = $("#crm-ed");
+  function openEdition(id) {
+    var e = edById(id) || { producto: "ds-pilot-weekend-circuit", estado: "Abierta", visible: "sí" };
+    var f = $("#crm-ed-form");
+    f.reset();
+    ["id", "producto", "nombre", "inicio", "fin", "lugar", "plazas", "precio", "estado", "notas"].forEach(function (k) { if (f.elements[k]) f.elements[k].value = k === "inicio" || k === "fin" ? ymd(parseDate(e[k])) : (e[k] || ""); });
+    f.elements.visible.checked = String(e.visible || "sí").toLowerCase() !== "no";
+    $("#crm-ed-title").textContent = id ? "Editar edición" : "Nueva edición";
+    var ins = id ? state.leads.filter(function (l) { return l.edicion === id; }) : [];
+    $("#crm-ed-ins").innerHTML = id ? "<h3>Inscritos (" + ins.length + ")</h3>" + (ins.length ? '<ul class="crm-list">' + ins.map(function (l) {
+      return '<li><button type="button" data-open="' + esc(l.id) + '"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + "</span><b>" + esc(l.nombre) + "</b><small>" + esc(l.telefono) + (l.plazas ? " · " + esc(l.plazas) + " plazas" : "") + "</small></button></li>";
+    }).join("") + "</ul>" : '<p class="crm-muted">Nadie todavía. Asigna esta edición desde la ficha de cada lead.</p>') : "";
+    $("#crm-ed-del").hidden = !id || state.user.rol !== "admin";
+    showDlg(edDlg);
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-ed]"); if (b) { openEdition(b.getAttribute("data-ed")); return; }
+    var o = e.target.closest && e.target.closest("#crm-ed [data-open]"); if (o) hideDlg(edDlg);
+  });
+  $$("[data-new-ed]").forEach(function (b) { b.addEventListener("click", function () { openEdition(""); }); });
+  $("#crm-ed-cancel").addEventListener("click", function () { hideDlg(edDlg); });
+  $("#crm-ed-form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var f = {}; new FormData(this).forEach(function (v, k) { f[k] = String(v).trim(); });
+    f.visible = this.elements.visible.checked ? "sí" : "no";
+    if (f.fin && f.fin < f.inicio) { toast("La fecha de fin es anterior a la de inicio", true); return; }
+    api("saveEdicion", { fields: f }).then(function () { hideDlg(edDlg); toast("Edición guardada"); load(); }).catch(function (e) { toast(e.message, true); });
+  });
+  $("#crm-ed-del").addEventListener("click", function () {
+    var id = $("#crm-ed-form").elements.id.value;
+    if (!confirm("¿Borrar esta edición? Los leads asignados se quedarán sin edición.")) return;
+    api("deleteEdicion", { id: id }).then(function () { hideDlg(edDlg); toast("Edición borrada"); load(); }).catch(function (e) { toast(e.message, true); });
+  });
+
+  /* ---------------- pedidos de la tienda ---------------- */
+  function renderOrders() {
+    var list = state.leads.filter(isOrder);
+    var live = list.filter(function (l) { return (l.envio || "Pendiente de pago") !== "Cancelado"; });
+    var pend = live.filter(function (l) { return (l.envio || "Pendiente de pago") !== "Entregado"; });
+    var total = live.reduce(function (t, l) { return t + num(l.total); }, 0);
+    $("#crm-orders-kpis").innerHTML = [["Pedidos", list.length, "en total"], ["Por servir", pend.length, "pendientes de enviar o entregar", pend.length ? "hot" : ""],
+      ["Ingresos", money(total), "sin contar cancelados"], ["Ticket medio", money(live.length ? total / live.length : 0), "por pedido"]].map(function (k) {
+      return '<div class="kpi' + (k[3] ? " kpi--" + k[3] : "") + '"><span>' + k[0] + "</span><b>" + esc(k[1]) + "</b><small>" + k[2] + "</small></div>";
+    }).join("");
+    $("#crm-orders tbody").innerHTML = list.map(function (l) {
+      var env = l.envio || "Pendiente de pago";
+      return '<tr data-open="' + esc(l.id) + '" tabindex="0"><td data-l="Fecha"><span class="crm-muted">' + fmtDate(l._date, true) + '</span></td><td data-l="Cliente"><b>' + esc(l.nombre) + "</b><br><span class=\"crm-muted\">" + esc(l.telefono) + "</span></td>" +
+        '<td data-l="Producto">' + esc(l.producto || l.servicio) + '</td><td data-l="Detalle">' + esc([l.color, l.talla, l.cantidad ? "x" + l.cantidad : ""].filter(Boolean).join(" · ")) + "</td>" +
+        '<td data-l="Total"><b>' + (l.total ? money(num(l.total)) : "—") + '</b></td><td data-l="Entrega">' + esc(l.entrega || "—") + "</td>" +
+        '<td data-l="Envío"><select class="cin cin--sm env env--' + ENVIOS.indexOf(env) + '" data-envio="' + esc(l.id) + '" aria-label="Estado del envío">' +
+        ENVIOS.map(function (e) { return "<option" + (e === env ? " selected" : "") + ">" + e + "</option>"; }).join("") + "</select></td></tr>";
+    }).join("") || '<tr><td colspan="7" class="crm-empty">Todavía no hay pedidos de la tienda.</td></tr>';
+  }
+  document.addEventListener("change", function (e) {
+    var sel = e.target.closest && e.target.closest("[data-envio]"); if (!sel) return;
+    var id = sel.getAttribute("data-envio"), upd = { envio: sel.value };
+    var l = byId(id);
+    if (sel.value === "Entregado" && l && l.estado !== "Ganado") upd.estado = "Ganado";
+    if (sel.value === "Cancelado" && l) upd.estado = "Perdido";
+    saveFields(id, upd, "Envío: " + sel.value);
+  });
+
+  /* ---------------- presupuestos ---------------- */
+  var qDlg = $("#crm-quote");
+  function qLine(c, n, p) {
+    var tr = document.createElement("div"); tr.className = "q-line";
+    tr.innerHTML = '<input class="cin" name="concepto" placeholder="Concepto (p. ej. Pintura completa en cabina)" value="' + esc(c || "") + '">' +
+      '<input class="cin" name="cantidad" type="number" min="0" step="0.5" value="' + esc(n || 1) + '" aria-label="Cantidad">' +
+      '<input class="cin" name="precio" type="number" min="0" step="0.01" value="' + esc(p || "") + '" placeholder="Precio €" aria-label="Precio sin IVA">' +
+      '<button type="button" class="cbtn cbtn--sm cbtn--ghost" data-qdel aria-label="Quitar línea">✕</button>';
+    $("#q-lines").appendChild(tr);
+  }
+  function qTotals() {
+    var base = 0;
+    $$(".q-line").forEach(function (r) { base += (parseFloat($("[name=cantidad]", r).value) || 0) * (parseFloat($("[name=precio]", r).value) || 0); });
+    var iva = base * (parseFloat($("#q-iva").value) || 0) / 100;
+    $("#q-totals").innerHTML = "Base " + money2(base) + " · IVA " + money2(iva) + " · <b>Total " + money2(base + iva) + "</b>";
+    return { base: base, iva: iva, total: base + iva };
+  }
+  function openQuote(id) {
+    var l = byId(id); if (!l) return;
+    state.quoteLead = id;
+    $("#q-lines").innerHTML = "";
+    qLine(service(l) + (l.vehiculo ? " · " + l.vehiculo : ""), 1, num(l.valor) ? (num(l.valor) / 1.21).toFixed(2) : "");
+    $("#q-email").value = l.email || ""; $("#q-notas").value = ""; $("#q-send").checked = !!l.email; $("#q-iva").value = "21"; $("#q-validez").value = "30";
+    $("#q-for").textContent = (l.nombre || "") + " · " + service(l);
+    qTotals(); showDlg(qDlg);
+  }
+  $("#q-add").addEventListener("click", function () { qLine("", 1, ""); });
+  $("#crm-quote").addEventListener("input", qTotals);
+  $("#crm-quote").addEventListener("click", function (e) { var b = e.target.closest("[data-qdel]"); if (b && $$(".q-line").length > 1) { b.parentNode.remove(); qTotals(); } });
+  $("#q-cancel").addEventListener("click", function () { hideDlg(qDlg); });
+  $("#crm-quote-form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var lineas = $$(".q-line").map(function (r) { return { concepto: $("[name=concepto]", r).value.trim(), cantidad: parseFloat($("[name=cantidad]", r).value) || 0, precio: parseFloat($("[name=precio]", r).value) || 0 }; })
+      .filter(function (x) { return x.concepto && x.cantidad; });
+    if (!lineas.length) { toast("Añade al menos una línea con concepto", true); return; }
+    var btn = $("button[type=submit]", this); btn.disabled = true; btn.classList.add("is-loading");
+    var id = state.quoteLead;
+    api("quote", { lead_id: id, lineas: lineas, iva: $("#q-iva").value, validez: $("#q-validez").value, notas: $("#q-notas").value, email: $("#q-email").value.trim(), enviar: $("#q-send").checked })
+      .then(function (res) {
+        hideDlg(qDlg);
+        toast("Presupuesto " + res.numero + (res.sent ? " creado y enviado por email" : " creado"));
+        if (res.pdf) download(b64ToBlob(res.pdf, "application/pdf"), "Presupuesto " + res.numero + ".pdf");
+        else if (res.html) printHtml(res.html);
+        return load().then(function () { openDrawer(id); });
+      })
+      .catch(function (e) { toast(e.message, true); })
+      .then(function () { btn.disabled = false; btn.classList.remove("is-loading"); });
+  });
+  function quotePdf(numero) {
+    api("quotePdf", { numero: numero }).then(function (res) {
+      if (res.pdf) download(b64ToBlob(res.pdf, "application/pdf"), "Presupuesto " + numero + ".pdf"); else if (res.html) printHtml(res.html);
+    }).catch(function (e) { toast(e.message, true); });
+  }
+  function printHtml(html) {
+    var w = window.open("", "_blank");
+    if (!w) { toast("Permite las ventanas emergentes para ver el presupuesto", true); return; }
+    w.document.write(html); w.document.close(); setTimeout(function () { w.print(); }, 400);
   }
 
   /* ---------------- nuevo lead ---------------- */
@@ -537,6 +833,9 @@
     var f = this;
     if (f.elements.next.value !== f.elements.repeat.value) { toast("Las contraseñas nuevas no coinciden", true); return; }
     api("password", { current: f.elements.current.value, next: f.elements.next.value }).then(function () { toast("Contraseña cambiada"); f.reset(); }).catch(function (er) { toast(er.message, true); });
+  });
+  $("#crm-digest").addEventListener("click", function () {
+    api("digest").then(function (res) { toast(state.demo ? "En la demo no se envían emails" : res.sent ? "Resumen enviado a los usuarios" : "No había nada que enviar"); }).catch(function (e) { toast(e.message, true); });
   });
   $("#crm-demo-reset").addEventListener("click", function () { store("dm_crm_demo", null); demoMem = null; load(); toast("Datos de ejemplo reiniciados"); });
 

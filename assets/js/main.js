@@ -309,6 +309,44 @@
     update();
   }
 
+  /* ---------- Fechas y plazas de experiencias y cursos (Calendario del CRM) ---------- */
+  var dateBoxes = $$("[data-dates], [data-ed-field]");
+  if (dateBoxes.length && CFG.SHEETS_ENDPOINT) {
+    var fmtD = function (iso) { var p = String(iso || "").split("-"); if (p.length < 3) return iso; return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString("es-ES", { day: "numeric", month: "short" }); };
+    var label = function (e) { return fmtD(e.inicio) + (e.fin && e.fin !== e.inicio ? "–" + fmtD(e.fin) : "") + (e.lugar ? " · " + e.lugar : ""); };
+    var seatsTxt = function (e) { return e.completa ? "Completa" : e.libres === null ? "Plazas disponibles" : e.libres <= 3 ? "¡Últimas " + e.libres + " plazas!" : "Quedan " + e.libres + " plazas"; };
+    fetch(CFG.SHEETS_ENDPOINT + "?action=ediciones").then(function (r) { return r.json(); }).then(function (res) {
+      var all = (res && res.ediciones) || [];
+      $$("[data-dates]").forEach(function (box) {
+        var list = all.filter(function (e) { return e.producto === box.getAttribute("data-dates"); }).slice(0, 4);
+        if (!list.length) return;
+        var ul = $("ul", box);
+        list.forEach(function (e) {
+          var li = document.createElement("li"); li.className = e.completa ? "is-full" : (e.libres !== null && e.libres <= 3 ? "is-last" : "");
+          var a = document.createElement("span"); a.textContent = label(e);
+          var b = document.createElement("b"); b.textContent = seatsTxt(e);
+          li.appendChild(a); li.appendChild(b); ul.appendChild(li);
+        });
+        box.hidden = false;
+      });
+      $$("[data-ed-field]").forEach(function (field) {
+        var list = all.filter(function (e) { return e.producto === field.getAttribute("data-ed-field"); });
+        if (!list.length) return;
+        var sel = $("select", field), hid = $("input[type=hidden]", field);
+        sel.innerHTML = "";
+        list.forEach(function (e, i) {
+          var o = document.createElement("option"); o.value = e.id; o.textContent = label(e) + " · " + seatsTxt(e);
+          if (e.completa) o.disabled = true; sel.appendChild(o);
+        });
+        var other = document.createElement("option"); other.value = ""; other.textContent = "Otra fecha / avisadme de la próxima"; sel.appendChild(other);
+        var first = list.filter(function (e) { return !e.completa; })[0]; sel.value = first ? first.id : "";
+        var sync = function () { var o = sel.options[sel.selectedIndex]; hid.value = sel.value ? o.textContent : ""; };
+        sel.addEventListener("change", sync); sync();
+        field.hidden = false;
+      });
+    }).catch(function () { /* sin fechas: se queda el campo de fecha preferida */ });
+  }
+
   /* ---------- Coches en venta (Wallapop vía Apps Script) ---------- */
   var stockBox = $("[data-stock]");
   if (stockBox) {
@@ -367,7 +405,7 @@
   function waFromLead(d) {
     var lines = ["¡Hola Deyscom! Os escribo desde la web:"];
     Object.keys(d).forEach(function (k) {
-      if (["pagina", "fecha", "consentimiento", "formulario", "landing", "referrer", "gclid", "fbclid", "precio_unidad"].indexOf(k) > -1 || k.indexOf("utm_") === 0 || !d[k]) return;
+      if (["pagina", "fecha", "consentimiento", "formulario", "landing", "referrer", "gclid", "fbclid", "precio_unidad", "edicion"].indexOf(k) > -1 || k.indexOf("utm_") === 0 || !d[k]) return;
       lines.push("• " + k.charAt(0).toUpperCase() + k.slice(1) + ": " + d[k]);
     });
     return "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(lines.join("\n"));
