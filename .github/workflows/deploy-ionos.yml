@@ -1,0 +1,55 @@
+# Publica la web en el hosting de IONOS (deyscom.com) por SFTP.
+# Se ejecuta al cambiar algo en main (también desde el panel /admin), cada día a las 06:00
+# (para publicar artículos programados) y a mano desde la pestaña Actions → «Publicar en IONOS» → Run workflow.
+name: Publicar en IONOS
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 4 * * *"   # 06:00 en Madrid (verano) / 05:00 (invierno)
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ionos
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generar la web
+        run: |
+          pip install -r requirements.txt
+          python3 tools/build.py
+          python3 tools/dist.py
+
+      - name: Comprobar que no falta nada importante
+        run: |
+          for f in index.html crm.html .htaccess robots.txt sitemap.xml admin/index.html admin/config.yml assets/js/config.js; do
+            test -s "dist/$f" || { echo "Falta dist/$f"; exit 1; }
+          done
+
+      - name: Subir a IONOS por SFTP
+        env:
+          HOST: ${{ secrets.IONOS_SFTP_HOST }}
+          USER: ${{ secrets.IONOS_SFTP_USER }}
+          PASS: ${{ secrets.IONOS_SFTP_PASSWORD }}
+          DIR: ${{ secrets.IONOS_SFTP_DIR }}
+        run: |
+          test -n "$HOST" && test -n "$USER" && test -n "$PASS" && test -n "$DIR" || { echo "Faltan los secrets IONOS_SFTP_*"; exit 1; }
+          case "$DIR" in /|"") echo "IONOS_SFTP_DIR no puede ser la raíz: usa una carpeta propia, p. ej. /deyscom-web"; exit 1;; esac
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -u "$USER","$PASS" "sftp://$HOST" -e "
+            set sftp:auto-confirm yes;
+            set net:max-retries 3; set net:timeout 30;
+            mkdir -p -f $DIR;
+            mirror --reverse --delete --verbose --parallel=4 dist/ $DIR;
+            bye"

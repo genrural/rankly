@@ -1,0 +1,5 @@
+# Panel de contenido: fuera de buscadores y sin caché (Apache / IONOS)
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+  Header set Cache-Control "no-store"
+</IfModule>

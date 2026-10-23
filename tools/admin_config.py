@@ -156,3 +156,5 @@ def write(g, root):
     (d / "config.yml").write_text("# Generado por tools/build.py (tools/admin_config.py). No editar a mano.\n" +
                                   json.dumps(build_config(g), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     (d / "index.html").write_text(ADMIN_HTML, encoding="utf-8")
+    (d / ".htaccess").write_text("# Panel de contenido: fuera de buscadores y sin caché (Apache / IONOS)\n<IfModule mod_headers.c>\n"
+                                 "  Header set X-Robots-Tag \"noindex, nofollow\"\n  Header set Cache-Control \"no-store\"\n</IfModule>\n", encoding="utf-8")

@@ -241,25 +241,84 @@ Un panel para editar el blog, el SEO/GEO, las páginas, la tienda y los ajustes 
   - Autores y patrocinadores.
 
 **Acceso**
-- Entra en `https://deyscom.com/admin` → **Sign In with GitHub**.
+- Entra en `https://deyscom.com/admin`. En IONOS, con un token de GitHub: ver apartado 14, «Login del panel».
 - Cada persona necesita una cuenta de GitHub con acceso al repositorio `genrural/rankly`: GitHub → Settings → Collaborators.
 - Desde el CRM hay un acceso directo («Contenido web ↗»).
 
-**Artículos programados:** para que se publiquen solos el día indicado, crea un *Build hook* en Netlify y pega su URL en `DEPLOY_HOOK_URL` del Apps Script. El resumen diario lo llama cada mañana.
+**Artículos programados:** se publican solos el día indicado. En IONOS lo hace el despliegue diario de las 06:00. En Netlify, pega su *Build hook* en `DEPLOY_HOOK_URL` del Apps Script.
 
-## 14. Publicar la web en Netlify (recomendado)
+## 14. Publicar en IONOS (deyscom.com)
 
-1. En [Netlify](https://app.netlify.com): **Add new site → Import an existing project → GitHub**. Elige `genrural/rankly`, rama `main`.
-   - La configuración ya está en `netlify.toml`: ejecuta `python3 tools/build.py` y publica la carpeta `dist/`, que no incluye `tools/`, `content/` ni el Apps Script.
-2. **Domain management**: añade `deyscom.com` y `www.deyscom.com` y sigue los pasos de DNS. El certificado HTTPS es automático.
-3. **Login del panel con GitHub:**
-   1. En GitHub: Settings → Developer settings → **OAuth Apps → New OAuth App**.
-      - Homepage: `https://deyscom.com`
-      - Callback: `https://api.netlify.com/auth/done`
-   2. En Netlify: **Site configuration → Access & security → OAuth → Install provider → GitHub**. Pega el Client ID y el Secret.
-4. Las redirecciones de la web antigua van en `_redirects` (ya hay un ejemplo). Las cabeceras de seguridad y `noindex` del CRM y del panel están en `_headers`.
+La web se publica sola en el hosting de IONOS con **GitHub Actions** (`.github/workflows/deploy-ionos.yml`):
+- **Cuándo:** con cada cambio en la rama `main` (incluidos los del panel /admin), cada día a las 06:00 (para que salgan los artículos programados) y a mano desde GitHub → Actions → «Publicar en IONOS» → **Run workflow**.
+- **Qué hace:** genera la web (`tools/build.py`), prepara `dist/` (solo lo público) y lo sube por **SFTP** a una carpeta del webspace. Borra de esa carpeta lo que ya no existe en la web.
 
-¿Cloudflare Pages en vez de Netlify?
-- Funciona igual. Comando de build: `pip install -r requirements.txt && python3 tools/build.py && python3 tools/dist.py`. Carpeta de salida: `dist`.
-- Para el login del panel hace falta desplegar [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) y poner su URL en `base_url` dentro de `tools/admin_config.py`.
-- Mientras tanto se puede entrar con **Sign In Using Access Token**, usando un token personal de GitHub.
+### Paso 1 · Preparar IONOS (panel de IONOS)
+1. **Usuario SFTP.** Menú → Hosting → tile **SFTP & SSH** → Gestionar. Anota:
+   - el **servidor** (p. ej. `accessNNNNNNNNN.webspace-data.io`),
+   - el **usuario** (p. ej. `u12345678`),
+   - la **contraseña**. Si no la recuerdas, créala nueva o crea un usuario SFTP solo para la web.
+   - Protocolo SFTP, puerto 22.
+2. **Carpeta nueva para la web**, por ejemplo `/deyscom-web`. No hace falta crearla, la crea el despliegue.
+   - No uses la carpeta de la web actual: así la antigua queda intacta como copia de seguridad.
+3. **Certificado SSL.** Menú → Dominios y SSL → `deyscom.com` → SSL → activa el certificado incluido en el plan (SSL Starter / Wildcard) para `deyscom.com` y `www.deyscom.com`.
+
+### Paso 2 · Conectar GitHub con IONOS
+En GitHub: repositorio → **Settings → Secrets and variables → Actions → New repository secret**. Crea estos 4:
+
+| Secret | Valor |
+|---|---|
+| `IONOS_SFTP_HOST` | servidor SFTP de IONOS |
+| `IONOS_SFTP_USER` | usuario SFTP (`u…`) |
+| `IONOS_SFTP_PASSWORD` | contraseña SFTP |
+| `IONOS_SFTP_DIR` | carpeta de destino, p. ej. `/deyscom-web` |
+
+### Paso 3 · Primera publicación
+1. Fusiona esta rama en `main`. GitHub → Actions → «Publicar en IONOS» debe terminar en verde ✅.
+2. Comprueba en el explorador de archivos de IONOS (o con FileZilla) que `/deyscom-web` tiene `index.html`, `.htaccess`, `assets/`…
+
+### Paso 4 · Apuntar el dominio (el cambio visible)
+1. Menú → Dominios y SSL → `deyscom.com` → **Ajustar destino / Usar dominio → Webspace** → carpeta `/deyscom-web`.
+2. Haz lo mismo con `www.deyscom.com`. El `.htaccess` lo redirige a `deyscom.com` sin www y con HTTPS.
+3. **No toques los registros MX ni el correo:** solo se cambia la carpeta de destino. `info@deyscom.com` sigue funcionando igual.
+4. Tarda de unos minutos a 1 h. Para volver a la web antigua, basta con apuntar el dominio otra vez a su carpeta.
+
+### Paso 5 · Redirecciones de la web antigua (importante para no perder Google)
+1. Saca la lista de URLs de la web actual **antes** de cambiar el dominio, por una de estas vías:
+   - Su sitemap (`deyscom.com/sitemap.xml` o `/sitemap_index.xml`).
+   - Google Search Console → Indexación → Páginas.
+2. Añade una línea por URL en `.htaccess`, debajo de «Redirecciones 301»:
+   ```apache
+   Redirect 301 /servicios/pintura/ https://deyscom.com/pintura.html
+   Redirect 301 /contacto/ https://deyscom.com/contacto.html
+   ```
+3. Haz commit en `main`: se publica solo.
+
+### Paso 6 · Después de publicar
+- **Search Console:**
+  - Verifica la propiedad. La etiqueta ya está en la web.
+  - Envía `https://deyscom.com/sitemap.xml`.
+  - Si cambiaste URLs, usa «Inspección de URLs» con la home y las páginas clave.
+- **Google Business Profile:** pon la web `https://deyscom.com`.
+- **Apps Script:** no hace falta cambiar nada. Si aún no está, pega la URL `/exec` en el panel → Ajustes.
+- **Prueba en el móvil** un formulario, el WhatsApp y el CRM (`deyscom.com/crm.html`).
+
+### Login del panel de contenido en IONOS
+IONOS no da el login con GitHub que da Netlify. Hay dos opciones:
+1. **Token (inmediato):**
+   - Entra en `deyscom.com/admin` → **Sign In Using Access Token**.
+   - El token se crea en GitHub → Settings → Developer settings → **Fine-grained tokens**, solo para `genrural/rankly`, con permiso **Contents: Read and write**, y caducidad de 1 año.
+   - Cada persona que edite usa su propio token.
+2. **Botón «Sign In with GitHub»:**
+   - Despliega gratis [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) en Cloudflare Workers.
+   - Pon su URL en `base_url` del backend en `tools/admin_config.py`.
+
+### Alternativa: Netlify o Cloudflare Pages
+Si algún día se cambia de hosting, `netlify.toml` ya está listo:
+1. Importa el repositorio en Netlify y apunta el DNS del dominio a Netlify.
+2. Instala el proveedor OAuth de GitHub en Netlify (Callback `https://api.netlify.com/auth/done`).
+3. Desactiva el workflow de IONOS.
+
+En Cloudflare Pages:
+- Comando de build: `pip install -r requirements.txt && python3 tools/build.py && python3 tools/dist.py`.
+- Carpeta de salida: `dist`.

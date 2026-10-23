@@ -8,10 +8,11 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://deyscom.com%{REQUEST_URI} [L,R=301]
 
-# Proteger carpetas internas
-RewriteRule ^(tools|google-apps-script)/ - [F,L]
+# Proteger carpetas internas y archivos de configuración del hosting
+RewriteRule ^(tools|google-apps-script|content|\.github)/ - [F,L]
+RewriteRule ^(_headers|_redirects|netlify\.toml|requirements\.txt)$ - [F,L]
 
-# Redirecciones 301 de la web antigua (añadir aquí las URLs antiguas)
+# Redirecciones 301 de la web antigua → nueva (una línea por URL antigua; ver README → IONOS)
 # Redirect 301 /antigua-url/ https://deyscom.com/competicion.html
 
 <IfModule mod_deflate.c>
