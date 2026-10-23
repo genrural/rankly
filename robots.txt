@@ -3,6 +3,7 @@ Allow: /
 Disallow: /google-apps-script/
 Disallow: /tools/
 Disallow: /crm.html
+Disallow: /admin/
 
 # Buscadores y asistentes de IA: bienvenidos (GEO)
 User-agent: GPTBot
@@ -26,6 +27,7 @@ Allow: /
 Disallow: /google-apps-script/
 Disallow: /tools/
 Disallow: /crm.html
+Disallow: /admin/
 
 Sitemap: https://deyscom.com/sitemap.xml
 # Resumen para modelos de lenguaje: https://deyscom.com/llms.txt

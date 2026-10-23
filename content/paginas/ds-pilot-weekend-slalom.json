@@ -1,0 +1,26 @@
+{
+  "pagina": "Slalom",
+  "datos_clave": [],
+  "guias": [],
+  "faq": [
+    {
+      "pregunta": "¿Necesito experiencia?",
+      "respuesta": "No. El slalom es ideal para empezar: es técnico, seguro y se aprende muchísimo en poco tiempo."
+    },
+    {
+      "pregunta": "¿Necesito licencia?",
+      "respuesta": "Depende de si la prueba es federada o una jornada privada. Te lo indicamos al confirmar la fecha y te ayudamos con lo necesario."
+    },
+    {
+      "pregunta": "¿Puedo venir acompañado?",
+      "respuesta": "Sí, tus acompañantes pueden venir a verte y vivir el ambiente."
+    },
+    {
+      "pregunta": "¿Puedo regalarlo?",
+      "respuesta": "Sí, es un regalo perfecto. Escríbenos y preparamos la reserva a nombre de quien quieras."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-slalom-de-coches-que-es"
+  ]
+}

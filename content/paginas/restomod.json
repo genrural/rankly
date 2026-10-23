@@ -1,0 +1,57 @@
+{
+  "pagina": "Restomod",
+  "datos_clave": [
+    {
+      "dato": "Qué es",
+      "valor": "Restauración + modernización: estética clásica con mecánica, frenos y seguridad actuales"
+    },
+    {
+      "dato": "Coches",
+      "valor": "Clásicos, youngtimers y todoterrenos: BMW E30, Land Rover Defender, Nissan Patrol…"
+    },
+    {
+      "dato": "Método",
+      "valor": "Proyecto por fases con presupuesto cerrado por fase y diario de obra con fotos"
+    },
+    {
+      "dato": "Legalización",
+      "valor": "Reformas tramitadas según el Manual de Reformas de Vehículos e ITV"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Qué es exactamente un restomod?",
+      "respuesta": "Un **restomod** une *restoration* y *modification*: se conserva el aspecto y el carácter del clásico, pero se actualiza lo que se conduce —motor, frenos, suspensión, electricidad y confort—. A diferencia de una restauración, no busca la fidelidad total a fábrica, sino un clásico que se pueda disfrutar a diario. Lo explicamos a fondo en [qué es un restomod y cómo plantearlo por fases](blog-que-es-un-restomod.html)."
+    },
+    {
+      "pregunta": "¿Cuánto cuesta un restomod o una restauración?",
+      "respuesta": "Depende sobre todo de tres cosas: el **estado de la base** (chasis y óxido), el **alcance de la modificación** (mecánica original reconstruida o actualizada) y los **acabados** (pintura, interior). Por eso trabajamos por fases, con presupuesto cerrado para cada una y un diagnóstico previo de la base antes de comprometer nada."
+    },
+    {
+      "pregunta": "¿Se puede legalizar un restomod en la ITV?",
+      "respuesta": "Sí. Las modificaciones que cambian las características del vehículo son **reformas** y se tramitan según el Manual de Reformas de Vehículos, con su documentación técnica e inspección en la ITV. Si el coche tiene más de 30 años, conviene valorar también su catalogación como vehículo histórico. Tienes todos los detalles en [reformas en la ITV y vehículos históricos](blog-reformas-itv-y-vehiculos-historicos.html)."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Con qué coches trabajáis?",
+      "respuesta": "Clásicos, youngtimers y todoterrenos de todo tipo: BMW, Land Rover, Nissan Patrol… Cuéntanos el modelo y valoramos el proyecto sin compromiso."
+    },
+    {
+      "pregunta": "¿Cuánto cuesta un restomod?",
+      "respuesta": "Depende del estado de la base y del nivel de modificación. Por eso trabajamos por fases y con presupuesto cerrado para cada una."
+    },
+    {
+      "pregunta": "¿Cuánto tarda?",
+      "respuesta": "Un restomod completo suele llevar meses. Te damos un calendario realista desde el principio y te enviamos avances."
+    },
+    {
+      "pregunta": "¿Me ayudáis a encontrar el coche base?",
+      "respuesta": "Sí, podemos asesorarte en la compra y revisar el coche antes de que lo compres."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-que-es-un-restomod",
+    "blog-reformas-itv-y-vehiculos-historicos"
+  ]
+}

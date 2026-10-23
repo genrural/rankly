@@ -1,0 +1,73 @@
+{
+  "titulo": "Qué es un restomod y cómo plantear el proyecto por fases",
+  "slug": "blog-que-es-un-restomod",
+  "seo_titulo": "Qué es un restomod y cómo plantearlo por fases",
+  "seo_descripcion": "Qué es un restomod, en qué se diferencia de una restauración y cómo plantearlo por fases: diagnóstico, mecánica, ITV y presupuesto.",
+  "descripcion": "Qué es un restomod, en qué se diferencia de una restauración y cómo plantear el proyecto por fases: diagnóstico, mecánica, seguridad, legalización en la ITV y presupuesto.",
+  "h1": "Qué es un *restomod*",
+  "palabras_clave": "qué es un restomod, restomod Madrid, restauración de coches clásicos, homologar reformas ITV, restomod por fases",
+  "categoria": "Restomod",
+  "autor": "nestor",
+  "editor": "hector",
+  "fecha": "2026-10-12",
+  "minutos": 6,
+  "imagen": "todoterreno-chasis-restauracion-completa",
+  "imagen_subida": "",
+  "imagen_alt": "",
+  "respuesta_rapida": "Un **restomod** combina **restauración y modificación**: conserva el aspecto y el alma de un clásico, pero le da mecánica, frenos, suspensión, seguridad y confort actuales. Se planifica mejor **por fases**, empezando por un diagnóstico de la base, y las reformas importantes deben **legalizarse en la ITV**.",
+  "secciones": [
+    {
+      "titulo": "Restomod, restauración y preparación: diferencias",
+      "texto": "- **Restauración:** devolver el coche a su estado original de fábrica, con piezas y acabados fieles.\n- **Preparación:** mejorar las prestaciones, normalmente con un objetivo deportivo.\n- **Restomod:** mantener la estética clásica y modernizar lo que se conduce: motor, frenos, suspensión, electricidad y confort."
+    },
+    {
+      "titulo": "Fase 1: diagnóstico de la base",
+      "texto": "Todo empieza por saber qué tenemos. Revisamos chasis, carrocería, óxido y mecánica antes de comprometer un presupuesto. Una base sana ahorra mucho dinero; una base con corrosión estructural puede cambiar el proyecto entero. Si aún no tienes el coche, te ayudamos a revisarlo antes de comprarlo."
+    },
+    {
+      "titulo": "Fase 2: chasis, carrocería y seguridad",
+      "texto": "Saneado, tratamiento anticorrosión, refuerzos y pintura. Es la base sobre la que se monta todo lo demás y la parte que menos se ve, pero la más importante."
+    },
+    {
+      "titulo": "Fase 3: mecánica, frenos y suspensión",
+      "texto": "Aquí está la «mod»: motores e inyecciones modernos o la reconstrucción del original, frenos actuales, suspensión regulable y geometría pensada para el uso que le vas a dar. El objetivo es que frene, gire y arranque como un coche de hoy sin perder carácter."
+    },
+    {
+      "titulo": "Fase 4: electricidad, interior y detalles",
+      "texto": "Cableado nuevo, iluminación, instrumentación, asientos y tapicería a medida. Es la fase que define cómo te sientes al volante."
+    },
+    {
+      "titulo": "Legalización: las reformas y la ITV",
+      "texto": "En España, las modificaciones que alteran las características del vehículo se consideran reformas y deben tramitarse según el **Manual de Reformas de Vehículos** del Ministerio de Industria, con la documentación técnica correspondiente y su inspección en la ITV. Plantearlo desde el principio evita sorpresas y permite elegir piezas que se puedan legalizar."
+    },
+    {
+      "titulo": "Cómo trabajamos los restomod en Deyscom",
+      "texto": "Diseñamos el proyecto contigo, lo dividimos en fases con presupuesto cerrado para cada una y te enviamos fotos y vídeos del avance. Puedes ver ejemplos en nuestra página de [restomod y restauración en Madrid](restomod.html)."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Qué significa restomod?",
+      "respuesta": "Es la unión de «restoration» y «modification»: un clásico restaurado y actualizado con mecánica, seguridad y confort modernos."
+    },
+    {
+      "pregunta": "¿Un restomod se puede legalizar?",
+      "respuesta": "Sí, tramitando las reformas según el Manual de Reformas de Vehículos y pasando la inspección correspondiente en la ITV."
+    },
+    {
+      "pregunta": "¿Cuánto tarda un restomod?",
+      "respuesta": "Depende del estado de la base y del alcance; un proyecto completo suele llevar meses. Trabajar por fases permite repartir tiempo y presupuesto."
+    },
+    {
+      "pregunta": "¿Qué coches son buenos para un restomod?",
+      "respuesta": "Clásicos y youngtimers con buena base de chasis y recambios disponibles, como BMW E30, Land Rover Defender o todoterrenos clásicos."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ministerio de Industria y Turismo · Manual de Reformas de Vehículos",
+      "url": "https://industria.gob.es"
+    }
+  ],
+  "publicado": true
+}

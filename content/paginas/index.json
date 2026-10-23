@@ -1,0 +1,53 @@
+{
+  "pagina": "Inicio",
+  "datos_clave": [
+    {
+      "dato": "Qué es",
+      "valor": "Taller motorsport: coches de competición, restomod, pintura en cabina y banco de potencia"
+    },
+    {
+      "dato": "Dónde",
+      "valor": "C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), a unos 60 km al norte de Madrid"
+    },
+    {
+      "dato": "Desde",
+      "valor": "2022 · DEYSCOM MOTORSPORT, S.L."
+    },
+    {
+      "dato": "Horario",
+      "valor": "Lunes a viernes, de 07:00 a 15:00"
+    },
+    {
+      "dato": "Experiencias",
+      "valor": "DS Pilot Weekend en el Circuito del Jarama, rally federado y slalom"
+    },
+    {
+      "dato": "Formación",
+      "valor": "DS Copilot Course: curso de copiloto de rally con certificación"
+    }
+  ],
+  "guias": [],
+  "faq": [
+    {
+      "pregunta": "¿Dónde estáis?",
+      "respuesta": "En C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid). A unos 50 minutos de Madrid capital."
+    },
+    {
+      "pregunta": "¿Cuál es vuestro horario?",
+      "respuesta": "De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras."
+    },
+    {
+      "pregunta": "¿Hacéis presupuestos sin compromiso?",
+      "respuesta": "Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial."
+    },
+    {
+      "pregunta": "¿Puedo correr sin tener coche propio?",
+      "respuesta": "Sí: con nuestras experiencias DS Pilot Weekend en circuito, rally o slalom, o con el alquiler de nuestros coches de competición."
+    },
+    {
+      "pregunta": "¿Cómo me apunto al curso de copiloto?",
+      "respuesta": "Entra en la página del DS Copilot Course y pulsa «Comprar mi plaza». Las plazas son limitadas."
+    }
+  ],
+  "articulos_relacionados": []
+}

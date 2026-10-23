@@ -1,0 +1,14 @@
+{
+  "nombre": "Camiseta Deyscom Motorsport",
+  "nombre_corto": "Camiseta",
+  "precio": 25,
+  "etiqueta": "Más vendido",
+  "descripcion": "La camiseta oficial del equipo, en negro. Logo pequeño en el pecho y logo grande en la espalda, como la que llevamos en el taller y en el paddock.",
+  "caracteristicas": [
+    "Color negro",
+    "Logo pequeño en el pecho",
+    "Logo grande en la espalda",
+    "Corte unisex regular"
+  ],
+  "agotado": false
+}

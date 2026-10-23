@@ -1,0 +1,77 @@
+{
+  "telefono": "+34615972233",
+  "telefono_visible": "(+34) 615 97 22 33",
+  "whatsapp": "34615972233",
+  "email": "info@deyscom.com",
+  "aviso_superior": {
+    "activo": true,
+    "texto": "Nuevo: DS Copilot Course con certificación",
+    "enlace": "ds-copilot-course.html"
+  },
+  "sheets_endpoint": "",
+  "google_review": "",
+  "ga4_id": "G-LLGMMVL7M1",
+  "gtm_id": "",
+  "search_console": "_x_mE5JlzHMblp_mzIOxFVX8XV2_VuzrmZg7E8Tc5Ks",
+  "precios": [
+    {
+      "producto": "ds-pilot-weekend-circuit",
+      "precio": null
+    },
+    {
+      "producto": "ds-pilot-weekend-rally",
+      "precio": null
+    },
+    {
+      "producto": "ds-pilot-weekend-slalom",
+      "precio": null
+    },
+    {
+      "producto": "ds-copilot-course",
+      "precio": null
+    }
+  ],
+  "enlaces_pago": [
+    {
+      "producto": "ds-copilot-course",
+      "url": ""
+    },
+    {
+      "producto": "ds-pilot-weekend-circuit",
+      "url": ""
+    },
+    {
+      "producto": "ds-pilot-weekend-rally",
+      "url": ""
+    },
+    {
+      "producto": "ds-pilot-weekend-slalom",
+      "url": ""
+    },
+    {
+      "producto": "camiseta-deyscom",
+      "url": ""
+    },
+    {
+      "producto": "gorra-deyscom",
+      "url": ""
+    },
+    {
+      "producto": "pegatinas-deyscom",
+      "url": ""
+    },
+    {
+      "producto": "camiseta-edicion-especial-el-molar-2026",
+      "url": ""
+    },
+    {
+      "producto": "sudadera-capucha-deyscom",
+      "url": ""
+    },
+    {
+      "producto": "chaqueta-deyscom",
+      "url": ""
+    }
+  ],
+  "redes": {}
+}

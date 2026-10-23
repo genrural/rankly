@@ -320,3 +320,4 @@ code { background: var(--ink-3); padding: 1px 5px; border-radius: 3px; font-size
   .crm-mini { font-size: .78rem; }
   .crm-mini td, .crm-mini th { padding: 6px 4px; }
 }
+.crm-nav__ext { text-decoration: none; margin-top: 6px; border-top: 1px solid var(--line); border-radius: 0; padding-top: 14px; }

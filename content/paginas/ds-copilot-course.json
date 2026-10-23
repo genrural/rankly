@@ -1,0 +1,31 @@
+{
+  "pagina": "DS Copilot Course",
+  "datos_clave": [],
+  "guias": [],
+  "faq": [
+    {
+      "pregunta": "¿Necesito experiencia previa?",
+      "respuesta": "No. El curso está pensado tanto para quien empieza desde cero como para copilotos y pilotos que quieren mejorar su método."
+    },
+    {
+      "pregunta": "¿Qué incluye la certificación?",
+      "respuesta": "Al completar el curso recibes un diploma acreditativo de Deyscom Motorsport con la formación realizada."
+    },
+    {
+      "pregunta": "¿Dónde se hace la práctica?",
+      "respuesta": "En un tramo cerrado en la provincia de Guadalajara, reservado única y exclusivamente para nuestros alumnos."
+    },
+    {
+      "pregunta": "¿Quién imparte el curso?",
+      "respuesta": "Un profesor y una profesora con experiencia en el mundo del rally, que te acompañan en la teoría y en la práctica."
+    },
+    {
+      "pregunta": "¿Cómo se compra la plaza?",
+      "respuesta": "Pulsa «Comprar mi plaza», completa tus datos y te confirmamos la fecha y el pago. Las plazas son limitadas en cada edición."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-que-hace-un-copiloto-de-rally",
+    "blog-como-empezar-en-los-rallies"
+  ]
+}

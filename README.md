@@ -85,15 +85,26 @@ Si la detección automática del perfil falla, abre el perfil de Wallapop en el 
 
 ## 5. Editar contenidos
 
-- **Teléfono, WhatsApp, email, horario, redes y pagos:** `assets/js/config.js`.
-- **Textos, servicios, experiencias, curso, FAQs y productos:** `tools/build.py`.
-- **Precios del curso y las experiencias:** diccionario `PRICES` en `tools/build.py`. Ahora mismo ponen «Consultar»; si escribís un número, aparece el precio en la página y en Google.
-- **Compra directa del curso o de las experiencias:** pegad un enlace de pago (Stripe Payment Link, PayPal…) en `payLinks` dentro de `assets/js/config.js`. El botón «Comprar mi plaza» llevará directamente al pago. Si está vacío, abre el formulario de reserva, que llega a Google Sheets. Después ejecuta:
+Lo normal es editar desde el **panel de contenido** (`deyscom.com/admin`, apartado 13). No hace falta tocar código.
+
+| Qué | Dónde |
+|---|---|
+| Artículos del blog | Panel → Blog. Archivos en `content/blog/*.json` |
+| Título, descripción y H1 de cada página | Panel → SEO / GEO. Archivo `content/seo.json` |
+| Datos clave, guías y preguntas frecuentes | Panel → Páginas. Archivos en `content/paginas/*.json` |
+| Productos de la tienda (precio, agotado…) | Panel → Tienda. Archivos en `content/productos/*.json` |
+| Teléfono, email, aviso superior, precios, enlaces de pago, Google Sheets, GA4, redes | Panel → Ajustes. Archivo `content/ajustes.json` |
+| Autores (E-E-A-T) y patrocinadores | Panel → Ajustes |
+| Diseño, estructura y secciones nuevas | Código: `tools/build.py` y `assets/css/styles.css` |
+
+Notas:
+- `assets/js/config.js` **se genera solo** a partir de los ajustes: no lo edites a mano.
+- Para regenerar la web en local:
   ```bash
+  pip install -r requirements.txt   # solo la primera vez
   python3 tools/build.py
   ```
-  Así se regeneran todos los `.html` con la cabecera y el pie comunes.
-- **Estilos:** `assets/css/styles.css`. Los colores de marca son variables al principio del archivo: rosa `#FF66C4` y negro.
+- Los colores de marca son variables al principio de `assets/css/styles.css`: rosa `#FF66C4` y negro.
 
 ## 6. Analítica (opcional)
 
@@ -164,14 +175,33 @@ Un CRM dentro de la web para ver y gestionar todos los leads. Lee y escribe en l
 - `admin` puede hacerlo todo, incluido borrar leads y gestionar usuarios.
 - `cliente` ve y gestiona leads, pero no borra ni gestiona usuarios.
 
+**Más funciones**
+- **Calendario:**
+  - Ediciones de las experiencias y del curso, con fecha, lugar, plazas y precio.
+  - La web muestra «Próximas fechas» con las plazas libres («¡Últimas 2 plazas!»), y el formulario de reserva deja elegir fecha.
+  - Al asignar una edición a un lead (desde su ficha), la plaza cuenta como ocupada. Si está «Perdido», no cuenta.
+- **Presupuestos en PDF:**
+  - Se hacen desde la ficha del lead, con líneas, IVA, validez y observaciones.
+  - Numeración P-AAAA-NNN.
+  - El PDF se guarda en la carpeta de Drive «Presupuestos Deyscom Motorsport» y se puede enviar por email al cliente.
+  - Al crearlo, el lead pasa a «Presupuesto enviado» con su valor. Si se marca «Aceptado», pasa a «Ganado».
+- **Pedidos:** los pedidos de la tienda, con su estado de envío (pendiente de pago → pagado → preparando → enviado → entregado) e ingresos.
+- **Plantillas de WhatsApp** por servicio: primer contacto, pedir fotos, cita en el taller, seguimiento, confirmar plaza, pedido enviado y pedir reseña (usa el enlace de reseñas de los Ajustes).
+- **Etiquetas**, aviso de **duplicados** (misma persona con varias solicitudes) y enlace para llevar la próxima acción a **Google Calendar**.
+- **Rendimiento por canal** en el panel: leads, ganados, conversión y valor por Google, Instagram, Ads, IA…
+- **Emails automáticos:**
+  - Cada día a las 08:00, un resumen con los leads nuevos, las llamadas de hoy y las atrasadas.
+  - El día 1 de cada mes, un informe por canal y servicio.
+
 **Activarlo (después del apartado 1)**
 1. En el Apps Script, busca la función `crearUsuarios` y cambia `TU_EMAIL@ejemplo.com` por tu email. El del cliente ya está puesto: `info@deyscom.com`.
 2. Elige `crearUsuarios` en el desplegable y pulsa **Ejecutar**. En **Registro de ejecución** aparecen las dos contraseñas generadas.
    - Guárdalas: no se vuelven a mostrar.
    - Envía la del cliente por un canal privado.
-3. Vuelve a ejecutar `setup` para crear la pestaña **Actividad**.
-4. **Implementar → Gestionar implementaciones → editar → Nueva versión**. Así la URL `/exec` se mantiene y la web la sigue usando.
-5. Entra en `https://deyscom.com/crm.html`. Hay un enlace discreto «Área privada» en el pie de la web.
+3. Vuelve a ejecutar `setup`. Crea las pestañas **Actividad**, **Ediciones** y **Presupuestos** y pide los permisos nuevos (Drive para los PDF y activadores para los emails).
+4. Ejecuta `activarResumenes` una vez para programar el resumen diario y el informe mensual.
+5. **Implementar → Gestionar implementaciones → editar → Nueva versión**. Así la URL `/exec` se mantiene y la web la sigue usando.
+6. Entra en `https://deyscom.com/crm.html`. Hay un enlace discreto «Área privada» en el pie de la web.
 
 **Seguridad**
 - **Contraseñas:** se guardan cifradas (hash con sal), nunca en claro.
@@ -184,3 +214,52 @@ Un CRM dentro de la web para ver y gestionar todos los leads. Lee y escribe en l
 - **Buscadores:** `crm.html` no se indexa (`noindex`, `robots.txt` y cabeceras) y no está en el sitemap.
 
 Mientras `SHEETS_ENDPOINT` esté vacío, el CRM se puede probar en **modo demostración** con datos de ejemplo.
+
+## 13. Panel de contenido (`/admin`, tipo WordPress)
+
+Un panel para editar el blog, el SEO/GEO, las páginas, la tienda y los ajustes sin tocar código. Es [Sveltia CMS](https://github.com/sveltia/sveltia-cms) (gratuito).
+
+**Por qué así y no un WordPress**
+- La web sigue siendo HTML estático: carga muy rápido y Google y las IA la leen completa, sin depender de JavaScript.
+- Cada vez que alguien guarda en el panel:
+  1. El cambio se guarda en GitHub (`content/*.json`).
+  2. Netlify regenera la web en 1-2 minutos.
+- Hay historial de cada cambio y se puede deshacer cualquier cosa.
+
+**Qué se puede editar**
+- **Blog:**
+  - Crear, editar, programar (fecha futura) y despublicar artículos.
+  - Campos: respuesta rápida, secciones H2, FAQ, fuentes, autor y revisor, imagen (elegir una de la web o subir una nueva; se optimiza sola a WebP < 100 KB), título y descripción SEO.
+- **Páginas:** datos clave, guías y preguntas frecuentes de cada servicio, experiencia y curso, y artículos relacionados.
+- **SEO / GEO:**
+  - Título, descripción y H1 de todas las páginas.
+  - Opción de ocultar una página de Google: `noindex` y fuera del sitemap.
+- **Tienda:** nombre, precio, etiqueta, descripción, características y «agotado». Si está agotado, el botón pasa a «avísame» y Google ve `OutOfStock`.
+- **Ajustes:**
+  - Teléfono, email, aviso de la barra superior, precios de experiencias y curso, y enlaces de pago.
+  - URL de Google Sheets, GA4/GTM, Search Console y redes.
+  - Autores y patrocinadores.
+
+**Acceso**
+- Entra en `https://deyscom.com/admin` → **Sign In with GitHub**.
+- Cada persona necesita una cuenta de GitHub con acceso al repositorio `genrural/rankly`: GitHub → Settings → Collaborators.
+- Desde el CRM hay un acceso directo («Contenido web ↗»).
+
+**Artículos programados:** para que se publiquen solos el día indicado, crea un *Build hook* en Netlify y pega su URL en `DEPLOY_HOOK_URL` del Apps Script. El resumen diario lo llama cada mañana.
+
+## 14. Publicar la web en Netlify (recomendado)
+
+1. En [Netlify](https://app.netlify.com): **Add new site → Import an existing project → GitHub**. Elige `genrural/rankly`, rama `main`.
+   - La configuración ya está en `netlify.toml`: ejecuta `python3 tools/build.py` y publica la carpeta `dist/`, que no incluye `tools/`, `content/` ni el Apps Script.
+2. **Domain management**: añade `deyscom.com` y `www.deyscom.com` y sigue los pasos de DNS. El certificado HTTPS es automático.
+3. **Login del panel con GitHub:**
+   1. En GitHub: Settings → Developer settings → **OAuth Apps → New OAuth App**.
+      - Homepage: `https://deyscom.com`
+      - Callback: `https://api.netlify.com/auth/done`
+   2. En Netlify: **Site configuration → Access & security → OAuth → Install provider → GitHub**. Pega el Client ID y el Secret.
+4. Las redirecciones de la web antigua van en `_redirects` (ya hay un ejemplo). Las cabeceras de seguridad y `noindex` del CRM y del panel están en `_headers`.
+
+¿Cloudflare Pages en vez de Netlify?
+- Funciona igual. Comando de build: `pip install -r requirements.txt && python3 tools/build.py && python3 tools/dist.py`. Carpeta de salida: `dist`.
+- Para el login del panel hace falta desplegar [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) y poner su URL en `base_url` dentro de `tools/admin_config.py`.
+- Mientras tanto se puede entrar con **Sign In Using Access Token**, usando un token personal de GitHub.

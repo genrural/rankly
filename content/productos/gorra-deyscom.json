@@ -1,0 +1,14 @@
+{
+  "nombre": "Gorra Deyscom Motorsport",
+  "nombre_corto": "Gorra",
+  "precio": 22,
+  "etiqueta": "Paddock",
+  "descripcion": "Gorra negra de seis paneles con visera curva y logo bordado. Cierre ajustable para que te quede perfecta en pista y fuera de ella.",
+  "caracteristicas": [
+    "Color negro",
+    "Logo bordado",
+    "Visera curva",
+    "Cierre trasero ajustable"
+  ],
+  "agotado": false
+}

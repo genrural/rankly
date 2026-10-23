@@ -1,0 +1,56 @@
+{
+  "pagina": "Banco de potencia",
+  "datos_clave": [
+    {
+      "dato": "Qué mide",
+      "valor": "Potencia (CV/kW) y par (Nm) en todo el rango de revoluciones"
+    },
+    {
+      "dato": "Para qué",
+      "valor": "Diagnóstico, comparativa antes/después de una modificación y puesta a punto"
+    },
+    {
+      "dato": "Resultado",
+      "valor": "Curvas de potencia y par que te llevas para comparar en el futuro"
+    },
+    {
+      "dato": "Coches",
+      "valor": "De calle, preparados y de competición"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Qué es un banco de potencia y qué mide?",
+      "respuesta": "Un banco de potencia (o banco de rodillos) mide la **potencia y el par** de un coche en todo el rango de revoluciones con las ruedas motrices sobre unos rodillos. El resultado es una curva que muestra dónde rinde el motor y si hay pérdidas o fallos. Si quieres entender cómo leerla, mira [cómo leer la curva de potencia y par](blog-banco-de-potencia-como-leer-la-curva.html)."
+    },
+    {
+      "pregunta": "¿Por qué el banco da menos CV que la ficha técnica?",
+      "respuesta": "Porque el banco mide **en rueda** y entre el motor y el asfalto hay pérdidas de transmisión. El fabricante declara la potencia **en motor**. Para comparar resultados lo importante es medir siempre en las mismas condiciones y con el mismo factor de corrección (DIN 70020, SAE J1349 o ISO 1585)."
+    },
+    {
+      "pregunta": "¿Cuándo merece la pena pasar por el banco?",
+      "respuesta": "- **Antes y después de una modificación:** para saber qué ha aportado de verdad.\n- **Diagnóstico:** cuando notas pérdida de potencia, tirones o un comportamiento irregular.\n- **Competición:** para verificar la preparación antes de la temporada o de una prueba.\n- **Compra de un coche preparado:** para confirmar que rinde lo que promete."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Qué coches podéis medir en el banco?",
+      "respuesta": "Coches de calle, preparados y de competición. Escríbenos con el modelo y la tracción y te confirmamos disponibilidad y precio."
+    },
+    {
+      "pregunta": "¿Cuánto dura una sesión?",
+      "respuesta": "Una medición suele llevar poco tiempo, aunque depende del coche y de si hacemos diagnóstico o puesta a punto. Te lo concretamos al reservar."
+    },
+    {
+      "pregunta": "¿Es seguro para el motor?",
+      "respuesta": "Sí. Antes de medir revisamos niveles, estado del coche y fijaciones, y la medición se hace con el coche bien sujeto y refrigerado."
+    },
+    {
+      "pregunta": "¿Me dais las gráficas?",
+      "respuesta": "Sí, te llevas las curvas de potencia y par para que puedas comparar después de futuras modificaciones."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-banco-de-potencia-como-leer-la-curva"
+  ]
+}

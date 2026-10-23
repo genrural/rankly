@@ -1,0 +1,69 @@
+{
+  "titulo": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+  "slug": "blog-que-hace-un-copiloto-de-rally",
+  "seo_titulo": "Qué hace un copiloto de rally: notas y controles horarios",
+  "seo_descripcion": "El trabajo del copiloto de rally: cómo se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.",
+  "descripcion": "Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.",
+  "h1": "Qué hace un *copiloto* de rally",
+  "palabras_clave": "qué hace un copiloto de rally, notas de rally, libro de ruta rally, carnet de control, controles horarios rally, curso de copiloto",
+  "categoria": "Formación",
+  "autor": "nestor",
+  "editor": "hector",
+  "fecha": "2026-10-12",
+  "minutos": 7,
+  "imagen": "copiloto-notas-rally-coche-competicion",
+  "imagen_subida": "",
+  "imagen_alt": "",
+  "respuesta_rapida": "El copiloto de rally **guía al piloto cantando las notas** del tramo, **gestiona el libro de ruta** en los enlaces y **controla el carnet de control y los horarios** para evitar penalizaciones. También coordina la seguridad y la comunicación con la asistencia. Es tan determinante en el resultado como el propio piloto.",
+  "secciones": [
+    {
+      "titulo": "Las notas: los ojos del piloto",
+      "texto": "Las notas son una descripción codificada del tramo que el copiloto lee en voz alta mientras el coche avanza. Se crean durante los **reconocimientos**, en los que el equipo recorre el tramo a velocidad legal y con un número limitado de pasadas.\n\nUna nota típica indica:\n\n- **Dirección y grado de la curva**, normalmente con una escala numérica o descriptiva.\n- **Distancia** hasta la siguiente indicación.\n- **Peligros**: baches, cambios de rasante, cortes, piso deslizante o curvas que cierran.\n\nEl sistema debe ser el mismo para piloto y copiloto. Lo más importante no es la cantidad de información, sino cantarla con el **ritmo adecuado**: ni tan pronto que el piloto la olvide, ni tan tarde que no le dé tiempo a reaccionar."
+    },
+    {
+      "titulo": "El libro de ruta y los enlaces",
+      "texto": "Entre tramos, el coche circula por carreteras abiertas al tráfico. El **libro de ruta** (road book) que entrega la organización describe ese recorrido con viñetas y distancias parciales y totales. El copiloto lo sigue con el cuentakilómetros del coche para no perderse y llegar a tiempo, siempre respetando las normas de tráfico."
+    },
+    {
+      "titulo": "El carnet de control y los controles horarios",
+      "texto": "El rally se organiza con un horario muy preciso. En el **carnet de control** los comisarios anotan la hora de paso por cada control. El copiloto es responsable de presentarlo y de calcular los tiempos:\n\n- **Controles horarios (CH):** hay que presentarse en el minuto asignado. Llegar antes o después se penaliza.\n- **Salida de tramo:** el comisario da la salida a la hora prevista.\n- **Meta y control stop:** se registra el tiempo del tramo cronometrado.\n- **Parque de asistencia y reagrupamientos:** tiempos fijos en los que hay que entrar y salir puntualmente.\n\nUn error de cálculo en un control horario puede costar más tiempo que un trompo en el tramo. Por eso el copiloto revisa los horarios constantemente."
+    },
+    {
+      "titulo": "Seguridad: el copiloto también protege",
+      "texto": "El copiloto conoce los procedimientos de seguridad del reglamento: en caso de incidente, el equipo debe indicar a los participantes que vienen detrás si necesita ayuda o no, usando las señales que marque la normativa. También vigila el estado del equipamiento y ayuda a mantener la calma dentro del coche."
+    },
+    {
+      "titulo": "Cómo formarte como copiloto",
+      "texto": "Se aprende practicando, pero empezar con un buen método ahorra muchos errores. En el [DS Copilot Course](ds-copilot-course.html) trabajamos en un fin de semana completo la teoría (notas, libro de ruta, carnet de control, reglamento y seguridad) y la práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado solo para nuestros alumnos. Lo imparten un profesor y una profesora y al terminar recibes certificación y diploma.\n\nSi todavía estás decidiendo si dar el paso, lee también [cómo empezar en los rallies](blog-como-empezar-en-los-rallies.html)."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Qué hace un copiloto de rally?",
+      "respuesta": "Canta las notas del tramo, sigue el libro de ruta en los enlaces, gestiona el carnet de control y los horarios, y coordina la seguridad y la comunicación con la asistencia."
+    },
+    {
+      "pregunta": "¿Necesita licencia el copiloto?",
+      "respuesta": "Sí. Para correr una prueba federada el copiloto también necesita licencia federativa en vigor."
+    },
+    {
+      "pregunta": "¿Qué son los controles horarios?",
+      "respuesta": "Son puntos del recorrido en los que el equipo debe presentarse en un minuto concreto. Adelantarse o retrasarse se penaliza."
+    },
+    {
+      "pregunta": "¿Dónde puedo aprender a ser copiloto?",
+      "respuesta": "En cursos específicos como el DS Copilot Course de Deyscom Motorsport, con teoría, práctica en tramo cerrado en Guadalajara, certificación y diploma."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Real Federación Española de Automovilismo (RFEDA)",
+      "url": "https://www.rfeda.es"
+    },
+    {
+      "nombre": "Federación Internacional del Automóvil (FIA)",
+      "url": "https://www.fia.com"
+    }
+  ],
+  "publicado": true
+}

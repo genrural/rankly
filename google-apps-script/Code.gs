@@ -32,6 +32,9 @@ var EDITION_COLUMNS = ['id', 'producto', 'nombre', 'inicio', 'fin', 'lugar', 'pl
 var QUOTES_SHEET = 'Presupuestos';
 var QUOTE_COLUMNS = ['numero', 'lead_id', 'fecha', 'cliente', 'email', 'lineas', 'base', 'iva', 'total', 'validez', 'notas', 'estado', 'pdf_id', 'usuario'];
 var CRM_URL = 'https://deyscom.com/crm.html';
+// URL de «Build hook» de Netlify (Site configuration → Build & deploy → Build hooks). Opcional:
+// el resumen diario la llama cada mañana para que se publiquen solos los artículos programados.
+var DEPLOY_HOOK_URL = '';
 var EMPRESA = { nombre: 'DEYSCOM MOTORSPORT, S.L.', cif: 'B09939471', direccion: 'C/ Canal de Isabel II, 2, Nave 3 · 28180 Torrelaguna (Madrid)',
   telefono: '(+34) 615 97 22 33', email: 'info@deyscom.com', web: 'deyscom.com' };
 
@@ -693,6 +696,9 @@ function leadLine_(l, extra) {
 
 /** Email de las 08:00: leads nuevos de las últimas 24 h, llamadas de hoy y atrasadas. */
 function resumenDiario(force) {
+  if (!force && DEPLOY_HOOK_URL) {
+    try { UrlFetchApp.fetch(DEPLOY_HOOK_URL, { method: 'post', muteHttpExceptions: true }); } catch (e) { console.warn('Build hook: ' + e); }
+  }
   var leads = readLeads_();
   var today = Utilities.formatDate(new Date(), 'Europe/Madrid', 'yyyy-MM-dd');
   var since = Date.now() - 86400000;

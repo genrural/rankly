@@ -1,0 +1,14 @@
+{
+  "nombre": "Sudadera con capucha Deyscom Motorsport",
+  "nombre_corto": "Sudadera",
+  "precio": 45,
+  "etiqueta": "Nuevo",
+  "descripcion": "Sudadera con capucha negra con bolsillo canguro, logo pequeño en el pecho y logo grande en la espalda. Para las mañanas frías de tramo y las noches de taller.",
+  "caracteristicas": [
+    "Color negro",
+    "Capucha con cordones y bolsillo canguro",
+    "Logo pequeño en el pecho",
+    "Logo grande en la espalda"
+  ],
+  "agotado": false
+}

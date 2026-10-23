@@ -35,15 +35,15 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
 
 ## Blog
-- [Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno](https://deyscom.com/blog-coche-de-rally-que-es-y-categorias.html): Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-- [Slalom de coches: qué es, cómo funciona y cómo empezar a competir](https://deyscom.com/blog-slalom-de-coches-que-es.html): Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
 - [Circuito del Jarama: historia, trazado y cómo rodar en tandas](https://deyscom.com/blog-circuito-del-jarama-tandas.html): Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+- [Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno](https://deyscom.com/blog-coche-de-rally-que-es-y-categorias.html): Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
 - [Cuánto cuesta pintar un coche: factores que cambian el precio](https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche.html): De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
 - [Reformas en la ITV y vehículos históricos: guía práctica 2026](https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos.html): Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
-- [Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto](https://deyscom.com/blog-como-empezar-en-los-rallies.html): Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
-- [Qué hace un copiloto de rally: notas, libro de ruta y controles horarios](https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html): Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
+- [Slalom de coches: qué es, cómo funciona y cómo empezar a competir](https://deyscom.com/blog-slalom-de-coches-que-es.html): Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
 - [Banco de potencia: qué mide y cómo leer la curva de potencia y par](https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva.html): Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.
+- [Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto](https://deyscom.com/blog-como-empezar-en-los-rallies.html): Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
 - [Qué es un restomod y cómo plantear el proyecto por fases](https://deyscom.com/blog-que-es-un-restomod.html): Qué es un restomod, en qué se diferencia de una restauración y cómo plantear el proyecto por fases: diagnóstico, mecánica, seguridad, legalización en la ITV y presupuesto.
+- [Qué hace un copiloto de rally: notas, libro de ruta y controles horarios](https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html): Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
 
 
 
@@ -510,31 +510,24 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Qué incluye la preparación de un coche de rally?
-
 Preparar un coche de rally es mucho más que montar piezas. En Deyscom lo planteamos en este orden, porque es el que mejor protege al piloto y el presupuesto:
 
 Seguridad: jaula de seguridad conforme al reglamento, baquets y arneses homologados, extinción, cortacorrientes y redes.
-
 Fiabilidad: refrigeración, transmisión, frenos y cableado preparados para el esfuerzo de un tramo.
-
 Chasis y suspensión: refuerzos, amortiguación y geometría según superficie (tierra o asfalto).
-
 Prestaciones: motor, admisión y escape, siempre dentro de lo que permite la categoría.
 
 Si todavía no tienes coche, valora alquilar un coche de rally o revisar nuestros coches de rally en venta .
 
 ## ¿Qué coche elegir para empezar a competir?
-
 Para empezar recomendamos coches ligeros, de mecánica sencilla y con buena disponibilidad de recambios. Dos ejemplos que conocemos muy bien porque forman parte de nuestro equipo:
 
 Peugeot 206 1.6 XS (118 CV): tracción delantera, noble y económico de mantener. Ideal para aprender.
-
 BMW E36 (135 CV): propulsión trasera, más exigente y muy divertido. Para quien busca sensaciones.
 
 Te contamos más en la guía coche de rally: qué es y qué categorías hay .
 
 ## ¿Hacéis asistencia en carrera fuera de Madrid?
-
 Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026.
 
 ¿Sin coche propio?
@@ -746,29 +739,20 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Cómo funciona el alquiler de un coche de rally?
-
 Nos dices la prueba en la que quieres correr (rally, rallysprint o slalom) y la fecha.
-
 Confirmamos disponibilidad del coche y te explicamos condiciones, seguro y fianza.
-
 Te ayudamos con la licencia federativa y la inscripción.
-
 Preparamos el coche en nuestro taller de Torrelaguna y lo llevamos a la prueba.
-
 Corres con asistencia de nuestro equipo durante todo el fin de semana.
 
 ## ¿Qué necesito para alquilar un coche de rally?
-
 Ser mayor de edad y tener carnet de conducir en vigor.
-
 Licencia federativa de piloto para pruebas federadas (y de copiloto para tu acompañante en rally).
-
 Equipamiento de seguridad homologado: casco con sistema de retención frontal de la cabeza, mono, ropa interior, guantes y botines ignífugos.
 
 Si nunca has competido, empieza por cómo empezar en los rallies o por la experiencia de slalom .
 
 ## ¿Qué diferencia hay con el DS Pilot Weekend Rally?
-
 El DS Pilot Weekend – Rally es nuestra experiencia «llave en mano» para debutar: nosotros elegimos contigo la prueba, gestionamos la inscripción y te acompañamos todo el fin de semana. El alquiler es más flexible y pensado para pilotos que ya tienen experiencia y quieren correr una prueba concreta.
 
 Reserva
@@ -900,25 +884,17 @@ Antes de comprar
 ## Compra con cabeza
 
 ## ¿Qué revisar antes de comprar un coche de rally de segunda mano?
-
 Jaula de seguridad: que esté homologada o certificada según el reglamento y sin reparaciones dudosas.
-
 Caducidad del equipamiento: baquets, arneses y extintores tienen fecha de homologación.
-
 Documentación técnica: pasaporte técnico o ficha que exija tu federación, y documentación del vehículo.
-
 Chasis y carrocería: golpes estructurales, óxido y reparaciones de la jaula.
-
 Mecánica: historial de mantenimiento, horas de motor y caja, y si es posible una prueba en banco de potencia .
-
 Recambios incluidos: llantas, neumáticos y piezas de repuesto suman mucho valor.
 
 ## ¿Por qué comprar un coche de rally revisado por un taller?
-
 Porque un coche de rally ha trabajado mucho más que uno de calle. Antes de ponerlo a la venta lo revisamos en nuestro taller de Torrelaguna y te contamos su estado real. Si no encuentras lo que buscas, déjanos tus datos y te avisamos cuando llegue.
 
 ## Peugeot 206 y BMW E36: dos bases muy buscadas
-
 El Peugeot 206 es una de las bases más populares para empezar en rally por su ligereza y su mecánica sencilla. El BMW E36 , de propulsión, es la opción para quien busca un coche con más carácter. Ambos forman parte de nuestro equipo, así que los conocemos a fondo.
 
 Te lo buscamos
@@ -1094,15 +1070,12 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Qué es exactamente un restomod?
-
 Un restomod une restoration y modification : se conserva el aspecto y el carácter del clásico, pero se actualiza lo que se conduce —motor, frenos, suspensión, electricidad y confort—. A diferencia de una restauración, no busca la fidelidad total a fábrica, sino un clásico que se pueda disfrutar a diario. Lo explicamos a fondo en qué es un restomod y cómo plantearlo por fases .
 
 ## ¿Cuánto cuesta un restomod o una restauración?
-
 Depende sobre todo de tres cosas: el estado de la base (chasis y óxido), el alcance de la modificación (mecánica original reconstruida o actualizada) y los acabados (pintura, interior). Por eso trabajamos por fases, con presupuesto cerrado para cada una y un diagnóstico previo de la base antes de comprometer nada.
 
 ## ¿Se puede legalizar un restomod en la ITV?
-
 Sí. Las modificaciones que cambian las características del vehículo son reformas y se tramitan según el Manual de Reformas de Vehículos, con su documentación técnica e inspección en la ITV. Si el coche tiene más de 30 años, conviene valorar también su catalogación como vehículo histórico. Tienes todos los detalles en reformas en la ITV y vehículos históricos .
 
 Trabajos reales
@@ -1321,15 +1294,12 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Cuánto cuesta pintar un coche?
-
 El precio de pintar un coche depende de la superficie (una pieza o el coche completo), del estado de la chapa , del desmontaje necesario y del tipo de pintura (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto cerrado tras ver el coche y te explicamos cada partida en cuánto cuesta pintar un coche .
 
 ## ¿Por qué pintar en cabina de pintura?
-
 La cabina de pintura controla el polvo, la temperatura y la ventilación durante la aplicación y el secado. El resultado es un acabado más limpio y duradero que pintar al aire libre. En nuestra cabina pintamos carrocerías completas, piezas sueltas y también chasis, subchasis y brazos , como los que ves en las fotos.
 
 ## ¿Hacéis decoraciones y rotulación de coches de rally?
-
 Sí. Diseñamos y aplicamos decoraciones de competición en pintura o vinilo, con los logos de patrocinadores y el estilo de cada equipo. Es lo que llevan nuestros propios coches de rally y slalom.
 
 Trabajos reales
@@ -1528,21 +1498,15 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Qué es un banco de potencia y qué mide?
-
 Un banco de potencia (o banco de rodillos) mide la potencia y el par de un coche en todo el rango de revoluciones con las ruedas motrices sobre unos rodillos. El resultado es una curva que muestra dónde rinde el motor y si hay pérdidas o fallos. Si quieres entender cómo leerla, mira cómo leer la curva de potencia y par .
 
 ## ¿Por qué el banco da menos CV que la ficha técnica?
-
 Porque el banco mide en rueda y entre el motor y el asfalto hay pérdidas de transmisión. El fabricante declara la potencia en motor . Para comparar resultados lo importante es medir siempre en las mismas condiciones y con el mismo factor de corrección (DIN 70020, SAE J1349 o ISO 1585).
 
 ## ¿Cuándo merece la pena pasar por el banco?
-
 Antes y después de una modificación: para saber qué ha aportado de verdad.
-
 Diagnóstico: cuando notas pérdida de potencia, tirones o un comportamiento irregular.
-
 Competición: para verificar la preparación antes de la temporada o de una prueba.
-
 Compra de un coche preparado: para confirmar que rinde lo que promete.
 
 Trabajos reales
@@ -1745,15 +1709,11 @@ Cómo elegir
 ## ¿Circuito, rally o slalom?
 
 ## ¿Qué experiencia de conducción elegir?
-
 Circuit : si quieres sentir la velocidad en el Circuito del Jarama, con tandas y explicaciones de trazada.
-
 Rally : si quieres correr un rally federado de verdad, con tramos, asistencia y copiloto.
-
 Slalom : si buscas la puerta de entrada más accesible a la competición: conos, cronómetro y precisión.
 
 ## ¿Es un buen regalo para un aficionado al motor?
-
 Sí, es uno de los regalos más especiales para quien vive el motor: no es una vuelta en un coche, es un fin de semana completo como piloto con un equipo de competición. Indica en la reserva que es un regalo y lo preparamos a nombre de quien quieras.
 
 Nuevo · Plazas limitadas
@@ -2683,6 +2643,129 @@ Cómo llegar
 
 ---
 
+# Circuito del Jarama: historia, trazado y cómo rodar en tandas
+URL: https://deyscom.com/blog-circuito-del-jarama-tandas.html
+
+Inicio / Blog / Circuito
+Circuito · 6 min de lectura
+
+# Circuito del Jarama: historia y cómo rodar
+
+Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+
+NA
+Néstor Aguado Fundador y propietario de Deyscom Motorsport
+Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+
+BMW E36 de competición en una curva del circuito
+Respuesta rápida El Circuito del Jarama está en San Sebastián de los Reyes (Madrid), lo gestiona el Real Automóvil Club de España (RACE) y se inauguró en 1967 . Su trazado actual mide 3.850 metros y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en tandas o vivirlo como piloto con un coche de competición en una experiencia como el DS Pilot Weekend – Circuit.
+
+En este artículo Historia del Circuito del Jarama
+El trazado: 3.850 metros técnicos
+¿Qué son las tandas en el Jarama y cómo funcionan?
+¿Qué necesitas para conducir en el Jarama?
+Tandas con tu coche o experiencia con coche de competición
+Cómo lo vivimos en Deyscom
+
+## Historia del Circuito del Jarama
+El Jarama se inauguró en 1967 al norte de Madrid y es uno de los circuitos permanentes más antiguos de España. Fue sede del Gran Premio de España de Fórmula 1 en distintas ediciones entre finales de los años 60 y comienzos de los 80, y desde entonces ha acogido motociclismo, turismos, resistencia y clásicos. Lo gestiona el RACE .
+
+Es un circuito con mucha historia y mucho carácter: estrecho, técnico y con curvas que exigen precisión. Por eso enseña tanto.
+
+## El trazado: 3.850 metros técnicos
+El trazado actual mide unos 3,85 km y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las referencias de frenada y la trazada de cada curva antes de buscar velocidad. Nuestro equipo te las explica tanda a tanda en el DS Pilot Weekend – Circuit .
+
+## ¿Qué son las tandas en el Jarama y cómo funcionan?
+Las tandas (track days) son sesiones de rodaje libre en las que varios coches comparten pista durante un tiempo fijo, sin cronometraje oficial ni clasificación. Las organiza el propio circuito o empresas y clubes que alquilan la pista. Normalmente:
+
+Se reservan por sesiones o por jornada, con plazas limitadas.
+Hay un briefing de seguridad obligatorio y normas de adelantamiento.
+Se exige casco y que el coche esté en buen estado (frenos, neumáticos, fluidos, sin fugas).
+Los circuitos cercanos a zonas habitadas aplican límites de ruido : comprueba que tu escape los cumple.
+
+Las condiciones, horarios y requisitos dependen de cada organizador; consúltalos siempre antes de reservar.
+
+## ¿Qué necesitas para conducir en el Jarama?
+Carnet de conducir en vigor (para tandas con coche propio).
+Casco y ropa adecuada; en algunos eventos se exige más equipamiento.
+Coche revisado: pastillas y líquido de frenos con margen, neumáticos en buen estado y presiones correctas.
+Seguro: los seguros de calle no suelen cubrir el uso en circuito; revisa tu póliza o la que ofrezca el organizador.
+
+Si no quieres arriesgar tu coche, la alternativa es vivir el Jarama con un coche de competición preparado, con briefing, asistencia mecánica y acompañamiento de un equipo.
+
+## Tandas con tu coche o experiencia con coche de competición
+Las tandas son ideales si ya tienes un coche preparado y experiencia. Una experiencia en el Circuito del Jarama como el DS Pilot Weekend – Circuit está pensada para vivirlo como un piloto más: paddock, briefing, coche de competición preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica.
+
+## Cómo lo vivimos en Deyscom
+Nuestro taller está en Torrelaguna, a unos 40 minutos del Jarama. Llevamos años preparando coches de circuito y acompañando a pilotos en pista. Lo que más repetimos a quien rueda por primera vez: las primeras vueltas son para aprender, no para correr . La velocidad llega sola cuando las referencias están claras.
+
+## Preguntas frecuentes
+
+¿Dónde está el Circuito del Jarama? En San Sebastián de los Reyes, al norte de Madrid. Lo gestiona el Real Automóvil Club de España (RACE).
+¿Cuánto mide el Circuito del Jarama? Su trazado actual mide unos 3.850 metros.
+¿Se puede conducir en el Jarama con tu coche? Sí, en tandas o track days organizados por el circuito o por empresas y clubes, cumpliendo sus requisitos de seguridad y ruido.
+¿Hay experiencias de conducción en el Jarama? Sí. Con el DS Pilot Weekend – Circuit de Deyscom Motorsport vives un fin de semana como piloto con un coche de competición preparado.
+
+## Fuentes y referencias
+
+Real Automóvil Club de España (RACE)
+Circuito del Jarama · Wikipedia
+
+Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
+
+NA
+Sobre el autor
+
+### Néstor Aguado
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+
+Conoce al equipo
+
+Sigue leyendo
+
+## Más del blog
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
+
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+PINTURA
+
+Pintura · 6 min
+
+### Cuánto cuesta pintar un coche: factores que cambian el precio
+
+De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
+
+Néstor Aguado · 23 de octubre de 2026
+
+RESTOMOD
+
+Restomod · 7 min
+
+### Reformas en la ITV y vehículos históricos: guía práctica 2026
+
+Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
+
+Néstor Aguado · 23 de octubre de 2026
+
+## ¿Hablamos de tu proyecto?
+
+Escríbenos y te respondemos en menos de 24 h laborables.
+
+Pide presupuesto
+WhatsApp
+(+34) 615 97 22 33
+
+
+---
+
 # Coche de rally: qué es, categorías Rally1 a Rally5 y cuál elegir
 URL: https://deyscom.com/blog-coche-de-rally-que-es-y-categorias.html
 
@@ -2708,63 +2791,45 @@ Comprar un coche de rally de segunda mano: qué revisar
 Nuestra experiencia en el taller
 
 ## ¿Qué es un coche de rally?
-
 Es un coche que parte de un modelo de serie y se transforma para competir en tramos cronometrados cerrados al tráfico , sobre asfalto, tierra o nieve, y que además tiene que poder circular por carretera abierta en los enlaces entre tramos. Por eso un coche de rally está matriculado, pasa verificaciones técnicas en cada prueba y combina dos mundos: la robustez para aguantar golpes, saltos y polvo, y la seguridad de un coche de competición.
 
 En el taller lo resumimos así: un coche de rally no es un coche de calle con pegatinas, es un coche reconstruido alrededor de la seguridad de quien va dentro.
 
 ## ¿Qué diferencia a un coche de rally de uno de calle?
-
 Seguridad pasiva: jaula de seguridad soldada o atornillada según reglamento, baquets y arneses homologados, red de ventanilla, cortacorrientes y sistema de extinción.
-
 Suspensión y bajos: amortiguadores de competición regulables, protecciones de cárter y depósito, y geometría pensada para el tipo de superficie.
-
 Frenos y transmisión: pastillas, latiguillos y líquidos de competición; en muchos casos autoblocante y desarrollos más cortos.
-
 Peso: se elimina todo lo que no es necesario, sin bajar del peso mínimo que marca el reglamento de la categoría.
-
 Documentación: además de la del vehículo, la ficha o pasaporte técnico que exija la federación correspondiente.
 
 ## ¿Qué categorías de coches de rally hay? La pirámide FIA
-
 La Federación Internacional del Automóvil (FIA) agrupa los coches de rally actuales en una pirámide de cinco niveles:
 
 Rally1: los coches del Campeonato del Mundo (WRC). La cima de la pirámide.
-
 Rally2: tracción total y motor turbo; es la categoría de referencia en campeonatos nacionales y en WRC2.
-
 Rally3: tracción total con un planteamiento más asequible que Rally2.
-
 Rally4: tracción delantera; muy habitual en copas de promoción y campeonatos junior.
-
 Rally5: el escalón de acceso, con tracción delantera y preparación más contenida.
 
 Además, en España conviven coches de grupos anteriores y clases propias de cada federación autonómica. Antes de comprar o preparar un coche, comprueba en el reglamento de la prueba o del campeonato en qué clase encaja y si su homologación sigue vigente.
 
 ## ¿Qué coche de rally elegir para empezar?
-
 Para un primer año la prioridad es aprender, no ganar. Por eso recomendamos coches ligeros, de tracción delantera, mecánica sencilla y recambios fáciles . Nuestro Peugeot 206 1.6 XS de 118 CV es un buen ejemplo: noble, fácil de mantener y muy buscado como base de rally. Si buscas más sensaciones, un coche de propulsión como nuestro BMW E36 de 135 CV exige más al volante y enseña mucho.
 
 Si todavía no quieres comprar, puedes alquilar un coche de rally preparado o correr un rally federado con el DS Pilot Weekend – Rally .
 
 ## Comprar un coche de rally de segunda mano: qué revisar
-
 Es la forma más habitual de entrar en el mundo del rally, pero hay que mirar con lupa:
 
 Jaula y carrocería: soldaduras, puntos de anclaje, golpes y estado del chasis.
-
 Homologaciones: fechas de caducidad de baquets, arneses y extinción.
-
 Documentación: ficha técnica, pasaporte técnico y si el coche encaja en la categoría en la que quieres correr.
-
 Mecánica: historial de motor y caja, compresión y, si es posible, una medición en banco de potencia .
-
 Repuestos: qué se incluye (llantas, neumáticos, piezas de recambio) suele marcar la diferencia en el precio final.
 
 En nuestra sección de coches de rally en venta publicamos los coches que tenemos revisados por el taller.
 
 ## Nuestra experiencia en el taller
-
 En Deyscom preparamos y mantenemos coches de rally, slalom y circuito en Torrelaguna (Madrid). La pregunta que más nos hacen es «¿qué coche me compro?», y la respuesta casi siempre es la misma: el que puedas mantener toda la temporada. Un coche sencillo y fiable que termina todas las carreras enseña mucho más que uno potente que pasa media temporada en el taller. Si quieres ver cómo trabajamos, entra en preparación de coches de competición .
 
 ## Preguntas frecuentes
@@ -2834,6 +2899,244 @@ WhatsApp
 
 ---
 
+# Cuánto cuesta pintar un coche: de qué depende el precio
+URL: https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche.html
+
+Inicio / Blog / Pintura
+Pintura · 6 min de lectura
+
+# ¿Cuánto cuesta pintar un coche ?
+
+De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
+
+NA
+Néstor Aguado Fundador y propietario de Deyscom Motorsport
+Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+
+Nissan Patrol pintándose en verde en la cabina de pintura
+Respuesta rápida El precio de pintar un coche depende sobre todo de cuánta preparación necesita la chapa (golpes, óxido, masillas), del tamaño del coche, del tipo de pintura (sólida, metalizada, perlada, mate), de si hay cambio de color (con interiores, marcos y vanos) y del nivel de desmontaje . La preparación suele llevar más horas que la propia aplicación. Un presupuesto fiable solo se puede dar viendo el coche.
+
+En este artículo ¿De qué depende el precio de pintar un coche?
+¿Por qué la preparación es lo que más cuesta?
+¿Qué aporta pintar en cabina de pintura?
+Pintar el coche entero, una pieza o el chasis
+¿Un cambio de color hay que comunicarlo a Tráfico?
+Cómo pedir un presupuesto de pintura fiable
+
+## ¿De qué depende el precio de pintar un coche?
+Estado de la chapa: golpes, abolladuras, óxido o pintura anterior en mal estado multiplican las horas de preparación.
+Tamaño y forma: no es lo mismo un utilitario que un todoterreno o una furgoneta.
+Tipo de pintura: sólida, metalizada, perlada, tricapa o mate; cada una tiene materiales y procesos distintos.
+Cambio de color: si se cambia el color, para un acabado correcto hay que pintar vanos, marcos de puertas, interior del capó y del maletero.
+Desmontaje: desmontar molduras, gomas, faros y manetas da un acabado mucho más limpio que enmascarar.
+Acabado final: lijado y pulido del barniz para eliminar piel de naranja y motas.
+
+## ¿Por qué la preparación es lo que más cuesta?
+La pintura solo es tan buena como la superficie sobre la que se aplica. Antes de pintar hay que reparar la chapa, tratar el óxido, aplicar aparejo, lijar por fases y desengrasar . Saltarse pasos se nota a los pocos meses: aparecen rechupados, burbujas o diferencias de tono. En nuestra experiencia, la mayor parte de las horas de un buen trabajo de pintura se van en esta fase.
+
+## ¿Qué aporta pintar en cabina de pintura?
+Una cabina de pintura controla el polvo, la temperatura y la extracción. Eso permite aplicar la pintura en un ambiente limpio, secarla al horno y conseguir un acabado más duradero y uniforme. Pintar sin cabina aumenta el riesgo de motas, escurridos y un curado deficiente. En Deyscom pintamos en cabina: puedes ver el proceso de un Nissan Patrol en nuestra página de pintura de coches .
+
+## Pintar el coche entero, una pieza o el chasis
+No siempre hace falta pintar todo. Las opciones más habituales son:
+
+Pieza o zona: tras un golpe o arañazo, igualando el color con las piezas vecinas.
+Pintura completa del mismo color: para recuperar un coche con la pintura quemada o descascarillada.
+Cambio de color: el trabajo más completo si se quiere un acabado de calidad.
+Chasis y piezas sueltas: muy habitual en restauraciones y restomod , y en coches de competición.
+
+## ¿Un cambio de color hay que comunicarlo a Tráfico?
+El color figura en la documentación del vehículo, por lo que conviene consultar en la DGT o en tu estación de ITV cómo actualizarlo en tu caso, y avisar también a tu aseguradora. Si además del color hay otras modificaciones, puede tratarse de una reforma; lo explicamos en nuestra guía de reformas en la ITV y vehículos históricos .
+
+## Cómo pedir un presupuesto de pintura fiable
+Para valorar un trabajo de pintura necesitamos saber el modelo, el estado de la chapa (mejor con fotos con buena luz), el color y tipo de pintura que quieres y si buscas el mismo color o un cambio. Con eso te damos una primera orientación, y el presupuesto definitivo tras ver el coche en nuestro taller de Torrelaguna (Madrid). Pídelo desde la página de pintura o por WhatsApp.
+
+## Preguntas frecuentes
+
+¿Cuánto cuesta pintar un coche? Depende del estado de la chapa, el tamaño, el tipo de pintura, si hay cambio de color y del desmontaje. La preparación suele ser la parte que más horas lleva; un presupuesto fiable requiere ver el coche.
+¿Cuánto se tarda en pintar un coche? Desde unos días para una pieza hasta varias semanas para una pintura completa con cambio de color y chapa, según el estado del coche.
+¿Es mejor pintar en cabina? Sí. La cabina controla polvo y temperatura y permite secar al horno, lo que da un acabado más limpio y duradero.
+¿Hacéis decoraciones de coches de rally? Sí. Pintamos decoraciones y colores especiales para coches de competición y clásicos.
+
+## Fuentes y referencias
+
+Dirección General de Tráfico (DGT)
+
+Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
+
+NA
+Sobre el autor
+
+### Néstor Aguado
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+
+Conoce al equipo
+
+Sigue leyendo
+
+## Más del blog
+
+CIRCUITO
+
+Circuito · 6 min
+
+### Circuito del Jarama: historia, trazado y cómo rodar en tandas
+
+Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+
+Néstor Aguado · 23 de octubre de 2026
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
+
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+RESTOMOD
+
+Restomod · 7 min
+
+### Reformas en la ITV y vehículos históricos: guía práctica 2026
+
+Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
+
+Néstor Aguado · 23 de octubre de 2026
+
+## ¿Hablamos de tu proyecto?
+
+Escríbenos y te respondemos en menos de 24 h laborables.
+
+Pide presupuesto
+WhatsApp
+(+34) 615 97 22 33
+
+
+---
+
+# Reformas ITV y vehículos históricos: guía práctica 2026
+URL: https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos.html
+
+Inicio / Blog / Restomod
+Restomod · 7 min de lectura
+
+# Reformas en la ITV y vehículos históricos
+
+Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
+
+NA
+Néstor Aguado Fundador y propietario de Deyscom Motorsport
+Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+
+BMW E30 en restauración sobre el elevador
+Respuesta rápida En España, cualquier modificación que altere las características de un vehículo es una reforma y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos , normalmente con un informe de conformidad o proyecto técnico, un certificado de taller e inspección en la ITV. Para los clásicos, el Reglamento de Vehículos Históricos (Real Decreto 892/2024) , en vigor desde el 1 de octubre de 2024, fija como regla general una antigüedad mínima de 30 años y que el vehículo conserve su configuración original.
+
+En este artículo ¿Qué es una reforma de vehículo?
+¿Cómo se legaliza una reforma en la ITV?
+¿Qué es un vehículo histórico?
+¿Restomod o vehículo histórico?
+Consejos para que la ITV no te frene el proyecto
+Cómo lo hacemos en Deyscom
+
+## ¿Qué es una reforma de vehículo?
+Es cualquier cambio que modifique las características con las que se homologó el vehículo: suspensión, frenos, motor, neumáticos de otra medida, enganches, carrocería, número de plazas… La normativa base es el Real Decreto 866/2010 , y el Ministerio de Industria publica el Manual de Reformas de Vehículos , que clasifica cada tipo de reforma y dice qué documentación necesita.
+
+## ¿Cómo se legaliza una reforma en la ITV?
+Identificar la reforma en el Manual de Reformas y su código.
+Documentación técnica: según el caso, informe de conformidad o proyecto técnico firmado por un técnico competente.
+Certificado de taller que ha realizado la instalación.
+Inspección en la ITV , que actualiza la tarjeta ITV con la reforma.
+
+Algunas modificaciones menores no requieren proyecto, pero sí inspección. Por eso conviene planificar la legalización antes de montar las piezas, no después.
+
+## ¿Qué es un vehículo histórico?
+Es un vehículo que, por su antigüedad y conservación, se considera parte del patrimonio automovilístico. El Real Decreto 892/2024, Reglamento de Vehículos Históricos , sustituye a la normativa anterior y está en vigor desde el 1 de octubre de 2024. Como regla general, exige una antigüedad mínima de 30 años y que el vehículo mantenga su configuración original , sin modificaciones sustanciales.
+
+Los requisitos concretos, las excepciones y el procedimiento están en el texto del BOE; consúltalo o pregunta en tu ITV antes de iniciar el trámite.
+
+## ¿Restomod o vehículo histórico?
+Aquí está la gran decisión de muchos proyectos. Un restomod moderniza motor, frenos o suspensión, lo que normalmente implica reformas y puede chocar con la idea de configuración original que exige la condición de histórico. Una restauración fiel , en cambio, encaja mejor con la catalogación como histórico. Lee qué es un restomod y decide antes de empezar el proyecto; en Deyscom te ayudamos a plantearlo de forma que sea legalizable.
+
+## Consejos para que la ITV no te frene el proyecto
+Elige piezas con homologación o marcaje cuando existan.
+Guarda facturas y certificados de todas las piezas montadas.
+Haz las reformas que se tramitan juntas en un mismo expediente cuando sea posible.
+Pregunta en tu estación de ITV antes de empezar: los criterios técnicos se aplican caso a caso.
+
+## Cómo lo hacemos en Deyscom
+En nuestros proyectos de restomod y restauración de coches clásicos planificamos la legalización desde el principio, coordinamos con ingenieros y laboratorios cuando hace falta proyecto y emitimos el certificado de taller de lo que montamos en Torrelaguna.
+
+## Preguntas frecuentes
+
+¿Qué es una reforma en la ITV? Una modificación que altera las características del vehículo y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos, con inspección en la ITV.
+¿Cuántos años tiene que tener un coche para ser histórico? Según el Real Decreto 892/2024, como regla general al menos 30 años, y debe conservar su configuración original.
+¿Desde cuándo está en vigor el nuevo reglamento de históricos? El Real Decreto 892/2024 está en vigor desde el 1 de octubre de 2024.
+¿Un restomod puede ser vehículo histórico? Es difícil si tiene modificaciones sustanciales, porque el reglamento exige configuración original. Lo normal es legalizarlo como reforma.
+
+## Fuentes y referencias
+
+BOE · Real Decreto 892/2024, Reglamento de Vehículos Históricos
+BOE · Real Decreto 866/2010, tramitación de las reformas de vehículos
+Ministerio de Industria y Turismo · Manual de Reformas de Vehículos
+
+Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
+
+NA
+Sobre el autor
+
+### Néstor Aguado
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+
+Conoce al equipo
+
+Sigue leyendo
+
+## Más del blog
+
+RESTOMOD
+
+Restomod · 6 min
+
+### Qué es un restomod y cómo plantear el proyecto por fases
+
+Qué es un restomod, en qué se diferencia de una restauración y cómo plantear el proyecto por fases: diagnóstico, mecánica, seguridad, legalización en la ITV y presupuesto.
+
+Néstor Aguado · 12 de octubre de 2026
+
+CIRCUITO
+
+Circuito · 6 min
+
+### Circuito del Jarama: historia, trazado y cómo rodar en tandas
+
+Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+
+Néstor Aguado · 23 de octubre de 2026
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
+
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+## ¿Hablamos de tu proyecto?
+
+Escríbenos y te respondemos en menos de 24 h laborables.
+
+Pide presupuesto
+WhatsApp
+(+34) 615 97 22 33
+
+
+---
+
 # Slalom de coches: qué es, cómo funciona y cómo empezar
 URL: https://deyscom.com/blog-slalom-de-coches-que-es.html
 
@@ -2859,53 +3162,38 @@ Slalom, rallysprint y rally: ¿por dónde empiezo?
 Consejos del equipo Deyscom para tu primer slalom
 
 ## ¿Qué es un slalom de coches?
-
 Es una prueba de habilidad y velocidad: un recorrido corto, lleno de cambios de dirección, frenadas y zonas lentas, delimitado con conos o balizas. Los coches salen de uno en uno, así que no hay contacto ni adelantamientos: compites contra el cronómetro y contra ti mismo.
 
 Al ser un trazado lento y técnico, el slalom premia la precisión, la mirada lejana y la suavidad por encima de la potencia. Por eso es una escuela fantástica, tanto para quien empieza como para pilotos de rally que quieren pulir su técnica.
 
 ## ¿Cómo funciona una prueba de slalom?
-
 Verificaciones: administrativas (licencia, inscripción) y técnicas (seguridad del coche y equipamiento).
-
 Reconocimiento: normalmente se recorre el trazado a pie para memorizarlo.
-
 Mangas: varias pasadas cronometradas. Según el reglamento, cuenta la mejor o la suma de varias.
-
 Penalizaciones: tocar o derribar conos, o saltarse una puerta, añade segundos o puede descalificar la manga.
-
 Clasificación: por clases según el tipo de coche y la cilindrada, y una general.
 
 Cada federación y cada prueba tienen su reglamento; consulta siempre el reglamento particular antes de inscribirte.
 
 ## ¿Qué coche necesitas para hacer slalom?
-
 El slalom admite desde coches de serie con medidas de seguridad básicas hasta coches muy preparados, según la clase. Para empezar, un coche ligero y ágil funciona mejor que uno potente. Lo esencial:
 
 Coche en perfecto estado de frenos, neumáticos, suspensión y fijaciones.
-
 Elementos de seguridad que exija el reglamento de la clase (baquet, arneses, extintor, cortacorrientes…).
-
 Casco homologado y el equipamiento que marque la prueba.
 
 Si no tienes coche, en el DS Pilot Weekend – Slalom corres con nuestro Peugeot 206 1.6 XS de 118 CV o con el BMW E36 de 135 CV, preparados en nuestro taller.
 
 ## ¿Necesito licencia para correr un slalom?
-
 Para una prueba federada , sí: necesitas licencia federativa en vigor, que se tramita en la federación autonómica dentro del marco de la RFEDA . En la Comunidad de Madrid, la referencia es la Federación Madrileña de Automovilismo. Las jornadas privadas o de formación pueden tener requisitos distintos; te lo indicamos al confirmar fecha.
 
 ## Slalom, rallysprint y rally: ¿por dónde empiezo?
-
 El slalom es el escalón de entrada: poco coste, mucha seguridad y aprendizaje rápido. El rallysprint añade un tramo de carretera cerrado que se repite varias veces, y el rally completa la experiencia con copiloto, notas, enlaces y asistencia. Lee nuestra guía sobre cómo empezar en los rallies si quieres dar el siguiente paso.
 
 ## Consejos del equipo Deyscom para tu primer slalom
-
 Mira lejos: la vista va dos o tres conos por delante, no en el que tienes encima.
-
 Frena recto y suelta suave: la mayoría del tiempo se pierde en frenadas tardías que te sacan de la trazada.
-
 Memoriza el recorrido: un error de recorrido cuesta mucho más que ir prudente.
-
 Una manga cada vez: mejora una cosa por manga y compara tiempos.
 
 ## Preguntas frecuentes
@@ -2974,85 +3262,67 @@ WhatsApp
 
 ---
 
-# Circuito del Jarama: historia, trazado y cómo rodar en tandas
-URL: https://deyscom.com/blog-circuito-del-jarama-tandas.html
+# Banco de potencia: cómo leer la curva de potencia y par
+URL: https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva.html
 
-Inicio / Blog / Circuito
-Circuito · 6 min de lectura
+Inicio / Blog / Técnica
+Técnica · 7 min de lectura
 
-# Circuito del Jarama: historia y cómo rodar
+# Banco de potencia: cómo leer la curva
 
-Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
 
-BMW E36 de competición en una curva del circuito
-Respuesta rápida El Circuito del Jarama está en San Sebastián de los Reyes (Madrid), lo gestiona el Real Automóvil Club de España (RACE) y se inauguró en 1967 . Su trazado actual mide 3.850 metros y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en tandas o vivirlo como piloto con un coche de competición en una experiencia como el DS Pilot Weekend – Circuit.
+Curva de potencia y par en la pantalla del banco de potencia
+Respuesta rápida Un banco de potencia mide la potencia y el par reales de un coche en todo el rango de revoluciones. El resultado es una curva que muestra dónde rinde el motor, si hay pérdidas o fallos y qué ha aportado cada modificación. Para comparar mediciones hay que hacerlas en las mismas condiciones y con el mismo factor de corrección.
 
-En este artículo Historia del Circuito del Jarama
-El trazado: 3.850 metros técnicos
-¿Qué son las tandas en el Jarama y cómo funcionan?
-¿Qué necesitas para conducir en el Jarama?
-Tandas con tu coche o experiencia con coche de competición
-Cómo lo vivimos en Deyscom
+En este artículo Qué es un banco de potencia
+Potencia en rueda y potencia en motor
+Cómo se relacionan par y potencia
+Qué mirar en una curva de potencia y par
+Cómo comparar antes y después de una modificación
+Cómo lo hacemos en Deyscom
 
-## Historia del Circuito del Jarama
+## Qué es un banco de potencia
+Un banco de potencia (también llamado banco de rodillos o dinamómetro de chasis) permite medir el rendimiento del coche sin salir del taller. El coche se coloca con las ruedas motrices sobre unos rodillos, se sujeta con seguridad y se acelera a fondo en una marcha determinada mientras el equipo registra la fuerza y las revoluciones.
 
-El Jarama se inauguró en 1967 al norte de Madrid y es uno de los circuitos permanentes más antiguos de España. Fue sede del Gran Premio de España de Fórmula 1 en distintas ediciones entre finales de los años 60 y comienzos de los 80, y desde entonces ha acogido motociclismo, turismos, resistencia y clásicos. Lo gestiona el RACE .
+## Potencia en rueda y potencia en motor
+El banco mide lo que llega a las ruedas. Entre el motor y el asfalto hay pérdidas de transmisión (caja de cambios, diferencial, palieres, neumáticos), por eso la potencia en rueda siempre es menor que la potencia en motor que anuncia el fabricante. Algunos bancos estiman la potencia en motor a partir de esas pérdidas, pero lo más fiable para comparar es mirar siempre el mismo dato en el mismo banco.
 
-Es un circuito con mucha historia y mucho carácter: estrecho, técnico y con curvas que exigen precisión. Por eso enseña tanto.
+## Cómo se relacionan par y potencia
+El par es la fuerza de giro del motor; la potencia es ese par multiplicado por la velocidad de giro. La relación es:
 
-## El trazado: 3.850 metros técnicos
+Potencia (kW) = Par (Nm) × rpm ÷ 9.549 , y 1 kW ≈ 1,36 CV .
 
-El trazado actual mide unos 3,85 km y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las referencias de frenada y la trazada de cada curva antes de buscar velocidad. Nuestro equipo te las explica tanda a tanda en el DS Pilot Weekend – Circuit .
+Por eso la potencia máxima siempre aparece a más revoluciones que el par máximo.
 
-## ¿Qué son las tandas en el Jarama y cómo funcionan?
+## Qué mirar en una curva de potencia y par
+Valores máximos: potencia y par máximos y a qué revoluciones llegan.
+Forma de la curva: una curva de par llena y plana hace el coche más fácil y rápido de conducir que un pico aislado.
+Área bajo la curva: en el rango de uso real del motor es lo que más se nota al volante.
+Irregularidades: dientes, caídas o escalones pueden indicar problemas de encendido, mezcla, sobrealimentación o embrague.
+Mezcla aire-combustible: si el banco registra la lambda, permite comprobar que el motor trabaja con seguridad.
 
-Las tandas (track days) son sesiones de rodaje libre en las que varios coches comparten pista durante un tiempo fijo, sin cronometraje oficial ni clasificación. Las organiza el propio circuito o empresas y clubes que alquilan la pista. Normalmente:
+## Cómo comparar antes y después de una modificación
+Para que la comparación sea válida, la medición se tiene que hacer en las mismas condiciones: misma marcha, presión de neumáticos, temperatura del motor y del aire, y el mismo factor de corrección (por ejemplo DIN 70020, SAE J1349 o ISO 1585), que ajusta el resultado a unas condiciones atmosféricas de referencia. Además se hacen varias pasadas para descartar valores aislados.
 
-Se reservan por sesiones o por jornada, con plazas limitadas.
-
-Hay un briefing de seguridad obligatorio y normas de adelantamiento.
-
-Se exige casco y que el coche esté en buen estado (frenos, neumáticos, fluidos, sin fugas).
-
-Los circuitos cercanos a zonas habitadas aplican límites de ruido : comprueba que tu escape los cumple.
-
-Las condiciones, horarios y requisitos dependen de cada organizador; consúltalos siempre antes de reservar.
-
-## ¿Qué necesitas para conducir en el Jarama?
-
-Carnet de conducir en vigor (para tandas con coche propio).
-
-Casco y ropa adecuada; en algunos eventos se exige más equipamiento.
-
-Coche revisado: pastillas y líquido de frenos con margen, neumáticos en buen estado y presiones correctas.
-
-Seguro: los seguros de calle no suelen cubrir el uso en circuito; revisa tu póliza o la que ofrezca el organizador.
-
-Si no quieres arriesgar tu coche, la alternativa es vivir el Jarama con un coche de competición preparado, con briefing, asistencia mecánica y acompañamiento de un equipo.
-
-## Tandas con tu coche o experiencia con coche de competición
-
-Las tandas son ideales si ya tienes un coche preparado y experiencia. Una experiencia en el Circuito del Jarama como el DS Pilot Weekend – Circuit está pensada para vivirlo como un piloto más: paddock, briefing, coche de competición preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica.
-
-## Cómo lo vivimos en Deyscom
-
-Nuestro taller está en Torrelaguna, a unos 40 minutos del Jarama. Llevamos años preparando coches de circuito y acompañando a pilotos en pista. Lo que más repetimos a quien rueda por primera vez: las primeras vueltas son para aprender, no para correr . La velocidad llega sola cuando las referencias están claras.
+## Cómo lo hacemos en Deyscom
+Antes de medir revisamos niveles, estado del coche y fijaciones; después hacemos varias pasadas y revisamos las curvas contigo. Te llevas tus gráficas para comparar en el futuro. Más información en nuestra página de banco de potencia en Madrid .
 
 ## Preguntas frecuentes
 
-¿Dónde está el Circuito del Jarama? En San Sebastián de los Reyes, al norte de Madrid. Lo gestiona el Real Automóvil Club de España (RACE).
-¿Cuánto mide el Circuito del Jarama? Su trazado actual mide unos 3.850 metros.
-¿Se puede conducir en el Jarama con tu coche? Sí, en tandas o track days organizados por el circuito o por empresas y clubes, cumpliendo sus requisitos de seguridad y ruido.
-¿Hay experiencias de conducción en el Jarama? Sí. Con el DS Pilot Weekend – Circuit de Deyscom Motorsport vives un fin de semana como piloto con un coche de competición preparado.
+¿Qué mide un banco de potencia? La potencia y el par del coche en todo el rango de revoluciones, normalmente medidos en las ruedas motrices.
+¿Por qué el banco da menos CV que el fabricante? Porque el banco mide en rueda y entre el motor y las ruedas hay pérdidas de transmisión; el fabricante declara la potencia en motor.
+¿Cómo se pasa de kW a CV? Multiplicando los kW por aproximadamente 1,36.
+¿Es malo para el motor pasar por el banco? No, si el coche está en buen estado, bien sujeto y refrigerado. Antes de medir se revisan niveles y fijaciones.
 
 ## Fuentes y referencias
 
-Real Automóvil Club de España (RACE)
-Circuito del Jarama · Wikipedia
+Norma SAE J1349 (SAE International)
+Organización Internacional de Normalización (ISO)
 
 Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
 
@@ -3067,158 +3337,6 @@ Conoce al equipo
 Sigue leyendo
 
 ## Más del blog
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 6 min
-
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
-
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-PINTURA
-
-Pintura · 6 min
-
-### Cuánto cuesta pintar un coche: factores que cambian el precio
-
-De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
-
-Néstor Aguado · 23 de octubre de 2026
-
-## ¿Hablamos de tu proyecto?
-
-Escríbenos y te respondemos en menos de 24 h laborables.
-
-Pide presupuesto
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Cuánto cuesta pintar un coche: de qué depende el precio
-URL: https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche.html
-
-Inicio / Blog / Pintura
-Pintura · 6 min de lectura
-
-# ¿Cuánto cuesta pintar un coche ?
-
-De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
-
-NA
-Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
-
-Nissan Patrol pintándose en verde en la cabina de pintura
-Respuesta rápida El precio de pintar un coche depende sobre todo de cuánta preparación necesita la chapa (golpes, óxido, masillas), del tamaño del coche, del tipo de pintura (sólida, metalizada, perlada, mate), de si hay cambio de color (con interiores, marcos y vanos) y del nivel de desmontaje . La preparación suele llevar más horas que la propia aplicación. Un presupuesto fiable solo se puede dar viendo el coche.
-
-En este artículo ¿De qué depende el precio de pintar un coche?
-¿Por qué la preparación es lo que más cuesta?
-¿Qué aporta pintar en cabina de pintura?
-Pintar el coche entero, una pieza o el chasis
-¿Un cambio de color hay que comunicarlo a Tráfico?
-Cómo pedir un presupuesto de pintura fiable
-
-## ¿De qué depende el precio de pintar un coche?
-
-Estado de la chapa: golpes, abolladuras, óxido o pintura anterior en mal estado multiplican las horas de preparación.
-
-Tamaño y forma: no es lo mismo un utilitario que un todoterreno o una furgoneta.
-
-Tipo de pintura: sólida, metalizada, perlada, tricapa o mate; cada una tiene materiales y procesos distintos.
-
-Cambio de color: si se cambia el color, para un acabado correcto hay que pintar vanos, marcos de puertas, interior del capó y del maletero.
-
-Desmontaje: desmontar molduras, gomas, faros y manetas da un acabado mucho más limpio que enmascarar.
-
-Acabado final: lijado y pulido del barniz para eliminar piel de naranja y motas.
-
-## ¿Por qué la preparación es lo que más cuesta?
-
-La pintura solo es tan buena como la superficie sobre la que se aplica. Antes de pintar hay que reparar la chapa, tratar el óxido, aplicar aparejo, lijar por fases y desengrasar . Saltarse pasos se nota a los pocos meses: aparecen rechupados, burbujas o diferencias de tono. En nuestra experiencia, la mayor parte de las horas de un buen trabajo de pintura se van en esta fase.
-
-## ¿Qué aporta pintar en cabina de pintura?
-
-Una cabina de pintura controla el polvo, la temperatura y la extracción. Eso permite aplicar la pintura en un ambiente limpio, secarla al horno y conseguir un acabado más duradero y uniforme. Pintar sin cabina aumenta el riesgo de motas, escurridos y un curado deficiente. En Deyscom pintamos en cabina: puedes ver el proceso de un Nissan Patrol en nuestra página de pintura de coches .
-
-## Pintar el coche entero, una pieza o el chasis
-
-No siempre hace falta pintar todo. Las opciones más habituales son:
-
-Pieza o zona: tras un golpe o arañazo, igualando el color con las piezas vecinas.
-
-Pintura completa del mismo color: para recuperar un coche con la pintura quemada o descascarillada.
-
-Cambio de color: el trabajo más completo si se quiere un acabado de calidad.
-
-Chasis y piezas sueltas: muy habitual en restauraciones y restomod , y en coches de competición.
-
-## ¿Un cambio de color hay que comunicarlo a Tráfico?
-
-El color figura en la documentación del vehículo, por lo que conviene consultar en la DGT o en tu estación de ITV cómo actualizarlo en tu caso, y avisar también a tu aseguradora. Si además del color hay otras modificaciones, puede tratarse de una reforma; lo explicamos en nuestra guía de reformas en la ITV y vehículos históricos .
-
-## Cómo pedir un presupuesto de pintura fiable
-
-Para valorar un trabajo de pintura necesitamos saber el modelo, el estado de la chapa (mejor con fotos con buena luz), el color y tipo de pintura que quieres y si buscas el mismo color o un cambio. Con eso te damos una primera orientación, y el presupuesto definitivo tras ver el coche en nuestro taller de Torrelaguna (Madrid). Pídelo desde la página de pintura o por WhatsApp.
-
-## Preguntas frecuentes
-
-¿Cuánto cuesta pintar un coche? Depende del estado de la chapa, el tamaño, el tipo de pintura, si hay cambio de color y del desmontaje. La preparación suele ser la parte que más horas lleva; un presupuesto fiable requiere ver el coche.
-¿Cuánto se tarda en pintar un coche? Desde unos días para una pieza hasta varias semanas para una pintura completa con cambio de color y chapa, según el estado del coche.
-¿Es mejor pintar en cabina? Sí. La cabina controla polvo y temperatura y permite secar al horno, lo que da un acabado más limpio y duradero.
-¿Hacéis decoraciones de coches de rally? Sí. Pintamos decoraciones y colores especiales para coches de competición y clásicos.
-
-## Fuentes y referencias
-
-Dirección General de Tráfico (DGT)
-
-Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
-
-NA
-Sobre el autor
-
-### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
-
-Conoce al equipo
-
-Sigue leyendo
-
-## Más del blog
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 6 min
-
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
-
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
-
-Néstor Aguado · 23 de octubre de 2026
 
 CIRCUITO
 
@@ -3230,118 +3348,6 @@ Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo fu
 
 Néstor Aguado · 23 de octubre de 2026
 
-## ¿Hablamos de tu proyecto?
-
-Escríbenos y te respondemos en menos de 24 h laborables.
-
-Pide presupuesto
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Reformas ITV y vehículos históricos: guía práctica 2026
-URL: https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos.html
-
-Inicio / Blog / Restomod
-Restomod · 7 min de lectura
-
-# Reformas en la ITV y vehículos históricos
-
-Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
-
-NA
-Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
-
-BMW E30 en restauración sobre el elevador
-Respuesta rápida En España, cualquier modificación que altere las características de un vehículo es una reforma y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos , normalmente con un informe de conformidad o proyecto técnico, un certificado de taller e inspección en la ITV. Para los clásicos, el Reglamento de Vehículos Históricos (Real Decreto 892/2024) , en vigor desde el 1 de octubre de 2024, fija como regla general una antigüedad mínima de 30 años y que el vehículo conserve su configuración original.
-
-En este artículo ¿Qué es una reforma de vehículo?
-¿Cómo se legaliza una reforma en la ITV?
-¿Qué es un vehículo histórico?
-¿Restomod o vehículo histórico?
-Consejos para que la ITV no te frene el proyecto
-Cómo lo hacemos en Deyscom
-
-## ¿Qué es una reforma de vehículo?
-
-Es cualquier cambio que modifique las características con las que se homologó el vehículo: suspensión, frenos, motor, neumáticos de otra medida, enganches, carrocería, número de plazas… La normativa base es el Real Decreto 866/2010 , y el Ministerio de Industria publica el Manual de Reformas de Vehículos , que clasifica cada tipo de reforma y dice qué documentación necesita.
-
-## ¿Cómo se legaliza una reforma en la ITV?
-
-Identificar la reforma en el Manual de Reformas y su código.
-
-Documentación técnica: según el caso, informe de conformidad o proyecto técnico firmado por un técnico competente.
-
-Certificado de taller que ha realizado la instalación.
-
-Inspección en la ITV , que actualiza la tarjeta ITV con la reforma.
-
-Algunas modificaciones menores no requieren proyecto, pero sí inspección. Por eso conviene planificar la legalización antes de montar las piezas, no después.
-
-## ¿Qué es un vehículo histórico?
-
-Es un vehículo que, por su antigüedad y conservación, se considera parte del patrimonio automovilístico. El Real Decreto 892/2024, Reglamento de Vehículos Históricos , sustituye a la normativa anterior y está en vigor desde el 1 de octubre de 2024. Como regla general, exige una antigüedad mínima de 30 años y que el vehículo mantenga su configuración original , sin modificaciones sustanciales.
-
-Los requisitos concretos, las excepciones y el procedimiento están en el texto del BOE; consúltalo o pregunta en tu ITV antes de iniciar el trámite.
-
-## ¿Restomod o vehículo histórico?
-
-Aquí está la gran decisión de muchos proyectos. Un restomod moderniza motor, frenos o suspensión, lo que normalmente implica reformas y puede chocar con la idea de configuración original que exige la condición de histórico. Una restauración fiel , en cambio, encaja mejor con la catalogación como histórico. Lee qué es un restomod y decide antes de empezar el proyecto; en Deyscom te ayudamos a plantearlo de forma que sea legalizable.
-
-## Consejos para que la ITV no te frene el proyecto
-
-Elige piezas con homologación o marcaje cuando existan.
-
-Guarda facturas y certificados de todas las piezas montadas.
-
-Haz las reformas que se tramitan juntas en un mismo expediente cuando sea posible.
-
-Pregunta en tu estación de ITV antes de empezar: los criterios técnicos se aplican caso a caso.
-
-## Cómo lo hacemos en Deyscom
-
-En nuestros proyectos de restomod y restauración de coches clásicos planificamos la legalización desde el principio, coordinamos con ingenieros y laboratorios cuando hace falta proyecto y emitimos el certificado de taller de lo que montamos en Torrelaguna.
-
-## Preguntas frecuentes
-
-¿Qué es una reforma en la ITV? Una modificación que altera las características del vehículo y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos, con inspección en la ITV.
-¿Cuántos años tiene que tener un coche para ser histórico? Según el Real Decreto 892/2024, como regla general al menos 30 años, y debe conservar su configuración original.
-¿Desde cuándo está en vigor el nuevo reglamento de históricos? El Real Decreto 892/2024 está en vigor desde el 1 de octubre de 2024.
-¿Un restomod puede ser vehículo histórico? Es difícil si tiene modificaciones sustanciales, porque el reglamento exige configuración original. Lo normal es legalizarlo como reforma.
-
-## Fuentes y referencias
-
-BOE · Real Decreto 892/2024, Reglamento de Vehículos Históricos
-BOE · Real Decreto 866/2010, tramitación de las reformas de vehículos
-Ministerio de Industria y Turismo · Manual de Reformas de Vehículos
-
-Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
-
-NA
-Sobre el autor
-
-### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
-
-Conoce al equipo
-
-Sigue leyendo
-
-## Más del blog
-
-RESTOMOD
-
-Restomod · 6 min
-
-### Qué es un restomod y cómo plantear el proyecto por fases
-
-Qué es un restomod, en qué se diferencia de una restauración y cómo plantear el proyecto por fases: diagnóstico, mecánica, seguridad, legalización en la ITV y presupuesto.
-
-Néstor Aguado · 12 de octubre de 2026
-
 COMPETICIÓN
 
 Competición · 8 min
@@ -3352,13 +3358,13 @@ Qué es un coche de rally, en qué se diferencia de uno de calle, las categoría
 
 Néstor Aguado · 23 de octubre de 2026
 
-COMPETICIÓN
+PINTURA
 
-Competición · 6 min
+Pintura · 6 min
 
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
+### Cuánto cuesta pintar un coche: factores que cambian el precio
 
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
 
 Néstor Aguado · 23 de octubre de 2026
 
@@ -3399,87 +3405,63 @@ Cómo planificar el presupuesto de tu primer rally
 Nuestra experiencia: el primer rally de Deyscom
 
 ## Elige la disciplina con la que vas a empezar
-
 «Rally» engloba varias disciplinas con exigencias y costes muy distintos. Antes de comprar nada, decide por dónde quieres entrar:
 
 Slalom: recorrido marcado con conos y cronometrado. Es la puerta de entrada más asequible y segura para aprender a mover el coche con precisión.
-
 Rallysprint: un tramo corto que se repite varias veces en el mismo día. Ideal para coger ritmo sin la logística de un rally completo.
-
 Rally: varios tramos cronometrados unidos por enlaces por carretera abierta, con parque de asistencia, controles horarios y reconocimientos. Necesitas piloto y copiloto.
-
 Montaña y circuito: otras disciplinas de velocidad con reglamentos propios.
 
 En nuestra experiencia en el taller, quien empieza por slalom o por un rallysprint llega a su primer rally con mucha más confianza y gasta menos en reparaciones.
 
 ## Qué licencia necesitas para correr un rally
-
 Para participar en una prueba federada necesitas una licencia federativa en vigor. En España las expide la federación autonómica de automovilismo de tu comunidad, dentro del marco de la Real Federación Española de Automovilismo (RFEDA) .
 
 Hay licencias distintas para piloto y para copiloto , y de ámbito autonómico o nacional.
-
 La primera licencia suele requerir un reconocimiento médico y, según la federación, algún curso o requisito adicional.
-
 La licencia incluye un seguro asociado a la actividad deportiva.
 
 Los requisitos y precios cambian cada temporada, así que consulta siempre la normativa vigente de tu federación antes de inscribirte.
 
 ## ¿Qué coche elegir para tu primer rally?
-
 Tienes tres caminos: comprar un coche ya preparado , preparar uno propio o alquilar . Para debutar, nuestra recomendación es un coche ligero, de tracción delantera y mecánica sencilla, como nuestro Peugeot 206 1.6 XS de 118 CV: es noble, fácil de mantener y perdona los errores de aprendizaje.
 
 Si vas a preparar tu propio coche, el reglamento técnico de la categoría marca qué puedes y qué debes montar. Lo imprescindible en seguridad es:
 
 Jaula de seguridad conforme al reglamento.
-
 Baquets homologados y arneses en vigor.
-
 Sistema de extinción y extintor.
-
 Cortacorrientes accesible desde dentro y desde fuera.
-
 La documentación técnica que exija tu federación para el coche.
 
 Si prefieres no tener coche propio, el DS Pilot Weekend – Rally te permite correr un rally federado con nuestro 206 o con nuestro BMW E36 de 135 CV, con asistencia incluida.
 
 ## El equipamiento obligatorio del piloto y el copiloto
-
 Piloto y copiloto deben llevar equipamiento homologado según el reglamento de la prueba. Como norma general:
 
 Casco homologado compatible con sistema de retención frontal de la cabeza (FHR, tipo HANS).
-
 Mono ignífugo homologado.
-
 Ropa interior, sotocasco, guantes y botines ignífugos homologados.
 
 Revisa siempre las fechas de caducidad de las homologaciones: es una de las causas más habituales de problemas en las verificaciones técnicas.
 
 ## El copiloto: la mitad del coche
-
 En rally no se corre solo. El copiloto canta las notas, controla los tiempos y gestiona el carnet de ruta. Un buen copiloto hace al piloto más rápido y, sobre todo, más seguro. Si quieres formarte en este papel, hemos creado el DS Copilot Course , con certificación y prácticas en un tramo cerrado en Guadalajara. Te explicamos el trabajo del copiloto en detalle en qué hace un copiloto de rally .
 
 ## Cómo planificar el presupuesto de tu primer rally
-
 Más que una cifra cerrada, conviene tener claras todas las partidas para que no haya sorpresas:
 
 Licencias de piloto y copiloto.
-
 Inscripción en la prueba.
-
 Coche: compra y preparación, o alquiler.
-
 Equipamiento homologado de piloto y copiloto.
-
 Consumibles: neumáticos, combustible, frenos y fluidos.
-
 Asistencia: equipo, herramientas y desplazamientos.
-
 Reserva para imprevistos y reparaciones.
 
 Alquilar un coche preparado concentra casi todas estas partidas en un solo precio y es, con diferencia, la forma más previsible de debutar.
 
 ## Nuestra experiencia: el primer rally de Deyscom
-
 En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally, el II Rallye Comunidad de Madrid – El Molar , con el Peugeot 206 del equipo. Lo que más aprendimos: la preparación no termina en el taller. Verificaciones, horarios, asistencia y comunicación dentro del coche pesan tanto como la mecánica. Por eso diseñamos nuestras experiencias y nuestro curso de copiloto pensando en lo que nos habría gustado saber antes de nuestra primera salida.
 
 ## Preguntas frecuentes
@@ -3493,265 +3475,6 @@ En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally, el II
 
 Real Federación Española de Automovilismo (RFEDA)
 Federación Internacional del Automóvil (FIA)
-
-Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
-
-NA
-Sobre el autor
-
-### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
-
-Conoce al equipo
-
-Sigue leyendo
-
-## Más del blog
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 6 min
-
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
-
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-CIRCUITO
-
-Circuito · 6 min
-
-### Circuito del Jarama: historia, trazado y cómo rodar en tandas
-
-Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
-
-Néstor Aguado · 23 de octubre de 2026
-
-## ¿Hablamos de tu proyecto?
-
-Escríbenos y te respondemos en menos de 24 h laborables.
-
-Pide presupuesto
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Qué hace un copiloto de rally: notas y controles horarios
-URL: https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html
-
-Inicio / Blog / Formación
-Formación · 7 min de lectura
-
-# Qué hace un copiloto de rally
-
-Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
-
-NA
-Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
-
-Copiloto revisando las notas dentro del coche de rally
-Respuesta rápida El copiloto de rally guía al piloto cantando las notas del tramo, gestiona el libro de ruta en los enlaces y controla el carnet de control y los horarios para evitar penalizaciones. También coordina la seguridad y la comunicación con la asistencia. Es tan determinante en el resultado como el propio piloto.
-
-En este artículo Las notas: los ojos del piloto
-El libro de ruta y los enlaces
-El carnet de control y los controles horarios
-Seguridad: el copiloto también protege
-Cómo formarte como copiloto
-
-## Las notas: los ojos del piloto
-
-Las notas son una descripción codificada del tramo que el copiloto lee en voz alta mientras el coche avanza. Se crean durante los reconocimientos , en los que el equipo recorre el tramo a velocidad legal y con un número limitado de pasadas.
-
-Una nota típica indica:
-
-Dirección y grado de la curva , normalmente con una escala numérica o descriptiva.
-
-Distancia hasta la siguiente indicación.
-
-Peligros : baches, cambios de rasante, cortes, piso deslizante o curvas que cierran.
-
-El sistema debe ser el mismo para piloto y copiloto. Lo más importante no es la cantidad de información, sino cantarla con el ritmo adecuado : ni tan pronto que el piloto la olvide, ni tan tarde que no le dé tiempo a reaccionar.
-
-## El libro de ruta y los enlaces
-
-Entre tramos, el coche circula por carreteras abiertas al tráfico. El libro de ruta (road book) que entrega la organización describe ese recorrido con viñetas y distancias parciales y totales. El copiloto lo sigue con el cuentakilómetros del coche para no perderse y llegar a tiempo, siempre respetando las normas de tráfico.
-
-## El carnet de control y los controles horarios
-
-El rally se organiza con un horario muy preciso. En el carnet de control los comisarios anotan la hora de paso por cada control. El copiloto es responsable de presentarlo y de calcular los tiempos:
-
-Controles horarios (CH): hay que presentarse en el minuto asignado. Llegar antes o después se penaliza.
-
-Salida de tramo: el comisario da la salida a la hora prevista.
-
-Meta y control stop: se registra el tiempo del tramo cronometrado.
-
-Parque de asistencia y reagrupamientos: tiempos fijos en los que hay que entrar y salir puntualmente.
-
-Un error de cálculo en un control horario puede costar más tiempo que un trompo en el tramo. Por eso el copiloto revisa los horarios constantemente.
-
-## Seguridad: el copiloto también protege
-
-El copiloto conoce los procedimientos de seguridad del reglamento: en caso de incidente, el equipo debe indicar a los participantes que vienen detrás si necesita ayuda o no, usando las señales que marque la normativa. También vigila el estado del equipamiento y ayuda a mantener la calma dentro del coche.
-
-## Cómo formarte como copiloto
-
-Se aprende practicando, pero empezar con un buen método ahorra muchos errores. En el DS Copilot Course trabajamos en un fin de semana completo la teoría (notas, libro de ruta, carnet de control, reglamento y seguridad) y la práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado solo para nuestros alumnos. Lo imparten un profesor y una profesora y al terminar recibes certificación y diploma.
-
-Si todavía estás decidiendo si dar el paso, lee también cómo empezar en los rallies .
-
-## Preguntas frecuentes
-
-¿Qué hace un copiloto de rally? Canta las notas del tramo, sigue el libro de ruta en los enlaces, gestiona el carnet de control y los horarios, y coordina la seguridad y la comunicación con la asistencia.
-¿Necesita licencia el copiloto? Sí. Para correr una prueba federada el copiloto también necesita licencia federativa en vigor.
-¿Qué son los controles horarios? Son puntos del recorrido en los que el equipo debe presentarse en un minuto concreto. Adelantarse o retrasarse se penaliza.
-¿Dónde puedo aprender a ser copiloto? En cursos específicos como el DS Copilot Course de Deyscom Motorsport, con teoría, práctica en tramo cerrado en Guadalajara, certificación y diploma.
-
-## Fuentes y referencias
-
-Real Federación Española de Automovilismo (RFEDA)
-Federación Internacional del Automóvil (FIA)
-
-Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
-
-NA
-Sobre el autor
-
-### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
-
-Conoce al equipo
-
-Sigue leyendo
-
-## Más del blog
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 6 min
-
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
-
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-CIRCUITO
-
-Circuito · 6 min
-
-### Circuito del Jarama: historia, trazado y cómo rodar en tandas
-
-Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
-
-Néstor Aguado · 23 de octubre de 2026
-
-## ¿Hablamos de tu proyecto?
-
-Escríbenos y te respondemos en menos de 24 h laborables.
-
-Pide presupuesto
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Banco de potencia: cómo leer la curva de potencia y par
-URL: https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva.html
-
-Inicio / Blog / Técnica
-Técnica · 7 min de lectura
-
-# Banco de potencia: cómo leer la curva
-
-Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.
-
-NA
-Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
-
-Curva de potencia y par en la pantalla del banco de potencia
-Respuesta rápida Un banco de potencia mide la potencia y el par reales de un coche en todo el rango de revoluciones. El resultado es una curva que muestra dónde rinde el motor, si hay pérdidas o fallos y qué ha aportado cada modificación. Para comparar mediciones hay que hacerlas en las mismas condiciones y con el mismo factor de corrección.
-
-En este artículo Qué es un banco de potencia
-Potencia en rueda y potencia en motor
-Cómo se relacionan par y potencia
-Qué mirar en una curva de potencia y par
-Cómo comparar antes y después de una modificación
-Cómo lo hacemos en Deyscom
-
-## Qué es un banco de potencia
-
-Un banco de potencia (también llamado banco de rodillos o dinamómetro de chasis) permite medir el rendimiento del coche sin salir del taller. El coche se coloca con las ruedas motrices sobre unos rodillos, se sujeta con seguridad y se acelera a fondo en una marcha determinada mientras el equipo registra la fuerza y las revoluciones.
-
-## Potencia en rueda y potencia en motor
-
-El banco mide lo que llega a las ruedas. Entre el motor y el asfalto hay pérdidas de transmisión (caja de cambios, diferencial, palieres, neumáticos), por eso la potencia en rueda siempre es menor que la potencia en motor que anuncia el fabricante. Algunos bancos estiman la potencia en motor a partir de esas pérdidas, pero lo más fiable para comparar es mirar siempre el mismo dato en el mismo banco.
-
-## Cómo se relacionan par y potencia
-
-El par es la fuerza de giro del motor; la potencia es ese par multiplicado por la velocidad de giro. La relación es:
-
-Potencia (kW) = Par (Nm) × rpm ÷ 9.549 , y 1 kW ≈ 1,36 CV .
-
-Por eso la potencia máxima siempre aparece a más revoluciones que el par máximo.
-
-## Qué mirar en una curva de potencia y par
-
-Valores máximos: potencia y par máximos y a qué revoluciones llegan.
-
-Forma de la curva: una curva de par llena y plana hace el coche más fácil y rápido de conducir que un pico aislado.
-
-Área bajo la curva: en el rango de uso real del motor es lo que más se nota al volante.
-
-Irregularidades: dientes, caídas o escalones pueden indicar problemas de encendido, mezcla, sobrealimentación o embrague.
-
-Mezcla aire-combustible: si el banco registra la lambda, permite comprobar que el motor trabaja con seguridad.
-
-## Cómo comparar antes y después de una modificación
-
-Para que la comparación sea válida, la medición se tiene que hacer en las mismas condiciones: misma marcha, presión de neumáticos, temperatura del motor y del aire, y el mismo factor de corrección (por ejemplo DIN 70020, SAE J1349 o ISO 1585), que ajusta el resultado a unas condiciones atmosféricas de referencia. Además se hacen varias pasadas para descartar valores aislados.
-
-## Cómo lo hacemos en Deyscom
-
-Antes de medir revisamos niveles, estado del coche y fijaciones; después hacemos varias pasadas y revisamos las curvas contigo. Te llevas tus gráficas para comparar en el futuro. Más información en nuestra página de banco de potencia en Madrid .
-
-## Preguntas frecuentes
-
-¿Qué mide un banco de potencia? La potencia y el par del coche en todo el rango de revoluciones, normalmente medidos en las ruedas motrices.
-¿Por qué el banco da menos CV que el fabricante? Porque el banco mide en rueda y entre el motor y las ruedas hay pérdidas de transmisión; el fabricante declara la potencia en motor.
-¿Cómo se pasa de kW a CV? Multiplicando los kW por aproximadamente 1,36.
-¿Es malo para el motor pasar por el banco? No, si el coche está en buen estado, bien sujeto y refrigerado. Antes de medir se revisan niveles y fijaciones.
-
-## Fuentes y referencias
-
-Norma SAE J1349 (SAE International)
-Organización Internacional de Normalización (ISO)
 
 Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
 
@@ -3834,35 +3557,26 @@ Legalización: las reformas y la ITV
 Cómo trabajamos los restomod en Deyscom
 
 ## Restomod, restauración y preparación: diferencias
-
 Restauración: devolver el coche a su estado original de fábrica, con piezas y acabados fieles.
-
 Preparación: mejorar las prestaciones, normalmente con un objetivo deportivo.
-
 Restomod: mantener la estética clásica y modernizar lo que se conduce: motor, frenos, suspensión, electricidad y confort.
 
 ## Fase 1: diagnóstico de la base
-
 Todo empieza por saber qué tenemos. Revisamos chasis, carrocería, óxido y mecánica antes de comprometer un presupuesto. Una base sana ahorra mucho dinero; una base con corrosión estructural puede cambiar el proyecto entero. Si aún no tienes el coche, te ayudamos a revisarlo antes de comprarlo.
 
 ## Fase 2: chasis, carrocería y seguridad
-
 Saneado, tratamiento anticorrosión, refuerzos y pintura. Es la base sobre la que se monta todo lo demás y la parte que menos se ve, pero la más importante.
 
 ## Fase 3: mecánica, frenos y suspensión
-
 Aquí está la «mod»: motores e inyecciones modernos o la reconstrucción del original, frenos actuales, suspensión regulable y geometría pensada para el uso que le vas a dar. El objetivo es que frene, gire y arranque como un coche de hoy sin perder carácter.
 
 ## Fase 4: electricidad, interior y detalles
-
 Cableado nuevo, iluminación, instrumentación, asientos y tapicería a medida. Es la fase que define cómo te sientes al volante.
 
 ## Legalización: las reformas y la ITV
-
 En España, las modificaciones que alteran las características del vehículo se consideran reformas y deben tramitarse según el Manual de Reformas de Vehículos del Ministerio de Industria, con la documentación técnica correspondiente y su inspección en la ITV. Plantearlo desde el principio evita sorpresas y permite elegir piezas que se puedan legalizar.
 
 ## Cómo trabajamos los restomod en Deyscom
-
 Diseñamos el proyecto contigo, lo dividimos en fases con presupuesto cerrado para cada una y te enviamos fotos y vídeos del avance. Puedes ver ejemplos en nuestra página de restomod y restauración en Madrid .
 
 ## Preguntas frecuentes
@@ -3900,6 +3614,16 @@ Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y 
 
 Néstor Aguado · 23 de octubre de 2026
 
+CIRCUITO
+
+Circuito · 6 min
+
+### Circuito del Jarama: historia, trazado y cómo rodar en tandas
+
+Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+
+Néstor Aguado · 23 de octubre de 2026
+
 COMPETICIÓN
 
 Competición · 8 min
@@ -3910,13 +3634,125 @@ Qué es un coche de rally, en qué se diferencia de uno de calle, las categoría
 
 Néstor Aguado · 23 de octubre de 2026
 
+## ¿Hablamos de tu proyecto?
+
+Escríbenos y te respondemos en menos de 24 h laborables.
+
+Pide presupuesto
+WhatsApp
+(+34) 615 97 22 33
+
+
+---
+
+# Qué hace un copiloto de rally: notas y controles horarios
+URL: https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html
+
+Inicio / Blog / Formación
+Formación · 7 min de lectura
+
+# Qué hace un copiloto de rally
+
+Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
+
+NA
+Néstor Aguado Fundador y propietario de Deyscom Motorsport
+Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+
+Copiloto revisando las notas dentro del coche de rally
+Respuesta rápida El copiloto de rally guía al piloto cantando las notas del tramo, gestiona el libro de ruta en los enlaces y controla el carnet de control y los horarios para evitar penalizaciones. También coordina la seguridad y la comunicación con la asistencia. Es tan determinante en el resultado como el propio piloto.
+
+En este artículo Las notas: los ojos del piloto
+El libro de ruta y los enlaces
+El carnet de control y los controles horarios
+Seguridad: el copiloto también protege
+Cómo formarte como copiloto
+
+## Las notas: los ojos del piloto
+Las notas son una descripción codificada del tramo que el copiloto lee en voz alta mientras el coche avanza. Se crean durante los reconocimientos , en los que el equipo recorre el tramo a velocidad legal y con un número limitado de pasadas.
+
+Una nota típica indica:
+
+Dirección y grado de la curva , normalmente con una escala numérica o descriptiva.
+Distancia hasta la siguiente indicación.
+Peligros : baches, cambios de rasante, cortes, piso deslizante o curvas que cierran.
+
+El sistema debe ser el mismo para piloto y copiloto. Lo más importante no es la cantidad de información, sino cantarla con el ritmo adecuado : ni tan pronto que el piloto la olvide, ni tan tarde que no le dé tiempo a reaccionar.
+
+## El libro de ruta y los enlaces
+Entre tramos, el coche circula por carreteras abiertas al tráfico. El libro de ruta (road book) que entrega la organización describe ese recorrido con viñetas y distancias parciales y totales. El copiloto lo sigue con el cuentakilómetros del coche para no perderse y llegar a tiempo, siempre respetando las normas de tráfico.
+
+## El carnet de control y los controles horarios
+El rally se organiza con un horario muy preciso. En el carnet de control los comisarios anotan la hora de paso por cada control. El copiloto es responsable de presentarlo y de calcular los tiempos:
+
+Controles horarios (CH): hay que presentarse en el minuto asignado. Llegar antes o después se penaliza.
+Salida de tramo: el comisario da la salida a la hora prevista.
+Meta y control stop: se registra el tiempo del tramo cronometrado.
+Parque de asistencia y reagrupamientos: tiempos fijos en los que hay que entrar y salir puntualmente.
+
+Un error de cálculo en un control horario puede costar más tiempo que un trompo en el tramo. Por eso el copiloto revisa los horarios constantemente.
+
+## Seguridad: el copiloto también protege
+El copiloto conoce los procedimientos de seguridad del reglamento: en caso de incidente, el equipo debe indicar a los participantes que vienen detrás si necesita ayuda o no, usando las señales que marque la normativa. También vigila el estado del equipamiento y ayuda a mantener la calma dentro del coche.
+
+## Cómo formarte como copiloto
+Se aprende practicando, pero empezar con un buen método ahorra muchos errores. En el DS Copilot Course trabajamos en un fin de semana completo la teoría (notas, libro de ruta, carnet de control, reglamento y seguridad) y la práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado solo para nuestros alumnos. Lo imparten un profesor y una profesora y al terminar recibes certificación y diploma.
+
+Si todavía estás decidiendo si dar el paso, lee también cómo empezar en los rallies .
+
+## Preguntas frecuentes
+
+¿Qué hace un copiloto de rally? Canta las notas del tramo, sigue el libro de ruta en los enlaces, gestiona el carnet de control y los horarios, y coordina la seguridad y la comunicación con la asistencia.
+¿Necesita licencia el copiloto? Sí. Para correr una prueba federada el copiloto también necesita licencia federativa en vigor.
+¿Qué son los controles horarios? Son puntos del recorrido en los que el equipo debe presentarse en un minuto concreto. Adelantarse o retrasarse se penaliza.
+¿Dónde puedo aprender a ser copiloto? En cursos específicos como el DS Copilot Course de Deyscom Motorsport, con teoría, práctica en tramo cerrado en Guadalajara, certificación y diploma.
+
+## Fuentes y referencias
+
+Real Federación Española de Automovilismo (RFEDA)
+Federación Internacional del Automóvil (FIA)
+
+Este artículo combina información de fuentes oficiales con la experiencia práctica del taller Deyscom Motorsport. Los reglamentos cambian cada temporada: consulta siempre la normativa vigente.
+
+NA
+Sobre el autor
+
+### Néstor Aguado
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+
+Conoce al equipo
+
+Sigue leyendo
+
+## Más del blog
+
+CIRCUITO
+
+Circuito · 6 min
+
+### Circuito del Jarama: historia, trazado y cómo rodar en tandas
+
+Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+
+Néstor Aguado · 23 de octubre de 2026
+
 COMPETICIÓN
 
-Competición · 6 min
+Competición · 8 min
 
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
 
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+PINTURA
+
+Pintura · 6 min
+
+### Cuánto cuesta pintar un coche: factores que cambian el precio
+
+De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
 
 Néstor Aguado · 23 de octubre de 2026
 

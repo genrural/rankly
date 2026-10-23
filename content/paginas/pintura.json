@@ -1,0 +1,57 @@
+{
+  "pagina": "Pintura",
+  "datos_clave": [
+    {
+      "dato": "Servicios",
+      "valor": "Pintura completa y parcial en cabina, chapa, chasis y decoraciones de competición"
+    },
+    {
+      "dato": "Acabados",
+      "valor": "Colores originales, especiales, perlados, mates y bitono"
+    },
+    {
+      "dato": "Precio",
+      "valor": "Presupuesto cerrado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura"
+    },
+    {
+      "dato": "Dónde",
+      "valor": "Torrelaguna (Madrid), con clientes de la Sierra Norte, Madrid y Guadalajara"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Cuánto cuesta pintar un coche?",
+      "respuesta": "El precio de pintar un coche depende de la **superficie** (una pieza o el coche completo), del **estado de la chapa**, del **desmontaje** necesario y del **tipo de pintura** (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto cerrado tras ver el coche y te explicamos cada partida en [cuánto cuesta pintar un coche](blog-cuanto-cuesta-pintar-un-coche.html)."
+    },
+    {
+      "pregunta": "¿Por qué pintar en cabina de pintura?",
+      "respuesta": "La cabina de pintura controla el polvo, la temperatura y la ventilación durante la aplicación y el secado. El resultado es un acabado más limpio y duradero que pintar al aire libre. En nuestra cabina pintamos carrocerías completas, piezas sueltas y también **chasis, subchasis y brazos**, como los que ves en las fotos."
+    },
+    {
+      "pregunta": "¿Hacéis decoraciones y rotulación de coches de rally?",
+      "respuesta": "Sí. Diseñamos y aplicamos decoraciones de competición en pintura o vinilo, con los logos de patrocinadores y el estilo de cada equipo. Es lo que llevan nuestros propios coches de rally y slalom."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Pintáis solo una pieza o el coche entero?",
+      "respuesta": "Ambas cosas: desde un paragolpes o un subchasis hasta pintura completa con cambio de color."
+    },
+    {
+      "pregunta": "¿Hacéis decoraciones de competición?",
+      "respuesta": "Sí. Te ayudamos a diseñar la decoración y la aplicamos en pintura o vinilo, según lo que mejor encaje."
+    },
+    {
+      "pregunta": "¿Cuánto tarda una pintura completa?",
+      "respuesta": "Depende del estado de la chapa y del desmontaje necesario. Tras ver el coche te damos un plazo concreto."
+    },
+    {
+      "pregunta": "¿Igualáis el color original?",
+      "respuesta": "Sí, trabajamos con el código de color del fabricante y ajustamos el tono para que la pieza no se distinga."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-cuanto-cuesta-pintar-un-coche",
+    "blog-que-es-un-restomod"
+  ]
+}

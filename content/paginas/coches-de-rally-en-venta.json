@@ -1,0 +1,61 @@
+{
+  "pagina": "Coches en venta",
+  "datos_clave": [
+    {
+      "dato": "Stock",
+      "valor": "Coches de rally, competición y piezas, sincronizados con nuestro perfil de Wallapop"
+    },
+    {
+      "dato": "Revisión",
+      "valor": "Cada coche pasa por nuestro taller antes de venderse"
+    },
+    {
+      "dato": "Si no está",
+      "valor": "Te buscamos el coche que necesitas"
+    },
+    {
+      "dato": "Dónde",
+      "valor": "Torrelaguna (Madrid), con compradores de toda España"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Qué revisar antes de comprar un coche de rally de segunda mano?",
+      "respuesta": "- **Jaula de seguridad:** que esté homologada o certificada según el reglamento y sin reparaciones dudosas.\n- **Caducidad del equipamiento:** baquets, arneses y extintores tienen fecha de homologación.\n- **Documentación técnica:** pasaporte técnico o ficha que exija tu federación, y documentación del vehículo.\n- **Chasis y carrocería:** golpes estructurales, óxido y reparaciones de la jaula.\n- **Mecánica:** historial de mantenimiento, horas de motor y caja, y si es posible una prueba en [banco de potencia](banco-de-potencia.html).\n- **Recambios incluidos:** llantas, neumáticos y piezas de repuesto suman mucho valor."
+    },
+    {
+      "pregunta": "¿Por qué comprar un coche de rally revisado por un taller?",
+      "respuesta": "Porque un coche de rally ha trabajado mucho más que uno de calle. Antes de ponerlo a la venta lo revisamos en nuestro taller de Torrelaguna y te contamos su estado real. Si no encuentras lo que buscas, déjanos tus datos y te avisamos cuando llegue."
+    },
+    {
+      "pregunta": "Peugeot 206 y BMW E36: dos bases muy buscadas",
+      "respuesta": "El **Peugeot 206** es una de las bases más populares para empezar en rally por su ligereza y su mecánica sencilla. El **BMW E36**, de propulsión, es la opción para quien busca un coche con más carácter. Ambos forman parte de nuestro equipo, así que los conocemos a fondo."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Dónde veo los coches de rally que tenéis en venta?",
+      "respuesta": "En esta página y en nuestro perfil de Wallapop, donde publicamos los coches de competición, clásicos y piezas que vendemos."
+    },
+    {
+      "pregunta": "¿Los coches están revisados?",
+      "respuesta": "Sí. Cada coche que vendemos pasa por nuestro taller de Torrelaguna antes de publicarse, y te contamos su estado y su historial."
+    },
+    {
+      "pregunta": "¿Me buscáis un coche de rally concreto?",
+      "respuesta": "Sí. Dinos qué categoría, presupuesto y uso quieres y te avisamos cuando tengamos uno que encaje, o te ayudamos a revisar el que hayas visto."
+    },
+    {
+      "pregunta": "¿Puedo ver el coche antes de comprarlo?",
+      "respuesta": "Claro. Pide cita y ven al taller a verlo. También podemos medirlo en el banco de potencia."
+    },
+    {
+      "pregunta": "¿Preparáis el coche después de la compra?",
+      "respuesta": "Sí: puesta a punto, seguridad, set-up y asistencia para tu primera carrera en nuestra sección de competición."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-coche-de-rally-que-es-y-categorias",
+    "blog-banco-de-potencia-como-leer-la-curva"
+  ]
+}

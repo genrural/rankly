@@ -1,0 +1,188 @@
+{
+  "paginas": [
+    {
+      "slug": "index",
+      "nombre": "Inicio",
+      "titulo": "Taller motorsport en Madrid · Deyscom Motorsport (Torrelaguna)",
+      "descripcion": "Taller motorsport en Torrelaguna (Madrid): preparación de coches de rally y competición, restomod, taller de pintura en cabina, banco de potencia y experiencias.",
+      "h1": "Taller motorsport en Madrid · Competición, restomod, pintura y banco de potencia",
+      "noindex": false
+    },
+    {
+      "slug": "competicion",
+      "nombre": "Competición",
+      "titulo": "Preparación de coches de rally y competición en Madrid | Deyscom",
+      "descripcion": "Taller de coches de rally en Madrid: preparación, jaulas de seguridad, set-up, asistencia en carrera, alquiler de coche de rally y coches en venta.",
+      "h1": "Preparación de coches de competición y rally en Madrid",
+      "noindex": false
+    },
+    {
+      "slug": "restomod",
+      "nombre": "Restomod",
+      "titulo": "Restomod y restauración de coches clásicos en Madrid | Deyscom",
+      "descripcion": "Restomod en Madrid: restauración de coches clásicos y 4x4 con mecánica moderna, frenos, interior y pintura. Proyectos por fases y reformas ITV.",
+      "h1": "Restomod y restauración de coches clásicos en Madrid",
+      "noindex": false
+    },
+    {
+      "slug": "pintura",
+      "nombre": "Pintura",
+      "titulo": "Taller de pintura de coches en Madrid · Cabina | Deyscom",
+      "descripcion": "Taller de pintura de coches en Madrid: pintura en cabina, chapa, chasis y decoraciones racing. ¿Cuánto cuesta pintar un coche? Presupuesto sin compromiso.",
+      "h1": "Taller de pintura de coches en Madrid",
+      "noindex": false
+    },
+    {
+      "slug": "banco-de-potencia",
+      "nombre": "Banco de potencia",
+      "titulo": "Banco de potencia en Madrid: mide CV y par | Deyscom",
+      "descripcion": "Banco de potencia para coche en Torrelaguna (Madrid): mide los CV y el par reales, diagnostica pérdidas y compara antes y después de modificar.",
+      "h1": "Banco de potencia en Madrid",
+      "noindex": false
+    },
+    {
+      "slug": "experiencias",
+      "nombre": "Experiencias",
+      "titulo": "Experiencias de conducción: Jarama, rally y slalom | Deyscom",
+      "descripcion": "Experiencias de conducción en Madrid: conduce en el Circuito del Jarama, corre un rally federado o haz slalom con nuestro Peugeot 206 o BMW E36.",
+      "h1": "Experiencias de conducción en circuito, rally y slalom",
+      "noindex": false
+    },
+    {
+      "slug": "ds-pilot-weekend-circuit",
+      "nombre": "Circuit",
+      "titulo": "Conducir en el Jarama · Experiencia de piloto | Deyscom",
+      "descripcion": "Experiencia en el Circuito del Jarama: un fin de semana como piloto con coche de competición, briefing, tandas en pista y equipo Deyscom.",
+      "h1": "Experiencia de piloto en el Circuito del Jarama",
+      "noindex": false
+    },
+    {
+      "slug": "ds-pilot-weekend-rally",
+      "nombre": "Rally",
+      "titulo": "Experiencia de rally: corre un rally federado | Deyscom",
+      "descripcion": "Corre un rally federado con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Coche de rally, asistencia y equipo incluidos.",
+      "h1": "Experiencia de rally: corre un rally federado",
+      "noindex": false
+    },
+    {
+      "slug": "ds-pilot-weekend-slalom",
+      "nombre": "Slalom",
+      "titulo": "Slalom de coches · Experiencia con 206 o BMW E36 | Deyscom",
+      "descripcion": "Experiencia de slalom de coches con el Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Conos, cronómetro y consejos del equipo Deyscom.",
+      "h1": "Experiencia de slalom con coche de competición",
+      "noindex": false
+    },
+    {
+      "slug": "cursos",
+      "nombre": "Cursos",
+      "titulo": "Cursos de motorsport y curso de copiloto | Deyscom",
+      "descripcion": "Cursos de Deyscom Motorsport: DS Copilot Course, curso de copiloto de rally con certificación, teoría y práctica en tramo cerrado.",
+      "h1": "Cursos de motorsport en Madrid",
+      "noindex": false
+    },
+    {
+      "slug": "ds-copilot-course",
+      "nombre": "DS Copilot Course",
+      "titulo": "Curso de copiloto de rally certificado · DS Copilot Course",
+      "descripcion": "Curso de copiloto de rally de fin de semana: notas, libro de ruta y controles horarios, práctica en tramo cerrado en Guadalajara y diploma.",
+      "h1": "Curso de copiloto de rally con certificación",
+      "noindex": false
+    },
+    {
+      "slug": "nosotros",
+      "nombre": "Quiénes somos",
+      "titulo": "Quiénes somos · Deyscom Motorsport, Torrelaguna",
+      "descripcion": "Conoce a Deyscom Motorsport: Néstor Aguado, Héctor Guzmán y el equipo del taller de competición, restomod y pintura de Torrelaguna (Madrid).",
+      "h1": "Quiénes somos: Deyscom Motorsport, taller de Torrelaguna",
+      "noindex": false
+    },
+    {
+      "slug": "blog",
+      "nombre": "Blog",
+      "titulo": "Blog de motorsport: rally, slalom, pintura y técnica | Deyscom",
+      "descripcion": "Guías del taller Deyscom: coches de rally, slalom, Circuito del Jarama, cuánto cuesta pintar un coche, reformas ITV, copilotos y banco de potencia.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "camiseta-edicion-especial-el-molar-2026",
+      "nombre": "Camiseta Edición Especial El Molar 2026",
+      "titulo": "Camiseta Edición Especial El Molar 2026 | Deyscom",
+      "descripcion": "Edición limitada que celebra nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026, con nuestros patrocinadores.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "camiseta-deyscom",
+      "nombre": "Camiseta Deyscom Motorsport",
+      "titulo": "Camiseta de rally Deyscom Motorsport negra · Tienda oficial",
+      "descripcion": "Camiseta de rally oficial negra de Deyscom Motorsport con logo pequeño en el pecho y logo grande en la espalda. Envío o recogida en el taller.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "sudadera-capucha-deyscom",
+      "nombre": "Sudadera con capucha Deyscom Motorsport",
+      "titulo": "Sudadera con capucha Deyscom Motorsport · Tienda",
+      "descripcion": "Sudadera con capucha negra de Deyscom Motorsport con bolsillo canguro, logo en el pecho y logo grande en la espalda. Envío a toda España.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "chaqueta-deyscom",
+      "nombre": "Chaqueta Deyscom Motorsport",
+      "titulo": "Chaqueta negra Deyscom Motorsport · Tienda oficial",
+      "descripcion": "Chaqueta negra de equipo Deyscom Motorsport con cremallera, logo pequeño arriba a la derecha y logo grande en la espalda.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "gorra-deyscom",
+      "nombre": "Gorra Deyscom Motorsport",
+      "titulo": "Gorra negra Deyscom Motorsport · Tienda oficial",
+      "descripcion": "Gorra negra Deyscom Motorsport de seis paneles con logo bordado, visera curva y cierre ajustable. Envío o recogida en el taller.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "pegatinas-deyscom",
+      "nombre": "Pack de pegatinas Deyscom Motorsport",
+      "titulo": "Pegatinas Deyscom Motorsport · Tienda oficial",
+      "descripcion": "Pack de pegatinas de vinilo Deyscom Motorsport para el coche, el casco o el taller. Resistentes al agua y al sol. Envío a toda España.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "tienda",
+      "nombre": "Tienda",
+      "titulo": "Tienda Deyscom: camisetas de rally, merch y coches en venta",
+      "descripcion": "Tienda Deyscom Motorsport: camisetas de rally, sudaderas, gorras, edición especial El Molar 2026 y coches de rally en venta revisados por el taller.",
+      "h1": "Tienda Deyscom Motorsport: merchandising y coches de rally",
+      "noindex": false
+    },
+    {
+      "slug": "contacto",
+      "nombre": "Contacto",
+      "titulo": "Contacto · Taller motorsport en Torrelaguna (Madrid) | Deyscom",
+      "descripcion": "Contacta con Deyscom Motorsport: (+34) 615 97 22 33, info@deyscom.com. C/ Canal de Isabel II, 2 Nave 3, Torrelaguna. L-V de 07:00 a 15:00.",
+      "h1": "",
+      "noindex": false
+    },
+    {
+      "slug": "alquiler-coche-de-rally",
+      "nombre": "Alquiler de coche de rally",
+      "titulo": "Alquiler de coche de rally en Madrid · 206 y BMW E36 | Deyscom",
+      "descripcion": "Alquila un coche de rally en Madrid: Peugeot 206 1.6 XS de 118 CV o BMW E36 de 135 CV preparados, con asistencia y ayuda con inscripción y licencia.",
+      "h1": "Alquiler de coche de rally en Madrid",
+      "noindex": false
+    },
+    {
+      "slug": "coches-de-rally-en-venta",
+      "nombre": "Coches en venta",
+      "titulo": "Coches de rally en venta y de segunda mano | Deyscom Motorsport",
+      "descripcion": "Coches de rally en venta y de segunda mano revisados por el taller Deyscom Motorsport (Madrid). Stock en Wallapop y búsqueda a medida de tu coche.",
+      "h1": "Coches de rally en venta",
+      "noindex": false
+    }
+  ]
+}

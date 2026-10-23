@@ -1,0 +1,8 @@
+# Deyscom Motorsport · despliegue en Netlify
+# Cada cambio en GitHub (también los que hace el panel /admin) regenera la web en 1-2 minutos.
+[build]
+  command = "pip install -r requirements.txt && python3 tools/build.py && python3 tools/dist.py"
+  publish = "dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"

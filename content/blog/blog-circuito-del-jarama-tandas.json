@@ -1,0 +1,73 @@
+{
+  "titulo": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+  "slug": "blog-circuito-del-jarama-tandas",
+  "seo_titulo": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+  "seo_descripcion": "Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas y qué necesitas para conducir en el Jarama.",
+  "descripcion": "Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.",
+  "h1": "Circuito del Jarama: *historia y cómo rodar*",
+  "palabras_clave": "circuito del jarama, tandas jarama, conducir en el jarama, experiencia circuito jarama, jarama RACE, track day Madrid",
+  "categoria": "Circuito",
+  "autor": "nestor",
+  "editor": "hector",
+  "fecha": "2026-10-23",
+  "minutos": 6,
+  "imagen": "bmw-e36-competicion-circuito-curva",
+  "imagen_subida": "",
+  "imagen_alt": "",
+  "respuesta_rapida": "El **Circuito del Jarama** está en San Sebastián de los Reyes (Madrid), lo gestiona el **Real Automóvil Club de España (RACE)** y se inauguró en **1967**. Su trazado actual mide **3.850 metros** y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en **tandas** o vivirlo como piloto con un coche de competición en una experiencia como el DS Pilot Weekend – Circuit.",
+  "secciones": [
+    {
+      "titulo": "Historia del Circuito del Jarama",
+      "texto": "El Jarama se inauguró en 1967 al norte de Madrid y es uno de los circuitos permanentes más antiguos de España. Fue sede del **Gran Premio de España de Fórmula 1** en distintas ediciones entre finales de los años 60 y comienzos de los 80, y desde entonces ha acogido motociclismo, turismos, resistencia y clásicos. Lo gestiona el [RACE](https://www.race.es).\n\nEs un circuito con mucha historia y mucho carácter: estrecho, técnico y con curvas que exigen precisión. Por eso enseña tanto."
+    },
+    {
+      "titulo": "El trazado: 3.850 metros técnicos",
+      "texto": "El trazado actual mide unos **3,85 km** y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las **referencias de frenada** y la trazada de cada curva antes de buscar velocidad. Nuestro equipo te las explica tanda a tanda en el [DS Pilot Weekend – Circuit](ds-pilot-weekend-circuit.html)."
+    },
+    {
+      "titulo": "¿Qué son las tandas en el Jarama y cómo funcionan?",
+      "texto": "Las **tandas** (track days) son sesiones de rodaje libre en las que varios coches comparten pista durante un tiempo fijo, sin cronometraje oficial ni clasificación. Las organiza el propio circuito o empresas y clubes que alquilan la pista. Normalmente:\n\n- Se reservan por sesiones o por jornada, con plazas limitadas.\n- Hay un **briefing de seguridad** obligatorio y normas de adelantamiento.\n- Se exige casco y que el coche esté en buen estado (frenos, neumáticos, fluidos, sin fugas).\n- Los circuitos cercanos a zonas habitadas aplican **límites de ruido**: comprueba que tu escape los cumple.\n\nLas condiciones, horarios y requisitos dependen de cada organizador; consúltalos siempre antes de reservar."
+    },
+    {
+      "titulo": "¿Qué necesitas para conducir en el Jarama?",
+      "texto": "1. **Carnet de conducir** en vigor (para tandas con coche propio).\n2. **Casco** y ropa adecuada; en algunos eventos se exige más equipamiento.\n3. **Coche revisado:** pastillas y líquido de frenos con margen, neumáticos en buen estado y presiones correctas.\n4. **Seguro:** los seguros de calle no suelen cubrir el uso en circuito; revisa tu póliza o la que ofrezca el organizador.\n\nSi no quieres arriesgar tu coche, la alternativa es vivir el Jarama con un coche de competición preparado, con briefing, asistencia mecánica y acompañamiento de un equipo."
+    },
+    {
+      "titulo": "Tandas con tu coche o experiencia con coche de competición",
+      "texto": "Las tandas son ideales si ya tienes un coche preparado y experiencia. Una **experiencia en el Circuito del Jarama** como el DS Pilot Weekend – Circuit está pensada para vivirlo como un piloto más: paddock, briefing, coche de competición preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica."
+    },
+    {
+      "titulo": "Cómo lo vivimos en Deyscom",
+      "texto": "Nuestro taller está en Torrelaguna, a unos 40 minutos del Jarama. Llevamos años preparando coches de circuito y acompañando a pilotos en pista. Lo que más repetimos a quien rueda por primera vez: **las primeras vueltas son para aprender, no para correr**. La velocidad llega sola cuando las referencias están claras."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Dónde está el Circuito del Jarama?",
+      "respuesta": "En San Sebastián de los Reyes, al norte de Madrid. Lo gestiona el Real Automóvil Club de España (RACE)."
+    },
+    {
+      "pregunta": "¿Cuánto mide el Circuito del Jarama?",
+      "respuesta": "Su trazado actual mide unos 3.850 metros."
+    },
+    {
+      "pregunta": "¿Se puede conducir en el Jarama con tu coche?",
+      "respuesta": "Sí, en tandas o track days organizados por el circuito o por empresas y clubes, cumpliendo sus requisitos de seguridad y ruido."
+    },
+    {
+      "pregunta": "¿Hay experiencias de conducción en el Jarama?",
+      "respuesta": "Sí. Con el DS Pilot Weekend – Circuit de Deyscom Motorsport vives un fin de semana como piloto con un coche de competición preparado."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Real Automóvil Club de España (RACE)",
+      "url": "https://www.race.es"
+    },
+    {
+      "nombre": "Circuito del Jarama · Wikipedia",
+      "url": "https://es.wikipedia.org/wiki/Circuito_del_Jarama"
+    }
+  ],
+  "publicado": true
+}

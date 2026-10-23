@@ -1,0 +1,27 @@
+{
+  "pagina": "Rally",
+  "datos_clave": [],
+  "guias": [],
+  "faq": [
+    {
+      "pregunta": "¿Necesito licencia?",
+      "respuesta": "Para competir en un rally federado necesitas licencia federativa. Te ayudamos a tramitarla antes de la prueba."
+    },
+    {
+      "pregunta": "¿Y el copiloto?",
+      "respuesta": "En rally se corre con copiloto. Puedes traer el tuyo o consultarnos. Y si quieres formarte como copiloto, tienes nuestro DS Copilot Course."
+    },
+    {
+      "pregunta": "¿Qué coche me recomendáis?",
+      "respuesta": "El Peugeot 206 es ideal para empezar por su nobleza; el BMW E36, de propulsión, es para quien busca sensaciones más intensas."
+    },
+    {
+      "pregunta": "¿Qué pasa si hay daños en el coche?",
+      "respuesta": "Te explicamos las condiciones de uso y la fianza antes de reservar, para que todo esté claro desde el principio."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-como-empezar-en-los-rallies",
+    "blog-que-hace-un-copiloto-de-rally"
+  ]
+}

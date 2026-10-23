@@ -1,0 +1,14 @@
+{
+  "nombre": "Chaqueta Deyscom Motorsport",
+  "nombre_corto": "Chaqueta",
+  "precio": 59,
+  "etiqueta": "Nuevo",
+  "descripcion": "Chaqueta negra de equipo con cremallera completa, logo pequeño arriba a la derecha y logo grande en la espalda. La que verás en nuestro box.",
+  "caracteristicas": [
+    "Color negro",
+    "Cremallera completa",
+    "Logo pequeño arriba a la derecha",
+    "Logo grande en la espalda"
+  ],
+  "agotado": false
+}

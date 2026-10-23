@@ -1,0 +1,2 @@
+# Solo hace falta para optimizar las imágenes que se suben desde el panel de contenido
+Pillow>=10

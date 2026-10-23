@@ -1,0 +1,26 @@
+{
+  "pagina": "Circuit",
+  "datos_clave": [],
+  "guias": [],
+  "faq": [
+    {
+      "pregunta": "¿Necesito experiencia previa?",
+      "respuesta": "No. Adaptamos el fin de semana a tu nivel; solo necesitas carnet de conducir y muchas ganas."
+    },
+    {
+      "pregunta": "¿Dónde es?",
+      "respuesta": "En el Circuito del Jarama (San Sebastián de los Reyes, Madrid), a unos 40 minutos de nuestro taller."
+    },
+    {
+      "pregunta": "¿Puedo regalarlo?",
+      "respuesta": "Sí, es un regalo perfecto para cualquier apasionado del motor. Escríbenos y te preparamos la reserva a su nombre."
+    },
+    {
+      "pregunta": "¿Cuándo son las próximas fechas?",
+      "respuesta": "Las fechas dependen del calendario del circuito. Reserva tu plaza y te confirmamos la próxima edición disponible."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-circuito-del-jarama-tandas"
+  ]
+}

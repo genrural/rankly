@@ -23,6 +23,21 @@ GTM_ID = ""   # p. ej. "GTM-XXXXXXX"
 GA4_ID = "G-LLGMMVL7M1"   # Google Analytics 4 · flujo deyscom.com
 GSC_VERIFICATION = "_x_mE5JlzHMblp_mzIOxFVX8XV2_VuzrmZg7E8Tc5Ks"   # Google Search Console
 TODAY = date.today().isoformat()
+AC = ' aria-current="page"'
+ITALIC = 'font-style="italic" '
+
+# Valores por defecto de content/ajustes.json (se editan desde el panel /admin)
+AJUSTES = {
+    "telefono": PHONE, "telefono_visible": PHONE_TXT, "whatsapp": "34615972233", "email": EMAIL,
+    "aviso_superior": {"activo": True, "texto": "Nuevo: DS Copilot Course con certificación", "enlace": "ds-copilot-course.html"},
+    "sheets_endpoint": "", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
+    "precios": [], "enlaces_pago": [],
+    "redes": {"instagram": "https://www.instagram.com/deyscom_motorsport/", "facebook": "https://www.facebook.com/deyscom/",
+              "tiktok": "https://www.tiktok.com/@deyscom_motorsport", "youtube": "https://www.youtube.com/channel/UCBdUbFXBtKdeDkqQ5_S5C6g",
+              "wallapop": "https://es.wallapop.com/user/deyscomm-467502343"},
+}
+NOINDEX = set()       # páginas marcadas como «no indexar» en el panel
+FAQ_OVERRIDE = {}     # preguntas frecuentes editadas en el panel
 
 # Fotos optimizadas (tools/images.json se genera al procesar las fotos: alt, ancho y alto)
 IMG = json.loads((Path(__file__).parent / "images.json").read_text(encoding="utf-8"))
@@ -256,8 +271,8 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(desc)}">
 {f'<meta name="keywords" content="{escape(keywords)}">' if keywords else ''}
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="google-site-verification" content="{GSC_VERIFICATION}">
+<meta name="robots" content="{"noindex, follow" if slug in NOINDEX else "index, follow, max-image-preview:large"}">
+{f'<meta name="google-site-verification" content="{GSC_VERIFICATION}">' if GSC_VERIFICATION else ""}
 <meta name="author" content="Deyscom Motorsport">
 <meta name="geo.region" content="ES-MD">
 <meta name="geo.placename" content="Torrelaguna, Madrid">
@@ -308,6 +323,8 @@ def consent_head():
           "ad_storage:c.m?'granted':'denied',ad_user_data:c.m?'granted':'denied',"
           "ad_personalization:c.m?'granted':'denied',personalization_storage:c.p?'granted':'denied'});}}catch(e){}")
     tags = ""
+    if not (GTM_ID or GA4_ID):
+        return f"<script>{js}</script>"
     if GTM_ID:
         tags = ("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
                 "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
@@ -360,6 +377,13 @@ def subnav():
     }
 
 
+def promo_html():
+    a = AJUSTES.get("aviso_superior") or {}
+    if not a.get("activo") or not a.get("texto"):
+        return ""
+    return f'<a class="topbar__hide-sm topbar__promo" href="{escape(a.get("enlace") or "#")}">{I["grad"]} {escape(a["texto"])}</a>'
+
+
 def header(slug):
     sub = subnav()
     chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
@@ -368,13 +392,13 @@ def header(slug):
         children = sub.get(h)
         child_hrefs = [c[0] for c in children[0]] if children else []
         cur = h == slug + ".html" or (slug + ".html") in child_hrefs
-        a = (f'<a class="nav__link" href="{h}"{" aria-current=\"page\"" if cur else ""}>'
+        a = (f'<a class="nav__link" href="{h}"{AC if cur else ""}>'
              f'<span class="nav__num">{i:02d}</span>{t}</a>')
         if not children:
             links += a
             continue
         sid = "sub-" + h.split(".")[0]
-        items = "".join(f'<a href="{ch}"{" aria-current=\"page\"" if ch == slug + ".html" else ""}><b>{cn}</b><small>{ct}</small></a>' for ch, cn, ct in children[0])
+        items = "".join(f'<a href="{ch}"{AC if ch == slug + ".html" else ""}><b>{cn}</b><small>{ct}</small></a>' for ch, cn, ct in children[0])
         links += (f'<div class="nav__item has-sub">{a}'
                   f'<button class="nav__toggle" type="button" aria-expanded="false" aria-controls="{sid}" aria-label="Ver {t.lower()}">{chev}</button>'
                   f'<div class="nav__sub" id="{sid}">{items}<a class="nav__sub-all" href="{h}">{children[1]} {I["arrow"]}</a></div></div>')
@@ -385,7 +409,7 @@ def header(slug):
   <div class="container">
     <div class="topbar__left">
       <span><i class="status-dot"></i> <span data-open-status>L-V 07:00–15:00</span></span>
-      <a class="topbar__hide-sm topbar__promo" href="ds-copilot-course.html">{I['grad']} Nuevo: DS Copilot Course con certificación</a>
+      {promo_html()}
     </div>
     <div class="topbar__right">
       <a href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
@@ -1235,7 +1259,7 @@ def experience_page(slug):
 
 
 def experiencias():
-    faqs = [("¿Qué es el DS Pilot Weekend?", "Es nuestra línea de experiencias para vivir la competición desde dentro: un fin de semana con coche de competición, equipo y asistencia Deyscom en circuito, rally o slalom."),
+    faqs = FAQ_OVERRIDE.get("experiencias") or [("¿Qué es el DS Pilot Weekend?", "Es nuestra línea de experiencias para vivir la competición desde dentro: un fin de semana con coche de competición, equipo y asistencia Deyscom en circuito, rally o slalom."),
             ("¿Necesito experiencia?", "No. Adaptamos cada experiencia a tu nivel. Para rally federado hace falta licencia, y te ayudamos a tramitarla."),
             ("¿Se puede regalar?", "Sí. Es uno de los regalos favoritos de los apasionados del motor. Indícalo en la reserva."),
             ("¿Qué coches se usan?", "En rally y slalom, nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. En circuito, un coche de competición preparado por Deyscom.")]
@@ -1309,7 +1333,7 @@ def course_promo(compact=False):
 def course_page():
     c = COURSE
     slug = c["slug"]
-    faqs = [("¿Necesito experiencia previa?", "No. El curso está pensado tanto para quien empieza desde cero como para copilotos y pilotos que quieren mejorar su método."),
+    faqs = FAQ_OVERRIDE.get("ds-copilot-course") or [("¿Necesito experiencia previa?", "No. El curso está pensado tanto para quien empieza desde cero como para copilotos y pilotos que quieren mejorar su método."),
             ("¿Qué incluye la certificación?", "Al completar el curso recibes un diploma acreditativo de Deyscom Motorsport con la formación realizada."),
             ("¿Dónde se hace la práctica?", "En un tramo cerrado en la provincia de Guadalajara, reservado única y exclusivamente para nuestros alumnos."),
             ("¿Quién imparte el curso?", "Un profesor y una profesora con experiencia en el mundo del rally, que te acompañan en la teoría y en la práctica."),
@@ -1447,7 +1471,7 @@ FONT = "Jost, Futura, Arial, sans-serif"
 def _txt(x, y, t, size, fill, weight=800, anchor="middle", spacing=0, italic=True, rotate=None, extra=""):
     tr = f' transform="rotate({rotate} {x} {y})"' if rotate is not None else ""
     return (f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" '
-            f'{"font-style=\"italic\" " if italic else ""}text-anchor="{anchor}" letter-spacing="{spacing}" fill="{fill}"{tr}{extra}>{t}</text>')
+            f'{ITALIC if italic else ""}text-anchor="{anchor}" letter-spacing="{spacing}" fill="{fill}"{tr}{extra}>{t}</text>')
 
 
 def mock_svg(kind, view="front"):
@@ -1597,7 +1621,7 @@ def product_visual(slug, p, **kw):
 
 def product_card(slug, p):
     return f"""<a class="product reveal{" product--special" if p['kind'] == 'especial' else ""}" href="{slug}.html">
-  <div class="product__media{" product__media--photo" if p.get("photo") else ""}" style="{color_style(p['colors'][0])}"><span class="product__tag">{p['tag']}</span>{product_visual(slug, p)}</div>
+  <div class="product__media{" product__media--photo" if p.get("photo") else ""}" style="{color_style(p['colors'][0])}"><span class="product__tag">{"Agotado" if p.get("soldout") else p['tag']}</span>{product_visual(slug, p)}</div>
   <div class="product__body"><h3>{p['name']}</h3><span class="product__price">{p['price']} €</span></div>
   <span class="svc__go">Ver producto {I['arrow']}</span>
 </a>"""
@@ -1687,7 +1711,7 @@ def product_page(slug):
     others = "".join(product_card(s, q) for s, q in PRODUCTS.items() if s != slug)
     prod_ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "description": p["desc"], "sku": slug,
                "image": f"{SITE}/assets/img/productos/{slug}.jpg" if p.get("photo") else SITE + "/assets/img/og-deyscom-motorsport.jpg", "brand": {"@type": "Brand", "name": "Deyscom Motorsport"},
-               "offers": {"@type": "Offer", "priceCurrency": "EUR", "price": str(p["price"]), "availability": "https://schema.org/InStock", "url": f"{SITE}/{slug}.html",
+               "offers": {"@type": "Offer", "priceCurrency": "EUR", "price": str(p["price"]), "availability": "https://schema.org/OutOfStock" if p.get("soldout") else "https://schema.org/InStock", "url": f"{SITE}/{slug}.html",
                           "seller": {"@id": SITE + "/#organizacion"}}}
     html = head(f"{p['name']} · Merchandising oficial | Deyscom Motorsport", p["desc"], slug, p["name"], "og",
                 [prod_ld, breadcrumbs_ld(slug, p["name"], ("tienda.html", "Tienda"))], f"{p['short'].lower()} Deyscom Motorsport, merchandising motorsport, {p['short'].lower()} rally") + header(slug)
@@ -1697,7 +1721,7 @@ def product_page(slug):
     <div class="pdp" data-product data-price="{p['price']}">
       <div class="pdp__gallery">
         <div class="pdp__stage{" pdp__stage--photo" if p.get("photo") else ""}" data-mock style="{color_style(c0)}">
-          <span class="product__tag">{p['tag']}</span>
+          <span class="product__tag">{"Agotado" if p.get("soldout") else p['tag']}</span>
           {product_photo(slug, p, eager=True, big=True) if p.get("photo") else mock_svg(p['kind'])}
         </div>
         <ul class="pdp__trust">
@@ -1724,7 +1748,7 @@ def product_page(slug):
               <input name="cantidad" type="number" min="1" max="50" value="1" inputmode="numeric" aria-label="Cantidad">
               <button type="button" data-qty="1" aria-label="Más">+</button>
             </div>
-            <button class="btn pdp__open" type="button" data-open-order>{I['bag']} Lo quiero</button>
+            {f'<a class="btn btn--wa pdp__open" data-wa="{escape(p["name"])} (agotado: avisadme cuando vuelva)" data-loc="soldout" href="#">{I["wa"]} Agotado · avísame</a>' if p.get("soldout") else f'<button class="btn pdp__open" type="button" data-open-order>{I["bag"]} Lo quiero</button>'}
           </div>
           <div class="pdp__order" data-order hidden>
             <div class="fstep__title mt-2" style="font-size:1.8rem">Datos del pedido</div>
@@ -1783,7 +1807,7 @@ def home():
         f'<span class="choice__box">{I[ic]}<b>{t}</b><span>{d}</span></span></label>'
         for i, (ic, t, d) in enumerate(choices)
     )
-    home_faq = [
+    home_faq = FAQ_OVERRIDE.get("index") or [
         ("¿Dónde estáis?", "En C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid). A unos 50 minutos de Madrid capital."),
         ("¿Cuál es vuestro horario?", "De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras."),
         ("¿Hacéis presupuestos sin compromiso?", "Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial."),
@@ -2061,7 +2085,7 @@ CANCEL_POLICY = [
 def legal_page(slug, title, desc, h1, body):
     html = head(title, desc, slug, "información legal", "og", [breadcrumbs_ld(slug, h1.replace("<span class='outline'>", "").replace("</span>", ""))]) + header(slug)
     html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
-    nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if h == slug + ".html" else ""}>{t}</a>' for h, t in [
+    nav = "".join(f'<a href="{h}"{AC if h == slug + ".html" else ""}>{t}</a>' for h, t in [
         ("aviso-legal.html", "Aviso legal"), ("politica-privacidad.html", "Privacidad"), ("politica-cookies.html", "Cookies"), ("condiciones-compra.html", "Condiciones de compra")])
     html += f"""<section class="section legal">
   <div class="container prose" style="max-width:880px">
@@ -2487,7 +2511,7 @@ def rental_page():
            "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Coches de rally de alquiler", "itemListElement": [
                {"@type": "Offer", "itemOffered": {"@type": "Product", "name": n, "description": c["desc"], "image": img_url(c["img"])}} for n, c in CARS.items()]}}
     html = head(META[slug][0], META[slug][1], slug, "el alquiler de un coche de rally", "peugeot-206-rally-tierra-deyscom-motorsport",
-                [srv, breadcrumbs_ld(slug, name, ("competicion.html", "Competición")), faq_ld(ALQ_FAQ)],
+                [srv, breadcrumbs_ld(slug, name, ("competicion.html", "Competición")), faq_ld(FAQ_OVERRIDE.get(slug) or ALQ_FAQ)],
                 "alquiler coche de rally, alquilar coche de rally, alquiler coche competición Madrid, alquilar Peugeot 206 rally, alquiler BMW E36 rally") + header(slug)
     html += hero("Alquiler", ["Tu coche", "<span class='pink'>de rally</span>", "<span class='outline'>listo para correr</span>"],
                  "Alquila nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV, preparados en nuestro taller de Torrelaguna, con asistencia en la prueba.",
@@ -2512,7 +2536,7 @@ def rental_page():
 <section class="section">
   <div class="container">
     {section_head("Preguntas frecuentes", "Antes de <span class='outline'>alquilar</span>")}
-    {faq(ALQ_FAQ)}
+    {faq(FAQ_OVERRIDE.get(slug) or ALQ_FAQ)}
   </div>
 </section>
 {related_section(slug)}
@@ -2529,7 +2553,7 @@ def sale_page():
             "isPartOf": {"@id": SITE + "/#web"}, "provider": {"@id": SITE + "/#organizacion"},
             "relatedLink": ["https://es.wallapop.com/user/deyscomm-467502343"]}
     html = head(META[slug][0], META[slug][1], slug, "un coche de rally en venta", "mitsubishi-lancer-evo-rally-taller-deyscom",
-                [coll, breadcrumbs_ld(slug, name, ("competicion.html", "Competición")), faq_ld(VENTA_FAQ)],
+                [coll, breadcrumbs_ld(slug, name, ("competicion.html", "Competición")), faq_ld(FAQ_OVERRIDE.get(slug) or VENTA_FAQ)],
                 "coches de rally en venta, coche de rally segunda mano, comprar coche de rally, peugeot 206 rally venta, coches de competición en venta") + header(slug)
     html += hero("Venta", ["Encuentra", "<span class='pink'>tu coche</span>", "<span class='outline'>de rally</span>"],
                  "Coches de rally, de competición y piezas revisados por nuestro taller. Y si no está lo que buscas, te lo encontramos.",
@@ -2589,7 +2613,7 @@ def sale_page():
 <section class="section">
   <div class="container">
     {section_head("Preguntas frecuentes", "Antes de <span class='outline'>comprar</span>")}
-    {faq(VENTA_FAQ)}
+    {faq(FAQ_OVERRIDE.get(slug) or VENTA_FAQ)}
   </div>
 </section>
 {related_section(slug)}
@@ -2600,10 +2624,12 @@ def sale_page():
 
 # ------------------------------------------------------------------ área privada / CRM
 def crm_page():
+    BADGE = '<em id="crm-badge-new" hidden></em>'
     nav = [("panel", "Panel", "gauge"), ("leads", "Leads", "users"), ("pipeline", "Pipeline", "flag"), ("calendario", "Calendario", "cal"), ("pedidos", "Pedidos", "bag")]
-    nav_html = "".join(f'<button type="button" class="crm-nav__btn" data-view="{k}">{I[ic]}<span>{t}</span>{"<em id=\"crm-badge-new\" hidden></em>" if k == "leads" else ""}</button>' for k, t, ic in nav)
+    nav_html = "".join(f'<button type="button" class="crm-nav__btn" data-view="{k}">{I[ic]}<span>{t}</span>{BADGE if k == "leads" else ""}</button>' for k, t, ic in nav)
     nav_html += f'<button type="button" class="crm-nav__btn" data-view="usuarios" data-admin hidden>{I["shield"]}<span>Usuarios</span></button>'
     nav_html += f'<button type="button" class="crm-nav__btn" data-view="cuenta">{I["wrench"]}<span>Mi cuenta</span></button>'
+    nav_html += f'<a class="crm-nav__btn crm-nav__ext" href="admin/" target="_blank" rel="noopener">{I["book"]}<span>Contenido web ↗</span></a>'
     estados = "".join(f"<option>{e}</option>" for e in ["Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido"])
     servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Alquiler de coche de rally", "Coches de rally en venta", "Restomod", "Pintura", "Banco de potencia",
                                                          "DS Pilot Weekend – Circuit", "DS Pilot Weekend – Rally", "DS Pilot Weekend – Slalom", "DS Copilot Course", "Tienda", "Otro"])
@@ -2820,7 +2846,8 @@ def crm_page():
 """
 
 
-LLMS_TXT = f"""# Deyscom Motorsport
+def llms_txt():
+    return f"""# Deyscom Motorsport
 
 > Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
 
@@ -2882,7 +2909,7 @@ def llms_full(pages):
     keys = ["index", "competicion", "alquiler-coche-de-rally", "coches-de-rally-en-venta", "restomod", "pintura", "banco-de-potencia",
             "experiencias", "ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-weekend-slalom", "ds-copilot-course",
             "nosotros", "contacto"] + [pp["slug"] for pp in POSTS]
-    out = [LLMS_TXT.strip(), ""]
+    out = [llms_txt().strip(), ""]
     for k in keys:
         html = pages[k]
         main_html = html.split('<main id="main">', 1)[-1].split("</main>", 1)[0]
@@ -2899,7 +2926,77 @@ def llms_full(pages):
     return "\n".join(out) + "\n"
 
 
+def register_upload(path, alt):
+    """Imagen subida desde el panel → variantes 1600/800 en JPG y WebP (< 100 KB) registradas en images.json."""
+    src = ROOT / str(path).lstrip("/")
+    if not src.exists():
+        print("Aviso: no existe la imagen subida", path)
+        return None
+    name = re.sub(r"[^a-z0-9]+", "-", src.stem.lower()).strip("-")[:70] or "imagen"
+    fotos = ROOT / "assets/img/fotos"
+    if name in IMG and (fotos / f"{name}-800.webp").exists():
+        if alt:
+            IMG[name]["alt"] = alt
+        return name
+    try:
+        from PIL import Image
+        from optimize_images import fit
+    except ImportError:
+        print("Aviso: instala Pillow (pip install -r requirements.txt) para procesar", path)
+        return None
+    im = Image.open(src).convert("RGB")
+    im.thumbnail((1600, 1600))
+    data, big = fit(im, "JPEG"); (fotos / f"{name}.jpg").write_bytes(data)
+    (fotos / f"{name}.webp").write_bytes(fit(big, "WEBP")[0])
+    small = big.copy(); small.thumbnail((800, 800))
+    d8, s8 = fit(small, "JPEG"); (fotos / f"{name}-800.jpg").write_bytes(d8)
+    (fotos / f"{name}-800.webp").write_bytes(fit(s8, "WEBP")[0])
+    IMG[name] = {"alt": alt or name.replace("-", " "), "w": big.size[0], "h": big.size[1]}
+    (Path(__file__).parent / "images.json").write_text(json.dumps(IMG, ensure_ascii=False, indent=1), encoding="utf-8")
+    return name
+
+
+def config_js():
+    a = AJUSTES
+    pay = {x["producto"]: x.get("url", "") for x in a.get("enlaces_pago") or [] if x.get("producto")}
+    for k in ["ds-copilot-course", "ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-weekend-slalom", *PRODUCTS]:
+        pay.setdefault(k, "")
+    j = lambda v: json.dumps(v, ensure_ascii=False)
+    return f"""/* =========================================================
+   CONFIGURACIÓN DEYSCOM MOTORSPORT
+   Archivo generado por tools/build.py a partir de content/ajustes.json.
+   Edítalo desde el panel de contenido (/admin → Ajustes), no aquí.
+   ========================================================= */
+window.DEYSCOM = {{
+  // URL del Web App de Google Apps Script (README → "Conectar formularios a Google Sheets").
+  // Mientras esté vacío, los formularios abren WhatsApp con los datos rellenados para no perder ningún lead
+  // y el CRM (crm.html) solo funciona en modo demostración.
+  SHEETS_ENDPOINT: {j(a.get("sheets_endpoint") or "")},
+
+  phone: {j(PHONE)},
+  phoneDisplay: {j(PHONE_TXT)},
+  whatsapp: {j(a.get("whatsapp") or PHONE.lstrip("+"))},
+  whatsappMsg: "¡Hola Deyscom! Vengo desde la web y quiero información sobre ",
+  email: {j(EMAIL)},
+
+  // Horario: 0 = domingo … 6 = sábado. [apertura, cierre] en horas decimales.
+  hours: {{ 1: [7, 15], 2: [7, 15], 3: [7, 15], 4: [7, 15], 5: [7, 15] }},
+
+  // Enlaces de pago (Stripe Payment Links, PayPal…): curso y experiencias llevan directo al pago; en la tienda aparece «Pagar ahora».
+  payLinks: {json.dumps(pay, ensure_ascii=False, indent=4).replace(chr(10), chr(10) + "  ")},
+
+  // Enlace para pedir reseñas en Google. Lo usa la plantilla de WhatsApp del CRM.
+  googleReview: {j(a.get("google_review") or "")},
+
+  social: {json.dumps(a.get("redes") or {}, ensure_ascii=False, indent=4).replace(chr(10), chr(10) + "  ")}
+}};
+"""
+
+
 def main():
+    import content
+    content.apply(globals())
+    (ROOT / "assets/js/config.js").write_text(config_js(), encoding="utf-8")
     pages = {"index": home(), "experiencias": experiencias(), "cursos": cursos(), "ds-copilot-course": course_page(),
              "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
     pages.update(legal_pages())
@@ -2916,7 +3013,9 @@ def main():
     pages["crm"] = crm_page()
     for pp in POSTS:
         pages[pp["slug"]] = blog_post(pp)
-    (ROOT / "llms.txt").write_text(LLMS_TXT, encoding="utf-8")
+    (ROOT / "llms.txt").write_text(llms_txt(), encoding="utf-8")
+    import admin_config
+    admin_config.write(globals(), ROOT)
     (ROOT / "llms-full.txt").write_text(llms_full(pages), encoding="utf-8")
     for old in ("performance", "legal"):  # páginas retiradas
         f = ROOT / f"{old}.html"
@@ -2936,12 +3035,12 @@ def main():
         return "".join(found[:20])
     urls = "".join(
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
-        for n in pages if n not in ("404", "crm", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
+        for n in pages if n not in NOINDEX and n not in ("404", "crm", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
     ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot",
                "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot", "meta-externalagent", "Amazonbot", "DuckAssistBot", "MistralAI-User"]
-    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\n\n"
-    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\n\n"
+    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\n\n"
+    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\n\n"
     robots += f"Sitemap: {SITE}/sitemap.xml\n# Resumen para modelos de lenguaje: {SITE}/llms.txt\n"
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))

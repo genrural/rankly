@@ -1,0 +1,24 @@
+{
+  "patrocinadores": [
+    {
+      "nombre": "EBC Frenos",
+      "logo": "assets/img/patrocinadores/ebc-frenos.png",
+      "web": ""
+    },
+    {
+      "nombre": "HEL Performance",
+      "logo": "assets/img/patrocinadores/hel-performance.png",
+      "web": ""
+    },
+    {
+      "nombre": "Mishimoto",
+      "logo": "assets/img/patrocinadores/mishimoto.png",
+      "web": ""
+    },
+    {
+      "nombre": "King Elements",
+      "logo": "assets/img/patrocinadores/king-elements.png",
+      "web": "https://www.kingelements.com/es/"
+    }
+  ]
+}

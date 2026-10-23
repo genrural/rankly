@@ -1,0 +1,61 @@
+{
+  "pagina": "Alquiler de coche de rally",
+  "datos_clave": [
+    {
+      "dato": "Coches",
+      "valor": "Peugeot 206 1.6 XS (118 CV, tracción delantera) y BMW E36 (135 CV, propulsión)"
+    },
+    {
+      "dato": "Incluye",
+      "valor": "Coche preparado, asistencia mecánica y ayuda con la inscripción y la licencia"
+    },
+    {
+      "dato": "Pruebas",
+      "valor": "Rallies, rallysprints y slaloms, según calendario y disponibilidad"
+    },
+    {
+      "dato": "Reserva",
+      "valor": "Por formulario, WhatsApp o teléfono: (+34) 615 97 22 33"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Cómo funciona el alquiler de un coche de rally?",
+      "respuesta": "1. **Nos dices la prueba** en la que quieres correr (rally, rallysprint o slalom) y la fecha.\n2. **Confirmamos disponibilidad** del coche y te explicamos condiciones, seguro y fianza.\n3. **Te ayudamos con la licencia** federativa y la inscripción.\n4. **Preparamos el coche** en nuestro taller de Torrelaguna y lo llevamos a la prueba.\n5. **Corres con asistencia** de nuestro equipo durante todo el fin de semana."
+    },
+    {
+      "pregunta": "¿Qué necesito para alquilar un coche de rally?",
+      "respuesta": "- Ser mayor de edad y tener carnet de conducir en vigor.\n- Licencia federativa de piloto para pruebas federadas (y de copiloto para tu acompañante en rally).\n- Equipamiento de seguridad homologado: casco con sistema de retención frontal de la cabeza, mono, ropa interior, guantes y botines ignífugos.\n\nSi nunca has competido, empieza por [cómo empezar en los rallies](blog-como-empezar-en-los-rallies.html) o por la [experiencia de slalom](ds-pilot-weekend-slalom.html)."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay con el DS Pilot Weekend Rally?",
+      "respuesta": "El [DS Pilot Weekend – Rally](ds-pilot-weekend-rally.html) es nuestra experiencia «llave en mano» para debutar: nosotros elegimos contigo la prueba, gestionamos la inscripción y te acompañamos todo el fin de semana. El alquiler es más flexible y pensado para pilotos que ya tienen experiencia y quieren correr una prueba concreta."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Cuánto cuesta alquilar un coche de rally?",
+      "respuesta": "Depende de la prueba (rally, rallysprint o slalom), de su duración y del coche elegido. Escríbenos con la fecha y la carrera y te damos precio cerrado con lo que incluye."
+    },
+    {
+      "pregunta": "¿Qué necesito para alquilar un coche de rally?",
+      "respuesta": "Para pruebas federadas, licencia federativa de piloto (y de copiloto en rally), equipamiento homologado y la inscripción. Te ayudamos a tramitar todo."
+    },
+    {
+      "pregunta": "¿Qué coches de rally alquiláis?",
+      "respuesta": "Nuestro Peugeot 206 1.6 XS de 118 CV, de tracción delantera e ideal para empezar, y el BMW E36 de 135 CV, de propulsión trasera."
+    },
+    {
+      "pregunta": "¿Está incluida la asistencia?",
+      "respuesta": "Sí: el alquiler se hace con asistencia mecánica de nuestro equipo durante la prueba. Antes de reservar te explicamos condiciones de uso y fianza."
+    },
+    {
+      "pregunta": "¿Puedo alquilar el coche para un slalom?",
+      "respuesta": "Sí, el 206 y el BMW E36 se pueden alquilar para slaloms y rallysprints según calendario y disponibilidad."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-como-empezar-en-los-rallies",
+    "blog-coche-de-rally-que-es-y-categorias"
+  ]
+}

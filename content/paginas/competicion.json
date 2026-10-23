@@ -1,0 +1,58 @@
+{
+  "pagina": "Competición",
+  "datos_clave": [
+    {
+      "dato": "Disciplinas",
+      "valor": "Rally, rallysprint, slalom, montaña y circuito"
+    },
+    {
+      "dato": "Servicios",
+      "valor": "Preparación integral, jaulas de seguridad, set-up, mantenimiento, asistencia y alquiler"
+    },
+    {
+      "dato": "Coches propios",
+      "valor": "Peugeot 206 1.6 XS (118 CV) y BMW E36 (135 CV)"
+    },
+    {
+      "dato": "Dónde",
+      "valor": "Taller en Torrelaguna (Madrid); asistencia en pruebas de toda España"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Qué incluye la preparación de un coche de rally?",
+      "respuesta": "Preparar un coche de rally es mucho más que montar piezas. En Deyscom lo planteamos en este orden, porque es el que mejor protege al piloto y el presupuesto:\n\n1. **Seguridad:** jaula de seguridad conforme al reglamento, baquets y arneses homologados, extinción, cortacorrientes y redes.\n2. **Fiabilidad:** refrigeración, transmisión, frenos y cableado preparados para el esfuerzo de un tramo.\n3. **Chasis y suspensión:** refuerzos, amortiguación y geometría según superficie (tierra o asfalto).\n4. **Prestaciones:** motor, admisión y escape, siempre dentro de lo que permite la categoría.\n\nSi todavía no tienes coche, valora [alquilar un coche de rally](alquiler-coche-de-rally.html) o revisar nuestros [coches de rally en venta](coches-de-rally-en-venta.html)."
+    },
+    {
+      "pregunta": "¿Qué coche elegir para empezar a competir?",
+      "respuesta": "Para empezar recomendamos coches ligeros, de mecánica sencilla y con buena disponibilidad de recambios. Dos ejemplos que conocemos muy bien porque forman parte de nuestro equipo:\n\n- **Peugeot 206 1.6 XS (118 CV):** tracción delantera, noble y económico de mantener. Ideal para aprender.\n- **BMW E36 (135 CV):** propulsión trasera, más exigente y muy divertido. Para quien busca sensaciones.\n\nTe contamos más en la guía [coche de rally: qué es y qué categorías hay](blog-coche-de-rally-que-es-y-categorias.html)."
+    },
+    {
+      "pregunta": "¿Hacéis asistencia en carrera fuera de Madrid?",
+      "respuesta": "Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Preparáis coches para cualquier campeonato?",
+      "respuesta": "Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."
+    },
+    {
+      "pregunta": "¿Puedo alquilar un coche de competición?",
+      "respuesta": "Sí. Tenemos alquiler de coches de competición y, si es tu primera vez, nuestras experiencias DS Pilot Weekend son la mejor forma de empezar."
+    },
+    {
+      "pregunta": "¿Ofrecéis asistencia durante la carrera?",
+      "respuesta": "Sí, podemos acompañarte en el parque de asistencia con equipo y material para resolver cualquier incidencia."
+    },
+    {
+      "pregunta": "¿Puedo hacer la preparación por fases?",
+      "respuesta": "Claro. Muchos pilotos empiezan por seguridad y fiabilidad y evolucionan el coche temporada a temporada."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-como-empezar-en-los-rallies",
+    "blog-coche-de-rally-que-es-y-categorias",
+    "blog-slalom-de-coches-que-es"
+  ]
+}

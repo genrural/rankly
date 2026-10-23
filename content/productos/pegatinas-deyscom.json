@@ -1,0 +1,14 @@
+{
+  "nombre": "Pack de pegatinas Deyscom Motorsport",
+  "nombre_corto": "Pegatinas",
+  "precio": 6,
+  "etiqueta": "Pack",
+  "descripcion": "Pack de pegatinas de vinilo con el logo Deyscom Motorsport: para el coche, el casco, la caja de herramientas o el portátil. Resistentes a la intemperie.",
+  "caracteristicas": [
+    "Vinilo de exterior resistente al agua y UV",
+    "Corte a contorno",
+    "Varios tamaños en el pack",
+    "Ideal para coche, casco y taller"
+  ],
+  "agotado": false
+}

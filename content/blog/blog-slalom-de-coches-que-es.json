@@ -1,0 +1,69 @@
+{
+  "titulo": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+  "slug": "blog-slalom-de-coches-que-es",
+  "seo_titulo": "Slalom de coches: qué es, cómo funciona y cómo empezar",
+  "seo_descripcion": "Qué es el slalom de coches, cómo es una prueba con conos, mangas y penalizaciones, qué coche y licencia necesitas y por qué es ideal para empezar.",
+  "descripcion": "Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.",
+  "h1": "Slalom de coches: *qué es y cómo empezar*",
+  "palabras_clave": "slalom, slalom coches, slalom de coches, qué es un slalom, campeonato de slalom, slalom Madrid, empezar en el automovilismo",
+  "categoria": "Competición",
+  "autor": "nestor",
+  "editor": "hector",
+  "fecha": "2026-10-23",
+  "minutos": 6,
+  "imagen": "bmw-e36-rotulado-deyscom-motorsport",
+  "imagen_subida": "",
+  "imagen_alt": "",
+  "respuesta_rapida": "El **slalom de coches** es una disciplina de automovilismo en la que cada participante recorre, de uno en uno y contra el cronómetro, un **trazado marcado con conos** sobre una superficie cerrada. Se hacen varias **mangas**, tocar o derribar conos suele penalizar con segundos y gana el tiempo más bajo. Es la forma más **asequible y segura** de empezar a competir y de aprender a mover un coche con precisión.",
+  "secciones": [
+    {
+      "titulo": "¿Qué es un slalom de coches?",
+      "texto": "Es una prueba de habilidad y velocidad: un recorrido corto, lleno de cambios de dirección, frenadas y zonas lentas, delimitado con conos o balizas. Los coches salen de uno en uno, así que no hay contacto ni adelantamientos: compites contra el cronómetro y contra ti mismo.\n\nAl ser un trazado lento y técnico, el slalom premia la **precisión, la mirada lejana y la suavidad** por encima de la potencia. Por eso es una escuela fantástica, tanto para quien empieza como para pilotos de rally que quieren pulir su técnica."
+    },
+    {
+      "titulo": "¿Cómo funciona una prueba de slalom?",
+      "texto": "1. **Verificaciones:** administrativas (licencia, inscripción) y técnicas (seguridad del coche y equipamiento).\n2. **Reconocimiento:** normalmente se recorre el trazado a pie para memorizarlo.\n3. **Mangas:** varias pasadas cronometradas. Según el reglamento, cuenta la mejor o la suma de varias.\n4. **Penalizaciones:** tocar o derribar conos, o saltarse una puerta, añade segundos o puede descalificar la manga.\n5. **Clasificación:** por clases según el tipo de coche y la cilindrada, y una general.\n\nCada federación y cada prueba tienen su reglamento; consulta siempre el reglamento particular antes de inscribirte."
+    },
+    {
+      "titulo": "¿Qué coche necesitas para hacer slalom?",
+      "texto": "El slalom admite desde coches de serie con medidas de seguridad básicas hasta coches muy preparados, según la clase. Para empezar, un coche **ligero y ágil** funciona mejor que uno potente. Lo esencial:\n\n- Coche en perfecto estado de frenos, neumáticos, suspensión y fijaciones.\n- Elementos de seguridad que exija el reglamento de la clase (baquet, arneses, extintor, cortacorrientes…).\n- Casco homologado y el equipamiento que marque la prueba.\n\nSi no tienes coche, en el [DS Pilot Weekend – Slalom](ds-pilot-weekend-slalom.html) corres con nuestro Peugeot 206 1.6 XS de 118 CV o con el BMW E36 de 135 CV, preparados en nuestro taller."
+    },
+    {
+      "titulo": "¿Necesito licencia para correr un slalom?",
+      "texto": "Para una prueba **federada**, sí: necesitas licencia federativa en vigor, que se tramita en la federación autonómica dentro del marco de la [RFEDA](https://www.rfeda.es). En la Comunidad de Madrid, la referencia es la Federación Madrileña de Automovilismo. Las jornadas privadas o de formación pueden tener requisitos distintos; te lo indicamos al confirmar fecha."
+    },
+    {
+      "titulo": "Slalom, rallysprint y rally: ¿por dónde empiezo?",
+      "texto": "El slalom es el escalón de entrada: poco coste, mucha seguridad y aprendizaje rápido. El **rallysprint** añade un tramo de carretera cerrado que se repite varias veces, y el **rally** completa la experiencia con copiloto, notas, enlaces y asistencia. Lee nuestra guía sobre [cómo empezar en los rallies](blog-como-empezar-en-los-rallies.html) si quieres dar el siguiente paso."
+    },
+    {
+      "titulo": "Consejos del equipo Deyscom para tu primer slalom",
+      "texto": "- **Mira lejos:** la vista va dos o tres conos por delante, no en el que tienes encima.\n- **Frena recto y suelta suave:** la mayoría del tiempo se pierde en frenadas tardías que te sacan de la trazada.\n- **Memoriza el recorrido:** un error de recorrido cuesta mucho más que ir prudente.\n- **Una manga cada vez:** mejora una cosa por manga y compara tiempos."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Qué es un slalom de coches?",
+      "respuesta": "Una prueba cronometrada en la que cada coche recorre, de uno en uno, un trazado marcado con conos. Gana el tiempo más bajo y tocar conos suele penalizar."
+    },
+    {
+      "pregunta": "¿Es peligroso el slalom?",
+      "respuesta": "Es una de las disciplinas más seguras del automovilismo: velocidades contenidas, un solo coche en pista y medidas de seguridad obligatorias."
+    },
+    {
+      "pregunta": "¿Puedo hacer slalom con mi coche de calle?",
+      "respuesta": "En algunas clases y jornadas sí, siempre que el coche esté en buen estado y cumpla las medidas de seguridad del reglamento."
+    },
+    {
+      "pregunta": "¿Necesito licencia para un slalom?",
+      "respuesta": "Para pruebas federadas sí. Las jornadas privadas pueden tener requisitos distintos."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Real Federación Española de Automovilismo (RFEDA)",
+      "url": "https://www.rfeda.es"
+    }
+  ],
+  "publicado": true
+}

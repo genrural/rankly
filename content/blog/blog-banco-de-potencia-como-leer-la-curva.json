@@ -1,0 +1,73 @@
+{
+  "titulo": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+  "slug": "blog-banco-de-potencia-como-leer-la-curva",
+  "seo_titulo": "Banco de potencia: cómo leer la curva de potencia y par",
+  "seo_descripcion": "Qué mide un banco de potencia, potencia en rueda frente a motor, la relación entre par y potencia y cómo comparar antes y después.",
+  "descripcion": "Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.",
+  "h1": "Banco de potencia: *cómo leer la curva*",
+  "palabras_clave": "banco de potencia, curva de potencia y par, potencia en rueda, medir CV coche, banco de rodillos, prueba de potencia Madrid",
+  "categoria": "Técnica",
+  "autor": "nestor",
+  "editor": "hector",
+  "fecha": "2026-10-12",
+  "minutos": 7,
+  "imagen": "banco-de-potencia-curva-potencia-par",
+  "imagen_subida": "",
+  "imagen_alt": "",
+  "respuesta_rapida": "Un banco de potencia mide **la potencia y el par reales** de un coche en todo el rango de revoluciones. El resultado es una **curva** que muestra dónde rinde el motor, si hay pérdidas o fallos y qué ha aportado cada modificación. Para comparar mediciones hay que hacerlas en **las mismas condiciones** y con el mismo factor de corrección.",
+  "secciones": [
+    {
+      "titulo": "Qué es un banco de potencia",
+      "texto": "Un banco de potencia (también llamado banco de rodillos o dinamómetro de chasis) permite medir el rendimiento del coche sin salir del taller. El coche se coloca con las ruedas motrices sobre unos rodillos, se sujeta con seguridad y se acelera a fondo en una marcha determinada mientras el equipo registra la fuerza y las revoluciones."
+    },
+    {
+      "titulo": "Potencia en rueda y potencia en motor",
+      "texto": "El banco mide lo que llega a las ruedas. Entre el motor y el asfalto hay **pérdidas de transmisión** (caja de cambios, diferencial, palieres, neumáticos), por eso la **potencia en rueda** siempre es menor que la **potencia en motor** que anuncia el fabricante. Algunos bancos estiman la potencia en motor a partir de esas pérdidas, pero lo más fiable para comparar es mirar siempre el mismo dato en el mismo banco."
+    },
+    {
+      "titulo": "Cómo se relacionan par y potencia",
+      "texto": "El **par** es la fuerza de giro del motor; la **potencia** es ese par multiplicado por la velocidad de giro. La relación es:\n\n**Potencia (kW) = Par (Nm) × rpm ÷ 9.549**, y **1 kW ≈ 1,36 CV**.\n\nPor eso la potencia máxima siempre aparece a más revoluciones que el par máximo."
+    },
+    {
+      "titulo": "Qué mirar en una curva de potencia y par",
+      "texto": "- **Valores máximos:** potencia y par máximos y a qué revoluciones llegan.\n- **Forma de la curva:** una curva de par llena y plana hace el coche más fácil y rápido de conducir que un pico aislado.\n- **Área bajo la curva:** en el rango de uso real del motor es lo que más se nota al volante.\n- **Irregularidades:** dientes, caídas o escalones pueden indicar problemas de encendido, mezcla, sobrealimentación o embrague.\n- **Mezcla aire-combustible:** si el banco registra la lambda, permite comprobar que el motor trabaja con seguridad."
+    },
+    {
+      "titulo": "Cómo comparar antes y después de una modificación",
+      "texto": "Para que la comparación sea válida, la medición se tiene que hacer en las mismas condiciones: misma marcha, presión de neumáticos, temperatura del motor y del aire, y el mismo **factor de corrección** (por ejemplo DIN 70020, SAE J1349 o ISO 1585), que ajusta el resultado a unas condiciones atmosféricas de referencia. Además se hacen varias pasadas para descartar valores aislados."
+    },
+    {
+      "titulo": "Cómo lo hacemos en Deyscom",
+      "texto": "Antes de medir revisamos niveles, estado del coche y fijaciones; después hacemos varias pasadas y revisamos las curvas contigo. Te llevas tus gráficas para comparar en el futuro. Más información en nuestra página de [banco de potencia en Madrid](banco-de-potencia.html)."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Qué mide un banco de potencia?",
+      "respuesta": "La potencia y el par del coche en todo el rango de revoluciones, normalmente medidos en las ruedas motrices."
+    },
+    {
+      "pregunta": "¿Por qué el banco da menos CV que el fabricante?",
+      "respuesta": "Porque el banco mide en rueda y entre el motor y las ruedas hay pérdidas de transmisión; el fabricante declara la potencia en motor."
+    },
+    {
+      "pregunta": "¿Cómo se pasa de kW a CV?",
+      "respuesta": "Multiplicando los kW por aproximadamente 1,36."
+    },
+    {
+      "pregunta": "¿Es malo para el motor pasar por el banco?",
+      "respuesta": "No, si el coche está en buen estado, bien sujeto y refrigerado. Antes de medir se revisan niveles y fijaciones."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Norma SAE J1349 (SAE International)",
+      "url": "https://www.sae.org"
+    },
+    {
+      "nombre": "Organización Internacional de Normalización (ISO)",
+      "url": "https://www.iso.org"
+    }
+  ],
+  "publicado": true
+}

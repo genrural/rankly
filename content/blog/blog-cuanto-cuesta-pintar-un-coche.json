@@ -1,0 +1,69 @@
+{
+  "titulo": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+  "slug": "blog-cuanto-cuesta-pintar-un-coche",
+  "seo_titulo": "Cuánto cuesta pintar un coche: de qué depende el precio",
+  "seo_descripcion": "Pintar coche precio: qué factores cambian el presupuesto (chapa, tamaño, tipo de pintura, cambio de color, cabina) y cómo pedir uno fiable.",
+  "descripcion": "De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.",
+  "h1": "¿Cuánto cuesta *pintar un coche*?",
+  "palabras_clave": "pintar coche precio, cuánto cuesta pintar un coche, pintar coche, cabina de pintura, taller pintura coches, taller de pintura Madrid",
+  "categoria": "Pintura",
+  "autor": "nestor",
+  "editor": "hector",
+  "fecha": "2026-10-23",
+  "minutos": 6,
+  "imagen": "nissan-patrol-cabina-pintura-verde",
+  "imagen_subida": "",
+  "imagen_alt": "",
+  "respuesta_rapida": "El precio de **pintar un coche** depende sobre todo de **cuánta preparación necesita la chapa** (golpes, óxido, masillas), del **tamaño** del coche, del **tipo de pintura** (sólida, metalizada, perlada, mate), de si hay **cambio de color** (con interiores, marcos y vanos) y del nivel de **desmontaje**. La preparación suele llevar más horas que la propia aplicación. Un presupuesto fiable solo se puede dar viendo el coche.",
+  "secciones": [
+    {
+      "titulo": "¿De qué depende el precio de pintar un coche?",
+      "texto": "- **Estado de la chapa:** golpes, abolladuras, óxido o pintura anterior en mal estado multiplican las horas de preparación.\n- **Tamaño y forma:** no es lo mismo un utilitario que un todoterreno o una furgoneta.\n- **Tipo de pintura:** sólida, metalizada, perlada, tricapa o mate; cada una tiene materiales y procesos distintos.\n- **Cambio de color:** si se cambia el color, para un acabado correcto hay que pintar vanos, marcos de puertas, interior del capó y del maletero.\n- **Desmontaje:** desmontar molduras, gomas, faros y manetas da un acabado mucho más limpio que enmascarar.\n- **Acabado final:** lijado y pulido del barniz para eliminar piel de naranja y motas."
+    },
+    {
+      "titulo": "¿Por qué la preparación es lo que más cuesta?",
+      "texto": "La pintura solo es tan buena como la superficie sobre la que se aplica. Antes de pintar hay que **reparar la chapa, tratar el óxido, aplicar aparejo, lijar por fases y desengrasar**. Saltarse pasos se nota a los pocos meses: aparecen rechupados, burbujas o diferencias de tono. En nuestra experiencia, la mayor parte de las horas de un buen trabajo de pintura se van en esta fase."
+    },
+    {
+      "titulo": "¿Qué aporta pintar en cabina de pintura?",
+      "texto": "Una **cabina de pintura** controla el polvo, la temperatura y la extracción. Eso permite aplicar la pintura en un ambiente limpio, **secarla al horno** y conseguir un acabado más duradero y uniforme. Pintar sin cabina aumenta el riesgo de motas, escurridos y un curado deficiente. En Deyscom pintamos en cabina: puedes ver el proceso de un Nissan Patrol en nuestra página de [pintura de coches](pintura.html)."
+    },
+    {
+      "titulo": "Pintar el coche entero, una pieza o el chasis",
+      "texto": "No siempre hace falta pintar todo. Las opciones más habituales son:\n\n1. **Pieza o zona:** tras un golpe o arañazo, igualando el color con las piezas vecinas.\n2. **Pintura completa del mismo color:** para recuperar un coche con la pintura quemada o descascarillada.\n3. **Cambio de color:** el trabajo más completo si se quiere un acabado de calidad.\n4. **Chasis y piezas sueltas:** muy habitual en restauraciones y [restomod](restomod.html), y en coches de competición."
+    },
+    {
+      "titulo": "¿Un cambio de color hay que comunicarlo a Tráfico?",
+      "texto": "El color figura en la documentación del vehículo, por lo que conviene consultar en la [DGT](https://www.dgt.es) o en tu estación de ITV cómo actualizarlo en tu caso, y avisar también a tu aseguradora. Si además del color hay otras modificaciones, puede tratarse de una reforma; lo explicamos en nuestra guía de [reformas en la ITV y vehículos históricos](blog-reformas-itv-y-vehiculos-historicos.html)."
+    },
+    {
+      "titulo": "Cómo pedir un presupuesto de pintura fiable",
+      "texto": "Para valorar un trabajo de pintura necesitamos saber el modelo, el estado de la chapa (mejor con fotos con buena luz), el color y tipo de pintura que quieres y si buscas el mismo color o un cambio. Con eso te damos una primera orientación, y el presupuesto definitivo tras ver el coche en nuestro taller de Torrelaguna (Madrid). Pídelo desde la página de [pintura](pintura.html#presupuesto) o por WhatsApp."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Cuánto cuesta pintar un coche?",
+      "respuesta": "Depende del estado de la chapa, el tamaño, el tipo de pintura, si hay cambio de color y del desmontaje. La preparación suele ser la parte que más horas lleva; un presupuesto fiable requiere ver el coche."
+    },
+    {
+      "pregunta": "¿Cuánto se tarda en pintar un coche?",
+      "respuesta": "Desde unos días para una pieza hasta varias semanas para una pintura completa con cambio de color y chapa, según el estado del coche."
+    },
+    {
+      "pregunta": "¿Es mejor pintar en cabina?",
+      "respuesta": "Sí. La cabina controla polvo y temperatura y permite secar al horno, lo que da un acabado más limpio y duradero."
+    },
+    {
+      "pregunta": "¿Hacéis decoraciones de coches de rally?",
+      "respuesta": "Sí. Pintamos decoraciones y colores especiales para coches de competición y clásicos."
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "Dirección General de Tráfico (DGT)",
+      "url": "https://www.dgt.es"
+    }
+  ],
+  "publicado": true
+}

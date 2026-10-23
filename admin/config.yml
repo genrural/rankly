@@ -1,0 +1,2801 @@
+# Generado por tools/build.py (tools/admin_config.py). No editar a mano.
+{
+ "backend": {
+  "name": "github",
+  "repo": "genrural/rankly",
+  "branch": "main",
+  "commit_messages": {
+   "create": "Panel: crea {{collection}} «{{slug}}»",
+   "update": "Panel: actualiza {{collection}} «{{slug}}»",
+   "delete": "Panel: borra {{collection}} «{{slug}}»",
+   "uploadMedia": "Panel: sube {{path}}",
+   "deleteMedia": "Panel: borra {{path}}"
+  }
+ },
+ "site_url": "https://deyscom.com",
+ "display_url": "https://deyscom.com",
+ "logo": {
+  "src": "/assets/img/favicon.svg"
+ },
+ "media_folder": "assets/img/subidas",
+ "public_folder": "/assets/img/subidas",
+ "slug": {
+  "encoding": "ascii",
+  "clean_accents": true,
+  "sanitize_replacement": "-"
+ },
+ "collections": [
+  {
+   "name": "blog",
+   "label": "Blog",
+   "label_singular": "artículo",
+   "folder": "content/blog",
+   "format": "json",
+   "extension": "json",
+   "create": true,
+   "delete": true,
+   "slug": "{{slug}}",
+   "identifier_field": "titulo",
+   "summary": "{{titulo}} · {{fecha}}",
+   "sortable_fields": [
+    "fecha",
+    "titulo",
+    "categoria"
+   ],
+   "description": "Artículos del blog. Se publican al guardar (la web se regenera en 1-2 minutos). Con fecha futura, se publican ese día.",
+   "fields": [
+    {
+     "label": "Título del artículo",
+     "name": "titulo",
+     "widget": "string",
+     "hint": "El título que se ve en las tarjetas del blog."
+    },
+    {
+     "label": "URL (slug)",
+     "name": "slug",
+     "widget": "string",
+     "pattern": [
+      "^blog-[a-z0-9-]+$",
+      "Empieza por blog- y usa solo minúsculas, números y guiones"
+     ],
+     "hint": "Ej. blog-como-preparar-un-coche-de-slalom. No la cambies después de publicar (perderías posiciones en Google)."
+    },
+    {
+     "label": "Publicado",
+     "name": "publicado",
+     "widget": "boolean",
+     "default": true,
+     "hint": "Desactívalo para guardarlo como borrador."
+    },
+    {
+     "label": "Fecha de publicación",
+     "name": "fecha",
+     "widget": "datetime",
+     "format": "YYYY-MM-DD",
+     "date_format": "DD/MM/YYYY",
+     "time_format": false
+    },
+    {
+     "label": "Categoría",
+     "name": "categoria",
+     "widget": "select",
+     "options": [
+      "Circuito",
+      "Competición",
+      "Formación",
+      "Noticias",
+      "Pintura",
+      "Restomod",
+      "Taller",
+      "Técnica"
+     ]
+    },
+    {
+     "label": "Autor",
+     "name": "autor",
+     "widget": "select",
+     "options": [
+      {
+       "label": "Néstor Aguado",
+       "value": "nestor"
+      },
+      {
+       "label": "Héctor Guzmán",
+       "value": "hector"
+      }
+     ],
+     "hint": "Para E-E-A-T: firma quien sabe del tema."
+    },
+    {
+     "label": "Revisado por",
+     "name": "editor",
+     "widget": "select",
+     "options": [
+      {
+       "label": "Néstor Aguado",
+       "value": "nestor"
+      },
+      {
+       "label": "Héctor Guzmán",
+       "value": "hector"
+      }
+     ],
+     "required": false
+    },
+    {
+     "label": "Minutos de lectura",
+     "name": "minutos",
+     "widget": "number",
+     "value_type": "int",
+     "min": 1,
+     "max": 60,
+     "default": 5
+    },
+    {
+     "label": "H1 (titular grande)",
+     "name": "h1",
+     "widget": "string",
+     "hint": "Pon entre *asteriscos* la parte que va en rosa. Ej: Qué es un *restomod*"
+    },
+    {
+     "label": "Imagen principal",
+     "name": "imagen",
+     "widget": "select",
+     "options": [
+      {
+       "label": "BMW E30 clásicos para restomod en Deyscom (bmw-e30-clasicos-restomod-deyscom)",
+       "value": "bmw-e30-clasicos-restomod-deyscom"
+      },
+      {
+       "label": "BMW E30 en restauración sobre el elevador (bmw-e30-restauracion-elevador-taller)",
+       "value": "bmw-e30-restauracion-elevador-taller"
+      },
+      {
+       "label": "BMW E36 de Deyscom Motorsport en un tramo de tierra a contraluz (bmw-e36-rally-tierra-contraluz-deyscom)",
+       "value": "bmw-e36-rally-tierra-contraluz-deyscom"
+      },
+      {
+       "label": "BMW E36 de Deyscom Motorsport saltando en un tramo de rally de tierra (bmw-e36-rally-tierra-deyscom-motorsport)",
+       "value": "bmw-e36-rally-tierra-deyscom-motorsport"
+      },
+      {
+       "label": "BMW E36 de Deyscom en el Rallye Comunidad de Madrid – El Molar (bmw-e36-rally-el-molar-deyscom)",
+       "value": "bmw-e36-rally-el-molar-deyscom"
+      },
+      {
+       "label": "BMW E36 de competición con decoración y llantas rosas (bmw-e36-competicion-decoracion-rosa)",
+       "value": "bmw-e36-competicion-decoracion-rosa"
+      },
+      {
+       "label": "BMW E36 de competición en el taller (bmw-e36-compact-competicion-taller)",
+       "value": "bmw-e36-compact-competicion-taller"
+      },
+      {
+       "label": "BMW E36 de competición en una curva del circuito (bmw-e36-competicion-circuito-curva)",
+       "value": "bmw-e36-competicion-circuito-curva"
+      },
+      {
+       "label": "BMW E36 de competición rodando al atardecer en circuito (bmw-e36-atardecer-circuito-competicion)",
+       "value": "bmw-e36-atardecer-circuito-competicion"
+      },
+      {
+       "label": "BMW E36 rotulado con el logotipo de Deyscom Motorsport (bmw-e36-rotulado-deyscom-motorsport)",
+       "value": "bmw-e36-rotulado-deyscom-motorsport"
+      },
+      {
+       "label": "BMW clásicos en el taller de Deyscom (bmw-clasicos-restomod-taller-deyscom)",
+       "value": "bmw-clasicos-restomod-taller-deyscom"
+      },
+      {
+       "label": "Baquet Sparco con arneses y jaula de seguridad (baquet-sparco-arneses-jaula-competicion)",
+       "value": "baquet-sparco-arneses-jaula-competicion"
+      },
+      {
+       "label": "Caja de cambios de competición en preparación (caja-cambios-competicion-preparacion)",
+       "value": "caja-cambios-competicion-preparacion"
+      },
+      {
+       "label": "Chasis de todoterreno en restauración completa (todoterreno-chasis-restauracion-completa)",
+       "value": "todoterreno-chasis-restauracion-completa"
+      },
+      {
+       "label": "Chasis pintado en rosa dentro de la cabina de pintura (cabina-pintura-chasis-rosa)",
+       "value": "cabina-pintura-chasis-rosa"
+      },
+      {
+       "label": "Chasis tubular de buggy en preparación (chasis-tubular-buggy-preparacion)",
+       "value": "chasis-tubular-buggy-preparacion"
+      },
+      {
+       "label": "Colector de escape en un motor de competición (colector-escape-motor-competicion)",
+       "value": "colector-escape-motor-competicion"
+      },
+      {
+       "label": "Copiloto con el libro de ruta en el Peugeot 206 de rally (copiloto-libro-de-ruta-rally-deyscom)",
+       "value": "copiloto-libro-de-ruta-rally-deyscom"
+      },
+      {
+       "label": "Copiloto revisando las notas dentro del coche de rally (copiloto-notas-rally-coche-competicion)",
+       "value": "copiloto-notas-rally-coche-competicion"
+      },
+      {
+       "label": "Curva de potencia y par en la pantalla del banco de potencia (banco-de-potencia-curva-potencia-par)",
+       "value": "banco-de-potencia-curva-potencia-par"
+      },
+      {
+       "label": "Detalle de admisión de un motor de competición (motor-competicion-detalle-admision)",
+       "value": "motor-competicion-detalle-admision"
+      },
+      {
+       "label": "Eje trasero y suspensión de un 4x4 en restauración (eje-trasero-suspension-restauracion-4x4)",
+       "value": "eje-trasero-suspension-restauracion-4x4"
+      },
+      {
+       "label": "Elevadores del taller de Deyscom en Torrelaguna (elevadores-taller-deyscom-torrelaguna)",
+       "value": "elevadores-taller-deyscom-torrelaguna"
+      },
+      {
+       "label": "Equipo Deyscom Motorsport al atardecer en el circuito (equipo-deyscom-motorsport-atardecer)",
+       "value": "equipo-deyscom-motorsport-atardecer"
+      },
+      {
+       "label": "Equipo Deyscom en la asistencia del Peugeot 206 de rally (asistencia-deyscom-peugeot-206-rally)",
+       "value": "asistencia-deyscom-peugeot-206-rally"
+      },
+      {
+       "label": "Equipo de Deyscom Motorsport en el circuito (equipo-deyscom-motorsport-circuito)",
+       "value": "equipo-deyscom-motorsport-circuito"
+      },
+      {
+       "label": "Extintor y baquet Sparco en un coche de competición (extintor-baquet-sparco-coche-competicion)",
+       "value": "extintor-baquet-sparco-coche-competicion"
+      },
+      {
+       "label": "Jaula de seguridad multipunto en un coche de competición (jaula-seguridad-multipunto-coche-competicion)",
+       "value": "jaula-seguridad-multipunto-coche-competicion"
+      },
+      {
+       "label": "Jaula de seguridad soldada durante la preparación de un coche de rally (jaula-seguridad-soldada-preparacion-rally)",
+       "value": "jaula-seguridad-soldada-preparacion-rally"
+      },
+      {
+       "label": "Jeep Wrangler con preparación offroad en Deyscom (jeep-wrangler-preparacion-offroad-deyscom)",
+       "value": "jeep-wrangler-preparacion-offroad-deyscom"
+      },
+      {
+       "label": "Jeep Wrangler sobre el elevador del taller (jeep-wrangler-elevador-taller-deyscom)",
+       "value": "jeep-wrangler-elevador-taller-deyscom"
+      },
+      {
+       "label": "Land Rover Defender restomod de Deyscom (land-rover-defender-restomod-deyscom)",
+       "value": "land-rover-defender-restomod-deyscom"
+      },
+      {
+       "label": "Land Rover Defender restomod verde con baca (land-rover-defender-restomod-verde)",
+       "value": "land-rover-defender-restomod-verde"
+      },
+      {
+       "label": "Latiguillos de freno de competición (latiguillos-freno-competicion-detalle)",
+       "value": "latiguillos-freno-competicion-detalle"
+      },
+      {
+       "label": "Mazda MX-5 en preparación en el taller de Deyscom (mazda-mx5-preparacion-taller-deyscom)",
+       "value": "mazda-mx5-preparacion-taller-deyscom"
+      },
+      {
+       "label": "Mecánico soldando con chispas en el taller de Deyscom (soldadura-chispas-taller-deyscom)",
+       "value": "soldadura-chispas-taller-deyscom"
+      },
+      {
+       "label": "Mecánicos de Deyscom trabajando en el box en carrera de resistencia (mecanicos-deyscom-box-resistencia)",
+       "value": "mecanicos-deyscom-box-resistencia"
+      },
+      {
+       "label": "Medición de un coche en el banco de potencia de Deyscom (banco-de-potencia-medicion-deyscom)",
+       "value": "banco-de-potencia-medicion-deyscom"
+      },
+      {
+       "label": "Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport (mitsubishi-lancer-evo-rally-taller-deyscom)",
+       "value": "mitsubishi-lancer-evo-rally-taller-deyscom"
+      },
+      {
+       "label": "Motor con admisión Deyscom en un Peugeot 206 (motor-admision-deyscom-peugeot-206)",
+       "value": "motor-admision-deyscom-peugeot-206"
+      },
+      {
+       "label": "Motor y caja de cambios desmontados en el taller (motor-caja-cambios-desmontado-taller)",
+       "value": "motor-caja-cambios-desmontado-taller"
+      },
+      {
+       "label": "Nave del taller de Deyscom con coches de competición (nave-taller-deyscom-coches-competicion)",
+       "value": "nave-taller-deyscom-coches-competicion"
+      },
+      {
+       "label": "Nissan Patrol pintándose en verde en la cabina de pintura (nissan-patrol-cabina-pintura-verde)",
+       "value": "nissan-patrol-cabina-pintura-verde"
+      },
+      {
+       "label": "Nissan Patrol recién pintado en verde (nissan-patrol-pintura-verde-terminado)",
+       "value": "nissan-patrol-pintura-verde-terminado"
+      },
+      {
+       "label": "Nissan Patrol restaurado con pintura verde (nissan-patrol-restaurado-pintura-verde)",
+       "value": "nissan-patrol-restaurado-pintura-verde"
+      },
+      {
+       "label": "Peugeot 206 1.6 XS de Deyscom Motorsport en acción en rally (peugeot-206-1-6-xs-rally-deyscom-motorsport)",
+       "value": "peugeot-206-1-6-xs-rally-deyscom-motorsport"
+      },
+      {
+       "label": "Peugeot 206 de Deyscom Motorsport derrapando en un tramo de tierra (peugeot-206-rally-tierra-deyscom-motorsport)",
+       "value": "peugeot-206-rally-tierra-deyscom-motorsport"
+      },
+      {
+       "label": "Peugeot 206 de Deyscom Motorsport en un tramo de montaña (peugeot-206-rally-comunidad-madrid-montana)",
+       "value": "peugeot-206-rally-comunidad-madrid-montana"
+      },
+      {
+       "label": "Peugeot 206 de Deyscom Motorsport entre el polvo en un rally de tierra (peugeot-206-rally-polvo-contraluz-deyscom)",
+       "value": "peugeot-206-rally-polvo-contraluz-deyscom"
+      },
+      {
+       "label": "Peugeot 206 de Deyscom en el tramo del Rallye Comunidad de Madrid – El Molar (peugeot-206-rally-el-molar-tramo)",
+       "value": "peugeot-206-rally-el-molar-tramo"
+      },
+      {
+       "label": "Peugeot 206 en preparación para rally en el taller de Torrelaguna (peugeot-206-preparacion-rally-taller-torrelaguna)",
+       "value": "peugeot-206-preparacion-rally-taller-torrelaguna"
+      },
+      {
+       "label": "Pick-up clásico negro en restauración en el taller (pickup-clasico-restauracion-taller)",
+       "value": "pickup-clasico-restauracion-taller"
+      },
+      {
+       "label": "Piezas pintadas en rosa en la cabina de pintura (piezas-pintadas-rosa-cabina-pintura)",
+       "value": "piezas-pintadas-rosa-cabina-pintura"
+      },
+      {
+       "label": "Piloto y copiloto con casco dentro de un coche de rally (piloto-copiloto-rally-interior-coche-competicion)",
+       "value": "piloto-copiloto-rally-interior-coche-competicion"
+      },
+      {
+       "label": "Plano de diseño de una jaula de seguridad de competición (plano-jaula-seguridad-diseno-competicion)",
+       "value": "plano-jaula-seguridad-diseno-competicion"
+      },
+      {
+       "label": "Radiador e intercooler montados durante una preparación de motor (radiador-intercooler-preparacion-motor)",
+       "value": "radiador-intercooler-preparacion-motor"
+      },
+      {
+       "label": "Renault Clio de competición en el taller de Deyscom (renault-clio-competicion-taller-deyscom)",
+       "value": "renault-clio-competicion-taller-deyscom"
+      },
+      {
+       "label": "Restomod de un todoterreno clásico en el taller de Deyscom (restomod-todoterreno-clasico-taller-deyscom)",
+       "value": "restomod-todoterreno-clasico-taller-deyscom"
+      },
+      {
+       "label": "Soldadura de una jaula de seguridad para competición (soldadura-jaula-seguridad-competicion)",
+       "value": "soldadura-jaula-seguridad-competicion"
+      },
+      {
+       "label": "Soporte de motor de poliuretano para competición (soporte-motor-poliuretano-competicion)",
+       "value": "soporte-motor-poliuretano-competicion"
+      },
+      {
+       "label": "Subchasis pintado en rosa Deyscom (subchasis-pintado-rosa-deyscom)",
+       "value": "subchasis-pintado-rosa-deyscom"
+      },
+      {
+       "label": "Subchasis rosa recién pintado en la cabina de pintura (cabina-pintura-subchasis-rosa-deyscom)",
+       "value": "cabina-pintura-subchasis-rosa-deyscom"
+      },
+      {
+       "label": "Volante e interior de un coche de competición (volante-interior-coche-competicion)",
+       "value": "volante-interior-coche-competicion"
+      }
+     ],
+     "required": false,
+     "hint": "Elige una foto de la web… o sube una nueva abajo."
+    },
+    {
+     "label": "…o sube una imagen nueva",
+     "name": "imagen_subida",
+     "widget": "image",
+     "required": false,
+     "hint": "JPG o PNG. Se optimiza sola (< 100 KB, WebP)."
+    },
+    {
+     "label": "Texto alternativo de la imagen subida",
+     "name": "imagen_alt",
+     "widget": "string",
+     "required": false,
+     "hint": "Describe la foto con palabras clave. Ej: Peugeot 206 de rally en un tramo de tierra"
+    },
+    {
+     "label": "Respuesta rápida",
+     "name": "respuesta_rapida",
+     "widget": "text",
+     "hint": "2-3 frases que respondan directamente a la pregunta del artículo. Es lo que más citan Google y las IA. Admite **negrita**."
+    },
+    {
+     "label": "Secciones",
+     "name": "secciones",
+     "widget": "list",
+     "summary": "{{fields.titulo}}",
+     "hint": "Cada sección es un H2. Mejor en forma de pregunta (¿Qué es…? ¿Cuánto cuesta…?).",
+     "fields": [
+      {
+       "label": "Título (H2)",
+       "name": "titulo",
+       "widget": "string"
+      },
+      {
+       "label": "Texto",
+       "name": "texto",
+       "widget": "markdown",
+       "buttons": [
+        "bold",
+        "italic",
+        "link",
+        "heading-three",
+        "bulleted-list",
+        "numbered-list"
+       ],
+       "editor_components": [],
+       "modes": [
+        "rich_text",
+        "raw"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Preguntas frecuentes",
+     "name": "faq",
+     "widget": "list",
+     "required": false,
+     "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+     "summary": "{{fields.pregunta}}",
+     "fields": [
+      {
+       "label": "Pregunta",
+       "name": "pregunta",
+       "widget": "string"
+      },
+      {
+       "label": "Respuesta",
+       "name": "respuesta",
+       "widget": "text",
+       "hint": "Respuesta directa en 1-3 frases."
+      }
+     ]
+    },
+    {
+     "label": "Fuentes y referencias",
+     "name": "fuentes",
+     "widget": "list",
+     "required": false,
+     "summary": "{{fields.nombre}}",
+     "hint": "Webs oficiales (BOE, RFEDA, FIA…). Suman credibilidad.",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "URL",
+       "name": "url",
+       "widget": "string",
+       "pattern": [
+        "^https?://",
+        "Debe empezar por https://"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Título SEO (pestaña y Google)",
+     "name": "seo_titulo",
+     "widget": "string",
+     "required": false,
+     "hint": "Máx. 65 caracteres, con la palabra clave al principio."
+    },
+    {
+     "label": "Descripción SEO (Google)",
+     "name": "seo_descripcion",
+     "widget": "text",
+     "required": false,
+     "hint": "Entre 120 y 160 caracteres."
+    },
+    {
+     "label": "Resumen (tarjetas y redes)",
+     "name": "descripcion",
+     "widget": "text",
+     "hint": "1-2 frases que inviten a leer."
+    },
+    {
+     "label": "Palabras clave",
+     "name": "palabras_clave",
+     "widget": "string",
+     "required": false,
+     "hint": "Separadas por comas. La primera es la principal."
+    }
+   ]
+  },
+  {
+   "name": "paginas",
+   "label": "Páginas",
+   "label_singular": "página",
+   "description": "Contenido SEO/GEO de cada página: datos clave, guías y preguntas frecuentes.",
+   "files": [
+    {
+     "label": "Inicio",
+     "name": "index",
+     "file": "content/paginas/index.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Competición",
+     "name": "competicion",
+     "file": "content/paginas/competicion.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Alquiler de coche de rally",
+     "name": "alquiler-coche-de-rally",
+     "file": "content/paginas/alquiler-coche-de-rally.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Coches en venta",
+     "name": "coches-de-rally-en-venta",
+     "file": "content/paginas/coches-de-rally-en-venta.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Restomod",
+     "name": "restomod",
+     "file": "content/paginas/restomod.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Pintura",
+     "name": "pintura",
+     "file": "content/paginas/pintura.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Banco de potencia",
+     "name": "banco-de-potencia",
+     "file": "content/paginas/banco-de-potencia.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Experiencias",
+     "name": "experiencias",
+     "file": "content/paginas/experiencias.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Circuit",
+     "name": "ds-pilot-weekend-circuit",
+     "file": "content/paginas/ds-pilot-weekend-circuit.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Rally",
+     "name": "ds-pilot-weekend-rally",
+     "file": "content/paginas/ds-pilot-weekend-rally.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "Slalom",
+     "name": "ds-pilot-weekend-slalom",
+     "file": "content/paginas/ds-pilot-weekend-slalom.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    },
+    {
+     "label": "DS Copilot Course",
+     "name": "ds-copilot-course",
+     "file": "content/paginas/ds-copilot-course.json",
+     "fields": [
+      {
+       "label": "Página",
+       "name": "pagina",
+       "widget": "hidden"
+      },
+      {
+       "label": "Datos clave",
+       "name": "datos_clave",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.dato}}: {{fields.valor}}",
+       "hint": "Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
+       "fields": [
+        {
+         "label": "Dato",
+         "name": "dato",
+         "widget": "string"
+        },
+        {
+         "label": "Valor",
+         "name": "valor",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "Guías (preguntas con respuesta larga)",
+       "name": "guias",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.pregunta}}",
+       "hint": "Cada guía es un H2 con su explicación. Enlaza a otras páginas y artículos.",
+       "fields": [
+        {
+         "label": "Pregunta (H2)",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "markdown",
+         "buttons": [
+          "bold",
+          "italic",
+          "link",
+          "heading-three",
+          "bulleted-list",
+          "numbered-list"
+         ],
+         "editor_components": [],
+         "modes": [
+          "rich_text",
+          "raw"
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Preguntas frecuentes",
+       "name": "faq",
+       "widget": "list",
+       "required": false,
+       "hint": "Aparecen en la página y como datos estructurados FAQ para Google y las IA.",
+       "summary": "{{fields.pregunta}}",
+       "fields": [
+        {
+         "label": "Pregunta",
+         "name": "pregunta",
+         "widget": "string"
+        },
+        {
+         "label": "Respuesta",
+         "name": "respuesta",
+         "widget": "text",
+         "hint": "Respuesta directa en 1-3 frases."
+        }
+       ]
+      },
+      {
+       "label": "Artículos relacionados",
+       "name": "articulos_relacionados",
+       "widget": "select",
+       "multiple": true,
+       "required": false,
+       "options": [
+        {
+         "label": "Circuito del Jarama: historia, trazado y cómo rodar en tandas",
+         "value": "blog-circuito-del-jarama-tandas"
+        },
+        {
+         "label": "Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno",
+         "value": "blog-coche-de-rally-que-es-y-categorias"
+        },
+        {
+         "label": "Cuánto cuesta pintar un coche: factores que cambian el precio",
+         "value": "blog-cuanto-cuesta-pintar-un-coche"
+        },
+        {
+         "label": "Reformas en la ITV y vehículos históricos: guía práctica 2026",
+         "value": "blog-reformas-itv-y-vehiculos-historicos"
+        },
+        {
+         "label": "Slalom de coches: qué es, cómo funciona y cómo empezar a competir",
+         "value": "blog-slalom-de-coches-que-es"
+        },
+        {
+         "label": "Banco de potencia: qué mide y cómo leer la curva de potencia y par",
+         "value": "blog-banco-de-potencia-como-leer-la-curva"
+        },
+        {
+         "label": "Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto",
+         "value": "blog-como-empezar-en-los-rallies"
+        },
+        {
+         "label": "Qué es un restomod y cómo plantear el proyecto por fases",
+         "value": "blog-que-es-un-restomod"
+        },
+        {
+         "label": "Qué hace un copiloto de rally: notas, libro de ruta y controles horarios",
+         "value": "blog-que-hace-un-copiloto-de-rally"
+        }
+       ],
+       "max": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seo",
+   "label": "SEO / GEO",
+   "files": [
+    {
+     "label": "SEO de las páginas",
+     "name": "seo",
+     "file": "content/seo.json",
+     "fields": [
+      {
+       "label": "Páginas",
+       "name": "paginas",
+       "widget": "list",
+       "allow_add": false,
+       "allow_remove": false,
+       "allow_reorder": false,
+       "summary": "{{fields.nombre}}",
+       "fields": [
+        {
+         "label": "Página",
+         "name": "nombre",
+         "widget": "string",
+         "hint": "Solo informativo."
+        },
+        {
+         "label": "Archivo",
+         "name": "slug",
+         "widget": "string",
+         "hint": "No lo cambies."
+        },
+        {
+         "label": "Título SEO",
+         "name": "titulo",
+         "widget": "string",
+         "hint": "Máx. 65 caracteres. Palabra clave al principio y marca al final: Taller de pintura de coches en Madrid | Deyscom"
+        },
+        {
+         "label": "Descripción SEO",
+         "name": "descripcion",
+         "widget": "text",
+         "hint": "120-160 caracteres. Qué ofreces, dónde y una llamada a la acción."
+        },
+        {
+         "label": "H1",
+         "name": "h1",
+         "widget": "string",
+         "required": false,
+         "hint": "El encabezado principal de la página, con la búsqueda que quieres posicionar."
+        },
+        {
+         "label": "Ocultar de Google (noindex)",
+         "name": "noindex",
+         "widget": "boolean",
+         "default": false,
+         "required": false
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tienda",
+   "label": "Tienda",
+   "label_singular": "producto",
+   "files": [
+    {
+     "label": "Camiseta Edición Especial El Molar 2026",
+     "name": "camiseta-edicion-especial-el-molar-2026",
+     "file": "content/productos/camiseta-edicion-especial-el-molar-2026.json",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "Nombre corto",
+       "name": "nombre_corto",
+       "widget": "string"
+      },
+      {
+       "label": "Precio (€)",
+       "name": "precio",
+       "widget": "number",
+       "value_type": "float"
+      },
+      {
+       "label": "Etiqueta",
+       "name": "etiqueta",
+       "widget": "string",
+       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
+      },
+      {
+       "label": "Agotado",
+       "name": "agotado",
+       "widget": "boolean",
+       "default": false
+      },
+      {
+       "label": "Descripción",
+       "name": "descripcion",
+       "widget": "text"
+      },
+      {
+       "label": "Características",
+       "name": "caracteristicas",
+       "widget": "list",
+       "field": {
+        "label": "Característica",
+        "name": "item",
+        "widget": "string"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Camiseta Deyscom Motorsport",
+     "name": "camiseta-deyscom",
+     "file": "content/productos/camiseta-deyscom.json",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "Nombre corto",
+       "name": "nombre_corto",
+       "widget": "string"
+      },
+      {
+       "label": "Precio (€)",
+       "name": "precio",
+       "widget": "number",
+       "value_type": "float"
+      },
+      {
+       "label": "Etiqueta",
+       "name": "etiqueta",
+       "widget": "string",
+       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
+      },
+      {
+       "label": "Agotado",
+       "name": "agotado",
+       "widget": "boolean",
+       "default": false
+      },
+      {
+       "label": "Descripción",
+       "name": "descripcion",
+       "widget": "text"
+      },
+      {
+       "label": "Características",
+       "name": "caracteristicas",
+       "widget": "list",
+       "field": {
+        "label": "Característica",
+        "name": "item",
+        "widget": "string"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Sudadera con capucha Deyscom Motorsport",
+     "name": "sudadera-capucha-deyscom",
+     "file": "content/productos/sudadera-capucha-deyscom.json",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "Nombre corto",
+       "name": "nombre_corto",
+       "widget": "string"
+      },
+      {
+       "label": "Precio (€)",
+       "name": "precio",
+       "widget": "number",
+       "value_type": "float"
+      },
+      {
+       "label": "Etiqueta",
+       "name": "etiqueta",
+       "widget": "string",
+       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
+      },
+      {
+       "label": "Agotado",
+       "name": "agotado",
+       "widget": "boolean",
+       "default": false
+      },
+      {
+       "label": "Descripción",
+       "name": "descripcion",
+       "widget": "text"
+      },
+      {
+       "label": "Características",
+       "name": "caracteristicas",
+       "widget": "list",
+       "field": {
+        "label": "Característica",
+        "name": "item",
+        "widget": "string"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Chaqueta Deyscom Motorsport",
+     "name": "chaqueta-deyscom",
+     "file": "content/productos/chaqueta-deyscom.json",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "Nombre corto",
+       "name": "nombre_corto",
+       "widget": "string"
+      },
+      {
+       "label": "Precio (€)",
+       "name": "precio",
+       "widget": "number",
+       "value_type": "float"
+      },
+      {
+       "label": "Etiqueta",
+       "name": "etiqueta",
+       "widget": "string",
+       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
+      },
+      {
+       "label": "Agotado",
+       "name": "agotado",
+       "widget": "boolean",
+       "default": false
+      },
+      {
+       "label": "Descripción",
+       "name": "descripcion",
+       "widget": "text"
+      },
+      {
+       "label": "Características",
+       "name": "caracteristicas",
+       "widget": "list",
+       "field": {
+        "label": "Característica",
+        "name": "item",
+        "widget": "string"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Gorra Deyscom Motorsport",
+     "name": "gorra-deyscom",
+     "file": "content/productos/gorra-deyscom.json",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "Nombre corto",
+       "name": "nombre_corto",
+       "widget": "string"
+      },
+      {
+       "label": "Precio (€)",
+       "name": "precio",
+       "widget": "number",
+       "value_type": "float"
+      },
+      {
+       "label": "Etiqueta",
+       "name": "etiqueta",
+       "widget": "string",
+       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
+      },
+      {
+       "label": "Agotado",
+       "name": "agotado",
+       "widget": "boolean",
+       "default": false
+      },
+      {
+       "label": "Descripción",
+       "name": "descripcion",
+       "widget": "text"
+      },
+      {
+       "label": "Características",
+       "name": "caracteristicas",
+       "widget": "list",
+       "field": {
+        "label": "Característica",
+        "name": "item",
+        "widget": "string"
+       }
+      }
+     ]
+    },
+    {
+     "label": "Pack de pegatinas Deyscom Motorsport",
+     "name": "pegatinas-deyscom",
+     "file": "content/productos/pegatinas-deyscom.json",
+     "fields": [
+      {
+       "label": "Nombre",
+       "name": "nombre",
+       "widget": "string"
+      },
+      {
+       "label": "Nombre corto",
+       "name": "nombre_corto",
+       "widget": "string"
+      },
+      {
+       "label": "Precio (€)",
+       "name": "precio",
+       "widget": "number",
+       "value_type": "float"
+      },
+      {
+       "label": "Etiqueta",
+       "name": "etiqueta",
+       "widget": "string",
+       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
+      },
+      {
+       "label": "Agotado",
+       "name": "agotado",
+       "widget": "boolean",
+       "default": false
+      },
+      {
+       "label": "Descripción",
+       "name": "descripcion",
+       "widget": "text"
+      },
+      {
+       "label": "Características",
+       "name": "caracteristicas",
+       "widget": "list",
+       "field": {
+        "label": "Característica",
+        "name": "item",
+        "widget": "string"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ajustes",
+   "label": "Ajustes",
+   "files": [
+    {
+     "label": "Ajustes generales",
+     "name": "ajustes",
+     "file": "content/ajustes.json",
+     "fields": [
+      {
+       "label": "Teléfono (formato +34…)",
+       "name": "telefono",
+       "widget": "string"
+      },
+      {
+       "label": "Teléfono visible",
+       "name": "telefono_visible",
+       "widget": "string"
+      },
+      {
+       "label": "WhatsApp (solo números, con 34)",
+       "name": "whatsapp",
+       "widget": "string",
+       "pattern": [
+        "^[0-9]{9,15}$",
+        "Solo números, p. ej. 34615972233"
+       ]
+      },
+      {
+       "label": "Email",
+       "name": "email",
+       "widget": "string"
+      },
+      {
+       "label": "Aviso de la barra superior",
+       "name": "aviso_superior",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Mostrar",
+         "name": "activo",
+         "widget": "boolean",
+         "default": true
+        },
+        {
+         "label": "Texto",
+         "name": "texto",
+         "widget": "string"
+        },
+        {
+         "label": "Enlace",
+         "name": "enlace",
+         "widget": "string",
+         "hint": "Ej. ds-copilot-course.html"
+        }
+       ]
+      },
+      {
+       "label": "Precios de experiencias y cursos",
+       "name": "precios",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.producto}}: {{fields.precio}} €",
+       "hint": "Vacío = «Consultar».",
+       "fields": [
+        {
+         "label": "Producto",
+         "name": "producto",
+         "widget": "select",
+         "options": [
+          {
+           "label": "DS Pilot Weekend – Circuit",
+           "value": "ds-pilot-weekend-circuit"
+          },
+          {
+           "label": "DS Pilot Weekend – Rally",
+           "value": "ds-pilot-weekend-rally"
+          },
+          {
+           "label": "DS Pilot Weekend – Slalom",
+           "value": "ds-pilot-weekend-slalom"
+          },
+          {
+           "label": "DS Copilot Course",
+           "value": "ds-copilot-course"
+          }
+         ]
+        },
+        {
+         "label": "Precio (€)",
+         "name": "precio",
+         "widget": "number",
+         "required": false,
+         "value_type": "float"
+        }
+       ]
+      },
+      {
+       "label": "Enlaces de pago (Stripe, PayPal…)",
+       "name": "enlaces_pago",
+       "widget": "list",
+       "required": false,
+       "summary": "{{fields.producto}}",
+       "fields": [
+        {
+         "label": "Producto",
+         "name": "producto",
+         "widget": "select",
+         "options": [
+          {
+           "label": "DS Pilot Weekend – Circuit",
+           "value": "ds-pilot-weekend-circuit"
+          },
+          {
+           "label": "DS Pilot Weekend – Rally",
+           "value": "ds-pilot-weekend-rally"
+          },
+          {
+           "label": "DS Pilot Weekend – Slalom",
+           "value": "ds-pilot-weekend-slalom"
+          },
+          {
+           "label": "DS Copilot Course",
+           "value": "ds-copilot-course"
+          },
+          {
+           "label": "Camiseta Edición Especial El Molar 2026",
+           "value": "camiseta-edicion-especial-el-molar-2026"
+          },
+          {
+           "label": "Camiseta Deyscom Motorsport",
+           "value": "camiseta-deyscom"
+          },
+          {
+           "label": "Sudadera con capucha Deyscom Motorsport",
+           "value": "sudadera-capucha-deyscom"
+          },
+          {
+           "label": "Chaqueta Deyscom Motorsport",
+           "value": "chaqueta-deyscom"
+          },
+          {
+           "label": "Gorra Deyscom Motorsport",
+           "value": "gorra-deyscom"
+          },
+          {
+           "label": "Pack de pegatinas Deyscom Motorsport",
+           "value": "pegatinas-deyscom"
+          }
+         ]
+        },
+        {
+         "label": "URL de pago",
+         "name": "url",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "URL de Google Sheets (Apps Script /exec)",
+       "name": "sheets_endpoint",
+       "widget": "string",
+       "required": false,
+       "hint": "Conecta formularios, CRM, stock de Wallapop y fechas. Ver README."
+      },
+      {
+       "label": "Enlace para pedir reseñas en Google",
+       "name": "google_review",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "Google Analytics 4 (G-…)",
+       "name": "ga4_id",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "Google Tag Manager (GTM-…)",
+       "name": "gtm_id",
+       "widget": "string",
+       "required": false,
+       "hint": "Si lo rellenas, se usa en lugar de GA4 directo."
+      },
+      {
+       "label": "Verificación de Search Console",
+       "name": "search_console",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "Redes sociales",
+       "name": "redes",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Instagram",
+         "name": "instagram",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "Facebook",
+         "name": "facebook",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "Tiktok",
+         "name": "tiktok",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "Youtube",
+         "name": "youtube",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "Wallapop",
+         "name": "wallapop",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Equipo / autores",
+     "name": "autores",
+     "file": "content/autores.json",
+     "fields": [
+      {
+       "label": "Autores",
+       "name": "autores",
+       "widget": "list",
+       "summary": "{{fields.nombre}}",
+       "fields": [
+        {
+         "label": "Identificador",
+         "name": "id",
+         "widget": "string",
+         "pattern": [
+          "^[a-z0-9-]+$",
+          "Minúsculas y guiones"
+         ],
+         "hint": "Ej. nestor. No lo cambies si ya tiene artículos."
+        },
+        {
+         "label": "Nombre",
+         "name": "nombre",
+         "widget": "string"
+        },
+        {
+         "label": "Cargo",
+         "name": "cargo",
+         "widget": "string"
+        },
+        {
+         "label": "Ancla en Quiénes somos",
+         "name": "ancla",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "Biografía",
+         "name": "bio",
+         "widget": "text"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Patrocinadores",
+     "name": "patrocinadores",
+     "file": "content/patrocinadores.json",
+     "fields": [
+      {
+       "label": "Patrocinadores",
+       "name": "patrocinadores",
+       "widget": "list",
+       "summary": "{{fields.nombre}}",
+       "fields": [
+        {
+         "label": "Nombre",
+         "name": "nombre",
+         "widget": "string"
+        },
+        {
+         "label": "Logo (PNG transparente)",
+         "name": "logo",
+         "widget": "image",
+         "required": false,
+         "media_folder": "/assets/img/patrocinadores",
+         "public_folder": "assets/img/patrocinadores"
+        },
+        {
+         "label": "Web",
+         "name": "web",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
