@@ -25,6 +25,7 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Contacto (en el pie) | `contacto.html` |
 | Aviso legal · Privacidad · Cookies · Condiciones de compra | `aviso-legal.html`, `politica-privacidad.html`, `politica-cookies.html`, `condiciones-compra.html` |
 | Página de error | `404.html` |
+| Área privada · CRM de leads (enlace «Área privada» en el pie, fuera de Google) | `crm.html` |
 
 Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
 
@@ -141,3 +142,45 @@ Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de
   - Reseñas de clientes.
   - Enviar `sitemap.xml` en Search Console.
   - Enlaces desde federaciones, organizadores de rallies y patrocinadores.
+
+## 12. CRM y área privada (`crm.html`)
+
+Un CRM dentro de la web para ver y gestionar todos los leads. Lee y escribe en la misma hoja de Google Sheets donde llegan los formularios: no hay que pagar ningún servicio.
+
+**Qué incluye**
+- **Panel**: leads totales, del mes, sin contactar, conversión, valor en curso y ganado, leads por semana, por servicio, por origen (Google, Instagram, Ads, ChatGPT…) y por estado. También próximas acciones (con aviso de atrasadas) y últimos leads.
+- **Leads**: buscador y filtros por estado, servicio, origen y periodo. Exportación a CSV (se abre en Excel).
+- **Pipeline**: columnas Nuevo → Contactado → Presupuesto enviado → Negociación → Ganado / Perdido. Se arrastran las tarjetas para cambiar el estado.
+- **Ficha de cada lead**:
+  - Botones de WhatsApp, llamar y email.
+  - Estado, valor, próxima acción y responsable.
+  - Datos de la solicitud y origen (página, campaña, gclid…).
+  - Notas con historial de quién hizo qué y cuándo.
+- **Nuevo lead** para llamadas, visitas al taller o mensajes de Instagram.
+- **Usuarios** (solo administrador): crear usuarios y generar contraseñas nuevas.
+- **Mi cuenta**: cambiar la propia contraseña.
+
+**Roles**
+- `admin` puede hacerlo todo, incluido borrar leads y gestionar usuarios.
+- `cliente` ve y gestiona leads, pero no borra ni gestiona usuarios.
+
+**Activarlo (después del apartado 1)**
+1. En el Apps Script, busca la función `crearUsuarios` y cambia `TU_EMAIL@ejemplo.com` por tu email. El del cliente ya está puesto: `info@deyscom.com`.
+2. Elige `crearUsuarios` en el desplegable y pulsa **Ejecutar**. En **Registro de ejecución** aparecen las dos contraseñas generadas.
+   - Guárdalas: no se vuelven a mostrar.
+   - Envía la del cliente por un canal privado.
+3. Vuelve a ejecutar `setup` para crear la pestaña **Actividad**.
+4. **Implementar → Gestionar implementaciones → editar → Nueva versión**. Así la URL `/exec` se mantiene y la web la sigue usando.
+5. Entra en `https://deyscom.com/crm.html`. Hay un enlace discreto «Área privada» en el pie de la web.
+
+**Seguridad**
+- **Contraseñas:** se guardan cifradas (hash con sal), nunca en claro.
+- **Inicio de sesión:**
+  - Tras 5 intentos fallidos, el acceso se bloquea 15 minutos.
+  - La sesión caduca tras 6 h sin actividad.
+- **Datos de los formularios:**
+  - Se neutralizan para que nadie pueda colar fórmulas en la hoja.
+  - Desde la web nadie puede fijar el estado ni el valor de un lead.
+- **Buscadores:** `crm.html` no se indexa (`noindex`, `robots.txt` y cabeceras) y no está en el sitemap.
+
+Mientras `SHEETS_ENDPOINT` esté vacío, el CRM se puede probar en **modo demostración** con datos de ejemplo.

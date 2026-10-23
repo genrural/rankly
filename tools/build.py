@@ -444,7 +444,7 @@ def footer():
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> Deyscom Motorsport S.L. · Todos los derechos reservados</span>
-      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="condiciones-compra.html">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button></nav>
+      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="condiciones-compra.html">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button><a href="crm.html" rel="nofollow">Área privada</a></nav>
     </div>
   </div>
 </footer>
@@ -2596,6 +2596,169 @@ def sale_page():
     return html + footer()
 
 
+# ------------------------------------------------------------------ área privada / CRM
+def crm_page():
+    nav = [("panel", "Panel", "gauge"), ("leads", "Leads", "users"), ("pipeline", "Pipeline", "flag")]
+    nav_html = "".join(f'<button type="button" class="crm-nav__btn" data-view="{k}">{I[ic]}<span>{t}</span>{"<em id=\"crm-badge-new\" hidden></em>" if k == "leads" else ""}</button>' for k, t, ic in nav)
+    nav_html += f'<button type="button" class="crm-nav__btn" data-view="usuarios" data-admin hidden>{I["shield"]}<span>Usuarios</span></button>'
+    nav_html += f'<button type="button" class="crm-nav__btn" data-view="cuenta">{I["wrench"]}<span>Mi cuenta</span></button>'
+    estados = "".join(f"<option>{e}</option>" for e in ["Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido"])
+    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Alquiler de coche de rally", "Coches de rally en venta", "Restomod", "Pintura", "Banco de potencia",
+                                                         "DS Pilot Weekend – Circuit", "DS Pilot Weekend – Rally", "DS Pilot Weekend – Slalom", "DS Copilot Course", "Tienda", "Otro"])
+    return f"""<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Área privada · CRM Deyscom Motorsport</title>
+<meta name="description" content="Área privada de Deyscom Motorsport: gestión de leads y solicitudes recibidas desde la web.">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/crm.css?v={VERSION}">
+</head>
+<body class="crm">
+<div class="crm-login" id="crm-login">
+  <form class="crm-login__box" id="crm-login-form" autocomplete="on">
+    <a class="crm-login__logo" href="index.html" aria-label="Volver a la web">{logo_svg()}</a>
+    <h1>Área privada</h1>
+    <p class="crm-muted">Gestión de leads y solicitudes de la web.</p>
+    <label for="crm-email">Email</label>
+    <input id="crm-email" name="email" type="email" autocomplete="username" required placeholder="tu@email.com">
+    <label for="crm-pass">Contraseña</label>
+    <div class="crm-pass"><input id="crm-pass" name="password" type="password" autocomplete="current-password" required placeholder="••••••••••"><button type="button" id="crm-pass-toggle" aria-pressed="false">Ver</button></div>
+    <p class="crm-login__error" id="crm-login-error" role="alert" hidden></p>
+    <button class="cbtn cbtn--pink cbtn--block" type="submit">Entrar</button>
+    <div class="crm-login__demo" id="crm-demo-note" hidden>
+      <p>El CRM aún no está conectado a Google Sheets (ver README → «CRM y área privada»). Puedes probarlo con datos de ejemplo:</p>
+      <button class="cbtn cbtn--block" type="button" id="crm-demo">Entrar en modo demostración</button>
+    </div>
+    <p class="crm-login__foot"><a href="index.html">← Volver a deyscom.com</a></p>
+  </form>
+</div>
+
+<div class="crm-app" id="crm-app" hidden>
+  <aside class="crm-side">
+    <a class="crm-side__logo" href="index.html" aria-label="Ir a la web">{logo_svg()}</a>
+    <span class="crm-side__tag">CRM</span>
+    <nav class="crm-nav" aria-label="CRM">{nav_html}</nav>
+    <div class="crm-side__user"><b id="crm-user-name"></b><small id="crm-user-role"></small><button type="button" class="cbtn cbtn--sm cbtn--ghost" id="crm-logout">Cerrar sesión</button></div>
+  </aside>
+  <main class="crm-main">
+    <header class="crm-top">
+      <button class="crm-burger" id="crm-burger" type="button" aria-label="Menú"><span></span></button>
+      <h2 class="crm-title" id="crm-title">Panel</h2>
+      <span class="crm-demo-badge" id="crm-demo-badge" hidden>Modo demostración · datos de ejemplo</span>
+      <div class="crm-top__actions">
+        <span class="crm-muted crm-sync" id="crm-sync"></span>
+        <button class="cbtn cbtn--ghost cbtn--sm" type="button" id="crm-refresh" title="Actualizar">↻ Actualizar</button>
+        <button class="cbtn cbtn--pink cbtn--sm" type="button" data-new-lead>+ Nuevo lead</button>
+      </div>
+    </header>
+    <div class="crm-filters" id="crm-filters" hidden>
+      <input class="cin" id="f-q" type="search" placeholder="Buscar nombre, teléfono, email, coche…" aria-label="Buscar">
+      <select class="cin" id="f-estado" aria-label="Estado"></select>
+      <select class="cin" id="f-servicio" aria-label="Servicio"></select>
+      <select class="cin" id="f-origen" aria-label="Origen"></select>
+      <select class="cin" id="f-periodo" aria-label="Periodo"><option value="">Siempre</option><option value="7">Últimos 7 días</option><option value="30">Últimos 30 días</option><option value="90">Últimos 90 días</option><option value="365">Último año</option></select>
+      <button class="cbtn cbtn--ghost cbtn--sm" type="button" id="crm-export">Exportar CSV</button>
+    </div>
+
+    <section class="crm-view" id="view-panel">
+      <div class="crm-kpis" id="crm-kpis"></div>
+      <div class="crm-grid">
+        <div class="crm-box crm-box--wide"><h2>Leads por semana</h2><div id="crm-weeks"></div></div>
+        <div class="crm-box"><h2>Próximas acciones</h2><ul class="crm-list" id="crm-agenda"></ul></div>
+        <div class="crm-box"><h2>Últimos leads</h2><ul class="crm-list" id="crm-latest"></ul></div>
+        <div class="crm-box"><h2>Por servicio</h2><div id="crm-by-service"></div></div>
+        <div class="crm-box"><h2>Por origen</h2><div id="crm-by-origin"></div></div>
+        <div class="crm-box"><h2>Por estado</h2><div id="crm-by-status"></div></div>
+      </div>
+    </section>
+
+    <section class="crm-view" id="view-leads" hidden>
+      <p class="crm-muted" id="crm-count"></p>
+      <div class="crm-table-wrap"><table class="crm-table" id="crm-table">
+        <thead><tr><th>Fecha</th><th>Nombre</th><th>Contacto</th><th>Servicio</th><th>Estado</th><th>Valor</th><th>Próxima acción</th><th>Origen</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </section>
+
+    <section class="crm-view" id="view-pipeline" hidden>
+      <p class="crm-muted crm-hint">Arrastra las tarjetas entre columnas para cambiar el estado (en el móvil, ábrelas y cambia el estado).</p>
+      <div class="crm-board" id="crm-board"></div>
+    </section>
+
+    <section class="crm-view" id="view-usuarios" hidden>
+      <div class="crm-box">
+        <h2>Usuarios con acceso</h2>
+        <div class="crm-table-wrap"><table class="crm-table crm-table--plain"><thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Estado</th><th></th></tr></thead><tbody id="crm-users"></tbody></table></div>
+        <div class="crm-newpass" id="crm-newpass" role="status" hidden></div>
+      </div>
+      <form class="crm-box crm-form" id="crm-user-form">
+        <h2>Añadir usuario</h2>
+        <div class="dw-grid">
+          <label>Nombre<input class="cin" name="nombre" required></label>
+          <label>Email<input class="cin" name="email" type="email" required></label>
+          <label>Rol<select class="cin" name="rol"><option value="cliente">Cliente (ve y gestiona leads)</option><option value="admin">Administrador (todo)</option></select></label>
+        </div>
+        <button class="cbtn cbtn--pink" type="submit">Crear y generar contraseña</button>
+      </form>
+    </section>
+
+    <section class="crm-view" id="view-cuenta" hidden>
+      <form class="crm-box crm-form" id="crm-pass-form">
+        <h2>Cambiar mi contraseña</h2>
+        <div class="dw-grid">
+          <label class="dw-full">Contraseña actual<input class="cin" name="current" type="password" autocomplete="current-password" required></label>
+          <label>Nueva contraseña (mín. 10)<input class="cin" name="next" type="password" minlength="10" autocomplete="new-password" required></label>
+          <label>Repite la nueva<input class="cin" name="repeat" type="password" minlength="10" autocomplete="new-password" required></label>
+        </div>
+        <button class="cbtn cbtn--pink" type="submit">Cambiar contraseña</button>
+      </form>
+      <div class="crm-box"><h2>Sesión</h2><p class="crm-muted">La sesión se cierra sola tras 6 horas sin actividad. Si usas un ordenador compartido, pulsa «Cerrar sesión» al terminar.</p>
+        <button class="cbtn cbtn--ghost cbtn--sm" type="button" id="crm-demo-reset">Reiniciar datos de ejemplo (solo modo demo)</button></div>
+    </section>
+  </main>
+</div>
+
+<div class="crm-overlay" id="crm-overlay"></div>
+<aside class="crm-drawer" id="crm-drawer" aria-hidden="true" aria-labelledby="crm-drawer-title" role="dialog">
+  <button class="crm-drawer__close" id="crm-drawer-close" type="button" aria-label="Cerrar ficha">✕</button>
+  <div id="crm-drawer-body"></div>
+</aside>
+
+<dialog class="crm-dialog" id="crm-new">
+  <form id="crm-new-form" class="crm-form">
+    <h2>Nuevo lead</h2>
+    <p class="crm-muted">Para llamadas, visitas al taller o mensajes que no llegan por la web.</p>
+    <div class="dw-grid">
+      <label>Nombre *<input class="cin" name="nombre" required></label>
+      <label>Teléfono<input class="cin" name="telefono" type="tel"></label>
+      <label>Email<input class="cin" name="email" type="email"></label>
+      <label>Servicio<select class="cin" name="servicio">{servicios}</select></label>
+      <label>Origen<select class="cin" name="origen"><option>Teléfono</option><option>WhatsApp</option><option>Visita al taller</option><option>Instagram</option><option>Recomendación</option><option>Evento / carrera</option><option>Otro</option></select></label>
+      <label>Estado<select class="cin" name="estado">{estados}</select></label>
+      <label>Vehículo<input class="cin" name="vehiculo"></label>
+      <label>Valor estimado (€)<input class="cin" name="valor" inputmode="decimal"></label>
+      <label class="dw-full">Mensaje / notas<textarea class="cin" name="mensaje" rows="3"></textarea></label>
+    </div>
+    <div class="crm-dialog__btns"><button class="cbtn cbtn--ghost" type="button" id="crm-new-cancel">Cancelar</button><button class="cbtn cbtn--pink" type="submit">Crear lead</button></div>
+  </form>
+</dialog>
+<div class="crm-toast" id="crm-toast" role="status" aria-live="polite"></div>
+<script src="assets/js/config.js?v={VERSION}"></script>
+<script src="assets/js/crm.js?v={VERSION}"></script>
+</body>
+</html>
+"""
+
+
 LLMS_TXT = f"""# Deyscom Motorsport
 
 > Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
@@ -2689,6 +2852,7 @@ def main():
     pages["alquiler-coche-de-rally"] = rental_page()
     pages["coches-de-rally-en-venta"] = sale_page()
     pages["blog"] = blog_index()
+    pages["crm"] = crm_page()
     for pp in POSTS:
         pages[pp["slug"]] = blog_post(pp)
     (ROOT / "llms.txt").write_text(LLMS_TXT, encoding="utf-8")
@@ -2711,12 +2875,12 @@ def main():
         return "".join(found[:20])
     urls = "".join(
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
-        for n in pages if n not in ("404", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
+        for n in pages if n not in ("404", "crm", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
     ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot",
                "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot", "meta-externalagent", "Amazonbot", "DuckAssistBot", "MistralAI-User"]
-    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\n"
-    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\n"
+    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\n\n"
+    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\n\n"
     robots += f"Sitemap: {SITE}/sitemap.xml\n# Resumen para modelos de lenguaje: {SITE}/llms.txt\n"
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))

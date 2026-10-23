@@ -5,7 +5,8 @@
    ========================================================= */
 window.DEYSCOM = {
   // URL del Web App de Google Apps Script (ver README.md → "Conectar formularios a Google Sheets").
-  // Mientras esté vacío, los formularios abren WhatsApp con los datos rellenados para no perder ningún lead.
+  // Mientras esté vacío, los formularios abren WhatsApp con los datos rellenados para no perder ningún lead
+  // y el CRM (crm.html) solo funciona en modo demostración.
   SHEETS_ENDPOINT: "",
 
   phone: "+34615972233",

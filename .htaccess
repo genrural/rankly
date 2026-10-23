@@ -37,3 +37,11 @@ RewriteRule ^(tools|google-apps-script)/ - [F,L]
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
+
+# Área privada (CRM): fuera de buscadores y sin caché
+<Files "crm.html">
+  <IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+    Header set Cache-Control "no-store"
+  </IfModule>
+</Files>

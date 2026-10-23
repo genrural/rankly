@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /google-apps-script/
 Disallow: /tools/
+Disallow: /crm.html
 
 # Buscadores y asistentes de IA: bienvenidos (GEO)
 User-agent: GPTBot
@@ -24,6 +25,7 @@ User-agent: MistralAI-User
 Allow: /
 Disallow: /google-apps-script/
 Disallow: /tools/
+Disallow: /crm.html
 
 Sitemap: https://deyscom.com/sitemap.xml
 # Resumen para modelos de lenguaje: https://deyscom.com/llms.txt
