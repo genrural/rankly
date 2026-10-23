@@ -6,7 +6,7 @@
 - Teléfono y WhatsApp: (+34) 615 97 22 33
 - Email: info@deyscom.com
 - Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
-- Propietario: Néstor Aguado. Marketing: Héctor Guzmán.
+- Propietario y fundador: Néstor Aguado. Marketing: Héctor Guzmán. Detrás hay un equipo de mecánicos, chapistas, pintores, técnicos de asistencia y formadores.
 - Primer rally del equipo: II Rallye Comunidad de Madrid – El Molar 2026, con un Peugeot 206.
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
@@ -15,6 +15,15 @@
 - [Restomod](https://deyscom.com/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
 - [Pintura](https://deyscom.com/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
 - [Banco de potencia](https://deyscom.com/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
+- [Alquiler de coche de rally](https://deyscom.com/alquiler-coche-de-rally.html): Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparados, con asistencia, para rally, rallysprint y slalom.
+- [Coches de rally en venta](https://deyscom.com/coches-de-rally-en-venta.html): coches de competición y piezas revisados por el taller (stock en Wallapop) y búsqueda a medida.
+
+## Zona de servicio
+Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
+
+## Datos de empresa
+- Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · fundada en 2022
+- Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
 ## Experiencias y formación
 - [DS Pilot Weekend – Circuit](https://deyscom.com/ds-pilot-weekend-circuit.html): fin de semana como piloto en el Circuito del Jarama.
@@ -26,6 +35,11 @@
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
 
 ## Blog
+- [Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno](https://deyscom.com/blog-coche-de-rally-que-es-y-categorias.html): Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+- [Slalom de coches: qué es, cómo funciona y cómo empezar a competir](https://deyscom.com/blog-slalom-de-coches-que-es.html): Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+- [Circuito del Jarama: historia, trazado y cómo rodar en tandas](https://deyscom.com/blog-circuito-del-jarama-tandas.html): Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+- [Cuánto cuesta pintar un coche: factores que cambian el precio](https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche.html): De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
+- [Reformas en la ITV y vehículos históricos: guía práctica 2026](https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos.html): Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
 - [Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto](https://deyscom.com/blog-como-empezar-en-los-rallies.html): Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
 - [Qué hace un copiloto de rally: notas, libro de ruta y controles horarios](https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html): Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
 - [Banco de potencia: qué mide y cómo leer la curva de potencia y par](https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva.html): Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.

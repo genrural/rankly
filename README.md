@@ -9,6 +9,8 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 |---|---|
 | Inicio (promo DS Copilot Course, servicios, experiencias, tienda, presupuesto por pasos) | `index.html` |
 | Coches de competición | `competicion.html` |
+| Alquiler de coche de rally | `alquiler-coche-de-rally.html` |
+| Coches de rally en venta | `coches-de-rally-en-venta.html` |
 | Restomod | `restomod.html` |
 | Pintura (con comparador cabina / terminado) | `pintura.html` |
 | Banco de potencia | `banco-de-potencia.html` |
@@ -18,7 +20,7 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | DS Copilot Course (compra de plaza) | `ds-copilot-course.html` |
 | Tienda: merchandising + coches en venta (Wallapop) | `tienda.html` |
 | Fichas de producto | `camiseta-edicion-especial-el-molar-2026.html`, `camiseta-deyscom.html`, `sudadera-capucha-deyscom.html`, `chaqueta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |
-| Blog (4 artículos) | `blog.html`, `blog-como-empezar-en-los-rallies.html`, `blog-que-hace-un-copiloto-de-rally.html`, `blog-banco-de-potencia-como-leer-la-curva.html`, `blog-que-es-un-restomod.html` |
+| Blog (9 artículos) | `blog.html`, `blog-coche-de-rally-que-es-y-categorias.html`, `blog-slalom-de-coches-que-es.html`, `blog-circuito-del-jarama-tandas.html`, `blog-cuanto-cuesta-pintar-un-coche.html`, `blog-reformas-itv-y-vehiculos-historicos.html`, `blog-como-empezar-en-los-rallies.html`, `blog-que-hace-un-copiloto-de-rally.html`, `blog-banco-de-potencia-como-leer-la-curva.html`, `blog-que-es-un-restomod.html` |
 | Quiénes somos (en el pie) | `nosotros.html` |
 | Contacto (en el pie) | `contacto.html` |
 | Aviso legal · Privacidad · Cookies · Condiciones de compra | `aviso-legal.html`, `politica-privacidad.html`, `politica-cookies.html`, `condiciones-compra.html` |
@@ -121,3 +123,21 @@ Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de
 - Verificación de **Google Search Console** incluida en todas las páginas (`GSC_VERIFICATION`). Tras publicar, enviad `https://deyscom.com/sitemap.xml` (incluye las imágenes).
 - Eventos enviados a GA4: `generate_lead` (formularios, con el nombre del formulario), `whatsapp_click`, `phone_click`, `email_click`, `begin_checkout`, `form_step` y `consent_update`. Marcad `generate_lead`, `whatsapp_click` y `phone_click` como **eventos clave** en GA4.
 - `.htaccess` (Apache) y `_headers` (Netlify/Cloudflare): HTTPS, caché, compresión y cabeceras de seguridad. En `.htaccess` hay un hueco para las **redirecciones 301 de la web antigua**.
+
+## 11. SEO local y GEO (buscadores con IA)
+
+- **Palabra clave en cada H1**: cada página tiene un H1 con su búsqueda principal (p. ej. «Taller de pintura de coches en Madrid») y el eslogan grande queda como diseño. Se editan en `H1` dentro de `tools/build.py`; los títulos y descripciones, en `META`.
+- **Migas de pan visibles** + `BreadcrumbList`, y un `WebPage` en JSON-LD en todas las páginas.
+- **Contenido SEO por página** en `tools/seo_content.py`:
+  - `FACTS`: el bloque «Datos clave», con respuestas directas que los buscadores con IA pueden citar.
+  - `GUIDES`: guías con títulos en forma de pregunta.
+  - `RELATED`: artículos del blog enlazados en cada página.
+  - `AREA`: municipios de la zona de servicio. Se usan en el texto y en el `areaServed` del schema.
+- **Páginas nuevas**: `alquiler-coche-de-rally.html` y `coches-de-rally-en-venta.html` (submenú de Competición).
+- **Blog**: 9 artículos. Los 5 nuevos atacan las búsquedas con más volumen: coche de rally, slalom, Circuito del Jarama, cuánto cuesta pintar un coche, y reformas ITV / vehículos históricos. Están en `tools/blog_posts_extra.py`.
+- **IA**: `robots.txt` permite explícitamente a GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. `llms.txt` es el resumen y `llms-full.txt` el texto completo de las páginas clave (se regeneran solos con cada build).
+- **Pendiente fuera de la web** (lo que más mueve el SEO local):
+  - Ficha de Google Business Profile con categoría «Taller mecánico», fotos y horario.
+  - Reseñas de clientes.
+  - Enviar `sitemap.xml` en Search Console.
+  - Enlaces desde federaciones, organizadores de rallies y patrocinadores.

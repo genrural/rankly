@@ -205,3 +205,7 @@ POSTS = [
         sources=[("Ministerio de Industria y Turismo · Manual de Reformas de Vehículos", "https://industria.gob.es")],
     ),
 ]
+
+from blog_posts_extra import EXTRA_POSTS  # noqa: E402
+
+POSTS = EXTRA_POSTS + POSTS

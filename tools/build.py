@@ -17,7 +17,7 @@ PHONE = "+34615972233"
 PHONE_TXT = "(+34) 615 97 22 33"
 EMAIL = "info@deyscom.com"
 ADDRESS = "C/ Canal de Isabel II, 2 · Nave 3 · 28180 Torrelaguna (Madrid)"
-VERSION = "3"
+VERSION = "4"
 # Etiquetas de medición. Rellena uno de los dos (GTM recomendado). Con ambos vacíos no se carga nada de Google.
 GTM_ID = ""   # p. ej. "GTM-XXXXXXX"
 GA4_ID = "G-LLGMMVL7M1"   # Google Analytics 4 · flujo deyscom.com
@@ -156,14 +156,23 @@ ORG_LD = {
     "priceRange": "€€",
     "address": {"@type": "PostalAddress", "streetAddress": "C/ Canal de Isabel II, 2, Nave 3", "postalCode": "28180",
                 "addressLocality": "Torrelaguna", "addressRegion": "Madrid", "addressCountry": "ES"},
-    "areaServed": "ES",
+    "areaServed": [{"@type": "City", "name": c} for c in ("Torrelaguna", "El Molar", "Talamanca de Jarama", "Uceda", "San Agustín del Guadalix",
+                    "Algete", "San Sebastián de los Reyes", "Alcobendas", "Colmenar Viejo", "Tres Cantos", "Madrid", "Alcalá de Henares", "Guadalajara")]
+                   + [{"@type": "AdministrativeArea", "name": "Comunidad de Madrid"}, {"@type": "Country", "name": "España"}],
+    "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{SITE}/{u}"}} for n, u in (
+        ("Preparación de coches de rally y competición", "competicion.html"), ("Restomod y restauración de coches clásicos", "restomod.html"),
+        ("Pintura de coches en cabina", "pintura.html"), ("Banco de potencia", "banco-de-potencia.html"),
+        ("Alquiler de coche de rally", "alquiler-coche-de-rally.html"), ("Experiencias de conducción DS Pilot Weekend", "experiencias.html"),
+        ("Curso de copiloto de rally DS Copilot Course", "ds-copilot-course.html"))],
+    "foundingDate": "2022",
+    "slogan": "Hechos para correr. Pensados para ti.",
     "geo": {"@type": "GeoCoordinates", "latitude": 40.8277, "longitude": -3.5381},
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Deyscom+Motorsport+Torrelaguna",
     "vatID": "ESB09939471",
     "founder": {"@type": "Person", "name": "Néstor Aguado", "url": SITE + "/nosotros.html#nestor-aguado"},
     "employee": [{"@type": "Person", "name": "Héctor Guzmán", "jobTitle": "Marketing", "url": SITE + "/nosotros.html#hector-guzman"}],
     "sponsor": [{"@type": "Organization", "name": n} for n in ("EBC Frenos", "HEL Performance", "Mishimoto", "King Elements")],
-    "knowsAbout": ["Preparación de coches de rally", "Restomod", "Pintura de automóviles", "Banco de potencia", "Formación de copilotos de rally"],
+    "knowsAbout": ["Preparación de coches de rally", "Coches de rally", "Slalom", "Rallysprint", "Circuito del Jarama", "Restomod", "Restauración de coches clásicos", "Reformas de vehículos e ITV", "Vehículos históricos", "Pintura de automóviles", "Cabina de pintura", "Banco de potencia", "Formación de copilotos de rally"],
     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
                                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                                    "opens": "07:00", "closes": "15:00"}],
@@ -218,7 +227,12 @@ META = {
     "contacto": ("Contacto · Deyscom Motorsport, Torrelaguna (Madrid)", "Contacta con Deyscom Motorsport: (+34) 615 97 22 33, info@deyscom.com. C/ Canal de Isabel II, 2 Nave 3, Torrelaguna. L-V de 07:00 a 15:00."),
 }
 
+META.update({'index': ('Taller motorsport en Madrid · Deyscom Motorsport (Torrelaguna)', 'Taller motorsport en Torrelaguna (Madrid): preparación de coches de rally y competición, restomod, taller de pintura en cabina, banco de potencia y experiencias.'), 'competicion': ('Preparación de coches de rally y competición en Madrid | Deyscom', 'Taller de coches de rally en Madrid: preparación, jaulas de seguridad, set-up, asistencia en carrera, alquiler de coche de rally y coches en venta.'), 'restomod': ('Restomod y restauración de coches clásicos en Madrid | Deyscom', 'Restomod en Madrid: restauración de coches clásicos y 4x4 con mecánica moderna, frenos, interior y pintura. Proyectos por fases y reformas ITV.'), 'pintura': ('Taller de pintura de coches en Madrid · Cabina | Deyscom', 'Taller de pintura de coches en Madrid: pintura en cabina, chapa, chasis y decoraciones racing. ¿Cuánto cuesta pintar un coche? Presupuesto sin compromiso.'), 'banco-de-potencia': ('Banco de potencia en Madrid: mide CV y par | Deyscom', 'Banco de potencia para coche en Torrelaguna (Madrid): mide los CV y el par reales, diagnostica pérdidas y compara antes y después de modificar.'), 'experiencias': ('Experiencias de conducción: Jarama, rally y slalom | Deyscom', 'Experiencias de conducción en Madrid: conduce en el Circuito del Jarama, corre un rally federado o haz slalom con nuestro Peugeot 206 o BMW E36.'), 'ds-pilot-weekend-circuit': ('Conducir en el Jarama · Experiencia de piloto | Deyscom', 'Experiencia en el Circuito del Jarama: un fin de semana como piloto con coche de competición, briefing, tandas en pista y equipo Deyscom.'), 'ds-pilot-weekend-rally': ('Experiencia de rally: corre un rally federado | Deyscom', 'Corre un rally federado con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Coche de rally, asistencia y equipo incluidos.'), 'ds-pilot-weekend-slalom': ('Slalom de coches · Experiencia con 206 o BMW E36 | Deyscom', 'Experiencia de slalom de coches con el Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. Conos, cronómetro y consejos del equipo Deyscom.'), 'ds-copilot-course': ('Curso de copiloto de rally certificado · DS Copilot Course', 'Curso de copiloto de rally de fin de semana: notas, libro de ruta y controles horarios, práctica en tramo cerrado en Guadalajara y diploma.'), 'tienda': ('Tienda Deyscom: camisetas de rally, merch y coches en venta', 'Tienda Deyscom Motorsport: camisetas de rally, sudaderas, gorras, edición especial El Molar 2026 y coches de rally en venta revisados por el taller.'), 'camiseta-deyscom': ('Camiseta de rally Deyscom Motorsport negra · Tienda oficial', 'Camiseta de rally oficial negra de Deyscom Motorsport con logo pequeño en el pecho y logo grande en la espalda. Envío o recogida en el taller.'), 'blog': ('Blog de motorsport: rally, slalom, pintura y técnica | Deyscom', 'Guías del taller Deyscom: coches de rally, slalom, Circuito del Jarama, cuánto cuesta pintar un coche, reformas ITV, copilotos y banco de potencia.'), 'contacto': ('Contacto · Taller motorsport en Torrelaguna (Madrid) | Deyscom', 'Contacta con Deyscom Motorsport: (+34) 615 97 22 33, info@deyscom.com. C/ Canal de Isabel II, 2 Nave 3, Torrelaguna. L-V de 07:00 a 15:00.'), 'alquiler-coche-de-rally': ('Alquiler de coche de rally en Madrid · 206 y BMW E36 | Deyscom', 'Alquila un coche de rally en Madrid: Peugeot 206 1.6 XS de 118 CV o BMW E36 de 135 CV preparados, con asistencia y ayuda con inscripción y licencia.'), 'coches-de-rally-en-venta': ('Coches de rally en venta y de segunda mano | Deyscom Motorsport', 'Coches de rally en venta y de segunda mano revisados por el taller Deyscom Motorsport (Madrid). Stock en Wallapop y búsqueda a medida de tu coche.'), 'blog-coche-de-rally-que-es-y-categorias': ('Coche de rally: qué es, categorías Rally1 a Rally5 y cuál elegir', 'Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5 y cómo elegir uno de segunda mano para empezar.'), 'blog-slalom-de-coches-que-es': ('Slalom de coches: qué es, cómo funciona y cómo empezar', 'Qué es el slalom de coches, cómo es una prueba con conos, mangas y penalizaciones, qué coche y licencia necesitas y por qué es ideal para empezar.'), 'blog-circuito-del-jarama-tandas': ('Circuito del Jarama: historia, trazado y cómo rodar en tandas', 'Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas y qué necesitas para conducir en el Jarama.'), 'blog-cuanto-cuesta-pintar-un-coche': ('Cuánto cuesta pintar un coche: de qué depende el precio', 'Pintar coche precio: qué factores cambian el presupuesto (chapa, tamaño, tipo de pintura, cambio de color, cabina) y cómo pedir uno fiable.'), 'blog-reformas-itv-y-vehiculos-historicos': ('Reformas ITV y vehículos históricos: guía práctica 2026', 'Cómo legalizar reformas en la ITV (RD 866/2010 y Manual de Reformas) y qué exige el Reglamento de Vehículos Históricos, Real Decreto 892/2024.')})
+
+
 def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
+    global CURRENT_SLUG
+    CURRENT_SLUG = slug
     title, desc = META.get(slug, (title, desc))
     PAGES_META[slug] = (title, desc)
     canonical = f"{SITE}/" + ("" if slug == "index" else f"{slug}.html")
@@ -227,7 +241,12 @@ def head(title, desc, slug, topic, image="og", extra_ld=(), keywords=""):
     if image != "og":
         b = f"assets/img/fotos/{image}"
         preload = f'<link rel="preload" as="image" type="image/webp" imagesrcset="{b}-800.webp 800w, {b}.webp 1600w" imagesizes="100vw">\n'
-    lds = ld(ORG_LD) + "".join(ld(x) for x in extra_ld)
+    webpage = {"@context": "https://schema.org", "@type": "WebPage", "@id": canonical + "#webpage", "url": canonical, "name": title,
+               "description": desc, "inLanguage": "es-ES", "isPartOf": {"@id": SITE + "/#web"}, "about": {"@id": SITE + "/#organizacion"},
+               "primaryImageOfPage": {"@type": "ImageObject", "url": og}, "dateModified": TODAY}
+    if slug in H1:
+        webpage["headline"] = re.sub(r"<[^>]+>", "", H1[slug])
+    lds = ld(ORG_LD) + ld(webpage) + "".join(ld(x) for x in extra_ld)
     return f"""<!doctype html>
 <html lang="es-ES">
 <head>
@@ -333,6 +352,9 @@ MENU_CAPTION = {
 def subnav():
     """Submenús del menú principal (se calculan en tiempo de ejecución)."""
     return {
+        "competicion.html": ([("competicion.html#preparacion", "Preparación", "Coches de rally, slalom y circuito"),
+                              ("alquiler-coche-de-rally.html", "Alquiler de coche de rally", "Peugeot 206 o BMW E36 listos para correr"),
+                              ("coches-de-rally-en-venta.html", "Coches de rally en venta", "Revisados por nuestro taller")], "Ver competición"),
         "experiencias.html": ([(f"{k}.html", e["name"], MENU_CAPTION.get(k, e["tag"])) for k, e in EXPERIENCES.items()], "Ver todas las experiencias"),
         "cursos.html": ([(f"{COURSE['slug']}.html", COURSE["name"], "Curso de copiloto con certificación")], "Ver todos los cursos"),
     }
@@ -387,7 +409,7 @@ def header(slug):
 
 
 def footer():
-    col1 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV[:4])
+    col1 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV[:4] + [("alquiler-coche-de-rally.html", "Alquiler de coche de rally"), ("coches-de-rally-en-venta.html", "Coches de rally en venta")])
     col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [
         ("experiencias.html", "Experiencias"), ("ds-pilot-weekend-circuit.html", "DS Pilot Weekend · Circuit"),
         ("ds-pilot-weekend-rally.html", "DS Pilot Weekend · Rally"), ("ds-pilot-weekend-slalom.html", "DS Pilot Weekend · Slalom"),
@@ -464,18 +486,63 @@ def ticker(words, dark=False):
     return f'<div class="ticker{" ticker--dark" if dark else ""}"><div class="ticker__track">{items}</div></div>'
 
 
+CURRENT_SLUG = "index"
+# H1 de cada página: la palabra clave principal (el eslogan grande queda como diseño)
+H1 = {
+    "index": "Taller motorsport en Madrid · Competición, restomod, pintura y banco de potencia",
+    "competicion": "Preparación de coches de competición y rally en Madrid",
+    "restomod": "Restomod y restauración de coches clásicos en Madrid",
+    "pintura": "Taller de pintura de coches en Madrid",
+    "banco-de-potencia": "Banco de potencia en Madrid",
+    "experiencias": "Experiencias de conducción en circuito, rally y slalom",
+    "ds-pilot-weekend-circuit": "Experiencia de piloto en el Circuito del Jarama",
+    "ds-pilot-weekend-rally": "Experiencia de rally: corre un rally federado",
+    "ds-pilot-weekend-slalom": "Experiencia de slalom con coche de competición",
+    "cursos": "Cursos de motorsport en Madrid",
+    "ds-copilot-course": "Curso de copiloto de rally con certificación",
+    "tienda": "Tienda Deyscom Motorsport: merchandising y coches de rally",
+    "nosotros": "Quiénes somos: Deyscom Motorsport, taller de Torrelaguna",
+    "alquiler-coche-de-rally": "Alquiler de coche de rally en Madrid",
+    "coches-de-rally-en-venta": "Coches de rally en venta",
+}
+# Migas visibles (además del BreadcrumbList en JSON-LD)
+PARENTS = {
+    "competicion": [], "restomod": [], "pintura": [], "banco-de-potencia": [], "experiencias": [], "cursos": [], "tienda": [], "nosotros": [],
+    "ds-pilot-weekend-circuit": [("experiencias.html", "Experiencias")], "ds-pilot-weekend-rally": [("experiencias.html", "Experiencias")],
+    "ds-pilot-weekend-slalom": [("experiencias.html", "Experiencias")], "ds-copilot-course": [("cursos.html", "Cursos")],
+    "alquiler-coche-de-rally": [("competicion.html", "Competición")], "coches-de-rally-en-venta": [("competicion.html", "Competición")],
+    "contacto": [], "blog": [],
+}
+CRUMB_NAME = {"competicion": "Competición", "restomod": "Restomod", "pintura": "Pintura", "banco-de-potencia": "Banco de potencia",
+              "experiencias": "Experiencias", "cursos": "Cursos", "tienda": "Tienda", "nosotros": "Quiénes somos",
+              "ds-pilot-weekend-circuit": "Circuit", "ds-pilot-weekend-rally": "Rally", "ds-pilot-weekend-slalom": "Slalom",
+              "ds-copilot-course": "DS Copilot Course", "contacto": "Contacto", "blog": "Blog", "alquiler-coche-de-rally": "Alquiler de coche de rally", "coches-de-rally-en-venta": "Coches en venta"}
+
+
+def crumbs_html(slug):
+    if slug not in PARENTS:
+        return ""
+    parts = ['<a href="index.html">Inicio</a>'] + [f'<a href="{h}">{n}</a>' for h, n in PARENTS[slug]] + [f'<span aria-current="page">{CRUMB_NAME[slug]}</span>']
+    return f'<nav class="crumbs hero__crumbs" aria-label="Migas de pan">{" / ".join(parts)}</nav>\n    '
+
+
 def hero(eyebrow, lines, lead, number, img, chips, topic, cta=("Pide presupuesto", "#presupuesto"), page=True, h1_extra=""):
     h1 = "".join(f'<span class="line"><span>{l}</span></span>' for l in lines)
     chips_html = "".join(f'<span class="chip">{c}</span>' for c in chips)
     photo = pic(img, eager=True, sizes="100vw") if img in IMG else ""
+    kw = H1.get(CURRENT_SLUG)
+    crumbs = crumbs_html(CURRENT_SLUG)
+    if kw:
+        title_block = f'{crumbs}<h1 class="hero__kw">{kw}</h1>\n    <p class="hero__slogan">{h1}</p>'
+    else:
+        title_block = f'<span class="eyebrow">{eyebrow}</span>\n    <h1{h1_extra}>{h1}</h1>'
     return f"""<section class="hero{" page-hero" if page else ""}">
   <div class="hero__bg">{photo}</div>
   <div class="hero__grid"></div>
   <div class="hero__speed" aria-hidden="true"></div>
   <div class="hero__number" aria-hidden="true">{number}</div>
   <div class="container hero__inner">
-    <span class="eyebrow">{eyebrow}</span>
-    <h1{h1_extra}>{h1}</h1>
+    {title_block}
     <div class="hero__bottom">
       <div>
         <p class="lead">{lead}</p>
@@ -836,8 +903,29 @@ SERVICES = {
 }
 
 
+SERVICE_AREA = {"competicion": "preparación y asistencia de coches de rally y competición", "restomod": "restomod y restauración de coches clásicos",
+                "pintura": "pintura de coches en cabina, chapa y decoraciones", "banco-de-potencia": "mediciones en banco de potencia"}
+
+
+def cross_block():
+    """Accesos a alquiler y coches en venta desde Competición."""
+    items = [("alquiler-coche-de-rally.html", "Alquiler de coche de rally", "Peugeot 206 1.6 XS o BMW E36 preparados, con asistencia.", "peugeot-206-rally-tierra-deyscom-motorsport", "ALQUILER"),
+             ("coches-de-rally-en-venta.html", "Coches de rally en venta", "Coches revisados por el taller y búsqueda a medida.", "mitsubishi-lancer-evo-rally-taller-deyscom", "VENTA"),
+             ("ds-pilot-weekend-rally.html", "Corre un rally federado", "DS Pilot Weekend – Rally: coche, inscripción y equipo.", "peugeot-206-rally-el-molar-tramo", "RALLY")]
+    cards_ = "".join(f'<a class="svc reveal" data-delay="{i}" href="{h}"><div class="svc__media">{art(w, "60%", "30%", img, t, "(max-width: 980px) 100vw, 33vw")}</div>'
+                     f'<h3>{t}</h3><p>{d}</p><span class="svc__go">Descubrir {I["arrow"]}</span></a>' for i, (h, t, d, img, w) in enumerate(items))
+    return f"""<section class="section section--ink">
+  <div class="container">
+    {section_head("¿Sin coche propio?", "Alquila, compra <span class='outline'>o corre</span>", "Tres formas de estar en la salida del próximo tramo.")}
+    <div class="services services--3">{cards_}</div>
+  </div>
+</section>"""
+
+
 def service_page(slug):
-    s = SERVICES[slug]
+    s = dict(SERVICES[slug])
+    s["area"] = SERVICE_AREA.get(slug, "nuestros servicios")
+    s["cross"] = cross_block() if slug == "competicion" else ""
     e, t, body, label, img, tag, *rest = s["intro"]
     rev = rest[0] if rest else False
     x = rest[1] if len(rest) > 1 else "60%"
@@ -857,13 +945,15 @@ def service_page(slug):
   </div>
 </section>"""
     service_ld = {"@context": "https://schema.org", "@type": "Service", "name": s["name"], "serviceType": s["name"],
-                  "description": s["desc"], "provider": {"@id": SITE + "/#organizacion"}, "areaServed": "ES",
+                  "description": s["desc"], "provider": {"@id": SITE + "/#organizacion"},
+                  "areaServed": [{"@type": "City", "name": c} for c in AREA[:-1]] + [{"@type": "Country", "name": "España"}],
                   "image": img_url(s["hero"]), "url": f"{SITE}/{slug}.html"}
     html = head(s["title"], s["desc"], slug, s["topic"], s["hero"],
                 [service_ld, breadcrumbs_ld(slug, s["name"]), faq_ld(s["faq"])], s["keywords"]) + header(slug)
     html += hero(s["eyebrow"], s["lines"], s["lead"], s["number"], s["hero"], s["chips"], s["topic"])
     html += ticker(s["ticker"])
-    html += f'<section class="section"><div class="container">{split(e, t, body, label, img, tag, rev, x)}</div></section>'
+    html += f'<section class="section" id="preparacion"><div class="container">{split(e, t, body, label, img, tag, rev, x)}</div></section>'
+    html += facts_box(slug)
     html += f"""<section class="section section--ink">
   <div class="container">
     {section_head("Qué hacemos", "Todo lo que <span class='outline'>necesitas</span>", "Un solo taller para todo el proyecto. Sin intermediarios, sin sorpresas y con trato directo con quien trabaja en tu coche.")}
@@ -877,6 +967,8 @@ def service_page(slug):
   </div>
 </section>
 {extra}
+{guides_section(slug)}
+{s.get("cross", "")}
 <section class="section">
   <div class="container">
     {section_head("Trabajos reales", "Desde <span class='outline'>el taller</span>", "Más proyectos cada semana en nuestro <a class='pink' data-social='instagram' href='#'>Instagram</a> y <a class='pink' data-social='tiktok' href='#'>TikTok</a>.")}
@@ -890,6 +982,8 @@ def service_page(slug):
     {faq(s["faq"])}
   </div>
 </section>
+{related_section(slug)}
+{area_section(s["area"])}
 {mega_cta(s["mega"], "Escríbenos hoy y te respondemos en menos de 24 h laborables.", s["topic"])}
 """
     return html + footer()
@@ -1085,7 +1179,8 @@ def experience_page(slug):
     e = EXPERIENCES[slug]
     product_ld = {"@context": "https://schema.org", "@type": "Product", "name": e["name"], "description": e["desc"],
                   "image": img_url(e["hero"]), "brand": {"@type": "Brand", "name": "Deyscom Motorsport"}, "category": "Experiencia de conducción",
-                  "url": f"{SITE}/{slug}.html"}
+                  "url": f"{SITE}/{slug}.html", "isRelatedTo": {"@id": SITE + "/#organizacion"},
+                  "additionalProperty": [{"@type": "PropertyValue", "name": "Lugar", "value": e["tag"]}, {"@type": "PropertyValue", "name": "Duración", "value": "Fin de semana"}]}
     if PRICES.get(slug):
         product_ld["offers"] = {"@type": "Offer", "price": str(PRICES[slug]), "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "url": f"{SITE}/{slug}.html"}
     html = head(e["title"], e["desc"], slug, e["name"], e["hero"],
@@ -1125,6 +1220,7 @@ def experience_page(slug):
     {faq(e["faq"])}
   </div>
 </section>
+{related_section(slug)}
 <section class="section section--ink section--tight">
   <div class="container">
     {section_head("Más experiencias", "Sigue <span class='outline'>acelerando</span>")}
@@ -1170,6 +1266,8 @@ def experiencias():
     <div class="process">{process([("Reserva", "Elige experiencia y déjanos tus datos."), ("Confirmamos", "Te damos fecha, precio y todos los detalles."), ("Preparamos", "Coche, inscripción y equipo listos para ti."), ("Pilotas", "Vive el fin de semana como un piloto más.")], "Paso")}</div>
   </div>
 </section>
+{facts_box("experiencias")}
+{guides_section("experiencias", "Cómo elegir", "¿Circuito, rally <span class='outline'>o slalom?</span>")}
 {course_promo(compact=True)}
 <section class="section">
   <div class="container">
@@ -1177,6 +1275,7 @@ def experiencias():
     {faq(faqs)}
   </div>
 </section>
+{related_section("experiencias")}
 {mega_cta("Regala <span class='outline'>adrenalina</span>", "Las experiencias DS Pilot Weekend son el regalo perfecto para cualquier apasionado del motor.", "regalar una experiencia DS Pilot Weekend", ("Ver experiencias", "#experiencias"))}
 """
     return html + footer()
@@ -1220,8 +1319,11 @@ def course_page():
                 ("shield", "Reglamento y seguridad", "Normativa básica, equipamiento y protocolos de seguridad."),
                 ("users", "Comunicación y presión", "Comunicación con el piloto, gestión del estrés y de los imprevistos.")]
     course_ld = {"@context": "https://schema.org", "@type": "Course", "name": c["name"], "description": c["desc"],
-                 "provider": {"@type": "Organization", "name": "Deyscom Motorsport", "sameAs": SITE + "/"},
+                 "provider": {"@id": SITE + "/#organizacion", "@type": "Organization", "name": "Deyscom Motorsport", "url": SITE + "/"},
                  "image": img_url(c["hero"]), "url": f"{SITE}/{slug}.html", "inLanguage": "es", "educationalCredentialAwarded": "Diploma Deyscom Motorsport",
+                 "coursePrerequisites": "Ninguno: apto para quien empieza desde cero, copilotos y pilotos.",
+                 "teaches": ["Toma y dictado de notas de rally", "Lectura del libro de ruta", "Carnet de control y controles horarios", "Reglamento y seguridad en rally", "Comunicación piloto-copiloto"],
+                 "timeRequired": "P2D", "educationalLevel": "Iniciación", "audience": {"@type": "Audience", "audienceType": "Copilotos y pilotos de rally"},
                  "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "onsite", "courseWorkload": "PT2D",
                                        "location": {"@type": "Place", "name": "Tramo cerrado", "address": {"@type": "PostalAddress", "addressRegion": "Guadalajara", "addressCountry": "ES"}}}}
     if PRICES.get(slug):
@@ -1284,6 +1386,7 @@ def course_page():
     {faq(faqs)}
   </div>
 </section>
+{related_section(slug)}
 {mega_cta("Tu piloto <span class='outline'>te espera</span>", "Plazas limitadas en cada edición del DS Copilot Course.", "el DS Copilot Course", ("Comprar mi plaza", "#reserva"))}
 """
     return html + footer()
@@ -1519,7 +1622,7 @@ def tienda():
     <div class="section__head">
       <div class="reveal"><span class="eyebrow">Coches y piezas en venta</span><h2>Listos para <span class="outline">rodar</span></h2></div>
       <div class="reveal" data-delay="1">
-        <p class="lead muted">Todo lo que tenemos a la venta, sincronizado con nuestro perfil de Wallapop. ¿Te interesa alguno? Escríbenos y lo vemos juntos.</p>
+        <p class="lead muted">Todo lo que tenemos a la venta, sincronizado con nuestro perfil de Wallapop. ¿Buscas uno de competición? Mira nuestros <a class="pink" href="coches-de-rally-en-venta.html">coches de rally en venta</a> o el <a class="pink" href="alquiler-coche-de-rally.html">alquiler de coche de rally</a>.</p>
         <div class="btn-row mt-1"><a class="btn btn--ghost" data-social="wallapop" href="#">{I['wallapop']} Ver perfil en Wallapop</a></div>
       </div>
     </div>
@@ -1688,12 +1791,13 @@ def home():
     html = head("Deyscom Motorsport · Taller de competición, restomod, pintura y banco de potencia en Madrid",
                 "Taller motorsport en Torrelaguna (Madrid): preparación de coches de competición, restomod, pintura, banco de potencia, experiencias DS Pilot Weekend y curso de copiloto DS Copilot Course.",
                 "index", "vuestros servicios", "bmw-e36-rally-tierra-deyscom-motorsport",
-                [{"@context": "https://schema.org", "@type": "WebSite", "name": "Deyscom Motorsport", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
+                [{"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#web", "name": "Deyscom Motorsport", "alternateName": "Deyscom", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
                 "taller competición Madrid, preparación rally Madrid, restomod Madrid, banco de potencia Madrid, curso copiloto rally, experiencia pilotaje, Torrelaguna") + header("index")
     html += hero("Torrelaguna · Madrid · Motorsport", ["Hechos", "para <span class='pink'>correr.</span>", "<span class='outline'>Pensados para ti.</span>"],
                  "Coches de competición, restomods, pintura, banco de potencia, experiencias de pilotaje y cursos. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
                  "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
     html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "DS Pilot Weekend", "DS Copilot Course"])
+    html += facts_box("index", "Deyscom Motorsport <span class='outline'>en datos</span>", "Quiénes somos en 30 segundos")
     html += course_promo()
     html += f"""
 <section class="section">
@@ -1810,6 +1914,14 @@ def home():
   </div>
 </section>
 
+<section class="section section--tight">
+  <div class="container">
+    {section_head("Del blog", "Guías <span class='outline'>del taller</span>", "Lo que más nos preguntáis, explicado por el equipo y con fuentes oficiales.")}
+    <div class="posts posts--3">{"".join(post_card(POST_BY_SLUG[x]) for x in ("blog-coche-de-rally-que-es-y-categorias", "blog-cuanto-cuesta-pintar-un-coche", "blog-circuito-del-jarama-tandas"))}</div>
+    <div class="btn-row mt-2"><a class="btn btn--ghost" href="blog.html">Ver el blog {I['arrow']}</a></div>
+  </div>
+</section>
+{area_section()}
 {mega_cta("¿Arrancamos <span class='outline'>motores?</span>", "Escríbenos por WhatsApp, llámanos o pide presupuesto. Te respondemos en menos de 24 h laborables.", "")}
 """
     return html + footer()
@@ -1874,8 +1986,8 @@ def contacto():
   <div class="hero__bg"></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
   <div class="hero__number" aria-hidden="true">GO</div>
   <div class="container hero__inner">
-    <span class="eyebrow">Contacto</span>
-    <h1><span class="line"><span>Hablemos</span></span><span class="line"><span class="outline">de motor</span></span></h1>
+    {crumbs_html("contacto")}<h1 class="hero__kw">Contacto: taller motorsport en Torrelaguna (Madrid)</h1>
+    <p class="hero__slogan"><span class="line"><span>Hablemos</span></span><span class="line"><span class="outline">de motor</span></span></p>
     <div class="btn-row mt-2">
       <a class="btn btn--wa" data-wa="" data-loc="contact-hero" href="#">{I['wa']} WhatsApp</a>
       <a class="btn" href="tel:{PHONE}">{I['phone']} {PHONE_TXT}</a>
@@ -2072,6 +2184,61 @@ def legal_pages():
 
 # ------------------------------------------------------------------ patrocinadores, equipo y blog
 from blog_posts import AUTHORS, POSTS  # noqa: E402
+from seo_content import AREA, FACTS, GUIDES, RELATED  # noqa: E402
+
+POST_BY_SLUG = {pp["slug"]: pp for pp in POSTS}
+
+
+def facts_box(slug, title="Datos clave", eyebrow="En resumen"):
+    """Bloque de respuestas directas (lo que citan los buscadores con IA)."""
+    rows = FACTS.get(slug)
+    if not rows:
+        return ""
+    dl = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in rows)
+    return f"""<section class="section section--tight facts-sec" aria-labelledby="facts-{slug}">
+  <div class="container">
+    <div class="facts reveal"><div class="facts__head"><span class="eyebrow">{eyebrow}</span><h2 id="facts-{slug}">{title}</h2></div><dl class="facts__list">{dl}</dl></div>
+  </div>
+</section>"""
+
+
+def guides_section(slug, eyebrow="Guía rápida", title="Lo que <span class='outline'>debes saber</span>"):
+    items = GUIDES.get(slug)
+    if not items:
+        return ""
+    body = "".join(f'<article class="guide reveal"><h2>{q}</h2>{h}</article>' for q, h in items)
+    return f"""<section class="section guides-sec">
+  <div class="container">
+    {section_head(eyebrow, title)}
+    <div class="guides prose">{body}</div>
+  </div>
+</section>"""
+
+
+def related_section(slug, title="Artículos <span class='outline'>relacionados</span>"):
+    posts = [POST_BY_SLUG[x] for x in RELATED.get(slug, []) if x in POST_BY_SLUG]
+    if not posts:
+        return ""
+    return f"""<section class="section section--tight related-sec">
+  <div class="container">
+    {section_head("Del blog", title, "Guías escritas por el equipo del taller, con fuentes oficiales.")}
+    <div class="posts posts--3">{"".join(post_card(x) for x in posts[:3])}</div>
+  </div>
+</section>"""
+
+
+def area_section(service="nuestros servicios"):
+    towns = ", ".join(AREA[:-1]) + " y " + AREA[-1]
+    return f"""<section class="section section--tight area-sec">
+  <div class="container">
+    <div class="area reveal">
+      <span class="ic">{I['pin']}</span>
+      <div><h2 class="area__title">Zona de servicio</h2>
+      <p>Prestamos {service} desde nuestro taller de <strong>Torrelaguna (Madrid)</strong> a clientes de {towns}. También trabajamos con pilotos y coleccionistas de toda España: si estás lejos, organizamos la recogida y entrega del coche.</p>
+      <p class="small muted">C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna · L-V 07:00–15:00 · <a href="tel:{PHONE}">{PHONE_TXT}</a></p></div>
+    </div>
+  </div>
+</section>"""
 
 SPONSORS = [
     ("EBC Frenos", "ebc-frenos.png", None),
@@ -2169,7 +2336,8 @@ def blog_index():
     items = "".join(post_card(pp, i == 0) for i, pp in enumerate(POSTS))
     blog_ld = {"@context": "https://schema.org", "@type": "Blog", "name": "Blog de Deyscom Motorsport", "url": f"{SITE}/blog.html",
                "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"},
-               "blogPost": [{"@type": "BlogPosting", "headline": pp["title"], "url": f"{SITE}/{pp['slug']}.html", "datePublished": pp["date"]} for pp in POSTS]}
+               "blogPost": [{"@type": "BlogPosting", "headline": pp["title"], "url": f"{SITE}/{pp['slug']}.html", "datePublished": pp["date"],
+                             "author": person_ld(pp["author"])} for pp in POSTS]}
     html = head("Blog de motorsport · Rally, copilotos, banco de potencia y restomod | Deyscom Motorsport",
                 "Guías y experiencia real del taller Deyscom Motorsport: cómo empezar en los rallies, qué hace un copiloto, cómo leer una curva de banco de potencia y qué es un restomod.",
                 "blog", "el blog", POSTS[0]["img"], [blog_ld, breadcrumbs_ld("blog", "Blog")],
@@ -2177,8 +2345,8 @@ def blog_index():
     html += f"""<section class="hero page-hero" style="min-height:46svh">
   <div class="hero__bg">{pic(POSTS[0]['img'], eager=True, sizes='100vw')}</div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
   <div class="container hero__inner">
-    <span class="eyebrow">Blog Deyscom</span>
-    <h1><span class="line"><span>Desde</span></span><span class="line"><span class="outline">el paddock</span></span></h1>
+    {crumbs_html("blog")}<h1 class="hero__kw">Blog de motorsport: rally, slalom, pintura y técnica</h1>
+    <p class="hero__slogan"><span class="line"><span>Desde</span></span><span class="line"><span class="outline">el paddock</span></span></p>
     <p class="lead">Guías prácticas y experiencia real del taller y de nuestras carreras, escritas por el equipo de Deyscom Motorsport.</p>
   </div>
 </section>
@@ -2199,7 +2367,9 @@ def blog_post(pst):
     body = "".join(f'<h2 id="s{i + 1}">{t}</h2>{c}' for i, (t, c) in enumerate(pst["sections"]))
     words = len(re.sub(r"<[^>]+>", " ", body).split())
     sources = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in pst["sources"])
-    related = "".join(post_card(x) for x in POSTS if x["slug"] != pst["slug"])
+    others = [x for x in POSTS if x["slug"] != pst["slug"]]
+    others.sort(key=lambda x: x["category"] != pst["category"])
+    related = "".join(post_card(x) for x in others[:3])
     m = IMG[pst["img"]]
     art_ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": pst["title"], "description": pst["desc"],
               "image": {"@type": "ImageObject", "url": img_url(pst["img"]), "width": m["w"], "height": m["h"]},
@@ -2256,6 +2426,176 @@ def blog_post(pst):
     return html + footer()
 
 
+# ------------------------------------------------------------------ páginas SEO: alquiler y venta de coches de rally
+ALQ_FAQ = [
+    ("¿Cuánto cuesta alquilar un coche de rally?", "Depende de la prueba (rally, rallysprint o slalom), de su duración y del coche elegido. Escríbenos con la fecha y la carrera y te damos precio cerrado con lo que incluye."),
+    ("¿Qué necesito para alquilar un coche de rally?", "Para pruebas federadas, licencia federativa de piloto (y de copiloto en rally), equipamiento homologado y la inscripción. Te ayudamos a tramitar todo."),
+    ("¿Qué coches de rally alquiláis?", "Nuestro Peugeot 206 1.6 XS de 118 CV, de tracción delantera e ideal para empezar, y el BMW E36 de 135 CV, de propulsión trasera."),
+    ("¿Está incluida la asistencia?", "Sí: el alquiler se hace con asistencia mecánica de nuestro equipo durante la prueba. Antes de reservar te explicamos condiciones de uso y fianza."),
+    ("¿Puedo alquilar el coche para un slalom?", "Sí, el 206 y el BMW E36 se pueden alquilar para slaloms y rallysprints según calendario y disponibilidad."),
+]
+
+VENTA_FAQ = [
+    ("¿Dónde veo los coches de rally que tenéis en venta?", "En esta página y en nuestro perfil de Wallapop, donde publicamos los coches de competición, clásicos y piezas que vendemos."),
+    ("¿Los coches están revisados?", "Sí. Cada coche que vendemos pasa por nuestro taller de Torrelaguna antes de publicarse, y te contamos su estado y su historial."),
+    ("¿Me buscáis un coche de rally concreto?", "Sí. Dinos qué categoría, presupuesto y uso quieres y te avisamos cuando tengamos uno que encaje, o te ayudamos a revisar el que hayas visto."),
+    ("¿Puedo ver el coche antes de comprarlo?", "Claro. Pide cita y ven al taller a verlo. También podemos medirlo en el banco de potencia."),
+    ("¿Preparáis el coche después de la compra?", "Sí: puesta a punto, seguridad, set-up y asistencia para tu primera carrera en nuestra sección de competición."),
+]
+
+
+def rental_form(slug, name):
+    return f"""<section class="section section--ink" id="reserva">
+  <div class="container form-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Reserva</span>
+      <h2>Reserva <span class="outline">tu coche</span></h2>
+      <p class="lead mt-2">Dinos la prueba y la fecha y te confirmamos disponibilidad, precio cerrado y qué incluye. Sin compromiso hasta que confirmes.</p>
+      {contact_list()}
+    </div>
+    <div class="form-card reveal" data-delay="1" data-form-wrap>
+      <form class="form-body" id="reserva-form" data-lead="{slug}" novalidate>
+        <input type="hidden" name="servicio" value="{escape(name)}">
+        <div class="form-grid">
+          <p class="full muted" style="margin:0">Coche elegido arriba (puedes cambiarlo).</p>
+          <fieldset class="pills full">{legend("Tipo de prueba")}{pills("prueba", ["Rally", "Rallysprint", "Slalom", "Otra"])}</fieldset>
+          <div class="field full"><label for="a-c">Carrera y fecha</label><input class="input" id="a-c" name="fecha_preferida" placeholder="Ej. Rally de … · marzo"></div>
+          <div class="field"><label for="a-n">Nombre <span class="req">*</span></label><input class="input" id="a-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
+          <div class="field"><label for="a-t">Teléfono <span class="req">*</span></label>{tel_input("a-t")}</div>
+          <div class="field full"><label for="a-e">Email</label><input class="input" id="a-e" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
+          <fieldset class="pills full">{legend("¿Tienes licencia federativa?")}{pills("licencia", ["Sí", "No", "No lo sé"])}</fieldset>
+          <div class="field full"><label for="a-m">Comentarios</label><textarea class="textarea" id="a-m" name="mensaje" placeholder="Experiencia previa, copiloto, dudas…"></textarea></div>
+          {consent()}
+        </div>
+        <div class="form-foot mt-2"><button class="btn" type="submit">{I['ticket']} Solicitar alquiler</button><small>🔒 No se cobra nada hasta confirmar.</small></div>
+        <div class="form-msg" role="alert"></div>
+      </form>
+      {success_block("¡Solicitud recibida!", "Te contactamos para confirmar disponibilidad, precio y condiciones.")}
+    </div>
+  </div>
+</section>"""
+
+
+def rental_page():
+    slug, name = "alquiler-coche-de-rally", "Alquiler de coche de rally"
+    srv = {"@context": "https://schema.org", "@type": "Service", "name": name, "serviceType": "Alquiler de coches de competición",
+           "description": META[slug][1], "provider": {"@id": SITE + "/#organizacion"}, "url": f"{SITE}/{slug}.html",
+           "image": img_url("peugeot-206-rally-tierra-deyscom-motorsport"),
+           "areaServed": [{"@type": "AdministrativeArea", "name": "Comunidad de Madrid"}, {"@type": "Country", "name": "España"}],
+           "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Coches de rally de alquiler", "itemListElement": [
+               {"@type": "Offer", "itemOffered": {"@type": "Product", "name": n, "description": c["desc"], "image": img_url(c["img"])}} for n, c in CARS.items()]}}
+    html = head(META[slug][0], META[slug][1], slug, "el alquiler de un coche de rally", "peugeot-206-rally-tierra-deyscom-motorsport",
+                [srv, breadcrumbs_ld(slug, name, ("competicion.html", "Competición")), faq_ld(ALQ_FAQ)],
+                "alquiler coche de rally, alquilar coche de rally, alquiler coche competición Madrid, alquilar Peugeot 206 rally, alquiler BMW E36 rally") + header(slug)
+    html += hero("Alquiler", ["Tu coche", "<span class='pink'>de rally</span>", "<span class='outline'>listo para correr</span>"],
+                 "Alquila nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV, preparados en nuestro taller de Torrelaguna, con asistencia en la prueba.",
+                 "RX", "peugeot-206-rally-tierra-deyscom-motorsport", ["Peugeot 206 · 118 CV", "BMW E36 · 135 CV", "Asistencia incluida"],
+                 "el alquiler de un coche de rally", ("Reservar coche", "#reserva"))
+    html += ticker(["Alquiler", "Rally", "Rallysprint", "Slalom", "Peugeot 206", "BMW E36", "Asistencia"], dark=True)
+    html += facts_box(slug)
+    html += f"""<section class="section section--ink">
+  <div class="container">
+    {section_head("Elige tu coche", "Dos coches, <span class='outline'>dos caracteres</span>", "Mantenidos en nuestro taller y revisados antes de cada prueba.")}
+    {cars_block(list(CARS))}
+  </div>
+</section>
+<section class="section section--pink">
+  <div class="container">
+    {section_head("Cómo funciona", "Del alquiler <span class='outline'>a la meta</span>", "", True)}
+    <div class="process">{process([("Nos escribes", "Prueba, fecha y coche que te interesa."), ("Confirmamos", "Disponibilidad, precio cerrado, condiciones y fianza."), ("Papeleo", "Te ayudamos con inscripción y licencia."), ("Corres", "Coche preparado y asistencia de nuestro equipo.")], "Paso")}</div>
+  </div>
+</section>
+{guides_section(slug)}
+{rental_form(slug, name)}
+<section class="section">
+  <div class="container">
+    {section_head("Preguntas frecuentes", "Antes de <span class='outline'>alquilar</span>")}
+    {faq(ALQ_FAQ)}
+  </div>
+</section>
+{related_section(slug)}
+{area_section("alquiler de coches de rally")}
+{mega_cta("¿Nos vemos <span class='outline'>en la salida?</span>", "Reserva tu coche de rally y te confirmamos disponibilidad en menos de 24 h laborables.", "el alquiler de un coche de rally", ("Reservar coche", "#reserva"))}
+"""
+    return html + footer()
+
+
+def sale_page():
+    slug, name = "coches-de-rally-en-venta", "Coches de rally en venta"
+    coll = {"@context": "https://schema.org", "@type": "CollectionPage", "name": name, "url": f"{SITE}/{slug}.html",
+            "description": META[slug][1], "about": {"@type": "Thing", "name": "Coches de rally de segunda mano"},
+            "isPartOf": {"@id": SITE + "/#web"}, "provider": {"@id": SITE + "/#organizacion"},
+            "relatedLink": ["https://es.wallapop.com/user/deyscomm-467502343"]}
+    html = head(META[slug][0], META[slug][1], slug, "un coche de rally en venta", "mitsubishi-lancer-evo-rally-taller-deyscom",
+                [coll, breadcrumbs_ld(slug, name, ("competicion.html", "Competición")), faq_ld(VENTA_FAQ)],
+                "coches de rally en venta, coche de rally segunda mano, comprar coche de rally, peugeot 206 rally venta, coches de competición en venta") + header(slug)
+    html += hero("Venta", ["Encuentra", "<span class='pink'>tu coche</span>", "<span class='outline'>de rally</span>"],
+                 "Coches de rally, de competición y piezas revisados por nuestro taller. Y si no está lo que buscas, te lo encontramos.",
+                 "4S", "mitsubishi-lancer-evo-rally-taller-deyscom", ["Revisados por el taller", "Stock en Wallapop", "Búsqueda a medida"],
+                 "un coche de rally en venta", ("Ver coches", "#coches"))
+    html += ticker(["Coches de rally", "Segunda mano", "Revisados", "Wallapop", "Piezas", "Te lo buscamos"])
+    html += facts_box(slug)
+    html += f"""<section class="section" id="coches">
+  <div class="container">
+    <div class="section__head">
+      <div class="reveal"><span class="eyebrow">Stock actual</span><h2>Coches y piezas <span class="outline">en venta</span></h2></div>
+      <div class="reveal" data-delay="1">
+        <p class="lead muted">Sincronizado con nuestro perfil de Wallapop. ¿Te interesa alguno? Escríbenos y lo vemos juntos.</p>
+        <div class="btn-row mt-1"><a class="btn btn--ghost" data-social="wallapop" href="#">{I['wallapop']} Ver perfil en Wallapop</a></div>
+      </div>
+    </div>
+    <div class="stock" data-stock>
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+    <div class="stock-empty" data-stock-empty hidden>
+      <h3>Mira el stock <span class="outline">en Wallapop</span></h3>
+      <p>Nuestros coches y piezas en venta se actualizan en Wallapop. Entra en nuestro perfil o dinos qué buscas y te avisamos en cuanto llegue algo.</p>
+      <div class="btn-row">
+        <a class="btn" data-social="wallapop" href="#">{I['wallapop']} Abrir Wallapop</a>
+        <a class="btn btn--wa" data-wa="un coche de rally en venta" data-loc="stock-empty" href="#">{I['wa']} ¿Qué buscas?</a>
+      </div>
+    </div>
+  </div>
+</section>
+{guides_section(slug, "Antes de comprar", "Compra <span class='outline'>con cabeza</span>")}
+<section class="section section--ink">
+  <div class="container form-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Te lo buscamos</span>
+      <h2>¿Qué coche de rally <span class="outline">buscas?</span></h2>
+      <p class="lead mt-2">Dinos categoría, presupuesto y uso. Te avisamos cuando tengamos uno que encaje o te ayudamos a revisar el que hayas visto.</p>
+      {contact_list()}
+    </div>
+    <div class="form-card reveal" data-delay="1" data-form-wrap>
+      <form class="form-body" data-lead="busqueda-coche-rally" novalidate>
+        <input type="hidden" name="servicio" value="Coches de rally en venta · búsqueda">
+        <div class="form-grid">
+          <div class="field full"><label for="v-q">¿Qué buscas? <span class="req">*</span></label><input class="input" id="v-q" name="vehiculo" required placeholder="Ej. Peugeot 206 de rally, BMW E36 para slalom…"></div>
+          <fieldset class="pills full">{legend("Uso")}{pills("uso", ["Rally", "Rallysprint", "Slalom", "Circuito", "Montaña"])}</fieldset>
+          <div class="field"><label for="v-p">Presupuesto</label><input class="input" id="v-p" name="presupuesto" placeholder="Hasta…"></div>
+          <div class="field"><label for="v-n">Nombre <span class="req">*</span></label><input class="input" id="v-n" name="nombre" required autocomplete="name"></div>
+          <div class="field full"><label for="v-t">Teléfono <span class="req">*</span></label>{tel_input("v-t")}</div>
+          {consent()}
+        </div>
+        <div class="form-foot mt-2"><button class="btn" type="submit">Buscadme un coche {I['arrow']}</button></div>
+        <div class="form-msg" role="alert"></div>
+      </form>
+      {success_block("¡Apuntado!", "En cuanto tengamos un coche que encaje, te avisamos.")}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    {section_head("Preguntas frecuentes", "Antes de <span class='outline'>comprar</span>")}
+    {faq(VENTA_FAQ)}
+  </div>
+</section>
+{related_section(slug)}
+{mega_cta("¿Prefieres <span class='outline'>alquilar?</span>", "Corre con nuestro Peugeot 206 o BMW E36 sin comprar coche.", "el alquiler de un coche de rally", ("Alquiler de coche de rally", "alquiler-coche-de-rally.html"))}
+"""
+    return html + footer()
+
+
 LLMS_TXT = f"""# Deyscom Motorsport
 
 > Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
@@ -2264,7 +2604,7 @@ LLMS_TXT = f"""# Deyscom Motorsport
 - Teléfono y WhatsApp: {PHONE_TXT}
 - Email: {EMAIL}
 - Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
-- Propietario: Néstor Aguado. Marketing: Héctor Guzmán.
+- Propietario y fundador: Néstor Aguado. Marketing: Héctor Guzmán. Detrás hay un equipo de mecánicos, chapistas, pintores, técnicos de asistencia y formadores.
 - Primer rally del equipo: II Rallye Comunidad de Madrid – El Molar 2026, con un Peugeot 206.
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
@@ -2273,6 +2613,15 @@ LLMS_TXT = f"""# Deyscom Motorsport
 - [Restomod]({SITE}/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
 - [Pintura]({SITE}/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
 - [Banco de potencia]({SITE}/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
+- [Alquiler de coche de rally]({SITE}/alquiler-coche-de-rally.html): Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparados, con asistencia, para rally, rallysprint y slalom.
+- [Coches de rally en venta]({SITE}/coches-de-rally-en-venta.html): coches de competición y piezas revisados por el taller (stock en Wallapop) y búsqueda a medida.
+
+## Zona de servicio
+Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
+
+## Datos de empresa
+- Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · fundada en 2022
+- Texto completo de las páginas principales para modelos de lenguaje: {SITE}/llms-full.txt
 
 ## Experiencias y formación
 - [DS Pilot Weekend – Circuit]({SITE}/ds-pilot-weekend-circuit.html): fin de semana como piloto en el Circuito del Jarama.
@@ -2304,6 +2653,28 @@ def page_404():
     return html + footer()
 
 
+def llms_full(pages):
+    """Texto plano de las páginas clave para modelos de lenguaje (llms-full.txt)."""
+    keys = ["index", "competicion", "alquiler-coche-de-rally", "coches-de-rally-en-venta", "restomod", "pintura", "banco-de-potencia",
+            "experiencias", "ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-weekend-slalom", "ds-copilot-course",
+            "nosotros", "contacto"] + [pp["slug"] for pp in POSTS]
+    out = [LLMS_TXT.strip(), ""]
+    for k in keys:
+        html = pages[k]
+        main_html = html.split('<main id="main">', 1)[-1].split("</main>", 1)[0]
+        main_html = re.sub(r"(?is)<(script|style|svg|form|picture|noscript)\b.*?</\1>", " ", main_html)
+        main_html = re.sub(r"(?i)<(h[1-3])[^>]*>", lambda m: "\n\n" + "#" * int(m.group(1)[1]) + " ", main_html)
+        main_html = re.sub(r"(?i)</(p|li|h[1-6]|dt|dd|div)>", "\n", main_html)
+        text = re.sub(r"<[^>]+>", " ", main_html)
+        text = re.sub(r"[ \t]+", " ", text)
+        text = "\n".join(l.strip() for l in text.splitlines())
+        text = re.sub(r"\n{3,}", "\n\n", text).strip()
+        title = PAGES_META.get(k, ("", ""))[0]
+        url = f"{SITE}/" + ("" if k == "index" else f"{k}.html")
+        out.append(f"\n\n---\n\n# {title}\nURL: {url}\n\n{text}")
+    return "\n".join(out) + "\n"
+
+
 def main():
     pages = {"index": home(), "experiencias": experiencias(), "cursos": cursos(), "ds-copilot-course": course_page(),
              "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
@@ -2315,10 +2686,13 @@ def main():
         pages[s] = experience_page(s)
     for s in PRODUCTS:
         pages[s] = product_page(s)
+    pages["alquiler-coche-de-rally"] = rental_page()
+    pages["coches-de-rally-en-venta"] = sale_page()
     pages["blog"] = blog_index()
     for pp in POSTS:
         pages[pp["slug"]] = blog_post(pp)
     (ROOT / "llms.txt").write_text(LLMS_TXT, encoding="utf-8")
+    (ROOT / "llms-full.txt").write_text(llms_full(pages), encoding="utf-8")
     for old in ("performance", "legal"):  # páginas retiradas
         f = ROOT / f"{old}.html"
         if f.exists():
@@ -2327,7 +2701,8 @@ def main():
         html = re.sub(r"\n\s*\n", "\n", html)
         (ROOT / f"{name}.html").write_text(html, encoding="utf-8")
     prio = {"index": "1.0", "ds-copilot-course": "0.9", "experiencias": "0.9", "competicion": "0.8", "restomod": "0.8", "pintura": "0.8",
-            "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8", "blog": "0.7"}
+            "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8", "blog": "0.7",
+            "alquiler-coche-de-rally": "0.8", "coches-de-rally-en-venta": "0.8"}
     def imgs_of(html):
         found = []
         for name in dict.fromkeys(re.findall(r'assets/img/(?:fotos|productos)/([a-z0-9-]+?)(?:-800|-600)?\.(?:jpg|webp)', html)):
@@ -2338,7 +2713,12 @@ def main():
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
         for n in pages if n not in ("404", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot",
+               "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot", "meta-externalagent", "Amazonbot", "DuckAssistBot", "MistralAI-User"]
+    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\n"
+    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\n\n"
+    robots += f"Sitemap: {SITE}/sitemap.xml\n# Resumen para modelos de lenguaje: {SITE}/llms.txt\n"
+    (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))
 
 
