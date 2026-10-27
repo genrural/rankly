@@ -1,0 +1,108 @@
+{
+  "ediciones": [
+    {
+      "id": "eurocem-2026-12-04-manana",
+      "experiencia": "experiencia-rally-eurocem",
+      "fecha": "2026-12-04",
+      "turno": "Mañana",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "eurocem-2026-12-04-tarde",
+      "experiencia": "experiencia-rally-eurocem",
+      "fecha": "2026-12-04",
+      "turno": "Tarde",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "dspilot-2026-12-05-manana",
+      "experiencia": "ds-pilot-course",
+      "fecha": "2026-12-05",
+      "turno": "Mañana",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "dspilot-2026-12-05-tarde",
+      "experiencia": "ds-pilot-course",
+      "fecha": "2026-12-05",
+      "turno": "Tarde",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "dspilot-2026-12-06-manana",
+      "experiencia": "ds-pilot-course",
+      "fecha": "2026-12-06",
+      "turno": "Mañana",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "dspilot-2026-12-06-tarde",
+      "experiencia": "ds-pilot-course",
+      "fecha": "2026-12-06",
+      "turno": "Tarde",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "dspilot-2026-12-07-manana",
+      "experiencia": "ds-pilot-course",
+      "fecha": "2026-12-07",
+      "turno": "Mañana",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    },
+    {
+      "id": "dspilot-2026-12-07-tarde",
+      "experiencia": "ds-pilot-course",
+      "fecha": "2026-12-07",
+      "turno": "Tarde",
+      "horario": "",
+      "lugar": "Circuito El Hito (Cuenca)",
+      "plazas": 20,
+      "precio": 299,
+      "stripe": "",
+      "estado": "Abierta",
+      "visible": true
+    }
+  ]
+}

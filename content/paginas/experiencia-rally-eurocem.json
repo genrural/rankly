@@ -1,0 +1,97 @@
+{
+  "pagina": "Experiencia Rally Eurocem",
+  "intro": "Una jornada exclusiva de **conducción deportiva sobre tierra** en el Circuito El Hito (Cuenca), organizada por **Deyscom Motorsport** y **Liebre Racing** junto a **Eurocem Morteros**. Combina aprendizaje, adrenalina y trabajo en equipo al volante de coches preparados para competición, siempre acompañados por monitores especializados.",
+  "ejercicios": [
+    {
+      "titulo": "Control del vehículo",
+      "texto": "Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso."
+    },
+    {
+      "titulo": "Frenada y trazadas",
+      "texto": "Frenada deportiva, uso del freno de mano y elección de la trazada correcta."
+    },
+    {
+      "titulo": "Slalom en tierra",
+      "texto": "Precisión y control del coche entre conos sobre superficie de tierra."
+    },
+    {
+      "titulo": "Circuito cronometrado",
+      "texto": "Una vuelta cronometrada al circuito aplicando todo lo aprendido."
+    },
+    {
+      "titulo": "Diferentes vehículos",
+      "texto": "Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias."
+    }
+  ],
+  "incluye": [
+    "Jornada de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
+    "Conducción de BMW E36 y Peugeot 206 preparados para competición",
+    "5 ejercicios puntuables con monitores especializados",
+    "Equipo con color y camiseta personalizada",
+    "Tarjeta de puntuación personalizada y clasificación final",
+    "Comida y barra libre para todos los participantes"
+  ],
+  "datos_clave": [
+    {
+      "dato": "Fecha",
+      "valor": "Viernes 4 de diciembre de 2026, turno de mañana o de tarde"
+    },
+    {
+      "dato": "Lugar",
+      "valor": "Circuito El Hito (Cuenca)"
+    },
+    {
+      "dato": "Participantes",
+      "valor": "40 en total: 20 por la mañana y 20 por la tarde"
+    },
+    {
+      "dato": "Coches",
+      "valor": "4 coches: 2 BMW E36 y 2 Peugeot 206"
+    },
+    {
+      "dato": "Equipos",
+      "valor": "4 equipos de 5 personas, cada uno con su color y camiseta"
+    },
+    {
+      "dato": "Precio",
+      "valor": "299 € por persona, comida incluida"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Cómo funciona la puntuación?",
+      "respuesta": "Cada participante recibe una **tarjeta personalizada** con su nombre. En cada uno de los 5 ejercicios los monitores puntúan tu manejo y, al terminar la jornada, se hace una **clasificación final** individual y por equipos.\n\n¿Quieres seguir aprendiendo después? Mira el [DS Pilot Course](ds-pilot-course.html) del 5, 6 y 7 de diciembre."
+    },
+    {
+      "pregunta": "¿Qué coches voy a conducir?",
+      "respuesta": "Conducirás los dos coches del equipo Deyscom: el **Peugeot 206** (tracción delantera, ligero y noble) y el **BMW E36** (propulsión trasera). Notar la diferencia entre ambos es uno de los ejercicios de la jornada. Si quieres saber más, lee [qué es un coche de rally](blog-coche-de-rally-que-es-y-categorias.html)."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Necesito experiencia previa?",
+      "respuesta": "No. La jornada está pensada para cualquier conductor con carnet: los monitores adaptan cada ejercicio a tu nivel."
+    },
+    {
+      "pregunta": "¿Dónde es?",
+      "respuesta": "En el Circuito El Hito, en la provincia de Cuenca. Al confirmar tu plaza te enviamos la ubicación exacta y el horario de tu turno."
+    },
+    {
+      "pregunta": "¿Qué incluye el precio?",
+      "respuesta": "299 € por persona: la jornada completa de tu turno, los 5 ejercicios con monitores, los coches, la camiseta de tu equipo y la comida con barra libre."
+    },
+    {
+      "pregunta": "¿Cómo se paga?",
+      "respuesta": "Eliges fecha y turno, dejas tus datos y pagas con tarjeta en la pasarela segura de Stripe. Recibes la confirmación al momento por email."
+    },
+    {
+      "pregunta": "¿Qué pasa si no puedo ir?",
+      "respuesta": "Escríbenos cuanto antes: según la antelación te ayudamos a cambiar la plaza a otra persona o a otra fecha disponible."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-coche-de-rally-que-es-y-categorias",
+    "blog-slalom-de-coches-que-es",
+    "blog-como-empezar-en-los-rallies"
+  ]
+}

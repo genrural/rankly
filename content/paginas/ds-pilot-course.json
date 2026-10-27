@@ -1,0 +1,96 @@
+{
+  "pagina": "DS Pilot Course",
+  "intro": "El **DS Pilot Course** es nuestro curso de **conducción de rally sobre tierra**: el mismo formato de la Experiencia Rally Eurocem, organizado solo por Deyscom Motorsport. Medio día al volante de un BMW E36 y un Peugeot 206 preparados para competición, con 5 ejercicios puntuables y monitores que te corrigen en cada pasada. Elige el **5, 6 o 7 de diciembre**, en turno de **mañana o tarde**.",
+  "ejercicios": [
+    {
+      "titulo": "Control del vehículo",
+      "texto": "Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso."
+    },
+    {
+      "titulo": "Frenada y trazadas",
+      "texto": "Frenada deportiva, uso del freno de mano y elección de la trazada correcta."
+    },
+    {
+      "titulo": "Slalom en tierra",
+      "texto": "Precisión y control del coche entre conos sobre superficie de tierra."
+    },
+    {
+      "titulo": "Circuito cronometrado",
+      "texto": "Una vuelta cronometrada al circuito aplicando todo lo aprendido."
+    },
+    {
+      "titulo": "Diferentes vehículos",
+      "texto": "Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias."
+    }
+  ],
+  "incluye": [
+    "Medio día de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
+    "BMW E36 y Peugeot 206 preparados para competición",
+    "5 ejercicios puntuables con monitores especializados",
+    "Trabajo por equipos con tarjeta de puntuación personalizada",
+    "Clasificación final al terminar la jornada"
+  ],
+  "datos_clave": [
+    {
+      "dato": "Fechas",
+      "valor": "5, 6 y 7 de diciembre de 2026"
+    },
+    {
+      "dato": "Turnos",
+      "valor": "Mañana o tarde"
+    },
+    {
+      "dato": "Lugar",
+      "valor": "Circuito El Hito (Cuenca)"
+    },
+    {
+      "dato": "Coches",
+      "valor": "BMW E36 (propulsión) y Peugeot 206 (tracción delantera)"
+    },
+    {
+      "dato": "Formato",
+      "valor": "5 ejercicios puntuables por equipos y clasificación final"
+    },
+    {
+      "dato": "Precio",
+      "valor": "299 € por persona"
+    }
+  ],
+  "guias": [
+    {
+      "pregunta": "¿Qué vas a aprender en el DS Pilot Course?",
+      "respuesta": "A **controlar el coche en una superficie deslizante**: provocar y corregir un derrape, frenar fuerte sin perder la trayectoria, usar el freno de mano y elegir la trazada. Después lo aplicas en un **slalom en tierra** y en una **vuelta cronometrada** al circuito.\n\nEs la mejor forma de [empezar en los rallies](blog-como-empezar-en-los-rallies.html) antes de pensar en licencia o coche propio."
+    },
+    {
+      "pregunta": "¿Es un buen regalo?",
+      "respuesta": "Sí: es uno de los regalos favoritos de quien disfruta del motor. Al reservar, pon los datos de la persona que va a conducir y escríbenos si quieres un **cheque regalo** para entregar."
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Necesito experiencia o licencia?",
+      "respuesta": "No. Solo carnet de conducir en vigor. Los monitores adaptan los ejercicios a tu nivel."
+    },
+    {
+      "pregunta": "¿Cuánto dura?",
+      "respuesta": "Medio día: turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto."
+    },
+    {
+      "pregunta": "¿Dónde es?",
+      "respuesta": "En el Circuito El Hito (Cuenca), un circuito de tierra con zonas para slalom y frenada."
+    },
+    {
+      "pregunta": "¿Cuánto cuesta?",
+      "respuesta": "299 € por persona. Se paga con tarjeta en la pasarela segura de Stripe al reservar la plaza."
+    },
+    {
+      "pregunta": "¿Puedo ir con amigos?",
+      "respuesta": "Sí. Reserva una plaza por persona y dinos que queréis ir en el mismo equipo."
+    }
+  ],
+  "articulos_relacionados": [
+    "blog-slalom-de-coches-que-es",
+    "blog-como-empezar-en-los-rallies",
+    "blog-coche-de-rally-que-es-y-categorias"
+  ]
+}

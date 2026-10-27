@@ -19,11 +19,11 @@
     },
     {
       "dato": "Experiencias",
-      "valor": "DS Pilot Weekend en el Circuito del Jarama, rally federado y slalom"
+      "valor": "Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5, 6 y 7 dic) en el Circuito El Hito (Cuenca)"
     },
     {
-      "dato": "Formación",
-      "valor": "DS Copilot Course: curso de copiloto de rally con certificación"
+      "dato": "Precio",
+      "valor": "Jornadas de conducción de rally sobre tierra con BMW E36 y Peugeot 206 · 299 €"
     }
   ],
   "guias": [],
@@ -42,11 +42,11 @@
     },
     {
       "pregunta": "¿Puedo correr sin tener coche propio?",
-      "respuesta": "Sí: con nuestras experiencias DS Pilot Weekend en circuito, rally o slalom, o con el alquiler de nuestros coches de competición."
+      "respuesta": "Sí: en nuestras experiencias conduces nuestro BMW E36 y nuestro Peugeot 206 de rally sobre tierra, con monitores. Próximas fechas: 4, 5, 6 y 7 de diciembre."
     },
     {
-      "pregunta": "¿Cómo me apunto al curso de copiloto?",
-      "respuesta": "Entra en la página del DS Copilot Course y pulsa «Comprar mi plaza». Las plazas son limitadas."
+      "pregunta": "¿Cómo reservo una experiencia?",
+      "respuesta": "Entra en Experiencias, elige fecha y turno, deja tus datos y paga con tarjeta en la pasarela segura de Stripe. Las plazas son limitadas."
     }
   ],
   "articulos_relacionados": []

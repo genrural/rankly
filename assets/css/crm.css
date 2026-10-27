@@ -321,3 +321,10 @@ code { background: var(--ink-3); padding: 1px 5px; border-radius: 3px; font-size
   .crm-mini td, .crm-mini th { padding: 6px 4px; }
 }
 .crm-nav__ext { text-decoration: none; margin-top: 6px; border-top: 1px solid var(--line); border-radius: 0; padding-top: 14px; }
+.crm-nav__ext--2 { margin-top: 0; border-top: 0; padding-top: 11px; }
+.ed-pend { color: var(--warn) !important; font-weight: 600; }
+.ed-warn { color: var(--warn); font-size: .85rem; }
+.ed-link { font-size: .85rem; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; overflow-wrap: anywhere; }
+.ed-kpis { margin: 14px 0; }
+.ed-kpis .kpi b { font-size: 1.4rem; }
+.small { font-size: .85rem; }

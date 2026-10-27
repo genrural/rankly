@@ -309,42 +309,113 @@
     update();
   }
 
-  /* ---------- Fechas y plazas de experiencias y cursos (Calendario del CRM) ---------- */
-  var dateBoxes = $$("[data-dates], [data-ed-field]");
-  if (dateBoxes.length && CFG.SHEETS_ENDPOINT) {
-    var fmtD = function (iso) { var p = String(iso || "").split("-"); if (p.length < 3) return iso; return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString("es-ES", { day: "numeric", month: "short" }); };
-    var label = function (e) { return fmtD(e.inicio) + (e.fin && e.fin !== e.inicio ? "–" + fmtD(e.fin) : "") + (e.lugar ? " · " + e.lugar : ""); };
-    var seatsTxt = function (e) { return e.completa ? "Completa" : e.libres === null ? "Plazas disponibles" : e.libres <= 3 ? "¡Últimas " + e.libres + " plazas!" : "Quedan " + e.libres + " plazas"; };
-    fetch(CFG.SHEETS_ENDPOINT + "?action=ediciones").then(function (r) { return r.json(); }).then(function (res) {
-      var all = (res && res.ediciones) || [];
-      $$("[data-dates]").forEach(function (box) {
-        var list = all.filter(function (e) { return e.producto === box.getAttribute("data-dates"); }).slice(0, 4);
-        if (!list.length) return;
-        var ul = $("ul", box);
-        list.forEach(function (e) {
-          var li = document.createElement("li"); li.className = e.completa ? "is-full" : (e.libres !== null && e.libres <= 3 ? "is-last" : "");
-          var a = document.createElement("span"); a.textContent = label(e);
-          var b = document.createElement("b"); b.textContent = seatsTxt(e);
-          li.appendChild(a); li.appendChild(b); ul.appendChild(li);
-        });
-        box.hidden = false;
+  /* ---------- Experiencias: reserva + pago con Stripe Payment Links ---------- */
+  var edData = {};
+  try { var edEl = $("#ed-data"); if (edEl) edData = JSON.parse(edEl.textContent); } catch (e) { edData = {}; }
+  var buy = $("#buy");
+  var fmtEur = function (n) { return new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: Number(n) % 1 ? 2 : 0 }).format(Number(n) || 0); };
+  var newId = function () {
+    var a = "abcdefghijklmnopqrstuvwxyz0123456789", out = "w", r = new Uint8Array(11);
+    (window.crypto || window.msCrypto).getRandomValues(r);
+    for (var i = 0; i < 11; i++) out += a[r[i] % a.length];
+    return out;
+  };
+  var stripeUrl = function (base, id, email) {
+    var u = base + (base.indexOf("?") > -1 ? "&" : "?") + "client_reference_id=" + encodeURIComponent(id);
+    if (email) u += "&prefilled_email=" + encodeURIComponent(email);
+    return u;
+  };
+  if (buy) {
+    var bForm = $("form", buy), bMsg = $(".form-msg", buy), cur = null;
+    var openBuy = function (id) {
+      cur = edData[id]; if (!cur) return;
+      $("[data-buy-title]", buy).textContent = cur.nombre;
+      $("[data-buy-when]", buy).textContent = cur.etiqueta + (cur.lugar ? " · " + cur.lugar : "");
+      $("[data-buy-price]", buy).textContent = fmtEur(cur.precio);
+      $("[data-buy-cta]", buy).textContent = cur.stripe ? "Ir al pago seguro · " + fmtEur(cur.precio) : "Reservar plaza";
+      if (bMsg) { bMsg.className = "form-msg"; bMsg.textContent = ""; }
+      if (buy.showModal) buy.showModal(); else buy.setAttribute("open", "");
+      track("view_item", { currency: "EUR", value: Number(cur.precio) || 0, items: [{ item_id: cur.id, item_name: cur.nombre + " · " + cur.etiqueta, price: Number(cur.precio) || 0 }] });
+      var f = $("input[name=nombre]", buy);
+      if (f) setTimeout(function () { var ae = document.activeElement; if (!ae || !buy.contains(ae) || !/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) f.focus(); }, 50);
+    };
+    var closeBuy = function () { if (buy.close) buy.close(); else buy.removeAttribute("open"); };
+    $$("[data-buy]").forEach(function (b) { b.addEventListener("click", function () { openBuy(b.getAttribute("data-buy")); }); });
+    $$("[data-buy-close]", buy).forEach(function (b) { b.addEventListener("click", closeBuy); });
+    buy.addEventListener("click", function (e) { if (e.target === buy) closeBuy(); });
+    bForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!cur) return;
+      if (bForm.elements._hp && bForm.elements._hp.value) return;
+      if (!bForm.checkValidity()) { bForm.reportValidity(); return; }
+      var btn = $('button[type="submit"]', bForm); btn.classList.add("is-loading"); btn.disabled = true;
+      var data = formToObject(bForm);
+      data.id = newId();
+      data.formulario = cur.experiencia; data.servicio = cur.nombre; data.edicion = cur.id; data.fecha_elegida = cur.etiqueta; data.plazas = "1";
+      data.pagina = location.pathname; data.fecha = new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" });
+      Object.assign(data, attribution());
+      var item = { item_id: cur.id, item_name: cur.nombre + " · " + cur.etiqueta, price: Number(cur.precio) || 0, quantity: 1 };
+      track("begin_checkout", { currency: "EUR", value: Number(cur.precio) || 0, items: [item] });
+      track("generate_lead", { form: "reserva-" + cur.experiencia, servicio: cur.nombre });
+      try { sessionStorage.setItem("dmx_purchase", JSON.stringify({ lead: data.id, ed: cur, ts: Date.now() })); } catch (err) { /* nada */ }
+      var sent = Promise.resolve();
+      if (CFG.SHEETS_ENDPOINT) {
+        var body = new URLSearchParams(); Object.keys(data).forEach(function (k) { body.append(k, data[k]); });
+        sent = fetch(CFG.SHEETS_ENDPOINT, { method: "POST", mode: "no-cors", body: body, keepalive: true }).catch(function () {});
+      }
+      if (cur.stripe) {
+        var go = function () { location.href = stripeUrl(cur.stripe, data.id, data.email); };
+        Promise.race([sent, new Promise(function (r) { setTimeout(r, 1500); })]).then(go);
+        return;
+      }
+      // Sin enlace de pago todavía: la reserva llega al CRM (o por WhatsApp) y os contactamos para el pago.
+      Promise.race([sent, new Promise(function (r) { setTimeout(r, 2500); })]).then(function () {
+        btn.classList.remove("is-loading"); btn.disabled = false;
+        if (!CFG.SHEETS_ENDPOINT) window.open(waFromLead(data), "_blank", "noopener");
+        bMsg.className = "form-msg is-ok";
+        bMsg.textContent = "¡Plaza reservada! Te enviamos el enlace de pago en menos de 24 h laborables.";
+        bForm.reset();
       });
-      $$("[data-ed-field]").forEach(function (field) {
-        var list = all.filter(function (e) { return e.producto === field.getAttribute("data-ed-field"); });
-        if (!list.length) return;
-        var sel = $("select", field), hid = $("input[type=hidden]", field);
-        sel.innerHTML = "";
-        list.forEach(function (e, i) {
-          var o = document.createElement("option"); o.value = e.id; o.textContent = label(e) + " · " + seatsTxt(e);
-          if (e.completa) o.disabled = true; sel.appendChild(o);
+    });
+    var hashBuy = location.hash.match(/^#reservar-(.+)$/); if (hashBuy && edData[hashBuy[1]]) openBuy(hashBuy[1]);
+  }
+  // Plazas libres en directo (ventas de Stripe sincronizadas en el CRM)
+  if ($$("[data-ed]").length && CFG.SHEETS_ENDPOINT) {
+    fetch(CFG.SHEETS_ENDPOINT + "?action=plazas").then(function (r) { return r.json(); }).then(function (res) {
+      ((res && res.ediciones) || []).forEach(function (e) {
+        $$('[data-ed="' + e.id + '"]').forEach(function (row) {
+          var s = $("[data-seats]", row);
+          if (e.completa) {
+            row.classList.add("is-full");
+            if (s) s.textContent = "Completo";
+            var b = $("[data-buy]", row); if (b) { b.outerHTML = '<span class="date-row__full">Completo</span>'; }
+          } else if (s && e.libres !== null) {
+            s.textContent = e.libres <= 5 ? "¡Últimas " + e.libres + " plazas!" : "Quedan " + e.libres + " plazas";
+            if (e.libres <= 5) row.classList.add("is-last");
+          }
         });
-        var other = document.createElement("option"); other.value = ""; other.textContent = "Otra fecha / avisadme de la próxima"; sel.appendChild(other);
-        var first = list.filter(function (e) { return !e.completa; })[0]; sel.value = first ? first.id : "";
-        var sync = function () { var o = sel.options[sel.selectedIndex]; hid.value = sel.value ? o.textContent : ""; };
-        sel.addEventListener("change", sync); sync();
-        field.hidden = false;
       });
-    }).catch(function () { /* sin fechas: se queda el campo de fecha preferida */ });
+    }).catch(function () { /* se queda la información publicada */ });
+  }
+  // Página de gracias: confirmación y conversión de compra en GA4
+  if (document.body.getAttribute("data-page") === "gracias") {
+    var pending = null; try { pending = JSON.parse(sessionStorage.getItem("dmx_purchase") || "null"); } catch (e) { pending = null; }
+    var sid = (location.search.match(/[?&]session_id=([^&]+)/) || [])[1] || "";
+    if (pending && pending.ed) {
+      var ed = pending.ed, t = $("[data-thanks]");
+      if (t) t.textContent = "Tu plaza en " + ed.nombre + " (" + ed.etiqueta + (ed.lugar ? ", " + ed.lugar : "") + ") está confirmada. Te hemos enviado el justificante de pago por email y unos días antes te mandaremos el horario exacto y la ubicación.";
+      var d = ed.fecha.replace(/-/g, ""), next = new Date(ed.fecha + "T12:00:00"); next.setDate(next.getDate() + 1);
+      var d2 = next.toISOString().slice(0, 10).replace(/-/g, "");
+      var cal = $("[data-thanks-cal]");
+      if (cal) { cal.href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(ed.nombre + " · Deyscom Motorsport") + "&dates=" + d + "/" + d2 + "&details=" + encodeURIComponent("Turno de " + String(ed.turno).toLowerCase() + ". Te enviaremos el horario exacto.") + "&location=" + encodeURIComponent(ed.lugar || ""); cal.hidden = false; }
+      var key = "dmx_purchased_" + (sid || pending.lead);
+      var done = false; try { done = !!sessionStorage.getItem(key); } catch (e) { done = false; }
+      if (!done) {
+        track("purchase", { transaction_id: sid || pending.lead, currency: "EUR", value: Number(ed.precio) || 0,
+          items: [{ item_id: ed.id, item_name: ed.nombre + " · " + ed.etiqueta, price: Number(ed.precio) || 0, quantity: 1 }] });
+        try { sessionStorage.setItem(key, "1"); } catch (e) { /* nada */ }
+      }
+    }
   }
 
   /* ---------- Coches en venta (Wallapop vía Apps Script) ---------- */
@@ -405,7 +476,7 @@
   function waFromLead(d) {
     var lines = ["¡Hola Deyscom! Os escribo desde la web:"];
     Object.keys(d).forEach(function (k) {
-      if (["pagina", "fecha", "consentimiento", "formulario", "landing", "referrer", "gclid", "fbclid", "precio_unidad", "edicion"].indexOf(k) > -1 || k.indexOf("utm_") === 0 || !d[k]) return;
+      if (["pagina", "fecha", "consentimiento", "formulario", "landing", "referrer", "gclid", "fbclid", "precio_unidad", "edicion", "id"].indexOf(k) > -1 || k.indexOf("utm_") === 0 || !d[k]) return;
       lines.push("• " + k.charAt(0).toUpperCase() + k.slice(1) + ": " + d[k]);
     });
     return "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(lines.join("\n"));

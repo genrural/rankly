@@ -4,7 +4,7 @@
       "slug": "index",
       "nombre": "Inicio",
       "titulo": "Taller motorsport en Madrid · Deyscom Motorsport (Torrelaguna)",
-      "descripcion": "Taller motorsport en Torrelaguna (Madrid): preparación de coches de rally y competición, restomod, taller de pintura en cabina, banco de potencia y experiencias.",
+      "descripcion": "Taller motorsport en Torrelaguna (Madrid): coches de rally y competición, restomod, pintura en cabina, banco de potencia y experiencias de rally.",
       "h1": "Taller motorsport en Madrid · Competición, restomod, pintura y banco de potencia",
       "noindex": false
     },
@@ -12,7 +12,7 @@
       "slug": "competicion",
       "nombre": "Competición",
       "titulo": "Preparación de coches de rally y competición en Madrid | Deyscom",
-      "descripcion": "Taller de coches de rally en Madrid: preparación, jaulas de seguridad, set-up, asistencia en carrera, alquiler de coche de rally y coches en venta.",
+      "descripcion": "Taller de coches de rally en Madrid: preparación de coches de competición, jaulas de seguridad, set-up, mantenimiento y asistencia en carrera.",
       "h1": "Preparación de coches de competición y rally en Madrid",
       "noindex": false
     },
@@ -43,9 +43,9 @@
     {
       "slug": "experiencias",
       "nombre": "Experiencias",
-      "titulo": "Experiencias de conducción: Jarama, rally y slalom | Deyscom",
-      "descripcion": "Experiencias de conducción en Madrid: conduce en el Circuito del Jarama, corre un rally federado o haz slalom con nuestro Peugeot 206 o BMW E36.",
-      "h1": "Experiencias de conducción en circuito, rally y slalom",
+      "titulo": "Experiencias de rally: conduce un coche de rally en tierra | Deyscom",
+      "descripcion": "Conduce un coche de rally sobre tierra en el Circuito El Hito (Cuenca): Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5-7 dic). 299 €.",
+      "h1": "Experiencias de rally: conduce un coche de rally sobre tierra",
       "noindex": false
     },
     {
@@ -182,6 +182,22 @@
       "titulo": "Coches de rally en venta y de segunda mano | Deyscom Motorsport",
       "descripcion": "Coches de rally en venta y de segunda mano revisados por el taller Deyscom Motorsport (Madrid). Stock en Wallapop y búsqueda a medida de tu coche.",
       "h1": "Coches de rally en venta",
+      "noindex": false
+    },
+    {
+      "slug": "experiencia-rally-eurocem",
+      "nombre": "Experiencia Rally Eurocem",
+      "titulo": "Experiencia Rally Eurocem · 4 de diciembre en Cuenca | Deyscom",
+      "descripcion": "Jornada de rally sobre tierra el 4 de diciembre en el Circuito El Hito (Cuenca): BMW E36 y Peugeot 206, 5 ejercicios puntuables y comida. 299 €.",
+      "h1": "Experiencia Rally Eurocem: jornada de conducción de rally en tierra",
+      "noindex": false
+    },
+    {
+      "slug": "ds-pilot-course",
+      "nombre": "DS Pilot Course",
+      "titulo": "DS Pilot Course · Curso de conducción de rally en tierra | Deyscom",
+      "descripcion": "Curso de pilotaje de rally sobre tierra el 5, 6 y 7 de diciembre en el Circuito El Hito (Cuenca), turno de mañana o tarde, con BMW E36 y Peugeot 206. 299 €.",
+      "h1": "DS Pilot Course: curso de conducción de rally sobre tierra",
       "noindex": false
     }
   ]

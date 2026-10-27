@@ -212,12 +212,37 @@ def apply(g):
             g["GUIDES"][s] = pairs(d["guias"], "pregunta", "respuesta", md)
         if "articulos_relacionados" in d:
             g["RELATED"][s] = [x for x in d["articulos_relacionados"] if x]
+        if s in g.get("EVENTS", {}):
+            ev = g["EVENTS"][s]
+            if d.get("intro"):
+                ev["intro"] = md(d["intro"])
+            if d.get("ejercicios"):
+                ev["ejercicios"] = pairs(d["ejercicios"], "titulo", "texto")
+            if d.get("incluye"):
+                ev["incluye"] = [x for x in d["incluye"] if x]
         if "faq" in d:
             faq = pairs(d["faq"], "pregunta", "respuesta")
             g["FAQ_OVERRIDE"][s] = faq
             for coll in ("SERVICES", "EXPERIENCES"):
                 if s in g[coll]:
                     g[coll][s]["faq"] = faq
+
+    ed = read("ediciones.json")
+    if ed and "EDITIONS" in g:
+        ok = []
+        for e in ed.get("ediciones") or []:
+            if not re.match(r"^[a-z0-9-]{3,60}$", str(e.get("id", ""))) or e.get("experiencia") not in g["EVENTS"] \
+                    or not re.match(r"^\d{4}-\d{2}-\d{2}$", str(e.get("fecha", ""))[:10]):
+                print("Aviso: edición no válida en content/ediciones.json:", e.get("id"))
+                continue
+            e = dict(e, fecha=str(e["fecha"])[:10])
+            if e.get("stripe") and not re.match(r"^https://(buy|checkout)\.stripe\.com/[A-Za-z0-9_/-]+$", str(e["stripe"]).strip()):
+                print("Aviso: enlace de Stripe no válido en", e["id"], "→ se ignora")
+                e["stripe"] = ""
+            ok.append(e)
+        if len({e["id"] for e in ok}) != len(ok):
+            raise SystemExit("content/ediciones.json: hay identificadores repetidos")
+        g["EDITIONS"][:] = ok
 
     au = read("autores.json")
     if au and au.get("autores"):

@@ -14,7 +14,7 @@
   "imagen": "bmw-e36-competicion-circuito-curva",
   "imagen_subida": "",
   "imagen_alt": "",
-  "respuesta_rapida": "El **Circuito del Jarama** está en San Sebastián de los Reyes (Madrid), lo gestiona el **Real Automóvil Club de España (RACE)** y se inauguró en **1967**. Su trazado actual mide **3.850 metros** y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en **tandas** o vivirlo como piloto con un coche de competición en una experiencia como el DS Pilot Weekend – Circuit.",
+  "respuesta_rapida": "El **Circuito del Jarama** está en San Sebastián de los Reyes (Madrid), lo gestiona el **Real Automóvil Club de España (RACE)** y se inauguró en **1967**. Su trazado actual mide **3.850 metros** y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en **tandas** o con una experiencia guiada. Si lo que te atrae es aprender a controlar el coche, nuestro DS Pilot Course trabaja el derrape, la frenada y la trazada sobre tierra.",
   "secciones": [
     {
       "titulo": "Historia del Circuito del Jarama",
@@ -22,7 +22,7 @@
     },
     {
       "titulo": "El trazado: 3.850 metros técnicos",
-      "texto": "El trazado actual mide unos **3,85 km** y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las **referencias de frenada** y la trazada de cada curva antes de buscar velocidad. Nuestro equipo te las explica tanda a tanda en el [DS Pilot Weekend – Circuit](ds-pilot-weekend-circuit.html)."
+      "texto": "El trazado actual mide unos **3,85 km** y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las **referencias de frenada** y la trazada de cada curva antes de buscar velocidad. Si quieres aprender técnica antes de rodar en asfalto, en el [DS Pilot Course](ds-pilot-course.html) trabajamos frenada, trazadas y control del coche sobre tierra."
     },
     {
       "titulo": "¿Qué son las tandas en el Jarama y cómo funcionan?",
@@ -34,7 +34,7 @@
     },
     {
       "titulo": "Tandas con tu coche o experiencia con coche de competición",
-      "texto": "Las tandas son ideales si ya tienes un coche preparado y experiencia. Una **experiencia en el Circuito del Jarama** como el DS Pilot Weekend – Circuit está pensada para vivirlo como un piloto más: paddock, briefing, coche de competición preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica."
+      "texto": "Las tandas son ideales si ya tienes un coche preparado y experiencia. Una **experiencia en el Circuito del Jarama** con un coche de competición está pensada para vivirlo como un piloto más: briefing, monitores y coche preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica."
     },
     {
       "titulo": "Cómo lo vivimos en Deyscom",
@@ -56,7 +56,7 @@
     },
     {
       "pregunta": "¿Hay experiencias de conducción en el Jarama?",
-      "respuesta": "Sí. Con el DS Pilot Weekend – Circuit de Deyscom Motorsport vives un fin de semana como piloto con un coche de competición preparado."
+      "respuesta": "Sí, hay empresas que organizan experiencias en el Jarama. Si buscas aprender a controlar un coche de rally, el DS Pilot Course de Deyscom Motorsport es una jornada sobre tierra con BMW E36 y Peugeot 206."
     }
   ],
   "fuentes": [

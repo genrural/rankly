@@ -20,8 +20,7 @@
     plazas: "Plazas", prueba: "Prueba", interes: "Interés", uso: "Uso", producto: "Producto", talla: "Talla", color: "Color",
     cantidad: "Cantidad", total: "Total", entrega: "Entrega", direccion: "Dirección" };
 
-  var PRODUCTOS = { "ds-pilot-weekend-circuit": "DS Pilot Weekend – Circuit", "ds-pilot-weekend-rally": "DS Pilot Weekend – Rally",
-    "ds-pilot-weekend-slalom": "DS Pilot Weekend – Slalom", "ds-copilot-course": "DS Copilot Course", "alquiler-coche-de-rally": "Alquiler de coche de rally" };
+  var PRODUCTOS = { "experiencia-rally-eurocem": "Experiencia Rally Eurocem", "ds-pilot-course": "DS Pilot Course" };
   var ENVIOS = ["Pendiente de pago", "Pagado", "Preparando", "Enviado", "Entregado", "Cancelado"];
   var ED_ESTADOS = ["Abierta", "Completa", "Cerrada", "Cancelada"];
   var DIRECCION = "C/ Canal de Isabel II, 2, Nave 3, Torrelaguna (L-V 07:00–15:00)";
@@ -32,12 +31,13 @@
     { n: "Cita en el taller", t: "¡Hola {nombre}! Te esperamos en el taller: " + DIRECCION + ". ¿Qué día te viene bien para pasarte?" },
     { n: "Presupuesto enviado", t: "¡Hola {nombre}! Te acabamos de enviar por email el presupuesto de {servicio}. Cualquier duda, nos dices por aquí." },
     { n: "Seguimiento del presupuesto", t: "¡Hola {nombre}! ¿Pudiste ver el presupuesto de {servicio}? Si quieres ajustamos algo o lo vemos juntos en el taller." },
-    { n: "Confirmar plaza", para: /pilot|copilot|alquiler|curso|experiencia/i, t: "¡Hola {nombre}! Te confirmamos tu plaza en {servicio}{edicion}. Ahora te mandamos los datos de pago y todo lo que necesitas llevar. ¡Va a ser brutal!" },
+    { n: "Completar el pago", para: /pilot|eurocem|experiencia|curso/i, t: "¡Hola {nombre}! Hemos visto que reservaste plaza en {servicio}{edicion} pero el pago no llegó a completarse. Puedes terminarlo aquí: {pago} Si tienes cualquier duda, dímelo por aquí." },
+    { n: "Confirmar plaza", para: /pilot|eurocem|experiencia|curso/i, t: "¡Hola {nombre}! Te confirmamos tu plaza en {servicio}{edicion}. Unos días antes te mandamos el horario exacto y la ubicación del circuito. ¡Va a ser brutal!" },
     { n: "Pedido enviado", para: /pedido|tienda/i, t: "¡Hola {nombre}! Tu pedido de la tienda Deyscom ya está en camino. ¡Gracias por vestir el equipo! 🏁" },
     { n: "Pedir reseña en Google", t: "¡Hola {nombre}! Gracias por confiar en Deyscom Motorsport. ¿Nos dejarías una reseña en Google? Nos ayuda muchísimo 🙏{resena}" }
   ];
 
-  var state = { token: null, user: null, leads: [], activity: [], ediciones: [], presupuestos: [], view: "panel",
+  var state = { token: null, user: null, leads: [], activity: [], ediciones: [], presupuestos: [], ventas: [], stripe: false, view: "panel",
     filters: { q: "", estado: "", servicio: "", origen: "", periodo: "", etiqueta: "" }, openId: null, demo: false };
 
   /* ---------------- utilidades ---------------- */
@@ -109,9 +109,8 @@
   function edById(id) { return state.ediciones.filter(function (e) { return e.id === id; })[0]; }
   function edLabel(e) {
     if (!e) return "";
-    var a = parseDate(e.inicio), b = parseDate(e.fin);
-    var f = fmtDate(a) + (b && e.fin !== e.inicio ? " – " + fmtDate(b) : "");
-    return (e.nombre || PRODUCTOS[e.producto] || e.producto) + " · " + f + (e.lugar ? " · " + e.lugar : "");
+    var d = parseDate(e.fecha);
+    return (e.nombre || PRODUCTOS[e.experiencia] || e.experiencia) + " · " + (d ? d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }) : e.fecha) + (e.turno ? " · " + e.turno : "");
   }
   function seats(e) { var p = parseInt(e.plazas, 10) || 0; return { plazas: p, ocupadas: Number(e.ocupadas) || 0, libres: p ? Math.max(0, p - (Number(e.ocupadas) || 0)) : null }; }
   function b64ToBlob(b64, type) { var bin = atob(b64), arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i); return new Blob([arr], { type: type }); }
@@ -146,8 +145,7 @@
       "Sergio Rubio", "Cristina Peña", "Andrés Marín", "Beatriz Cano", "Hugo Serrano", "Alba Ramos", "Mario Iglesias", "Clara Fuentes"];
     var svc = [["Competición", "presupuesto-home", "BMW E36", "10.000 – 30.000 €"], ["Pintura", "pintura", "Nissan Patrol", "3.000 – 10.000 €"],
       ["Restomod", "restomod", "Land Rover Defender 110", "> 30.000 €"], ["Banco de potencia", "banco-de-potencia", "Golf GTI Mk2", "< 3.000 €"],
-      ["DS Pilot Weekend – Rally", "ds-pilot-weekend-rally", "", ""], ["DS Copilot Course", "ds-copilot-course", "", ""],
-      ["Alquiler de coche de rally", "alquiler-coche-de-rally", "", ""], ["DS Pilot Weekend – Circuit", "ds-pilot-weekend-circuit", "", ""],
+      ["Competición", "contacto", "Peugeot 206", "3.000 – 10.000 €"], ["Pintura", "contacto", "BMW E30", "3.000 – 10.000 €"],
       ["Pedido tienda", "pedido", "", ""], ["Coches de rally en venta · búsqueda", "busqueda-coche-rally", "Peugeot 206 de rally", "Hasta 9.000 €"]];
     var refs = ["https://www.google.com/", "", "https://www.instagram.com/", "https://www.google.com/", "https://l.facebook.com/", "", "https://www.tiktok.com/", "https://chatgpt.com/"];
     var est = ["Nuevo", "Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido", "Contactado", "Ganado", "Nuevo"];
@@ -165,21 +163,33 @@
       act.push({ lead_id: l.id, fecha: d.toISOString(), usuario: "web", tipo: "creado", texto: "Lead recibido desde " + l.pagina });
       if (e !== "Nuevo") act.push({ lead_id: l.id, fecha: new Date(d.getTime() + 7200000).toISOString(), usuario: l.asignado, tipo: "nota", texto: "Llamado. Le enviamos información por WhatsApp." });
     });
-    var dd = function (n) { return ymd(new Date(now + n * 86400000)); };
-    var eds = [
-      { id: "ed1", producto: "ds-copilot-course", nombre: "DS Copilot Course", inicio: dd(16), fin: dd(17), lugar: "Guadalajara", plazas: "12", precio: "", estado: "Abierta", visible: "sí", notas: "" },
-      { id: "ed2", producto: "ds-pilot-weekend-circuit", nombre: "DS Pilot Weekend – Circuit", inicio: dd(23), fin: dd(24), lugar: "Circuito del Jarama", plazas: "8", precio: "", estado: "Abierta", visible: "sí", notas: "" },
-      { id: "ed3", producto: "ds-pilot-weekend-slalom", nombre: "DS Pilot Weekend – Slalom", inicio: dd(37), fin: dd(37), lugar: "Madrid", plazas: "10", precio: "", estado: "Abierta", visible: "sí", notas: "" },
-      { id: "ed4", producto: "ds-pilot-weekend-rally", nombre: "DS Pilot Weekend – Rally", inicio: dd(52), fin: dd(53), lugar: "Rally por confirmar", plazas: "2", precio: "", estado: "Abierta", visible: "sí", notas: "" }];
-    leads.forEach(function (l) { var p = l.formulario; var e = eds.filter(function (x) { return x.producto === p; })[0]; if (e && l.estado !== "Perdido") l.edicion = e.id; if (p === "pedido") { l.producto = "Camiseta Deyscom"; l.talla = "L"; l.color = "Negro"; l.cantidad = "1"; l.total = "29.00"; l.entrega = "Envío a domicilio"; l.envio = l.estado === "Ganado" ? "Entregado" : "Pagado"; } });
-    return { leads: leads, activity: act, ediciones: eds, presupuestos: [] };
+    var eds = (window.DM_EDICIONES || []).map(function (e) { return Object.assign({}, e); });
+    var ventas = [];
+    var bookers = ["Raúl Benito", "Silvia Pardo", "Tomás Llorente", "Eva Morales", "Jorge Cuesta", "Ana Belén Rey", "Víctor Gallego", "Lidia Sáez", "Marcos Vidal", "Rocío Medina", "Adrián Soler", "Noelia Paz"];
+    bookers.forEach(function (n, i) {
+      var e = eds[i % Math.max(1, eds.length)]; if (!e) return;
+      var paid = i % 4 !== 3, d = new Date(now - (i + 1) * 9 * 3600000);
+      var l = { id: "demow" + i, recibido: d.toISOString(), fecha: d.toLocaleString("es-ES"), formulario: e.experiencia, servicio: e.nombre, nombre: n,
+        telefono: "6" + String(20000000 + i * 4917131).slice(0, 8), email: n.split(" ")[0].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + "@ejemplo.com",
+        edicion: e.id, fecha_elegida: e.etiqueta, plazas: i === 5 ? "2" : "1", pagina: "/" + e.experiencia + ".html", referrer: refs[i % refs.length],
+        estado: paid ? "Ganado" : "Nuevo", valor: paid ? String((e.precio || 299) * (i === 5 ? 2 : 1)) : "", asignado: "" };
+      leads.push(l);
+      act.push({ lead_id: l.id, fecha: d.toISOString(), usuario: "web", tipo: "creado", texto: "Reserva desde la web: " + e.etiqueta });
+      if (paid) {
+        act.push({ lead_id: l.id, fecha: new Date(d.getTime() + 300000).toISOString(), usuario: "Stripe", tipo: "pago", texto: "Pago recibido en Stripe: " + money2(l.valor) + " · " + e.nombre + " · " + e.etiqueta });
+        ventas.push({ session_id: "cs_demo_" + i, fecha: new Date(d.getTime() + 300000).toISOString(), cliente: n, email: l.email, telefono: l.telefono, importe: l.valor, moneda: "EUR",
+          plazas: l.plazas, edicion: e.id, experiencia: e.nombre, fecha_edicion: e.etiqueta, lead_id: l.id, estado: "Pagado" });
+      }
+    });
+    leads.forEach(function (l) { if (l.formulario === "pedido") { l.producto = "Camiseta Deyscom"; l.talla = "L"; l.color = "Negro"; l.cantidad = "1"; l.total = "29.00"; l.entrega = "Envío a domicilio"; l.envio = l.estado === "Ganado" ? "Entregado" : "Pagado"; } });
+    return { leads: leads, activity: act, ediciones: eds, presupuestos: [], ventas: ventas };
   }
   var demoMem = null;
   function demoDb() {
     if (demoMem) return demoMem;
-    var raw = read("dm_crm_demo");
+    var raw = read("dm_crm_demo2");
     if (raw) { try { demoMem = JSON.parse(raw); return demoMem; } catch (e) { /* reinicia */ } }
-    demoMem = demoSeed(); store("dm_crm_demo", JSON.stringify(demoMem)); return demoMem;
+    demoMem = demoSeed(); store("dm_crm_demo2", JSON.stringify(demoMem)); return demoMem;
   }
   function demoQuoteHtml(q, l) {
     var rows = q.lineas.map(function (x) { return "<tr><td>" + esc(x.concepto) + "</td><td align=right>" + x.cantidad + "</td><td align=right>" + money(x.precio) + "</td><td align=right>" + money(x.cantidad * x.precio) + "</td></tr>"; }).join("");
@@ -190,7 +200,7 @@
   }
   function demoApi(action, p) {
     var db = demoDb();
-    var save = function () { store("dm_crm_demo", JSON.stringify(db)); };
+    var save = function () { store("dm_crm_demo2", JSON.stringify(db)); };
     var user = state.user || { email: "demo@deyscom.com", nombre: "Modo demo", rol: "admin" };
     var log = function (id, tipo, texto) { var a = { lead_id: id, fecha: new Date().toISOString(), usuario: user.nombre, tipo: tipo, texto: texto }; db.activity.push(a); return a; };
     var find = function (id) { return db.leads.filter(function (l) { return l.id === id; })[0]; };
@@ -198,15 +208,10 @@
       case "login": return { ok: true, token: "demo", user: user };
       case "logout": return { ok: true };
       case "leads":
-        db.ediciones = db.ediciones || []; db.presupuestos = db.presupuestos || [];
-        var taken = {}; db.leads.forEach(function (l) { if (l.edicion && l.estado !== "Perdido") taken[l.edicion] = (taken[l.edicion] || 0) + (parseInt(l.plazas, 10) || 1); });
-        db.ediciones.forEach(function (e) { e.ocupadas = taken[e.id] || 0; });
-        return { ok: true, user: user, estados: ESTADOS, leads: db.leads, activity: db.activity, ediciones: db.ediciones, presupuestos: db.presupuestos };
-      case "saveEdicion":
-        var f = p.fields, ex = db.ediciones.filter(function (e) { return e.id === f.id; })[0];
-        if (ex) Object.assign(ex, f); else { f.id = "ed" + Date.now().toString(36); db.ediciones.push(f); }
-        save(); return { ok: true, id: f.id || ex.id };
-      case "deleteEdicion": db.ediciones = db.ediciones.filter(function (e) { return e.id !== p.id; }); save(); return { ok: true };
+        db.presupuestos = db.presupuestos || []; db.ventas = db.ventas || [];
+        return { ok: true, user: user, estados: ESTADOS, leads: db.leads, activity: db.activity, ediciones: db.ediciones && db.ediciones.length ? db.ediciones : (window.DM_EDICIONES || []),
+          presupuestos: db.presupuestos, ventas: db.ventas, stripe: true };
+      case "syncStripe": return { ok: true, nuevas: 0 };
       case "quote":
         var ql = find(p.lead_id), base = p.lineas.reduce(function (t, x) { return t + x.cantidad * x.precio; }, 0), tot = Math.round(base * (1 + (Number(p.iva) || 0) / 100) * 100) / 100;
         var numq = "P-" + new Date().getFullYear() + "-" + ("00" + (db.presupuestos.length + 1)).slice(-3);
@@ -296,7 +301,9 @@
       state.leads.forEach(function (l) { l._date = leadDate(l); if (!l.estado) l.estado = "Nuevo"; });
       state.leads.sort(function (a, b) { return b._date - a._date; });
       state.activity = res.activity || [];
-      state.ediciones = (res.ediciones || []).sort(function (a, b) { return a.inicio < b.inicio ? -1 : 1; });
+      var eds = res.ediciones && res.ediciones.length ? res.ediciones : (window.DM_EDICIONES || []);
+      state.ediciones = eds.slice().sort(function (a, b) { return (a.fecha + (a.turno === "Tarde" ? 1 : 0)) < (b.fecha + (b.turno === "Tarde" ? 1 : 0)) ? -1 : 1; });
+      state.ventas = res.ventas || []; state.stripe = !!res.stripe;
       state.presupuestos = res.presupuestos || [];
       fillFilters(); render();
       $("#crm-sync").textContent = "Actualizado " + new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
@@ -306,7 +313,7 @@
     state.view = v;
     $$("[data-view]").forEach(function (b) { b.classList.toggle("is-active", b.getAttribute("data-view") === v); if (b.getAttribute("data-view") === v) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
     $$(".crm-view").forEach(function (s) { s.hidden = s.id !== "view-" + v; });
-    $("#crm-title").textContent = { panel: "Panel", leads: "Leads", pipeline: "Pipeline", calendario: "Calendario", pedidos: "Pedidos", usuarios: "Usuarios", cuenta: "Mi cuenta" }[v];
+    $("#crm-title").textContent = { panel: "Panel", leads: "Leads", pipeline: "Pipeline", calendario: "Calendario", ventas: "Ventas", pedidos: "Pedidos", usuarios: "Usuarios", cuenta: "Mi cuenta" }[v];
     $("#crm-filters").hidden = !(v === "leads" || v === "pipeline");
     document.body.classList.remove("nav-open");
     render();
@@ -356,7 +363,7 @@
   /* ---------------- render ---------------- */
   function recountSeats() {
     var taken = {};
-    state.leads.forEach(function (l) { if (l.edicion && l.estado !== "Perdido") taken[l.edicion] = (taken[l.edicion] || 0) + (parseInt(l.plazas, 10) > 0 ? parseInt(l.plazas, 10) : 1); });
+    state.leads.forEach(function (l) { if (l.edicion && l.estado === "Ganado") taken[l.edicion] = (taken[l.edicion] || 0) + (parseInt(l.plazas, 10) > 0 ? parseInt(l.plazas, 10) : 1); });
     state.ediciones.forEach(function (e) { e.ocupadas = taken[e.id] || 0; });
   }
   function render() {
@@ -366,6 +373,7 @@
     if (state.view === "leads") renderLeads();
     if (state.view === "pipeline") renderPipeline();
     if (state.view === "calendario") renderCalendar();
+    if (state.view === "ventas") renderSales();
     if (state.view === "pedidos") renderOrders();
     var nuevos = state.leads.filter(function (l) { return l.estado === "Nuevo"; }).length;
     var badge = $("#crm-badge-new"); badge.textContent = nuevos; badge.hidden = !nuevos;
@@ -432,10 +440,10 @@
       Object.keys(ch).sort(function (a, b) { return ch[b].n - ch[a].n; }).map(function (k) {
         var c = ch[k]; return "<tr><td>" + esc(k) + "</td><td>" + c.n + "</td><td>" + c.g + "</td><td>" + Math.round(c.g / c.n * 100) + "%</td><td>" + money(c.v) + "</td></tr>";
       }).join("") + "</tbody></table>" : '<p class="crm-empty">Sin datos todavía.</p>';
-    var nextEd = state.ediciones.filter(function (e) { return e.inicio >= today && ["Cerrada", "Cancelada"].indexOf(e.estado) === -1; }).slice(0, 5);
+    var nextEd = state.ediciones.filter(function (e) { return e.fecha >= today && e.estado !== "Cancelada"; }).slice(0, 6);
     $("#crm-next-ed").innerHTML = nextEd.length ? nextEd.map(function (e) {
       var st = seats(e);
-      return '<li><button type="button" data-ed="' + esc(e.id) + '"><span class="crm-date">' + fmtDate(parseDate(e.inicio)) + "</span><b>" + esc(e.nombre || PRODUCTOS[e.producto] || e.producto) +
+      return '<li><button type="button" data-ed="' + esc(e.id) + '"><span class="crm-date">' + fmtDate(parseDate(e.fecha)) + "</span><b>" + esc((e.nombre || PRODUCTOS[e.experiencia]) + (e.turno ? " · " + e.turno : "")) +
         "</b><small>" + (st.plazas ? st.ocupadas + " / " + st.plazas + " plazas" + (st.libres === 0 ? " · COMPLETA" : "") : st.ocupadas + " inscritos") + "</small></button></li>";
     }).join("") : '<li class="crm-empty">No hay ediciones programadas. Créalas en Calendario para mostrar fechas y plazas en la web.</li>';
     $("#crm-latest").innerHTML = L.slice(0, 6).map(function (l) {
@@ -526,7 +534,7 @@
       return '<li class="tl tl--' + esc(a.tipo) + '"><div><b>' + esc(a.usuario || "—") + "</b> · <span>" + fmtDate(parseDate(a.fecha), true) + "</span></div><p>" + esc(a.texto).replace(/\n/g, "<br>") + "</p></li>";
     }).join("") || '<li class="crm-empty">Sin actividad todavía.</li>';
     var prod = productOf(l);
-    var edOpts = state.ediciones.filter(function (e) { return !prod || e.producto === prod || e.id === l.edicion; }).map(function (e) {
+    var edOpts = state.ediciones.filter(function (e) { return !prod || e.experiencia === prod || e.id === l.edicion; }).map(function (e) {
       var st = seats(e); return '<option value="' + esc(e.id) + '"' + (e.id === l.edicion ? " selected" : "") + ">" + esc(edLabel(e)) + (st.plazas ? " (" + st.libres + " libres)" : "") + "</option>";
     }).join("");
     var tpls = PLANTILLAS.filter(function (t) { return !t.para || t.para.test(service(l) + " " + l.formulario); });
@@ -602,8 +610,8 @@
     if (tg) tg.addEventListener("click", function () {
       var t = tpls[+$("#dw-tpl").value]; var e = edById(l.edicion);
       var txt = t.t.replace(/\{nombre\}/g, (l.nombre || "").split(" ")[0]).replace(/\{servicio\}/g, service(l))
-        .replace(/\{yo\}/g, (state.user.nombre || "el equipo").split(" ")[0]).replace(/\{edicion\}/g, e ? " (" + edLabel(e).split(" · ").slice(1).join(" · ") + ")" : "")
-        .replace(/\{resena\}/g, CFG.googleReview ? " " + CFG.googleReview : "");
+        .replace(/\{yo\}/g, (state.user.nombre || "el equipo").split(" ")[0]).replace(/\{edicion\}/g, e ? " (" + edWhen(e) + ")" : "")
+        .replace(/\{resena\}/g, CFG.googleReview ? " " + CFG.googleReview : "").replace(/\{pago\}/g, payUrl(e, l) || "(te lo enviamos ahora)");
       window.open("https://wa.me/" + ph + "?text=" + encodeURIComponent(txt), "_blank", "noopener");
       api("note", { id: id, text: "WhatsApp enviado · plantilla «" + t.n + "»" }).then(function (res) { state.activity.push(res.activity); if (state.openId === id) openDrawer(id); }).catch(function () {});
     });
@@ -631,60 +639,108 @@
       .catch(function (e) { Object.keys(prev).forEach(function (k) { l[k] = prev[k]; }); render(); if (state.openId === id) openDrawer(id); toast(e.message, true); });
   }
 
-  /* ---------------- calendario de ediciones ---------------- */
+  /* ---------------- calendario de fechas (se editan en el panel /admin) ---------------- */
+  function edTitle(e) { return (e.nombre || PRODUCTOS[e.experiencia] || e.experiencia || "") + " · " + edWhen(e); }
+  function edWhen(e) {
+    var d = parseDate(e.fecha);
+    return (d ? d.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" }) : e.fecha) + (e.turno ? " · " + e.turno : "") + (e.horario ? " (" + e.horario + ")" : "");
+  }
+  function payUrl(e, l) {
+    if (!e || !e.stripe) return "";
+    var u = e.stripe + (e.stripe.indexOf("?") > -1 ? "&" : "?") + "client_reference_id=" + encodeURIComponent(l.id);
+    if (l.email) u += "&prefilled_email=" + encodeURIComponent(l.email);
+    return u;
+  }
+  function edPaid(id) { return state.leads.filter(function (l) { return l.edicion === id && l.estado === "Ganado"; }); }
+  function edPending(id) { return state.leads.filter(function (l) { return l.edicion === id && ["Ganado", "Perdido"].indexOf(l.estado) === -1; }); }
   function renderCalendar() {
     var today = ymd(new Date());
-    var future = state.ediciones.filter(function (e) { return (e.fin || e.inicio) >= today; });
-    var past = state.ediciones.filter(function (e) { return (e.fin || e.inicio) < today; }).reverse();
+    var future = state.ediciones.filter(function (e) { return e.fecha >= today; });
+    var past = state.ediciones.filter(function (e) { return e.fecha < today; }).reverse();
     var card = function (e) {
       var st = seats(e), pct = st.plazas ? Math.min(100, st.ocupadas / st.plazas * 100) : 0;
-      var full = st.libres === 0 || e.estado === "Completa";
-      return '<button type="button" class="ed-card' + (full ? " is-full" : "") + (["Cerrada", "Cancelada"].indexOf(e.estado) > -1 ? " is-off" : "") + '" data-ed="' + esc(e.id) + '">' +
-        '<span class="ed-card__date"><b>' + (parseDate(e.inicio) ? parseDate(e.inicio).getDate() : "?") + "</b>" + (parseDate(e.inicio) ? parseDate(e.inicio).toLocaleString("es-ES", { month: "short" }) : "") + "</span>" +
-        '<span class="ed-card__body"><b>' + esc(e.nombre || PRODUCTOS[e.producto] || e.producto) + "</b><small>" + esc(edLabel(e).split(" · ").slice(1).join(" · ")) + (e.precio ? " · " + esc(e.precio) + " €" : "") + "</small>" +
-        (st.plazas ? '<span class="ed-bar"><i style="width:' + pct + '%"></i></span><small>' + st.ocupadas + " de " + st.plazas + " plazas" + (full ? " · <b class=\"pink\">COMPLETA</b>" : " · quedan " + st.libres) + "</small>"
-          : "<small>" + st.ocupadas + " inscritos · sin límite de plazas</small>") +
-        '</span><span class="st st--' + (e.estado === "Abierta" ? 4 : e.estado === "Completa" ? 0 : 5) + '">' + esc(e.estado || "Abierta") + (String(e.visible).toLowerCase() === "no" ? " · oculta" : "") + "</span></button>";
+      var full = st.libres === 0 || e.estado === "Completa", pend = edPending(e.id).length;
+      var d = parseDate(e.fecha);
+      return '<button type="button" class="ed-card' + (full ? " is-full" : "") + (e.estado === "Cancelada" || e.visible === false ? " is-off" : "") + '" data-ed="' + esc(e.id) + '">' +
+        '<span class="ed-card__date"><b>' + (d ? d.getDate() : "?") + "</b>" + (d ? d.toLocaleString("es-ES", { month: "short" }) : "") + "</span>" +
+        '<span class="ed-card__body"><b>' + esc(e.nombre || PRODUCTOS[e.experiencia]) + "</b><small>" + esc((e.turno ? "Turno de " + e.turno.toLowerCase() : "") + (e.lugar ? " · " + e.lugar : "")) + (e.precio ? " · " + money(e.precio) : "") + "</small>" +
+        (st.plazas ? '<span class="ed-bar"><i style="width:' + pct + '%"></i></span><small>' + st.ocupadas + " de " + st.plazas + " plazas vendidas" + (full ? " · <b class=\"pink\">COMPLETA</b>" : " · quedan " + st.libres) + "</small>"
+          : "<small>" + st.ocupadas + " plazas vendidas</small>") +
+        (pend ? '<small class="ed-pend">' + pend + (pend === 1 ? " reserva sin pagar" : " reservas sin pagar") + "</small>" : "") +
+        (!e.stripe ? '<small class="ed-warn">⚠️ Falta el enlace de pago de Stripe</small>' : "") +
+        '</span><span class="st st--' + (e.estado === "Completa" || full ? 0 : e.estado === "Cancelada" ? 5 : 4) + '">' + esc(full ? "Completa" : e.estado || "Abierta") + "</span></button>";
     };
     var months = {};
-    future.forEach(function (e) { var d = parseDate(e.inicio); var k = d ? d.toLocaleString("es-ES", { month: "long", year: "numeric" }) : "Sin fecha"; (months[k] = months[k] || []).push(e); });
+    future.forEach(function (e) { var d = parseDate(e.fecha); var k = d ? d.toLocaleString("es-ES", { month: "long", year: "numeric" }) : "Sin fecha"; (months[k] = months[k] || []).push(e); });
     $("#crm-cal").innerHTML = (Object.keys(months).length ? Object.keys(months).map(function (k) {
       return '<section class="ed-month"><h2>' + esc(k) + '</h2><div class="ed-list">' + months[k].map(card).join("") + "</div></section>";
-    }).join("") : '<div class="crm-box"><p class="crm-empty">No hay ediciones programadas. Crea la primera con «+ Nueva edición»: las fechas y plazas libres aparecerán en la web y en los formularios de reserva.</p></div>') +
-      (past.length ? '<details class="ed-past"><summary>Ediciones pasadas (' + past.length + ")</summary><div class=\"ed-list\">" + past.map(card).join("") + "</div></details>" : "");
+    }).join("") : '<div class="crm-box"><p class="crm-empty">No hay fechas programadas. Créalas en el panel de contenido (Experiencias → Fechas y plazas): aparecerán aquí y en la web.</p></div>') +
+      (past.length ? '<details class="ed-past"><summary>Fechas pasadas (' + past.length + ")</summary><div class=\"ed-list\">" + past.map(card).join("") + "</div></details>" : "");
   }
   var edDlg = $("#crm-ed");
+  function personList(list, empty, withPay, e) {
+    if (!list.length) return '<p class="crm-muted">' + empty + "</p>";
+    return '<ul class="crm-list">' + list.map(function (l) {
+      return '<li><button type="button" data-open="' + esc(l.id) + '"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + "</span><b>" + esc(l.nombre) + "</b><small>" +
+        esc(l.telefono) + (l.email ? " · " + esc(l.email) : "") + (parseInt(l.plazas, 10) > 1 ? " · " + esc(l.plazas) + " plazas" : "") + (withPay && l.valor ? " · " + money2(num(l.valor)) : "") + "</small></button></li>";
+    }).join("") + "</ul>";
+  }
   function openEdition(id) {
-    var e = edById(id) || { producto: "ds-pilot-weekend-circuit", estado: "Abierta", visible: "sí" };
-    var f = $("#crm-ed-form");
-    f.reset();
-    ["id", "producto", "nombre", "inicio", "fin", "lugar", "plazas", "precio", "estado", "notas"].forEach(function (k) { if (f.elements[k]) f.elements[k].value = k === "inicio" || k === "fin" ? ymd(parseDate(e[k])) : (e[k] || ""); });
-    f.elements.visible.checked = String(e.visible || "sí").toLowerCase() !== "no";
-    $("#crm-ed-title").textContent = id ? "Editar edición" : "Nueva edición";
-    var ins = id ? state.leads.filter(function (l) { return l.edicion === id; }) : [];
-    $("#crm-ed-ins").innerHTML = id ? "<h3>Inscritos (" + ins.length + ")</h3>" + (ins.length ? '<ul class="crm-list">' + ins.map(function (l) {
-      return '<li><button type="button" data-open="' + esc(l.id) + '"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + "</span><b>" + esc(l.nombre) + "</b><small>" + esc(l.telefono) + (l.plazas ? " · " + esc(l.plazas) + " plazas" : "") + "</small></button></li>";
-    }).join("") + "</ul>" : '<p class="crm-muted">Nadie todavía. Asigna esta edición desde la ficha de cada lead.</p>') : "";
-    $("#crm-ed-del").hidden = !id || state.user.rol !== "admin";
+    var e = edById(id); if (!e) return;
+    var st = seats(e), paid = edPaid(id), pend = edPending(id);
+    $("#crm-ed-title").textContent = e.nombre || PRODUCTOS[e.experiencia];
+    $("#crm-ed-sub").textContent = edWhen(e) + (e.lugar ? " · " + e.lugar : "") + " · " + money(e.precio);
+    var income = paid.reduce(function (t, l) { return t + num(l.valor); }, 0);
+    $("#crm-ed-ins").innerHTML =
+      '<div class="crm-kpis crm-kpis--4 ed-kpis"><div class="kpi"><span>Vendidas</span><b>' + st.ocupadas + (st.plazas ? " / " + st.plazas : "") + '</b></div><div class="kpi"><span>Libres</span><b>' + (st.libres === null ? "—" : st.libres) +
+      '</b></div><div class="kpi"><span>Ingresos</span><b>' + money(income) + '</b></div><div class="kpi' + (pend.length ? " kpi--hot" : "") + '"><span>Sin pagar</span><b>' + pend.length + "</b></div></div>" +
+      (e.stripe ? '<p class="ed-link"><span class="crm-muted">Enlace de pago:</span> <a href="' + esc(e.stripe) + '" target="_blank" rel="noopener">' + esc(e.stripe) + '</a> <button type="button" class="cbtn cbtn--sm" data-copy="' + esc(e.stripe) + '">Copiar</button></p>'
+        : '<p class="ed-warn">⚠️ Esta fecha aún no tiene enlace de pago de Stripe. Añádelo en el panel de contenido para que se pueda pagar desde la web.</p>') +
+      "<h3>Plazas pagadas (" + paid.length + ")</h3>" + personList(paid, "Todavía no hay plazas pagadas.", true, e) +
+      "<h3>Reservas sin pagar (" + pend.length + ")</h3>" + personList(pend, "Nadie pendiente de pago.", false, e);
     showDlg(edDlg);
   }
-  document.addEventListener("click", function (e) {
-    var b = e.target.closest && e.target.closest("[data-ed]"); if (b) { openEdition(b.getAttribute("data-ed")); return; }
-    var o = e.target.closest && e.target.closest("#crm-ed [data-open]"); if (o) hideDlg(edDlg);
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("[data-ed]"); if (b) { openEdition(b.getAttribute("data-ed")); return; }
+    var o = ev.target.closest && ev.target.closest("#crm-ed [data-open]"); if (o) hideDlg(edDlg);
+    var c = ev.target.closest && ev.target.closest("[data-copy]");
+    if (c) { var t = c.getAttribute("data-copy"); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast("Enlace copiado"); }, function () { window.prompt("Copia el enlace:", t); }); }
   });
-  $$("[data-new-ed]").forEach(function (b) { b.addEventListener("click", function () { openEdition(""); }); });
   $("#crm-ed-cancel").addEventListener("click", function () { hideDlg(edDlg); });
-  $("#crm-ed-form").addEventListener("submit", function (ev) {
-    ev.preventDefault();
-    var f = {}; new FormData(this).forEach(function (v, k) { f[k] = String(v).trim(); });
-    f.visible = this.elements.visible.checked ? "sí" : "no";
-    if (f.fin && f.fin < f.inicio) { toast("La fecha de fin es anterior a la de inicio", true); return; }
-    api("saveEdicion", { fields: f }).then(function () { hideDlg(edDlg); toast("Edición guardada"); load(); }).catch(function (e) { toast(e.message, true); });
-  });
-  $("#crm-ed-del").addEventListener("click", function () {
-    var id = $("#crm-ed-form").elements.id.value;
-    if (!confirm("¿Borrar esta edición? Los leads asignados se quedarán sin edición.")) return;
-    api("deleteEdicion", { id: id }).then(function () { hideDlg(edDlg); toast("Edición borrada"); load(); }).catch(function (e) { toast(e.message, true); });
+
+  /* ---------------- ventas (Stripe) ---------------- */
+  function renderSales() {
+    var sales = state.ventas.slice().sort(function (a, b) { return (parseDate(b.fecha) || 0) - (parseDate(a.fecha) || 0); });
+    var total = sales.reduce(function (t, v) { return t + num(v.importe); }, 0);
+    var seatsSold = sales.reduce(function (t, v) { return t + (parseInt(v.plazas, 10) || 1); }, 0);
+    var future = state.ediciones.filter(function (e) { return e.fecha >= ymd(new Date()) && e.estado !== "Cancelada"; });
+    var cap = future.reduce(function (t, e) { return t + (parseInt(e.plazas, 10) || 0); }, 0);
+    var sold = future.reduce(function (t, e) { return t + seats(e).ocupadas; }, 0);
+    var pend = state.leads.filter(function (l) { return l.edicion && ["Ganado", "Perdido"].indexOf(l.estado) === -1; });
+    $("#crm-sales-kpis").innerHTML = [["Ingresos", money(total), sales.length + (sales.length === 1 ? " venta" : " ventas")], ["Plazas vendidas", seatsSold, "en Stripe"],
+      ["Ocupación", cap ? Math.round(sold / cap * 100) + "%" : "—", sold + " de " + cap + " plazas de las próximas fechas"], ["Sin pagar", pend.length, "reservas pendientes de pago", pend.length ? "hot" : ""]].map(function (k) {
+      return '<div class="kpi' + (k[3] ? " kpi--" + k[3] : "") + '"><span>' + k[0] + "</span><b>" + esc(k[1]) + "</b><small>" + esc(k[2]) + "</small></div>";
+    }).join("");
+    $("#crm-sales-eds").innerHTML = future.length ? '<ul class="crm-bars">' + future.map(function (e) {
+      var st = seats(e), pct = st.plazas ? st.ocupadas / st.plazas * 100 : 0;
+      return '<li><span class="crm-bars__lbl" title="' + esc(edTitle(e)) + '">' + esc((e.nombre || "").replace("Experiencia ", "") + " · " + (parseDate(e.fecha) ? parseDate(e.fecha).getDate() : "") + " dic · " + (e.turno || "")) +
+        '</span><span class="crm-bars__track"><i style="width:' + Math.max(2, pct) + '%"></i></span><b>' + st.ocupadas + "/" + (st.plazas || "∞") + "</b><small>" + Math.round(pct) + "%</small></li>";
+    }).join("") + "</ul>" : '<p class="crm-empty">No hay fechas próximas.</p>';
+    $("#crm-sales tbody").innerHTML = sales.map(function (v) {
+      return '<tr' + (v.lead_id ? ' data-open="' + esc(v.lead_id) + '" tabindex="0"' : "") + '><td data-l="Fecha"><span class="crm-muted">' + fmtDate(parseDate(v.fecha), true) + '</span></td><td data-l="Cliente"><b>' + esc(v.cliente) + "</b><br><span class=\"crm-muted\">" + esc(v.email) + "</span></td>" +
+        '<td data-l="Experiencia">' + esc(v.experiencia) + '<br><span class="crm-muted">' + esc(v.fecha_edicion) + '</span></td><td data-l="Plazas">' + esc(v.plazas) + '</td><td data-l="Importe"><b>' + money2(num(v.importe)) + "</b></td></tr>";
+    }).join("") || '<tr><td colspan="5" class="crm-empty">' + (state.stripe || state.demo ? "Todavía no hay ventas." : "Conecta Stripe (README → Ventas con Stripe) para ver aquí los pagos.") + "</td></tr>";
+    $("#crm-pending tbody").innerHTML = pend.map(function (l) {
+      var e = edById(l.edicion);
+      return '<tr data-open="' + esc(l.id) + '" tabindex="0"><td data-l="Fecha"><span class="crm-muted">' + fmtDate(l._date, true) + '</span></td><td data-l="Nombre"><b>' + esc(l.nombre) + '</b></td><td data-l="Contacto">' + esc(l.telefono) + "<br><span class=\"crm-muted\">" + esc(l.email) + "</span></td>" +
+        '<td data-l="Experiencia">' + esc(e ? edTitle(e) : l.servicio) + '</td><td data-l="Estado"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + "</span></td></tr>";
+    }).join("") || '<tr><td colspan="5" class="crm-empty">Nadie pendiente de pago.</td></tr>';
+    $("#crm-stripe-status").textContent = state.demo ? "Modo demostración: ventas de ejemplo." : state.stripe ? "Pagos de Stripe de las experiencias. Se sincronizan solos cada 15 minutos." : "Stripe aún no está conectado: añade la clave en el Apps Script (README → Ventas con Stripe).";
+  }
+  $("#crm-sync-stripe").addEventListener("click", function () {
+    var b = this; b.disabled = true;
+    api("syncStripe").then(function (res) { toast(res.nuevas ? res.nuevas + (res.nuevas === 1 ? " venta nueva" : " ventas nuevas") : "Todo al día: no hay ventas nuevas"); return load(); })
+      .catch(function (e) { toast(e.message, true); }).then(function () { b.disabled = false; });
   });
 
   /* ---------------- pedidos de la tienda ---------------- */
@@ -837,7 +893,7 @@
   $("#crm-digest").addEventListener("click", function () {
     api("digest").then(function (res) { toast(state.demo ? "En la demo no se envían emails" : res.sent ? "Resumen enviado a los usuarios" : "No había nada que enviar"); }).catch(function (e) { toast(e.message, true); });
   });
-  $("#crm-demo-reset").addEventListener("click", function () { store("dm_crm_demo", null); demoMem = null; load(); toast("Datos de ejemplo reiniciados"); });
+  $("#crm-demo-reset").addEventListener("click", function () { store("dm_crm_demo2", null); demoMem = null; load(); toast("Datos de ejemplo reiniciados"); });
 
   /* ---------------- arranque ---------------- */
   var savedToken = read("dm_crm_token"), savedUser = read("dm_crm_user");

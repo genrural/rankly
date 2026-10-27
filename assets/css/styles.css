@@ -1399,3 +1399,80 @@ body.cc-open .mobile-cta { display: none; }
 .buybox__dates li b { font-weight: 600; color: var(--muted); }
 .buybox__dates li.is-last b { color: var(--pink); }
 .buybox__dates li.is-full { opacity: .5; text-decoration: line-through; }
+
+/* =========================================================
+   Experiencias con fecha · reserva y pago (Stripe)
+   ========================================================= */
+.dates { display: flex; flex-direction: column; gap: 10px; }
+.date-row { display: grid; grid-template-columns: 74px minmax(0, 1fr) auto auto auto; gap: 18px; align-items: center; padding: 14px 18px;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .25s, transform .25s; }
+.section--ink .date-row { background: var(--ink-3); }
+.date-row:hover { border-color: var(--pink); }
+.date-row__day { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 64px; border-radius: var(--radius); background: var(--pink); color: #000;
+  font-family: var(--f-display); text-transform: uppercase; font-weight: 800; font-size: .74rem; line-height: 1; transform: skewX(var(--skew)); }
+.date-row__day b { font-size: 1.9rem; font-style: italic; }
+.date-row__info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.date-row__info b { font-family: var(--f-display); font-style: italic; font-size: 1.15rem; text-transform: uppercase; color: #fff; }
+.date-row__info span { color: var(--muted); font-size: .9rem; }
+.date-row__exp { color: var(--pink); font-family: var(--f-display); font-weight: 700; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+.date-row__seats { font-size: .88rem; color: var(--text); white-space: nowrap; }
+.date-row.is-last .date-row__seats { color: var(--pink); font-weight: 700; }
+.date-row__price { font-family: var(--f-display); font-style: italic; font-weight: 800; font-size: 1.6rem; color: #fff; white-space: nowrap; }
+.date-row__full { display: inline-block; padding: 10px 16px; border: 1px solid var(--line-2); border-radius: var(--radius); color: var(--muted); font-weight: 700; text-transform: uppercase; font-size: .8rem; }
+.date-row.is-full { opacity: .6; }
+.date-row.is-full .date-row__day { background: var(--ink-3); color: var(--muted); }
+.btn--sm { padding: 12px 18px; font-size: .82rem; }
+@media (max-width: 860px) {
+  .date-row { grid-template-columns: 60px minmax(0, 1fr) auto; grid-template-areas: "day info price" "day seats cta"; gap: 8px 14px; padding: 12px; }
+  .date-row__day { grid-area: day; height: 100%; min-height: 64px; }
+  .date-row__info { grid-area: info; }
+  .date-row__price { grid-area: price; font-size: 1.3rem; text-align: right; }
+  .date-row__seats { grid-area: seats; align-self: center; }
+  .date-row__cta { grid-area: cta; justify-self: end; }
+  .date-row__info b { font-size: 1rem; }
+}
+@media (max-width: 420px) {
+  .date-row { grid-template-columns: 52px minmax(0, 1fr); grid-template-areas: "day info" "day price" "seats seats" "cta cta"; }
+  .date-row__price { text-align: left; }
+  .date-row__cta, .date-row__cta .btn { width: 100%; justify-self: stretch; }
+}
+
+/* ventana de reserva */
+.buy { width: min(560px, calc(100% - 24px)); max-height: calc(100vh - 24px); overflow-y: auto; padding: 0; border: 1px solid var(--line-2); border-top: 4px solid var(--pink);
+  border-radius: var(--radius); background: var(--ink-2); color: var(--text); }
+.buy::backdrop { background: rgba(0, 0, 0, .72); backdrop-filter: blur(3px); }
+.buy__form { position: relative; padding: 28px 26px 22px; }
+.buy__form h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 6px 0 4px; padding-right: 30px; }
+.buy__when { color: var(--pink); font-weight: 600; margin: 0 0 18px; }
+.buy__close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--ink-3); color: #fff; cursor: pointer; }
+.buy__total { display: flex; justify-content: space-between; align-items: baseline; margin: 18px 0 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.buy__total b { font-family: var(--f-display); font-style: italic; font-size: 2rem; color: #fff; }
+.buy__note { font-size: .82rem; color: var(--muted); margin: 12px 0 0; text-align: center; }
+.form-msg.is-ok { color: #3ddc84; font-weight: 600; margin-top: 12px; }
+@media (max-width: 520px) { .buy__form { padding: 22px 16px 18px; } }
+
+/* ejercicios, equipos, socio, cartel */
+.ej-cards .card { position: relative; padding-top: 58px; }
+.ej-n { position: absolute; top: 18px; left: 22px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--pink); color: #000;
+  font-family: var(--f-display); font-style: italic; font-weight: 800; font-size: 1.1rem; }
+.teams { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.team-chip { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--ink-2); }
+.team-chip span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 6px; background: var(--team); color: #fff; font-weight: 800; font-family: var(--f-display); text-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+.scorecard { background: #f4f4f6; color: #111; border-radius: 8px; padding: 22px; max-width: 360px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0, 0, 0, .45); transform: rotate(-2deg); }
+.scorecard__head { background: #13275e; color: #fff; text-align: center; font-family: var(--f-display); font-weight: 800; font-style: italic; text-transform: uppercase; padding: 10px; border-radius: 4px; }
+.scorecard__name { margin: 14px 0 10px; font-weight: 700; font-size: .9rem; }
+.scorecard__name span { color: #999; }
+.scorecard table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.scorecard th { background: #13275e; color: #fff; padding: 6px; text-align: left; font-size: .75rem; text-transform: uppercase; }
+.scorecard td { border: 1px solid #c9c9d2; padding: 8px; height: 30px; }
+.scorecard__total td { font-weight: 800; background: #e4e6ee; }
+.partner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+.partner__logo { background: #fff; border-radius: 8px; padding: 8px 14px; display: inline-flex; }
+.partner__logo img { height: 52px; width: auto; display: block; }
+.partner p { margin: 0; flex-basis: 100%; }
+.poster-wrap { display: grid; grid-template-columns: 1fr minmax(0, 420px); gap: 40px; align-items: center; }
+.poster img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 30px 70px rgba(0, 0, 0, .5); display: block; }
+.exp__when { display: flex; align-items: center; gap: 6px; color: var(--pink); font-weight: 600; font-size: .9rem; margin: 6px 0 0; }
+.exp__when svg { width: 16px; height: 16px; flex: none; }
+@media (max-width: 860px) { .poster-wrap { grid-template-columns: 1fr; } .poster { max-width: 420px; } }
+@media (max-width: 420px) { .teams { grid-template-columns: 1fr; } }

@@ -30,9 +30,9 @@ def build_config(g):
     author_opts = [{"label": a["name"], "value": k} for k, a in g["AUTHORS"].items()]
     cats = sorted({p["category"] for p in g["POSTS"]} | {"Competición", "Restomod", "Pintura", "Técnica", "Formación", "Circuito", "Taller", "Noticias"})
     names = dict(g["CRUMB_NAME"], index="Inicio", **{s: p["name"] for s, p in g["PRODUCTS"].items()})
-    bookable = [{"label": "DS Pilot Weekend – Circuit", "value": "ds-pilot-weekend-circuit"}, {"label": "DS Pilot Weekend – Rally", "value": "ds-pilot-weekend-rally"},
+    bookable_old = [{"label": "DS Pilot Weekend – Circuit", "value": "ds-pilot-weekend-circuit"}, {"label": "DS Pilot Weekend – Rally", "value": "ds-pilot-weekend-rally"},
                 {"label": "DS Pilot Weekend – Slalom", "value": "ds-pilot-weekend-slalom"}, {"label": "DS Copilot Course", "value": "ds-copilot-course"}]
-    payable = bookable + [{"label": p["name"], "value": s} for s, p in g["PRODUCTS"].items()]
+    payable = [{"label": p["name"], "value": s} for s, p in g["PRODUCTS"].items()]
 
     blog = {
         "name": "blog", "label": "Blog", "label_singular": "artículo", "folder": "content/blog", "format": "json", "extension": "json",
@@ -68,10 +68,11 @@ def build_config(g):
     blog["fields"] = [x for x in blog["fields"] if x["name"] != "seo_grupo"]
 
     page_files = []
-    for s in ["index", "competicion", "alquiler-coche-de-rally", "coches-de-rally-en-venta", "restomod", "pintura", "banco-de-potencia",
-              "experiencias", "ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-weekend-slalom", "ds-copilot-course"]:
-        page_files.append({"label": names.get(s, s), "name": s, "file": f"content/paginas/{s}.json", "fields": [
-            f("Página", "pagina", "hidden"),
+    def page_fields(event=False):
+        extra = [f("Introducción («¿En qué consiste?»)", "intro", "markdown", buttons=MD_BUTTONS, editor_components=[], modes=["rich_text", "raw"]),
+                 f("Ejercicios", "ejercicios", "list", summary="{{fields.titulo}}", fields=[f("Título", "titulo"), f("Descripción", "texto", "text")]),
+                 f("Qué incluye", "incluye", "list", field=f("Elemento", "item"))] if event else []
+        return [f("Página", "pagina", "hidden")] + extra + [
             f("Datos clave", "datos_clave", "list", required=False, summary="{{fields.dato}}: {{fields.valor}}",
               hint="Respuestas cortas y concretas (dónde, qué, cuánto…). Es el bloque «Datos clave» y lo que mejor citan las IA.",
               fields=[f("Dato", "dato"), f("Valor", "valor")]),
@@ -80,7 +81,27 @@ def build_config(g):
               fields=[f("Pregunta (H2)", "pregunta"), f("Respuesta", "respuesta", "markdown", buttons=MD_BUTTONS, editor_components=[], modes=["rich_text", "raw"])]),
             faq_field(),
             f("Artículos relacionados", "articulos_relacionados", "select", multiple=True, required=False, options=post_opts, max=3),
-        ]})
+        ]
+
+    for s in ["index", "competicion", "restomod", "pintura", "banco-de-potencia", "experiencias"]:
+        page_files.append({"label": names.get(s, s), "name": s, "file": f"content/paginas/{s}.json", "fields": page_fields()})
+    event_opts = [{"label": e["name"], "value": k} for k, e in g["EVENTS"].items()]
+    editions_file = {"label": "Fechas, plazas y pago", "name": "ediciones", "file": "content/ediciones.json", "fields": [
+        f("Fechas", "ediciones", "list", summary="{{fields.fecha}} · {{fields.turno}} · {{fields.experiencia}}",
+          hint="Cada fila es un turno que se puede reservar. Aparece en la web con su botón de pago y en el Calendario del CRM.", fields=[
+              f("Identificador", "id", pattern=["^[a-z0-9-]{3,60}$", "Minúsculas, números y guiones"], hint="Único. Ej. dspilot-2026-12-05-manana. No lo cambies si ya hay ventas."),
+              f("Experiencia", "experiencia", "select", options=event_opts),
+              f("Fecha", "fecha", "datetime", format="YYYY-MM-DD", date_format="DD/MM/YYYY", time_format=False),
+              f("Turno", "turno", "select", options=["Mañana", "Tarde", "Día completo"]),
+              f("Horario", "horario", required=False, hint="Opcional. Ej. 09:00–14:00"),
+              f("Lugar", "lugar", default="Circuito El Hito (Cuenca)"),
+              f("Plazas", "plazas", "number", value_type="int", min=1, default=20),
+              f("Precio por persona (€)", "precio", "number", value_type="float", default=299),
+              f("Enlace de pago de Stripe", "stripe", required=False, pattern=["^(https://(buy|checkout)\\.stripe\\.com/.+)?$", "Pega el enlace de pago de Stripe (https://buy.stripe.com/…)"],
+                hint="Stripe → Enlaces de pago → crea uno por turno (299 €) y pégalo aquí. Vacío = la web recoge la reserva y os avisa para cobrarla."),
+              f("Estado", "estado", "select", options=["Abierta", "Completa", "Cancelada"], default="Abierta"),
+              f("Mostrar en la web", "visible", "boolean", default=True)])]}
+    event_files = [{"label": e["name"] + " · textos", "name": k, "file": f"content/paginas/{k}.json", "fields": page_fields(True)} for k, e in g["EVENTS"].items()]
 
     seo_file = {"label": "SEO de las páginas", "name": "seo", "file": "content/seo.json",
                 "fields": [f("Páginas", "paginas", "list", allow_add=False, allow_remove=False, allow_reorder=False, summary="{{fields.nombre}}", fields=[
@@ -94,9 +115,7 @@ def build_config(g):
         f("Teléfono (formato +34…)", "telefono"), f("Teléfono visible", "telefono_visible"),
         f("WhatsApp (solo números, con 34)", "whatsapp", pattern=["^[0-9]{9,15}$", "Solo números, p. ej. 34615972233"]), f("Email", "email"),
         f("Aviso de la barra superior", "aviso_superior", "object", fields=[f("Mostrar", "activo", "boolean", default=True), f("Texto", "texto"), f("Enlace", "enlace", hint="Ej. ds-copilot-course.html")]),
-        f("Precios de experiencias y cursos", "precios", "list", required=False, summary="{{fields.producto}}: {{fields.precio}} €", hint="Vacío = «Consultar».",
-          fields=[f("Producto", "producto", "select", options=bookable), f("Precio (€)", "precio", "number", required=False, value_type="float")]),
-        f("Enlaces de pago (Stripe, PayPal…)", "enlaces_pago", "list", required=False, summary="{{fields.producto}}",
+        f("Enlaces de pago de la tienda (Stripe, PayPal…)", "enlaces_pago", "list", required=False, summary="{{fields.producto}}",
           fields=[f("Producto", "producto", "select", options=payable), f("URL de pago", "url", required=False)]),
         f("URL de Google Sheets (Apps Script /exec)", "sheets_endpoint", required=False, hint="Conecta formularios, CRM, stock de Wallapop y fechas. Ver README."),
         f("Enlace para pedir reseñas en Google", "google_review", required=False),
@@ -118,7 +137,7 @@ def build_config(g):
         f("Descripción", "descripcion", "text"), f("Características", "caracteristicas", "list", field=f("Característica", "item"))]} for s, p in g["PRODUCTS"].items()]
 
     return {
-        "backend": {"name": "github", "repo": REPO, "branch": BRANCH,
+        "backend": {"name": "github", "repo": REPO,  # sin "branch": usa la rama principal del repositorio
                     "commit_messages": {"create": "Panel: crea {{collection}} «{{slug}}»", "update": "Panel: actualiza {{collection}} «{{slug}}»",
                                         "delete": "Panel: borra {{collection}} «{{slug}}»", "uploadMedia": "Panel: sube {{path}}", "deleteMedia": "Panel: borra {{path}}"}},
         "site_url": site, "display_url": site, "logo": {"src": "/assets/img/favicon.svg"},
@@ -126,6 +145,8 @@ def build_config(g):
         "slug": {"encoding": "ascii", "clean_accents": True, "sanitize_replacement": "-"},
         "collections": [
             blog,
+            {"name": "experiencias", "label": "Experiencias", "label_singular": "experiencia",
+             "description": "Fechas, turnos, plazas, precio y enlace de pago de Stripe de cada experiencia, y sus textos.", "files": [editions_file] + event_files},
             {"name": "paginas", "label": "Páginas", "label_singular": "página", "description": "Contenido SEO/GEO de cada página: datos clave, guías y preguntas frecuentes.", "files": page_files},
             {"name": "seo", "label": "SEO / GEO", "files": [seo_file]},
             {"name": "tienda", "label": "Tienda", "label_singular": "producto", "files": product_files},

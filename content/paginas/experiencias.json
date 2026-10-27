@@ -3,52 +3,64 @@
   "datos_clave": [
     {
       "dato": "Experiencias",
-      "valor": "DS Pilot Weekend Circuit (Jarama), Rally (rally federado) y Slalom"
+      "valor": "Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5, 6 y 7 dic)"
+    },
+    {
+      "dato": "Lugar",
+      "valor": "Circuito El Hito (Cuenca), circuito de tierra"
     },
     {
       "dato": "Coches",
-      "valor": "Peugeot 206 1.6 XS de 118 CV y BMW E36 de 135 CV en rally y slalom"
+      "valor": "BMW E36 (propulsión) y Peugeot 206 (tracción delantera) preparados para competición"
     },
     {
-      "dato": "Duración",
-      "valor": "Fin de semana"
+      "dato": "Formato",
+      "valor": "Turno de mañana o de tarde, 5 ejercicios puntuables por equipos y clasificación final"
+    },
+    {
+      "dato": "Precio",
+      "valor": "299 € por persona, pago con tarjeta en Stripe"
     },
     {
       "dato": "Requisitos",
-      "valor": "Carnet de conducir; licencia federativa en pruebas federadas (te ayudamos a tramitarla)"
+      "valor": "Carnet de conducir en vigor; no hace falta experiencia"
     }
   ],
   "guias": [
     {
-      "pregunta": "¿Qué experiencia de conducción elegir?",
-      "respuesta": "- **[Circuit](ds-pilot-weekend-circuit.html):** si quieres sentir la velocidad en el Circuito del Jarama, con tandas y explicaciones de trazada.\n- **[Rally](ds-pilot-weekend-rally.html):** si quieres correr un rally federado de verdad, con tramos, asistencia y copiloto.\n- **[Slalom](ds-pilot-weekend-slalom.html):** si buscas la puerta de entrada más accesible a la competición: conos, cronómetro y precisión."
+      "pregunta": "¿Qué experiencia elegir?",
+      "respuesta": "- **[Experiencia Rally Eurocem](experiencia-rally-eurocem.html)** (4 de diciembre): la jornada especial con Eurocem Morteros, con equipos, camisetas personalizadas y comida con barra libre.\n- **[DS Pilot Course](ds-pilot-course.html)** (5, 6 y 7 de diciembre): el mismo formato de ejercicios, organizado solo por Deyscom, para elegir el día y el turno que mejor te venga."
     },
     {
-      "pregunta": "¿Es un buen regalo para un aficionado al motor?",
-      "respuesta": "Sí, es uno de los regalos más especiales para quien vive el motor: no es una vuelta en un coche, es un fin de semana completo como piloto con un equipo de competición. Indica en la reserva que es un regalo y lo preparamos a nombre de quien quieras."
+      "pregunta": "¿Qué se aprende en una jornada sobre tierra?",
+      "respuesta": "A **leer el agarre** y a mover el coche con las transferencias de peso: provocar y corregir un derrape, frenar fuerte, usar el freno de mano y elegir la trazada. Es la base de cualquier piloto de rally y, además, te hace mejor conductor en el día a día. Si te interesa la competición, lee [cómo empezar en los rallies](blog-como-empezar-en-los-rallies.html)."
     }
   ],
   "faq": [
     {
-      "pregunta": "¿Qué es el DS Pilot Weekend?",
-      "respuesta": "Es nuestra línea de experiencias para vivir la competición desde dentro: un fin de semana con coche de competición, equipo y asistencia Deyscom en circuito, rally o slalom."
+      "pregunta": "¿Necesito experiencia o licencia?",
+      "respuesta": "No. Solo carnet de conducir en vigor. Los monitores adaptan cada ejercicio a tu nivel."
     },
     {
-      "pregunta": "¿Necesito experiencia?",
-      "respuesta": "No. Adaptamos cada experiencia a tu nivel. Para rally federado hace falta licencia, y te ayudamos a tramitarla."
+      "pregunta": "¿Cuánto cuesta?",
+      "respuesta": "299 € por persona en cualquiera de las fechas. Se paga con tarjeta en la pasarela segura de Stripe al reservar."
+    },
+    {
+      "pregunta": "¿Dónde son?",
+      "respuesta": "En el Circuito El Hito, en la provincia de Cuenca. Al reservar te enviamos la ubicación exacta y el horario de tu turno."
     },
     {
       "pregunta": "¿Se puede regalar?",
-      "respuesta": "Sí. Es uno de los regalos favoritos de los apasionados del motor. Indícalo en la reserva."
+      "respuesta": "Sí. Reserva con los datos de la persona que va a conducir o escríbenos y te preparamos un cheque regalo."
     },
     {
       "pregunta": "¿Qué coches se usan?",
-      "respuesta": "En rally y slalom, nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. En circuito, un coche de competición preparado por Deyscom."
+      "respuesta": "Nuestro Peugeot 206 1.6 XS de 118 CV (tracción delantera) y nuestro BMW E36 de 135 CV (propulsión trasera), preparados en el taller de Torrelaguna."
     }
   ],
   "articulos_relacionados": [
-    "blog-circuito-del-jarama-tandas",
     "blog-slalom-de-coches-que-es",
-    "blog-como-empezar-en-los-rallies"
+    "blog-como-empezar-en-los-rallies",
+    "blog-coche-de-rally-que-es-y-categorias"
   ]
 }

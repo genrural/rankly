@@ -4,6 +4,7 @@ Disallow: /google-apps-script/
 Disallow: /tools/
 Disallow: /crm.html
 Disallow: /admin/
+Disallow: /gracias.html
 
 # Buscadores y asistentes de IA: bienvenidos (GEO)
 User-agent: GPTBot

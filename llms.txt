@@ -1,6 +1,6 @@
 # Deyscom Motorsport
 
-> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y DS Pilot Course) en el Circuito El Hito (Cuenca).
 
 - Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
 - Teléfono y WhatsApp: (+34) 615 97 22 33
@@ -11,12 +11,10 @@
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
 ## Servicios
-- [Coches de competición](https://deyscom.com/competicion.html): preparación, jaulas de seguridad, set-up, asistencia en carrera y alquiler.
+- [Coches de competición](https://deyscom.com/competicion.html): preparación, jaulas de seguridad, set-up y asistencia en carrera.
 - [Restomod](https://deyscom.com/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
 - [Pintura](https://deyscom.com/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
 - [Banco de potencia](https://deyscom.com/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
-- [Alquiler de coche de rally](https://deyscom.com/alquiler-coche-de-rally.html): Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparados, con asistencia, para rally, rallysprint y slalom.
-- [Coches de rally en venta](https://deyscom.com/coches-de-rally-en-venta.html): coches de competición y piezas revisados por el taller (stock en Wallapop) y búsqueda a medida.
 
 ## Zona de servicio
 Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
@@ -25,11 +23,9 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · fundada en 2022
 - Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
-## Experiencias y formación
-- [DS Pilot Weekend – Circuit](https://deyscom.com/ds-pilot-weekend-circuit.html): fin de semana como piloto en el Circuito del Jarama.
-- [DS Pilot Weekend – Rally](https://deyscom.com/ds-pilot-weekend-rally.html): rally federado con Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV).
-- [DS Pilot Weekend – Slalom](https://deyscom.com/ds-pilot-weekend-slalom.html): slalom con Peugeot 206 1.6 XS o BMW E36.
-- [DS Copilot Course](https://deyscom.com/ds-copilot-course.html): curso de copiloto de rally de fin de semana, teoría y práctica, impartido por un profesor y una profesora, horas prácticas en un tramo cerrado en Guadalajara, con certificación y diploma.
+## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
+- [Experiencia Rally Eurocem](https://deyscom.com/experiencia-rally-eurocem.html): Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre. Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde.
+- [DS Pilot Course](https://deyscom.com/ds-pilot-course.html): Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada. Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
 
 ## Tienda
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.

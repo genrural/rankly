@@ -1,6 +1,6 @@
 # Deyscom Motorsport
 
-> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y DS Pilot Course) en el Circuito El Hito (Cuenca).
 
 - Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
 - Teléfono y WhatsApp: (+34) 615 97 22 33
@@ -11,12 +11,10 @@
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
 ## Servicios
-- [Coches de competición](https://deyscom.com/competicion.html): preparación, jaulas de seguridad, set-up, asistencia en carrera y alquiler.
+- [Coches de competición](https://deyscom.com/competicion.html): preparación, jaulas de seguridad, set-up y asistencia en carrera.
 - [Restomod](https://deyscom.com/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
 - [Pintura](https://deyscom.com/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
 - [Banco de potencia](https://deyscom.com/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
-- [Alquiler de coche de rally](https://deyscom.com/alquiler-coche-de-rally.html): Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparados, con asistencia, para rally, rallysprint y slalom.
-- [Coches de rally en venta](https://deyscom.com/coches-de-rally-en-venta.html): coches de competición y piezas revisados por el taller (stock en Wallapop) y búsqueda a medida.
 
 ## Zona de servicio
 Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
@@ -25,11 +23,9 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · fundada en 2022
 - Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
-## Experiencias y formación
-- [DS Pilot Weekend – Circuit](https://deyscom.com/ds-pilot-weekend-circuit.html): fin de semana como piloto en el Circuito del Jarama.
-- [DS Pilot Weekend – Rally](https://deyscom.com/ds-pilot-weekend-rally.html): rally federado con Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV).
-- [DS Pilot Weekend – Slalom](https://deyscom.com/ds-pilot-weekend-slalom.html): slalom con Peugeot 206 1.6 XS o BMW E36.
-- [DS Copilot Course](https://deyscom.com/ds-copilot-course.html): curso de copiloto de rally de fin de semana, teoría y práctica, impartido por un profesor y una profesora, horas prácticas en un tramo cerrado en Guadalajara, con certificación y diploma.
+## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
+- [Experiencia Rally Eurocem](https://deyscom.com/experiencia-rally-eurocem.html): Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre. Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde.
+- [DS Pilot Course](https://deyscom.com/ds-pilot-course.html): Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada. Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
 
 ## Tienda
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
@@ -56,14 +52,14 @@ URL: https://deyscom.com/
 
 Hechos para correr. Pensados para ti.
 
-Coches de competición, restomods, pintura, banco de potencia, experiencias de pilotaje y cursos. Un taller de apasionados donde cada coche se trata como si fuera nuestro.
+Coches de competición, restomods, pintura, banco de potencia y experiencias de rally. Un taller de apasionados donde cada coche se trata como si fuera nuestro.
 
 Competición Restomod Pintura Banco de potencia
 
 Empieza tu proyecto
 WhatsApp
 
-Competición Restomod Pintura Banco de potencia DS Pilot Weekend DS Copilot Course
+Competición Restomod Pintura Banco de potencia Experiencia Rally Eurocem DS Pilot Course
 
 Quiénes somos en 30 segundos
 
@@ -82,27 +78,27 @@ Horario
 Lunes a viernes, de 07:00 a 15:00
 
 Experiencias
-DS Pilot Weekend en el Circuito del Jarama, rally federado y slalom
+Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5, 6 y 7 dic) en el Circuito El Hito (Cuenca)
 
-Formación
-DS Copilot Course: curso de copiloto de rally con certificación
+Precio
+Jornadas de conducción de rally sobre tierra con BMW E36 y Peugeot 206 · 299 €
 
-Nuevo · Plazas limitadas
+Diciembre 2026 · Plazas limitadas
 
-## DS Copilot Course
+## Conduce un coche de rally
 
-Nuestro primer curso de copiloto de rally: un fin de semana completo de teoría y práctica, con certificación y diploma, y horas reales en un tramo cerrado en Guadalajara solo para nuestros alumnos.
+Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca): 4, 5, 6 y 7 de diciembre. 5 ejercicios puntuables, monitores y clasificación final.
 
-Quiero ser copiloto
-Comprar plaza
+Ver fechas y reservar
+DS Pilot Course
 
-Certificación y diploma Acredita tu formación como copiloto.
+4 de diciembre · Experiencia Rally Eurocem Jornada especial con equipos, camisetas y comida.
 
-Fin de semana completo Teoría y práctica en dos días intensos.
+5, 6 y 7 de diciembre · DS Pilot Course Elige día y turno de mañana o de tarde.
 
-Profesor y profesora Formación impartida por dos docentes con experiencia.
+BMW E36 y Peugeot 206 Tracción delantera y propulsión, preparados para competición.
 
-Tramo cerrado en Guadalajara Horas prácticas en un tramo cerrado solo para nosotros.
+299 € por persona Pago seguro con tarjeta. Plazas limitadas por turno.
 
 Qué hacemos
 
@@ -115,7 +111,7 @@ RACE
 01
 
 ### Competición
-Preparación, seguridad, asistencia y alquiler de coches de rally, slalom y circuito.
+Preparación, seguridad y asistencia de coches de rally, slalom y circuito.
 Descubrir CLASSIC
 
 02
@@ -142,43 +138,37 @@ Descubrir SHOP
 Coches y piezas a la venta, y merchandising oficial Deyscom.
 Descubrir
 
-Experiencias · DS Pilot Weekend
+Experiencias · Diciembre 2026
 
-## Sé piloto un fin de semana
+## Conduce un coche de rally
 
-Circuito del Jarama, rally federado o slalom con nuestro Peugeot 206 o BMW E36. Sin coche propio, con todo el equipo Deyscom.
+Jornadas sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. Sin coche propio, con monitores y todo el equipo Deyscom.
 
-CIRCUIT
+RALLY EUROCEM
 
-Circuito del Jarama
-DS Pilot Weekend
+4 dic · Cuenca
+Evento especial · 4 de diciembre
 
-### Circuit
-Un fin de semana como piloto en el Circuito del Jarama.
+### Experiencia Rally Eurocem
+Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.
 
-Descubrir
+4 de diciembre · 299 €
 
-RALLY
+Ver fechas y reservar
 
-Rally federado
-DS Pilot Weekend
+DS PILOT COURSE
 
-### Rally
-Corre un rally federado con nuestro 206 o nuestro BMW E36.
+5-7 dic · Cuenca
+Curso de conducción · 5, 6 y 7 de diciembre
 
-Descubrir
+### DS Pilot Course
+Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.
 
-SLALOM
+5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
 
-Slalom
-DS Pilot Weekend
+Ver fechas y reservar
 
-### Slalom
-Conos, cronómetro y una experiencia única al volante.
-
-Descubrir
-
-Ver todas las experiencias
+Ver fechas y reservar
 
 1 : 1
 
@@ -314,9 +304,9 @@ Nuestro primer rally · 2026
 
 En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally con el Peugeot 206 del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
 
-Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias DS Pilot Weekend, del DS Copilot Course y de la edición especial que hemos creado para celebrarlo.
+Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.
 
-Edición especial El Molar 2026 Corre tu primer rally
+Edición especial El Molar 2026 Conduce nuestros coches
 
 EL MOLAR
 
@@ -346,8 +336,8 @@ Preguntas frecuentes
 ¿Dónde estáis? En C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid). A unos 50 minutos de Madrid capital.
 ¿Cuál es vuestro horario? De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras.
 ¿Hacéis presupuestos sin compromiso? Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial.
-¿Puedo correr sin tener coche propio? Sí: con nuestras experiencias DS Pilot Weekend en circuito, rally o slalom, o con el alquiler de nuestros coches de competición.
-¿Cómo me apunto al curso de copiloto? Entra en la página del DS Copilot Course y pulsa «Comprar mi plaza». Las plazas son limitadas.
+¿Puedo correr sin tener coche propio? Sí: en nuestras experiencias conduces nuestro BMW E36 y nuestro Peugeot 206 de rally sobre tierra, con monitores. Próximas fechas: 4, 5, 6 y 7 de diciembre.
+¿Cómo reservo una experiencia? Entra en Experiencias, elige fecha y turno, deja tus datos y paga con tarjeta en la pasarela segura de Stripe. Las plazas son limitadas.
 
 Del blog
 
@@ -447,7 +437,7 @@ Disciplinas
 Rally, rallysprint, slalom, montaña y circuito
 
 Servicios
-Preparación integral, jaulas de seguridad, set-up, mantenimiento, asistencia y alquiler
+Preparación integral, jaulas de seguridad, set-up, mantenimiento y asistencia en carrera
 
 Coches propios
 Peugeot 206 1.6 XS (118 CV) y BMW E36 (135 CV)
@@ -517,7 +507,7 @@ Fiabilidad: refrigeración, transmisión, frenos y cableado preparados para el e
 Chasis y suspensión: refuerzos, amortiguación y geometría según superficie (tierra o asfalto).
 Prestaciones: motor, admisión y escape, siempre dentro de lo que permite la categoría.
 
-Si todavía no tienes coche, valora alquilar un coche de rally o revisar nuestros coches de rally en venta .
+Si todavía no tienes coche, mira los que tenemos a la venta en la tienda o prueba antes nuestros coches en el DS Pilot Course .
 
 ## ¿Qué coche elegir para empezar a competir?
 Para empezar recomendamos coches ligeros, de mecánica sencilla y con buena disponibilidad de recambios. Dos ejemplos que conocemos muy bien porque forman parte de nuestro equipo:
@@ -529,26 +519,6 @@ Te contamos más en la guía coche de rally: qué es y qué categorías hay .
 
 ## ¿Hacéis asistencia en carrera fuera de Madrid?
 Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026.
-
-¿Sin coche propio?
-
-## Alquila, compra o corre
-
-Tres formas de estar en la salida del próximo tramo.
-
-ALQUILER
-
-### Alquiler de coche de rally
-Peugeot 206 1.6 XS o BMW E36 preparados, con asistencia.
-Descubrir VENTA
-
-### Coches de rally en venta
-Coches revisados por el taller y búsqueda a medida.
-Descubrir RALLY
-
-### Corre un rally federado
-DS Pilot Weekend – Rally: coche, inscripción y equipo.
-Descubrir
 
 Trabajos reales
 
@@ -599,7 +569,7 @@ Preguntas frecuentes
 ## Lo que nos preguntáis
 
 ¿Preparáis coches para cualquier campeonato? Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo.
-¿Puedo alquilar un coche de competición? Sí. Tenemos alquiler de coches de competición y, si es tu primera vez, nuestras experiencias DS Pilot Weekend son la mejor forma de empezar.
+¿Puedo alquilar un coche de competición? Si es tu primera vez, la mejor forma de empezar es una jornada como el DS Pilot Course, con nuestro BMW E36 y nuestro Peugeot 206. Para alquileres de coche para una prueba concreta, consúltanos.
 ¿Ofrecéis asistencia durante la carrera? Sí, podemos acompañarte en el parque de asistencia con equipo y material para resolver cualquier incidencia.
 ¿Puedo hacer la preparación por fases? Claro. Muchos pilotos empiezan por seguridad y fiabilidad y evolucionan el coche temporada a temporada.
 
@@ -650,314 +620,6 @@ C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna · L-V 07:00–15:00 · (+34
 Escríbenos hoy y te respondemos en menos de 24 h laborables.
 
 Pide presupuesto
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Alquiler de coche de rally en Madrid · 206 y BMW E36 | Deyscom
-URL: https://deyscom.com/alquiler-coche-de-rally.html
-
-RX
-
-Inicio / Competición / Alquiler de coche de rally
-
-# Alquiler de coche de rally en Madrid
-
-Tu coche de rally listo para correr
-
-Alquila nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV, preparados en nuestro taller de Torrelaguna, con asistencia en la prueba.
-
-Peugeot 206 · 118 CV BMW E36 · 135 CV Asistencia incluida
-
-Reservar coche
-WhatsApp
-
-Alquiler Rally Rallysprint Slalom Peugeot 206 BMW E36 Asistencia
-
-En resumen
-
-## Datos clave
-
-Coches
-Peugeot 206 1.6 XS (118 CV, tracción delantera) y BMW E36 (135 CV, propulsión)
-
-Incluye
-Coche preparado, asistencia mecánica y ayuda con la inscripción y la licencia
-
-Pruebas
-Rallies, rallysprints y slaloms, según calendario y disponibilidad
-
-Reserva
-Por formulario, WhatsApp o teléfono: (+34) 615 97 22 33
-
-Elige tu coche
-
-## Dos coches, dos caracteres
-
-Mantenidos en nuestro taller y revisados antes de cada prueba.
-
-PEUGEOT
-
-118 CV Peugeot 206 1.6 XS Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza. 1.6 gasolina
-118 CV
-Tracción delantera
-Elegido BMW
-
-135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos. 135 CV
-Propulsión trasera
-Preparado Deyscom
-Elegido
-
-Cómo funciona
-
-## Del alquiler a la meta
-
-Paso 01
-
-### Nos escribes
-Prueba, fecha y coche que te interesa.
-
-Paso 02
-
-### Confirmamos
-Disponibilidad, precio cerrado, condiciones y fianza.
-
-Paso 03
-
-### Papeleo
-Te ayudamos con inscripción y licencia.
-
-Paso 04
-
-### Corres
-Coche preparado y asistencia de nuestro equipo.
-
-Guía rápida
-
-## Lo que debes saber
-
-## ¿Cómo funciona el alquiler de un coche de rally?
-Nos dices la prueba en la que quieres correr (rally, rallysprint o slalom) y la fecha.
-Confirmamos disponibilidad del coche y te explicamos condiciones, seguro y fianza.
-Te ayudamos con la licencia federativa y la inscripción.
-Preparamos el coche en nuestro taller de Torrelaguna y lo llevamos a la prueba.
-Corres con asistencia de nuestro equipo durante todo el fin de semana.
-
-## ¿Qué necesito para alquilar un coche de rally?
-Ser mayor de edad y tener carnet de conducir en vigor.
-Licencia federativa de piloto para pruebas federadas (y de copiloto para tu acompañante en rally).
-Equipamiento de seguridad homologado: casco con sistema de retención frontal de la cabeza, mono, ropa interior, guantes y botines ignífugos.
-
-Si nunca has competido, empieza por cómo empezar en los rallies o por la experiencia de slalom .
-
-## ¿Qué diferencia hay con el DS Pilot Weekend Rally?
-El DS Pilot Weekend – Rally es nuestra experiencia «llave en mano» para debutar: nosotros elegimos contigo la prueba, gestionamos la inscripción y te acompañamos todo el fin de semana. El alquiler es más flexible y pensado para pilotos que ya tienen experiencia y quieren correr una prueba concreta.
-
-Reserva
-
-## Reserva tu coche
-
-Dinos la prueba y la fecha y te confirmamos disponibilidad, precio cerrado y qué incluye. Sin compromiso hasta que confirmes.
-
-WhatsApp · respuesta rápida Escríbenos ahora
-
-Teléfono (+34) 615 97 22 33
-
-Email info@deyscom.com
-
-Horario Lunes a viernes · 07:00 – 15:00
-
-### ¡Solicitud recibida!
-
-Te contactamos para confirmar disponibilidad, precio y condiciones.
-
-Acelerar por WhatsApp
-
-Preguntas frecuentes
-
-## Antes de alquilar
-
-¿Cuánto cuesta alquilar un coche de rally? Depende de la prueba (rally, rallysprint o slalom), de su duración y del coche elegido. Escríbenos con la fecha y la carrera y te damos precio cerrado con lo que incluye.
-¿Qué necesito para alquilar un coche de rally? Para pruebas federadas, licencia federativa de piloto (y de copiloto en rally), equipamiento homologado y la inscripción. Te ayudamos a tramitar todo.
-¿Qué coches de rally alquiláis? Nuestro Peugeot 206 1.6 XS de 118 CV, de tracción delantera e ideal para empezar, y el BMW E36 de 135 CV, de propulsión trasera.
-¿Está incluida la asistencia? Sí: el alquiler se hace con asistencia mecánica de nuestro equipo durante la prueba. Antes de reservar te explicamos condiciones de uso y fianza.
-¿Puedo alquilar el coche para un slalom? Sí, el 206 y el BMW E36 se pueden alquilar para slaloms y rallysprints según calendario y disponibilidad.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto
-
-Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
-
-Néstor Aguado · 12 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-## Zona de servicio
-
-Prestamos alquiler de coches de rally desde nuestro taller de Torrelaguna (Madrid) a clientes de Torrelaguna, El Molar, Talamanca de Jarama, Uceda, Torremocha de Jarama, Patones, Valdetorres de Jarama, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos, Madrid capital, Alcalá de Henares, Guadalajara, Buitrago del Lozoya y la Sierra Norte de Madrid. También trabajamos con pilotos y coleccionistas de toda España: si estás lejos, organizamos la recogida y entrega del coche.
-
-C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna · L-V 07:00–15:00 · (+34) 615 97 22 33
-
-## ¿Nos vemos en la salida?
-
-Reserva tu coche de rally y te confirmamos disponibilidad en menos de 24 h laborables.
-
-Reservar coche
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Coches de rally en venta y de segunda mano | Deyscom Motorsport
-URL: https://deyscom.com/coches-de-rally-en-venta.html
-
-4S
-
-Inicio / Competición / Coches en venta
-
-# Coches de rally en venta
-
-Encuentra tu coche de rally
-
-Coches de rally, de competición y piezas revisados por nuestro taller. Y si no está lo que buscas, te lo encontramos.
-
-Revisados por el taller Stock en Wallapop Búsqueda a medida
-
-Ver coches
-WhatsApp
-
-Coches de rally Segunda mano Revisados Wallapop Piezas Te lo buscamos
-
-En resumen
-
-## Datos clave
-
-Stock
-Coches de rally, competición y piezas, sincronizados con nuestro perfil de Wallapop
-
-Revisión
-Cada coche pasa por nuestro taller antes de venderse
-
-Si no está
-Te buscamos el coche que necesitas
-
-Dónde
-Torrelaguna (Madrid), con compradores de toda España
-
-Stock actual
-
-## Coches y piezas en venta
-
-Sincronizado con nuestro perfil de Wallapop. ¿Te interesa alguno? Escríbenos y lo vemos juntos.
-
-Ver perfil en Wallapop
-
-### Mira el stock en Wallapop
-
-Nuestros coches y piezas en venta se actualizan en Wallapop. Entra en nuestro perfil o dinos qué buscas y te avisamos en cuanto llegue algo.
-
-Abrir Wallapop
-¿Qué buscas?
-
-Antes de comprar
-
-## Compra con cabeza
-
-## ¿Qué revisar antes de comprar un coche de rally de segunda mano?
-Jaula de seguridad: que esté homologada o certificada según el reglamento y sin reparaciones dudosas.
-Caducidad del equipamiento: baquets, arneses y extintores tienen fecha de homologación.
-Documentación técnica: pasaporte técnico o ficha que exija tu federación, y documentación del vehículo.
-Chasis y carrocería: golpes estructurales, óxido y reparaciones de la jaula.
-Mecánica: historial de mantenimiento, horas de motor y caja, y si es posible una prueba en banco de potencia .
-Recambios incluidos: llantas, neumáticos y piezas de repuesto suman mucho valor.
-
-## ¿Por qué comprar un coche de rally revisado por un taller?
-Porque un coche de rally ha trabajado mucho más que uno de calle. Antes de ponerlo a la venta lo revisamos en nuestro taller de Torrelaguna y te contamos su estado real. Si no encuentras lo que buscas, déjanos tus datos y te avisamos cuando llegue.
-
-## Peugeot 206 y BMW E36: dos bases muy buscadas
-El Peugeot 206 es una de las bases más populares para empezar en rally por su ligereza y su mecánica sencilla. El BMW E36 , de propulsión, es la opción para quien busca un coche con más carácter. Ambos forman parte de nuestro equipo, así que los conocemos a fondo.
-
-Te lo buscamos
-
-## ¿Qué coche de rally buscas?
-
-Dinos categoría, presupuesto y uso. Te avisamos cuando tengamos uno que encaje o te ayudamos a revisar el que hayas visto.
-
-WhatsApp · respuesta rápida Escríbenos ahora
-
-Teléfono (+34) 615 97 22 33
-
-Email info@deyscom.com
-
-Horario Lunes a viernes · 07:00 – 15:00
-
-### ¡Apuntado!
-
-En cuanto tengamos un coche que encaje, te avisamos.
-
-Acelerar por WhatsApp
-
-Preguntas frecuentes
-
-## Antes de comprar
-
-¿Dónde veo los coches de rally que tenéis en venta? En esta página y en nuestro perfil de Wallapop, donde publicamos los coches de competición, clásicos y piezas que vendemos.
-¿Los coches están revisados? Sí. Cada coche que vendemos pasa por nuestro taller de Torrelaguna antes de publicarse, y te contamos su estado y su historial.
-¿Me buscáis un coche de rally concreto? Sí. Dinos qué categoría, presupuesto y uso quieres y te avisamos cuando tengamos uno que encaje, o te ayudamos a revisar el que hayas visto.
-¿Puedo ver el coche antes de comprarlo? Claro. Pide cita y ven al taller a verlo. También podemos medirlo en el banco de potencia.
-¿Preparáis el coche después de la compra? Sí: puesta a punto, seguridad, set-up y asistencia para tu primera carrera en nuestra sección de competición.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-TÉCNICA
-
-Técnica · 7 min
-
-### Banco de potencia: qué mide y cómo leer la curva de potencia y par
-
-Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.
-
-Néstor Aguado · 12 de octubre de 2026
-
-## ¿Prefieres alquilar?
-
-Corre con nuestro Peugeot 206 o BMW E36 sin comprar coche.
-
-Alquiler de coche de rally
 WhatsApp
 (+34) 615 97 22 33
 
@@ -1595,67 +1257,327 @@ WhatsApp
 
 ---
 
-# Experiencias de conducción: Jarama, rally y slalom | Deyscom
+# Experiencias de rally: conduce un coche de rally en tierra | Deyscom
 URL: https://deyscom.com/experiencias.html
 
-DS
+XP
 
 Inicio / Experiencias
 
-# Experiencias de conducción en circuito, rally y slalom
+# Experiencias de rally: conduce un coche de rally sobre tierra
 
-Vive la competición desde dentro
+Ponte al volante de un rally
 
-Tres formas de sentirte piloto por un fin de semana: circuito, rally federado o slalom. Coche de competición, equipo y asistencia Deyscom.
+Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. 4, 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.
 
-Circuit Rally Slalom
+4 · 5 · 6 · 7 de diciembre Mañana o tarde 299 €
 
-Elige tu experiencia
+Ver fechas
 WhatsApp
 
-DS Pilot Weekend Circuit Rally Slalom Jarama Peugeot 206 BMW E36
+Experiencia Rally Eurocem DS Pilot Course Circuito El Hito BMW E36 Peugeot 206 Tierra
 
 Elige tu experiencia
 
-## Tres formas de acelerar
+## Dos formas de acelerar
 
-Cada experiencia es un fin de semana completo con nuestro equipo. Tú eliges el escenario.
+El mismo formato de 5 ejercicios puntuables, en dos ocasiones distintas.
 
-CIRCUIT
+RALLY EUROCEM
 
-Circuito del Jarama
-DS Pilot Weekend
+4 dic · Cuenca
+Evento especial · 4 de diciembre
 
-### Circuit
-Un fin de semana como piloto en el Circuito del Jarama.
+### Experiencia Rally Eurocem
+Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.
 
-Descubrir
+4 de diciembre · 299 €
+
+Ver fechas y reservar
+
+DS PILOT COURSE
+
+5-7 dic · Cuenca
+Curso de conducción · 5, 6 y 7 de diciembre
+
+### DS Pilot Course
+Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.
+
+5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
+
+Ver fechas y reservar
+
+Próximas fechas
+
+## Reserva tu turno
+
+Pago seguro con tarjeta en Stripe. La plaza queda confirmada al momento.
+
+4 dic
+Experiencia Rally Eurocem Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+4 dic
+Experiencia Rally Eurocem Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+5 dic
+DS Pilot Course Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+5 dic
+DS Pilot Course Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+6 dic
+DS Pilot Course Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+6 dic
+DS Pilot Course Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+7 dic
+DS Pilot Course Lunes 7 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+7 dic
+DS Pilot Course Lunes 7 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+En resumen
+
+## Datos clave
+
+Experiencias
+Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5, 6 y 7 dic)
+
+Lugar
+Circuito El Hito (Cuenca), circuito de tierra
+
+Coches
+BMW E36 (propulsión) y Peugeot 206 (tracción delantera) preparados para competición
+
+Formato
+Turno de mañana o de tarde, 5 ejercicios puntuables por equipos y clasificación final
+
+Precio
+299 € por persona, pago con tarjeta en Stripe
+
+Requisitos
+Carnet de conducir en vigor; no hace falta experiencia
+
+Cómo funciona
+
+## De la reserva a la meta
+
+Paso 01
+
+### Elige
+Experiencia, día y turno.
+
+Paso 02
+
+### Reserva
+Deja tus datos y paga con tarjeta en Stripe.
+
+Paso 03
+
+### Recibe
+Confirmación por email y, unos días antes, el horario y la ubicación.
+
+Paso 04
+
+### Pilota
+5 ejercicios, 2 coches y clasificación final.
+
+Cómo elegir
+
+## ¿Cuál es la tuya?
+
+## ¿Qué experiencia elegir?
+Experiencia Rally Eurocem (4 de diciembre): la jornada especial con Eurocem Morteros, con equipos, camisetas personalizadas y comida con barra libre.
+DS Pilot Course (5, 6 y 7 de diciembre): el mismo formato de ejercicios, organizado solo por Deyscom, para elegir el día y el turno que mejor te venga.
+
+## ¿Qué se aprende en una jornada sobre tierra?
+A leer el agarre y a mover el coche con las transferencias de peso: provocar y corregir un derrape, frenar fuerte, usar el freno de mano y elegir la trazada. Es la base de cualquier piloto de rally y, además, te hace mejor conductor en el día a día. Si te interesa la competición, lee cómo empezar en los rallies .
+
+Preguntas frecuentes
+
+## Todo claro
+
+¿Necesito experiencia o licencia? No. Solo carnet de conducir en vigor. Los monitores adaptan cada ejercicio a tu nivel.
+¿Cuánto cuesta? 299 € por persona en cualquiera de las fechas. Se paga con tarjeta en la pasarela segura de Stripe al reservar.
+¿Dónde son? En el Circuito El Hito, en la provincia de Cuenca. Al reservar te enviamos la ubicación exacta y el horario de tu turno.
+¿Se puede regalar? Sí. Reserva con los datos de la persona que va a conducir o escríbenos y te preparamos un cheque regalo.
+¿Qué coches se usan? Nuestro Peugeot 206 1.6 XS de 118 CV (tracción delantera) y nuestro BMW E36 de 135 CV (propulsión trasera), preparados en el taller de Torrelaguna.
+
+Del blog
+
+## Artículos relacionados
+
+Guías escritas por el equipo del taller, con fuentes oficiales.
+
+COMPETICIÓN
+
+Competición · 6 min
+
+### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
+
+Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto
+
+Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
+
+Néstor Aguado · 12 de octubre de 2026
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
+
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+## Regala adrenalina
+
+Una jornada de rally en tierra es el regalo perfecto para cualquier apasionado del motor.
+
+Ver fechas
+WhatsApp
+(+34) 615 97 22 33
+
+
+---
+
+# Experiencia Rally Eurocem · 4 de diciembre en Cuenca | Deyscom
+URL: https://deyscom.com/experiencia-rally-eurocem.html
+
+299
+
+Inicio / Experiencias / Experiencia Rally Eurocem
+
+# Experiencia Rally Eurocem: jornada de conducción de rally en tierra
+
+Conduce, aprende, disfruta
+
+Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre.
+
+Viernes 4 de diciembre Circuito El Hito · Cuenca 299 €
+
+Ver fechas y reservar
+WhatsApp
+
+Conduce Aprende Disfruta En equipo BMW E36 Peugeot 206 Circuito El Hito
+
+Fechas y plazas
+
+## Elige día y turno
+
+Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.
+
+4 dic
+Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+4 dic
+Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+En resumen
+
+## La jornada en datos
+
+Fecha
+Viernes 4 de diciembre de 2026, turno de mañana o de tarde
+
+Lugar
+Circuito El Hito (Cuenca)
+
+Participantes
+40 en total: 20 por la mañana y 20 por la tarde
+
+Coches
+4 coches: 2 BMW E36 y 2 Peugeot 206
+
+Equipos
+4 equipos de 5 personas, cada uno con su color y camiseta
+
+Precio
+299 € por persona, comida incluida
+
+¿En qué consiste?
+
+## Tierra, derrapes y cronómetro
+
+Una jornada exclusiva de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca), organizada por Deyscom Motorsport y Liebre Racing junto a Eurocem Morteros . Combina aprendizaje, adrenalina y trabajo en equipo al volante de coches preparados para competición, siempre acompañados por monitores especializados.
+Con Organizan Deyscom Motorsport y Liebre Racing.
 
 RALLY
 
-Rally federado
-DS Pilot Weekend
+Circuito El Hito · Cuenca
 
-### Rally
-Corre un rally federado con nuestro 206 o nuestro BMW E36.
+5 ejercicios puntuables
 
-Descubrir
+## Lo que vas a hacer
 
-SLALOM
+Monitores especializados te acompañan y puntúan cada ejercicio.
 
-Slalom
-DS Pilot Weekend
+1
 
-### Slalom
-Conos, cronómetro y una experiencia única al volante.
+### Control del vehículo
+Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso.
+2
 
-Descubrir
+### Frenada y trazadas
+Frenada deportiva, uso del freno de mano y elección de la trazada correcta.
+3
 
-Nuestros coches
+### Slalom en tierra
+Precisión y control del coche entre conos sobre superficie de tierra.
+4
 
-## Los protagonistas
+### Circuito cronometrado
+Una vuelta cronometrada al circuito aplicando todo lo aprendido.
+5
 
-En rally y slalom eliges entre dos coches muy distintos, preparados en nuestro taller.
+### Diferentes vehículos
+Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias.
+
+Los coches
+
+## Tracción delantera y propulsión
+
+Conducirás los dos coches del equipo, preparados en nuestro taller de Torrelaguna.
 
 PEUGEOT
 
@@ -1664,99 +1586,347 @@ BMW
 
 135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos.
 
-Cómo funciona
+Equipos y puntuación
 
-## De la reserva a la meta
+## Compite en equipo
 
-Paso 01
+Los participantes se reparten en 4 equipos de 5 personas , cada uno con su color y su camiseta personalizada.
 
-### Reserva
-Elige experiencia y déjanos tus datos.
+Cada participante recibe una tarjeta de puntuación personalizada con su nombre. Los monitores puntúan cada ejercicio y, al terminar, se hace una clasificación final .
 
-Paso 02
+A Equipo azul
+B Equipo rojo
+C Equipo amarillo
+D Equipo verde
 
-### Confirmamos
-Te damos fecha, precio y todos los detalles.
+Tarjeta de puntuación
 
-Paso 03
+Nombre: ________________
 
-### Preparamos
-Coche, inscripción y equipo listos para ti.
+Ejercicio Puntos 1 2 3 4 5 Total
 
-Paso 04
+Qué incluye
 
-### Pilotas
-Vive el fin de semana como un piloto más.
+## Todo incluido
+
+Jornada de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde
+Conducción de BMW E36 y Peugeot 206 preparados para competición
+5 ejercicios puntuables con monitores especializados
+Equipo con color y camiseta personalizada
+Tarjeta de puntuación personalizada y clasificación final
+Comida y barra libre para todos los participantes
+
+Rally Eurocem
+
+### Experiencia Rally Eurocem
+
+Precio por persona 299 €
+
+4 de diciembre
+Circuito El Hito (Cuenca)
+Plazas limitadas por turno
+Monitores especializados
+
+Elegir fecha y pagar
+Preguntar por WhatsApp
+
+Cartel oficial
+
+## Todo el evento de un vistazo
+
+Fecha, circuito, coches, ejercicios y equipos. Descárgalo y compártelo con tu equipo.
+
+Descargar cartel Reservar plaza
+
+Guía rápida
+
+## Lo que debes saber
+
+## ¿Cómo funciona la puntuación?
+Cada participante recibe una tarjeta personalizada con su nombre. En cada uno de los 5 ejercicios los monitores puntúan tu manejo y, al terminar la jornada, se hace una clasificación final individual y por equipos.
+
+¿Quieres seguir aprendiendo después? Mira el DS Pilot Course del 5, 6 y 7 de diciembre.
+
+## ¿Qué coches voy a conducir?
+Conducirás los dos coches del equipo Deyscom: el Peugeot 206 (tracción delantera, ligero y noble) y el BMW E36 (propulsión trasera). Notar la diferencia entre ambos es uno de los ejercicios de la jornada. Si quieres saber más, lee qué es un coche de rally .
+
+Preguntas frecuentes
+
+## Antes de arrancar
+
+¿Necesito experiencia previa? No. La jornada está pensada para cualquier conductor con carnet: los monitores adaptan cada ejercicio a tu nivel.
+¿Dónde es? En el Circuito El Hito, en la provincia de Cuenca. Al confirmar tu plaza te enviamos la ubicación exacta y el horario de tu turno.
+¿Qué incluye el precio? 299 € por persona: la jornada completa de tu turno, los 5 ejercicios con monitores, los coches, la camiseta de tu equipo y la comida con barra libre.
+¿Cómo se paga? Eliges fecha y turno, dejas tus datos y pagas con tarjeta en la pasarela segura de Stripe. Recibes la confirmación al momento por email.
+¿Qué pasa si no puedo ir? Escríbenos cuanto antes: según la antelación te ayudamos a cambiar la plaza a otra persona o a otra fecha disponible.
+
+Del blog
+
+## Artículos relacionados
+
+Guías escritas por el equipo del taller, con fuentes oficiales.
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
+
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+COMPETICIÓN
+
+Competición · 6 min
+
+### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
+
+Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+
+Néstor Aguado · 23 de octubre de 2026
+
+COMPETICIÓN
+
+Competición · 8 min
+
+### Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto
+
+Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
+
+Néstor Aguado · 12 de octubre de 2026
+
+También te puede gustar
+
+## Otra forma de acelerar
+
+DS PILOT COURSE
+
+5-7 dic · Cuenca
+Curso de conducción · 5, 6 y 7 de diciembre
+
+### DS Pilot Course
+Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.
+
+5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
+
+Ver fechas y reservar
+
+## ¿Te atreves?
+
+Plazas limitadas por turno. Elige fecha y reserva en un minuto.
+
+Ver fechas
+WhatsApp
+(+34) 615 97 22 33
+
+
+---
+
+# DS Pilot Course · Curso de conducción de rally en tierra | Deyscom
+URL: https://deyscom.com/ds-pilot-course.html
+
+299
+
+Inicio / Experiencias / DS Pilot Course
+
+# DS Pilot Course: curso de conducción de rally sobre tierra
+
+Aprende a pilotar en tierra
+
+Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada.
+
+5, 6 y 7 de diciembre Mañana o tarde 299 €
+
+Ver fechas y reservar
+WhatsApp
+
+Conduce Aprende Disfruta En equipo BMW E36 Peugeot 206 Circuito El Hito
+
+Fechas y plazas
+
+## Elige día y turno
+
+Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.
+
+5 dic
+Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+5 dic
+Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+6 dic
+Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+6 dic
+Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+7 dic
+Lunes 7 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
+
+7 dic
+Lunes 7 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+20 plazas
+299 €
+Reservar y pagar
 
 En resumen
 
-## Datos clave
+## La jornada en datos
 
-Experiencias
-DS Pilot Weekend Circuit (Jarama), Rally (rally federado) y Slalom
+Fechas
+5, 6 y 7 de diciembre de 2026
+
+Turnos
+Mañana o tarde
+
+Lugar
+Circuito El Hito (Cuenca)
 
 Coches
-Peugeot 206 1.6 XS de 118 CV y BMW E36 de 135 CV en rally y slalom
+BMW E36 (propulsión) y Peugeot 206 (tracción delantera)
 
-Duración
-Fin de semana
+Formato
+5 ejercicios puntuables por equipos y clasificación final
 
-Requisitos
-Carnet de conducir; licencia federativa en pruebas federadas (te ayudamos a tramitarla)
+Precio
+299 € por persona
 
-Cómo elegir
+¿En qué consiste?
 
-## ¿Circuito, rally o slalom?
+## Tierra, derrapes y cronómetro
 
-## ¿Qué experiencia de conducción elegir?
-Circuit : si quieres sentir la velocidad en el Circuito del Jarama, con tandas y explicaciones de trazada.
-Rally : si quieres correr un rally federado de verdad, con tramos, asistencia y copiloto.
-Slalom : si buscas la puerta de entrada más accesible a la competición: conos, cronómetro y precisión.
+El DS Pilot Course es nuestro curso de conducción de rally sobre tierra : el mismo formato de la Experiencia Rally Eurocem, organizado solo por Deyscom Motorsport. Medio día al volante de un BMW E36 y un Peugeot 206 preparados para competición, con 5 ejercicios puntuables y monitores que te corrigen en cada pasada. Elige el 5, 6 o 7 de diciembre , en turno de mañana o tarde .
 
-## ¿Es un buen regalo para un aficionado al motor?
-Sí, es uno de los regalos más especiales para quien vive el motor: no es una vuelta en un coche, es un fin de semana completo como piloto con un equipo de competición. Indica en la reserva que es un regalo y lo preparamos a nombre de quien quieras.
+RALLY
 
-Nuevo · Plazas limitadas
+Circuito El Hito · Cuenca
 
-## DS Copilot Course
+5 ejercicios puntuables
 
-Nuestro primer curso de copiloto de rally: un fin de semana completo de teoría y práctica, con certificación y diploma, y horas reales en un tramo cerrado en Guadalajara solo para nuestros alumnos.
+## Lo que vas a hacer
 
-Quiero ser copiloto
-Comprar plaza
+Monitores especializados te acompañan y puntúan cada ejercicio.
 
-Certificación y diploma Acredita tu formación como copiloto.
+1
 
-Fin de semana completo Teoría y práctica en dos días intensos.
+### Control del vehículo
+Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso.
+2
 
-Profesor y profesora Formación impartida por dos docentes con experiencia.
+### Frenada y trazadas
+Frenada deportiva, uso del freno de mano y elección de la trazada correcta.
+3
 
-Tramo cerrado en Guadalajara Horas prácticas en un tramo cerrado solo para nosotros.
+### Slalom en tierra
+Precisión y control del coche entre conos sobre superficie de tierra.
+4
+
+### Circuito cronometrado
+Una vuelta cronometrada al circuito aplicando todo lo aprendido.
+5
+
+### Diferentes vehículos
+Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias.
+
+Los coches
+
+## Tracción delantera y propulsión
+
+Conducirás los dos coches del equipo, preparados en nuestro taller de Torrelaguna.
+
+PEUGEOT
+
+118 CV Peugeot 206 1.6 XS Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza.
+BMW
+
+135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos.
+
+Equipos y puntuación
+
+## Compite en equipo
+
+Los participantes se reparten en 4 equipos de 5 personas , cada uno con su color y su camiseta personalizada.
+
+Cada participante recibe una tarjeta de puntuación personalizada con su nombre. Los monitores puntúan cada ejercicio y, al terminar, se hace una clasificación final .
+
+A Equipo azul
+B Equipo rojo
+C Equipo amarillo
+D Equipo verde
+
+Tarjeta de puntuación
+
+Nombre: ________________
+
+Ejercicio Puntos 1 2 3 4 5 Total
+
+Qué incluye
+
+## Todo incluido
+
+Medio día de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde
+BMW E36 y Peugeot 206 preparados para competición
+5 ejercicios puntuables con monitores especializados
+Trabajo por equipos con tarjeta de puntuación personalizada
+Clasificación final al terminar la jornada
+
+DS Pilot Course
+
+### DS Pilot Course
+
+Precio por persona 299 €
+
+5 de diciembre · 6 de diciembre · 7 de diciembre
+Circuito El Hito (Cuenca)
+Plazas limitadas por turno
+Monitores especializados
+
+Elegir fecha y pagar
+Preguntar por WhatsApp
+
+Guía rápida
+
+## Lo que debes saber
+
+## ¿Qué vas a aprender en el DS Pilot Course?
+A controlar el coche en una superficie deslizante : provocar y corregir un derrape, frenar fuerte sin perder la trayectoria, usar el freno de mano y elegir la trazada. Después lo aplicas en un slalom en tierra y en una vuelta cronometrada al circuito.
+
+Es la mejor forma de empezar en los rallies antes de pensar en licencia o coche propio.
+
+## ¿Es un buen regalo?
+Sí: es uno de los regalos favoritos de quien disfruta del motor. Al reservar, pon los datos de la persona que va a conducir y escríbenos si quieres un cheque regalo para entregar.
 
 Preguntas frecuentes
 
-## Todo claro
+## Antes de arrancar
 
-¿Qué es el DS Pilot Weekend? Es nuestra línea de experiencias para vivir la competición desde dentro: un fin de semana con coche de competición, equipo y asistencia Deyscom en circuito, rally o slalom.
-¿Necesito experiencia? No. Adaptamos cada experiencia a tu nivel. Para rally federado hace falta licencia, y te ayudamos a tramitarla.
-¿Se puede regalar? Sí. Es uno de los regalos favoritos de los apasionados del motor. Indícalo en la reserva.
-¿Qué coches se usan? En rally y slalom, nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. En circuito, un coche de competición preparado por Deyscom.
+¿Necesito experiencia o licencia? No. Solo carnet de conducir en vigor. Los monitores adaptan los ejercicios a tu nivel.
+¿Cuánto dura? Medio día: turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto.
+¿Dónde es? En el Circuito El Hito (Cuenca), un circuito de tierra con zonas para slalom y frenada.
+¿Cuánto cuesta? 299 € por persona. Se paga con tarjeta en la pasarela segura de Stripe al reservar la plaza.
+¿Puedo ir con amigos? Sí. Reserva una plaza por persona y dinos que queréis ir en el mismo equipo.
 
 Del blog
 
 ## Artículos relacionados
 
 Guías escritas por el equipo del taller, con fuentes oficiales.
-
-CIRCUITO
-
-Circuito · 6 min
-
-### Circuito del Jarama: historia, trazado y cómo rodar en tandas
-
-Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
-
-Néstor Aguado · 23 de octubre de 2026
 
 COMPETICIÓN
 
@@ -1778,680 +1948,37 @@ Guía práctica para correr tu primer rally en España: qué licencia necesitas,
 
 Néstor Aguado · 12 de octubre de 2026
 
-## Regala adrenalina
-
-Las experiencias DS Pilot Weekend son el regalo perfecto para cualquier apasionado del motor.
-
-Ver experiencias
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Conducir en el Jarama · Experiencia de piloto | Deyscom
-URL: https://deyscom.com/ds-pilot-weekend-circuit.html
-
-CI
-
-Inicio / Experiencias / Circuit
-
-# Experiencia de piloto en el Circuito del Jarama
-
-Piloto por un fin de semana
-
-Un fin de semana completo viviendo el Circuito del Jarama como un piloto más: paddock, briefing, coche de competición y pista.
-
-Circuito del Jarama Fin de semana completo Coche de competición
-
-Reservar plaza
-WhatsApp
-
-DS Pilot Weekend Circuit Vive la competición Equipo Deyscom Circuito del Jarama
-
-La experiencia
-
-## Del paddock a la recta del Jarama
-
-El Jarama es historia viva del motor en España. Durante un fin de semana serás parte de nuestro equipo: llegarás al paddock, te equiparás, escucharás el briefing y saldrás a pista con un coche de competición preparado por Deyscom.
-Nuestro equipo te acompaña en todo momento: te explicamos la trazada, las referencias de frenada y cómo sacar lo mejor del coche, tanda a tanda, para que vuelvas a casa con la sensación de haber sido piloto de verdad.
-
-### Qué incluye
-
-Fin de semana completo en el Circuito del Jarama
-Coche de competición preparado por Deyscom
-Briefing técnico y de seguridad
-Acompañamiento de nuestro equipo en pista y paddock
-Asistencia mecánica durante todo el fin de semana
-
-### Programa del fin de semana
-
-Programa orientativo: se concreta en cada edición.
-
-Sábado · Paddock Bienvenida, equipación, briefing técnico y de seguridad y primeras tandas para conocer el coche y el trazado.
-
-Sábado · Pista Tandas con explicaciones de trazada, frenada y referencias. Feedback de nuestro equipo entre tandas.
-
-Domingo · Ritmo Más tandas para encadenar vueltas y ganar confianza y ritmo.
-
-Domingo · Cierre Análisis de tu fin de semana con el equipo y foto en el paddock.
-
-Experiencia
-
-### DS Pilot Weekend – Circuit
-
-Precio Consultar
-
-Fin de semana
-Seguridad y briefing
-Asistencia Deyscom
-Plazas limitadas
-
-Próximas fechas
-
-Reservar plaza
-Preguntar por WhatsApp
-Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.
-
-Reserva
-
-## Reserva tu fin de semana
-
-Déjanos tus datos y te confirmamos la próxima fecha disponible, el precio final y la forma de pago. Sin compromiso hasta que confirmes.
-
-WhatsApp · respuesta rápida Escríbenos ahora
-
-Teléfono (+34) 615 97 22 33
-
-Email info@deyscom.com
-
-Horario Lunes a viernes · 07:00 – 15:00
-
-### ¡Plaza solicitada!
-
-Te contactamos para confirmar fecha, precio y forma de pago.
-
-Pagar ahora
-Acelerar por WhatsApp
-
-Preguntas frecuentes
-
-## Antes de arrancar
-
-¿Necesito experiencia previa? No. Adaptamos el fin de semana a tu nivel; solo necesitas carnet de conducir y muchas ganas.
-¿Dónde es? En el Circuito del Jarama (San Sebastián de los Reyes, Madrid), a unos 40 minutos de nuestro taller.
-¿Puedo regalarlo? Sí, es un regalo perfecto para cualquier apasionado del motor. Escríbenos y te preparamos la reserva a su nombre.
-¿Cuándo son las próximas fechas? Las fechas dependen del calendario del circuito. Reserva tu plaza y te confirmamos la próxima edición disponible.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
-CIRCUITO
-
-Circuito · 6 min
-
-### Circuito del Jarama: historia, trazado y cómo rodar en tandas
-
-Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
-
-Néstor Aguado · 23 de octubre de 2026
-
-Más experiencias
-
-## Sigue acelerando
-
-RALLY
-
-Rally federado
-DS Pilot Weekend
-
-### Rally
-Corre un rally federado con nuestro 206 o nuestro BMW E36.
-
-Descubrir
-
-SLALOM
-
-Slalom
-DS Pilot Weekend
-
-### Slalom
-Conos, cronómetro y una experiencia única al volante.
-
-Descubrir
-
-## ¿Te atreves?
-
-Plazas limitadas por edición. Reserva ahora y te confirmamos la fecha.
-
-Reservar plaza
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Experiencia de rally: corre un rally federado | Deyscom
-URL: https://deyscom.com/ds-pilot-weekend-rally.html
-
-RA
-
-Inicio / Experiencias / Rally
-
-# Experiencia de rally: corre un rally federado
-
-Tu primer rally de verdad
-
-Apúntate a un rally federado y vive la experiencia completa al volante de nuestro Peugeot 206 1.6 XS de 118 CV o del BMW E36 de 135 CV.
-
-Rally federado Peugeot 206 · 118 CV BMW E36 · 135 CV
-
-Reservar plaza
-WhatsApp
-
-DS Pilot Weekend Rally Vive la competición Equipo Deyscom Rally federado
-
-La experiencia
-
-## Tramos, asistencia y adrenalina
-
-No es una tanda ni una exhibición: es un rally federado de verdad. Verificaciones, parque de asistencia, tramos cronometrados y la emoción de cruzar la meta.
-Nosotros ponemos el coche preparado, el equipo y la asistencia; tú pones las ganas. Te acompañamos con la inscripción y los trámites para que solo tengas que pensar en conducir.
-
-### Qué incluye
-
-Inscripción en un rally federado (gestión con nuestro equipo)
-Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparado
-Asistencia mecánica durante todo el rally
-Briefing y acompañamiento del equipo Deyscom
-Ayuda con la licencia federativa
-
-### Programa del fin de semana
-
-Programa orientativo: se concreta en cada edición.
-
-Antes del rally Te ayudamos con la inscripción y la licencia, y preparamos el coche que elijas.
-
-Sábado · Verificaciones Verificaciones administrativas y técnicas, briefing y reconocimiento.
-
-Día de carrera Tramos cronometrados con nuestro equipo de asistencia en cada reagrupamiento.
-
-Meta Podio final, fotos y la sensación de haber corrido un rally de verdad.
-
-Experiencia
-
-### DS Pilot Weekend – Rally
-
-Precio Consultar
-
-Fin de semana
-Seguridad y briefing
-Asistencia Deyscom
-Plazas limitadas
-
-Próximas fechas
-
-Reservar plaza
-Preguntar por WhatsApp
-Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.
-
-Elige tu coche
-
-## Dos coches, dos caracteres
-
-Preparados y mantenidos en nuestro taller de Torrelaguna. Elige con cuál quieres vivir la experiencia.
-
-PEUGEOT
-
-118 CV Peugeot 206 1.6 XS Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza. 1.6 gasolina
-118 CV
-Tracción delantera
-Elegido BMW
-
-135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos. 135 CV
-Propulsión trasera
-Preparado Deyscom
-Elegido
-
-Reserva
-
-## Reserva tu fin de semana
-
-Déjanos tus datos y te confirmamos la próxima fecha disponible, el precio final y la forma de pago. Sin compromiso hasta que confirmes.
-
-WhatsApp · respuesta rápida Escríbenos ahora
-
-Teléfono (+34) 615 97 22 33
-
-Email info@deyscom.com
-
-Horario Lunes a viernes · 07:00 – 15:00
-
-### ¡Plaza solicitada!
-
-Te contactamos para confirmar fecha, precio y forma de pago.
-
-Pagar ahora
-Acelerar por WhatsApp
-
-Preguntas frecuentes
-
-## Antes de arrancar
-
-¿Necesito licencia? Para competir en un rally federado necesitas licencia federativa. Te ayudamos a tramitarla antes de la prueba.
-¿Y el copiloto? En rally se corre con copiloto. Puedes traer el tuyo o consultarnos. Y si quieres formarte como copiloto, tienes nuestro DS Copilot Course.
-¿Qué coche me recomendáis? El Peugeot 206 es ideal para empezar por su nobleza; el BMW E36, de propulsión, es para quien busca sensaciones más intensas.
-¿Qué pasa si hay daños en el coche? Te explicamos las condiciones de uso y la fianza antes de reservar, para que todo esté claro desde el principio.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
 COMPETICIÓN
 
 Competición · 8 min
 
-### Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto
+### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
 
-Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
-
-Néstor Aguado · 12 de octubre de 2026
-
-FORMACIÓN
-
-Formación · 7 min
-
-### Qué hace un copiloto de rally: notas, libro de ruta y controles horarios
-
-Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
-
-Néstor Aguado · 12 de octubre de 2026
-
-Más experiencias
-
-## Sigue acelerando
-
-CIRCUIT
-
-Circuito del Jarama
-DS Pilot Weekend
-
-### Circuit
-Un fin de semana como piloto en el Circuito del Jarama.
-
-Descubrir
-
-SLALOM
-
-Slalom
-DS Pilot Weekend
-
-### Slalom
-Conos, cronómetro y una experiencia única al volante.
-
-Descubrir
-
-## ¿Te atreves?
-
-Plazas limitadas por edición. Reserva ahora y te confirmamos la fecha.
-
-Reservar plaza
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Slalom de coches · Experiencia con 206 o BMW E36 | Deyscom
-URL: https://deyscom.com/ds-pilot-weekend-slalom.html
-
-SL
-
-Inicio / Experiencias / Slalom
-
-# Experiencia de slalom con coche de competición
-
-Precisión contra el cronómetro
-
-Conos, cronómetro y un coche de competición. Vive una experiencia única de slalom con nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV.
-
-Slalom Peugeot 206 · 118 CV BMW E36 · 135 CV
-
-Reservar plaza
-WhatsApp
-
-DS Pilot Weekend Slalom Vive la competición Equipo Deyscom Slalom
-
-La experiencia
-
-## Cada décima cuenta
-
-El slalom es la puerta de entrada perfecta a la competición: un recorrido marcado con conos, el cronómetro en marcha y tú buscando la trazada perfecta.
-Es técnico, divertido y muy seguro. Nuestro equipo te enseña a mirar lejos, a frenar en el punto justo y a mover el coche con precisión, manga a manga.
-
-### Qué incluye
-
-Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparado
-Briefing técnico y de seguridad
-Mangas cronometradas
-Acompañamiento y consejos del equipo Deyscom
-Asistencia mecánica
-
-### Programa del fin de semana
-
-Programa orientativo: se concreta en cada edición.
-
-Briefing Presentación del recorrido, normas de seguridad y explicación del coche.
-
-Reconocimiento Recorrido a pie y primeras vueltas para memorizar el trazado.
-
-Mangas cronometradas Varias mangas con feedback de nuestro equipo entre cada una.
-
-Resultados Tus tiempos, tu evolución y foto con el coche.
-
-Experiencia
-
-### DS Pilot Weekend – Slalom
-
-Precio Consultar
-
-Fin de semana
-Seguridad y briefing
-Asistencia Deyscom
-Plazas limitadas
-
-Próximas fechas
-
-Reservar plaza
-Preguntar por WhatsApp
-Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.
-
-Elige tu coche
-
-## Dos coches, dos caracteres
-
-Preparados y mantenidos en nuestro taller de Torrelaguna. Elige con cuál quieres vivir la experiencia.
-
-PEUGEOT
-
-118 CV Peugeot 206 1.6 XS Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza. 1.6 gasolina
-118 CV
-Tracción delantera
-Elegido BMW
-
-135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos. 135 CV
-Propulsión trasera
-Preparado Deyscom
-Elegido
-
-Reserva
-
-## Reserva tu fin de semana
-
-Déjanos tus datos y te confirmamos la próxima fecha disponible, el precio final y la forma de pago. Sin compromiso hasta que confirmes.
-
-WhatsApp · respuesta rápida Escríbenos ahora
-
-Teléfono (+34) 615 97 22 33
-
-Email info@deyscom.com
-
-Horario Lunes a viernes · 07:00 – 15:00
-
-### ¡Plaza solicitada!
-
-Te contactamos para confirmar fecha, precio y forma de pago.
-
-Pagar ahora
-Acelerar por WhatsApp
-
-Preguntas frecuentes
-
-## Antes de arrancar
-
-¿Necesito experiencia? No. El slalom es ideal para empezar: es técnico, seguro y se aprende muchísimo en poco tiempo.
-¿Necesito licencia? Depende de si la prueba es federada o una jornada privada. Te lo indicamos al confirmar la fecha y te ayudamos con lo necesario.
-¿Puedo venir acompañado? Sí, tus acompañantes pueden venir a verte y vivir el ambiente.
-¿Puedo regalarlo? Sí, es un regalo perfecto. Escríbenos y preparamos la reserva a nombre de quien quieras.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
-COMPETICIÓN
-
-Competición · 6 min
-
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
-
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
 
 Néstor Aguado · 23 de octubre de 2026
 
-Más experiencias
+También te puede gustar
 
-## Sigue acelerando
+## Otra forma de acelerar
 
-CIRCUIT
+RALLY EUROCEM
 
-Circuito del Jarama
-DS Pilot Weekend
+4 dic · Cuenca
+Evento especial · 4 de diciembre
 
-### Circuit
-Un fin de semana como piloto en el Circuito del Jarama.
+### Experiencia Rally Eurocem
+Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.
 
-Descubrir
+4 de diciembre · 299 €
 
-RALLY
-
-Rally federado
-DS Pilot Weekend
-
-### Rally
-Corre un rally federado con nuestro 206 o nuestro BMW E36.
-
-Descubrir
+Ver fechas y reservar
 
 ## ¿Te atreves?
 
-Plazas limitadas por edición. Reserva ahora y te confirmamos la fecha.
+Plazas limitadas por turno. Elige fecha y reserva en un minuto.
 
-Reservar plaza
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Curso de copiloto de rally certificado · DS Copilot Course
-URL: https://deyscom.com/ds-copilot-course.html
-
-CO
-
-Inicio / Cursos / DS Copilot Course
-
-# Curso de copiloto de rally con certificación
-
-DS Copilot Course
-
-Fin de semana completo de teoría y práctica con certificación y diploma, impartido por un profesor y una profesora, con horas prácticas en un tramo cerrado en Guadalajara solo para nosotros.
-
-Certificación + diploma Fin de semana completo Tramo cerrado en Guadalajara
-
-Comprar mi plaza
-WhatsApp
-
-Notas Libro de ruta Controles horarios Tramo cerrado Certificación Diploma
-
-El curso
-
-## La otra mitad del coche
-
-Un buen copiloto gana rallies. En el DS Copilot Course aprenderás a tomar y cantar notas, a manejar el libro de ruta y los controles horarios, y a ser la voz en la que confía tu piloto.
-
-Es un fin de semana completo e intensivo: teoría en aula y práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado única y exclusivamente para nuestros alumnos. Te lo imparten un profesor y una profesora, y al terminar recibes tu certificación y diploma.
-
-### Qué incluye
-
-Fin de semana completo de formación
-Teoría en aula y práctica en coche de rally
-Horas prácticas en un tramo cerrado en Guadalajara, exclusivo para el curso
-Un profesor y una profesora durante todo el curso
-Certificación y diploma acreditativo
-Material del curso
-
-### Programa
-
-Programa orientativo: se concreta en cada edición.
-
-Sábado · Teoría El papel del copiloto, notas, libro de ruta, carnet de ruta, controles horarios, reglamento y seguridad.
-
-Sábado · Primeras prácticas Toma y lectura de notas, primeros dictados y trabajo con el piloto.
-
-Domingo · Tramo cerrado Horas prácticas en el tramo cerrado de Guadalajara, dentro del coche de rally y a ritmo real.
-
-Domingo · Certificación Evaluación, feedback personalizado y entrega de diplomas.
-
-Curso
-
-### DS Copilot Course
-
-Precio Consultar
-
-Certificación y diploma
-Fin de semana completo
-Profesor y profesora
-Tramo cerrado en Guadalajara
-
-Próximas fechas
-
-Comprar mi plaza
-Preguntar por WhatsApp
-Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.
-
-Temario
-
-## Qué vas a aprender
-
-Seis módulos para salir del curso preparado para tu primer rally como copiloto.
-
-Módulo 01
-
-### El papel del copiloto
-Funciones, responsabilidades y trabajo en equipo con el piloto.
-
-Módulo 02
-
-### Notas y dictado
-Cómo se toman, se escriben y se cantan las notas a ritmo de carrera.
-
-Módulo 03
-
-### Libro de ruta y reconocimientos
-Lectura del road book, referencias y método de reconocimiento.
-
-Módulo 04
-
-### Carnet de ruta y controles
-Controles horarios, tiempos, penalizaciones y gestión de la jornada.
-
-Módulo 05
-
-### Reglamento y seguridad
-Normativa básica, equipamiento y protocolos de seguridad.
-
-Módulo 06
-
-### Comunicación y presión
-Comunicación con el piloto, gestión del estrés y de los imprevistos.
-
-Para quién es
-
-## Para ti, si…
-
-01 Quieres empezar en los rallies Como copiloto es la forma más directa y accesible de entrar en la competición.
-
-02 Ya eres copiloto Y quieres pulir tu método, tus notas y tu gestión de la jornada.
-
-03 Eres piloto Y quieres entender a tu copiloto para formar un equipo más rápido.
-
-04 Te apasiona el motor Y buscas vivir un rally desde dentro, con certificación incluida.
-
-Comprar mi plaza
-
-COPILOT
-
-Tramo cerrado · Guadalajara
-
-Compra tu plaza
-
-## Asegura tu plaza
-
-Déjanos tus datos y te confirmamos la próxima fecha disponible, el precio final y la forma de pago. Sin compromiso hasta que confirmes.
-
-WhatsApp · respuesta rápida Escríbenos ahora
-
-Teléfono (+34) 615 97 22 33
-
-Email info@deyscom.com
-
-Horario Lunes a viernes · 07:00 – 15:00
-
-### ¡Plaza solicitada!
-
-Te contactamos para confirmar fecha, precio y forma de pago.
-
-Pagar ahora
-Acelerar por WhatsApp
-
-Preguntas frecuentes
-
-## Resolvemos tus dudas
-
-¿Necesito experiencia previa? No. El curso está pensado tanto para quien empieza desde cero como para copilotos y pilotos que quieren mejorar su método.
-¿Qué incluye la certificación? Al completar el curso recibes un diploma acreditativo de Deyscom Motorsport con la formación realizada.
-¿Dónde se hace la práctica? En un tramo cerrado en la provincia de Guadalajara, reservado única y exclusivamente para nuestros alumnos.
-¿Quién imparte el curso? Un profesor y una profesora con experiencia en el mundo del rally, que te acompañan en la teoría y en la práctica.
-¿Cómo se compra la plaza? Pulsa «Comprar mi plaza», completa tus datos y te confirmamos la fecha y el pago. Las plazas son limitadas en cada edición.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
-FORMACIÓN
-
-Formación · 7 min
-
-### Qué hace un copiloto de rally: notas, libro de ruta y controles horarios
-
-Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
-
-Néstor Aguado · 12 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto
-
-Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
-
-Néstor Aguado · 12 de octubre de 2026
-
-## Tu piloto te espera
-
-Plazas limitadas en cada edición del DS Copilot Course.
-
-Comprar mi plaza
+Ver fechas
 WhatsApp
 (+34) 615 97 22 33
 
@@ -2540,9 +2067,9 @@ Nuestro primer rally · 2026
 
 En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally con el Peugeot 206 del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
 
-Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias DS Pilot Weekend, del DS Copilot Course y de la edición especial que hemos creado para celebrarlo.
+Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.
 
-Edición especial El Molar 2026 Corre tu primer rally
+Edición especial El Molar 2026 Conduce nuestros coches
 
 EL MOLAR
 
@@ -2655,10 +2182,10 @@ Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo fu
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 BMW E36 de competición en una curva del circuito
-Respuesta rápida El Circuito del Jarama está en San Sebastián de los Reyes (Madrid), lo gestiona el Real Automóvil Club de España (RACE) y se inauguró en 1967 . Su trazado actual mide 3.850 metros y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en tandas o vivirlo como piloto con un coche de competición en una experiencia como el DS Pilot Weekend – Circuit.
+Respuesta rápida El Circuito del Jarama está en San Sebastián de los Reyes (Madrid), lo gestiona el Real Automóvil Club de España (RACE) y se inauguró en 1967 . Su trazado actual mide 3.850 metros y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en tandas o con una experiencia guiada. Si lo que te atrae es aprender a controlar el coche, nuestro DS Pilot Course trabaja el derrape, la frenada y la trazada sobre tierra.
 
 En este artículo Historia del Circuito del Jarama
 El trazado: 3.850 metros técnicos
@@ -2673,7 +2200,7 @@ El Jarama se inauguró en 1967 al norte de Madrid y es uno de los circuitos perm
 Es un circuito con mucha historia y mucho carácter: estrecho, técnico y con curvas que exigen precisión. Por eso enseña tanto.
 
 ## El trazado: 3.850 metros técnicos
-El trazado actual mide unos 3,85 km y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las referencias de frenada y la trazada de cada curva antes de buscar velocidad. Nuestro equipo te las explica tanda a tanda en el DS Pilot Weekend – Circuit .
+El trazado actual mide unos 3,85 km y combina una recta principal con curvas lentas, enlazadas y cambios de rasante. Para quien empieza, la clave es aprender las referencias de frenada y la trazada de cada curva antes de buscar velocidad. Si quieres aprender técnica antes de rodar en asfalto, en el DS Pilot Course trabajamos frenada, trazadas y control del coche sobre tierra.
 
 ## ¿Qué son las tandas en el Jarama y cómo funcionan?
 Las tandas (track days) son sesiones de rodaje libre en las que varios coches comparten pista durante un tiempo fijo, sin cronometraje oficial ni clasificación. Las organiza el propio circuito o empresas y clubes que alquilan la pista. Normalmente:
@@ -2694,7 +2221,7 @@ Seguro: los seguros de calle no suelen cubrir el uso en circuito; revisa tu pól
 Si no quieres arriesgar tu coche, la alternativa es vivir el Jarama con un coche de competición preparado, con briefing, asistencia mecánica y acompañamiento de un equipo.
 
 ## Tandas con tu coche o experiencia con coche de competición
-Las tandas son ideales si ya tienes un coche preparado y experiencia. Una experiencia en el Circuito del Jarama como el DS Pilot Weekend – Circuit está pensada para vivirlo como un piloto más: paddock, briefing, coche de competición preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica.
+Las tandas son ideales si ya tienes un coche preparado y experiencia. Una experiencia en el Circuito del Jarama con un coche de competición está pensada para vivirlo como un piloto más: briefing, monitores y coche preparado por Deyscom y feedback entre tandas, sin preocuparte del desgaste ni de la mecánica.
 
 ## Cómo lo vivimos en Deyscom
 Nuestro taller está en Torrelaguna, a unos 40 minutos del Jarama. Llevamos años preparando coches de circuito y acompañando a pilotos en pista. Lo que más repetimos a quien rueda por primera vez: las primeras vueltas son para aprender, no para correr . La velocidad llega sola cuando las referencias están claras.
@@ -2704,7 +2231,7 @@ Nuestro taller está en Torrelaguna, a unos 40 minutos del Jarama. Llevamos año
 ¿Dónde está el Circuito del Jarama? En San Sebastián de los Reyes, al norte de Madrid. Lo gestiona el Real Automóvil Club de España (RACE).
 ¿Cuánto mide el Circuito del Jarama? Su trazado actual mide unos 3.850 metros.
 ¿Se puede conducir en el Jarama con tu coche? Sí, en tandas o track days organizados por el circuito o por empresas y clubes, cumpliendo sus requisitos de seguridad y ruido.
-¿Hay experiencias de conducción en el Jarama? Sí. Con el DS Pilot Weekend – Circuit de Deyscom Motorsport vives un fin de semana como piloto con un coche de competición preparado.
+¿Hay experiencias de conducción en el Jarama? Sí, hay empresas que organizan experiencias en el Jarama. Si buscas aprender a controlar un coche de rally, el DS Pilot Course de Deyscom Motorsport es una jornada sobre tierra con BMW E36 y Peugeot 206.
 
 ## Fuentes y referencias
 
@@ -2778,7 +2305,7 @@ Qué es un coche de rally, en qué se diferencia de uno de calle, las categoría
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport
 Respuesta rápida Un coche de rally es un coche derivado de serie y preparado para competir en tramos cerrados de asfalto o tierra: lleva jaula de seguridad, baquets, arneses, extinción y suspensión de competición , y debe cumplir el reglamento técnico de su categoría. La FIA ordena los coches actuales en una pirámide de Rally1 (la más alta) a Rally5 (la de acceso) , y las federaciones nacionales y autonómicas añaden sus propias clases. Para empezar, lo más sensato es un coche ligero de tracción delantera, como un Peugeot 206.
@@ -2816,7 +2343,7 @@ Además, en España conviven coches de grupos anteriores y clases propias de cad
 ## ¿Qué coche de rally elegir para empezar?
 Para un primer año la prioridad es aprender, no ganar. Por eso recomendamos coches ligeros, de tracción delantera, mecánica sencilla y recambios fáciles . Nuestro Peugeot 206 1.6 XS de 118 CV es un buen ejemplo: noble, fácil de mantener y muy buscado como base de rally. Si buscas más sensaciones, un coche de propulsión como nuestro BMW E36 de 135 CV exige más al volante y enseña mucho.
 
-Si todavía no quieres comprar, puedes alquilar un coche de rally preparado o correr un rally federado con el DS Pilot Weekend – Rally .
+Si todavía no quieres comprar, puedes conducir los nuestros en el DS Pilot Course , una jornada sobre tierra con BMW E36 y Peugeot 206.
 
 ## Comprar un coche de rally de segunda mano: qué revisar
 Es la forma más habitual de entrar en el mundo del rally, pero hay que mirar con lupa:
@@ -2827,7 +2354,7 @@ Documentación: ficha técnica, pasaporte técnico y si el coche encaja en la ca
 Mecánica: historial de motor y caja, compresión y, si es posible, una medición en banco de potencia .
 Repuestos: qué se incluye (llantas, neumáticos, piezas de recambio) suele marcar la diferencia en el precio final.
 
-En nuestra sección de coches de rally en venta publicamos los coches que tenemos revisados por el taller.
+En nuestra tienda publicamos los coches y piezas que tenemos a la venta, revisados por el taller.
 
 ## Nuestra experiencia en el taller
 En Deyscom preparamos y mantenemos coches de rally, slalom y circuito en Torrelaguna (Madrid). La pregunta que más nos hacen es «¿qué coche me compro?», y la respuesta casi siempre es la misma: el que puedas mantener toda la temporada. Un coche sencillo y fiable que termina todas las carreras enseña mucho más que uno potente que pasa media temporada en el taller. Si quieres ver cómo trabajamos, entra en preparación de coches de competición .
@@ -2911,7 +2438,7 @@ De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 Nissan Patrol pintándose en verde en la cabina de pintura
 Respuesta rápida El precio de pintar un coche depende sobre todo de cuánta preparación necesita la chapa (golpes, óxido, masillas), del tamaño del coche, del tipo de pintura (sólida, metalizada, perlada, mate), de si hay cambio de color (con interiores, marcos y vanos) y del nivel de desmontaje . La preparación suele llevar más horas que la propia aplicación. Un presupuesto fiable solo se puede dar viendo el coche.
@@ -3029,7 +2556,7 @@ Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 BMW E30 en restauración sobre el elevador
 Respuesta rápida En España, cualquier modificación que altere las características de un vehículo es una reforma y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos , normalmente con un informe de conformidad o proyecto técnico, un certificado de taller e inspección en la ITV. Para los clásicos, el Reglamento de Vehículos Históricos (Real Decreto 892/2024) , en vigor desde el 1 de octubre de 2024, fija como regla general una antigüedad mínima de 30 años y que el vehículo conserve su configuración original.
@@ -3149,7 +2676,7 @@ Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 BMW E36 rotulado con el logotipo de Deyscom Motorsport
 Respuesta rápida El slalom de coches es una disciplina de automovilismo en la que cada participante recorre, de uno en uno y contra el cronómetro, un trazado marcado con conos sobre una superficie cerrada. Se hacen varias mangas , tocar o derribar conos suele penalizar con segundos y gana el tiempo más bajo. Es la forma más asequible y segura de empezar a competir y de aprender a mover un coche con precisión.
@@ -3182,7 +2709,7 @@ Coche en perfecto estado de frenos, neumáticos, suspensión y fijaciones.
 Elementos de seguridad que exija el reglamento de la clase (baquet, arneses, extintor, cortacorrientes…).
 Casco homologado y el equipamiento que marque la prueba.
 
-Si no tienes coche, en el DS Pilot Weekend – Slalom corres con nuestro Peugeot 206 1.6 XS de 118 CV o con el BMW E36 de 135 CV, preparados en nuestro taller.
+Si no tienes coche, en el DS Pilot Course haces un slalom en tierra, entre otros ejercicios, con nuestro Peugeot 206 1.6 XS de 118 CV y con el BMW E36 de 135 CV, preparados en nuestro taller.
 
 ## ¿Necesito licencia para correr un slalom?
 Para una prueba federada , sí: necesitas licencia federativa en vigor, que se tramita en la federación autonómica dentro del marco de la RFEDA . En la Comunidad de Madrid, la referencia es la Federación Madrileña de Automovilismo. Las jornadas privadas o de formación pueden tener requisitos distintos; te lo indicamos al confirmar fecha.
@@ -3274,7 +2801,7 @@ Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en m
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 Curva de potencia y par en la pantalla del banco de potencia
 Respuesta rápida Un banco de potencia mide la potencia y el par reales de un coche en todo el rango de revoluciones. El resultado es una curva que muestra dónde rinde el motor, si hay pérdidas o fallos y qué ha aportado cada modificación. Para comparar mediciones hay que hacerlas en las mismas condiciones y con el mismo factor de corrección.
@@ -3391,7 +2918,7 @@ Guía práctica para correr tu primer rally en España: qué licencia necesitas,
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 Peugeot 206 de Deyscom Motorsport entre el polvo en un rally de tierra
 Respuesta rápida Para correr tu primer rally en España necesitas cuatro cosas: una licencia federativa de piloto (y otra de copiloto para tu acompañante), un coche que cumpla el reglamento técnico de la prueba, el equipamiento de seguridad homologado y la inscripción en la carrera. La forma más sencilla de empezar es alquilar un coche ya preparado o probar antes en un slalom.
@@ -3434,7 +2961,7 @@ Sistema de extinción y extintor.
 Cortacorrientes accesible desde dentro y desde fuera.
 La documentación técnica que exija tu federación para el coche.
 
-Si prefieres no tener coche propio, el DS Pilot Weekend – Rally te permite correr un rally federado con nuestro 206 o con nuestro BMW E36 de 135 CV, con asistencia incluida.
+Si prefieres no tener coche propio, empieza por el DS Pilot Course : una jornada de conducción sobre tierra con nuestro 206 y nuestro BMW E36 de 135 CV, con asistencia incluida.
 
 ## El equipamiento obligatorio del piloto y el copiloto
 Piloto y copiloto deben llevar equipamiento homologado según el reglamento de la prueba. Como norma general:
@@ -3446,7 +2973,7 @@ Ropa interior, sotocasco, guantes y botines ignífugos homologados.
 Revisa siempre las fechas de caducidad de las homologaciones: es una de las causas más habituales de problemas en las verificaciones técnicas.
 
 ## El copiloto: la mitad del coche
-En rally no se corre solo. El copiloto canta las notas, controla los tiempos y gestiona el carnet de ruta. Un buen copiloto hace al piloto más rápido y, sobre todo, más seguro. Si quieres formarte en este papel, hemos creado el DS Copilot Course , con certificación y prácticas en un tramo cerrado en Guadalajara. Te explicamos el trabajo del copiloto en detalle en qué hace un copiloto de rally .
+En rally no se corre solo. El copiloto canta las notas, controla los tiempos y gestiona el carnet de ruta. Un buen copiloto hace al piloto más rápido y, sobre todo, más seguro. Si quieres formarte en este papel, escríbenos: estamos preparando un curso de copiloto con prácticas en tramo cerrado. Te explicamos el trabajo del copiloto en detalle en qué hace un copiloto de rally .
 
 ## Cómo planificar el presupuesto de tu primer rally
 Más que una cifra cerrada, conviene tener claras todas las partidas para que no haya sorpresas:
@@ -3467,7 +2994,7 @@ En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally, el II
 ## Preguntas frecuentes
 
 ¿Necesito licencia para correr un rally? Sí. Para una prueba federada necesitas licencia federativa en vigor de piloto, y tu acompañante una de copiloto. Se tramita en la federación autonómica de automovilismo.
-¿Puedo correr un rally sin tener coche propio? Sí. Puedes alquilar un coche de competición ya preparado. En Deyscom lo ofrecemos con el DS Pilot Weekend – Rally, con asistencia incluida.
+¿Puedo correr un rally sin tener coche propio? Sí. Puedes alquilar un coche de competición ya preparado o empezar con una jornada de conducción como el DS Pilot Course de Deyscom, con BMW E36 y Peugeot 206.
 ¿Cuál es la mejor disciplina para empezar? El slalom y el rallysprint son las formas más asequibles y seguras de empezar antes de un rally completo.
 ¿Qué coche es bueno para un primer rally? Un coche ligero, de tracción delantera y mecánica sencilla, como un Peugeot 206, es ideal para aprender.
 
@@ -3543,7 +3070,7 @@ Qué es un restomod, en qué se diferencia de una restauración y cómo plantear
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 Chasis de todoterreno en restauración completa
 Respuesta rápida Un restomod combina restauración y modificación : conserva el aspecto y el alma de un clásico, pero le da mecánica, frenos, suspensión, seguridad y confort actuales. Se planifica mejor por fases , empezando por un diagnóstico de la base, y las reformas importantes deben legalizarse en la ITV .
@@ -3657,7 +3184,7 @@ Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las nota
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 23 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 27 de octubre de 2026 · Edición: Héctor Guzmán
 
 Copiloto revisando las notas dentro del coche de rally
 Respuesta rápida El copiloto de rally guía al piloto cantando las notas del tramo, gestiona el libro de ruta en los enlaces y controla el carnet de control y los horarios para evitar penalizaciones. También coordina la seguridad y la comunicación con la asistencia. Es tan determinante en el resultado como el propio piloto.
@@ -3696,7 +3223,7 @@ Un error de cálculo en un control horario puede costar más tiempo que un tromp
 El copiloto conoce los procedimientos de seguridad del reglamento: en caso de incidente, el equipo debe indicar a los participantes que vienen detrás si necesita ayuda o no, usando las señales que marque la normativa. También vigila el estado del equipamiento y ayuda a mantener la calma dentro del coche.
 
 ## Cómo formarte como copiloto
-Se aprende practicando, pero empezar con un buen método ahorra muchos errores. En el DS Copilot Course trabajamos en un fin de semana completo la teoría (notas, libro de ruta, carnet de control, reglamento y seguridad) y la práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado solo para nuestros alumnos. Lo imparten un profesor y una profesora y al terminar recibes certificación y diploma.
+Se aprende practicando, pero empezar con un buen método ahorra muchos errores. En Deyscom estamos preparando un curso de copiloto en el que trabajaremos en un fin de semana completo la teoría (notas, libro de ruta, carnet de control, reglamento y seguridad) y la práctica real dentro de un coche de rally, en un tramo cerrado en Guadalajara reservado solo para nuestros alumnos. Lo imparten un profesor y una profesora y al terminar recibes certificación y diploma.
 
 Si todavía estás decidiendo si dar el paso, lee también cómo empezar en los rallies .
 
@@ -3705,7 +3232,7 @@ Si todavía estás decidiendo si dar el paso, lee también cómo empezar en los 
 ¿Qué hace un copiloto de rally? Canta las notas del tramo, sigue el libro de ruta en los enlaces, gestiona el carnet de control y los horarios, y coordina la seguridad y la comunicación con la asistencia.
 ¿Necesita licencia el copiloto? Sí. Para correr una prueba federada el copiloto también necesita licencia federativa en vigor.
 ¿Qué son los controles horarios? Son puntos del recorrido en los que el equipo debe presentarse en un minuto concreto. Adelantarse o retrasarse se penaliza.
-¿Dónde puedo aprender a ser copiloto? En cursos específicos como el DS Copilot Course de Deyscom Motorsport, con teoría, práctica en tramo cerrado en Guadalajara, certificación y diploma.
+¿Dónde puedo aprender a ser copiloto? En cursos específicos de copiloto, con teoría y práctica en tramo cerrado. En Deyscom estamos preparando el nuestro: escríbenos y te avisamos de las fechas.
 
 ## Fuentes y referencias
 

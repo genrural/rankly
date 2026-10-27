@@ -7,17 +7,15 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 
 | Página | Archivo |
 |---|---|
-| Inicio (promo DS Copilot Course, servicios, experiencias, tienda, presupuesto por pasos) | `index.html` |
+| Inicio (promo de experiencias, servicios, tienda, presupuesto por pasos) | `index.html` |
 | Coches de competición | `competicion.html` |
-| Alquiler de coche de rally | `alquiler-coche-de-rally.html` |
-| Coches de rally en venta | `coches-de-rally-en-venta.html` |
 | Restomod | `restomod.html` |
 | Pintura (con comparador cabina / terminado) | `pintura.html` |
 | Banco de potencia | `banco-de-potencia.html` |
-| Experiencias (portada) | `experiencias.html` |
-| DS Pilot Weekend – Circuit / Rally / Slalom | `ds-pilot-weekend-circuit.html`, `ds-pilot-weekend-rally.html`, `ds-pilot-weekend-slalom.html` |
-| Cursos (portada) | `cursos.html` |
-| DS Copilot Course (compra de plaza) | `ds-copilot-course.html` |
+| Experiencias (todas las fechas, con pago) | `experiencias.html` |
+| Experiencia Rally Eurocem · 4 dic 2026 | `experiencia-rally-eurocem.html` |
+| DS Pilot Course · 5, 6 y 7 dic 2026 | `ds-pilot-course.html` |
+| Gracias (tras pagar en Stripe; fuera de Google) | `gracias.html` |
 | Tienda: merchandising + coches en venta (Wallapop) | `tienda.html` |
 | Fichas de producto | `camiseta-edicion-especial-el-molar-2026.html`, `camiseta-deyscom.html`, `sudadera-capucha-deyscom.html`, `chaqueta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |
 | Blog (9 artículos) | `blog.html`, `blog-coche-de-rally-que-es-y-categorias.html`, `blog-slalom-de-coches-que-es.html`, `blog-circuito-del-jarama-tandas.html`, `blog-cuanto-cuesta-pintar-un-coche.html`, `blog-reformas-itv-y-vehiculos-historicos.html`, `blog-como-empezar-en-los-rallies.html`, `blog-que-hace-un-copiloto-de-rally.html`, `blog-banco-de-potencia-como-leer-la-curva.html`, `blog-que-es-un-restomod.html` |
@@ -27,7 +25,10 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Página de error | `404.html` |
 | Área privada · CRM de leads (enlace «Área privada» en el pie, fuera de Google) | `crm.html` |
 
-Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias · Cursos · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
+Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias (Experiencia Rally Eurocem y DS Pilot Course) · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
+
+**En la recámara** (no se publican, pero el código está guardado): DS Pilot Weekend Circuit/Rally/Slalom, DS Copilot Course, Cursos, Alquiler de coche de rally y Coches de rally en venta.
+- Para recuperar alguna, quítala de `RESERVED` en `tools/build.py` y vuelve a añadirla al menú.
 
 ## Pensada para convertir
 
@@ -145,7 +146,7 @@ Pega el snippet de Google Tag Manager o GA4 en el `<head>` (función `head()` de
   - `GUIDES`: guías con títulos en forma de pregunta.
   - `RELATED`: artículos del blog enlazados en cada página.
   - `AREA`: municipios de la zona de servicio. Se usan en el texto y en el `areaServed` del schema.
-- **Páginas nuevas**: `alquiler-coche-de-rally.html` y `coches-de-rally-en-venta.html` (submenú de Competición).
+- **Experiencias con fecha**: cada turno lleva datos estructurados `Event` (fecha, lugar, precio y disponibilidad) para que Google pueda mostrarlo como evento.
 - **Blog**: 9 artículos. Los 5 nuevos atacan las búsquedas con más volumen: coche de rally, slalom, Circuito del Jarama, cuánto cuesta pintar un coche, y reformas ITV / vehículos históricos. Están en `tools/blog_posts_extra.py`.
 - **IA**: `robots.txt` permite explícitamente a GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. `llms.txt` es el resumen y `llms-full.txt` el texto completo de las páginas clave (se regeneran solos con cada build).
 - **Pendiente fuera de la web** (lo que más mueve el SEO local):
@@ -177,9 +178,13 @@ Un CRM dentro de la web para ver y gestionar todos los leads. Lee y escribe en l
 
 **Más funciones**
 - **Calendario:**
-  - Ediciones de las experiencias y del curso, con fecha, lugar, plazas y precio.
-  - La web muestra «Próximas fechas» con las plazas libres («¡Últimas 2 plazas!»), y el formulario de reserva deja elegir fecha.
-  - Al asignar una edición a un lead (desde su ficha), la plaza cuenta como ocupada. Si está «Perdido», no cuenta.
+  - Las fechas (turnos) de las experiencias, con plazas vendidas, ingresos, reservas sin pagar y el enlace de pago de cada turno.
+  - Las fechas se crean y editan en el panel de contenido (Experiencias → Fechas, plazas y pago). El CRM las lee de la web.
+  - Una plaza cuenta como vendida cuando el lead está en «Ganado»: lo pone solo el pago de Stripe, o a mano si alguien paga por otra vía.
+- **Ventas (Stripe):**
+  - Pagos de Stripe con cliente, experiencia, fecha y turno, plazas e importe.
+  - Ocupación de cada fecha y reservas sin pagar, para recuperarlas con la plantilla de WhatsApp «Completar el pago».
+  - Ver apartado 15.
 - **Presupuestos en PDF:**
   - Se hacen desde la ficha del lead, con líneas, IVA, validez y observaciones.
   - Numeración P-AAAA-NNN.
@@ -230,7 +235,10 @@ Un panel para editar el blog, el SEO/GEO, las páginas, la tienda y los ajustes 
 - **Blog:**
   - Crear, editar, programar (fecha futura) y despublicar artículos.
   - Campos: respuesta rápida, secciones H2, FAQ, fuentes, autor y revisor, imagen (elegir una de la web o subir una nueva; se optimiza sola a WebP < 100 KB), título y descripción SEO.
-- **Páginas:** datos clave, guías y preguntas frecuentes de cada servicio, experiencia y curso, y artículos relacionados.
+- **Experiencias:**
+  - Fechas, turnos, plazas, precio, enlace de pago de Stripe y estado (abierta, completa o cancelada).
+  - Los textos de cada experiencia: introducción, ejercicios, qué incluye, datos clave y FAQ.
+- **Páginas:** datos clave, guías y preguntas frecuentes de cada servicio y artículos relacionados.
 - **SEO / GEO:**
   - Título, descripción y H1 de todas las páginas.
   - Opción de ocultar una página de Google: `noindex` y fuera del sitemap.
@@ -250,7 +258,7 @@ Un panel para editar el blog, el SEO/GEO, las páginas, la tienda y los ajustes 
 ## 14. Publicar en IONOS (deyscom.com)
 
 La web se publica sola en el hosting de IONOS con **GitHub Actions** (`.github/workflows/deploy-ionos.yml`):
-- **Cuándo:** con cada cambio en la rama `main` (incluidos los del panel /admin), cada día a las 06:00 (para que salgan los artículos programados) y a mano desde GitHub → Actions → «Publicar en IONOS» → **Run workflow**.
+- **Cuándo:** con cada cambio en la **rama principal** del repositorio (incluidos los del panel /admin), cada día a las 06:00 (para que salgan los artículos programados) y a mano desde GitHub → Actions → «Publicar en IONOS» → **Run workflow**.
 - **Qué hace:** genera la web (`tools/build.py`), prepara `dist/` (solo lo público) y lo sube por **SFTP** a una carpeta del webspace. Borra de esa carpeta lo que ya no existe en la web.
 
 ### Paso 1 · Preparar IONOS (panel de IONOS)
@@ -274,8 +282,9 @@ En GitHub: repositorio → **Settings → Secrets and variables → Actions → 
 | `IONOS_SFTP_DIR` | carpeta de destino, p. ej. `/deyscom-web` |
 
 ### Paso 3 · Primera publicación
-1. Fusiona esta rama en `main`. GitHub → Actions → «Publicar en IONOS» debe terminar en verde ✅.
-2. Comprueba en el explorador de archivos de IONOS (o con FileZilla) que `/deyscom-web` tiene `index.html`, `.htaccess`, `assets/`…
+1. Asegúrate de que la rama con la web es la **rama principal** del repositorio (GitHub → Settings → General → Default branch). Hoy lo es `claude/deyscom-motorsport-website-bzk6sw`; si la fusionáis en `main` y la ponéis como principal, todo sigue funcionando igual. El panel /admin guarda en esa misma rama.
+2. GitHub → Actions → «Publicar en IONOS» → **Run workflow**. Debe terminar en verde ✅.
+3. Comprueba en el explorador de archivos de IONOS (o con FileZilla) que `/deyscom-web` tiene `index.html`, `.htaccess`, `assets/`…
 
 ### Paso 4 · Apuntar el dominio (el cambio visible)
 1. Menú → Dominios y SSL → `deyscom.com` → **Ajustar destino / Usar dominio → Webspace** → carpeta `/deyscom-web`.
@@ -292,7 +301,7 @@ En GitHub: repositorio → **Settings → Secrets and variables → Actions → 
    Redirect 301 /servicios/pintura/ https://deyscom.com/pintura.html
    Redirect 301 /contacto/ https://deyscom.com/contacto.html
    ```
-3. Haz commit en `main`: se publica solo.
+3. Haz commit en la rama principal: se publica solo.
 
 ### Paso 6 · Después de publicar
 - **Search Console:**
@@ -322,3 +331,39 @@ Si algún día se cambia de hosting, `netlify.toml` ya está listo:
 En Cloudflare Pages:
 - Comando de build: `pip install -r requirements.txt && python3 tools/build.py && python3 tools/dist.py`.
 - Carpeta de salida: `dist`.
+
+## 15. Experiencias con pago en Stripe y ventas en el CRM
+
+**Cómo funciona**
+1. En la web, cada turno tiene su botón **«Reservar y pagar»**.
+2. El cliente deja nombre, teléfono y email: se crea el lead en el CRM, con su fecha y turno.
+3. La web le lleva al **enlace de pago de Stripe** de ese turno, con su email ya rellenado y una referencia al lead (`client_reference_id`).
+4. Al pagar, Stripe le devuelve a `deyscom.com/gracias.html`. Allí ve la confirmación y GA4 registra la compra (`purchase`).
+5. Cada 15 minutos, el Apps Script lee los pagos de Stripe y:
+   - pasa el lead a **Ganado** con el importe y las plazas;
+   - apunta la venta en la pestaña **Ventas** y en la actividad del lead;
+   - avisa por email;
+   - descuenta las plazas, que la web muestra en directo («¡Últimas 3 plazas!» o «Completo»).
+6. Si alguien deja sus datos pero no paga, aparece en el CRM → Ventas → **Reservas sin pagar**. Se le escribe con la plantilla de WhatsApp «Completar el pago», que incluye su enlace.
+
+**Configurar Stripe (una vez)**
+1. **Un enlace de pago por turno.** En Stripe → Enlaces de pago → **Crear**:
+   - Producto: p. ej. «DS Pilot Course · 5 dic · Mañana», precio **299 €**.
+   - Opciones:
+     - «Recopilar el número de teléfono» activado.
+     - «Limitar el número de pagos» = plazas del turno (20). Así nunca se vende de más.
+   - Después del pago → «No mostrar la página de confirmación» → redirigir a:
+     `https://deyscom.com/gracias.html?session_id={CHECKOUT_SESSION_ID}`
+2. **Pegar cada enlace** en el panel → Experiencias → Fechas, plazas y pago → campo «Enlace de pago de Stripe» del turno.
+   - Mientras un turno no tenga enlace, la web recoge la reserva y os avisa para cobrarla a mano.
+3. **Clave para el CRM:**
+   1. En Stripe → Desarrolladores → Claves de API → **Crear clave restringida**, con solo **Checkout Sessions: lectura** y **Payment Links: lectura**.
+   2. En el Apps Script: ⚙️ Configuración del proyecto → **Propiedades del script** → añade `STRIPE_KEY` con esa clave. No la pegues en el código.
+4. **En el Apps Script:**
+   - Ejecuta `activarResumenes`: programa la sincronización cada 15 min, además del resumen diario y el informe mensual.
+   - Ejecuta `sincronizarStripe` una vez para probarlo.
+   - Desde el CRM → Ventas también hay un botón «Sincronizar con Stripe».
+
+**Notas**
+- Las devoluciones (reembolsos) no se descuentan solas: si devolvéis una plaza, pasad el lead a «Perdido» en el CRM y se libera la plaza.
+- Si cambias el precio o las plazas de un turno, cámbialo también en su enlace de Stripe.

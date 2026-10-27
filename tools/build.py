@@ -29,7 +29,7 @@ ITALIC = 'font-style="italic" '
 # Valores por defecto de content/ajustes.json (se editan desde el panel /admin)
 AJUSTES = {
     "telefono": PHONE, "telefono_visible": PHONE_TXT, "whatsapp": "34615972233", "email": EMAIL,
-    "aviso_superior": {"activo": True, "texto": "Nuevo: DS Copilot Course con certificación", "enlace": "ds-copilot-course.html"},
+    "aviso_superior": {"activo": True, "texto": "Diciembre: Experiencia Rally Eurocem y DS Pilot Course · plazas limitadas", "enlace": "experiencias.html"},
     "sheets_endpoint": "", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
     "precios": [], "enlaces_pago": [],
     "redes": {"instagram": "https://www.instagram.com/deyscom_motorsport/", "facebook": "https://www.facebook.com/deyscom/",
@@ -129,7 +129,6 @@ NAV = [
     ("pintura.html", "Pintura"),
     ("banco-de-potencia.html", "Banco de potencia"),
     ("experiencias.html", "Experiencias"),
-    ("cursos.html", "Cursos"),
 ]
 FOOTER_NAV = NAV + [("tienda.html", "Tienda"), ("nosotros.html", "Quiénes somos"), ("contacto.html", "Contacto")]
 
@@ -177,8 +176,7 @@ ORG_LD = {
     "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{SITE}/{u}"}} for n, u in (
         ("Preparación de coches de rally y competición", "competicion.html"), ("Restomod y restauración de coches clásicos", "restomod.html"),
         ("Pintura de coches en cabina", "pintura.html"), ("Banco de potencia", "banco-de-potencia.html"),
-        ("Alquiler de coche de rally", "alquiler-coche-de-rally.html"), ("Experiencias de conducción DS Pilot Weekend", "experiencias.html"),
-        ("Curso de copiloto de rally DS Copilot Course", "ds-copilot-course.html"))],
+        ("Experiencia Rally Eurocem", "experiencia-rally-eurocem.html"), ("DS Pilot Course: curso de conducción de rally en tierra", "ds-pilot-course.html"))],
     "foundingDate": "2022",
     "slogan": "Hechos para correr. Pensados para ti.",
     "geo": {"@type": "GeoCoordinates", "latitude": 40.8277, "longitude": -3.5381},
@@ -369,11 +367,7 @@ MENU_CAPTION = {
 def subnav():
     """Submenús del menú principal (se calculan en tiempo de ejecución)."""
     return {
-        "competicion.html": ([("competicion.html#preparacion", "Preparación", "Coches de rally, slalom y circuito"),
-                              ("alquiler-coche-de-rally.html", "Alquiler de coche de rally", "Peugeot 206 o BMW E36 listos para correr"),
-                              ("coches-de-rally-en-venta.html", "Coches de rally en venta", "Revisados por nuestro taller")], "Ver competición"),
-        "experiencias.html": ([(f"{k}.html", e["name"], MENU_CAPTION.get(k, e["tag"])) for k, e in EXPERIENCES.items()], "Ver todas las experiencias"),
-        "cursos.html": ([(f"{COURSE['slug']}.html", COURSE["name"], "Curso de copiloto con certificación")], "Ver todos los cursos"),
+        "experiencias.html": ([(f"{k}.html", e["name"], e["kicker"].split(" · ")[-1].capitalize() + " · Circuito El Hito") for k, e in EVENTS.items()], "Ver todas las fechas"),
     }
 
 
@@ -433,18 +427,16 @@ def header(slug):
 
 
 def footer():
-    col1 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV[:4] + [("alquiler-coche-de-rally.html", "Alquiler de coche de rally"), ("coches-de-rally-en-venta.html", "Coches de rally en venta")])
-    col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [
-        ("experiencias.html", "Experiencias"), ("ds-pilot-weekend-circuit.html", "DS Pilot Weekend · Circuit"),
-        ("ds-pilot-weekend-rally.html", "DS Pilot Weekend · Rally"), ("ds-pilot-weekend-slalom.html", "DS Pilot Weekend · Slalom"),
-        ("cursos.html", "Cursos"), ("ds-copilot-course.html", "DS Copilot Course"), ("tienda.html", "Tienda"), ("blog.html", "Blog")])
+    col1 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV[:4])
+    col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [("experiencias.html", "Experiencias")] + [(f"{k}.html", e["name"]) for k, e in EVENTS.items()]
+                   + [("tienda.html", "Tienda"), ("tienda.html#coches", "Coches en venta"), ("blog.html", "Blog")])
     return f"""</main>
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
       <div>
         {logo()}
-        <p class="mt-2 max-60">Taller motorsport en Torrelaguna (Madrid): coches de competición, restomod, pintura, banco de potencia, experiencias de pilotaje y cursos de copiloto.</p>
+        <p class="mt-2 max-60">Taller motorsport en Torrelaguna (Madrid): coches de competición, restomod, pintura, banco de potencia y experiencias de conducción de rally.</p>
         <div class="mt-2">{social_links()}</div>
       </div>
       <div>
@@ -536,11 +528,13 @@ PARENTS = {
     "ds-pilot-weekend-slalom": [("experiencias.html", "Experiencias")], "ds-copilot-course": [("cursos.html", "Cursos")],
     "alquiler-coche-de-rally": [("competicion.html", "Competición")], "coches-de-rally-en-venta": [("competicion.html", "Competición")],
     "contacto": [], "blog": [],
+    "experiencia-rally-eurocem": [("experiencias.html", "Experiencias")], "ds-pilot-course": [("experiencias.html", "Experiencias")],
 }
 CRUMB_NAME = {"competicion": "Competición", "restomod": "Restomod", "pintura": "Pintura", "banco-de-potencia": "Banco de potencia",
               "experiencias": "Experiencias", "cursos": "Cursos", "tienda": "Tienda", "nosotros": "Quiénes somos",
               "ds-pilot-weekend-circuit": "Circuit", "ds-pilot-weekend-rally": "Rally", "ds-pilot-weekend-slalom": "Slalom",
-              "ds-copilot-course": "DS Copilot Course", "contacto": "Contacto", "blog": "Blog", "alquiler-coche-de-rally": "Alquiler de coche de rally", "coches-de-rally-en-venta": "Coches en venta"}
+              "ds-copilot-course": "DS Copilot Course", "contacto": "Contacto", "blog": "Blog", "alquiler-coche-de-rally": "Alquiler de coche de rally", "coches-de-rally-en-venta": "Coches en venta",
+              "experiencia-rally-eurocem": "Experiencia Rally Eurocem", "ds-pilot-course": "DS Pilot Course"}
 
 
 def crumbs_html(slug):
@@ -759,8 +753,8 @@ def section_head(eyebrow, title, text="", pink=False):
 SERVICES = {
     "competicion": dict(
         title="Preparación de coches de competición en Madrid · Rally, Slalom y Circuito | Deyscom Motorsport",
-        desc="Preparamos, mantenemos y asistimos coches de competición de rally, slalom, montaña y circuito en Torrelaguna (Madrid): jaulas de seguridad, set-up, asistencia en carrera y alquiler.",
-        keywords="preparación coches competición Madrid, taller rally Madrid, jaula de seguridad, asistencia rally, alquiler coche rally, slalom, Torrelaguna",
+        desc="Preparamos, mantenemos y asistimos coches de competición de rally, slalom, montaña y circuito en Torrelaguna (Madrid): jaulas de seguridad, set-up y asistencia en carrera.",
+        keywords="preparación coches competición Madrid, taller rally Madrid, jaula de seguridad, asistencia rally, coche de rally, slalom, Torrelaguna",
         topic="coches de competición", name="Coches de competición",
         eyebrow="Coches de competición",
         lines=["Nacidos", "<span class='pink'>para</span>", "<span class='outline'>competir</span>"],
@@ -949,7 +943,7 @@ def cross_block():
 def service_page(slug):
     s = dict(SERVICES[slug])
     s["area"] = SERVICE_AREA.get(slug, "nuestros servicios")
-    s["cross"] = cross_block() if slug == "competicion" else ""
+    s["cross"] = ""
     e, t, body, label, img, tag, *rest = s["intro"]
     rev = rest[0] if rest else False
     x = rest[1] if len(rest) > 1 else "60%"
@@ -1258,43 +1252,292 @@ def experience_page(slug):
     return html + footer()
 
 
-def experiencias():
-    faqs = FAQ_OVERRIDE.get("experiencias") or [("¿Qué es el DS Pilot Weekend?", "Es nuestra línea de experiencias para vivir la competición desde dentro: un fin de semana con coche de competición, equipo y asistencia Deyscom en circuito, rally o slalom."),
-            ("¿Necesito experiencia?", "No. Adaptamos cada experiencia a tu nivel. Para rally federado hace falta licencia, y te ayudamos a tramitarla."),
-            ("¿Se puede regalar?", "Sí. Es uno de los regalos favoritos de los apasionados del motor. Indícalo en la reserva."),
-            ("¿Qué coches se usan?", "En rally y slalom, nuestro Peugeot 206 1.6 XS de 118 CV o el BMW E36 de 135 CV. En circuito, un coche de competición preparado por Deyscom.")]
-    html = head("Experiencias de pilotaje DS Pilot Weekend · Circuito, Rally y Slalom | Deyscom Motorsport",
-                "Experiencias de pilotaje en Madrid: DS Pilot Weekend Circuit en el Jarama, Rally federado y Slalom con nuestro Peugeot 206 o BMW E36. Vive la competición desde dentro.",
-                "experiencias", "las experiencias DS Pilot Weekend", "peugeot-206-rally-polvo-contraluz-deyscom",
-                [breadcrumbs_ld("experiencias", "Experiencias"), faq_ld(faqs),
-                 {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
-                     {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}.html", "name": x["name"]} for i, (s, x) in enumerate(EXPERIENCES.items())]}],
-                "experiencias pilotaje Madrid, conducir coche de competición, regalo experiencia motor, experiencia rally, experiencia circuito Jarama, slalom") + header("experiencias")
-    html += hero("Experiencias · DS Pilot Weekend", ["Vive la", "<span class='pink'>competición</span>", "<span class='outline'>desde dentro</span>"],
-                 "Tres formas de sentirte piloto por un fin de semana: circuito, rally federado o slalom. Coche de competición, equipo y asistencia Deyscom.",
-                 "DS", "bmw-e36-rally-tierra-contraluz-deyscom", ["Circuit", "Rally", "Slalom"], "las experiencias DS Pilot Weekend", ("Elige tu experiencia", "#experiencias"))
-    html += ticker(["DS Pilot Weekend", "Circuit", "Rally", "Slalom", "Jarama", "Peugeot 206", "BMW E36"])
-    html += f"""<section class="section" id="experiencias">
+# ------------------------------------------------------------------ experiencias con fecha (pago con Stripe)
+# Páginas en la recámara: el código se conserva, pero no se publican (ni menú, ni sitemap, ni enlaces).
+RESERVED = {"ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-weekend-slalom", "ds-copilot-course", "cursos",
+            "alquiler-coche-de-rally", "coches-de-rally-en-venta"}
+
+EVENTS = {
+    "experiencia-rally-eurocem": dict(
+        name="Experiencia Rally Eurocem", short="Rally Eurocem", kicker="Evento especial · 4 de diciembre", tag="4 dic · Cuenca",
+        teaser="Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.",
+        hero="bmw-e36-rally-tierra-deyscom-motorsport", card="bmw-e36-rally-el-molar-deyscom", intro_img="peugeot-206-rally-tierra-deyscom-motorsport",
+        lines=["Conduce,", "<span class='pink'>aprende,</span>", "<span class='outline'>disfruta</span>"],
+        lead="Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre.",
+        chips=["Viernes 4 de diciembre", "Circuito El Hito · Cuenca", "299 €"],
+        keywords="experiencia rally, conducir coche de rally, experiencia rally Cuenca, Circuito El Hito, jornada conducción tierra, Eurocem Morteros",
+        partner=("Eurocem Morteros", "eurocem-morteros.png"), organizers=["Deyscom Motorsport", "Liebre Racing"],
+        poster="cartel-experiencia-rally-eurocem-4-diciembre", teams=True, intro="", ejercicios=[], incluye=[],
+    ),
+    "ds-pilot-course": dict(
+        name="DS Pilot Course", short="DS Pilot Course", kicker="Curso de conducción · 5, 6 y 7 de diciembre", tag="5-7 dic · Cuenca",
+        teaser="Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.",
+        hero="peugeot-206-rally-tierra-deyscom-motorsport", card="peugeot-206-1-6-xs-rally-deyscom-motorsport", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
+        lines=["Aprende", "<span class='pink'>a pilotar</span>", "<span class='outline'>en tierra</span>"],
+        lead="Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada.",
+        chips=["5, 6 y 7 de diciembre", "Mañana o tarde", "299 €"],
+        keywords="curso de pilotaje, curso conducción rally, curso conducción tierra, curso pilotaje Cuenca, curso de derrape, conducir coche de rally",
+        partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=True, intro="", ejercicios=[], incluye=[],
+    ),
+}
+EDITIONS = []          # content/ediciones.json (se editan en el panel /admin → Experiencias → Fechas y plazas)
+DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+TEAMS = [("A", "Azul", "#1f5fd6"), ("B", "Rojo", "#d62828"), ("C", "Amarillo", "#f2c230"), ("D", "Verde", "#2e9d4b")]
+
+
+def ed_date(e, weekday=True):
+    y, m, d = map(int, e["fecha"].split("-"))
+    w = DIAS[date(y, m, d).weekday()]
+    return (f"{w.capitalize()} " if weekday else "") + f"{d} de {MESES[m - 1]}"
+
+
+def ed_label(e):
+    return f"{ed_date(e)} · turno de {e.get('turno', '').lower()}" + (f" ({e['horario']})" if e.get("horario") else "")
+
+
+def editions(slug=None, upcoming=True):
+    out = [e for e in EDITIONS if e.get("visible", True) and e.get("estado") != "Cancelada"
+           and (not slug or e.get("experiencia") == slug) and (not upcoming or e.get("fecha", "") >= TODAY)]
+    order = {"Mañana": 0, "Tarde": 1}
+    return sorted(out, key=lambda e: (e["fecha"], order.get(e.get("turno"), 2)))
+
+
+def ed_public(e):
+    ev = EVENTS.get(e["experiencia"], {})
+    return {"id": e["id"], "experiencia": e["experiencia"], "nombre": ev.get("name", e["experiencia"]), "fecha": e["fecha"], "turno": e.get("turno", ""),
+            "horario": e.get("horario", ""), "lugar": e.get("lugar", ""), "plazas": e.get("plazas") or 0, "precio": e.get("precio") or 0,
+            "stripe": e.get("stripe", ""), "estado": e.get("estado", "Abierta"), "etiqueta": ed_label(e)}
+
+
+def money_eur(n):
+    n = float(n or 0)
+    return (f"{n:,.0f}" if n == int(n) else f"{n:,.2f}").replace(",", "X").replace(".", ",").replace("X", ".") + " €"
+
+
+def dates_block(slug=None, show_name=False):
+    eds = editions(slug)
+    if not eds:
+        return '<p class="muted">Pronto anunciaremos nuevas fechas. Escríbenos por WhatsApp y te avisamos.</p>'
+    rows = ""
+    for e in eds:
+        ev = EVENTS[e["experiencia"]]
+        full = e.get("estado") == "Completa"
+        btn = (f'<span class="date-row__full">Completo</span>' if full else
+               f'<button class="btn btn--sm" type="button" data-buy="{e["id"]}">{I["ticket"]} Reservar y pagar</button>')
+        exp_link = f'<a class="date-row__exp" href="{e["experiencia"]}.html">{ev["name"]}</a>' if show_name else ""
+        seats = "Sin plazas" if full else (f'{e["plazas"]} plazas' if e.get("plazas") else "Plazas limitadas")
+        rows += (f'<div class="date-row{" is-full" if full else ""}" data-ed="{e["id"]}">'
+                 f'<div class="date-row__day"><b>{int(e["fecha"][8:])}</b><span>{MESES[int(e["fecha"][5:7]) - 1][:3]}</span></div>'
+                 f'<div class="date-row__info">{exp_link}'
+                 f'<b>{ed_date(e)} · {e.get("turno", "")}</b><span>{escape(e.get("horario") or "Horario exacto al confirmar")} · {escape(e.get("lugar", ""))}</span></div>'
+                 f'<div class="date-row__seats" data-seats>{seats}</div>'
+                 f'<div class="date-row__price">{money_eur(e.get("precio"))}</div>'
+                 f'<div class="date-row__cta">{btn}</div></div>')
+    return f'<div class="dates reveal">{rows}</div>'
+
+
+def buy_dialog(eds):
+    data = {e["id"]: ed_public(e) for e in eds}
+    ed_json = json.dumps(data, ensure_ascii=False).replace("</", "<" + chr(92) + "/")
+    return f"""<dialog class="buy" id="buy" aria-labelledby="buy-title">
+  <form class="buy__form" data-checkout novalidate>
+    <button type="button" class="buy__close" data-buy-close aria-label="Cerrar">✕</button>
+    <span class="eyebrow">Reserva tu plaza</span>
+    <h2 id="buy-title" data-buy-title>Experiencia</h2>
+    <p class="buy__when" data-buy-when></p>
+    <div class="form-grid">
+      <div class="field full"><label for="buy-n">Nombre y apellidos de quien conduce <span class="req">*</span></label><input class="input" id="buy-n" name="nombre" autocomplete="name" required></div>
+      <div class="field"><label for="buy-t">Teléfono <span class="req">*</span></label>{tel_input("buy-t")}</div>
+      <div class="field"><label for="buy-e">Email <span class="req">*</span></label><input class="input" id="buy-e" name="email" type="email" autocomplete="email" required placeholder="tu@email.com"></div>
+      <label class="check full"><input type="checkbox" name="regalo" value="sí"> <span>Es un regalo 🎁</span></label>
+      {consent()}
+    </div>
+    <div class="buy__total"><span>Total</span><b data-buy-price>299 €</b></div>
+    <button class="btn btn--block" type="submit">{I['ticket']} <span data-buy-cta>Ir al pago seguro</span></button>
+    <p class="buy__note">🔒 Pago con tarjeta, Apple Pay o Google Pay en <b>Stripe</b>. Recibes la confirmación por email al momento.</p>
+    <div class="form-msg" role="alert"></div>
+  </form>
+</dialog>
+<script type="application/json" id="ed-data">{ed_json}</script>"""
+
+
+def event_ld(e):
+    ev = EVENTS[e["experiencia"]]
+    lugar = e.get("lugar") or "Circuito El Hito (Cuenca)"
+    m = re.match(r"(.+?)\s*\((.+)\)", lugar)
+    place, region = (m.group(1), m.group(2)) if m else (lugar, "")
+    org = [{"@id": SITE + "/#organizacion"}] + [{"@type": "Organization", "name": n} for n in ev["organizers"] if n != "Deyscom Motorsport"]
+    return {"@context": "https://schema.org", "@type": "Event", "name": f'{ev["name"]} · {ed_date(e, False)} · turno de {e.get("turno", "").lower()}',
+            "description": ev["lead"], "startDate": e["fecha"], "endDate": e["fecha"], "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {"@type": "Place", "name": place, "address": {"@type": "PostalAddress", "addressLocality": "El Hito" if "Hito" in place else place,
+                                                                       "addressRegion": region, "addressCountry": "ES"}},
+            "image": [img_url(ev["hero"])], "organizer": org,
+            "offers": {"@type": "Offer", "price": str(e.get("precio") or 0), "priceCurrency": "EUR", "validFrom": "2026-10-27",
+                       "availability": "https://schema.org/SoldOut" if e.get("estado") == "Completa" else "https://schema.org/LimitedAvailability",
+                       "url": f'{SITE}/{e["experiencia"]}.html#fechas'}}
+
+
+def event_card(slug, e):
+    eds = editions(slug)
+    when = " · ".join(dict.fromkeys(ed_date(x, False) for x in eds)) if eds else "Próximamente"
+    return f"""<a class="exp reveal" href="{slug}.html">
+  <div class="exp__media">{art(e["short"].upper(), "60%", "30%", e["card"], e["name"], "(max-width: 900px) 100vw, 50vw")}</div>
+  <span class="exp__tag">{e["tag"]}</span>
+  <div class="exp__body"><span class="exp__kicker">{e["kicker"]}</span><h3>{e["name"]}</h3><p>{e["teaser"]}</p>
+  <p class="exp__when">{I["cal"]} {when} · {money_eur(eds[0]["precio"]) if eds else ""}</p>
+  <span class="svc__go">Ver fechas y reservar {I["arrow"]}</span></div>
+</a>"""
+
+
+def teams_block():
+    chips = "".join(f'<li class="team-chip" style="--team:{c}"><span>{k}</span><b>Equipo {n.lower()}</b></li>' for k, n, c in TEAMS)
+    return f"""<div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Equipos y puntuación</span>
+        <h2>Compite <span class="outline">en equipo</span></h2>
+        <p class="lead mt-2">Los participantes se reparten en <strong>4 equipos de 5 personas</strong>, cada uno con su color y su camiseta personalizada.</p>
+        <p class="muted">Cada participante recibe una <strong>tarjeta de puntuación personalizada</strong> con su nombre. Los monitores puntúan cada ejercicio y, al terminar, se hace una <strong>clasificación final</strong>.</p>
+        <ul class="teams mt-2">{chips}</ul>
+      </div>
+      <div class="scorecard reveal" data-delay="1" aria-label="Ejemplo de tarjeta de puntuación">
+        <div class="scorecard__head">Tarjeta de puntuación</div>
+        <div class="scorecard__name">Nombre: <span>________________</span></div>
+        <table><tr><th>Ejercicio</th><th>Puntos</th></tr>{"".join(f"<tr><td>{i}</td><td></td></tr>" for i in range(1, 6))}<tr class="scorecard__total"><td>Total</td><td></td></tr></table>
+      </div>
+    </div>"""
+
+
+def event_page(slug):
+    ev = EVENTS[slug]
+    eds = editions(slug)
+    faqs = FAQ_OVERRIDE.get(slug) or []
+    lds = [breadcrumbs_ld(slug, ev["name"], ("experiencias.html", "Experiencias")), faq_ld(faqs)] + [event_ld(e) for e in eds]
+    html = head(ev["name"] + " | Deyscom Motorsport", ev["lead"][:160], slug, ev["name"], ev["hero"], lds, ev["keywords"]) + header(slug)
+    html += hero(ev["kicker"], ev["lines"], ev["lead"], "299", ev["hero"], ev["chips"], ev["name"], ("Ver fechas y reservar", "#fechas"))
+    html += ticker(["Conduce", "Aprende", "Disfruta", "En equipo", "BMW E36", "Peugeot 206", "Circuito El Hito"], dark=True)
+    ej = "".join(f'<article class="card reveal" data-delay="{i % 3}"><span class="ej-n">{i + 1}</span><h3>{t}</h3><p>{d}</p></article>'
+                 for i, (t, d) in enumerate(ev["ejercicios"]))
+    cars = "".join(f'<div class="carpick"><span class="carpick__box"><span class="carpick__media">{art(n.split()[0].upper(), "60%", "30%", c["img"], n)}</span>'
+                   f'<span class="carpick__body"><span class="carpick__power">{c["power"]}</span><b>{n}</b><span class="muted">{c["desc"]}</span></span></span></div>'
+                   for n, c in CARS.items())
+    partner = ""
+    if ev.get("partner"):
+        pn, pf = ev["partner"]
+        partner = (f'<div class="partner reveal"><span class="eyebrow">Con</span><span class="partner__logo"><img src="assets/img/patrocinadores/{pf}" alt="Logotipo de {pn}" width="277" height="145" loading="lazy"></span>'
+                   f'<p class="small muted">Organizan {" y ".join(ev["organizers"])}.</p></div>')
+    poster = ""
+    if ev.get("poster") and ev["poster"] in IMG:
+        poster = f"""<section class="section section--tight">
+  <div class="container poster-wrap">
+    <div class="reveal"><span class="eyebrow">Cartel oficial</span><h2>Todo el evento <span class="outline">de un vistazo</span></h2>
+      <p class="lead mt-2">Fecha, circuito, coches, ejercicios y equipos. Descárgalo y compártelo con tu equipo.</p>
+      <div class="btn-row mt-2"><a class="btn btn--ghost" href="assets/img/fotos/{ev['poster']}.jpg" download>Descargar cartel</a><a class="btn" href="#fechas">{I['ticket']} Reservar plaza</a></div></div>
+    <figure class="poster reveal" data-delay="1"><a href="assets/img/fotos/{ev['poster']}.jpg" target="_blank" rel="noopener">{pic(ev['poster'], sizes="(max-width: 900px) 100vw, 480px")}</a></figure>
+  </div>
+</section>"""
+    others = "".join(event_card(s, x) for s, x in EVENTS.items() if s != slug)
+    html += f"""<section class="section" id="fechas">
   <div class="container">
-    {section_head("Elige tu experiencia", "Tres formas de <span class='outline'>acelerar</span>", "Cada experiencia es un fin de semana completo con nuestro equipo. Tú eliges el escenario.")}
-    <div class="exps">{"".join(exp_card(s, x) for s, x in EXPERIENCES.items())}</div>
+    {section_head("Fechas y plazas", "Elige día <span class='outline'>y turno</span>", "Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.")}
+    {dates_block(slug)}
+  </div>
+</section>
+{facts_box(slug, "La jornada en datos")}
+<section class="section section--ink">
+  <div class="container">
+    {split("¿En qué consiste?", "Tierra, <span class='pink'>derrapes</span> y cronómetro", ev["intro"] + partner, "RALLY", ev["intro_img"], "Circuito El Hito · Cuenca")}
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    {section_head("5 ejercicios puntuables", "Lo que vas <span class='outline'>a hacer</span>", "Monitores especializados te acompañan y puntúan cada ejercicio.")}
+    <div class="cards ej-cards">{ej}</div>
   </div>
 </section>
 <section class="section section--ink">
   <div class="container">
-    {section_head("Nuestros coches", "Los protagonistas", "En rally y slalom eliges entre dos coches muy distintos, preparados en nuestro taller.")}
-    <div class="carpicks carpicks--static">{"".join(f'<div class="carpick"><span class="carpick__box"><span class="carpick__media">{art(n.split()[0].upper(), "60%", "30%", c["img"], n)}</span><span class="carpick__body"><span class="carpick__power">{c["power"]}</span><b>{n}</b><span class="muted">{c["desc"]}</span></span></span></div>' for n, c in CARS.items())}</div>
+    {section_head("Los coches", "Tracción delantera <span class='outline'>y propulsión</span>", "Conducirás los dos coches del equipo, preparados en nuestro taller de Torrelaguna.")}
+    <div class="carpicks carpicks--static">{cars}</div>
   </div>
 </section>
-<section class="section section--pink">
+<section class="section">
+  <div class="container">{teams_block()}</div>
+</section>
+<section class="section section--ink section--tight">
+  <div class="container exp-layout">
+    <div>
+      <span class="eyebrow reveal">Qué incluye</span>
+      <h2 class="reveal">Todo <span class="outline">incluido</span></h2>
+      {includes_list(ev["incluye"])}
+    </div>
+    <aside class="buybox reveal">
+      <span class="buybox__tag">{ev["short"]}</span>
+      <h3>{ev["name"]}</h3>
+      <div class="buybox__price"><small>Precio por persona</small><span>{money_eur(eds[0]["precio"]) if eds else "Consultar"}</span></div>
+      <ul class="buybox__list"><li>{I["cal"]} {" · ".join(dict.fromkeys(ed_date(x, False) for x in eds)) or "Próximamente"}</li><li>{I["pin"]} Circuito El Hito (Cuenca)</li><li>{I["users"]} Plazas limitadas por turno</li><li>{I["shield"]} Monitores especializados</li></ul>
+      <a class="btn btn--block" href="#fechas">{I["ticket"]} Elegir fecha y pagar</a>
+      <a class="btn btn--wa btn--block mt-1" data-wa="{escape(ev['name'])}" data-loc="buybox" href="#">{I['wa']} Preguntar por WhatsApp</a>
+    </aside>
+  </div>
+</section>
+{poster}
+{guides_section(slug)}
+<section class="section">
   <div class="container">
-    {section_head("Cómo funciona", "De la reserva <span class='outline'>a la meta</span>", "", True)}
-    <div class="process">{process([("Reserva", "Elige experiencia y déjanos tus datos."), ("Confirmamos", "Te damos fecha, precio y todos los detalles."), ("Preparamos", "Coche, inscripción y equipo listos para ti."), ("Pilotas", "Vive el fin de semana como un piloto más.")], "Paso")}</div>
+    {section_head("Preguntas frecuentes", "Antes de <span class='outline'>arrancar</span>")}
+    {faq(faqs)}
+  </div>
+</section>
+{related_section(slug)}
+<section class="section section--ink section--tight">
+  <div class="container">
+    {section_head("También te puede gustar", "Otra forma <span class='outline'>de acelerar</span>")}
+    <div class="exps exps--2">{others}</div>
+  </div>
+</section>
+{mega_cta("¿Te <span class='outline'>atreves?</span>", "Plazas limitadas por turno. Elige fecha y reserva en un minuto.", ev["name"], ("Ver fechas", "#fechas"))}
+{buy_dialog(eds)}
+"""
+    return html + footer()
+
+
+def experiencias():
+    faqs = FAQ_OVERRIDE.get("experiencias") or []
+    eds = editions()
+    lds = [breadcrumbs_ld("experiencias", "Experiencias"), faq_ld(faqs),
+           {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
+               {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}.html", "name": x["name"]} for i, (s, x) in enumerate(EVENTS.items())]}]
+    lds += [event_ld(e) for e in eds]
+    html = head("Experiencias de rally | Deyscom Motorsport", "Experiencias de conducción de rally sobre tierra con Deyscom Motorsport.",
+                "experiencias", "las experiencias de rally", "bmw-e36-rally-tierra-contraluz-deyscom", lds,
+                "experiencia rally, conducir coche de rally, curso de pilotaje, curso conducción tierra, regalo experiencia motor, Circuito El Hito") + header("experiencias")
+    html += hero("Experiencias", ["Ponte", "<span class='pink'>al volante</span>", "<span class='outline'>de un rally</span>"],
+                 "Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. 4, 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.",
+                 "XP", "bmw-e36-rally-tierra-contraluz-deyscom", ["4 · 5 · 6 · 7 de diciembre", "Mañana o tarde", "299 €"], "las experiencias de rally",
+                 ("Ver fechas", "#fechas"))
+    html += ticker(["Experiencia Rally Eurocem", "DS Pilot Course", "Circuito El Hito", "BMW E36", "Peugeot 206", "Tierra"])
+    html += f"""<section class="section" id="experiencias">
+  <div class="container">
+    {section_head("Elige tu experiencia", "Dos formas de <span class='outline'>acelerar</span>", "El mismo formato de 5 ejercicios puntuables, en dos ocasiones distintas.")}
+    <div class="exps exps--2">{"".join(event_card(s, x) for s, x in EVENTS.items())}</div>
+  </div>
+</section>
+<section class="section section--ink" id="fechas">
+  <div class="container">
+    {section_head("Próximas fechas", "Reserva <span class='outline'>tu turno</span>", "Pago seguro con tarjeta en Stripe. La plaza queda confirmada al momento.")}
+    {dates_block(show_name=True)}
   </div>
 </section>
 {facts_box("experiencias")}
-{guides_section("experiencias", "Cómo elegir", "¿Circuito, rally <span class='outline'>o slalom?</span>")}
-{course_promo(compact=True)}
+<section class="section section--pink">
+  <div class="container">
+    {section_head("Cómo funciona", "De la reserva <span class='outline'>a la meta</span>", "", True)}
+    <div class="process">{process([("Elige", "Experiencia, día y turno."), ("Reserva", "Deja tus datos y paga con tarjeta en Stripe."), ("Recibe", "Confirmación por email y, unos días antes, el horario y la ubicación."), ("Pilota", "5 ejercicios, 2 coches y clasificación final.")], "Paso")}</div>
+  </div>
+</section>
+{guides_section("experiencias", "Cómo elegir", "¿Cuál <span class='outline'>es la tuya?</span>")}
 <section class="section">
   <div class="container">
     {section_head("Preguntas frecuentes", "Todo <span class='outline'>claro</span>")}
@@ -1302,7 +1545,51 @@ def experiencias():
   </div>
 </section>
 {related_section("experiencias")}
-{mega_cta("Regala <span class='outline'>adrenalina</span>", "Las experiencias DS Pilot Weekend son el regalo perfecto para cualquier apasionado del motor.", "regalar una experiencia DS Pilot Weekend", ("Ver experiencias", "#experiencias"))}
+{mega_cta("Regala <span class='outline'>adrenalina</span>", "Una jornada de rally en tierra es el regalo perfecto para cualquier apasionado del motor.", "regalar una experiencia de rally", ("Ver fechas", "#fechas"))}
+{buy_dialog(eds)}
+"""
+    return html + footer()
+
+
+def events_promo():
+    eds = editions()
+    days = sorted(dict.fromkeys(int(e["fecha"][8:]) for e in eds))
+    feats = [("cal", "4 de diciembre · Experiencia Rally Eurocem", "Jornada especial con equipos, camisetas y comida."),
+             ("flag", "5, 6 y 7 de diciembre · DS Pilot Course", "Elige día y turno de mañana o de tarde."),
+             ("car", "BMW E36 y Peugeot 206", "Tracción delantera y propulsión, preparados para competición."),
+             ("ticket", "299 € por persona", "Pago seguro con tarjeta. Plazas limitadas por turno.")]
+    f = "".join(f'<li><span class="ic">{I[ic]}</span><div><b>{t}</b><span>{d}</span></div></li>' for ic, t, d in feats)
+    return f"""<section class="course-promo">
+  <div class="course-promo__bg">{pic("bmw-e36-rally-tierra-contraluz-deyscom", sizes="100vw")}</div>
+  <div class="container course-promo__inner">
+    <div class="reveal">
+      <span class="course-promo__badge">{I['cal']} Diciembre 2026 · Plazas limitadas</span>
+      <h2>Conduce <span class="pink">un coche</span><br><span class="outline">de rally</span></h2>
+      <p class="lead">Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca): {", ".join(map(str, days[:-1]))} y {days[-1] if days else ""} de diciembre. 5 ejercicios puntuables, monitores y clasificación final.</p>
+      <div class="btn-row mt-2">
+        <a class="btn" href="experiencias.html#fechas">{I['ticket']} Ver fechas y reservar</a>
+        <a class="btn btn--ghost" href="ds-pilot-course.html">DS Pilot Course {I['arrow']}</a>
+      </div>
+    </div>
+    <ul class="course-promo__feats reveal" data-delay="1">{f}</ul>
+  </div>
+</section>"""
+
+
+def gracias_page():
+    html = head("Plaza confirmada | Deyscom Motorsport", "Gracias por reservar tu plaza en las experiencias de Deyscom Motorsport. Te hemos enviado la confirmación por email.", "gracias", "mi reserva")
+    html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, nofollow">')
+    html = html.replace("<body ", '<body data-page="gracias" ', 1)
+    html += header("gracias") + f"""<section class="hero page-hero" style="min-height:70svh">
+  <div class="hero__bg">{pic("bmw-e36-rally-tierra-deyscom-motorsport", eager=True, sizes="100vw")}</div><div class="hero__grid"></div>
+  <div class="container hero__inner">
+    <span class="eyebrow">Reserva completada</span>
+    <h1><span class="line"><span>¡Plaza</span></span><span class="line"><span class="outline">confirmada!</span></span></h1>
+    <p class="lead" data-thanks>Gracias por tu reserva. Te hemos enviado la confirmación del pago por email y unos días antes te mandaremos el horario y la ubicación exacta.</p>
+    <div class="btn-row mt-2"><a class="btn" data-thanks-cal hidden href="#" target="_blank" rel="noopener">{I['cal']} Añadir a mi calendario</a>
+      <a class="btn btn--wa" data-wa="mi reserva de experiencia" data-loc="gracias" href="#">{I['wa']} Escríbenos por WhatsApp</a><a class="btn btn--ghost" href="index.html">Volver al inicio</a></div>
+  </div>
+</section>
 """
     return html + footer()
 
@@ -1648,7 +1935,7 @@ def tienda():
     <div class="section__head">
       <div class="reveal"><span class="eyebrow">Coches y piezas en venta</span><h2>Listos para <span class="outline">rodar</span></h2></div>
       <div class="reveal" data-delay="1">
-        <p class="lead muted">Todo lo que tenemos a la venta, sincronizado con nuestro perfil de Wallapop. ¿Buscas uno de competición? Mira nuestros <a class="pink" href="coches-de-rally-en-venta.html">coches de rally en venta</a> o el <a class="pink" href="alquiler-coche-de-rally.html">alquiler de coche de rally</a>.</p>
+        <p class="lead muted">Todo lo que tenemos a la venta, sincronizado con nuestro perfil de Wallapop. ¿Te interesa alguno? Escríbenos y lo vemos juntos, o prueba antes nuestros coches en el <a class="pink" href="ds-pilot-course.html">DS Pilot Course</a>.</p>
         <div class="btn-row mt-1"><a class="btn btn--ghost" data-social="wallapop" href="#">{I['wallapop']} Ver perfil en Wallapop</a></div>
       </div>
     </div>
@@ -1788,7 +2075,7 @@ def product_page(slug):
 # ------------------------------------------------------------------ inicio
 def home():
     svc = [
-        ("competicion.html", "01", "Competición", "Preparación, seguridad, asistencia y alquiler de coches de rally, slalom y circuito.", "RACE", "mitsubishi-lancer-evo-rally-taller-deyscom", "60%"),
+        ("competicion.html", "01", "Competición", "Preparación, seguridad y asistencia de coches de rally, slalom y circuito.", "RACE", "mitsubishi-lancer-evo-rally-taller-deyscom", "60%"),
         ("restomod.html", "02", "Restomod", "Clásicos y 4x4 con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "todoterreno-chasis-restauracion-completa", "30%"),
         ("pintura.html", "03", "Pintura", "Cabina de pintura, chapa, chasis, colores especiales y decoraciones racing.", "PAINT", "cabina-pintura-chasis-rosa", "60%"),
         ("banco-de-potencia.html", "04", "Banco de potencia", "Mide los CV y el par reales de tu coche y compara antes y después.", "DYNO", "banco-de-potencia-medicion-deyscom", "40%"),
@@ -1801,7 +2088,7 @@ def home():
     )
     choices = [("flag", "Competición", "Rally, slalom, circuito"), ("star", "Restomod", "Clásico + mecánica moderna"),
                ("spray", "Pintura", "Chapa, color, decoración"), ("gauge", "Banco de potencia", "Medir CV y par"),
-               ("helmet", "Experiencia", "DS Pilot Weekend"), ("grad", "Curso copiloto", "DS Copilot Course")]
+               ("helmet", "Experiencia Eurocem", "4 de diciembre"), ("cal", "DS Pilot Course", "5, 6 y 7 de diciembre")]
     choice_html = "".join(
         f'<label class="choice"><input type="radio" name="servicio" value="{t}"{" required" if i == 0 else ""}>'
         f'<span class="choice__box">{I[ic]}<b>{t}</b><span>{d}</span></span></label>'
@@ -1811,20 +2098,20 @@ def home():
         ("¿Dónde estáis?", "En C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid). A unos 50 minutos de Madrid capital."),
         ("¿Cuál es vuestro horario?", "De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras."),
         ("¿Hacéis presupuestos sin compromiso?", "Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial."),
-        ("¿Puedo correr sin tener coche propio?", "Sí: con nuestras experiencias DS Pilot Weekend en circuito, rally o slalom, o con el alquiler de nuestros coches de competición."),
-        ("¿Cómo me apunto al curso de copiloto?", "Entra en la página del DS Copilot Course y pulsa «Comprar mi plaza». Las plazas son limitadas."),
+        ("¿Puedo conducir un coche de rally sin tener uno?", "Sí: en nuestras experiencias conduces nuestro BMW E36 y nuestro Peugeot 206 sobre tierra, con monitores."),
+        ("¿Cómo reservo una experiencia?", "Entra en Experiencias, elige fecha y turno, deja tus datos y paga con tarjeta en Stripe."),
     ]
     html = head("Deyscom Motorsport · Taller de competición, restomod, pintura y banco de potencia en Madrid",
-                "Taller motorsport en Torrelaguna (Madrid): preparación de coches de competición, restomod, pintura, banco de potencia, experiencias DS Pilot Weekend y curso de copiloto DS Copilot Course.",
+                "Taller motorsport en Torrelaguna (Madrid): preparación de coches de competición, restomod, pintura, banco de potencia y experiencias de conducción de rally sobre tierra.",
                 "index", "vuestros servicios", "bmw-e36-rally-tierra-deyscom-motorsport",
                 [{"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#web", "name": "Deyscom Motorsport", "alternateName": "Deyscom", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
                 "taller competición Madrid, preparación rally Madrid, restomod Madrid, banco de potencia Madrid, curso copiloto rally, experiencia pilotaje, Torrelaguna") + header("index")
     html += hero("Torrelaguna · Madrid · Motorsport", ["Hechos", "para <span class='pink'>correr.</span>", "<span class='outline'>Pensados para ti.</span>"],
-                 "Coches de competición, restomods, pintura, banco de potencia, experiencias de pilotaje y cursos. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
+                 "Coches de competición, restomods, pintura, banco de potencia y experiencias de rally. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
                  "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
-    html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "DS Pilot Weekend", "DS Copilot Course"])
+    html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "Experiencia Rally Eurocem", "DS Pilot Course"])
     html += facts_box("index", "Deyscom Motorsport <span class='outline'>en datos</span>", "Quiénes somos en 30 segundos")
-    html += course_promo()
+    html += events_promo()
     html += f"""
 <section class="section">
   <div class="container">
@@ -1835,9 +2122,9 @@ def home():
 
 <section class="section section--ink">
   <div class="container">
-    {section_head("Experiencias · DS Pilot Weekend", "Sé piloto <span class='outline'>un fin de semana</span>", "Circuito del Jarama, rally federado o slalom con nuestro Peugeot 206 o BMW E36. Sin coche propio, con todo el equipo Deyscom.")}
-    <div class="exps">{"".join(exp_card(s, x) for s, x in EXPERIENCES.items())}</div>
-    <div class="btn-row mt-3"><a class="btn" href="experiencias.html">Ver todas las experiencias {I['arrow']}</a></div>
+    {section_head("Experiencias · Diciembre 2026", "Conduce <span class='outline'>un coche de rally</span>", "Jornadas sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. Sin coche propio, con monitores y todo el equipo Deyscom.")}
+    <div class="exps exps--2">{"".join(event_card(s, x) for s, x in EVENTS.items())}</div>
+    <div class="btn-row mt-3"><a class="btn" href="experiencias.html#fechas">{I['ticket']} Ver fechas y reservar {I['arrow']}</a></div>
   </div>
 </section>
 
@@ -2006,7 +2293,7 @@ def contacto():
     html = head("Contacto · Deyscom Motorsport | Taller en Torrelaguna, Madrid",
                 "Contacta con Deyscom Motorsport: (+34) 615 97 22 33 · info@deyscom.com · C/ Canal de Isabel II, 2 Nave 3, 28180 Torrelaguna (Madrid). Lunes a viernes 07:00-15:00.",
                 "contacto", "un presupuesto", "og", [breadcrumbs_ld("contacto", "Contacto")]) + header("contacto")
-    opts = ["Competición", "Restomod", "Pintura", "Banco de potencia", "Experiencia DS Pilot Weekend", "DS Copilot Course", "Tienda / compra", "Otro"]
+    opts = ["Competición", "Restomod", "Pintura", "Banco de potencia", "Experiencia Rally Eurocem", "DS Pilot Course", "Tienda / compra", "Otro"]
     sel = "".join(f'<option value="{o}">{o}</option>' for o in opts)
     html += f"""<section class="hero page-hero" style="min-height:52svh">
   <div class="hero__bg"></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
@@ -2195,7 +2482,7 @@ def legal_pages():
 <p>Si eres consumidor, dispones de <strong>14 días naturales</strong> desde la recepción del producto para desistir de la compra sin necesidad de justificación. Comunícanoslo por escrito a <a href="mailto:{EMAIL}">{EMAIL}</a> (puedes usar el modelo de abajo) y devuélvenos el producto sin usar y en su estado original en los 14 días siguientes. Te reembolsaremos el importe, incluidos los gastos de envío estándar, en un máximo de 14 días desde que recibamos tu comunicación, por el mismo medio de pago. Los gastos de devolución corren de tu cuenta. No se admite el desistimiento de productos personalizados.</p>
 <div class="legal-box"><p><strong>Modelo de desistimiento:</strong> «A la atención de DEYSCOM MOTORSPORT, S.L., C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), {EMAIL}: le comunico que desisto de mi contrato de compra del siguiente producto: [producto], pedido el [fecha] / recibido el [fecha]. Nombre, dirección, firma (solo en papel) y fecha.»</p></div>
 <h2>6. Experiencias y cursos</h2>
-<p>Las experiencias DS Pilot Weekend y el DS Copilot Course son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
+<p>Las experiencias y cursos de conducción (como la Experiencia Rally Eurocem o el DS Pilot Course) son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
 <ul>{cancel}</ul>
 <p><strong>Requisitos:</strong> para conducir es necesario ser mayor de edad, tener carnet de conducir en vigor y, en pruebas federadas, la licencia correspondiente (te ayudamos a tramitarla). Debes seguir en todo momento las indicaciones de seguridad del equipo y de la organización. Deyscom podrá excluir de la actividad a quien ponga en riesgo su seguridad o la de terceros. Antes de la experiencia te informaremos de las condiciones de uso del coche, del seguro y, en su caso, de la fianza.</p>
 <h2>7. Garantía</h2>
@@ -2299,8 +2586,8 @@ def molar_block():
       <h2>II Rallye Comunidad de Madrid <span class="outline">El Molar</span></h2>
       <div class="mt-2">
         <p class="lead">En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally con el Peugeot 206 del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.</p>
-        <p class="muted">Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias DS Pilot Weekend, del DS Copilot Course y de la edición especial que hemos creado para celebrarlo.</p>
-        <div class="btn-row mt-2"><a class="btn" href="camiseta-edicion-especial-el-molar-2026.html">{I['bag']} Edición especial El Molar 2026</a><a class="btn btn--ghost" href="ds-pilot-weekend-rally.html">Corre tu primer rally</a></div>
+        <p class="muted">Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.</p>
+        <div class="btn-row mt-2"><a class="btn" href="camiseta-edicion-especial-el-molar-2026.html">{I['bag']} Edición especial El Molar 2026</a><a class="btn btn--ghost" href="experiencias.html">Conduce nuestros coches</a></div>
       </div>
     </div>
     <div class="split__media reveal" data-delay="1">{art("EL MOLAR", "50%", "35%", "peugeot-206-rally-el-molar-tramo", "El Molar 2026")}<span class="split__tag">El Molar · 2026</span></div>
@@ -2625,13 +2912,14 @@ def sale_page():
 # ------------------------------------------------------------------ área privada / CRM
 def crm_page():
     BADGE = '<em id="crm-badge-new" hidden></em>'
-    nav = [("panel", "Panel", "gauge"), ("leads", "Leads", "users"), ("pipeline", "Pipeline", "flag"), ("calendario", "Calendario", "cal"), ("pedidos", "Pedidos", "bag")]
+    nav = [("panel", "Panel", "gauge"), ("leads", "Leads", "users"), ("pipeline", "Pipeline", "flag"), ("calendario", "Calendario", "cal"), ("ventas", "Ventas", "chart"), ("pedidos", "Pedidos", "bag")]
     nav_html = "".join(f'<button type="button" class="crm-nav__btn" data-view="{k}">{I[ic]}<span>{t}</span>{BADGE if k == "leads" else ""}</button>' for k, t, ic in nav)
     nav_html += f'<button type="button" class="crm-nav__btn" data-view="usuarios" data-admin hidden>{I["shield"]}<span>Usuarios</span></button>'
     nav_html += f'<button type="button" class="crm-nav__btn" data-view="cuenta">{I["wrench"]}<span>Mi cuenta</span></button>'
-    nav_html += f'<a class="crm-nav__btn crm-nav__ext" href="admin/" target="_blank" rel="noopener">{I["book"]}<span>Contenido web ↗</span></a>'
+    nav_html += f'<a class="crm-nav__btn crm-nav__ext" href="index.html" target="_blank" rel="noopener" data-site-link>{I["eye"]}<span>Ver la web ↗</span></a>'
+    nav_html += f'<a class="crm-nav__btn crm-nav__ext crm-nav__ext--2" href="admin/" target="_blank" rel="noopener" data-site-link>{I["book"]}<span>Contenido web ↗</span></a>'
     estados = "".join(f"<option>{e}</option>" for e in ["Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido"])
-    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Alquiler de coche de rally", "Coches de rally en venta", "Restomod", "Pintura", "Banco de potencia",
+    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Experiencia Rally Eurocem", "DS Pilot Course", "Restomod", "Pintura", "Banco de potencia",
                                                          "DS Pilot Weekend – Circuit", "DS Pilot Weekend – Rally", "DS Pilot Weekend – Slalom", "DS Copilot Course", "Tienda", "Otro"])
     return f"""<!doctype html>
 <html lang="es-ES">
@@ -2726,9 +3014,21 @@ def crm_page():
     </section>
 
     <section class="crm-view" id="view-calendario" hidden>
-      <div class="crm-cal-head"><p class="crm-muted">Fechas de experiencias y cursos con sus plazas. Las ediciones abiertas y visibles se muestran en la web con las plazas libres, y aparecen en los formularios de reserva.</p>
-        <button class="cbtn cbtn--pink cbtn--sm" type="button" data-new-ed>+ Nueva edición</button></div>
+      <div class="crm-cal-head"><p class="crm-muted">Fechas de las experiencias con sus plazas vendidas. Las fechas, turnos, precios y enlaces de pago de Stripe se editan en el panel de contenido y aparecen solos en la web.</p>
+        <a class="cbtn cbtn--pink cbtn--sm" href="admin/#/collections/experiencias" target="_blank" rel="noopener" data-site-link>Editar fechas ↗</a></div>
       <div id="crm-cal"></div>
+    </section>
+
+    <section class="crm-view" id="view-ventas" hidden>
+      <div class="crm-cal-head"><p class="crm-muted" id="crm-stripe-status">Pagos de Stripe de las experiencias. Se sincronizan solos cada 15 minutos.</p>
+        <button class="cbtn cbtn--pink cbtn--sm" type="button" id="crm-sync-stripe">↻ Sincronizar con Stripe</button></div>
+      <div class="crm-kpis crm-kpis--4" id="crm-sales-kpis"></div>
+      <div class="crm-box"><h2>Ocupación por fecha</h2><div id="crm-sales-eds"></div></div>
+      <div class="crm-box"><h2>Ventas</h2><div class="crm-table-wrap crm-table-wrap--flat"><table class="crm-table" id="crm-sales">
+        <thead><tr><th>Fecha</th><th>Cliente</th><th>Experiencia</th><th>Plazas</th><th>Importe</th></tr></thead><tbody></tbody></table></div></div>
+      <div class="crm-box"><h2>Reservas sin pagar</h2><p class="crm-muted small">Personas que dejaron sus datos para una fecha pero no han completado el pago. Escríbeles con la plantilla «Completar el pago».</p>
+        <div class="crm-table-wrap crm-table-wrap--flat"><table class="crm-table" id="crm-pending">
+        <thead><tr><th>Fecha</th><th>Nombre</th><th>Contacto</th><th>Experiencia</th><th>Estado</th></tr></thead><tbody></tbody></table></div></div>
     </section>
 
     <section class="crm-view" id="view-pedidos" hidden>
@@ -2798,25 +3098,13 @@ def crm_page():
     <div class="crm-dialog__btns"><button class="cbtn cbtn--ghost" type="button" id="crm-new-cancel">Cancelar</button><button class="cbtn cbtn--pink" type="submit">Crear lead</button></div>
   </form>
 </dialog>
-<dialog class="crm-dialog" id="crm-ed">
-  <form id="crm-ed-form" class="crm-form">
-    <h2 id="crm-ed-title">Nueva edición</h2>
-    <input type="hidden" name="id">
-    <div class="dw-grid">
-      <label class="dw-full">Experiencia o curso<select class="cin" name="producto" required>{"".join(f'<option value="{k}">{v}</option>' for k, v in [("ds-pilot-weekend-circuit", "DS Pilot Weekend – Circuit"), ("ds-pilot-weekend-rally", "DS Pilot Weekend – Rally"), ("ds-pilot-weekend-slalom", "DS Pilot Weekend – Slalom"), ("ds-copilot-course", "DS Copilot Course"), ("alquiler-coche-de-rally", "Alquiler de coche de rally")])}</select></label>
-      <label class="dw-full">Nombre visible (opcional)<input class="cin" name="nombre" placeholder="Ej. DS Copilot Course · Noviembre"></label>
-      <label>Inicio *<input class="cin" name="inicio" type="date" required></label>
-      <label>Fin<input class="cin" name="fin" type="date"></label>
-      <label>Lugar<input class="cin" name="lugar" placeholder="Circuito del Jarama"></label>
-      <label>Plazas (vacío = sin límite)<input class="cin" name="plazas" type="number" min="0"></label>
-      <label>Precio (€)<input class="cin" name="precio" inputmode="decimal"></label>
-      <label>Estado<select class="cin" name="estado"><option>Abierta</option><option>Completa</option><option>Cerrada</option><option>Cancelada</option></select></label>
-      <label class="dw-full crm-check"><input type="checkbox" name="visible" checked> Mostrar en la web</label>
-      <label class="dw-full">Notas internas<textarea class="cin" name="notas" rows="2"></textarea></label>
-    </div>
+<dialog class="crm-dialog crm-dialog--wide" id="crm-ed">
+  <div class="crm-form">
+    <h2 id="crm-ed-title">Fecha</h2>
+    <p class="crm-muted" id="crm-ed-sub"></p>
     <div id="crm-ed-ins"></div>
-    <div class="crm-dialog__btns"><button class="cbtn cbtn--danger" type="button" id="crm-ed-del" hidden>Borrar</button><button class="cbtn cbtn--ghost" type="button" id="crm-ed-cancel">Cancelar</button><button class="cbtn cbtn--pink" type="submit">Guardar</button></div>
-  </form>
+    <div class="crm-dialog__btns"><a class="cbtn cbtn--ghost" href="admin/#/collections/experiencias" target="_blank" rel="noopener" data-site-link>Editar en el panel ↗</a><button class="cbtn cbtn--pink" type="button" id="crm-ed-cancel">Cerrar</button></div>
+  </div>
 </dialog>
 
 <dialog class="crm-dialog crm-dialog--wide" id="crm-quote">
@@ -2839,6 +3127,7 @@ def crm_page():
 </dialog>
 <datalist id="crm-tags"></datalist>
 <div class="crm-toast" id="crm-toast" role="status" aria-live="polite"></div>
+<script>window.DM_EDICIONES = {json.dumps([ed_public(e) for e in editions(upcoming=False)], ensure_ascii=False).replace("</", "<" + chr(92) + "/")};</script>
 <script src="assets/js/config.js?v={VERSION}"></script>
 <script src="assets/js/crm.js?v={VERSION}"></script>
 </body>
@@ -2849,7 +3138,7 @@ def crm_page():
 def llms_txt():
     return f"""# Deyscom Motorsport
 
-> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de pilotaje DS Pilot Weekend y el curso de copiloto DS Copilot Course con certificación.
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y DS Pilot Course) en el Circuito El Hito (Cuenca).
 
 - Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
 - Teléfono y WhatsApp: {PHONE_TXT}
@@ -2860,12 +3149,10 @@ def llms_txt():
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
 ## Servicios
-- [Coches de competición]({SITE}/competicion.html): preparación, jaulas de seguridad, set-up, asistencia en carrera y alquiler.
+- [Coches de competición]({SITE}/competicion.html): preparación, jaulas de seguridad, set-up y asistencia en carrera.
 - [Restomod]({SITE}/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
 - [Pintura]({SITE}/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
 - [Banco de potencia]({SITE}/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
-- [Alquiler de coche de rally]({SITE}/alquiler-coche-de-rally.html): Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV) preparados, con asistencia, para rally, rallysprint y slalom.
-- [Coches de rally en venta]({SITE}/coches-de-rally-en-venta.html): coches de competición y piezas revisados por el taller (stock en Wallapop) y búsqueda a medida.
 
 ## Zona de servicio
 Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
@@ -2874,12 +3161,8 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · fundada en 2022
 - Texto completo de las páginas principales para modelos de lenguaje: {SITE}/llms-full.txt
 
-## Experiencias y formación
-- [DS Pilot Weekend – Circuit]({SITE}/ds-pilot-weekend-circuit.html): fin de semana como piloto en el Circuito del Jarama.
-- [DS Pilot Weekend – Rally]({SITE}/ds-pilot-weekend-rally.html): rally federado con Peugeot 206 1.6 XS (118 CV) o BMW E36 (135 CV).
-- [DS Pilot Weekend – Slalom]({SITE}/ds-pilot-weekend-slalom.html): slalom con Peugeot 206 1.6 XS o BMW E36.
-- [DS Copilot Course]({SITE}/ds-copilot-course.html): curso de copiloto de rally de fin de semana, teoría y práctica, impartido por un profesor y una profesora, horas prácticas en un tramo cerrado en Guadalajara, con certificación y diploma.
-
+## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
+""" + "".join(f"- [{e['name']}]({SITE}/{k}.html): {e['lead']} Fechas: " + "; ".join(ed_label(x) for x in editions(k)) + ".\n" for k, e in EVENTS.items()) + f"""
 ## Tienda
 - [Tienda]({SITE}/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
 
@@ -2906,9 +3189,7 @@ def page_404():
 
 def llms_full(pages):
     """Texto plano de las páginas clave para modelos de lenguaje (llms-full.txt)."""
-    keys = ["index", "competicion", "alquiler-coche-de-rally", "coches-de-rally-en-venta", "restomod", "pintura", "banco-de-potencia",
-            "experiencias", "ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-weekend-slalom", "ds-copilot-course",
-            "nosotros", "contacto"] + [pp["slug"] for pp in POSTS]
+    keys = ["index", "competicion", "restomod", "pintura", "banco-de-potencia", "experiencias", *EVENTS, "nosotros", "contacto"] + [pp["slug"] for pp in POSTS]
     out = [llms_txt().strip(), ""]
     for k in keys:
         html = pages[k]
@@ -2997,18 +3278,16 @@ def main():
     import content
     content.apply(globals())
     (ROOT / "assets/js/config.js").write_text(config_js(), encoding="utf-8")
-    pages = {"index": home(), "experiencias": experiencias(), "cursos": cursos(), "ds-copilot-course": course_page(),
-             "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
+    pages = {"index": home(), "experiencias": experiencias(), "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
+    for s in EVENTS:
+        pages[s] = event_page(s)
+    pages["gracias"] = gracias_page()
     pages.update(legal_pages())
     pages["404"] = page_404()
     for s in SERVICES:
         pages[s] = service_page(s)
-    for s in EXPERIENCES:
-        pages[s] = experience_page(s)
     for s in PRODUCTS:
         pages[s] = product_page(s)
-    pages["alquiler-coche-de-rally"] = rental_page()
-    pages["coches-de-rally-en-venta"] = sale_page()
     pages["blog"] = blog_index()
     pages["crm"] = crm_page()
     for pp in POSTS:
@@ -3017,16 +3296,17 @@ def main():
     import admin_config
     admin_config.write(globals(), ROOT)
     (ROOT / "llms-full.txt").write_text(llms_full(pages), encoding="utf-8")
-    for old in ("performance", "legal"):  # páginas retiradas
+    (ROOT / "ediciones.json").write_text(json.dumps({"actualizado": TODAY, "ediciones": [ed_public(e) for e in editions(upcoming=False)]},
+                                                    ensure_ascii=False, indent=1), encoding="utf-8")
+    for old in ("performance", "legal", *RESERVED):  # páginas retiradas o en la recámara
         f = ROOT / f"{old}.html"
         if f.exists():
             f.unlink()
     for name, html in pages.items():
         html = re.sub(r"\n\s*\n", "\n", html)
         (ROOT / f"{name}.html").write_text(html, encoding="utf-8")
-    prio = {"index": "1.0", "ds-copilot-course": "0.9", "experiencias": "0.9", "competicion": "0.8", "restomod": "0.8", "pintura": "0.8",
-            "banco-de-potencia": "0.8", "cursos": "0.8", "tienda": "0.8", "blog": "0.7",
-            "alquiler-coche-de-rally": "0.8", "coches-de-rally-en-venta": "0.8"}
+    prio = {"index": "1.0", "experiencias": "0.9", "experiencia-rally-eurocem": "0.9", "ds-pilot-course": "0.9", "competicion": "0.8", "restomod": "0.8",
+            "pintura": "0.8", "banco-de-potencia": "0.8", "tienda": "0.8", "blog": "0.7"}
     def imgs_of(html):
         found = []
         for name in dict.fromkeys(re.findall(r'assets/img/(?:fotos|productos)/([a-z0-9-]+?)(?:-800|-600)?\.(?:jpg|webp)', html)):
@@ -3035,11 +3315,11 @@ def main():
         return "".join(found[:20])
     urls = "".join(
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
-        for n in pages if n not in NOINDEX and n not in ("404", "crm", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
+        for n in pages if n not in NOINDEX and n not in ("404", "crm", "gracias", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
     ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot",
                "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot", "meta-externalagent", "Amazonbot", "DuckAssistBot", "MistralAI-User"]
-    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\n\n"
+    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\nDisallow: /gracias.html\n\n"
     robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\n\n"
     robots += f"Sitemap: {SITE}/sitemap.xml\n# Resumen para modelos de lenguaje: {SITE}/llms.txt\n"
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")

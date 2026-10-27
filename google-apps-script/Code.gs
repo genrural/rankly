@@ -24,11 +24,16 @@ var LEAD_COLUMNS = [
   'id', 'recibido', 'fecha', 'formulario', 'servicio', 'nombre', 'telefono', 'email', 'vehiculo', 'anio',
   'presupuesto', 'plazo', 'mensaje', 'pagina', 'landing', 'referrer',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid',
-  'estado', 'valor', 'proxima_accion', 'asignado', 'etiquetas', 'edicion', 'envio', 'actualizado'
+  'estado', 'valor', 'proxima_accion', 'asignado', 'etiquetas', 'edicion', 'plazas', 'envio', 'actualizado'
 ];
 var ACTIVITY_COLUMNS = ['lead_id', 'fecha', 'usuario', 'tipo', 'texto'];
-var EDITIONS_SHEET = 'Ediciones';
-var EDITION_COLUMNS = ['id', 'producto', 'nombre', 'inicio', 'fin', 'lugar', 'plazas', 'precio', 'estado', 'visible', 'notas'];
+// Las fechas (ediciones) de las experiencias se editan en el panel de la web (/admin) y se publican en este JSON:
+var SITE_EDITIONS_URL = 'https://deyscom.com/ediciones.json';
+var SALES_SHEET = 'Ventas';
+var SALES_COLUMNS = ['session_id', 'fecha', 'cliente', 'email', 'telefono', 'importe', 'moneda', 'plazas', 'edicion', 'experiencia', 'fecha_edicion', 'lead_id', 'payment_link', 'estado'];
+// Stripe: la clave restringida (solo lectura de Checkout Sessions y Payment Links) se guarda en
+// Configuración del proyecto → Propiedades del script → STRIPE_KEY. Nunca la pegues en este archivo.
+var STRIPE_SYNC_DAYS = 120;
 var QUOTES_SHEET = 'Presupuestos';
 var QUOTE_COLUMNS = ['numero', 'lead_id', 'fecha', 'cliente', 'email', 'lineas', 'base', 'iva', 'total', 'validez', 'notas', 'estado', 'pdf_id', 'usuario'];
 var CRM_URL = 'https://deyscom.com/crm.html';
@@ -136,11 +141,11 @@ function handleApi_(req) {
   switch (req.api) {
     case 'me': return { ok: true, user: s };
     case 'logout': CacheService.getScriptCache().remove('tok_' + req.token); return { ok: true };
-    case 'leads': return { ok: true, user: s, estados: ESTADOS, leads: readLeads_(), activity: readActivity_(), ediciones: readEditions_(), presupuestos: readQuotes_() };
-    case 'saveEdicion': return withLock_(function () { return saveEdition_(req.fields || {}, s); });
-    case 'deleteEdicion':
-      if (!admin) return { ok: false, error: 'Solo el administrador puede borrar ediciones.' };
-      return withLock_(function () { return deleteEdition_(req.id, s); });
+    case 'leads':
+      var leads = readLeads_();
+      return { ok: true, user: s, estados: ESTADOS, leads: leads, activity: readActivity_(), ediciones: readEditions_(leads), presupuestos: readQuotes_(),
+        ventas: readSales_(), stripe: !!stripeKey_() };
+    case 'syncStripe': return withLock_(function () { return syncStripe_(); });
     case 'quote': return withLock_(function () { return createQuote_(req, s); });
     case 'quotePdf': return quotePdf_(req.numero);
     case 'quoteStatus': return withLock_(function () { return quoteStatus_(req.numero, req.estado, s); });
@@ -240,6 +245,7 @@ function updateLead_(id, fields, s) {
   EDITABLE.forEach(function (k) {
     if (fields[k] === undefined) return;
     var col = L.headers.indexOf(k);
+    if (col === -1) { L.headers.push(k); col = L.headers.length - 1; L.sheet.getRange(1, col + 1).setValue(k).setFontWeight('bold'); current.push(''); }
     var val = String(fields[k]);
     if (k === 'estado' && ESTADOS.indexOf(val) === -1) return;
     if (current[col] === val) return;
@@ -308,11 +314,10 @@ function doPost(e) {
   // Peticiones del CRM: cuerpo JSON con "api"
   var raw = e && e.postData && e.postData.contents;
   if (raw && /^\s*\{/.test(raw)) {
-    try {
-      var req = JSON.parse(raw);
-      if (req && req.api) return json_(handleApi_(req));
-    } catch (err) {
-      return json_({ ok: false, error: 'Petición no válida' });
+    var req = null;
+    try { req = JSON.parse(raw); } catch (err) { return json_({ ok: false, error: 'Petición no válida' }); }
+    if (req && req.api) {
+      try { return json_(handleApi_(req)); } catch (err) { return json_({ ok: false, error: String((err && err.message) || err) }); }
     }
   }
   var lock = LockService.getScriptLock();
@@ -331,7 +336,8 @@ function doPost(e) {
       }
     });
 
-    p.id = Utilities.getUuid().slice(0, 8);
+    var webId = String(p.id || '');
+    p.id = /^w[a-z0-9]{11}$/.test(webId) && findRow_(L, webId) < 0 ? webId : Utilities.getUuid().slice(0, 8);
     p.recibido = new Date().toISOString();
     p.estado = 'Nuevo';
     ['valor', 'proxima_accion', 'asignado', 'actualizado'].forEach(function (k) { delete p[k]; });
@@ -354,7 +360,7 @@ function doPost(e) {
 // ---------------- STOCK / WALLAPOP ----------------
 function doGet(e) {
   var action = e && e.parameter && e.parameter.action;
-  if (action === 'ediciones') return json_({ ok: true, ediciones: publicEditions_(e.parameter.producto) });
+  if (action === 'plazas' || action === 'ediciones') return json_({ ok: true, ediciones: publicEditions_(e.parameter.producto) });
   if (action === 'stock') {
     var refresh = e.parameter.refresh === '1';
     return json_(getStock_(refresh));
@@ -483,8 +489,8 @@ function json_(obj) {
 function setup() {
   leadsSheet_();
   getSheet_(ACTIVITY_SHEET, ACTIVITY_COLUMNS);
-  getSheet_(EDITIONS_SHEET, EDITION_COLUMNS);
   getSheet_(QUOTES_SHEET, QUOTE_COLUMNS);
+  getSheet_(SALES_SHEET, SALES_COLUMNS);
   getSheet_(STOCK_SHEET, ['title', 'price', 'image', 'url', 'year', 'km', 'fuel', 'description', 'visible']);
   Logger.log(JSON.stringify(getStock_(true)).slice(0, 1000));
 }
@@ -502,60 +508,125 @@ function sheetObjects_(name, cols) {
   return { sheet: sh, head: head, rows: rows };
 }
 
-function seatsTaken_() {
+/** Fechas publicadas en la web (content/ediciones.json → /ediciones.json). Caché de 10 minutos. */
+function siteEditions_() {
+  var cache = CacheService.getScriptCache();
+  var hit = cache.get('site_editions');
+  if (hit) return JSON.parse(hit);
+  var list = [];
+  try {
+    var res = UrlFetchApp.fetch(SITE_EDITIONS_URL + '?t=' + Date.now(), { muteHttpExceptions: true });
+    if (res.getResponseCode() === 200) list = JSON.parse(res.getContentText()).ediciones || [];
+  } catch (e) { console.warn('ediciones.json: ' + e); }
+  var props = PropertiesService.getScriptProperties();
+  if (list.length) props.setProperty('SITE_EDITIONS', JSON.stringify(list));
+  else list = JSON.parse(props.getProperty('SITE_EDITIONS') || '[]');   // última copia buena
+  try { cache.put('site_editions', JSON.stringify(list), 600); } catch (e) { /* grande */ }
+  return list;
+}
+
+/** Plazas ocupadas = leads con esa edición en estado «Ganado» (pagados o confirmados a mano). */
+function seatsTaken_(leads) {
   var taken = {};
-  readLeads_().forEach(function (l) {
-    if (!l.edicion || l.estado === 'Perdido') return;
+  (leads || readLeads_()).forEach(function (l) {
+    if (!l.edicion || l.estado !== 'Ganado') return;
     var n = parseInt(l.plazas, 10); if (!(n > 0)) n = 1;
     taken[l.edicion] = (taken[l.edicion] || 0) + n;
   });
   return taken;
 }
 
-function readEditions_() {
-  var taken = seatsTaken_();
-  return sheetObjects_(EDITIONS_SHEET, EDITION_COLUMNS).rows.map(function (r) {
-    delete r._row; r.ocupadas = taken[r.id] || 0; return r;
-  });
+function readEditions_(leads) {
+  var taken = seatsTaken_(leads);
+  return siteEditions_().map(function (r) { var o = JSON.parse(JSON.stringify(r)); o.ocupadas = taken[r.id] || 0; return o; });
 }
 
-function publicEditions_(producto) {
+function publicEditions_(experiencia) {
   var today = Utilities.formatDate(new Date(), 'Europe/Madrid', 'yyyy-MM-dd');
   return readEditions_().filter(function (r) {
-    return (!producto || r.producto === producto) && String(r.visible).toLowerCase() !== 'no' &&
-      ['Cerrada', 'Cancelada'].indexOf(r.estado) === -1 && r.inicio >= today;
+    return (!experiencia || r.experiencia === experiencia) && r.estado !== 'Cancelada' && r.fecha >= today;
   }).map(function (r) {
     var plazas = parseInt(r.plazas, 10) || 0;
     var libres = plazas ? Math.max(0, plazas - r.ocupadas) : null;
-    return { id: r.id, producto: r.producto, nombre: r.nombre, inicio: r.inicio, fin: r.fin, lugar: r.lugar, precio: r.precio,
-      plazas: plazas, libres: libres, completa: r.estado === 'Completa' || libres === 0 };
-  }).sort(function (a, b) { return a.inicio < b.inicio ? -1 : 1; });
-}
-
-function saveEdition_(f, s) {
-  var T = sheetObjects_(EDITIONS_SHEET, EDITION_COLUMNS);
-  if (!f.producto || !f.inicio) return { ok: false, error: 'Producto y fecha de inicio son obligatorios.' };
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(f.inicio) || (f.fin && !/^\d{4}-\d{2}-\d{2}$/.test(f.fin))) return { ok: false, error: 'Fechas no válidas.' };
-  var row = f.id ? T.rows.filter(function (r) { return r.id === f.id; })[0] : null;
-  var id = row ? row.id : 'ed' + Utilities.getUuid().slice(0, 6);
-  var vals = EDITION_COLUMNS.map(function (c) {
-    var v = c === 'id' ? id : (f[c] !== undefined ? f[c] : (row ? row[c] : ''));
-    if (c === 'estado' && !v) v = 'Abierta';
-    return ['id', 'inicio', 'fin'].indexOf(c) > -1 ? text_(v) : clean_(v);
+    return { id: r.id, experiencia: r.experiencia, fecha: r.fecha, turno: r.turno, plazas: plazas, libres: libres, completa: r.estado === 'Completa' || libres === 0 };
   });
-  if (row) T.sheet.getRange(row._row, 1, 1, vals.length).setValues([vals]);
-  else T.sheet.appendRow(vals);
-  logActivity_('edicion:' + id, s, row ? 'edicion' : 'creado', (row ? 'Edición modificada: ' : 'Edición creada: ') + (f.nombre || f.producto) + ' · ' + f.inicio);
-  return { ok: true, id: id };
 }
 
-function deleteEdition_(id, s) {
-  var T = sheetObjects_(EDITIONS_SHEET, EDITION_COLUMNS);
-  var row = T.rows.filter(function (r) { return r.id === id; })[0];
-  if (!row) return { ok: false, error: 'Edición no encontrada.' };
-  T.sheet.deleteRow(row._row);
-  logActivity_('edicion:' + id, s, 'borrado', 'Edición borrada');
-  return { ok: true };
+// ---------------- VENTAS (Stripe Payment Links) ----------------
+function stripeKey_() { return PropertiesService.getScriptProperties().getProperty('STRIPE_KEY') || ''; }
+
+function stripeGet_(path, params) {
+  var qs = Object.keys(params || {}).map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]); }).join('&');
+  var res = UrlFetchApp.fetch('https://api.stripe.com/v1/' + path + (qs ? '?' + qs : ''),
+    { headers: { Authorization: 'Bearer ' + stripeKey_() }, muteHttpExceptions: true });
+  var data = JSON.parse(res.getContentText() || '{}');
+  if (res.getResponseCode() !== 200) throw new Error('Stripe ' + res.getResponseCode() + ': ' + ((data.error && data.error.message) || ''));
+  return data;
+}
+
+function stripeList_(path, params) {
+  var out = [], after = '';
+  for (var page = 0; page < 20; page++) {
+    var p = JSON.parse(JSON.stringify(params || {})); p.limit = 100; if (after) p.starting_after = after;
+    var data = stripeGet_(path, p);
+    out = out.concat(data.data || []);
+    if (!data.has_more || !data.data.length) break;
+    after = data.data[data.data.length - 1].id;
+  }
+  return out;
+}
+
+function readSales_() {
+  return sheetObjects_(SALES_SHEET, SALES_COLUMNS).rows.map(function (r) { delete r._row; return r; });
+}
+
+/** Ejecútala a mano para probar: trae los pagos de Stripe y los vuelca en «Ventas» y en los leads. */
+function sincronizarStripe() { Logger.log(JSON.stringify(withLock_(syncStripe_))); }
+
+function syncStripe_() {
+  if (!stripeKey_()) return { ok: false, error: 'Falta la clave de Stripe (propiedad del script STRIPE_KEY). Ver README.' };
+  var eds = siteEditions_();
+  var byUrl = {}; eds.forEach(function (e) { if (e.stripe) byUrl[String(e.stripe).split('?')[0].replace(/\/$/, '')] = e; });
+  var byId = {}; eds.forEach(function (e) { byId[e.id] = e; });
+  var linkEd = {};
+  stripeList_('payment_links', {}).forEach(function (pl) { var e = byUrl[String(pl.url).replace(/\/$/, '')]; if (e) linkEd[pl.id] = e; });
+  var since = Math.floor(Date.now() / 1000) - STRIPE_SYNC_DAYS * 86400;
+  var sessions = stripeList_('checkout/sessions', { status: 'complete', 'created[gte]': since });
+  var sheet = getSheet_(SALES_SHEET, SALES_COLUMNS);
+  var known = {}; readSales_().forEach(function (r) { known[r.session_id] = 1; });
+  var L = leadsSheet_(), sys = { nombre: 'Stripe' }, nuevas = [];
+  sessions.forEach(function (cs) {
+    if (known[cs.id] || ['paid', 'no_payment_required'].indexOf(cs.payment_status) === -1) return;
+    var importe = (cs.amount_total || 0) / 100, cd = cs.customer_details || {};
+    var leadId = cs.client_reference_id && findRow_(L, cs.client_reference_id) > 0 ? cs.client_reference_id : '';
+    var lead = null;
+    if (leadId) { var row = L.sheet.getRange(findRow_(L, leadId), 1, 1, L.headers.length).getDisplayValues()[0]; lead = {}; L.headers.forEach(function (h, j) { lead[h] = row[j]; }); }
+    var ed = (cs.payment_link && linkEd[cs.payment_link]) || (lead && byId[lead.edicion]) || null;
+    var plazas = ed && Number(ed.precio) ? Math.max(1, Math.round(importe / Number(ed.precio))) : 1;
+    var fields = { estado: 'Ganado', valor: String(importe), plazas: String(plazas) };
+    if (ed) fields.edicion = ed.id;
+    if (lead) {
+      updateLead_(leadId, fields, sys);
+    } else {
+      var created = createLead_({ nombre: cd.name || cd.email || 'Cliente Stripe', email: cd.email || '', telefono: cd.phone || '',
+        servicio: ed ? ed.nombre : 'Pago Stripe', origen: 'Stripe' }, sys);
+      leadId = created.id;
+      updateLead_(leadId, fields, sys);
+    }
+    sheet.appendRow([text_(cs.id), text_(new Date(cs.created * 1000).toISOString()), clean_(cd.name || (lead && lead.nombre) || ''), clean_(cd.email || ''),
+      clean_(cd.phone || (lead && lead.telefono) || ''), importe, String(cs.currency || 'eur').toUpperCase(), plazas, text_(ed ? ed.id : ''),
+      clean_(ed ? ed.nombre : ''), clean_(ed ? ed.etiqueta : ''), text_(leadId), text_(cs.payment_link || ''), 'Pagado']);
+    logActivity_(leadId, sys, 'pago', 'Pago recibido en Stripe: ' + money_(importe) + (ed ? ' · ' + ed.nombre + ' · ' + ed.etiqueta : '') + ' · ' + plazas + (plazas === 1 ? ' plaza' : ' plazas'));
+    nuevas.push({ cliente: cd.name || cd.email, importe: importe, ed: ed });
+    known[cs.id] = 1;
+  });
+  if (nuevas.length && NOTIFY_EMAIL) {
+    MailApp.sendEmail({ to: NOTIFY_EMAIL, name: 'CRM Deyscom', subject: '💳 ' + nuevas.length + (nuevas.length === 1 ? ' venta nueva' : ' ventas nuevas') + ' en Stripe',
+      htmlBody: '<ul>' + nuevas.map(function (v) { return '<li><b>' + escHtml_(v.cliente) + '</b> · ' + money_(v.importe) + (v.ed ? ' · ' + escHtml_(v.ed.nombre + ' · ' + v.ed.etiqueta) : '') + '</li>'; }).join('') +
+        '</ul><p><a href="' + CRM_URL + '">Ver en el CRM</a></p>' });
+  }
+  CacheService.getScriptCache().remove('site_editions');
+  return { ok: true, nuevas: nuevas.length, revisadas: sessions.length };
 }
 
 // ---------------- PRESUPUESTOS EN PDF ----------------
@@ -669,12 +740,15 @@ function quoteStatus_(numero, estado, s) {
 /** Ejecuta UNA vez: programa el resumen diario (08:00) y el informe mensual (día 1). */
 function activarResumenes() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
-    if (['resumenDiario', 'informeMensual'].indexOf(t.getHandlerFunction()) > -1) ScriptApp.deleteTrigger(t);
+    if (['resumenDiario', 'informeMensual', 'sincronizarStripeAuto'].indexOf(t.getHandlerFunction()) > -1) ScriptApp.deleteTrigger(t);
   });
+  ScriptApp.newTrigger('sincronizarStripeAuto').timeBased().everyMinutes(15).create();
   ScriptApp.newTrigger('resumenDiario').timeBased().everyDays(1).atHour(8).inTimezone('Europe/Madrid').create();
   ScriptApp.newTrigger('informeMensual').timeBased().onMonthDay(1).atHour(9).inTimezone('Europe/Madrid').create();
-  Logger.log('Resumen diario (08:00) e informe mensual (día 1, 09:00) activados.');
+  Logger.log('Resumen diario (08:00), informe mensual (día 1, 09:00) y sincronización con Stripe (cada 15 min) activados.');
 }
+
+function sincronizarStripeAuto() { if (stripeKey_()) withLock_(syncStripe_); }
 
 function digestRecipients_() {
   var users = loadUsers_();
@@ -707,9 +781,11 @@ function resumenDiario(force) {
   var abiertos = leads.filter(function (l) { return ['Ganado', 'Perdido'].indexOf(l.estado) === -1 && /^\d{4}-\d{2}-\d{2}$/.test(l.proxima_accion); });
   var hoy = abiertos.filter(function (l) { return l.proxima_accion === today; });
   var tarde = abiertos.filter(function (l) { return l.proxima_accion < today; });
-  if (!force && !nuevos.length && !hoy.length && !tarde.length && !sinContactar.length) return false;
+  var ventas = readSales_().filter(function (v) { return new Date(v.fecha).getTime() >= since; });
+  if (!force && !nuevos.length && !hoy.length && !tarde.length && !sinContactar.length && !ventas.length) return false;
   var sec = function (t, arr, fn) { return arr.length ? '<h3 style="margin:18px 0 6px">' + t + ' (' + arr.length + ')</h3><ul>' + arr.slice(0, 25).map(fn).join('') + '</ul>' : ''; };
   var html = '<div style="font-family:Arial,sans-serif;max-width:620px"><h2 style="border-bottom:3px solid #ff66c4;padding-bottom:6px">Resumen del día · Deyscom Motorsport</h2>' +
+    sec('💳 Ventas (24 h)', ventas, function (v) { return '<li><b>' + escHtml_(v.cliente) + '</b> · ' + escHtml_(v.importe) + ' € · ' + escHtml_(v.experiencia + ' ' + v.fecha_edicion) + '</li>'; }) +
     sec('🆕 Leads nuevos (24 h)', nuevos, function (l) { return leadLine_(l); }) +
     sec('📅 Llamadas para hoy', hoy, function (l) { return leadLine_(l, escHtml_(l.estado)); }) +
     sec('⚠️ Atrasadas', tarde, function (l) { return leadLine_(l, 'desde ' + l.proxima_accion); }) +
