@@ -1268,16 +1268,18 @@ EVENTS = {
         keywords="experiencia rally, conducir coche de rally, experiencia rally Cuenca, Circuito El Hito, jornada conducción tierra, Eurocem Morteros",
         partner=("Eurocem Morteros", "eurocem-morteros.png"), organizers=["Deyscom Motorsport", "Liebre Racing"],
         poster="cartel-experiencia-rally-eurocem-4-diciembre", teams=True, intro="", ejercicios=[], incluye=[],
+        team_size=5, team_note="cada uno con su color y su camiseta personalizada", duration="", staff="Monitores especializados",
     ),
     "ds-pilot-course": dict(
         name="DS Pilot Course", short="DS Pilot Course", kicker="Curso de conducción · 5, 6 y 7 de diciembre", tag="5-7 dic · Cuenca",
-        teaser="Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.",
+        teaser="Curso de rally de 4 horas sobre tierra: 2 coches de tracción delantera y 2 de propulsión, instructor por grupo y comida.",
         hero="peugeot-206-rally-tierra-deyscom-motorsport", card="peugeot-206-1-6-xs-rally-deyscom-motorsport", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
         lines=["Aprende", "<span class='pink'>a pilotar</span>", "<span class='outline'>en tierra</span>"],
-        lead="Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada.",
-        chips=["5, 6 y 7 de diciembre", "Mañana o tarde", "299 €"],
+        lead="Curso de rally de 4 horas en el Circuito El Hito (Cuenca) con coches equipados para competir: cambios de peso, freno con pie izquierdo, sobreviraje y circuito completo, con instructor para tu grupo.",
+        chips=["5, 6 y 7 de diciembre", "4 horas · mañana o tarde", "299 €"],
         keywords="curso de pilotaje, curso conducción rally, curso conducción tierra, curso pilotaje Cuenca, curso de derrape, conducir coche de rally",
         partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=True, intro="", ejercicios=[], incluye=[],
+        team_size=4, team_note="cada uno con su color y su instructor", duration="PT4H", staff="Instructor cualificado por grupo",
     ),
 }
 EDITIONS = []          # content/ediciones.json (se editan en el panel /admin → Experiencias → Fechas y plazas)
@@ -1373,7 +1375,7 @@ def event_ld(e):
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "location": {"@type": "Place", "name": place, "address": {"@type": "PostalAddress", "addressLocality": "El Hito" if "Hito" in place else place,
                                                                        "addressRegion": region, "addressCountry": "ES"}},
-            "image": [img_url(ev["hero"])], "organizer": org,
+            "image": [img_url(ev["hero"])], "organizer": org, **({"duration": ev["duration"]} if ev.get("duration") else {}),
             "offers": {"@type": "Offer", "price": str(e.get("precio") or 0), "priceCurrency": "EUR", "validFrom": "2026-10-27",
                        "availability": "https://schema.org/SoldOut" if e.get("estado") == "Completa" else "https://schema.org/LimitedAvailability",
                        "url": f'{SITE}/{e["experiencia"]}.html#fechas'}}
@@ -1391,13 +1393,13 @@ def event_card(slug, e):
 </a>"""
 
 
-def teams_block():
+def teams_block(ev):
     chips = "".join(f'<li class="team-chip" style="--team:{c}"><span>{k}</span><b>Equipo {n.lower()}</b></li>' for k, n, c in TEAMS)
     return f"""<div class="split">
       <div class="reveal">
         <span class="eyebrow">Equipos y puntuación</span>
         <h2>Compite <span class="outline">en equipo</span></h2>
-        <p class="lead mt-2">Los participantes se reparten en <strong>4 equipos de 5 personas</strong>, cada uno con su color y su camiseta personalizada.</p>
+        <p class="lead mt-2">Los participantes se reparten en <strong>4 equipos de {"hasta " if ev.get("duration") else ""}{ev.get("team_size", 5)} personas</strong>, {ev.get("team_note", "cada uno con su color")}.</p>
         <p class="muted">Cada participante recibe una <strong>tarjeta de puntuación personalizada</strong> con su nombre. Los monitores puntúan cada ejercicio y, al terminar, se hace una <strong>clasificación final</strong>.</p>
         <ul class="teams mt-2">{chips}</ul>
       </div>
@@ -1452,18 +1454,18 @@ def event_page(slug):
 </section>
 <section class="section">
   <div class="container">
-    {section_head("5 ejercicios puntuables", "Lo que vas <span class='outline'>a hacer</span>", "Monitores especializados te acompañan y puntúan cada ejercicio.")}
+    {section_head("5 ejercicios puntuables", "Lo que vas <span class='outline'>a hacer</span>", ("Tu instructor te acompaña" if ev.get("duration") else "Monitores especializados te acompañan") + " y puntúa cada ejercicio.")}
     <div class="cards ej-cards">{ej}</div>
   </div>
 </section>
 <section class="section section--ink">
   <div class="container">
-    {section_head("Los coches", "Tracción delantera <span class='outline'>y propulsión</span>", "Conducirás los dos coches del equipo, preparados en nuestro taller de Torrelaguna.")}
+    {section_head("Los coches", "Tracción delantera <span class='outline'>y propulsión</span>", "Coches de rally equipados para competir (arco de seguridad, arneses y extinción), preparados en nuestro taller de Torrelaguna.")}
     <div class="carpicks carpicks--static">{cars}</div>
   </div>
 </section>
 <section class="section">
-  <div class="container">{teams_block()}</div>
+  <div class="container">{teams_block(ev)}</div>
 </section>
 <section class="section section--ink section--tight">
   <div class="container exp-layout">
@@ -1476,7 +1478,7 @@ def event_page(slug):
       <span class="buybox__tag">{ev["short"]}</span>
       <h3>{ev["name"]}</h3>
       <div class="buybox__price"><small>Precio por persona</small><span>{money_eur(eds[0]["precio"]) if eds else "Consultar"}</span></div>
-      <ul class="buybox__list"><li>{I["cal"]} {" · ".join(dict.fromkeys(ed_date(x, False) for x in eds)) or "Próximamente"}</li><li>{I["pin"]} Circuito El Hito (Cuenca)</li><li>{I["users"]} Plazas limitadas por turno</li><li>{I["shield"]} Monitores especializados</li></ul>
+      <ul class="buybox__list"><li>{I["cal"]} {" · ".join(dict.fromkeys(ed_date(x, False) for x in eds)) or "Próximamente"}</li><li>{I["pin"]} Circuito El Hito (Cuenca)</li><li>{I["users"]} Plazas limitadas por turno</li><li>{I["shield"]} {ev.get("staff", "Monitores especializados")}</li></ul>
       <a class="btn btn--block" href="#fechas">{I["ticket"]} Elegir fecha y pagar</a>
       <a class="btn btn--wa btn--block mt-1" data-wa="{escape(ev['name'])}" data-loc="buybox" href="#">{I['wa']} Preguntar por WhatsApp</a>
     </aside>
@@ -1555,7 +1557,7 @@ def events_promo():
     eds = editions()
     days = sorted(dict.fromkeys(int(e["fecha"][8:]) for e in eds))
     feats = [("cal", "4 de diciembre · Experiencia Rally Eurocem", "Jornada especial con equipos, camisetas y comida."),
-             ("flag", "5, 6 y 7 de diciembre · DS Pilot Course", "Elige día y turno de mañana o de tarde."),
+             ("flag", "5, 6 y 7 de diciembre · DS Pilot Course", "Curso de 4 horas, mañana o tarde, con instructor y comida."),
              ("car", "BMW E36 y Peugeot 206", "Tracción delantera y propulsión, preparados para competición."),
              ("ticket", "299 € por persona", "Pago seguro con tarjeta. Plazas limitadas por turno.")]
     f = "".join(f'<li><span class="ic">{I[ic]}</span><div><b>{t}</b><span>{d}</span></div></li>' for ic, t, d in feats)

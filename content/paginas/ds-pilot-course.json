@@ -1,65 +1,72 @@
 {
   "pagina": "DS Pilot Course",
-  "intro": "El **DS Pilot Course** es nuestro curso de **conducción de rally sobre tierra**: el mismo formato de la Experiencia Rally Eurocem, organizado solo por Deyscom Motorsport. Medio día al volante de un BMW E36 y un Peugeot 206 preparados para competición, con 5 ejercicios puntuables y monitores que te corrigen en cada pasada. Elige el **5, 6 o 7 de diciembre**, en turno de **mañana o tarde**.",
+  "intro": "El **DS Pilot Course** es el **curso de rally de Deyscom**: 4 horas de conducción sobre tierra con coches de rally totalmente equipados para competir, con **arco de seguridad, arneses y extinción**. Trabajarás con **dos coches de tracción delantera** (Peugeot 206) y **dos de propulsión trasera** (BMW E36), en grupos reducidos y con tu propio **instructor cualificado**. Al terminar serás capaz de hacer cada ejercicio con un buen nivel. Elige el **5, 6 o 7 de diciembre**, en turno de **mañana o tarde**.",
   "ejercicios": [
     {
-      "titulo": "Control del vehículo",
-      "texto": "Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso."
+      "titulo": "Control y cambios de peso",
+      "texto": "Con coche de tracción delantera: cómo cargar y descargar los ejes para que el coche gire donde tú quieres."
     },
     {
-      "titulo": "Frenada y trazadas",
-      "texto": "Frenada deportiva, uso del freno de mano y elección de la trazada correcta."
+      "titulo": "Freno con pie izquierdo",
+      "texto": "Con coche de tracción delantera: la técnica de rally para colocar el coche en la curva sin perder tracción."
     },
     {
-      "titulo": "Slalom en tierra",
-      "texto": "Precisión y control del coche entre conos sobre superficie de tierra."
+      "titulo": "Conducción en tierra con propulsión",
+      "texto": "Con coche de propulsión trasera: tracción, gas y dirección sobre superficie deslizante."
     },
     {
-      "titulo": "Circuito cronometrado",
-      "texto": "Una vuelta cronometrada al circuito aplicando todo lo aprendido."
+      "titulo": "Control del sobreviraje",
+      "texto": "Con coche de propulsión trasera: provocar, mantener y corregir el derrape con seguridad."
     },
     {
-      "titulo": "Diferentes vehículos",
-      "texto": "Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias."
+      "titulo": "Circuito completo",
+      "texto": "Aplicas todo lo aprendido en una vuelta completa al circuito, puntuada por los instructores."
     }
   ],
   "incluye": [
-    "Medio día de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
-    "BMW E36 y Peugeot 206 preparados para competición",
-    "5 ejercicios puntuables con monitores especializados",
-    "Trabajo por equipos con tarjeta de puntuación personalizada",
-    "Clasificación final al terminar la jornada"
+    "4 horas de curso en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
+    "Coches de rally equipados para competir: arco de seguridad, arneses y extinción",
+    "2 coches de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)",
+    "Instructor cualificado para cada grupo",
+    "4 equipos con puntuación en cada ejercicio y clasificación final",
+    "Welcome pack del equipo Deyscom",
+    "Comida y bebida durante el evento",
+    "Seguro de responsabilidad civil para el día del curso"
   ],
   "datos_clave": [
     {
       "dato": "Fechas",
-      "valor": "5, 6 y 7 de diciembre de 2026"
+      "valor": "5, 6 y 7 de diciembre de 2026, turno de mañana o de tarde"
     },
     {
-      "dato": "Turnos",
-      "valor": "Mañana o tarde"
+      "dato": "Duración",
+      "valor": "4 horas"
     },
     {
       "dato": "Lugar",
       "valor": "Circuito El Hito (Cuenca)"
     },
     {
-      "dato": "Coches",
-      "valor": "BMW E36 (propulsión) y Peugeot 206 (tracción delantera)"
+      "dato": "Grupos",
+      "valor": "Máximo 16 personas por turno para 4 coches, con instructor por grupo"
     },
     {
-      "dato": "Formato",
-      "valor": "5 ejercicios puntuables por equipos y clasificación final"
+      "dato": "Coches",
+      "valor": "2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36), con arco de seguridad, arneses y extinción"
     },
     {
       "dato": "Precio",
-      "valor": "299 € por persona"
+      "valor": "299 € por persona: comida, bebida, welcome pack y seguro de RC incluidos"
     }
   ],
   "guias": [
     {
       "pregunta": "¿Qué vas a aprender en el DS Pilot Course?",
-      "respuesta": "A **controlar el coche en una superficie deslizante**: provocar y corregir un derrape, frenar fuerte sin perder la trayectoria, usar el freno de mano y elegir la trazada. Después lo aplicas en un **slalom en tierra** y en una **vuelta cronometrada** al circuito.\n\nEs la mejor forma de [empezar en los rallies](blog-como-empezar-en-los-rallies.html) antes de pensar en licencia o coche propio."
+      "respuesta": "A **controlar un coche de rally sobre tierra**: usar los cambios de peso, frenar con el **pie izquierdo** como los pilotos de rally, dominar un coche de **propulsión trasera** y corregir el **sobreviraje**. Al final lo aplicas todo en una **vuelta completa al circuito**.\n\nEs la mejor forma de [empezar en los rallies](blog-como-empezar-en-los-rallies.html) antes de pensar en licencia o coche propio."
+    },
+    {
+      "pregunta": "¿Tracción delantera o propulsión trasera?",
+      "respuesta": "Las dos. Los dos primeros ejercicios se hacen con el **Peugeot 206** (tracción delantera) y los dos siguientes con el **BMW E36** (propulsión trasera), para que notes cómo cambia la forma de conducir. Si quieres saber más, lee [qué es un coche de rally](blog-coche-de-rally-que-es-y-categorias.html)."
     },
     {
       "pregunta": "¿Es un buen regalo?",
@@ -69,19 +76,27 @@
   "faq": [
     {
       "pregunta": "¿Necesito experiencia o licencia?",
-      "respuesta": "No. Solo carnet de conducir en vigor. Los monitores adaptan los ejercicios a tu nivel."
+      "respuesta": "No. Solo carnet de conducir en vigor. Los instructores adaptan los ejercicios a tu nivel."
     },
     {
       "pregunta": "¿Cuánto dura?",
-      "respuesta": "Medio día: turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto."
+      "respuesta": "4 horas, en turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto."
+    },
+    {
+      "pregunta": "¿Cuántas personas hay por turno?",
+      "respuesta": "Como máximo 16 personas por turno para 4 coches, repartidas en 4 equipos y con instructor para cada grupo."
+    },
+    {
+      "pregunta": "¿Qué incluye el precio?",
+      "respuesta": "299 € por persona: el curso de 4 horas, los coches, el instructor, el welcome pack, la comida y la bebida y el seguro de responsabilidad civil del día."
+    },
+    {
+      "pregunta": "¿Es seguro?",
+      "respuesta": "Los coches están equipados para competir, con arco de seguridad, arneses y extinción, y cada grupo va con su instructor. Además, el curso incluye seguro de responsabilidad civil para ese día."
     },
     {
       "pregunta": "¿Dónde es?",
-      "respuesta": "En el Circuito El Hito (Cuenca), un circuito de tierra con zonas para slalom y frenada."
-    },
-    {
-      "pregunta": "¿Cuánto cuesta?",
-      "respuesta": "299 € por persona. Se paga con tarjeta en la pasarela segura de Stripe al reservar la plaza."
+      "respuesta": "En el Circuito El Hito (Cuenca), un circuito de tierra."
     },
     {
       "pregunta": "¿Puedo ir con amigos?",

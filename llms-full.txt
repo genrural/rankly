@@ -25,7 +25,7 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
 - [Experiencia Rally Eurocem](https://deyscom.com/experiencia-rally-eurocem.html): Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre. Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde.
-- [DS Pilot Course](https://deyscom.com/ds-pilot-course.html): Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada. Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
+- [DS Pilot Course](https://deyscom.com/ds-pilot-course.html): Curso de rally de 4 horas en el Circuito El Hito (Cuenca) con coches equipados para competir: cambios de peso, freno con pie izquierdo, sobreviraje y circuito completo, con instructor para tu grupo. Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
 
 ## Tienda
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
@@ -94,7 +94,7 @@ DS Pilot Course
 
 4 de diciembre · Experiencia Rally Eurocem Jornada especial con equipos, camisetas y comida.
 
-5, 6 y 7 de diciembre · DS Pilot Course Elige día y turno de mañana o de tarde.
+5, 6 y 7 de diciembre · DS Pilot Course Curso de 4 horas, mañana o tarde, con instructor y comida.
 
 BMW E36 y Peugeot 206 Tracción delantera y propulsión, preparados para competición.
 
@@ -162,7 +162,7 @@ DS PILOT COURSE
 Curso de conducción · 5, 6 y 7 de diciembre
 
 ### DS Pilot Course
-Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.
+Curso de rally de 4 horas sobre tierra: 2 coches de tracción delantera y 2 de propulsión, instructor por grupo y comida.
 
 5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
 
@@ -1301,7 +1301,7 @@ DS PILOT COURSE
 Curso de conducción · 5, 6 y 7 de diciembre
 
 ### DS Pilot Course
-Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.
+Curso de rally de 4 horas sobre tierra: 2 coches de tracción delantera y 2 de propulsión, instructor por grupo y comida.
 
 5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
 
@@ -1327,37 +1327,37 @@ Reservar y pagar
 
 5 dic
 DS Pilot Course Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 5 dic
 DS Pilot Course Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 6 dic
 DS Pilot Course Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 6 dic
 DS Pilot Course Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 7 dic
 DS Pilot Course Lunes 7 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 7 dic
 DS Pilot Course Lunes 7 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
@@ -1413,7 +1413,7 @@ Cómo elegir
 
 ## ¿Qué experiencia elegir?
 Experiencia Rally Eurocem (4 de diciembre): la jornada especial con Eurocem Morteros, con equipos, camisetas personalizadas y comida con barra libre.
-DS Pilot Course (5, 6 y 7 de diciembre): el mismo formato de ejercicios, organizado solo por Deyscom, para elegir el día y el turno que mejor te venga.
+DS Pilot Course (5, 6 y 7 de diciembre): el curso de rally de Deyscom: 4 horas con instructor por grupo, freno con pie izquierdo, sobreviraje y circuito completo, comida y seguro incluidos. Eliges día y turno.
 
 ## ¿Qué se aprende en una jornada sobre tierra?
 A leer el agarre y a mover el coche con las transferencias de peso: provocar y corregir un derrape, frenar fuerte, usar el freno de mano y elegir la trazada. Es la base de cualquier piloto de rally y, además, te hace mejor conductor en el día a día. Si te interesa la competición, lee cómo empezar en los rallies .
@@ -1550,7 +1550,7 @@ Circuito El Hito · Cuenca
 
 ## Lo que vas a hacer
 
-Monitores especializados te acompañan y puntúan cada ejercicio.
+Monitores especializados te acompañan y puntúa cada ejercicio.
 
 1
 
@@ -1577,7 +1577,7 @@ Los coches
 
 ## Tracción delantera y propulsión
 
-Conducirás los dos coches del equipo, preparados en nuestro taller de Torrelaguna.
+Coches de rally equipados para competir (arco de seguridad, arneses y extinción), preparados en nuestro taller de Torrelaguna.
 
 PEUGEOT
 
@@ -1706,7 +1706,7 @@ DS PILOT COURSE
 Curso de conducción · 5, 6 y 7 de diciembre
 
 ### DS Pilot Course
-Curso de conducción de rally sobre tierra con BMW E36 y Peugeot 206. Turno de mañana o de tarde.
+Curso de rally de 4 horas sobre tierra: 2 coches de tracción delantera y 2 de propulsión, instructor por grupo y comida.
 
 5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
 
@@ -1734,9 +1734,9 @@ Inicio / Experiencias / DS Pilot Course
 
 Aprende a pilotar en tierra
 
-Medio día al volante de nuestro BMW E36 y nuestro Peugeot 206 en el Circuito El Hito (Cuenca): derrapes, frenada, slalom en tierra y vuelta cronometrada, con monitores en cada pasada.
+Curso de rally de 4 horas en el Circuito El Hito (Cuenca) con coches equipados para competir: cambios de peso, freno con pie izquierdo, sobreviraje y circuito completo, con instructor para tu grupo.
 
-5, 6 y 7 de diciembre Mañana o tarde 299 €
+5, 6 y 7 de diciembre 4 horas · mañana o tarde 299 €
 
 Ver fechas y reservar
 WhatsApp
@@ -1751,37 +1751,37 @@ Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirma
 
 5 dic
 Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 5 dic
 Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 6 dic
 Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 6 dic
 Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 7 dic
 Lunes 7 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
 7 dic
 Lunes 7 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
+16 plazas
 299 €
 Reservar y pagar
 
@@ -1790,28 +1790,28 @@ En resumen
 ## La jornada en datos
 
 Fechas
-5, 6 y 7 de diciembre de 2026
+5, 6 y 7 de diciembre de 2026, turno de mañana o de tarde
 
-Turnos
-Mañana o tarde
+Duración
+4 horas
 
 Lugar
 Circuito El Hito (Cuenca)
 
-Coches
-BMW E36 (propulsión) y Peugeot 206 (tracción delantera)
+Grupos
+Máximo 16 personas por turno para 4 coches, con instructor por grupo
 
-Formato
-5 ejercicios puntuables por equipos y clasificación final
+Coches
+2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36), con arco de seguridad, arneses y extinción
 
 Precio
-299 € por persona
+299 € por persona: comida, bebida, welcome pack y seguro de RC incluidos
 
 ¿En qué consiste?
 
 ## Tierra, derrapes y cronómetro
 
-El DS Pilot Course es nuestro curso de conducción de rally sobre tierra : el mismo formato de la Experiencia Rally Eurocem, organizado solo por Deyscom Motorsport. Medio día al volante de un BMW E36 y un Peugeot 206 preparados para competición, con 5 ejercicios puntuables y monitores que te corrigen en cada pasada. Elige el 5, 6 o 7 de diciembre , en turno de mañana o tarde .
+El DS Pilot Course es el curso de rally de Deyscom : 4 horas de conducción sobre tierra con coches de rally totalmente equipados para competir, con arco de seguridad, arneses y extinción . Trabajarás con dos coches de tracción delantera (Peugeot 206) y dos de propulsión trasera (BMW E36), en grupos reducidos y con tu propio instructor cualificado . Al terminar serás capaz de hacer cada ejercicio con un buen nivel. Elige el 5, 6 o 7 de diciembre , en turno de mañana o tarde .
 
 RALLY
 
@@ -1821,34 +1821,34 @@ Circuito El Hito · Cuenca
 
 ## Lo que vas a hacer
 
-Monitores especializados te acompañan y puntúan cada ejercicio.
+Tu instructor te acompaña y puntúa cada ejercicio.
 
 1
 
-### Control del vehículo
-Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso.
+### Control y cambios de peso
+Con coche de tracción delantera: cómo cargar y descargar los ejes para que el coche gire donde tú quieres.
 2
 
-### Frenada y trazadas
-Frenada deportiva, uso del freno de mano y elección de la trazada correcta.
+### Freno con pie izquierdo
+Con coche de tracción delantera: la técnica de rally para colocar el coche en la curva sin perder tracción.
 3
 
-### Slalom en tierra
-Precisión y control del coche entre conos sobre superficie de tierra.
+### Conducción en tierra con propulsión
+Con coche de propulsión trasera: tracción, gas y dirección sobre superficie deslizante.
 4
 
-### Circuito cronometrado
-Una vuelta cronometrada al circuito aplicando todo lo aprendido.
+### Control del sobreviraje
+Con coche de propulsión trasera: provocar, mantener y corregir el derrape con seguridad.
 5
 
-### Diferentes vehículos
-Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias.
+### Circuito completo
+Aplicas todo lo aprendido en una vuelta completa al circuito, puntuada por los instructores.
 
 Los coches
 
 ## Tracción delantera y propulsión
 
-Conducirás los dos coches del equipo, preparados en nuestro taller de Torrelaguna.
+Coches de rally equipados para competir (arco de seguridad, arneses y extinción), preparados en nuestro taller de Torrelaguna.
 
 PEUGEOT
 
@@ -1861,7 +1861,7 @@ Equipos y puntuación
 
 ## Compite en equipo
 
-Los participantes se reparten en 4 equipos de 5 personas , cada uno con su color y su camiseta personalizada.
+Los participantes se reparten en 4 equipos de hasta 4 personas , cada uno con su color y su instructor.
 
 Cada participante recibe una tarjeta de puntuación personalizada con su nombre. Los monitores puntúan cada ejercicio y, al terminar, se hace una clasificación final .
 
@@ -1880,11 +1880,14 @@ Qué incluye
 
 ## Todo incluido
 
-Medio día de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde
-BMW E36 y Peugeot 206 preparados para competición
-5 ejercicios puntuables con monitores especializados
-Trabajo por equipos con tarjeta de puntuación personalizada
-Clasificación final al terminar la jornada
+4 horas de curso en el Circuito El Hito (Cuenca), turno de mañana o de tarde
+Coches de rally equipados para competir: arco de seguridad, arneses y extinción
+2 coches de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)
+Instructor cualificado para cada grupo
+4 equipos con puntuación en cada ejercicio y clasificación final
+Welcome pack del equipo Deyscom
+Comida y bebida durante el evento
+Seguro de responsabilidad civil para el día del curso
 
 DS Pilot Course
 
@@ -1895,7 +1898,7 @@ Precio por persona 299 €
 5 de diciembre · 6 de diciembre · 7 de diciembre
 Circuito El Hito (Cuenca)
 Plazas limitadas por turno
-Monitores especializados
+Instructor cualificado por grupo
 
 Elegir fecha y pagar
 Preguntar por WhatsApp
@@ -1905,9 +1908,12 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Qué vas a aprender en el DS Pilot Course?
-A controlar el coche en una superficie deslizante : provocar y corregir un derrape, frenar fuerte sin perder la trayectoria, usar el freno de mano y elegir la trazada. Después lo aplicas en un slalom en tierra y en una vuelta cronometrada al circuito.
+A controlar un coche de rally sobre tierra : usar los cambios de peso, frenar con el pie izquierdo como los pilotos de rally, dominar un coche de propulsión trasera y corregir el sobreviraje . Al final lo aplicas todo en una vuelta completa al circuito .
 
 Es la mejor forma de empezar en los rallies antes de pensar en licencia o coche propio.
+
+## ¿Tracción delantera o propulsión trasera?
+Las dos. Los dos primeros ejercicios se hacen con el Peugeot 206 (tracción delantera) y los dos siguientes con el BMW E36 (propulsión trasera), para que notes cómo cambia la forma de conducir. Si quieres saber más, lee qué es un coche de rally .
 
 ## ¿Es un buen regalo?
 Sí: es uno de los regalos favoritos de quien disfruta del motor. Al reservar, pon los datos de la persona que va a conducir y escríbenos si quieres un cheque regalo para entregar.
@@ -1916,10 +1922,12 @@ Preguntas frecuentes
 
 ## Antes de arrancar
 
-¿Necesito experiencia o licencia? No. Solo carnet de conducir en vigor. Los monitores adaptan los ejercicios a tu nivel.
-¿Cuánto dura? Medio día: turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto.
-¿Dónde es? En el Circuito El Hito (Cuenca), un circuito de tierra con zonas para slalom y frenada.
-¿Cuánto cuesta? 299 € por persona. Se paga con tarjeta en la pasarela segura de Stripe al reservar la plaza.
+¿Necesito experiencia o licencia? No. Solo carnet de conducir en vigor. Los instructores adaptan los ejercicios a tu nivel.
+¿Cuánto dura? 4 horas, en turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto.
+¿Cuántas personas hay por turno? Como máximo 16 personas por turno para 4 coches, repartidas en 4 equipos y con instructor para cada grupo.
+¿Qué incluye el precio? 299 € por persona: el curso de 4 horas, los coches, el instructor, el welcome pack, la comida y la bebida y el seguro de responsabilidad civil del día.
+¿Es seguro? Los coches están equipados para competir, con arco de seguridad, arneses y extinción, y cada grupo va con su instructor. Además, el curso incluye seguro de responsabilidad civil para ese día.
+¿Dónde es? En el Circuito El Hito (Cuenca), un circuito de tierra.
 ¿Puedo ir con amigos? Sí. Reserva una plaza por persona y dinos que queréis ir en el mismo equipo.
 
 Del blog
