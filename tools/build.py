@@ -1261,7 +1261,7 @@ EVENTS = {
     "experiencia-rally-eurocem": dict(
         name="Experiencia Rally Eurocem", short="Rally Eurocem", kicker="Evento especial · 4 de diciembre", tag="4 dic · Cuenca",
         teaser="Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.",
-        hero="bmw-e36-rally-tierra-deyscom-motorsport", card="bmw-e36-rally-el-molar-deyscom", intro_img="peugeot-206-rally-tierra-deyscom-motorsport",
+        hero="peugeot-206-deyscom-rally-frontal-pilotos", card="bmw-e36-deyscom-salida-tramo-rally", intro_img="peugeot-206-rally-tierra-deyscom-motorsport",
         lines=["Conduce,", "<span class='pink'>aprende,</span>", "<span class='outline'>disfruta</span>"],
         lead="Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre.",
         chips=["Viernes 4 de diciembre", "Circuito El Hito · Cuenca", "299 €"],
@@ -1269,17 +1269,37 @@ EVENTS = {
         partner=("Eurocem Morteros", "eurocem-morteros.png"), organizers=["Deyscom Motorsport", "Liebre Racing"],
         poster="cartel-experiencia-rally-eurocem-4-diciembre", teams=True, intro="", ejercicios=[], incluye=[],
         team_size=5, team_note="cada uno con su color y su camiseta personalizada", duration="", staff="Monitores especializados",
+        stats=[("4", "coches de rally"), ("5", "ejercicios puntuables"), ("20", "plazas por turno"), ("4", "equipos")], tee=True,
+        day=[("Bienvenida", "Llegas al Circuito El Hito, recoges tu camiseta y conoces a tu equipo.", "equipo-deyscom-motorsport-atardecer"),
+             ("Briefing", "Seguridad, coches y reglas del juego: así se puntúa cada ejercicio.", "piloto-copiloto-rally-interior-coche-competicion"),
+             ("Control y frenada", "Derrapes, transferencias de peso, freno de mano y trazadas sobre tierra.", "peugeot-206-rally-tierra-deyscom-motorsport"),
+             ("Slalom y cambio de coche", "Precisión entre conos y la diferencia entre tracción delantera y propulsión.", "bmw-e36-rally-tierra-contraluz-deyscom"),
+             ("Circuito cronometrado", "Tu vuelta al crono aplicando todo lo aprendido. Aquí se deciden los puntos.", "peugeot-206-rally-polvo-contraluz-deyscom"),
+             ("Comida y clasificación", "Comida con barra libre, repaso de las mejores pasadas y clasificación final.", "equipo-deyscom-motorsport-circuito")],
+        gallery=[("peugeot-206-deyscom-curva-tramo-rally-paisaje", "En el tramo"), ("bmw-e36-deyscom-salida-tramo-rally", "Salida del BMW E36"),
+                 ("peugeot-206-deyscom-rally-frontal-pilotos", "Piloto y copiloto"), ("peugeot-206-rally-tierra-deyscom-motorsport", "Sobre tierra"),
+                 ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Paisaje de rally"), ("bmw-e36-rally-tierra-deyscom-motorsport", "BMW E36 en el aire")],
     ),
     "ds-pilot-course": dict(
         name="DS Pilot Course", short="DS Pilot Course", kicker="Curso de conducción · 5, 6 y 7 de diciembre", tag="5-7 dic · Cuenca",
         teaser="Curso de rally de 4 horas sobre tierra: 2 coches de tracción delantera y 2 de propulsión, instructor por grupo y comida.",
-        hero="peugeot-206-rally-tierra-deyscom-motorsport", card="peugeot-206-1-6-xs-rally-deyscom-motorsport", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
+        hero="peugeot-206-deyscom-horquilla-tramo-rally", card="peugeot-206-deyscom-curva-tramo-rally-paisaje", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
         lines=["Aprende", "<span class='pink'>a pilotar</span>", "<span class='outline'>en tierra</span>"],
         lead="Curso de rally de 4 horas en el Circuito El Hito (Cuenca) con coches equipados para competir: cambios de peso, freno con pie izquierdo, sobreviraje y circuito completo, con instructor para tu grupo.",
         chips=["5, 6 y 7 de diciembre", "4 horas · mañana o tarde", "299 €"],
         keywords="curso de pilotaje, curso conducción rally, curso conducción tierra, curso pilotaje Cuenca, curso de derrape, conducir coche de rally",
         partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=True, intro="", ejercicios=[], incluye=[],
         team_size=4, team_note="cada uno con su color y su instructor", duration="PT4H", staff="Instructor cualificado por grupo",
+        stats=[("4", "horas al volante"), ("4", "coches de rally"), ("5", "ejercicios"), ("16", "plazas por turno")], tee=False,
+        day=[("Llegada", "Recoges tu welcome pack, conoces a tu instructor y a tu equipo.", "equipo-deyscom-motorsport-atardecer"),
+             ("Briefing", "Seguridad, equipamiento y cómo se puntúa cada ejercicio.", "piloto-copiloto-rally-interior-coche-competicion"),
+             ("Tracción delantera", "Peugeot 206: cambios de peso y freno con pie izquierdo.", "peugeot-206-deyscom-rally-frontal-pilotos"),
+             ("Propulsión trasera", "BMW E36: conducción en tierra y control del sobreviraje.", "bmw-e36-rally-tierra-contraluz-deyscom"),
+             ("Circuito completo", "Una vuelta completa aplicando todo lo aprendido, puntuada por tu instructor.", "peugeot-206-rally-polvo-contraluz-deyscom"),
+             ("Comida y clasificación", "Comida y bebida, repaso con tu instructor y clasificación por equipos.", "equipo-deyscom-motorsport-circuito")],
+        gallery=[("peugeot-206-deyscom-rally-frontal-pilotos", "Pie izquierdo"), ("bmw-e36-deyscom-salida-tramo-rally", "BMW E36: propulsión"),
+                 ("peugeot-206-deyscom-horquilla-tramo-rally", "Horquilla"), ("bmw-e36-rally-tierra-contraluz-deyscom", "Sobre tierra"),
+                 ("peugeot-206-deyscom-curva-tramo-rally-paisaje", "En el tramo"), ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Vista de tramo")],
     ),
 }
 EDITIONS = []          # content/ediciones.json (se editan en el panel /admin → Experiencias → Fechas y plazas)
@@ -1353,8 +1373,10 @@ def buy_dialog(eds):
       <div class="field"><label for="buy-t">Teléfono <span class="req">*</span></label>{tel_input("buy-t")}</div>
       <div class="field"><label for="buy-e">Email <span class="req">*</span></label><input class="input" id="buy-e" name="email" type="email" autocomplete="email" required placeholder="tu@email.com"></div>
       <label class="check full"><input type="checkbox" name="regalo" value="sí"> <span>Es un regalo 🎁</span></label>
+      <input type="hidden" name="equipo_preferido">
       {consent()}
     </div>
+    <p class="buy__team" data-buy-team hidden></p>
     <div class="buy__total"><span>Total</span><b data-buy-price>299 €</b></div>
     <button class="btn btn--block" type="submit">{I['ticket']} <span data-buy-cta>Ir al pago seguro</span></button>
     <p class="buy__note">🔒 Pago con tarjeta, Apple Pay o Google Pay en <b>Stripe</b>. Recibes la confirmación por email al momento.</p>
@@ -1394,21 +1416,65 @@ def event_card(slug, e):
 
 
 def teams_block(ev):
-    chips = "".join(f'<li class="team-chip" style="--team:{c}"><span>{k}</span><b>Equipo {n.lower()}</b></li>' for k, n, c in TEAMS)
-    return f"""<div class="split">
-      <div class="reveal">
+    """Equipos interactivo: eliges equipo, pones tu nombre y simulas tu tarjeta de puntuación."""
+    teams = "".join(f'<button type="button" class="tp-team" role="radio" aria-checked="{"true" if i == 0 else "false"}" data-team="{k}" data-team-name="Equipo {n.lower()}" data-color="{c}" style="--team:{c}">'
+                    f'<span>{k}</span><b>Equipo {n.lower()}</b></button>' for i, (k, n, c) in enumerate(TEAMS))
+    rows = "".join(f'<li><label><span class="tp-ex">{i + 1}. {escape(t)}</span><input type="range" min="0" max="10" value="5" data-score aria-label="Puntos del ejercicio {i + 1}"></label><b data-pts>5</b></li>'
+                   for i, (t, _) in enumerate(ev["ejercicios"]))
+    tee = (f'<svg class="tp-tee" viewBox="0 0 400 420" aria-hidden="true"><path d="{TEE}" fill="var(--team)" stroke="rgba(0,0,0,.25)" stroke-width="4"/>'
+           f'<text x="200" y="190" text-anchor="middle" font-family="{FONT}" font-weight="800" font-style="italic" font-size="44" fill="#fff" data-tee-letter>A</text>'
+           f'<text x="200" y="240" text-anchor="middle" font-family="{FONT}" font-weight="700" font-size="22" fill="#fff" data-tee-name>TU NOMBRE</text></svg>') if ev.get("tee") else ""
+    return f"""<div class="teamplay" data-teamplay style="--team:{TEAMS[0][2]}">
+      <div class="teamplay__intro reveal">
         <span class="eyebrow">Equipos y puntuación</span>
         <h2>Compite <span class="outline">en equipo</span></h2>
-        <p class="lead mt-2">Los participantes se reparten en <strong>4 equipos de {"hasta " if ev.get("duration") else ""}{ev.get("team_size", 5)} personas</strong>, {ev.get("team_note", "cada uno con su color")}.</p>
-        <p class="muted">Cada participante recibe una <strong>tarjeta de puntuación personalizada</strong> con su nombre. Los monitores puntúan cada ejercicio y, al terminar, se hace una <strong>clasificación final</strong>.</p>
-        <ul class="teams mt-2">{chips}</ul>
+        <p class="lead mt-2">Los participantes se reparten en <strong>4 equipos de {"hasta " if ev.get("duration") else ""}{ev.get("team_size", 5)} personas</strong>, {ev.get("team_note", "cada uno con su color")}. Cada ejercicio suma puntos y al final hay <strong>clasificación</strong>.</p>
+        <p class="tp-step"><b>1</b> Elige tu equipo</p>
+        <div class="tp-teams" role="radiogroup" aria-label="Elige tu equipo">{teams}</div>
+        <p class="tp-step"><b>2</b> Pon tu nombre en la tarjeta</p>
+        <input class="input tp-name" data-tp-name maxlength="22" placeholder="Tu nombre" aria-label="Tu nombre">
+        <p class="tp-step"><b>3</b> Simula tu jornada y reserva</p>
+        <div class="btn-row"><button type="button" class="btn btn--ghost" data-tp-random>🎲 Simular mi jornada</button><a class="btn" href="#fechas" data-tp-cta>{I["ticket"]} <span>Reservar en el equipo azul</span></a></div>
       </div>
-      <div class="scorecard reveal" data-delay="1" aria-label="Ejemplo de tarjeta de puntuación">
-        <div class="scorecard__head">Tarjeta de puntuación</div>
-        <div class="scorecard__name">Nombre: <span>________________</span></div>
-        <table><tr><th>Ejercicio</th><th>Puntos</th></tr>{"".join(f"<tr><td>{i}</td><td></td></tr>" for i in range(1, 6))}<tr class="scorecard__total"><td>Total</td><td></td></tr></table>
+      <div class="tp-card-wrap reveal" data-delay="1">
+        {tee}
+        <div class="scorecard" aria-live="polite">
+          <div class="scorecard__head"><span data-tp-team>Equipo azul</span> · Tarjeta de puntuación</div>
+          <div class="scorecard__name">Nombre: <span data-tp-card-name>Tu nombre</span></div>
+          <ol class="tp-rows">{rows}</ol>
+          <div class="tp-total"><span>Total</span><b><span data-tp-total>25</span>/50</b></div>
+          <p class="tp-verdict" data-tp-verdict>Piloto en progreso</p>
+        </div>
       </div>
     </div>"""
+
+
+def xp_stats(ev, eds):
+    items = "".join(f'<div class="xp-stat reveal"><b data-count="{n}">{n}</b><span>{t}</span></div>' for n, t in ev.get("stats", []))
+    cd = (f'<div class="xp-stat xp-stat--cd reveal" data-countdown="{eds[0]["fecha"]}"><b>–</b><span>días para la primera fecha</span></div>' if eds else "")
+    return f'<section class="xp-stats"><div class="container xp-stats__grid">{items}{cd}</div></section>'
+
+
+def day_block(ev):
+    steps = ev.get("day") or []
+    if not steps:
+        return ""
+    tabs = "".join(f'<button type="button" role="tab" class="day__tab{" is-on" if i == 0 else ""}" aria-selected="{"true" if i == 0 else "false"}" aria-controls="day-p{i}" id="day-t{i}" data-day-tab="{i}">'
+                   f'<span>{i + 1:02d}</span><b>{t}</b></button>' for i, (t, _, _) in enumerate(steps))
+    panels = "".join(f'<div class="day__panel{" is-on" if i == 0 else ""}" role="tabpanel" id="day-p{i}" aria-labelledby="day-t{i}"{"" if i == 0 else " hidden"}>'
+                     f'<div class="day__media">{art(t.upper()[:10], "60%", "30%", img, t, "(max-width: 900px) 100vw, 60vw")}</div>'
+                     f'<div class="day__text"><span class="eyebrow">Momento {i + 1} de {len(steps)}</span><h3>{t}</h3><p>{d}</p></div></div>'
+                     for i, (t, d, img) in enumerate(steps))
+    return f"""<section class="section section--ink">
+  <div class="container">
+    {section_head("Tu día", "Así se vive <span class='outline'>la jornada</span>", "Toca cada momento para ver qué te espera.")}
+    <div class="day reveal" data-dayplan>
+      <div class="day__tabs" role="tablist" aria-label="Momentos de la jornada">{tabs}</div>
+      <div class="day__progress" aria-hidden="true"><i data-day-bar></i></div>
+      <div class="day__panels">{panels}</div>
+    </div>
+  </div>
+</section>"""
 
 
 def event_page(slug):
@@ -1417,8 +1483,9 @@ def event_page(slug):
     faqs = FAQ_OVERRIDE.get(slug) or []
     lds = [breadcrumbs_ld(slug, ev["name"], ("experiencias.html", "Experiencias")), faq_ld(faqs)] + [event_ld(e) for e in eds]
     html = head(ev["name"] + " | Deyscom Motorsport", ev["lead"][:160], slug, ev["name"], ev["hero"], lds, ev["keywords"]) + header(slug)
-    html += hero(ev["kicker"], ev["lines"], ev["lead"], "299", ev["hero"], ev["chips"], ev["name"], ("Ver fechas y reservar", "#fechas"))
+    html += hero(ev["kicker"], ev["lines"], ev["lead"], "299", ev["hero"], ev["chips"], ev["name"], ("Ver fechas y reservar", "#fechas")).replace('<section class="hero page-hero">', '<section class="hero page-hero hero--xp">', 1)
     html += ticker(["Conduce", "Aprende", "Disfruta", "En equipo", "BMW E36", "Peugeot 206", "Circuito El Hito"], dark=True)
+    html += xp_stats(ev, eds)
     ej = "".join(f'<article class="card reveal" data-delay="{i % 3}"><span class="ej-n">{i + 1}</span><h3>{t}</h3><p>{d}</p></article>'
                  for i, (t, d) in enumerate(ev["ejercicios"]))
     cars = "".join(f'<div class="carpick"><span class="carpick__box"><span class="carpick__media">{art(n.split()[0].upper(), "60%", "30%", c["img"], n)}</span>'
@@ -1458,13 +1525,14 @@ def event_page(slug):
     <div class="cards ej-cards">{ej}</div>
   </div>
 </section>
-<section class="section section--ink">
+{day_block(ev)}
+<section class="section">
   <div class="container">
     {section_head("Los coches", "Tracción delantera <span class='outline'>y propulsión</span>", "Coches de rally equipados para competir (arco de seguridad, arneses y extinción), preparados en nuestro taller de Torrelaguna.")}
     <div class="carpicks carpicks--static">{cars}</div>
   </div>
 </section>
-<section class="section">
+<section class="section section--ink teamplay-sec">
   <div class="container">{teams_block(ev)}</div>
 </section>
 <section class="section section--ink section--tight">
@@ -1482,6 +1550,12 @@ def event_page(slug):
       <a class="btn btn--block" href="#fechas">{I["ticket"]} Elegir fecha y pagar</a>
       <a class="btn btn--wa btn--block mt-1" data-wa="{escape(ev['name'])}" data-loc="buybox" href="#">{I['wa']} Preguntar por WhatsApp</a>
     </aside>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    {section_head("Así se vive", "Rally <span class='outline'>de verdad</span>", "Nuestros coches en carrera. Los mismos que conducirás tú.")}
+    {gallery(ev.get("gallery", []), "RALLY")}
   </div>
 </section>
 {poster}
@@ -1502,7 +1576,14 @@ def event_page(slug):
 {mega_cta("¿Te <span class='outline'>atreves?</span>", "Plazas limitadas por turno. Elige fecha y reserva en un minuto.", ev["name"], ("Ver fechas", "#fechas"))}
 {buy_dialog(eds)}
 """
-    return html + footer()
+    return event_cta(html + footer(), eds)
+
+
+def event_cta(html, eds):
+    """En las páginas de experiencias, los botones fijos llevan a reservar."""
+    price = money_eur(eds[0]["precio"]) if eds else ""
+    html = html.replace('<a class="btn btn--primary-sm" href="contacto.html#presupuesto">Presupuesto</a>', '<a class="btn btn--primary-sm" href="#fechas">Reservar plaza</a>')
+    return html.replace(f'<a class="is-main" href="contacto.html#presupuesto">{I["flag"]} Presupuesto</a>', f'<a class="is-main" href="#fechas">{I["ticket"]} Reservar {price}</a>')
 
 
 def experiencias():
@@ -1550,7 +1631,7 @@ def experiencias():
 {mega_cta("Regala <span class='outline'>adrenalina</span>", "Una jornada de rally en tierra es el regalo perfecto para cualquier apasionado del motor.", "regalar una experiencia de rally", ("Ver fechas", "#fechas"))}
 {buy_dialog(eds)}
 """
-    return html + footer()
+    return event_cta(html + footer(), eds)
 
 
 def events_promo():

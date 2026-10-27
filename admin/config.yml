@@ -150,6 +150,10 @@
        "value": "bmw-e30-restauracion-elevador-taller"
       },
       {
+       "label": "BMW E36 de Deyscom Motorsport con alerón rosa en la salida de un tramo de rally (bmw-e36-deyscom-salida-tramo-rally)",
+       "value": "bmw-e36-deyscom-salida-tramo-rally"
+      },
+      {
        "label": "BMW E36 de Deyscom Motorsport en un tramo de tierra a contraluz (bmw-e36-rally-tierra-contraluz-deyscom)",
        "value": "bmw-e36-rally-tierra-contraluz-deyscom"
       },
@@ -342,8 +346,20 @@
        "value": "peugeot-206-rally-polvo-contraluz-deyscom"
       },
       {
+       "label": "Peugeot 206 de Deyscom Motorsport saliendo de una horquilla en un tramo de rally (peugeot-206-deyscom-horquilla-tramo-rally)",
+       "value": "peugeot-206-deyscom-horquilla-tramo-rally"
+      },
+      {
+       "label": "Peugeot 206 de Deyscom Motorsport tomando una curva en un tramo de rally de montaña (peugeot-206-deyscom-curva-tramo-rally-paisaje)",
+       "value": "peugeot-206-deyscom-curva-tramo-rally-paisaje"
+      },
+      {
        "label": "Peugeot 206 de Deyscom en el tramo del Rallye Comunidad de Madrid – El Molar (peugeot-206-rally-el-molar-tramo)",
        "value": "peugeot-206-rally-el-molar-tramo"
+      },
+      {
+       "label": "Peugeot 206 de rally de Deyscom Motorsport de frente con piloto y copiloto con casco (peugeot-206-deyscom-rally-frontal-pilotos)",
+       "value": "peugeot-206-deyscom-rally-frontal-pilotos"
       },
       {
        "label": "Peugeot 206 en preparación para rally en el taller de Torrelaguna (peugeot-206-preparacion-rally-taller-torrelaguna)",
@@ -392,6 +408,10 @@
       {
        "label": "Subchasis rosa recién pintado en la cabina de pintura (cabina-pintura-subchasis-rosa-deyscom)",
        "value": "cabina-pintura-subchasis-rosa-deyscom"
+      },
+      {
+       "label": "Vista panorámica de un tramo de rally con el Peugeot 206 de Deyscom Motorsport (peugeot-206-deyscom-tramo-rally-vista-panoramica)",
+       "value": "peugeot-206-deyscom-tramo-rally-vista-panoramica"
       },
       {
        "label": "Volante e interior de un coche de competición (volante-interior-coche-competicion)",

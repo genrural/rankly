@@ -318,5 +318,30 @@
   "alt": "Cartel de la Experiencia Rally Eurocem: 4 de diciembre de 2026 en el Circuito El Hito (Cuenca), con BMW E36 y Peugeot 206",
   "w": 612,
   "h": 919
+ },
+ "bmw-e36-deyscom-salida-tramo-rally": {
+  "alt": "BMW E36 de Deyscom Motorsport con alerón rosa en la salida de un tramo de rally",
+  "w": 718,
+  "h": 959
+ },
+ "peugeot-206-deyscom-curva-tramo-rally-paisaje": {
+  "alt": "Peugeot 206 de Deyscom Motorsport tomando una curva en un tramo de rally de montaña",
+  "w": 1239,
+  "h": 825
+ },
+ "peugeot-206-deyscom-rally-frontal-pilotos": {
+  "alt": "Peugeot 206 de rally de Deyscom Motorsport de frente con piloto y copiloto con casco",
+  "w": 1239,
+  "h": 825
+ },
+ "peugeot-206-deyscom-horquilla-tramo-rally": {
+  "alt": "Peugeot 206 de Deyscom Motorsport saliendo de una horquilla en un tramo de rally",
+  "w": 1090,
+  "h": 726
+ },
+ "peugeot-206-deyscom-tramo-rally-vista-panoramica": {
+  "alt": "Vista panorámica de un tramo de rally con el Peugeot 206 de Deyscom Motorsport",
+  "w": 1161,
+  "h": 774
  }
 }

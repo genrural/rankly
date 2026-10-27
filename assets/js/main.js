@@ -379,6 +379,114 @@
     });
     var hashBuy = location.hash.match(/^#reservar-(.+)$/); if (hashBuy && edData[hashBuy[1]]) openBuy(hashBuy[1]);
   }
+  /* ---------- Experiencias: equipos interactivos, «Tu día», cifras y cuenta atrás ---------- */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  $$("[data-teamplay]").forEach(function (box) {
+    var teams = $$(".tp-team", box), name = $("[data-tp-name]", box), cta = $("[data-tp-cta]", box);
+    var verdicts = [[45, "🏆 Leyenda del tramo"], [35, "🔥 Piloto Deyscom"], [20, "💪 Piloto en progreso"], [0, "🚦 Rookie con ganas"]];
+    var setTeam = function (b) {
+      teams.forEach(function (t) { t.setAttribute("aria-checked", t === b ? "true" : "false"); t.tabIndex = t === b ? 0 : -1; });
+      box.style.setProperty("--team", b.getAttribute("data-color"));
+      var tn = b.getAttribute("data-team-name");
+      $("[data-tp-team]", box).textContent = tn;
+      $("span", cta).textContent = "Reservar en el " + tn.toLowerCase();
+      var tl = $("[data-tee-letter]", box); if (tl) tl.textContent = b.getAttribute("data-team");
+      try { sessionStorage.setItem("dmx_team", tn); } catch (e) { /* nada */ }
+      track("select_team", { team: tn });
+    };
+    var total = function () {
+      var sum = 0;
+      $$("[data-score]", box).forEach(function (r) { sum += Number(r.value); var b = r.closest("li").querySelector("[data-pts]"); b.textContent = r.value; r.style.setProperty("--v", r.value * 10 + "%"); });
+      $("[data-tp-total]", box).textContent = sum;
+      for (var i = 0; i < verdicts.length; i++) if (sum >= verdicts[i][0]) { $("[data-tp-verdict]", box).textContent = verdicts[i][1]; break; }
+    };
+    teams.forEach(function (t, i) {
+      t.addEventListener("click", function () { setTeam(t); });
+      t.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+        if (d) { e.preventDefault(); var n = teams[(i + d + teams.length) % teams.length]; setTeam(n); n.focus(); }
+      });
+    });
+    name.addEventListener("input", function () {
+      var v = name.value.trim();
+      $("[data-tp-card-name]", box).textContent = v || "Tu nombre";
+      var tn = $("[data-tee-name]", box); if (tn) tn.textContent = (v || "Tu nombre").toUpperCase().slice(0, 14);
+      try { sessionStorage.setItem("dmx_name", v); } catch (e) { /* nada */ }
+    });
+    $$("[data-score]", box).forEach(function (r) { r.addEventListener("input", total); });
+    $("[data-tp-random]", box).addEventListener("click", function () {
+      var rows = $$("[data-score]", box), target = rows.map(function () { return 4 + Math.floor(Math.random() * 7); });
+      if (reduceMotion) { rows.forEach(function (r, i) { r.value = target[i]; }); total(); return; }
+      var step = 0, timer = setInterval(function () {
+        step++;
+        rows.forEach(function (r, i) { r.value = step < 12 ? Math.floor(Math.random() * 11) : target[i]; });
+        total();
+        if (step >= 12) clearInterval(timer);
+      }, 70);
+      track("simulate_day", {});
+    });
+    setTeam(teams[0]); total();
+  });
+  // el equipo elegido viaja a la reserva
+  if (buy) {
+    var teamInput = $("input[name=equipo_preferido]", buy), teamNote = $("[data-buy-team]", buy);
+    $$("[data-buy]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = "", n = "";
+        try { t = sessionStorage.getItem("dmx_team") || ""; n = sessionStorage.getItem("dmx_name") || ""; } catch (e) { /* nada */ }
+        if (teamInput) teamInput.value = t;
+        if (teamNote) { teamNote.hidden = !t; teamNote.textContent = t ? "Equipo preferido: " + t + " (lo tendremos en cuenta al hacer los equipos)" : ""; }
+        var nm = $("input[name=nombre]", buy); if (nm && n && !nm.value) nm.value = n;
+      });
+    });
+  }
+  // «Tu día»: pestañas con avance automático hasta que el usuario toca
+  $$("[data-dayplan]").forEach(function (box) {
+    var tabs = $$("[data-day-tab]", box), bar = $("[data-day-bar]", box), cur = 0, auto = !reduceMotion, timer = null;
+    var show = function (i, user) {
+      cur = i;
+      tabs.forEach(function (t, k) { t.classList.toggle("is-on", k === i); t.setAttribute("aria-selected", k === i ? "true" : "false"); t.tabIndex = k === i ? 0 : -1; });
+      $$(".day__panel", box).forEach(function (p, k) { p.hidden = k !== i; p.classList.toggle("is-on", k === i); });
+      if (bar) bar.style.width = ((i + 1) / tabs.length * 100) + "%";
+      if (user) { auto = false; clearInterval(timer); }
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { show(i, true); });
+      t.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (d) { e.preventDefault(); var n = (i + d + tabs.length) % tabs.length; show(n, true); tabs[n].focus(); }
+      });
+    });
+    show(0);
+    if (auto && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (en, ob) {
+        if (!en[0].isIntersecting) return;
+        ob.disconnect();
+        timer = setInterval(function () { if (auto) show((cur + 1) % tabs.length); }, 4500);
+      }, { threshold: 0.4 }).observe(box);
+    }
+  });
+  // cifras que cuentan al aparecer y cuenta atrás hasta la primera fecha
+  $$("[data-countdown]").forEach(function (el) {
+    var d = new Date(el.getAttribute("data-countdown") + "T09:00:00"), days = Math.ceil((d - new Date()) / 86400000);
+    var b = $("b", el);
+    if (days > 0) { b.setAttribute("data-count", days); b.textContent = days; }
+    else el.hidden = true;
+  });
+  var counters = $$("[data-count]");
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        var el = en.target, end = Number(el.getAttribute("data-count")) || 0, t0 = null;
+        var tick = function (ts) { if (!t0) t0 = ts; var p = Math.min(1, (ts - t0) / 900); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { io.observe(c); });
+  }
+
   // Plazas libres en directo (ventas de Stripe sincronizadas en el CRM)
   if ($$("[data-ed]").length && CFG.SHEETS_ENDPOINT) {
     fetch(CFG.SHEETS_ENDPOINT + "?action=plazas").then(function (r) { return r.json(); }).then(function (res) {
