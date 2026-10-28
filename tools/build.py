@@ -1282,21 +1282,21 @@ EVENTS = {
     ),
     "ds-pilot-course": dict(
         name="DS Pilot Course", short="DS Pilot Course", kicker="Curso de conducción · 5, 6 y 7 de diciembre", tag="5-7 dic · Cuenca",
-        teaser="Curso de rally de 4 horas sobre tierra: 2 coches de tracción delantera y 2 de propulsión, instructor por grupo y comida.",
+        teaser="Curso de rally de 4 horas sobre tierra: Peugeot 206 de tracción delantera y BMW E36 de propulsión, instructor por grupo y comida.",
         hero="peugeot-206-deyscom-horquilla-tramo-rally", card="peugeot-206-deyscom-curva-tramo-rally-paisaje", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
         lines=["Aprende", "<span class='pink'>a pilotar</span>", "<span class='outline'>en tierra</span>"],
         lead="Curso de rally de 4 horas en el Circuito El Hito (Cuenca) con coches equipados para competir: cambios de peso, freno con pie izquierdo, sobreviraje y circuito completo, con instructor para tu grupo.",
         chips=["5, 6 y 7 de diciembre", "4 horas · mañana o tarde", "299 €"],
         keywords="curso de pilotaje, curso conducción rally, curso conducción tierra, curso pilotaje Cuenca, curso de derrape, conducir coche de rally",
-        partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=True, intro="", ejercicios=[], incluye=[],
+        partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=False, race=True, intro="", ejercicios=[], incluye=[],
         team_size=4, team_note="cada uno con su color y su instructor", duration="PT4H", staff="Instructor cualificado por grupo",
         stats=[("4", "horas al volante"), ("4", "coches de rally"), ("5", "ejercicios"), ("16", "plazas por turno")], tee=False,
-        day=[("Llegada", "Recoges tu welcome pack, conoces a tu instructor y a tu equipo.", "equipo-deyscom-motorsport-atardecer"),
-             ("Briefing", "Seguridad, equipamiento y cómo se puntúa cada ejercicio.", "piloto-copiloto-rally-interior-coche-competicion"),
+        day=[("Llegada", "Recoges tu welcome pack y conoces a tu instructor y a tu grupo.", "equipo-deyscom-motorsport-atardecer"),
+             ("Briefing", "Seguridad, equipamiento y qué vas a trabajar en cada ejercicio.", "piloto-copiloto-rally-interior-coche-competicion"),
              ("Tracción delantera", "Peugeot 206: cambios de peso y freno con pie izquierdo.", "peugeot-206-deyscom-rally-frontal-pilotos"),
              ("Propulsión trasera", "BMW E36: conducción en tierra y control del sobreviraje.", "bmw-e36-rally-tierra-contraluz-deyscom"),
-             ("Circuito completo", "Una vuelta completa aplicando todo lo aprendido, puntuada por tu instructor.", "peugeot-206-rally-polvo-contraluz-deyscom"),
-             ("Comida y clasificación", "Comida y bebida, repaso con tu instructor y clasificación por equipos.", "equipo-deyscom-motorsport-circuito")],
+             ("Circuito completo", "Una vuelta completa aplicando todo lo aprendido, con el análisis de tu instructor.", "peugeot-206-rally-polvo-contraluz-deyscom"),
+             ("Comida y repaso", "Comida y bebida, y repaso con tu instructor de lo que has mejorado.", "equipo-deyscom-motorsport-circuito")],
         gallery=[("peugeot-206-deyscom-rally-frontal-pilotos", "Pie izquierdo"), ("bmw-e36-deyscom-salida-tramo-rally", "BMW E36: propulsión"),
                  ("peugeot-206-deyscom-horquilla-tramo-rally", "Horquilla"), ("bmw-e36-rally-tierra-contraluz-deyscom", "Sobre tierra"),
                  ("peugeot-206-deyscom-curva-tramo-rally-paisaje", "En el tramo"), ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Vista de tramo")],
@@ -1448,6 +1448,69 @@ def teams_block(ev):
       </div>
     </div>"""
 
+RACE_TRACK = "M300 312 L150 312 C78 312 52 246 98 208 C140 174 222 196 246 136 C268 80 324 52 398 56 L478 62 C560 70 578 150 522 186 C478 212 430 214 440 258 C448 296 424 312 382 312 Z"
+RACE_SECTORS = [(0.16, "S1", "Cambios de peso"), (0.38, "S2", "Pie izquierdo"), (0.6, "S3", "Recta"), (0.8, "S4", "Horquilla")]
+RACE_CARS = [("206", "Peugeot 206", "118 CV · Tracción delantera", "Ágil y noble: entra en la curva como un rayo.", "#111114", "#ff66c4"),
+             ("e36", "BMW E36", "135 CV · Propulsión trasera", "Empuja desde atrás y sale de lado.", "#f4f4f2", "#ff7a1a")]
+
+
+def race_car_svg(k, body, stripe):
+    """Coche visto desde arriba, mirando a la derecha (34 x 16)."""
+    wing = '<rect x="-20" y="-9" width="3.5" height="18" rx="1" fill="#ff66c4"/>' if k == "e36" else ""
+    return (f'<rect x="-12" y="-10.5" width="7" height="3.5" rx="1.2" fill="#ff66c4"/><rect x="6" y="-10.5" width="7" height="3.5" rx="1.2" fill="#ff66c4"/>'
+            f'<rect x="-12" y="7" width="7" height="3.5" rx="1.2" fill="#ff66c4"/><rect x="6" y="7" width="7" height="3.5" rx="1.2" fill="#ff66c4"/>'
+            f'<rect x="-17" y="-8" width="34" height="16" rx="5" fill="{body}" stroke="rgba(0,0,0,.45)" stroke-width="1"/>'
+            f'<rect x="-17" y="-2.2" width="34" height="4.4" fill="{stripe}"/>'
+            f'<rect x="1" y="-6.2" width="6.5" height="12.4" rx="2" fill="#7fb6d6" opacity=".9"/><rect x="-11" y="-5.5" width="4" height="11" rx="1.5" fill="#7fb6d6" opacity=".7"/>{wing}')
+
+
+def race_block(ev):
+    """Duelo animado 206 vs E36: eliges coche, semáforo, tiempo de reacción y carrera por la pista de tierra."""
+    picks = "".join(f'<button type="button" class="race-car" role="radio" aria-checked="{"true" if i == 0 else "false"}" data-race-pick="{k}" data-race-name="{n}">'
+                    f'<svg viewBox="-24 -14 48 28" aria-hidden="true">{race_car_svg(k, b, st)}</svg>'
+                    f'<b>{n}</b><span>{spec}</span><small>{txt}</small></button>' for i, (k, n, spec, txt, b, st) in enumerate(RACE_CARS))
+    sectors = "".join(f'<g class="race__sector" data-sector="{f}"><circle r="13"/><text text-anchor="middle" dy="4">{k}</text>'
+                      f'<text class="race__sector-l" text-anchor="middle" dy="-19">{escape(t)}</text></g>' for f, k, t in RACE_SECTORS)
+    cars = "".join(f'<g class="race__car race__car--{k}" data-race-car="{k}" transform="translate(300 312)">{race_car_svg(k, b, st)}</g>'
+                   for k, n, spec, txt, b, st in RACE_CARS)
+    bushes = "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#556b2f" opacity=".55"/>' for x, y, r in
+                     [(40, 60, 16), (70, 40, 10), (160, 90, 14), (560, 300, 18), (590, 260, 10), (300, 200, 12), (330, 230, 8), (190, 260, 10), (520, 30, 9)])
+    return f"""<div class="race" data-race>
+      <div class="race__intro reveal">
+        <span class="eyebrow">Duelo en tierra</span>
+        <h2>206 <span class="pink">vs</span> <span class="outline">E36</span></h2>
+        <p class="lead mt-2"><strong>Tracción delantera contra propulsión trasera.</strong> Elige coche, espera a que se apaguen los semáforos y acelera. En el curso no tienes que elegir: <strong>conduces los dos</strong>.</p>
+        <p class="tp-step"><b>1</b> Elige tu coche</p>
+        <div class="race-cars" role="radiogroup" aria-label="Elige tu coche">{picks}</div>
+        <p class="tp-step"><b>2</b> Cuando se apaguen las luces, ¡acelera!</p>
+        <div class="btn-row"><button type="button" class="btn race__go" data-race-go>🚦 <span>Salida</span></button><a class="btn btn--ghost" href="#fechas">{I["ticket"]} Reservar plaza</a></div>
+      </div>
+      <div class="race__stage reveal" data-delay="1">
+        <div class="race__lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <svg class="race__track" viewBox="0 0 600 360" role="img" aria-label="Pista de tierra con el Peugeot 206 y el BMW E36 en la salida">
+          <rect width="600" height="360" rx="18" fill="#3a2f22"/>
+          <rect width="600" height="360" rx="18" fill="url(#race-grain)"/>
+          <defs><pattern id="race-grain" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="3" cy="4" r="1" fill="#4a3c2b"/><circle cx="10" cy="11" r="1.3" fill="#2f261b"/></pattern></defs>
+          {bushes}
+          <path d="{RACE_TRACK}" fill="none" stroke="#6b5434" stroke-width="54" stroke-linejoin="round"/>
+          <path d="{RACE_TRACK}" fill="none" stroke="#b08a57" stroke-width="44" stroke-linejoin="round"/>
+          <path d="{RACE_TRACK}" fill="none" stroke="#c9a26b" stroke-width="20" stroke-linejoin="round" opacity=".5"/>
+          <path d="{RACE_TRACK}" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="2 22" opacity=".35" data-race-path/>
+          <g transform="translate(300 312)"><rect x="-3" y="-22" width="6" height="44" fill="#fff"/><rect x="-3" y="-22" width="3" height="5.5" fill="#000"/><rect x="0" y="-16.5" width="3" height="5.5" fill="#000"/><rect x="-3" y="-11" width="3" height="5.5" fill="#000"/><rect x="0" y="-5.5" width="3" height="5.5" fill="#000"/><rect x="-3" y="0" width="3" height="5.5" fill="#000"/><rect x="0" y="5.5" width="3" height="5.5" fill="#000"/><rect x="-3" y="11" width="3" height="5.5" fill="#000"/><rect x="0" y="16.5" width="3" height="5.5" fill="#000"/></g>
+          {sectors}
+          <g data-race-dust></g>
+          {cars}
+        </svg>
+        <div class="race__hud" aria-live="polite"><span class="race__clock" data-race-clock>0,00 s</span><span data-race-msg>Elige coche y pulsa «Salida».</span></div>
+        <div class="race__result" data-race-result hidden>
+          <span class="eyebrow" data-race-kicker>Resultado</span>
+          <h3 data-race-title>¡Victoria!</h3>
+          <p data-race-text></p>
+          <div class="btn-row"><a class="btn" href="#fechas">{I["ticket"]} Hazlo de verdad · 299 €</a><button type="button" class="btn btn--ghost" data-race-again>↻ Revancha</button></div>
+        </div>
+      </div>
+    </div>"""
+
 
 def xp_stats(ev, eds):
     items = "".join(f'<div class="xp-stat reveal"><b data-count="{n}">{n}</b><span>{t}</span></div>' for n, t in ev.get("stats", []))
@@ -1484,7 +1547,7 @@ def event_page(slug):
     lds = [breadcrumbs_ld(slug, ev["name"], ("experiencias.html", "Experiencias")), faq_ld(faqs)] + [event_ld(e) for e in eds]
     html = head(ev["name"] + " | Deyscom Motorsport", ev["lead"][:160], slug, ev["name"], ev["hero"], lds, ev["keywords"]) + header(slug)
     html += hero(ev["kicker"], ev["lines"], ev["lead"], "299", ev["hero"], ev["chips"], ev["name"], ("Ver fechas y reservar", "#fechas")).replace('<section class="hero page-hero">', '<section class="hero page-hero hero--xp">', 1)
-    html += ticker(["Conduce", "Aprende", "Disfruta", "En equipo", "BMW E36", "Peugeot 206", "Circuito El Hito"], dark=True)
+    html += ticker(["Conduce", "Aprende", "Disfruta", "En equipo" if ev.get("teams") else "206 vs E36", "BMW E36", "Peugeot 206", "Circuito El Hito"], dark=True)
     html += xp_stats(ev, eds)
     ej = "".join(f'<article class="card reveal" data-delay="{i % 3}"><span class="ej-n">{i + 1}</span><h3>{t}</h3><p>{d}</p></article>'
                  for i, (t, d) in enumerate(ev["ejercicios"]))
@@ -1521,7 +1584,7 @@ def event_page(slug):
 </section>
 <section class="section">
   <div class="container">
-    {section_head("5 ejercicios puntuables", "Lo que vas <span class='outline'>a hacer</span>", ("Tu instructor te acompaña" if ev.get("duration") else "Monitores especializados te acompañan") + " y puntúa cada ejercicio.")}
+    {section_head("5 ejercicios puntuables" if ev.get("teams") else "5 ejercicios", "Lo que vas <span class='outline'>a hacer</span>", "Monitores especializados te acompañan y puntúan cada ejercicio." if ev.get("teams") else "Tu instructor te acompaña y te corrige en cada ejercicio.")}
     <div class="cards ej-cards">{ej}</div>
   </div>
 </section>
@@ -1533,7 +1596,7 @@ def event_page(slug):
   </div>
 </section>
 <section class="section section--ink teamplay-sec">
-  <div class="container">{teams_block(ev)}</div>
+  <div class="container">{teams_block(ev) if ev.get("teams") else race_block(ev)}</div>
 </section>
 <section class="section section--ink section--tight">
   <div class="container exp-layout">

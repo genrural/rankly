@@ -427,13 +427,136 @@
     });
     setTeam(teams[0]); total();
   });
+  // Duelo 206 vs E36: semáforo, tiempo de reacción y carrera animada por la pista
+  $$("[data-race]").forEach(function (box) {
+    var picks = $$("[data-race-pick]", box), go = $("[data-race-go]", box), goTxt = $("span", go);
+    var path = $("[data-race-path]", box), lights = $$(".race__lights i", box), dust = $("[data-race-dust]", box);
+    var clock = $("[data-race-clock]", box), msg = $("[data-race-msg]", box), res = $("[data-race-result]", box);
+    var cars = {}; $$("[data-race-car]", box).forEach(function (g) { cars[g.getAttribute("data-race-car")] = g; });
+    var NAMES = { "206": "Peugeot 206", e36: "BMW E36" };
+    var TIPS = {
+      "206": ["S1 · Cambios de peso: carga el eje delantero y el 206 gira solo.", "S2 · Pie izquierdo: frena sin soltar el gas y colócalo en la curva.",
+        "S3 · Recta: 118 CV y poco peso. El 206 vuela.", "S4 · Horquilla: gas pronto y volante recto para que tire hacia la salida."],
+      e36: ["S1 · Cambios de peso: el E36 pide manos suaves al entrar.", "S2 · Derrape: con propulsión, el gas también gira el coche.",
+        "S3 · Recta: 135 CV empujando desde atrás.", "S4 · Sobreviraje: contravolante y gas constante. ¡Sales de lado!"]
+    };
+    var SECT = $$("[data-sector]", box).map(function (g) { return Number(g.getAttribute("data-sector")); });
+    var len = path.getTotalLength(), mine = "206", state = "idle", lightTimers = [], outAt = 0, jump = false, raf = 0;
+    var fmt = function (n) { return n.toFixed(2).replace(".", ",") + "\u00a0s"; };
+    // sitúa los sectores sobre la pista
+    $$("[data-sector]", box).forEach(function (g) { var pt = path.getPointAtLength(Number(g.getAttribute("data-sector")) * len); g.setAttribute("transform", "translate(" + pt.x.toFixed(1) + " " + pt.y.toFixed(1) + ")"); });
+    var place = function (k, u, lane) {
+      var d = ((u % 1) + 1) % 1 * len, a = path.getPointAtLength(d), b = path.getPointAtLength(Math.min(len, d + 1.5));
+      if (d + 1.5 > len) b = path.getPointAtLength(1.5);
+      var ang = Math.atan2(b.y - a.y, b.x - a.x), nx = -Math.sin(ang) * lane, ny = Math.cos(ang) * lane;
+      cars[k].setAttribute("transform", "translate(" + (a.x + nx).toFixed(1) + " " + (a.y + ny).toFixed(1) + ") rotate(" + (ang * 180 / Math.PI).toFixed(1) + ") scale(1.25)");
+      return { x: a.x + nx, y: a.y + ny };
+    };
+    var reset = function () {
+      cancelAnimationFrame(raf); lightTimers.forEach(clearTimeout); lightTimers = [];
+      lights.forEach(function (l) { l.className = ""; });
+      place("206", 0, -10); place("e36", 0, 10); dust.innerHTML = ""; clock.textContent = fmt(0);
+      $$("[data-sector]", box).forEach(function (g) { g.classList.remove("is-hit"); });
+      box.classList.remove("is-racing"); state = "idle"; goTxt.textContent = "Salida"; go.disabled = false;
+    };
+    var pick = function (b) {
+      if (state === "racing" || state === "lights") return;
+      picks.forEach(function (p) { p.setAttribute("aria-checked", p === b ? "true" : "false"); p.tabIndex = p === b ? 0 : -1; });
+      mine = b.getAttribute("data-race-pick"); box.setAttribute("data-mine", mine);
+      msg.textContent = "Sales con el " + NAMES[mine] + ". Pulsa «Salida».";
+      try { sessionStorage.setItem("dmx_car", NAMES[mine]); } catch (e) { /* nada */ }
+    };
+    picks.forEach(function (p, i) {
+      p.addEventListener("click", function () { pick(p); });
+      p.addEventListener("keydown", function (e) {
+        var d = /Right|Down/.test(e.key) ? 1 : /Left|Up/.test(e.key) ? -1 : 0;
+        if (d) { e.preventDefault(); var n = picks[(i + d + picks.length) % picks.length]; pick(n); n.focus(); }
+      });
+    });
+    var puff = function (pt, k) {
+      if (reduceMotion || dust.childNodes.length > 40) return;
+      var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("cx", (pt.x + (Math.random() - .5) * 8).toFixed(1)); c.setAttribute("cy", (pt.y + (Math.random() - .5) * 8).toFixed(1));
+      c.setAttribute("r", (3 + Math.random() * 4).toFixed(1)); c.setAttribute("class", "race__puff race__puff--" + k);
+      dust.appendChild(c); setTimeout(function () { c.remove(); }, 900);
+    };
+    var run = function (react) {
+      state = "racing"; box.classList.add("is-racing"); res.hidden = true;
+      var rival = mine === "206" ? "e36" : "206", penalty = jump ? 0.5 : 0;
+      var base = reduceMotion ? 2.2 : 6.2;
+      var tMine = base + Math.max(0, react - 0.2) * 1.6 + penalty + (Math.random() - 0.5) * 0.5;
+      var tRival = base + 0.12 + (Math.random() - 0.4) * 0.5;
+      var T = {}; T[mine] = tMine; T[rival] = tRival;
+      // cada coche gana tiempo donde su tracción manda: el 206 en lo lento, el E36 en la recta y la horquilla
+      var wob = { "206": 0.035, e36: -0.035 };
+      var prog = function (k, t) { var u = Math.min(1, t / T[k]); return Math.min(1, u + wob[k] * Math.sin(u * Math.PI * 2) * (reduceMotion ? 0 : 1)); };
+      var t0 = performance.now(), told = -1, hit = 0, f = 0;
+      var tick = function (now) {
+        var t = (now - t0) / 1000, um = prog(mine, t), ur = prog(rival, t);
+        var pm = place(mine, um, mine === "206" ? -10 : 10), pr = place(rival, ur, rival === "206" ? -10 : 10);
+        if (++f % 3 === 0) { if (um < 1) puff(pm, mine); if (ur < 1) puff(pr, rival); }
+        clock.textContent = fmt(Math.min(t, tMine) * 10);
+        while (hit < SECT.length && um >= SECT[hit]) {
+          msg.textContent = TIPS[mine][hit]; $$("[data-sector]", box)[hit].classList.add("is-hit"); hit++;
+        }
+        if (um < 1 || ur < 1) { raf = requestAnimationFrame(tick); return; }
+        finish(tMine, tRival, react, rival);
+      };
+      raf = requestAnimationFrame(tick);
+      track("race_start", { car: NAMES[mine] });
+    };
+    var finish = function (tm, tr, react, rival) {
+      state = "done"; box.classList.remove("is-racing"); go.disabled = false; goTxt.textContent = "Otra salida";
+      var win = tm <= tr, gap = Math.abs(tm - tr) * 10;
+      clock.textContent = fmt(tm * 10);
+      $("[data-race-kicker]", box).textContent = jump ? "Salida en falso · +5 s" : "Reacción: " + react.toFixed(3).replace(".", ",") + " s";
+      $("[data-race-title]", box).textContent = win ? "¡Victoria con el " + NAMES[mine] + "!" : "El " + NAMES[rival] + " te gana por " + fmt(gap);
+      $("[data-race-text]", box).textContent = win
+        ? "Le sacas " + fmt(gap) + " al " + NAMES[rival] + ". Ahora imagina el volante en tus manos: en el DS Pilot Course aprendes con el 206 y con el E36, con tu instructor al lado."
+        : (jump ? "Te has adelantado al semáforo. " : "") + "Esas décimas se ganan con técnica: cambios de peso, pie izquierdo y control del sobreviraje. Justo lo que aprendes en el DS Pilot Course.";
+      msg.textContent = win ? "🏁 Bandera a cuadros. ¡Ganas tú!" : "🏁 Bandera a cuadros. Toca revancha.";
+      res.hidden = false;
+      track("race_finish", { car: NAMES[mine], win: win ? 1 : 0 });
+    };
+    var start = function () {
+      reset(); state = "lights"; jump = false; goTxt.textContent = "¡Acelera!";
+      msg.textContent = "Atento a las luces…";
+      var step = reduceMotion ? 250 : 550;
+      lights.forEach(function (l, i) { lightTimers.push(setTimeout(function () { l.className = "is-on"; }, step * (i + 1))); });
+      lightTimers.push(setTimeout(function () {
+        lights.forEach(function (l) { l.className = "is-go"; });
+        outAt = performance.now(); state = "armed"; msg.textContent = "¡YA! Acelera (toca la pista)";
+        // si no reaccionas en 1,5 s, sale igual
+        lightTimers.push(setTimeout(function () { if (state === "armed") run(1.5); }, 1500));
+      }, step * 5 + 400 + Math.random() * 1200));
+    };
+    var stage = $(".race__stage", box);
+    var press = function () {
+      if (state === "lights") { jump = true; msg.textContent = "¡Salida en falso! +5 s de penalización"; return true; }
+      if (state === "armed") { lightTimers.forEach(clearTimeout); run((performance.now() - outAt) / 1000); return true; }
+      return false;
+    };
+    go.addEventListener("click", function () {
+      if (state === "idle" || state === "done") {
+        start();
+        var r = stage.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > innerHeight) stage.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+        return;
+      }
+      press();
+    });
+    // en móvil se acelera tocando la pista
+    stage.addEventListener("pointerdown", function (e) { if (!e.target.closest("a,button") && press()) e.preventDefault(); });
+    $("[data-race-again]", box).addEventListener("click", function () { res.hidden = true; start(); go.focus(); });
+    pick(picks[0]); reset(); msg.textContent = "Elige coche y pulsa «Salida».";
+  });
   // el equipo elegido viaja a la reserva
   if (buy) {
     var teamInput = $("input[name=equipo_preferido]", buy), teamNote = $("[data-buy-team]", buy);
     $$("[data-buy]").forEach(function (b) {
       b.addEventListener("click", function () {
         var t = "", n = "";
-        try { t = sessionStorage.getItem("dmx_team") || ""; n = sessionStorage.getItem("dmx_name") || ""; } catch (e) { /* nada */ }
+        try { t = $("[data-teamplay]") ? sessionStorage.getItem("dmx_team") || "" : ""; n = sessionStorage.getItem("dmx_name") || ""; } catch (e) { /* nada */ }
         if (teamInput) teamInput.value = t;
         if (teamNote) { teamNote.hidden = !t; teamNote.textContent = t ? "Equipo preferido: " + t + " (lo tendremos en cuenta al hacer los equipos)" : ""; }
         var nm = $("input[name=nombre]", buy); if (nm && n && !nm.value) nm.value = n;

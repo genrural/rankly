@@ -20,7 +20,7 @@
     },
     {
       "titulo": "Circuito completo",
-      "texto": "Aplicas todo lo aprendido en una vuelta completa al circuito, puntuada por los instructores."
+      "texto": "Aplicas todo lo aprendido en una vuelta completa al circuito, con el análisis de tu instructor."
     }
   ],
   "incluye": [
@@ -28,7 +28,7 @@
     "Coches de rally equipados para competir: arco de seguridad, arneses y extinción",
     "2 coches de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)",
     "Instructor cualificado para cada grupo",
-    "4 equipos con puntuación en cada ejercicio y clasificación final",
+    "Grupos reducidos de hasta 4 personas por coche, con correcciones de tu instructor en cada ejercicio",
     "Welcome pack del equipo Deyscom",
     "Comida y bebida durante el evento",
     "Seguro de responsabilidad civil para el día del curso"
@@ -84,7 +84,7 @@
     },
     {
       "pregunta": "¿Cuántas personas hay por turno?",
-      "respuesta": "Como máximo 16 personas por turno para 4 coches, repartidas en 4 equipos y con instructor para cada grupo."
+      "respuesta": "Como máximo 16 personas por turno para 4 coches, repartidas en 4 grupos, cada uno con su instructor."
     },
     {
       "pregunta": "¿Qué incluye el precio?",
@@ -100,7 +100,7 @@
     },
     {
       "pregunta": "¿Puedo ir con amigos?",
-      "respuesta": "Sí. Reserva una plaza por persona y dinos que queréis ir en el mismo equipo."
+      "respuesta": "Sí. Reserva una plaza por persona y dinos que queréis ir en el mismo grupo."
     }
   ],
   "articulos_relacionados": [
