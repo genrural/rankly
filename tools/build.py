@@ -29,7 +29,7 @@ ITALIC = 'font-style="italic" '
 # Valores por defecto de content/ajustes.json (se editan desde el panel /admin)
 AJUSTES = {
     "telefono": PHONE, "telefono_visible": PHONE_TXT, "whatsapp": "34615972233", "email": EMAIL,
-    "aviso_superior": {"activo": True, "texto": "Diciembre: Experiencia Rally Eurocem y DS Pilot Course · plazas limitadas", "enlace": "experiencias.html"},
+    "aviso_superior": {"activo": True, "texto": "Diciembre: Experiencia Rally Eurocem y Rally Experience · plazas limitadas", "enlace": "experiencias.html"},
     "sheets_endpoint": "", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
     "precios": [], "enlaces_pago": [],
     "redes": {"instagram": "https://www.instagram.com/deyscom_motorsport/", "facebook": "https://www.facebook.com/deyscom/",
@@ -126,11 +126,13 @@ I.update({
 NAV = [
     ("competicion.html", "Competición"),
     ("restomod.html", "Restomod"),
-    ("pintura.html", "Pintura"),
+    ("pintura.html", "Chapa y pintura"),
     ("banco-de-potencia.html", "Banco de potencia"),
     ("experiencias.html", "Experiencias"),
+    ("nosotros.html", "Nosotros"),
+    ("contacto.html", "Contacto"),
 ]
-FOOTER_NAV = NAV + [("tienda.html", "Tienda"), ("nosotros.html", "Quiénes somos"), ("contacto.html", "Contacto")]
+FOOTER_NAV = NAV + [("tienda.html", "Tienda online")]
 
 # ---------------------------------------------------------------- precios (None = "Consultar")
 PRICES = {
@@ -176,8 +178,8 @@ ORG_LD = {
     "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{SITE}/{u}"}} for n, u in (
         ("Preparación de coches de rally y competición", "competicion.html"), ("Restomod y restauración de coches clásicos", "restomod.html"),
         ("Pintura de coches en cabina", "pintura.html"), ("Banco de potencia", "banco-de-potencia.html"),
-        ("Experiencia Rally Eurocem", "experiencia-rally-eurocem.html"), ("DS Pilot Course: curso de conducción de rally en tierra", "ds-pilot-course.html"))],
-    "foundingDate": "2022",
+        ("Experiencia Rally Eurocem", "experiencia-rally-eurocem.html"), ("Rally Experience: curso de conducción de rally en tierra", "ds-pilot-course.html"))],
+    "foundingDate": "2011",
     "slogan": "Hechos para correr. Pensados para ti.",
     "geo": {"@type": "GeoCoordinates", "latitude": 40.8277, "longitude": -3.5381},
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Deyscom+Motorsport+Torrelaguna",
@@ -397,8 +399,8 @@ def header(slug):
                   f'<button class="nav__toggle" type="button" aria-expanded="false" aria-controls="{sid}" aria-label="Ver {t.lower()}">{chev}</button>'
                   f'<div class="nav__sub" id="{sid}">{items}<a class="nav__sub-all" href="{h}">{children[1]} {I["arrow"]}</a></div></div>')
     shop_cur = ' aria-current="page"' if slug in ("tienda",) or slug in PRODUCTS else ""
-    links += f'<a class="nav__shop" href="tienda.html"{shop_cur}>{I["bag"]} Tienda</a>'
-    links += f'<div class="nav__extra"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="tel:{PHONE}">{PHONE_TXT}</a></div>'
+    links += f'<a class="nav__shop" href="tienda.html"{shop_cur}>{I["bag"]} Tienda online</a>'
+    links += f'<div class="nav__extra"><a href="tel:{PHONE}">{I["phone"]} {PHONE_TXT}</a><a data-wa="" data-loc="menu" href="#">{I["wa"]} WhatsApp</a></div>'
     return f"""<div class="topbar">
   <div class="container">
     <div class="topbar__left">
@@ -416,7 +418,9 @@ def header(slug):
     {logo()}
     <nav class="nav" id="nav" aria-label="Principal">{links}</nav>
     <div class="header__cta">
-      <a class="btn btn--icon-sm header__shop" href="tienda.html" aria-label="Tienda">{I['bag']}</a>
+      <a class="header__phone" href="tel:{PHONE}" aria-label="Llamar al {PHONE_TXT}">{I['phone']}<span>{PHONE_TXT.replace("(+34) ", "")}</span></a>
+      <a class="header__wa" data-wa="" data-loc="header" href="#" aria-label="Escríbenos por WhatsApp">{I['wa']}</a>
+      <a class="btn btn--icon-sm header__shop" href="tienda.html" aria-label="Tienda online">{I['bag']}</a>
       <a class="btn btn--primary-sm" href="contacto.html#presupuesto">Presupuesto</a>
       <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
@@ -441,7 +445,7 @@ def footer():
       </div>
       <div>
         <h4>Taller</h4>
-        <ul>{col1}<li><a href="nosotros.html">Quiénes somos</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+        <ul>{col1}<li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul>
       </div>
       <div>
         <h4>Vive Deyscom</h4>
@@ -460,7 +464,7 @@ def footer():
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> Deyscom Motorsport S.L. · Todos los derechos reservados</span>
-      <nav aria-label="Legal"><a href="nosotros.html">Quiénes somos</a><a href="contacto.html">Contacto</a><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="condiciones-compra.html">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button><a href="crm.html" rel="nofollow">Área privada</a></nav>
+      <nav aria-label="Legal"><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="condiciones-compra.html">Condiciones de compra</a><button type="button" class="linklike" data-cc-open>Configurar cookies</button><a href="crm.html" rel="nofollow">Área privada</a></nav>
     </div>
   </div>
 </footer>
@@ -531,10 +535,10 @@ PARENTS = {
     "experiencia-rally-eurocem": [("experiencias.html", "Experiencias")], "ds-pilot-course": [("experiencias.html", "Experiencias")],
 }
 CRUMB_NAME = {"competicion": "Competición", "restomod": "Restomod", "pintura": "Pintura", "banco-de-potencia": "Banco de potencia",
-              "experiencias": "Experiencias", "cursos": "Cursos", "tienda": "Tienda", "nosotros": "Quiénes somos",
+              "experiencias": "Experiencias", "cursos": "Cursos", "tienda": "Tienda online", "nosotros": "Nosotros",
               "ds-pilot-weekend-circuit": "Circuit", "ds-pilot-weekend-rally": "Rally", "ds-pilot-weekend-slalom": "Slalom",
               "ds-copilot-course": "DS Copilot Course", "contacto": "Contacto", "blog": "Blog", "alquiler-coche-de-rally": "Alquiler de coche de rally", "coches-de-rally-en-venta": "Coches en venta",
-              "experiencia-rally-eurocem": "Experiencia Rally Eurocem", "ds-pilot-course": "DS Pilot Course"}
+              "experiencia-rally-eurocem": "Experiencia Rally Eurocem", "ds-pilot-course": "Rally Experience"}
 
 
 def crumbs_html(slug):
@@ -594,8 +598,7 @@ def process(steps, label="Fase"):
 def gallery(items, word):
     """items: lista de (foto, pie)."""
     out = "".join(
-        f'<figure class="gallery__item reveal">{art(word, f"{20 + i * 15}%", "40%", img, cap, "(max-width: 760px) 50vw, 33vw")}'
-        f'<figcaption class="gallery__cap">{cap}</figcaption></figure>'
+        f'<figure class="gallery__item reveal">{art(word, f"{20 + i * 15}%", "40%", img, cap, "(max-width: 760px) 50vw, 33vw")}</figure>'
         for i, (img, cap) in enumerate(items)
     )
     return f'<div class="gallery{" gallery--8" if len(items) == 8 else ""}">{out}</div>'
@@ -628,7 +631,7 @@ def mega_cta(title_html, text, topic, primary=("Pide presupuesto", "contacto.htm
 """
 
 
-def success_block(title="¡Bandera a cuadros!", text="Hemos recibido tu solicitud. Te contactamos en menos de 24 h laborables.", pay=False):
+def success_block(title="¡Bandera a cuadros!", text="Hemos recibido tu solicitud. Te contactamos lo antes posible.", pay=False):
     pay_btn = f'<a class="btn" data-pay hidden href="#" target="_blank" rel="noopener">{I["ticket"]} Pagar ahora</a>' if pay else ""
     return f"""<div class="form-success" role="status" aria-live="polite">
   <div class="form-success__icon">{I['check']}</div>
@@ -674,7 +677,7 @@ def contact_list():
 </ul>"""
 
 
-def service_form(service, topic, options, title="Cuéntanos tu proyecto", sub="Respuesta en menos de 24 h laborables. Sin compromiso."):
+def service_form(service, topic, options, title="Cuéntanos tu proyecto", sub="Respuesta rápida y sin compromiso."):
     return f"""<section class="section section--ink" id="presupuesto">
   <div class="container form-wrap">
     <div class="reveal">
@@ -762,7 +765,7 @@ SERVICES = {
         number="01", hero="mitsubishi-lancer-evo-rally-taller-deyscom",
         chips=["Rally · Slalom · Circuito", "Asistencia en carrera", "Alquiler de coches de competición"],
         ticker=["Preparación integral", "Jaulas de seguridad", "Set-up", "Asistencia", "Mantenimiento", "Alquiler"],
-        intro=("Del garaje al podio", "Un coche de carreras <span class='pink'>no se compra</span>, se construye",
+        intro=("Del garaje al podio", "Tu coche. <span class='pink'>Tu proyecto.</span> Nuestra pasión.",
                "<p class='lead'>Cada preparación empieza con una conversación: qué campeonato, qué reglamento, qué presupuesto y qué piloto. A partir de ahí diseñamos el coche contigo, pieza a pieza.</p>"
                + feature_list([
                    ("Proyecto a medida", "Planificación por fases para ajustarnos al reglamento y a tu presupuesto."),
@@ -940,6 +943,123 @@ def cross_block():
 </section>"""
 
 
+BUILD_PARTS = [
+    ("llantas", "Llantas", "car", [
+        ("rosa", "Rosas Deyscom", "El sello de la casa", {"control": 5}, "#ff66c4"),
+        ("blanca", "Blancas de rally", "Clásicas de tramo", {"control": 5}, "#eeeeee"),
+        ("negra", "Negras", "Discretas y duras", {"control": 5}, "#202024")]),
+    ("motor", "Motor", "gauge", [
+        ("16v", "1.6 16V", "118 CV · ligero y fiable", {"cv": 118}, ""),
+        ("s16", "2.0 S16", "180 CV · empuje en salida", {"cv": 180}, ""),
+        ("kit", "2.0 Kit Car", "230 CV · a fondo", {"cv": 230}, "")]),
+    ("autoblocante", "Autoblocante", "flag", [
+        ("mecanico", "Mecánico", "Más tracción al salir de curva", {"traccion": 30, "control": 5}, ""),
+        ("rampas", "De rampas regulable", "Ajustable para tierra o asfalto", {"traccion": 40, "control": 10}, "")]),
+    ("frenos", "Frenos", "shield", [
+        ("hidraulico", "Freno de mano hidráulico", "Para cruzar el coche en las horquillas", {"control": 25}, ""),
+        ("repartidor", "Hidráulico + repartidor", "Y reparto de frenada regulable", {"control": 35}, "")]),
+    ("suspension", "Suspensión", "wrench", [
+        ("tierra", "De tierra", "Más altura y recorrido", {"traccion": 20, "control": 15}, ""),
+        ("asfalto", "De asfalto", "Más baja y firme", {"traccion": 10, "control": 25}, "")]),
+    ("jaula", "Jaula de seguridad", "helmet", [
+        ("atornillada", "Atornillada", "Arco homologado", {"seguridad": 45}, ""),
+        ("soldada", "Soldada multipunto", "Máxima rigidez y protección", {"seguridad": 80}, "")]),
+]
+BUILD_HOT = {"llantas": (232, 214), "motor": (630, 150), "autoblocante": (602, 214), "frenos": (270, 90), "suspension": (420, 312), "jaula": (370, 80)}
+
+
+def builder_car_svg():
+    win = "M198 124 L308 121 L308 172 L150 172 Z M322 120 L388 118 Q401 118 411 127 L510 172 L322 172 Z"
+    hots = "".join(f'<g class="bc__hot" data-hot="{k}" transform="translate({x} {y})"><circle r="15"/><path class="bc__hot-plus" d="M-6 0h12M0 -6v12"/><path class="bc__hot-ok" d="M-6 0l4 4 8-8"/></g>'
+                   for k, (x, y) in BUILD_HOT.items())
+
+    def wheel(cx, front):
+        lsd = ('<g class="bc__lsd"><circle r="13" fill="none" stroke="#ff66c4" stroke-width="5" stroke-dasharray="4 3"/><circle r="5" fill="#ff66c4"/></g>' if front else "")
+        return (f'<g class="bc__wheel" transform="translate({cx} 262)"><circle r="44" fill="#0d0d0f"/><circle r="40" fill="none" stroke="#222" stroke-width="3"/>'
+                f'<circle class="bc__rim" r="28"/>'
+                f'<g class="bc__spokes"><path d="M0 -26V26M-24.7 -8L24.7 8M-15.3 21L15.3 -21M24.7 -8L-24.7 8M15.3 21L-15.3 -21" stroke="rgba(0,0,0,.45)" stroke-width="5"/></g>'
+                f'<circle r="7" fill="#111"/>{lsd}</g>')
+    return f"""<svg class="bc__svg" viewBox="40 66 700 268" role="img" aria-label="Peugeot 206 de rally de Deyscom Motorsport que vas montando con las piezas elegidas" data-bc-svg>
+  <defs><clipPath id="bc-win"><path d="{win}"/></clipPath>
+    <linearGradient id="bc-shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="bc-glow"><stop offset="0" stop-color="#ff66c4" stop-opacity=".85"/><stop offset="1" stop-color="#ff66c4" stop-opacity="0"/></radialGradient></defs>
+  <ellipse cx="415" cy="308" rx="330" ry="14" fill="rgba(0,0,0,.55)"/>
+  <g class="bc__body">
+    <g class="bc__flame"><path d="M104 248 L66 240 L84 252 L58 258 L104 258 Z" fill="#ff9a1f"/><path d="M104 250 L80 246 L90 253 L76 256 L104 256 Z" fill="#ffe14d"/></g>
+    <rect x="98" y="248" width="16" height="8" rx="2" fill="#8a8a90"/>
+    <path d="M118 262 L112 214 Q110 192 124 180 L184 116 Q196 104 216 102 L388 98 Q408 98 422 110 L540 172 L672 186 Q706 192 712 214 L714 250 Q714 262 700 262 L652 262 A50 50 0 0 0 552 262 L282 262 A50 50 0 0 0 182 262 Z" fill="#2b2d33"/>
+    <path d="M118 262 L112 214 Q110 192 124 180 L184 116 Q196 104 216 102 L388 98 Q408 98 422 110 L540 172 L672 186 Q706 192 712 214 L714 250 Q714 262 700 262 L652 262 A50 50 0 0 0 552 262 L282 262 A50 50 0 0 0 182 262 Z" fill="url(#bc-shine)"/>
+    <path d="M216 102 L388 98 Q408 98 422 110 L428 115 L196 118 L190 112 Q200 102 216 102Z" fill="#ff66c4"/>
+    <path d="M556 172 L640 182 L588 238 L520 238 Z" fill="#ff66c4"/>
+    <path d="{win}" fill="#121821"/>
+    <path d="M210 128 L296 126 M336 124 L392 122" stroke="rgba(255,255,255,.18)" stroke-width="4" stroke-linecap="round"/>
+    <g clip-path="url(#bc-win)">
+      <g class="bc__cage"><path d="M304 120 V176 M196 130 L304 172 M318 120 L500 176 M330 172 L470 140" stroke="#e9e9ec" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path class="bc__cage-x" d="M330 140 L470 172 M180 160 L304 128 M250 120 V176" stroke="#e9e9ec" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+      <g class="bc__hb"><path d="M286 178 L298 134" stroke="#0a0a0a" stroke-width="7" stroke-linecap="round"/><circle cx="299" cy="131" r="7" fill="#e3262f"/></g>
+    </g>
+    <rect x="308" y="118" width="14" height="56" fill="#2b2d33"/>
+    <path d="M322 176 L322 250 M524 176 L528 250" stroke="rgba(0,0,0,.45)" stroke-width="2"/>
+    <path d="M500 158 Q516 152 522 164 L506 172 Z" fill="#ff66c4"/>
+    <path d="M674 192 L708 202 L704 214 L670 206 Z" fill="#e7edf3"/>
+    <path d="M113 194 L128 188 L130 214 L113 214 Z" fill="#d6242e"/>
+    <text x="246" y="226" font-family="Jost, Futura, Arial, sans-serif" font-style="italic" font-weight="900" font-size="50" fill="#fff" letter-spacing="-1">DEYS<tspan fill="#ff66c4">COM</tspan></text>
+    <text x="300" y="246" font-family="Jost, Futura, Arial, sans-serif" font-style="italic" font-weight="600" font-size="12" fill="#fff" letter-spacing="7">MOTORSPORT</text>
+    <rect x="114" y="236" width="600" height="6" fill="#ff66c4" opacity=".9"/>
+    <g class="bc__engine"><ellipse cx="610" cy="176" rx="70" ry="26" fill="url(#bc-glow)"/>
+      <g transform="translate(610 132)"><rect x="-46" y="-16" width="92" height="30" rx="8" fill="#0b0b0e" stroke="#ff66c4" stroke-width="2"/><text text-anchor="middle" y="5" font-family="Jost, Futura, Arial, sans-serif" font-style="italic" font-weight="900" font-size="15" fill="#fff" data-bc-cv-badge>118 CV</text></g></g>
+  </g>
+  {wheel(232, False)}{wheel(602, True)}
+  {hots}
+</svg>"""
+
+
+def builder_block():
+    import json as _j
+    data = {k: {o: dict(st, label=f"{n} · {d}", color=c) for o, n, d, st, c in opts} for k, _, _, opts in BUILD_PARTS}
+    cats = "".join(
+        f'<div class="bc__cat" data-cat-box="{k}"><p class="bc__cat-t"><span class="ic">{I[ic]}</span>{name}<small data-bc-chosen="{k}">Sin montar</small></p>'
+        f'<div class="bc__opts">' + "".join(
+            f'<button type="button" class="bc__part" data-cat="{k}" data-opt="{o}" aria-pressed="false">'
+            f'{("<i class=" + chr(34) + "bc__dot" + chr(34) + " style=" + chr(34) + "background:" + c + chr(34) + "></i>") if c else ""}<b>{n}</b><small>{d}</small></button>'
+            for o, n, d, st, c in opts) + "</div></div>"
+        for k, name, ic, opts in BUILD_PARTS)
+    stats = "".join(f'<div class="bc__stat"><span>{t}</span><i><b data-bc-bar="{k}"></b></i></div>'
+                    for k, t in [("potencia", "Potencia"), ("traccion", "Tracción"), ("control", "Control y frenada"), ("seguridad", "Seguridad")])
+    js = _j.dumps(data, ensure_ascii=False).replace("'", "&#39;")
+    foot = f"""<div class="bc__foot">
+          <div class="bc__done" data-bc-done hidden>
+            <p class="bc__done-t" data-bc-title>¡Tu 206 está listo para el tramo!</p>
+            <p class="bc__done-d" data-bc-sum></p>
+          </div>
+          <div class="bc__actions">
+            <span class="bc__count"><b data-bc-count>0</b>/{len(BUILD_PARTS)} piezas montadas</span>
+            <button type="button" class="btn btn--ghost btn--sm" data-bc-reset>↺ Empezar de nuevo</button>
+            <a class="btn" href="#presupuesto" data-bc-cta>{I["wrench"]} Quiero preparar mi coche</a>
+          </div>
+        </div>"""
+    return f"""<section class="section section--ink builder-sec" id="monta-tu-coche">
+  <div class="container">
+    {section_head("Configurador", "Monta tu <span class='outline'>coche de rally</span>", "Arrastra cada pieza hasta nuestro Peugeot 206 (o tócala) y mira cómo cambia. Así preparamos los coches en el taller.")}
+    <div class="bc" data-builder='{js}'>
+      <div class="bc__stage reveal">
+        <div class="bc__car" data-bc-drop>{builder_car_svg()}</div>
+        <div class="bc__hud">
+          <div class="bc__cv"><b data-bc-cv>75</b><span>CV</span><small class="bc__mini"><b data-bc-count>0</b>/{len(BUILD_PARTS)} piezas</small></div>
+          <div class="bc__stats">{stats}</div>
+        </div>
+        {foot}
+      </div>
+      <div class="bc__tray reveal" data-delay="1">
+        <p class="bc__hint">👆 Arrastra una pieza al coche o tócala para montarla</p>
+        {cats}
+        {foot.replace('class="bc__foot"', 'class="bc__foot bc__foot--m"')}
+      </div>
+    </div>
+  </div>
+</section>"""
+
+
 def service_page(slug):
     s = dict(SERVICES[slug])
     s["area"] = SERVICE_AREA.get(slug, "nuestros servicios")
@@ -947,7 +1067,7 @@ def service_page(slug):
     e, t, body, label, img, tag, *rest = s["intro"]
     rev = rest[0] if rest else False
     x = rest[1] if len(rest) > 1 else "60%"
-    extra = ""
+    extra = builder_block() if slug == "competicion" else ""
     if slug == "pintura":
         extra = f"""<section class="section section--tight">
   <div class="container">
@@ -1002,7 +1122,7 @@ def service_page(slug):
 </section>
 {related_section(slug)}
 {area_section(s["area"])}
-{mega_cta(s["mega"], "Escríbenos hoy y te respondemos en menos de 24 h laborables.", s["topic"])}
+{mega_cta(s["mega"], "Escríbenos hoy y te respondemos lo antes posible.", s["topic"])}
 """
     return html + footer()
 
@@ -1130,7 +1250,7 @@ def booking_box(slug, name, kind="experience"):
   <div class="buybox__dates" data-dates="{slug}" hidden><small>Próximas fechas</small><ul></ul></div>
   <a class="btn btn--block" data-buy="{slug}" href="#reserva">{I['ticket']} {"Comprar mi plaza" if is_course else "Reservar plaza"}</a>
   <a class="btn btn--wa btn--block mt-1" data-wa="{escape(name)}" data-loc="buybox" href="#">{I['wa']} Preguntar por WhatsApp</a>
-  <p class="buybox__note">Plazas limitadas por edición. Te confirmamos fecha y disponibilidad en menos de 24 h laborables.</p>
+  <p class="buybox__note">Plazas limitadas por edición. Te confirmamos fecha y disponibilidad lo antes posible.</p>
 </aside>"""
 
 
@@ -1281,22 +1401,22 @@ EVENTS = {
                  ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Paisaje de rally"), ("bmw-e36-rally-tierra-deyscom-motorsport", "BMW E36 en el aire")],
     ),
     "ds-pilot-course": dict(
-        name="DS Pilot Course", short="DS Pilot Course", kicker="Curso de conducción · 5, 6 y 7 de diciembre", tag="5-7 dic · Cuenca",
+        name="Rally Experience", short="Rally Experience", kicker="Curso de conducción · 5, 6 y 7 de diciembre", tag="5-7 dic · Cuenca",
         teaser="Curso de rally de 4 horas sobre tierra: Peugeot 206 de tracción delantera y BMW E36 de propulsión, instructor por grupo y comida.",
         hero="peugeot-206-deyscom-horquilla-tramo-rally", card="peugeot-206-deyscom-curva-tramo-rally-paisaje", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
         lines=["Aprende", "<span class='pink'>a pilotar</span>", "<span class='outline'>en tierra</span>"],
-        lead="Curso de rally de 4 horas en el Circuito El Hito (Cuenca) con coches equipados para competir: cambios de peso, freno con pie izquierdo, sobreviraje y circuito completo, con instructor para tu grupo.",
+        lead="¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36, con instructores especializados. ¡Comida incluida!",
         chips=["5, 6 y 7 de diciembre", "4 horas · mañana o tarde", "299 €"],
         keywords="curso de pilotaje, curso conducción rally, curso conducción tierra, curso pilotaje Cuenca, curso de derrape, conducir coche de rally",
         partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=False, race=True, intro="", ejercicios=[], incluye=[],
         team_size=4, team_note="cada uno con su color y su instructor", duration="PT4H", staff="Instructor cualificado por grupo",
-        stats=[("4", "horas al volante"), ("4", "coches de rally"), ("5", "ejercicios"), ("16", "plazas por turno")], tee=False,
-        day=[("Llegada", "Recoges tu welcome pack y conoces a tu instructor y a tu grupo.", "equipo-deyscom-motorsport-atardecer"),
-             ("Briefing", "Seguridad, equipamiento y qué vas a trabajar en cada ejercicio.", "piloto-copiloto-rally-interior-coche-competicion"),
-             ("Tracción delantera", "Peugeot 206: cambios de peso y freno con pie izquierdo.", "peugeot-206-deyscom-rally-frontal-pilotos"),
-             ("Propulsión trasera", "BMW E36: conducción en tierra y control del sobreviraje.", "bmw-e36-rally-tierra-contraluz-deyscom"),
-             ("Circuito completo", "Una vuelta completa aplicando todo lo aprendido, con el análisis de tu instructor.", "peugeot-206-rally-polvo-contraluz-deyscom"),
-             ("Comida y repaso", "Comida y bebida, y repaso con tu instructor de lo que has mejorado.", "equipo-deyscom-motorsport-circuito")],
+        stats=[("4", "horas de práctica"), ("4", "coches de rally"), ("4", "zonas de ejercicios"), ("12", "personas máx. por grupo")], tee=False,
+        day=[("Llegada", "Recoges tu welcome pack y conoces a tu instructor y a tu grupo (de 8 a 12 personas como máximo, para no hacer largas esperas).", "equipo-deyscom-motorsport-atardecer"),
+             ("4 zonas de ejercicios", "Las dos primeras horas el circuito se divide en 4 zonas. Haces cada ejercicio 4 o 5 veces por turnos y vas pasando por las cuatro.", "peugeot-206-deyscom-curva-rally-castillo"),
+             ("Tracción delantera", "Peugeot 206: cambios de peso y freno con pie izquierdo. Sin teoría: tu monitor te lo explica en pista y te corrige.", "peugeot-206-deyscom-rally-frontal-cascos"),
+             ("Propulsión trasera", "BMW E36: conducción en tierra y control del sobreviraje, con las correcciones de tu monitor.", "bmw-e36-rally-tierra-contraluz-deyscom"),
+             ("Circuito completo", "Las dos últimas horas se abre el circuito entero: das vueltas aplicando lo aprendido con un tracción delantera y con un propulsión.", "peugeot-206-rally-polvo-contraluz-deyscom"),
+             ("Comida", "Comida y bebida con el grupo, y repaso con tu instructor de lo que has mejorado.", "equipo-deyscom-motorsport-circuito")],
         gallery=[("peugeot-206-deyscom-rally-frontal-pilotos", "Pie izquierdo"), ("bmw-e36-deyscom-salida-tramo-rally", "BMW E36: propulsión"),
                  ("peugeot-206-deyscom-horquilla-tramo-rally", "Horquilla"), ("bmw-e36-rally-tierra-contraluz-deyscom", "Sobre tierra"),
                  ("peugeot-206-deyscom-curva-tramo-rally-paisaje", "En el tramo"), ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Vista de tramo")],
@@ -1574,6 +1694,7 @@ def event_page(slug):
   <div class="container">
     {section_head("Fechas y plazas", "Elige día <span class='outline'>y turno</span>", "Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.")}
     {dates_block(slug)}
+    <p class="dates__note">{I["cal"]} <span>{WEATHER_NOTE}</span></p>
   </div>
 </section>
 {facts_box(slug, "La jornada en datos")}
@@ -1663,7 +1784,7 @@ def experiencias():
                  "Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. 4, 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.",
                  "XP", "bmw-e36-rally-tierra-contraluz-deyscom", ["4 · 5 · 6 · 7 de diciembre", "Mañana o tarde", "299 €"], "las experiencias de rally",
                  ("Ver fechas", "#fechas"))
-    html += ticker(["Experiencia Rally Eurocem", "DS Pilot Course", "Circuito El Hito", "BMW E36", "Peugeot 206", "Tierra"])
+    html += ticker(["Experiencia Rally Eurocem", "Rally Experience", "Circuito El Hito", "BMW E36", "Peugeot 206", "Tierra"])
     html += f"""<section class="section" id="experiencias">
   <div class="container">
     {section_head("Elige tu experiencia", "Dos formas de <span class='outline'>acelerar</span>", "El mismo formato de 5 ejercicios puntuables, en dos ocasiones distintas.")}
@@ -1698,26 +1819,77 @@ def experiencias():
 
 
 def events_promo():
-    eds = editions()
+    """Bloque de la home: Rally Experience (sin el evento Eurocem)."""
+    eds = editions("ds-pilot-course")
     days = sorted(dict.fromkeys(int(e["fecha"][8:]) for e in eds))
-    feats = [("cal", "4 de diciembre · Experiencia Rally Eurocem", "Jornada especial con equipos, camisetas y comida."),
-             ("flag", "5, 6 y 7 de diciembre · DS Pilot Course", "Curso de 4 horas, mañana o tarde, con instructor y comida."),
-             ("car", "BMW E36 y Peugeot 206", "Tracción delantera y propulsión, preparados para competición."),
-             ("ticket", "299 € por persona", "Pago seguro con tarjeta. Plazas limitadas por turno.")]
+    when = (", ".join(map(str, days[:-1])) + " y " + str(days[-1]) + " de diciembre") if len(days) > 1 else (f"{days[0]} de diciembre" if days else "Próximas fechas")
+    feats = [("cal", when, "Turno de mañana o de tarde en el Circuito El Hito (Cuenca)."),
+             ("car", "Peugeot 206 y BMW E36", "Tracción delantera y propulsión trasera, preparados para competir."),
+             ("helmet", "Instructores especializados", "Te explican cada ejercicio y te corrigen en pista."),
+             ("ticket", "299 € · comida incluida", "Pago seguro con tarjeta. Plazas limitadas por turno.")]
     f = "".join(f'<li><span class="ic">{I[ic]}</span><div><b>{t}</b><span>{d}</span></div></li>' for ic, t, d in feats)
     return f"""<section class="course-promo">
-  <div class="course-promo__bg">{pic("bmw-e36-rally-tierra-contraluz-deyscom", sizes="100vw")}</div>
+  <div class="course-promo__bg">{pic("peugeot-206-deyscom-curva-rally-castillo", sizes="100vw")}</div>
   <div class="container course-promo__inner">
     <div class="reveal">
-      <span class="course-promo__badge">{I['cal']} Diciembre 2026 · Plazas limitadas</span>
-      <h2>Conduce <span class="pink">un coche</span><br><span class="outline">de rally</span></h2>
-      <p class="lead">Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca): {", ".join(map(str, days[:-1]))} y {days[-1] if days else ""} de diciembre. 5 ejercicios puntuables, monitores y clasificación final.</p>
+      <span class="course-promo__badge">{I['cal']} Experiencias de conducción · Plazas limitadas</span>
+      <h2>Rally <span class="pink">Experience</span></h2>
+      <p class="course-promo__sub">Vive la emoción del rally sobre tierra.</p>
+      <p class="lead"><strong>¡Siente la emoción de conducir un auténtico coche de rally!</strong> 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36. Aprende a dominar la tracción delantera y la propulsión trasera con instructores especializados. ¡Comida incluida!</p>
       <div class="btn-row mt-2">
-        <a class="btn" href="experiencias.html#fechas">{I['ticket']} Ver fechas y reservar</a>
-        <a class="btn btn--ghost" href="ds-pilot-course.html">DS Pilot Course {I['arrow']}</a>
+        <a class="btn" href="ds-pilot-course.html#fechas">{I['ticket']} ¡Reserva tu experiencia!</a>
       </div>
     </div>
     <ul class="course-promo__feats reveal" data-delay="1">{f}</ul>
+  </div>
+</section>"""
+
+
+def cars_sale_block():
+    return f"""<section class="section cars-sale">
+  <div class="container cars-sale__inner">
+    <div class="cars-sale__media reveal">{pic("bmw-e36-rotulado-deyscom-motorsport", sizes="(max-width: 900px) 100vw, 50vw")}</div>
+    <div class="cars-sale__text reveal" data-delay="1">
+      <span class="eyebrow">Compraventa</span>
+      <h2>Coches <span class="outline">en venta</span></h2>
+      <p class="lead mt-2">Encuentra tu próximo coche. Vehículos de competición y deportivos seleccionados, revisados por nuestro taller.</p>
+      <div class="btn-row mt-2"><a class="btn" href="tienda.html#coches">{I['car']} Ver coches en venta</a></div>
+    </div>
+  </div>
+</section>"""
+
+
+ABOUT_TIMELINE = [("2011", "Nace Deyscom Sport", "Comenzamos con el alquiler de vehículos de competición."),
+                  ("Evolución", "Crecimiento del taller", "Ampliamos nuestros servicios de mecánica, preparación, restauración y competición."),
+                  ("Actualidad", "Deyscom Motorsport", "Taller especializado, competición, experiencias de conducción y proyectos personalizados.")]
+ABOUT_PHOTOS = ["nave-taller-deyscom-coches-competicion", "peugeot-206-deyscom-rally-frontal-cascos", "motor-admision-deyscom-peugeot-206",
+                "bmw-e36-competicion-decoracion-rosa", "mecanicos-deyscom-box-resistencia", "equipo-deyscom-motorsport-atardecer"]
+
+
+def about_timeline():
+    return '<ol class="timeline">' + "".join(
+        f'<li class="reveal" data-delay="{i}"><span class="timeline__year">{y}</span><b>{t}</b><p>{d}</p></li>' for i, (y, t, d) in enumerate(ABOUT_TIMELINE)) + "</ol>"
+
+
+def about_mosaic(photos=None):
+    return '<div class="mosaic">' + "".join(
+        f'<figure class="mosaic__item reveal" data-delay="{i % 3}">{pic(img, sizes="(max-width: 760px) 50vw, 25vw")}</figure>' for i, img in enumerate(photos or ABOUT_PHOTOS)) + "</div>"
+
+
+def about_home():
+    return f"""<section class="section section--ink about-home">
+  <div class="container">
+    <div class="about-home__grid">
+      <div class="reveal">
+        <span class="eyebrow">Conócenos · Nuestra historia</span>
+        <h2>Desde 2011, <span class="outline">viviendo el motor desde dentro</span></h2>
+        <p class="lead mt-2">Deyscom Motorsport nació en 2011 con una idea clara: acercar el mundo de la competición a todos los aficionados al automovilismo, con coches de carreras en alquiler a precios accesibles.</p>
+        <p class="muted">Hoy combinamos el trabajo diario en el taller con la participación en competiciones, el desarrollo de proyectos personalizados y la organización de experiencias de conducción. <strong>No solo preparamos coches. También competimos con ellos.</strong></p>
+        {about_timeline()}
+        <div class="btn-row mt-2"><a class="btn btn--ghost" href="nosotros.html">Conoce nuestra historia {I["arrow"]}</a></div>
+      </div>
+      <div class="reveal" data-delay="1">{about_mosaic()}</div>
+    </div>
   </div>
 </section>"""
 
@@ -2081,7 +2253,7 @@ def tienda():
     <div class="section__head">
       <div class="reveal"><span class="eyebrow">Coches y piezas en venta</span><h2>Listos para <span class="outline">rodar</span></h2></div>
       <div class="reveal" data-delay="1">
-        <p class="lead muted">Todo lo que tenemos a la venta, sincronizado con nuestro perfil de Wallapop. ¿Te interesa alguno? Escríbenos y lo vemos juntos, o prueba antes nuestros coches en el <a class="pink" href="ds-pilot-course.html">DS Pilot Course</a>.</p>
+        <p class="lead muted">Todo lo que tenemos a la venta, sincronizado con nuestro perfil de Wallapop. ¿Te interesa alguno? Escríbenos y lo vemos juntos, o prueba antes nuestros coches en el <a class="pink" href="ds-pilot-course.html">Rally Experience</a>.</p>
         <div class="btn-row mt-1"><a class="btn btn--ghost" data-social="wallapop" href="#">{I['wallapop']} Ver perfil en Wallapop</a></div>
       </div>
     </div>
@@ -2223,18 +2395,18 @@ def home():
     svc = [
         ("competicion.html", "01", "Competición", "Preparación, seguridad y asistencia de coches de rally, slalom y circuito.", "RACE", "mitsubishi-lancer-evo-rally-taller-deyscom", "60%"),
         ("restomod.html", "02", "Restomod", "Clásicos y 4x4 con alma y mecánica moderna. Proyectos únicos hechos a mano.", "CLASSIC", "todoterreno-chasis-restauracion-completa", "30%"),
-        ("pintura.html", "03", "Pintura", "Cabina de pintura, chapa, chasis, colores especiales y decoraciones racing.", "PAINT", "cabina-pintura-chasis-rosa", "60%"),
+        ("pintura.html", "03", "Chapa y pintura", "Cabina de pintura, chapa, colores especiales y decoraciones racing como las de nuestros coches.", "PAINT", "bmw-e36-competicion-decoracion-rosa", "50%"),
         ("banco-de-potencia.html", "04", "Banco de potencia", "Mide los CV y el par reales de tu coche y compara antes y después.", "DYNO", "banco-de-potencia-medicion-deyscom", "40%"),
-        ("tienda.html", "05", "Tienda", "Coches y piezas a la venta, y merchandising oficial Deyscom.", "SHOP", "asistencia-deyscom-peugeot-206-rally", "50%"),
+        ("tienda.html", "05", "Tienda online", "Compra la ropa y los accesorios oficiales de Deyscom Motorsport y recíbelos en casa.", "SHOP", "tienda-online-coleccion-deyscom-motorsport", "30%"),
     ]
     svc_html = "".join(
         f'<a class="svc reveal" data-delay="{i % 3}" href="{h}"><div class="svc__media">{art(w, x, "30%", img, t, "(max-width: 980px) 100vw, 50vw")}</div>'
         f'<span class="svc__num">{n}</span><h3>{t}</h3><p>{d}</p><span class="svc__go">Descubrir {I["arrow"]}</span></a>'
         for i, (h, n, t, d, w, img, x) in enumerate(svc)
     )
-    choices = [("flag", "Competición", "Rally, slalom, circuito"), ("star", "Restomod", "Clásico + mecánica moderna"),
-               ("spray", "Pintura", "Chapa, color, decoración"), ("gauge", "Banco de potencia", "Medir CV y par"),
-               ("helmet", "Experiencia Eurocem", "4 de diciembre"), ("cal", "DS Pilot Course", "5, 6 y 7 de diciembre")]
+    choices = [("flag", "Competición", "Preparación y asistencia"), ("wrench", "Mecánica", "Mantenimiento y reparación"),
+               ("star", "Restomod", "Clásico + mecánica moderna"), ("spray", "Chapa y pintura", "Chapa, color, decoración"),
+               ("gauge", "Banco de potencia", "Medir CV y par"), ("helmet", "Rally Experience", "Curso de rally en tierra")]
     choice_html = "".join(
         f'<label class="choice"><input type="radio" name="servicio" value="{t}"{" required" if i == 0 else ""}>'
         f'<span class="choice__box">{I[ic]}<b>{t}</b><span>{d}</span></span></label>'
@@ -2253,58 +2425,40 @@ def home():
                 [{"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#web", "name": "Deyscom Motorsport", "alternateName": "Deyscom", "url": SITE + "/", "inLanguage": "es-ES", "publisher": {"@id": SITE + "/#organizacion"}}, faq_ld(home_faq)],
                 "taller competición Madrid, preparación rally Madrid, restomod Madrid, banco de potencia Madrid, curso copiloto rally, experiencia pilotaje, Torrelaguna") + header("index")
     html += hero("Torrelaguna · Madrid · Motorsport", ["Hechos", "para <span class='pink'>correr.</span>", "<span class='outline'>Pensados para ti.</span>"],
-                 "Coches de competición, restomods, pintura, banco de potencia y experiencias de rally. Un taller de apasionados donde cada coche se trata como si fuera nuestro.",
-                 "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Restomod", "Pintura", "Banco de potencia"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
-    html += ticker(["Competición", "Restomod", "Pintura", "Banco de potencia", "Experiencia Rally Eurocem", "DS Pilot Course"])
+                 "Mecánica, coches de competición, restomods, chapa y pintura, banco de potencia y experiencias de rally. Desde 2011, un taller de apasionados donde cada coche se trata como si fuera nuestro.",
+                 "", "bmw-e36-rally-tierra-deyscom-motorsport", ["Competición", "Mecánica", "Chapa y pintura", "Desde 2011"], "", ("Empieza tu proyecto", "#presupuesto"), page=False)
+    html += ticker(["Competición", "Mecánica", "Restomod", "Chapa y pintura", "Banco de potencia", "Rally Experience", "Tienda online"])
     html += facts_box("index", "Deyscom Motorsport <span class='outline'>en datos</span>", "Quiénes somos en 30 segundos")
-    html += events_promo()
     html += f"""
 <section class="section">
   <div class="container">
-    {section_head("Qué hacemos", "Un taller.<br><span class='outline'>Cinco pasiones.</span>", "Desde un coche de rally listo para el primer tramo hasta un clásico que vuelve a nacer. Elige por dónde quieres empezar.")}
+    {section_head("Nuestro taller", "Un taller.<br><span class='outline'>Cinco pasiones.</span>", "Desde un coche de rally listo para el primer tramo hasta un clásico que vuelve a nacer. Elige por dónde quieres empezar.")}
     <div class="services">{svc_html}</div>
-  </div>
-</section>
-
-<section class="section section--ink">
-  <div class="container">
-    {section_head("Experiencias · Diciembre 2026", "Conduce <span class='outline'>un coche de rally</span>", "Jornadas sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. Sin coche propio, con monitores y todo el equipo Deyscom.")}
-    <div class="exps exps--2">{"".join(event_card(s, x) for s, x in EVENTS.items())}</div>
-    <div class="btn-row mt-3"><a class="btn" href="experiencias.html#fechas">{I['ticket']} Ver fechas y reservar {I['arrow']}</a></div>
-  </div>
-</section>
-
-<section class="section section--tight">
-  <div class="container">
-    <div class="usp">
-      <div class="usp__item reveal"><div class="usp__big">1<span>:</span>1</div><h3>Trato directo</h3><p>Hablas con quien trabaja en tu coche. Sin intermediarios.</p></div>
-      <div class="usp__item reveal" data-delay="1"><div class="usp__big">24<span>h</span></div><h3>Respuesta rápida</h3><p>Contestamos tu solicitud en menos de 24 h laborables.</p></div>
-      <div class="usp__item reveal" data-delay="2"><div class="usp__big">100<span>%</span></div><h3>A medida</h3><p>Cada proyecto se diseña para tu coche, tu uso y tu presupuesto.</p></div>
-      <div class="usp__item reveal" data-delay="3"><div class="usp__big">07<span>:</span>00</div><h3>Madrugamos</h3><p>Abrimos de lunes a viernes a las 7. Tu coche, cuanto antes en pista.</p></div>
+    <div class="usp mt-3">
+      <div class="usp__item reveal"><div class="usp__big">1<span>:</span>1</div><h3>Atención personalizada</h3><p>Hablas directamente con quienes trabajan en tu coche. Sin intermediarios.</p></div>
+      <div class="usp__item reveal" data-delay="1"><div class="usp__big">⚡</div><h3>Atención rápida</h3><p>Atendemos tus consultas de forma ágil, cercana y personalizada.</p></div>
+      <div class="usp__item reveal" data-delay="2"><div class="usp__big">100<span>%</span></div><h3>Proyectos a medida</h3><p>Adaptamos cada trabajo a las necesidades, objetivos y presupuesto del cliente.</p></div>
+      <div class="usp__item reveal" data-delay="3"><div class="usp__big">+15<span class="usp__unit"> años</span></div><h3>Experiencia</h3><p>Desde 2011 dedicados al mundo del motor y la competición.</p></div>
     </div>
   </div>
 </section>
 
+{events_promo()}
+
 <section class="section section--ink shop-teaser">
   <div class="container">
     <div class="section__head">
-      <div class="reveal"><span class="eyebrow">Tienda Deyscom</span><h2>Viste <span class="outline">el equipo</span></h2></div>
-      <div class="reveal" data-delay="1"><p class="lead muted">Merchandising oficial y coches y piezas a la venta, revisados por nuestro taller.</p>
-        <div class="btn-row mt-1"><a class="btn" href="tienda.html">{I['bag']} Entrar en la tienda</a><a class="btn btn--ghost" href="tienda.html#coches">{I['car']} Coches en venta</a></div></div>
+      <div class="reveal"><span class="eyebrow">Tienda online Deyscom</span><h2>Lleva la pasión <span class="outline">por el motor contigo</span></h2></div>
+      <div class="reveal" data-delay="1"><p class="lead muted">Descubre nuestra colección oficial de ropa y accesorios Deyscom Motorsport. Diseñada para quienes viven la competición dentro y fuera del circuito.</p>
+        <div class="btn-row mt-1"><a class="btn" href="tienda.html">{I['bag']} Descubre la colección</a></div></div>
     </div>
     <div class="products">{"".join(product_card(s, p) for s, p in PRODUCTS.items())}</div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    {split("Quiénes somos", "Gasolina <span class='pink'>en las venas</span>",
-           "<p class='lead'>Deyscom Motorsport nace de una idea sencilla: hacer los coches que a nosotros nos gustaría conducir. Competimos, restauramos, pintamos y preparamos con la misma obsesión por el detalle.</p>"
-           "<p class='muted'>Desde nuestra nave en Torrelaguna trabajamos para pilotos, coleccionistas y apasionados de toda España. Cada proyecto se vive, se documenta y se comparte.</p>"
-           f'<div class="btn-row mt-2"><a class="btn btn--ghost" href="nosotros.html">Conócenos {I["arrow"]}</a></div>',
-           "TEAM", "equipo-deyscom-motorsport-atardecer", "Equipo Deyscom", False, "65%")}
-  </div>
-</section>
+{cars_sale_block()}
+
+{about_home()}
 
 <section class="section section--pink">
   <div class="container">
@@ -2381,7 +2535,7 @@ def home():
   </div>
 </section>
 {area_section()}
-{mega_cta("¿Arrancamos <span class='outline'>motores?</span>", "Escríbenos por WhatsApp, llámanos o pide presupuesto. Te respondemos en menos de 24 h laborables.", "")}
+{mega_cta("¿Arrancamos <span class='outline'>motores?</span>", "Escríbenos por WhatsApp, llámanos o pide presupuesto. Te atendemos de forma rápida y cercana.", "")}
 """
     return html + footer()
 
@@ -2390,31 +2544,60 @@ def home():
 def nosotros():
     html = head("Quiénes somos · Deyscom Motorsport, taller motorsport en Torrelaguna (Madrid)",
                 "Conoce Deyscom Motorsport: un equipo de apasionados del motor en Torrelaguna (Madrid) especializado en competición, restomod, pintura, banco de potencia, experiencias y formación.",
-                "nosotros", "vuestro taller", "peugeot-206-preparacion-rally-taller-torrelaguna", [breadcrumbs_ld("nosotros", "Quiénes somos")]) + header("nosotros")
-    html += hero("Quiénes somos", ["Pasión", "<span class='pink'>con</span>", "<span class='outline'>octanaje</span>"],
-                 "Somos Deyscom Motorsport, un taller de Torrelaguna (Madrid) donde la competición, la restauración y la preparación se viven a fondo, sin atajos.",
+                "nosotros", "vuestro taller", "peugeot-206-preparacion-rally-taller-torrelaguna", [breadcrumbs_ld("nosotros", "Nosotros")]) + header("nosotros")
+    html += hero("Nosotros · Desde 2011", ["Tu coche.", "<span class='pink'>Tu proyecto.</span>", "<span class='outline'>Nuestra pasión.</span>"],
+                 "Somos Deyscom Motorsport: desde 2011 viviendo el motor desde dentro. Taller de mecánica, preparación y competición en Torrelaguna (Madrid) que también compite con sus coches.",
                  "DM", "peugeot-206-preparacion-rally-taller-torrelaguna", ["Torrelaguna · Madrid", "Taller motorsport", "Clientes de toda España"], "vuestro taller", ("Habla con nosotros", "contacto.html"))
-    html += ticker(["Pasión", "Detalle", "Honestidad", "Velocidad", "Equipo", "Carácter"], dark=True)
+    html += ticker(["Desde 2011", "Mecánica", "Preparación", "Competición", "Chapa y pintura", "Experiencias"], dark=True)
     html += f"""<section class="section">
   <div class="container">
-    {split("Nuestra historia", "Del <span class='pink'>paddock</span> al taller",
-           "<p class='lead'>Deyscom Motorsport nació de las ganas de hacer las cosas a nuestra manera: con tiempo, con cariño y con la exigencia de quien también se pone el casco.</p>"
-           "<p class='muted'>Hoy preparamos coches de competición, damos vida a restomods, pintamos, medimos en banco de potencia y llevamos a nuevos pilotos y copilotos a vivir la competición desde dentro. Lo hacemos desde nuestra nave en Torrelaguna, con trato cercano y comunicación constante.</p>"
-           "<p class='muted'>Compartimos cada proyecto en redes porque estamos orgullosos de lo que hacemos y porque creemos que la transparencia es la mejor garantía.</p>",
-           "STORY", "bmw-e36-compact-competicion-taller", "Desde Torrelaguna")}
+    {split("Nuestra historia", "Desde 2011, <span class='pink'>viviendo el motor</span> desde dentro",
+           "<p class='lead'>Deyscom Motorsport nació en 2011 con una idea clara: acercar el mundo de la competición a todos los aficionados al automovilismo, ofreciendo vehículos de carreras en alquiler a precios accesibles.</p>"
+           "<p class='muted'>Lo que comenzó como una empresa dedicada al alquiler de coches de competición fue creciendo de forma natural. El mantenimiento y la preparación de nuestros propios vehículos dieron paso a nuevos proyectos para clientes, hasta convertirnos en un taller especializado en mecánica, preparación y competición.</p>"
+           "<p class='muted'>Con los años hemos ampliado nuestras instalaciones, servicios y experiencia, pero mantenemos la misma pasión por el motor que nos impulsó desde el primer día.</p>"
+           "<p class='muted'>Hoy, Deyscom Motorsport combina el trabajo diario en el taller con la participación en competiciones, el desarrollo de proyectos personalizados y la organización de experiencias de conducción.</p>",
+           "2011", "peugeot-206-deyscom-rally-frontal-asfalto", "Desde 2011")}
+  </div>
+</section>
+<section class="section section--ink">
+  <div class="container about-home__grid">
+    <div class="reveal">
+      <span class="eyebrow">Nuestra trayectoria</span>
+      <h2>De alquilar coches <span class="outline">a competir con ellos</span></h2>
+      {about_timeline()}
+    </div>
+    <div class="reveal" data-delay="1">{about_mosaic()}</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    {split("Nuestra experiencia, tu confianza", "No solo preparamos coches. <span class='outline'>También competimos con ellos.</span>",
+           "<p class='lead'>Nuestra experiencia en diferentes disciplinas del automovilismo nos permite trasladar al taller los conocimientos adquiridos en condiciones reales de competición.</p>"
+           "<p class='muted'>Sabemos que cada coche y cada cliente son diferentes. Por eso ofrecemos un trato cercano, asesoramiento personalizado y soluciones adaptadas a cada proyecto, desde un mantenimiento convencional hasta una preparación completa para competir.</p>"
+           "<p class='muted'>Rallyes, rallysprints, slalom y pruebas de resistencia: ofrecemos asistencia técnica en competiciones por toda España.</p>",
+           "RACE", "mecanicos-deyscom-box-resistencia", "En el box", False)}
   </div>
 </section>
 <section class="section section--ink">
   <div class="container">
-    {section_head("Valores", "Lo que <span class='outline'>nos mueve</span>", "Las reglas que aplicamos a cada coche que entra por la puerta.")}
+    {section_head("Qué hacemos", "Todo el motor, <span class='outline'>bajo un mismo techo</span>", "De un mantenimiento convencional a una preparación completa para competir.")}
     {cards([
-        ("helmet", "Lo vivimos", "Somos pilotos, aficionados y mecánicos. Entendemos lo que significa tu coche."),
-        ("eye", "Transparencia", "Fotos, vídeos y presupuestos claros. Sabes en todo momento qué se hace."),
-        ("shield", "Seguridad", "En competición y en calle, la seguridad nunca es negociable."),
-        ("star", "Detalle", "Lo que no se ve importa tanto como lo que se ve."),
-        ("grad", "Formación", "Compartimos lo que sabemos con cursos y experiencias."),
-        ("flag", "Compromiso", "Plazos realistas y palabra cumplida."),
+        ("wrench", "Mecánica y mantenimiento", "Reparación, diagnóstico y mantenimiento de vehículos."),
+        ("flag", "Preparación de competición", "Desarrollo, modificación y asistencia técnica de vehículos de carreras."),
+        ("spray", "Chapa, pintura y restauración", "Reparación, recuperación y personalización de vehículos."),
+        ("shield", "Homologaciones", "Asesoramiento y gestión de reformas de vehículos."),
+        ("car", "Alquiler de coches de competición", "Opciones para pilotos y aficionados."),
+        ("helmet", "Experiencias de conducción", "Cursos y actividades para disfrutar del automovilismo."),
+        ("bag", "Compraventa e importación", "Vehículos y componentes especializados."),
     ])}
+  </div>
+</section>
+<section class="section section--pink philosophy">
+  <div class="container">
+    <span class="eyebrow">Nuestra filosofía</span>
+    <h2>Pasión por la competición. <span class="outline">Compromiso con cada proyecto.</span></h2>
+    <p class="lead mt-2">Nos implicamos en cada trabajo con la misma dedicación, tanto si se trata de una reparación cotidiana como de preparar un coche para su próxima carrera.</p>
+    <p class="philosophy__quote">Porque para nosotros el motor no es solo un trabajo. Es nuestra forma de vida.</p>
   </div>
 </section>
 {team_block()}
@@ -2439,7 +2622,7 @@ def contacto():
     html = head("Contacto · Deyscom Motorsport | Taller en Torrelaguna, Madrid",
                 "Contacta con Deyscom Motorsport: (+34) 615 97 22 33 · info@deyscom.com · C/ Canal de Isabel II, 2 Nave 3, 28180 Torrelaguna (Madrid). Lunes a viernes 07:00-15:00.",
                 "contacto", "un presupuesto", "og", [breadcrumbs_ld("contacto", "Contacto")]) + header("contacto")
-    opts = ["Competición", "Restomod", "Pintura", "Banco de potencia", "Experiencia Rally Eurocem", "DS Pilot Course", "Tienda / compra", "Otro"]
+    opts = ["Competición", "Mecánica y mantenimiento", "Restomod", "Chapa y pintura", "Banco de potencia", "Asistencia en carreras", "Rally Experience", "Experiencia Rally Eurocem", "Tienda online", "Coches en venta", "Otro"]
     sel = "".join(f'<option value="{o}">{o}</option>' for o in opts)
     html += f"""<section class="hero page-hero" style="min-height:52svh">
   <div class="hero__bg"></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
@@ -2465,13 +2648,14 @@ def contacto():
         <li><span class="ic">{I['mail']}</span><div><small>Email</small><a href="mailto:{EMAIL}">{EMAIL}</a></div></li>
         <li><span class="ic">{I['pin']}</span><div><small>Ubicación</small><a href="https://www.google.com/maps/search/?api=1&query=Calle+Canal+de+Isabel+II+2+Torrelaguna" target="_blank" rel="noopener">C/ Canal de Isabel II, 2 · Nave 3<br>28180 Torrelaguna · Madrid</a></div></li>
         <li><span class="ic">{I['clock']}</span><div style="width:100%"><small>Horario de apertura</small>{hours_table()}</div></li>
+        <li><span class="ic">{I['shield']}</span><div><small>Datos de la empresa</small><span>{COMPANY["name"]} · CIF {COMPANY["cif"]}<br>{COMPANY["address"]}</span></div></li>
       </ul>
       <div class="mt-3">{social_links()}</div>
     </div>
     <div class="form-card reveal" data-delay="1" data-form-wrap>
       <form class="form-body" data-lead="contacto" novalidate>
         <div class="fstep__title">Pide presupuesto</div>
-        <p class="fstep__sub">Te respondemos en menos de 24 h laborables.</p>
+        <p class="fstep__sub">Te respondemos lo antes posible.</p>
         <div class="form-grid">
           <div class="field"><label for="c-n">Nombre <span class="req">*</span></label><input class="input" id="c-n" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
           <div class="field"><label for="c-t">Teléfono <span class="req">*</span></label>{tel_input("c-t")}</div>
@@ -2505,6 +2689,7 @@ COMPANY = dict(
     address="C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), España",
     registry="Inscrita en el Registro Mercantil de Madrid, hoja M-764451",
 )
+WEATHER_NOTE = ("Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista puede haber cambios de horario o de fecha: somos exigentes con que el circuito esté en las condiciones apropiadas para que la jornada se haga con total garantía de calidad.")
 LEGAL_UPDATED = "12 de octubre de 2026"
 # Política de cancelación de experiencias y cursos (editable por Deyscom)
 CANCEL_POLICY = [
@@ -2628,7 +2813,7 @@ def legal_pages():
 <p>Si eres consumidor, dispones de <strong>14 días naturales</strong> desde la recepción del producto para desistir de la compra sin necesidad de justificación. Comunícanoslo por escrito a <a href="mailto:{EMAIL}">{EMAIL}</a> (puedes usar el modelo de abajo) y devuélvenos el producto sin usar y en su estado original en los 14 días siguientes. Te reembolsaremos el importe, incluidos los gastos de envío estándar, en un máximo de 14 días desde que recibamos tu comunicación, por el mismo medio de pago. Los gastos de devolución corren de tu cuenta. No se admite el desistimiento de productos personalizados.</p>
 <div class="legal-box"><p><strong>Modelo de desistimiento:</strong> «A la atención de DEYSCOM MOTORSPORT, S.L., C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), {EMAIL}: le comunico que desisto de mi contrato de compra del siguiente producto: [producto], pedido el [fecha] / recibido el [fecha]. Nombre, dirección, firma (solo en papel) y fecha.»</p></div>
 <h2>6. Experiencias y cursos</h2>
-<p>Las experiencias y cursos de conducción (como la Experiencia Rally Eurocem o el DS Pilot Course) son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
+<p>Las experiencias y cursos de conducción (como la Experiencia Rally Eurocem o el Rally Experience) son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
 <ul>{cancel}</ul>
 <p><strong>Requisitos:</strong> para conducir es necesario ser mayor de edad, tener carnet de conducir en vigor y, en pruebas federadas, la licencia correspondiente (te ayudamos a tramitarla). Debes seguir en todo momento las indicaciones de seguridad del equipo y de la organización. Deyscom podrá excluir de la actividad a quien ponga en riesgo su seguridad o la de terceros. Antes de la experiencia te informaremos de las condiciones de uso del coche, del seguro y, en su caso, de la fianza.</p>
 <h2>7. Garantía</h2>
@@ -2880,7 +3065,7 @@ def blog_post(pst):
     <div class="posts posts--3">{related}</div>
   </div>
 </section>
-{mega_cta("¿Hablamos de <span class='outline'>tu proyecto?</span>", "Escríbenos y te respondemos en menos de 24 h laborables.", pst['title'])}
+{mega_cta("¿Hablamos de <span class='outline'>tu proyecto?</span>", "Escríbenos y te respondemos lo antes posible.", pst['title'])}
 """
     return html + footer()
 
@@ -2974,7 +3159,7 @@ def rental_page():
 </section>
 {related_section(slug)}
 {area_section("alquiler de coches de rally")}
-{mega_cta("¿Nos vemos <span class='outline'>en la salida?</span>", "Reserva tu coche de rally y te confirmamos disponibilidad en menos de 24 h laborables.", "el alquiler de un coche de rally", ("Reservar coche", "#reserva"))}
+{mega_cta("¿Nos vemos <span class='outline'>en la salida?</span>", "Reserva tu coche de rally y te confirmamos disponibilidad lo antes posible.", "el alquiler de un coche de rally", ("Reservar coche", "#reserva"))}
 """
     return html + footer()
 
@@ -3065,7 +3250,7 @@ def crm_page():
     nav_html += f'<a class="crm-nav__btn crm-nav__ext" href="index.html" target="_blank" rel="noopener" data-site-link>{I["eye"]}<span>Ver la web ↗</span></a>'
     nav_html += f'<a class="crm-nav__btn crm-nav__ext crm-nav__ext--2" href="admin/" target="_blank" rel="noopener" data-site-link>{I["book"]}<span>Contenido web ↗</span></a>'
     estados = "".join(f"<option>{e}</option>" for e in ["Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido"])
-    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Experiencia Rally Eurocem", "DS Pilot Course", "Restomod", "Pintura", "Banco de potencia",
+    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Experiencia Rally Eurocem", "Rally Experience", "Restomod", "Pintura", "Banco de potencia",
                                                          "DS Pilot Weekend – Circuit", "DS Pilot Weekend – Rally", "DS Pilot Weekend – Slalom", "DS Copilot Course", "Tienda", "Otro"])
     return f"""<!doctype html>
 <html lang="es-ES">
@@ -3284,7 +3469,7 @@ def crm_page():
 def llms_txt():
     return f"""# Deyscom Motorsport
 
-> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y DS Pilot Course) en el Circuito El Hito (Cuenca).
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y Rally Experience) en el Circuito El Hito (Cuenca).
 
 - Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
 - Teléfono y WhatsApp: {PHONE_TXT}
@@ -3304,7 +3489,7 @@ def llms_txt():
 Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
 
 ## Datos de empresa
-- Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · fundada en 2022
+- Razón social: DEYSCOM MOTORSPORT, S.L. · CIF B09939471 · sociedad constituida en 2022 · actividad desde 2011 (Deyscom Sport)
 - Texto completo de las páginas principales para modelos de lenguaje: {SITE}/llms-full.txt
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)

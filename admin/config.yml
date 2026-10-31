@@ -214,6 +214,10 @@
        "value": "chasis-tubular-buggy-preparacion"
       },
       {
+       "label": "Colección oficial Deyscom Motorsport: sudadera, gorra y camiseta negras con logo rosa (tienda-online-coleccion-deyscom-motorsport)",
+       "value": "tienda-online-coleccion-deyscom-motorsport"
+      },
+      {
        "label": "Colector de escape en un motor de competición (colector-escape-motor-competicion)",
        "value": "colector-escape-motor-competicion"
       },
@@ -338,6 +342,10 @@
        "value": "peugeot-206-rally-tierra-deyscom-motorsport"
       },
       {
+       "label": "Peugeot 206 de Deyscom Motorsport en tramo con piloto y copiloto con casco (peugeot-206-deyscom-rally-frontal-cascos)",
+       "value": "peugeot-206-deyscom-rally-frontal-cascos"
+      },
+      {
        "label": "Peugeot 206 de Deyscom Motorsport en un tramo de montaña (peugeot-206-rally-comunidad-madrid-montana)",
        "value": "peugeot-206-rally-comunidad-madrid-montana"
       },
@@ -354,12 +362,20 @@
        "value": "peugeot-206-deyscom-curva-tramo-rally-paisaje"
       },
       {
+       "label": "Peugeot 206 de Deyscom Motorsport trazando una curva en un tramo de rally de montaña (peugeot-206-deyscom-curva-rally-castillo)",
+       "value": "peugeot-206-deyscom-curva-rally-castillo"
+      },
+      {
        "label": "Peugeot 206 de Deyscom en el tramo del Rallye Comunidad de Madrid – El Molar (peugeot-206-rally-el-molar-tramo)",
        "value": "peugeot-206-rally-el-molar-tramo"
       },
       {
        "label": "Peugeot 206 de rally de Deyscom Motorsport de frente con piloto y copiloto con casco (peugeot-206-deyscom-rally-frontal-pilotos)",
        "value": "peugeot-206-deyscom-rally-frontal-pilotos"
+      },
+      {
+       "label": "Peugeot 206 de rally de Deyscom Motorsport de frente en un tramo de asfalto con piloto y copiloto (peugeot-206-deyscom-rally-frontal-asfalto)",
+       "value": "peugeot-206-deyscom-rally-frontal-asfalto"
       },
       {
        "label": "Peugeot 206 en preparación para rally en el taller de Torrelaguna (peugeot-206-preparacion-rally-taller-torrelaguna)",
@@ -408,6 +424,10 @@
       {
        "label": "Subchasis rosa recién pintado en la cabina de pintura (cabina-pintura-subchasis-rosa-deyscom)",
        "value": "cabina-pintura-subchasis-rosa-deyscom"
+      },
+      {
+       "label": "Trasera del Peugeot 206 de rally con la rotulación rosa de Deyscom Motorsport (peugeot-206-deyscom-rally-trasera-rotulacion)",
+       "value": "peugeot-206-deyscom-rally-trasera-rotulacion"
       },
       {
        "label": "Vista panorámica de un tramo de rally con el Peugeot 206 de Deyscom Motorsport (peugeot-206-deyscom-tramo-rally-vista-panoramica)",
@@ -585,7 +605,7 @@
            "value": "experiencia-rally-eurocem"
           },
           {
-           "label": "DS Pilot Course",
+           "label": "Rally Experience",
            "value": "ds-pilot-course"
           }
          ]
@@ -847,7 +867,7 @@
      ]
     },
     {
-     "label": "DS Pilot Course · textos",
+     "label": "Rally Experience · textos",
      "name": "ds-pilot-course",
      "file": "content/paginas/ds-pilot-course.json",
      "fields": [

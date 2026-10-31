@@ -20,7 +20,7 @@
     plazas: "Plazas", prueba: "Prueba", interes: "Interés", uso: "Uso", producto: "Producto", talla: "Talla", color: "Color",
     cantidad: "Cantidad", total: "Total", entrega: "Entrega", direccion: "Dirección" };
 
-  var PRODUCTOS = { "experiencia-rally-eurocem": "Experiencia Rally Eurocem", "ds-pilot-course": "DS Pilot Course" };
+  var PRODUCTOS = { "experiencia-rally-eurocem": "Experiencia Rally Eurocem", "ds-pilot-course": "Rally Experience" };
   var ENVIOS = ["Pendiente de pago", "Pagado", "Preparando", "Enviado", "Entregado", "Cancelado"];
   var ED_ESTADOS = ["Abierta", "Completa", "Cerrada", "Cancelada"];
   var DIRECCION = "C/ Canal de Isabel II, 2, Nave 3, Torrelaguna (L-V 07:00–15:00)";

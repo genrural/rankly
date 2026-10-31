@@ -3,7 +3,7 @@
   "datos_clave": [
     {
       "dato": "Qué es",
-      "valor": "Taller motorsport: coches de competición, restomod, pintura en cabina y banco de potencia"
+      "valor": "Taller motorsport: mecánica, preparación de competición, chapa y pintura, restomod, banco de potencia y experiencias de rally"
     },
     {
       "dato": "Dónde",
@@ -11,19 +11,19 @@
     },
     {
       "dato": "Desde",
-      "valor": "2022 · DEYSCOM MOTORSPORT, S.L."
+      "valor": "2011, cuando nació Deyscom Sport con el alquiler de coches de competición"
+    },
+    {
+      "dato": "Competición",
+      "valor": "Rallyes, rallysprints, slalom y resistencia, con asistencia técnica por toda España"
+    },
+    {
+      "dato": "Experiencias",
+      "valor": "Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca), 5, 6 y 7 de diciembre · 299 €"
     },
     {
       "dato": "Horario",
       "valor": "Lunes a viernes, de 07:00 a 15:00"
-    },
-    {
-      "dato": "Experiencias",
-      "valor": "Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5, 6 y 7 dic) en el Circuito El Hito (Cuenca)"
-    },
-    {
-      "dato": "Precio",
-      "valor": "Jornadas de conducción de rally sobre tierra con BMW E36 y Peugeot 206 · 299 €"
     }
   ],
   "guias": [],
@@ -41,12 +41,16 @@
       "respuesta": "Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial."
     },
     {
-      "pregunta": "¿Puedo correr sin tener coche propio?",
-      "respuesta": "Sí: en nuestras experiencias conduces nuestro BMW E36 y nuestro Peugeot 206 de rally sobre tierra, con monitores. Próximas fechas: 4, 5, 6 y 7 de diciembre."
+      "pregunta": "¿Hacéis asistencia en carreras fuera de Madrid?",
+      "respuesta": "Sí. Ofrecemos asistencia técnica en competiciones por toda España. Desde 2011 tenemos experiencia en rallyes, rallysprints, slalom y pruebas de resistencia, y nos encargamos de la preparación, el mantenimiento y la asistencia de los coches, tanto en nuestro taller de Torrelaguna como durante las carreras, adaptándonos a cada equipo y piloto."
+    },
+    {
+      "pregunta": "¿Puedo conducir un coche de rally sin tener uno?",
+      "respuesta": "Sí: en la Rally Experience conduces nuestro Peugeot 206 y nuestro BMW E36 sobre tierra durante 4 horas, con instructores especializados. Próximas fechas: 5, 6 y 7 de diciembre."
     },
     {
       "pregunta": "¿Cómo reservo una experiencia?",
-      "respuesta": "Entra en Experiencias, elige fecha y turno, deja tus datos y paga con tarjeta en la pasarela segura de Stripe. Las plazas son limitadas."
+      "respuesta": "Entra en la Rally Experience, elige fecha y turno, deja tus datos y paga con tarjeta en la pasarela segura de Stripe. Las plazas son limitadas."
     }
   ],
   "articulos_relacionados": []

@@ -65,11 +65,11 @@
       btn.setAttribute("aria-expanded", open);
     });
     it.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeSubs(); btn.focus(); } });
-    it.addEventListener("focusout", function (e) { if (!it.contains(e.relatedTarget) && window.innerWidth > 1100) { it.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); } });
+    it.addEventListener("focusout", function (e) { if (!it.contains(e.relatedTarget) && window.innerWidth > 1360) { it.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); } });
   });
-  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item.has-sub") && window.innerWidth > 1100) closeSubs(); });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item.has-sub") && window.innerWidth > 1360) closeSubs(); });
   // En móvil se abre desplegado el apartado de la página actual
-  subs.forEach(function (it) { if ($('.nav__sub [aria-current="page"]', it) && window.innerWidth <= 1100) { it.classList.add("is-open"); $(".nav__toggle", it).setAttribute("aria-expanded", "true"); } });
+  subs.forEach(function (it) { if ($('.nav__sub [aria-current="page"]', it) && window.innerWidth <= 1360) { it.classList.add("is-open"); $(".nav__toggle", it).setAttribute("aria-expanded", "true"); } });
 
   var header = $(".header");
   var onScroll = function () { if (header) header.classList.toggle("is-scrolled", window.scrollY > 20); };
@@ -373,7 +373,7 @@
         btn.classList.remove("is-loading"); btn.disabled = false;
         if (!CFG.SHEETS_ENDPOINT) window.open(waFromLead(data), "_blank", "noopener");
         bMsg.className = "form-msg is-ok";
-        bMsg.textContent = "¡Plaza reservada! Te enviamos el enlace de pago en menos de 24 h laborables.";
+        bMsg.textContent = "¡Plaza reservada! Te enviamos el enlace de pago lo antes posible.";
         bForm.reset();
       });
     });
@@ -512,8 +512,8 @@
       $("[data-race-kicker]", box).textContent = jump ? "Salida en falso · +5 s" : "Reacción: " + react.toFixed(3).replace(".", ",") + " s";
       $("[data-race-title]", box).textContent = win ? "¡Victoria con el " + NAMES[mine] + "!" : "El " + NAMES[rival] + " te gana por " + fmt(gap);
       $("[data-race-text]", box).textContent = win
-        ? "Le sacas " + fmt(gap) + " al " + NAMES[rival] + ". Ahora imagina el volante en tus manos: en el DS Pilot Course aprendes con el 206 y con el E36, con tu instructor al lado."
-        : (jump ? "Te has adelantado al semáforo. " : "") + "Esas décimas se ganan con técnica: cambios de peso, pie izquierdo y control del sobreviraje. Justo lo que aprendes en el DS Pilot Course.";
+        ? "Le sacas " + fmt(gap) + " al " + NAMES[rival] + ". Ahora imagina el volante en tus manos: en el Rally Experience aprendes con el 206 y con el E36, con tu instructor al lado."
+        : (jump ? "Te has adelantado al semáforo. " : "") + "Esas décimas se ganan con técnica: cambios de peso, pie izquierdo y control del sobreviraje. Justo lo que aprendes en el Rally Experience.";
       msg.textContent = win ? "🏁 Bandera a cuadros. ¡Ganas tú!" : "🏁 Bandera a cuadros. Toca revancha.";
       res.hidden = false;
       track("race_finish", { car: NAMES[mine], win: win ? 1 : 0 });
@@ -549,6 +549,103 @@
     stage.addEventListener("pointerdown", function (e) { if (!e.target.closest("a,button") && press()) e.preventDefault(); });
     $("[data-race-again]", box).addEventListener("click", function () { res.hidden = true; start(); go.focus(); });
     pick(picks[0]); reset(); msg.textContent = "Elige coche y pulsa «Salida».";
+  });
+  // Configurador «Monta tu coche de rally»: arrastrar (ratón o dedo) o tocar cada pieza
+  $$("[data-builder]").forEach(function (box) {
+    var DATA = {}; try { DATA = JSON.parse(box.getAttribute("data-builder")); } catch (e) { return; }
+    var svg = $("[data-bc-svg]", box), drop = $("[data-bc-drop]", box), parts = $$(".bc__part", box);
+    var cats = Object.keys(DATA), state = {}, BASE_CV = 75;
+    var NAMES = { llantas: "Llantas", motor: "Motor", autoblocante: "Autoblocante", frenos: "Frenos", suspension: "Suspensión", jaula: "Jaula" };
+    var pct = function (v) { return Math.max(4, Math.min(100, Math.round(v))) + "%"; };
+    var render = function () {
+      var cv = BASE_CV, tr = 30, ct = 30, sg = 15;
+      cats.forEach(function (c) {
+        var o = state[c], d = o && DATA[c][o];
+        if (o) svg.setAttribute("data-" + c, o); else svg.removeAttribute("data-" + c);
+        var ch = $('[data-bc-chosen="' + c + '"]', box); if (ch) ch.textContent = d ? d.label.split(" · ")[0] : "Sin montar";
+        $('[data-cat-box="' + c + '"]', box).classList.toggle("is-set", !!o);
+        var hot = $('[data-hot="' + c + '"]', svg); if (hot) hot.classList.toggle("is-done", !!o);
+        if (!d) return;
+        if (d.cv) cv = d.cv; tr += d.traccion || 0; ct += d.control || 0; sg += d.seguridad || 0;
+        if (d.color) svg.style.setProperty("--rim", d.color);
+      });
+      if (!state.llantas) svg.style.removeProperty("--rim");
+      parts.forEach(function (b) { b.setAttribute("aria-pressed", state[b.getAttribute("data-cat")] === b.getAttribute("data-opt") ? "true" : "false"); });
+      $("[data-bc-cv]", box).textContent = cv; var badge = $("[data-bc-cv-badge]", box); if (badge) badge.textContent = cv + " CV";
+      $('[data-bc-bar="potencia"]', box).style.width = pct(cv / 250 * 100);
+      $('[data-bc-bar="traccion"]', box).style.width = pct(tr);
+      $('[data-bc-bar="control"]', box).style.width = pct(ct);
+      $('[data-bc-bar="seguridad"]', box).style.width = pct(sg);
+      var n = cats.filter(function (c) { return state[c]; }).length;
+      $$("[data-bc-count]", box).forEach(function (x) { x.textContent = n; });
+      var full = n === cats.length;
+      $$("[data-bc-done]", box).forEach(function (x) { x.hidden = !full; });
+      if (full) {
+        var tt = cv >= 220 ? "🔥 ¡Un 206 Kit Car de verdad!" : cv >= 170 ? "🏁 ¡Listo para el tramo!" : "✅ ¡Tu 206 de rally está montado!";
+        var sm = cats.map(function (c) { return NAMES[c] + ": " + DATA[c][state[c]].label.split(" · ")[0]; }).join(" · ");
+        $$("[data-bc-title]", box).forEach(function (x) { x.textContent = tt; });
+        $$("[data-bc-sum]", box).forEach(function (x) { x.textContent = sm; });
+      }
+      box.classList.toggle("is-full", full);
+    };
+    var install = function (cat, opt) {
+      if (!DATA[cat] || !DATA[cat][opt]) return;
+      var wasFull = cats.every(function (c) { return state[c]; });
+      state[cat] = opt; render();
+      drop.classList.remove("is-pop"); void drop.offsetWidth; drop.classList.add("is-pop");
+      track("build_part", { part: cat, option: opt });
+      if (!wasFull && cats.every(function (c) { return state[c]; })) track("build_complete", { cv: state.motor });
+    };
+    // arrastrar con ratón o dedo (pointer events); si no se mueve, cuenta como toque
+    var drag = null, suppress = false;
+    var over = function (x, y) { var r = drop.getBoundingClientRect(); return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom; };
+    parts.forEach(function (b) {
+      b.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0) return;
+        drag = { b: b, x: e.clientX, y: e.clientY, ghost: null, id: e.pointerId };
+      });
+      b.addEventListener("click", function () {
+        if (suppress) { suppress = false; return; }
+        install(b.getAttribute("data-cat"), b.getAttribute("data-opt"));
+      });
+    });
+    document.addEventListener("pointermove", function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!drag.ghost) {
+        if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 8) return;
+        var g = drag.b.cloneNode(true); g.className = "bc__part bc__ghost"; g.removeAttribute("data-cat");
+        g.style.width = drag.b.offsetWidth + "px"; document.body.appendChild(g); drag.ghost = g;
+        try { drag.b.setPointerCapture(e.pointerId); } catch (err) { /* nada */ }
+        box.classList.add("is-dragging"); box.setAttribute("data-drag", drag.b.getAttribute("data-cat"));
+      }
+      e.preventDefault();
+      drag.ghost.style.transform = "translate(" + (e.clientX - drag.ghost.offsetWidth / 2) + "px," + (e.clientY - 24) + "px) rotate(-4deg)";
+      drop.classList.toggle("is-over", over(e.clientX, e.clientY));
+    }, { passive: false });
+    var end = function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (drag.ghost) {
+        suppress = true; setTimeout(function () { suppress = false; }, 50);
+        if (e.type === "pointerup" && over(e.clientX, e.clientY)) install(drag.b.getAttribute("data-cat"), drag.b.getAttribute("data-opt"));
+        drag.ghost.remove();
+      }
+      box.classList.remove("is-dragging"); box.removeAttribute("data-drag"); drop.classList.remove("is-over");
+      drag = null;
+    };
+    document.addEventListener("pointerup", end); document.addEventListener("pointercancel", end);
+    // las piezas se pueden arrastrar en móvil sin mover la página
+    parts.forEach(function (b) { b.style.touchAction = "none"; });
+    $$("[data-bc-reset]", box).forEach(function (r) { r.addEventListener("click", function () { state = {}; render(); }); });
+    // el montaje viaja al formulario de presupuesto
+    $$("[data-bc-cta]", box).forEach(function (cta) { cta.addEventListener("click", function () {
+      var form = $("#presupuesto form"); if (!form) return;
+      var list = cats.filter(function (c) { return state[c]; }).map(function (c) { return "- " + NAMES[c] + ": " + DATA[c][state[c]].label; });
+      var msg = $("textarea[name=mensaje]", form), veh = $("input[name=vehiculo]", form);
+      if (msg && list.length) msg.value = "Quiero preparar un coche de rally así (configurador web):\n" + list.join("\n") + (msg.value ? "\n\n" + msg.value : "");
+      if (veh && !veh.value) veh.value = "Peugeot 206 (configurador)";
+      track("build_quote", { parts: list.length });
+    }); });
+    render();
   });
   // el equipo elegido viaja a la reserva
   if (buy) {

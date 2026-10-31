@@ -14,7 +14,7 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Banco de potencia | `banco-de-potencia.html` |
 | Experiencias (todas las fechas, con pago) | `experiencias.html` |
 | Experiencia Rally Eurocem · 4 dic 2026 | `experiencia-rally-eurocem.html` |
-| DS Pilot Course · 5, 6 y 7 dic 2026 | `ds-pilot-course.html` |
+| Rally Experience · 5, 6 y 7 dic 2026 | `ds-pilot-course.html` |
 | Gracias (tras pagar en Stripe; fuera de Google) | `gracias.html` |
 | Tienda: merchandising + coches en venta (Wallapop) | `tienda.html` |
 | Fichas de producto | `camiseta-edicion-especial-el-molar-2026.html`, `camiseta-deyscom.html`, `sudadera-capucha-deyscom.html`, `chaqueta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |
@@ -25,7 +25,7 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Página de error | `404.html` |
 | Área privada · CRM de leads (enlace «Área privada» en el pie, fuera de Google) | `crm.html` |
 
-Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias (Experiencia Rally Eurocem y DS Pilot Course) · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
+Menú principal: Competición · Restomod · Pintura · Banco de potencia · Experiencias (Experiencia Rally Eurocem y Rally Experience) · **Tienda** (destacada como botón). Blog, Quiénes somos y Contacto están en el pie.
 
 **En la recámara** (no se publican, pero el código está guardado): DS Pilot Weekend Circuit/Rally/Slalom, DS Copilot Course, Cursos, Alquiler de coche de rally y Coches de rally en venta.
 - Para recuperar alguna, quítala de `RESERVED` en `tools/build.py` y vuelve a añadirla al menú.
@@ -348,7 +348,7 @@ En Cloudflare Pages:
 
 **Configurar Stripe (una vez)**
 1. **Un enlace de pago por turno.** En Stripe → Enlaces de pago → **Crear**:
-   - Producto: p. ej. «DS Pilot Course · 5 dic · Mañana», precio **299 €**.
+   - Producto: p. ej. «Rally Experience · 5 dic · Mañana», precio **299 €**.
    - Opciones:
      - «Recopilar el número de teléfono» activado.
      - «Limitar el número de pagos» = plazas del turno (20). Así nunca se vende de más.

@@ -1,6 +1,6 @@
 {
-  "pagina": "DS Pilot Course",
-  "intro": "El **DS Pilot Course** es el **curso de rally de Deyscom**: 4 horas de conducción sobre tierra con coches de rally totalmente equipados para competir, con **arco de seguridad, arneses y extinción**. Trabajarás con **dos coches de tracción delantera** (Peugeot 206) y **dos de propulsión trasera** (BMW E36), en grupos reducidos y con tu propio **instructor cualificado**. Al terminar serás capaz de hacer cada ejercicio con un buen nivel. Elige el **5, 6 o 7 de diciembre**, en turno de **mañana o tarde**.",
+  "pagina": "Rally Experience",
+  "intro": "La **Rally Experience** es el **curso de rally de Deyscom**: 4 horas de práctica sobre tierra con coches de rally equipados para competir, con **arco de seguridad, arneses y extinción**. Las **dos primeras horas** el circuito se divide en **4 zonas**: haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las **dos últimas horas** se abre el **circuito completo** y das vueltas aplicando lo aprendido con un coche de **tracción delantera** (Peugeot 206) y otro de **propulsión trasera** (BMW E36). No hay parte teórica: en cada ejercicio el **monitor** te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el **5, 6 o 7 de diciembre**, en turno de **mañana o tarde**.",
   "ejercicios": [
     {
       "titulo": "Control y cambios de peso",
@@ -20,15 +20,16 @@
     },
     {
       "titulo": "Circuito completo",
-      "texto": "Aplicas todo lo aprendido en una vuelta completa al circuito, con el análisis de tu instructor."
+      "texto": "Las dos últimas horas se abre el circuito entero y das vueltas aplicando lo aprendido, con un tracción delantera y con un propulsión trasera."
     }
   ],
   "incluye": [
-    "4 horas de curso en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
-    "Coches de rally equipados para competir: arco de seguridad, arneses y extinción",
-    "2 coches de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)",
-    "Instructor cualificado para cada grupo",
-    "Grupos reducidos de hasta 4 personas por coche, con correcciones de tu instructor en cada ejercicio",
+    "4 horas de práctica en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
+    "2 horas de ejercicios en 4 zonas + 2 horas de circuito completo",
+    "4 coches de rally: 2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)",
+    "Coches equipados para competir: arco de seguridad, arneses y extinción",
+    "Monitor que te explica cada ejercicio en pista y te corrige",
+    "Grupos de 8 a 12 personas como máximo, para no hacer largas esperas",
     "Welcome pack del equipo Deyscom",
     "Comida y bebida durante el evento",
     "Seguro de responsabilidad civil para el día del curso"
@@ -40,7 +41,7 @@
     },
     {
       "dato": "Duración",
-      "valor": "4 horas"
+      "valor": "4 horas de práctica: 2 h de ejercicios en 4 zonas y 2 h de circuito completo"
     },
     {
       "dato": "Lugar",
@@ -48,7 +49,7 @@
     },
     {
       "dato": "Grupos",
-      "valor": "Máximo 16 personas por turno para 4 coches, con instructor por grupo"
+      "valor": "De 8 a 12 personas como máximo, con monitor"
     },
     {
       "dato": "Coches",
@@ -61,7 +62,7 @@
   ],
   "guias": [
     {
-      "pregunta": "¿Qué vas a aprender en el DS Pilot Course?",
+      "pregunta": "¿Qué vas a aprender en el Rally Experience?",
       "respuesta": "A **controlar un coche de rally sobre tierra**: usar los cambios de peso, frenar con el **pie izquierdo** como los pilotos de rally, dominar un coche de **propulsión trasera** y corregir el **sobreviraje**. Al final lo aplicas todo en una **vuelta completa al circuito**.\n\nEs la mejor forma de [empezar en los rallies](blog-como-empezar-en-los-rallies.html) antes de pensar en licencia o coche propio."
     },
     {
@@ -76,15 +77,19 @@
   "faq": [
     {
       "pregunta": "¿Necesito experiencia o licencia?",
-      "respuesta": "No. Solo carnet de conducir en vigor. Los instructores adaptan los ejercicios a tu nivel."
+      "respuesta": "No. Solo carnet de conducir en vigor. No hay parte teórica: el monitor te explica cada ejercicio en pista y te va corrigiendo, adaptándose a tu nivel."
     },
     {
       "pregunta": "¿Cuánto dura?",
-      "respuesta": "4 horas, en turno de mañana o de tarde. Al confirmar tu plaza te enviamos el horario exacto."
+      "respuesta": "4 horas de práctica, en turno de mañana o de tarde. Las dos primeras, ejercicios por zonas; las dos últimas, circuito completo. Al confirmar tu plaza te enviamos el horario exacto."
+    },
+    {
+      "pregunta": "¿Y si hace mal tiempo?",
+      "respuesta": "Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista el curso puede sufrir cambios de horario o de fecha. Somos exigentes con que el circuito esté en las condiciones apropiadas para que el curso se haga con total garantía de calidad. Si hay cambios, te avisamos y te ofrecemos otra fecha."
     },
     {
       "pregunta": "¿Cuántas personas hay por turno?",
-      "respuesta": "Como máximo 16 personas por turno para 4 coches, repartidas en 4 grupos, cada uno con su instructor."
+      "respuesta": "Los grupos son de 8 a 12 personas como máximo, para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera."
     },
     {
       "pregunta": "¿Qué incluye el precio?",

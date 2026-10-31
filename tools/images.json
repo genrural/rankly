@@ -343,5 +343,30 @@
   "alt": "Vista panorámica de un tramo de rally con el Peugeot 206 de Deyscom Motorsport",
   "w": 1161,
   "h": 774
+ },
+ "peugeot-206-deyscom-rally-frontal-asfalto": {
+  "alt": "Peugeot 206 de rally de Deyscom Motorsport de frente en un tramo de asfalto con piloto y copiloto",
+  "w": 1408,
+  "h": 938
+ },
+ "peugeot-206-deyscom-curva-rally-castillo": {
+  "alt": "Peugeot 206 de Deyscom Motorsport trazando una curva en un tramo de rally de montaña",
+  "w": 1090,
+  "h": 726
+ },
+ "peugeot-206-deyscom-rally-trasera-rotulacion": {
+  "alt": "Trasera del Peugeot 206 de rally con la rotulación rosa de Deyscom Motorsport",
+  "w": 1239,
+  "h": 825
+ },
+ "peugeot-206-deyscom-rally-frontal-cascos": {
+  "alt": "Peugeot 206 de Deyscom Motorsport en tramo con piloto y copiloto con casco",
+  "w": 1239,
+  "h": 825
+ },
+ "tienda-online-coleccion-deyscom-motorsport": {
+  "alt": "Colección oficial Deyscom Motorsport: sudadera, gorra y camiseta negras con logo rosa",
+  "w": 1600,
+  "h": 1000
  }
 }

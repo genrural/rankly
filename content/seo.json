@@ -44,7 +44,7 @@
       "slug": "experiencias",
       "nombre": "Experiencias",
       "titulo": "Experiencias de rally: conduce un coche de rally en tierra | Deyscom",
-      "descripcion": "Conduce un coche de rally sobre tierra en el Circuito El Hito (Cuenca): Experiencia Rally Eurocem (4 dic) y DS Pilot Course (5-7 dic). 299 €.",
+      "descripcion": "Conduce un coche de rally sobre tierra en el Circuito El Hito (Cuenca): Experiencia Rally Eurocem (4 dic) y Rally Experience (5-7 dic). 299 €.",
       "h1": "Experiencias de rally: conduce un coche de rally sobre tierra",
       "noindex": false
     },
@@ -90,10 +90,10 @@
     },
     {
       "slug": "nosotros",
-      "nombre": "Quiénes somos",
-      "titulo": "Quiénes somos · Deyscom Motorsport, Torrelaguna",
-      "descripcion": "Conoce a Deyscom Motorsport: Néstor Aguado, Héctor Guzmán y el equipo del taller de competición, restomod y pintura de Torrelaguna (Madrid).",
-      "h1": "Quiénes somos: Deyscom Motorsport, taller de Torrelaguna",
+      "nombre": "Nosotros",
+      "titulo": "Nosotros · Deyscom Motorsport desde 2011, Torrelaguna",
+      "descripcion": "Deyscom Motorsport desde 2011: del alquiler de coches de competición a taller de mecánica, preparación y competición en Torrelaguna (Madrid).",
+      "h1": "Nosotros: Deyscom Motorsport, desde 2011 viviendo el motor desde dentro",
       "noindex": false
     },
     {
@@ -194,10 +194,10 @@
     },
     {
       "slug": "ds-pilot-course",
-      "nombre": "DS Pilot Course",
-      "titulo": "DS Pilot Course · Curso de conducción de rally en tierra | Deyscom",
+      "nombre": "Rally Experience",
+      "titulo": "Rally Experience · Curso de conducción de rally en tierra | Deyscom",
       "descripcion": "Curso de rally sobre tierra de 4 horas el 5, 6 y 7 de diciembre en el Circuito El Hito (Cuenca): 4 coches, instructor por grupo y comida. 299 €.",
-      "h1": "DS Pilot Course: curso de conducción de rally sobre tierra",
+      "h1": "Rally Experience: curso de conducción de rally sobre tierra",
       "noindex": false
     }
   ]
