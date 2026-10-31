@@ -7,7 +7,7 @@
 - Email: info@deyscom.com
 - Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
 - Propietario y fundador: Néstor Aguado. Marketing: Héctor Guzmán. Detrás hay un equipo de mecánicos, chapistas, pintores, técnicos de asistencia y formadores.
-- Primer rally del equipo: II Rallye Comunidad de Madrid – El Molar 2026, con un Peugeot 206.
+- Competición: II Rallye Comunidad de Madrid – El Molar 2026, entre otras pruebas de rally, rallysprint, slalom y resistencia.
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
 ## Servicios
@@ -24,7 +24,7 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
-- [Rally Experience](https://deyscom.com/ds-pilot-course.html): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36, con instructores especializados. ¡Comida incluida! Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
+- [Rally Experience](https://deyscom.com/ds-pilot-course.html): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. ¡Comida incluida! Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde; Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde.
 
 ## Tienda
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.

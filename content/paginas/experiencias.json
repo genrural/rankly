@@ -3,7 +3,7 @@
   "datos_clave": [
     {
       "dato": "Experiencias",
-      "valor": "Rally Experience: curso de rally sobre tierra de 4 horas (5, 6 y 7 de diciembre)"
+      "valor": "Rally Experience: curso de rally sobre tierra de 4 horas (4, 5 y 6 de diciembre)"
     },
     {
       "dato": "Lugar",
@@ -11,15 +11,15 @@
     },
     {
       "dato": "Coches",
-      "valor": "BMW E36 (propulsión) y Peugeot 206 (tracción delantera) preparados para competición"
+      "valor": "4 coches de rally preparados para competición: 2 de tracción delantera y 2 de propulsión trasera"
     },
     {
       "dato": "Formato",
-      "valor": "Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, grupos de 8 a 12"
+      "valor": "Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, 16 plazas por turno"
     },
     {
       "dato": "Precio",
-      "valor": "299 € por persona, pago con tarjeta en Stripe"
+      "valor": "299 € por persona, pago online seguro al reservar"
     },
     {
       "dato": "Requisitos",
@@ -29,7 +29,7 @@
   "guias": [
     {
       "pregunta": "¿Qué es la Rally Experience?",
-      "respuesta": "La **[Rally Experience](ds-pilot-course.html)** es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con el Peugeot 206 (tracción delantera) y el BMW E36 (propulsión trasera), con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (5, 6 o 7 de diciembre) y turno."
+      "respuesta": "La **[Rally Experience](ds-pilot-course.html)** es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (4, 5 o 6 de diciembre) y turno."
     },
     {
       "pregunta": "¿Qué se aprende en una jornada sobre tierra?",
@@ -43,7 +43,7 @@
     },
     {
       "pregunta": "¿Cuánto cuesta?",
-      "respuesta": "299 € por persona en cualquiera de las fechas. Se paga con tarjeta en la pasarela segura de Stripe al reservar."
+      "respuesta": "299 € por persona en cualquiera de las fechas. Se paga online al reservar."
     },
     {
       "pregunta": "¿Dónde son?",
@@ -55,7 +55,7 @@
     },
     {
       "pregunta": "¿Qué coches se usan?",
-      "respuesta": "Nuestro Peugeot 206 1.6 XS de 118 CV (tracción delantera) y nuestro BMW E36 de 135 CV (propulsión trasera), preparados en el taller de Torrelaguna."
+      "respuesta": "Cuatro coches de rally preparados en nuestro taller de Torrelaguna: dos de tracción delantera y dos de propulsión trasera."
     }
   ],
   "articulos_relacionados": [

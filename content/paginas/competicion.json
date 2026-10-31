@@ -10,8 +10,8 @@
       "valor": "Preparación integral, jaulas de seguridad, set-up, mantenimiento y asistencia en carrera"
     },
     {
-      "dato": "Coches propios",
-      "valor": "Peugeot 206 1.6 XS (118 CV) y BMW E36 (135 CV)"
+      "dato": "Alquiler",
+      "valor": "Alquilamos coches de competición preparados en nuestro taller, con asistencia si la necesitas"
     },
     {
       "dato": "Dónde",
@@ -29,17 +29,21 @@
     },
     {
       "pregunta": "¿Hacéis asistencia en carrera fuera de Madrid?",
-      "respuesta": "Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026."
+      "respuesta": "Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en carreras como el II Rallye Comunidad de Madrid – El Molar 2026."
+    },
+    {
+      "pregunta": "¿Alquiláis coches de competición?",
+      "respuesta": "Sí. **Alquilamos coches de competición** preparados en nuestro taller, como los que ves en esta página, para rallies, rallysprints y slalom. El alquiler incluye el coche listo para correr y, si lo necesitas, nuestra **asistencia en carrera**. Si es tu primera vez, puedes empezar con la [Rally Experience](ds-pilot-course.html). [Pregúntanos por disponibilidad](contacto.html)."
     }
   ],
   "faq": [
     {
       "pregunta": "¿Preparáis coches para cualquier campeonato?",
-      "respuesta": "Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."
+      "respuesta": "Trabajamos rally, slalom, montaña y circuito. En la primera reunión revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo."
     },
     {
       "pregunta": "¿Puedo alquilar un coche de competición?",
-      "respuesta": "Si es tu primera vez, la mejor forma de empezar es una jornada como el Rally Experience, con nuestro BMW E36 y nuestro Peugeot 206. Para alquileres de coche para una prueba concreta, consúltanos."
+      "respuesta": "Sí. Alquilamos coches de competición preparados en nuestro taller para rallies, rallysprints y slalom, con asistencia si la necesitas. Si es tu primera vez, puedes empezar con la Rally Experience. Escríbenos y te contamos la disponibilidad."
     },
     {
       "pregunta": "¿Ofrecéis asistencia durante la carrera?",

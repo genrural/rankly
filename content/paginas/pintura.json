@@ -11,7 +11,7 @@
     },
     {
       "dato": "Precio",
-      "valor": "Presupuesto cerrado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura"
+      "valor": "Presupuesto detallado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura"
     },
     {
       "dato": "Dónde",
@@ -21,7 +21,7 @@
   "guias": [
     {
       "pregunta": "¿Cuánto cuesta pintar un coche?",
-      "respuesta": "El precio de pintar un coche depende de la **superficie** (una pieza o el coche completo), del **estado de la chapa**, del **desmontaje** necesario y del **tipo de pintura** (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto cerrado tras ver el coche y te explicamos cada partida en [cuánto cuesta pintar un coche](blog-cuanto-cuesta-pintar-un-coche.html)."
+      "respuesta": "El precio de pintar un coche depende de la **superficie** (una pieza o el coche completo), del **estado de la chapa**, del **desmontaje** necesario y del **tipo de pintura** (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto detallado tras ver el coche y te explicamos cada partida en [cuánto cuesta pintar un coche](blog-cuanto-cuesta-pintar-un-coche.html)."
     },
     {
       "pregunta": "¿Por qué pintar en cabina de pintura?",

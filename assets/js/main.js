@@ -312,7 +312,7 @@
   /* ---------- Experiencias: reserva + pago con Stripe Payment Links ---------- */
   var edData = {};
   try { var edEl = $("#ed-data"); if (edEl) edData = JSON.parse(edEl.textContent); } catch (e) { edData = {}; }
-  var buy = $("#buy");
+  var buy = $("[data-book]");
   var fmtEur = function (n) { return new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: Number(n) % 1 ? 2 : 0 }).format(Number(n) || 0); };
   var newId = function () {
     var a = "abcdefghijklmnopqrstuvwxyz0123456789", out = "w", r = new Uint8Array(11);
@@ -326,32 +326,48 @@
     return u;
   };
   if (buy) {
-    var bForm = $("form", buy), bMsg = $(".form-msg", buy), cur = null;
-    var openBuy = function (id) {
-      cur = edData[id]; if (!cur) return;
-      $("[data-buy-title]", buy).textContent = cur.nombre;
-      $("[data-buy-when]", buy).textContent = cur.etiqueta + (cur.lugar ? " · " + cur.lugar : "");
-      $("[data-buy-price]", buy).textContent = fmtEur(cur.precio);
-      $("[data-buy-cta]", buy).textContent = cur.stripe ? "Ir al pago seguro · " + fmtEur(cur.precio) : "Reservar plaza";
-      if (bMsg) { bMsg.className = "form-msg"; bMsg.textContent = ""; }
-      if (buy.showModal) buy.showModal(); else buy.setAttribute("open", "");
-      track("view_item", { currency: "EUR", value: Number(cur.precio) || 0, items: [{ item_id: cur.id, item_name: cur.nombre + " · " + cur.etiqueta, price: Number(cur.precio) || 0 }] });
-      var f = $("input[name=nombre]", buy);
-      if (f) setTimeout(function () { var ae = document.activeElement; if (!ae || !buy.contains(ae) || !/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) f.focus(); }, 50);
+    // Reserva de experiencias: un solo formulario (datos + día + turno) → lead en el CRM → enlace de pago general
+    var bForm = $("form", buy), bMsg = $(".form-msg", buy), avail = $("[data-book-avail]", buy), bBtn = $('button[type="submit"]', buy);
+    var picked = function () {
+      var d = $("input[name=dia]:checked", bForm), t = $("input[name=turno_pref]:checked", bForm);
+      if (!d || !t) return null;
+      var id = Object.keys(edData).filter(function (k) { return edData[k].fecha === d.value && edData[k].turno === t.value; })[0];
+      return id ? edData[id] : null;
     };
-    var closeBuy = function () { if (buy.close) buy.close(); else buy.removeAttribute("open"); };
-    $$("[data-buy]").forEach(function (b) { b.addEventListener("click", function () { openBuy(b.getAttribute("data-buy")); }); });
-    $$("[data-buy-close]", buy).forEach(function (b) { b.addEventListener("click", closeBuy); });
-    buy.addEventListener("click", function (e) { if (e.target === buy) closeBuy(); });
+    var refresh = function () {
+      var e = picked();
+      $$("[data-ed]").forEach(function (r) { r.classList.toggle("is-picked", !!e && r.getAttribute("data-ed") === e.id); });
+      if (!e) { avail.textContent = "No hay turno ese día a esa hora: elige otra combinación."; bBtn.disabled = true; return; }
+      var full = e.estado === "Completa" || e.libres === 0;
+      avail.className = "book__avail full" + (full ? " is-full" : e.libres !== undefined && e.libres <= 5 ? " is-last" : "");
+      avail.textContent = full ? "Ese turno está completo: elige otro." : e.etiqueta + " · " + (e.libres !== undefined && e.libres !== null ? "quedan " + e.libres + " plazas" : (e.plazas || 16) + " plazas por turno");
+      bBtn.disabled = full;
+    };
+    $$("input[name=dia], input[name=turno_pref]", bForm).forEach(function (i) { i.addEventListener("change", refresh); });
+    var pick = function (id) {
+      var e = edData[id]; if (!e) return;
+      $$("input[name=dia]", bForm).forEach(function (i) { i.checked = i.value === e.fecha; });
+      $$("input[name=turno_pref]", bForm).forEach(function (i) { i.checked = i.value === e.turno; });
+      refresh();
+      buy.scrollIntoView({ behavior: "smooth", block: "start" });
+      var n = $("input[name=nombre]", bForm); if (n) setTimeout(function () { n.focus({ preventScroll: true }); }, 400);
+      track("view_item", { currency: "EUR", value: Number(e.precio) || 0, items: [{ item_id: e.id, item_name: e.nombre + " · " + e.etiqueta, price: Number(e.precio) || 0 }] });
+    };
+    $$("[data-pick]").forEach(function (b) { b.addEventListener("click", function () { pick(b.getAttribute("data-pick")); }); });
+    window.__dmBookRefresh = refresh;
+    refresh();
     bForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      var cur = picked();
       if (!cur) return;
       if (bForm.elements._hp && bForm.elements._hp.value) return;
       if (!bForm.checkValidity()) { bForm.reportValidity(); return; }
-      var btn = $('button[type="submit"]', bForm); btn.classList.add("is-loading"); btn.disabled = true;
+      bBtn.classList.add("is-loading"); bBtn.disabled = true;
       var data = formToObject(bForm);
+      delete data.dia; delete data.turno_pref;
       data.id = newId();
       data.formulario = cur.experiencia; data.servicio = cur.nombre; data.edicion = cur.id; data.fecha_elegida = cur.etiqueta; data.plazas = "1";
+      data.mensaje = "Preferencia: " + cur.etiqueta + (data.regalo ? " · Es un regalo" : "");
       data.pagina = location.pathname; data.fecha = new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" });
       Object.assign(data, attribution());
       var item = { item_id: cur.id, item_name: cur.nombre + " · " + cur.etiqueta, price: Number(cur.precio) || 0, quantity: 1 };
@@ -368,16 +384,15 @@
         Promise.race([sent, new Promise(function (r) { setTimeout(r, 1500); })]).then(go);
         return;
       }
-      // Sin enlace de pago todavía: la reserva llega al CRM (o por WhatsApp) y os contactamos para el pago.
       Promise.race([sent, new Promise(function (r) { setTimeout(r, 2500); })]).then(function () {
-        btn.classList.remove("is-loading"); btn.disabled = false;
+        bBtn.classList.remove("is-loading"); bBtn.disabled = false;
         if (!CFG.SHEETS_ENDPOINT) window.open(waFromLead(data), "_blank", "noopener");
         bMsg.className = "form-msg is-ok";
         bMsg.textContent = "¡Plaza reservada! Te enviamos el enlace de pago lo antes posible.";
-        bForm.reset();
+        bForm.reset(); refresh();
       });
     });
-    var hashBuy = location.hash.match(/^#reservar-(.+)$/); if (hashBuy && edData[hashBuy[1]]) openBuy(hashBuy[1]);
+    var hashBuy = location.hash.match(/^#reservar-(.+)$/); if (hashBuy && edData[hashBuy[1]]) pick(hashBuy[1]);
   }
   /* ---------- Experiencias: equipos interactivos, «Tu día», cifras y cuenta atrás ---------- */
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -433,12 +448,12 @@
     var path = $("[data-race-path]", box), lights = $$(".race__lights i", box), dust = $("[data-race-dust]", box);
     var clock = $("[data-race-clock]", box), msg = $("[data-race-msg]", box), res = $("[data-race-result]", box);
     var cars = {}; $$("[data-race-car]", box).forEach(function (g) { cars[g.getAttribute("data-race-car")] = g; });
-    var NAMES = { "206": "Peugeot 206", e36: "BMW E36" };
+    var NAMES = { "206": "tracción delantera", e36: "propulsión trasera" };
     var TIPS = {
-      "206": ["S1 · Cambios de peso: carga el eje delantero y el 206 gira solo.", "S2 · Pie izquierdo: frena sin soltar el gas y colócalo en la curva.",
-        "S3 · Recta: 118 CV y poco peso. El 206 vuela.", "S4 · Horquilla: gas pronto y volante recto para que tire hacia la salida."],
-      e36: ["S1 · Cambios de peso: el E36 pide manos suaves al entrar.", "S2 · Derrape: con propulsión, el gas también gira el coche.",
-        "S3 · Recta: 135 CV empujando desde atrás.", "S4 · Sobreviraje: contravolante y gas constante. ¡Sales de lado!"]
+      "206": ["S1 · Cambios de peso: carga el eje delantero y el coche gira solo.", "S2 · Pie izquierdo: frena sin soltar el gas y colócalo en la curva.",
+        "S3 · Recta: poco peso y mucha tracción. Vuela.", "S4 · Horquilla: gas pronto y volante recto para que tire hacia la salida."],
+      e36: ["S1 · Cambios de peso: la propulsión pide manos suaves al entrar.", "S2 · Derrape: con propulsión, el gas también gira el coche.",
+        "S3 · Recta: toda la potencia empujando desde atrás.", "S4 · Sobreviraje: contravolante y gas constante. ¡Sales de lado!"]
     };
     var SECT = $$("[data-sector]", box).map(function (g) { return Number(g.getAttribute("data-sector")); });
     var len = path.getTotalLength(), mine = "206", state = "idle", lightTimers = [], outAt = 0, jump = false, raf = 0;
@@ -463,7 +478,7 @@
       if (state === "racing" || state === "lights") return;
       picks.forEach(function (p) { p.setAttribute("aria-checked", p === b ? "true" : "false"); p.tabIndex = p === b ? 0 : -1; });
       mine = b.getAttribute("data-race-pick"); box.setAttribute("data-mine", mine);
-      msg.textContent = "Sales con el " + NAMES[mine] + ". Pulsa «Salida».";
+      msg.textContent = "Sales con " + NAMES[mine] + ". Pulsa «Salida».";
       try { sessionStorage.setItem("dmx_car", NAMES[mine]); } catch (e) { /* nada */ }
     };
     picks.forEach(function (p, i) {
@@ -510,10 +525,10 @@
       var win = tm <= tr, gap = Math.abs(tm - tr) * 10;
       clock.textContent = fmt(tm * 10);
       $("[data-race-kicker]", box).textContent = jump ? "Salida en falso · +5 s" : "Reacción: " + react.toFixed(3).replace(".", ",") + " s";
-      $("[data-race-title]", box).textContent = win ? "¡Victoria con el " + NAMES[mine] + "!" : "El " + NAMES[rival] + " te gana por " + fmt(gap);
+      $("[data-race-title]", box).textContent = win ? "¡Victoria con " + NAMES[mine] + "!" : "La " + NAMES[rival] + " te gana por " + fmt(gap);
       $("[data-race-text]", box).textContent = win
-        ? "Le sacas " + fmt(gap) + " al " + NAMES[rival] + ". Ahora imagina el volante en tus manos: en el Rally Experience aprendes con el 206 y con el E36, con tu instructor al lado."
-        : (jump ? "Te has adelantado al semáforo. " : "") + "Esas décimas se ganan con técnica: cambios de peso, pie izquierdo y control del sobreviraje. Justo lo que aprendes en el Rally Experience.";
+        ? "Le sacas " + fmt(gap) + " a la " + NAMES[rival] + ". Ahora imagina el volante en tus manos: en la Rally Experience conduces los dos tipos de coche, con tu instructor al lado."
+        : (jump ? "Te has adelantado al semáforo. " : "") + "Esas décimas se ganan con técnica: cambios de peso, pie izquierdo y control del sobreviraje. Justo lo que aprendes en la Rally Experience.";
       msg.textContent = win ? "🏁 Bandera a cuadros. ¡Ganas tú!" : "🏁 Bandera a cuadros. Toca revancha.";
       res.hidden = false;
       track("race_finish", { car: NAMES[mine], win: win ? 1 : 0 });
@@ -661,19 +676,6 @@
     } else axLoad();
     if (location.hash === "#ax-rally") axLoad();
   }
-  // el equipo elegido viaja a la reserva
-  if (buy) {
-    var teamInput = $("input[name=equipo_preferido]", buy), teamNote = $("[data-buy-team]", buy);
-    $$("[data-buy]").forEach(function (b) {
-      b.addEventListener("click", function () {
-        var t = "", n = "";
-        try { t = $("[data-teamplay]") ? sessionStorage.getItem("dmx_team") || "" : ""; n = sessionStorage.getItem("dmx_name") || ""; } catch (e) { /* nada */ }
-        if (teamInput) teamInput.value = t;
-        if (teamNote) { teamNote.hidden = !t; teamNote.textContent = t ? "Equipo preferido: " + t + " (lo tendremos en cuenta al hacer los equipos)" : ""; }
-        var nm = $("input[name=nombre]", buy); if (nm && n && !nm.value) nm.value = n;
-      });
-    });
-  }
   // «Tu día»: pestañas con avance automático hasta que el usuario toca
   $$("[data-dayplan]").forEach(function (box) {
     var tabs = $$("[data-day-tab]", box), bar = $("[data-day-bar]", box), cur = 0, auto = !reduceMotion, timer = null;
@@ -725,18 +727,20 @@
   if ($$("[data-ed]").length && CFG.SHEETS_ENDPOINT) {
     fetch(CFG.SHEETS_ENDPOINT + "?action=plazas").then(function (r) { return r.json(); }).then(function (res) {
       ((res && res.ediciones) || []).forEach(function (e) {
+        if (edData[e.id]) { edData[e.id].libres = e.libres; if (e.completa) edData[e.id].estado = "Completa"; }
         $$('[data-ed="' + e.id + '"]').forEach(function (row) {
           var s = $("[data-seats]", row);
           if (e.completa) {
             row.classList.add("is-full");
             if (s) s.textContent = "Completo";
-            var b = $("[data-buy]", row); if (b) { b.outerHTML = '<span class="date-row__full">Completo</span>'; }
+            var b = $("[data-pick]", row); if (b) { b.outerHTML = '<span class="date-row__full">Completo</span>'; }
           } else if (s && e.libres !== null) {
             s.textContent = e.libres <= 5 ? "¡Últimas " + e.libres + " plazas!" : "Quedan " + e.libres + " plazas";
             if (e.libres <= 5) row.classList.add("is-last");
           }
         });
       });
+      if (window.__dmBookRefresh) window.__dmBookRefresh();
     }).catch(function () { /* se queda la información publicada */ });
   }
   // Página de gracias: confirmación y conversión de compra en GA4

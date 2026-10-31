@@ -5,7 +5,7 @@
   "email": "info@deyscom.com",
   "aviso_superior": {
     "activo": true,
-    "texto": "Rally Experience · 5, 6 y 7 de diciembre · plazas limitadas",
+    "texto": "Rally Experience · 4, 5 y 6 de diciembre · plazas limitadas",
     "enlace": "ds-pilot-course.html"
   },
   "sheets_endpoint": "",
@@ -78,5 +78,6 @@
     "activo": true,
     "premio": "un pack de productos de limpieza para tu coche",
     "fin": "2026-12-31"
-  }
+  },
+  "pago_rally_experience": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00"
 }

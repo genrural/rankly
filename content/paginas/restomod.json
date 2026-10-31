@@ -11,7 +11,7 @@
     },
     {
       "dato": "Método",
-      "valor": "Proyecto por fases con presupuesto cerrado por fase y diario de obra con fotos"
+      "valor": "Proyecto por fases con presupuesto detallado por fase y diario de obra con fotos"
     },
     {
       "dato": "Legalización",
@@ -25,7 +25,7 @@
     },
     {
       "pregunta": "¿Cuánto cuesta un restomod o una restauración?",
-      "respuesta": "Depende sobre todo de tres cosas: el **estado de la base** (chasis y óxido), el **alcance de la modificación** (mecánica original reconstruida o actualizada) y los **acabados** (pintura, interior). Por eso trabajamos por fases, con presupuesto cerrado para cada una y un diagnóstico previo de la base antes de comprometer nada."
+      "respuesta": "Depende sobre todo de tres cosas: el **estado de la base** (chasis y óxido), el **alcance de la modificación** (mecánica original reconstruida o actualizada) y los **acabados** (pintura, interior). Por eso trabajamos por fases, con presupuesto detallado para cada una y un diagnóstico previo de la base antes de comprometer nada."
     },
     {
       "pregunta": "¿Se puede legalizar un restomod en la ITV?",
@@ -39,7 +39,7 @@
     },
     {
       "pregunta": "¿Cuánto cuesta un restomod?",
-      "respuesta": "Depende del estado de la base y del nivel de modificación. Por eso trabajamos por fases y con presupuesto cerrado para cada una."
+      "respuesta": "Depende del estado de la base y del nivel de modificación. Por eso trabajamos por fases y con presupuesto detallado para cada una."
     },
     {
       "pregunta": "¿Cuánto tarda?",

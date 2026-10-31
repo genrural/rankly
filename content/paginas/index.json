@@ -19,7 +19,7 @@
     },
     {
       "dato": "Experiencias",
-      "valor": "Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca), 5, 6 y 7 de diciembre · 299 €"
+      "valor": "Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca), 4, 5 y 6 de diciembre · 299 €"
     },
     {
       "dato": "Horario",
@@ -46,11 +46,11 @@
     },
     {
       "pregunta": "¿Puedo conducir un coche de rally sin tener uno?",
-      "respuesta": "Sí: en la Rally Experience conduces nuestro Peugeot 206 y nuestro BMW E36 sobre tierra durante 4 horas, con instructores especializados. Próximas fechas: 5, 6 y 7 de diciembre."
+      "respuesta": "Sí: en la Rally Experience conduces coches de rally de tracción delantera y de propulsión trasera sobre tierra durante 4 horas, con instructores especializados. Próximas fechas: 4, 5 y 6 de diciembre."
     },
     {
       "pregunta": "¿Cómo reservo una experiencia?",
-      "respuesta": "Entra en la Rally Experience, elige fecha y turno, deja tus datos y paga con tarjeta en la pasarela segura de Stripe. Las plazas son limitadas."
+      "respuesta": "Entra en la Rally Experience, elige fecha y turno, deja tus datos y paga online. Las plazas son limitadas."
     }
   ],
   "articulos_relacionados": []

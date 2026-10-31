@@ -7,9 +7,9 @@ FAQ con datos estructurados, fuentes oficiales y autor identificado.
 
 AUTHORS = {
     "nestor": dict(name="Néstor Aguado", role="Fundador y propietario de Deyscom Motorsport", anchor="nestor-aguado",
-                   bio="Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar."),
+                   bio="Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar."),
     "hector": dict(name="Héctor Guzmán", role="Responsable de marketing de Deyscom Motorsport", anchor="hector-guzman",
-                   bio="Héctor Guzmán lleva el marketing y la comunicación de Deyscom Motorsport. Vivió junto a Néstor Aguado su primer rally, el II Rallye Comunidad de Madrid – El Molar 2026."),
+                   bio="Héctor Guzmán lleva el marketing y la comunicación de Deyscom Motorsport. Corrió junto a Néstor Aguado el II Rallye Comunidad de Madrid – El Molar 2026."),
 }
 
 POSTS = [
@@ -74,7 +74,7 @@ POSTS = [
 </ol>
 <p>Alquilar un coche preparado concentra casi todas estas partidas en un solo precio y es, con diferencia, la forma más previsible de debutar.</p>"""),
             ("Nuestra experiencia: el primer rally de Deyscom", """
-<p>En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally, el <strong>II Rallye Comunidad de Madrid – El Molar</strong>, con el Peugeot 206 del equipo. Lo que más aprendimos: la preparación no termina en el taller. Verificaciones, horarios, asistencia y comunicación dentro del coche pesan tanto como la mecánica. Por eso diseñamos nuestras experiencias y nuestro curso de copiloto pensando en lo que nos habría gustado saber antes de nuestra primera salida.</p>"""),
+<p>En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos el <strong>II Rallye Comunidad de Madrid – El Molar</strong>, con el Peugeot 206 del equipo. Lo que más aprendimos: la preparación no termina en el taller. Verificaciones, horarios, asistencia y comunicación dentro del coche pesan tanto como la mecánica. Por eso diseñamos nuestras experiencias y nuestro curso de copiloto pensando en lo que nos habría gustado saber antes de nuestra primera salida.</p>"""),
         ],
         faq=[
             ("¿Necesito licencia para correr un rally?", "Sí. Para una prueba federada necesitas licencia federativa en vigor de piloto, y tu acompañante una de copiloto. Se tramita en la federación autonómica de automovilismo."),
@@ -194,7 +194,7 @@ POSTS = [
             ("Legalización: las reformas y la ITV", """
 <p>En España, las modificaciones que alteran las características del vehículo se consideran reformas y deben tramitarse según el <strong>Manual de Reformas de Vehículos</strong> del Ministerio de Industria, con la documentación técnica correspondiente y su inspección en la ITV. Plantearlo desde el principio evita sorpresas y permite elegir piezas que se puedan legalizar.</p>"""),
             ("Cómo trabajamos los restomod en Deyscom", """
-<p>Diseñamos el proyecto contigo, lo dividimos en fases con presupuesto cerrado para cada una y te enviamos fotos y vídeos del avance. Puedes ver ejemplos en nuestra página de <a href="restomod.html">restomod y restauración en Madrid</a>.</p>"""),
+<p>Diseñamos el proyecto contigo, lo dividimos en fases con presupuesto detallado para cada una y te enviamos fotos y vídeos del avance. Puedes ver ejemplos en nuestra página de <a href="restomod.html">restomod y restauración en Madrid</a>.</p>"""),
         ],
         faq=[
             ("¿Qué significa restomod?", "Es la unión de «restoration» y «modification»: un clásico restaurado y actualizado con mecánica, seguridad y confort modernos."),

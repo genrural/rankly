@@ -7,7 +7,7 @@
 - Email: info@deyscom.com
 - Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
 - Propietario y fundador: Néstor Aguado. Marketing: Héctor Guzmán. Detrás hay un equipo de mecánicos, chapistas, pintores, técnicos de asistencia y formadores.
-- Primer rally del equipo: II Rallye Comunidad de Madrid – El Molar 2026, con un Peugeot 206.
+- Competición: II Rallye Comunidad de Madrid – El Molar 2026, entre otras pruebas de rally, rallysprint, slalom y resistencia.
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
 
 ## Servicios
@@ -24,7 +24,7 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
-- [Rally Experience](https://deyscom.com/ds-pilot-course.html): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36, con instructores especializados. ¡Comida incluida! Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
+- [Rally Experience](https://deyscom.com/ds-pilot-course.html): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. ¡Comida incluida! Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde; Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde.
 
 ## Tienda
 - [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
@@ -77,7 +77,7 @@ Competición
 Rallyes, rallysprints, slalom y resistencia, con asistencia técnica por toda España
 
 Experiencias
-Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca), 5, 6 y 7 de diciembre · 299 €
+Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca), 4, 5 y 6 de diciembre · 299 €
 
 Horario
 Lunes a viernes, de 07:00 a 15:00
@@ -125,8 +125,6 @@ Descubrir
 ### Atención personalizada
 Hablas directamente con quienes trabajan en tu coche. Sin intermediarios.
 
-⚡
-
 ### Atención rápida
 Atendemos tus consultas de forma ágil, cercana y personalizada.
 
@@ -146,17 +144,17 @@ Experiencias de conducción · Plazas limitadas
 
 Vive la emoción del rally sobre tierra.
 
-¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36. Aprende a dominar la tracción delantera y la propulsión trasera con instructores especializados. ¡Comida incluida!
+¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera. Aprende a dominar los dos con instructores especializados. ¡Comida incluida!
 
 ¡Reserva tu experiencia!
 
-5, 6 y 7 de diciembre Turno de mañana o de tarde en el Circuito El Hito (Cuenca).
+4, 5 y 6 de diciembre Turno de mañana o de tarde en el Circuito El Hito (Cuenca).
 
-Peugeot 206 y BMW E36 Tracción delantera y propulsión trasera, preparados para competir.
+4 coches de rally Dos de tracción delantera y dos de propulsión trasera, preparados para competir.
 
 Instructores especializados Te explican cada ejercicio y te corrigen en pista.
 
-299 € · comida incluida Pago seguro con tarjeta. Plazas limitadas por turno.
+299 € · comida incluida 16 plazas por turno. Si un turno no se completa, te reubicamos en otro.
 
 Tienda online Deyscom
 
@@ -278,11 +276,11 @@ Hemos recibido tu solicitud. Te contactamos lo antes posible.
 
 Acelerar por WhatsApp
 
-Nuestro primer rally · 2026
+En competición · 2026
 
 ## II Rallye Comunidad de Madrid El Molar
 
-En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally con el Peugeot 206 del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
+En 2026 Néstor Aguado y Héctor Guzmán corrieron el II Rallye Comunidad de Madrid – El Molar con el coche del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
 
 Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.
 
@@ -371,8 +369,8 @@ Preguntas frecuentes
 ¿Cuál es vuestro horario? De lunes a viernes de 07:00 a 15:00. Sábados y domingos cerrado. Por WhatsApp puedes escribirnos cuando quieras.
 ¿Hacéis presupuestos sin compromiso? Sí. Cuéntanos tu proyecto por el formulario o WhatsApp y te damos una valoración inicial.
 ¿Hacéis asistencia en carreras fuera de Madrid? Sí. Ofrecemos asistencia técnica en competiciones por toda España. Desde 2011 tenemos experiencia en rallyes, rallysprints, slalom y pruebas de resistencia, y nos encargamos de la preparación, el mantenimiento y la asistencia de los coches, tanto en nuestro taller de Torrelaguna como durante las carreras, adaptándonos a cada equipo y piloto.
-¿Puedo conducir un coche de rally sin tener uno? Sí: en la Rally Experience conduces nuestro Peugeot 206 y nuestro BMW E36 sobre tierra durante 4 horas, con instructores especializados. Próximas fechas: 5, 6 y 7 de diciembre.
-¿Cómo reservo una experiencia? Entra en la Rally Experience, elige fecha y turno, deja tus datos y paga con tarjeta en la pasarela segura de Stripe. Las plazas son limitadas.
+¿Puedo conducir un coche de rally sin tener uno? Sí: en la Rally Experience conduces coches de rally de tracción delantera y de propulsión trasera sobre tierra durante 4 horas, con instructores especializados. Próximas fechas: 4, 5 y 6 de diciembre.
+¿Cómo reservo una experiencia? Entra en la Rally Experience, elige fecha y turno, deja tus datos y paga online. Las plazas son limitadas.
 
 Del blog
 
@@ -438,7 +436,7 @@ Inicio / Competición
 
 # Preparación de coches de competición y rally en Madrid
 
-Nacidos para competir
+Listos para el tramo
 
 Rally, slalom, montaña o circuito: preparamos tu coche desde la carrocería desnuda hasta la línea de salida y te acompañamos tramo a tramo.
 
@@ -474,8 +472,8 @@ Rally, rallysprint, slalom, montaña y circuito
 Servicios
 Preparación integral, jaulas de seguridad, set-up, mantenimiento y asistencia en carrera
 
-Coches propios
-Peugeot 206 1.6 XS (118 CV) y BMW E36 (135 CV)
+Alquiler
+Alquilamos coches de competición preparados en nuestro taller, con asistencia si la necesitas
 
 Dónde
 Taller en Torrelaguna (Madrid); asistencia en pruebas de toda España
@@ -508,11 +506,11 @@ Cómo trabajamos
 
 ## De la idea a la meta
 
-Proceso claro, presupuesto cerrado y comunicación constante.
+Proceso claro, presupuesto detallado y comunicación constante.
 
 Fase 01
 
-### Briefing
+### Hablamos
 Campeonato, reglamento, objetivos y presupuesto.
 
 Fase 02
@@ -598,7 +596,10 @@ BMW E36 (135 CV): propulsión trasera, más exigente y muy divertido. Para quien
 Te contamos más en la guía coche de rally: qué es y qué categorías hay .
 
 ## ¿Hacéis asistencia en carrera fuera de Madrid?
-Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026.
+Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en carreras como el II Rallye Comunidad de Madrid – El Molar 2026.
+
+## ¿Alquiláis coches de competición?
+Sí. Alquilamos coches de competición preparados en nuestro taller, como los que ves en esta página, para rallies, rallysprints y slalom. El alquiler incluye el coche listo para correr y, si lo necesitas, nuestra asistencia en carrera . Si es tu primera vez, puedes empezar con la Rally Experience . Pregúntanos por disponibilidad .
 
 Trabajos reales
 
@@ -646,8 +647,8 @@ Preguntas frecuentes
 
 ## Lo que nos preguntáis
 
-¿Preparáis coches para cualquier campeonato? Trabajamos rally, slalom, montaña y circuito. En el briefing revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo.
-¿Puedo alquilar un coche de competición? Si es tu primera vez, la mejor forma de empezar es una jornada como el Rally Experience, con nuestro BMW E36 y nuestro Peugeot 206. Para alquileres de coche para una prueba concreta, consúltanos.
+¿Preparáis coches para cualquier campeonato? Trabajamos rally, slalom, montaña y circuito. En la primera reunión revisamos el reglamento de tu campeonato y planteamos la preparación para cumplirlo.
+¿Puedo alquilar un coche de competición? Sí. Alquilamos coches de competición preparados en nuestro taller para rallies, rallysprints y slalom, con asistencia si la necesitas. Si es tu primera vez, puedes empezar con la Rally Experience. Escríbenos y te contamos la disponibilidad.
 ¿Ofrecéis asistencia durante la carrera? Sí, podemos acompañarte en el parque de asistencia con equipo y material para resolver cualquier incidencia.
 ¿Puedo hacer la preparación por fases? Claro. Muchos pilotos empiezan por seguridad y fiabilidad y evolucionan el coche temporada a temporada.
 
@@ -750,7 +751,7 @@ Coches
 Clásicos, youngtimers y todoterrenos: BMW E30, Land Rover Defender, Nissan Patrol…
 
 Método
-Proyecto por fases con presupuesto cerrado por fase y diario de obra con fotos
+Proyecto por fases con presupuesto detallado por fase y diario de obra con fotos
 
 Legalización
 Reformas tramitadas según el Manual de Reformas de Vehículos e ITV
@@ -783,7 +784,7 @@ Cómo trabajamos
 
 ## De la idea a la meta
 
-Proceso claro, presupuesto cerrado y comunicación constante.
+Proceso claro, presupuesto detallado y comunicación constante.
 
 Fase 01
 
@@ -813,7 +814,7 @@ Guía rápida
 Un restomod une restoration y modification : se conserva el aspecto y el carácter del clásico, pero se actualiza lo que se conduce —motor, frenos, suspensión, electricidad y confort—. A diferencia de una restauración, no busca la fidelidad total a fábrica, sino un clásico que se pueda disfrutar a diario. Lo explicamos a fondo en qué es un restomod y cómo plantearlo por fases .
 
 ## ¿Cuánto cuesta un restomod o una restauración?
-Depende sobre todo de tres cosas: el estado de la base (chasis y óxido), el alcance de la modificación (mecánica original reconstruida o actualizada) y los acabados (pintura, interior). Por eso trabajamos por fases, con presupuesto cerrado para cada una y un diagnóstico previo de la base antes de comprometer nada.
+Depende sobre todo de tres cosas: el estado de la base (chasis y óxido), el alcance de la modificación (mecánica original reconstruida o actualizada) y los acabados (pintura, interior). Por eso trabajamos por fases, con presupuesto detallado para cada una y un diagnóstico previo de la base antes de comprometer nada.
 
 ## ¿Se puede legalizar un restomod en la ITV?
 Sí. Las modificaciones que cambian las características del vehículo son reformas y se tramitan según el Manual de Reformas de Vehículos, con su documentación técnica e inspección en la ITV. Si el coche tiene más de 30 años, conviene valorar también su catalogación como vehículo histórico. Tienes todos los detalles en reformas en la ITV y vehículos históricos .
@@ -865,7 +866,7 @@ Preguntas frecuentes
 ## Lo que nos preguntáis
 
 ¿Con qué coches trabajáis? Clásicos, youngtimers y todoterrenos de todo tipo: BMW, Land Rover, Nissan Patrol… Cuéntanos el modelo y valoramos el proyecto sin compromiso.
-¿Cuánto cuesta un restomod? Depende del estado de la base y del nivel de modificación. Por eso trabajamos por fases y con presupuesto cerrado para cada una.
+¿Cuánto cuesta un restomod? Depende del estado de la base y del nivel de modificación. Por eso trabajamos por fases y con presupuesto detallado para cada una.
 ¿Cuánto tarda? Un restomod completo suele llevar meses. Te damos un calendario realista desde el principio y te enviamos avances.
 ¿Me ayudáis a encontrar el coche base? Sí, podemos asesorarte en la compra y revisar el coche antes de que lo compres.
 
@@ -945,7 +946,7 @@ Preparamos cada superficie como si fuera a un concurso. Porque la pintura no sol
 
 PAINT
 
-Rosa Deyscom
+Preparación
 
 En resumen
 
@@ -958,7 +959,7 @@ Acabados
 Colores originales, especiales, perlados, mates y bitono
 
 Precio
-Presupuesto cerrado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura
+Presupuesto detallado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura
 
 Dónde
 Torrelaguna (Madrid), con clientes de la Sierra Norte, Madrid y Guadalajara
@@ -991,7 +992,7 @@ Cómo trabajamos
 
 ## De la idea a la meta
 
-Proceso claro, presupuesto cerrado y comunicación constante.
+Proceso claro, presupuesto detallado y comunicación constante.
 
 Fase 01
 
@@ -1032,29 +1033,13 @@ Guía rápida
 ## Lo que debes saber
 
 ## ¿Cuánto cuesta pintar un coche?
-El precio de pintar un coche depende de la superficie (una pieza o el coche completo), del estado de la chapa , del desmontaje necesario y del tipo de pintura (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto cerrado tras ver el coche y te explicamos cada partida en cuánto cuesta pintar un coche .
+El precio de pintar un coche depende de la superficie (una pieza o el coche completo), del estado de la chapa , del desmontaje necesario y del tipo de pintura (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto detallado tras ver el coche y te explicamos cada partida en cuánto cuesta pintar un coche .
 
 ## ¿Por qué pintar en cabina de pintura?
 La cabina de pintura controla el polvo, la temperatura y la ventilación durante la aplicación y el secado. El resultado es un acabado más limpio y duradero que pintar al aire libre. En nuestra cabina pintamos carrocerías completas, piezas sueltas y también chasis, subchasis y brazos , como los que ves en las fotos.
 
 ## ¿Hacéis decoraciones y rotulación de coches de rally?
 Sí. Diseñamos y aplicamos decoraciones de competición en pintura o vinilo, con los logos de patrocinadores y el estilo de cada equipo. Es lo que llevan nuestros propios coches de rally y slalom.
-
-Trabajos reales
-
-## Desde el taller
-
-Más proyectos cada semana en nuestro Instagram y TikTok .
-
-COLOR
-
-COLOR
-
-COLOR
-
-COLOR
-
-COLOR
 
 Presupuesto · Pintura
 
@@ -1207,7 +1192,7 @@ Cómo trabajamos
 
 ## De la idea a la meta
 
-Proceso claro, presupuesto cerrado y comunicación constante.
+Proceso claro, presupuesto detallado y comunicación constante.
 
 Fase 01
 
@@ -1250,8 +1235,6 @@ Trabajos reales
 ## Desde el taller
 
 Más proyectos cada semana en nuestro Instagram y TikTok .
-
-POWER
 
 POWER
 
@@ -1340,14 +1323,14 @@ Inicio / Experiencias
 
 Ponte al volante de un rally
 
-Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca) con nuestro Peugeot 206 y nuestro BMW E36. 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.
+Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca) con dos coches de tracción delantera y dos de propulsión trasera. 4, 5 y 6 de diciembre, turno de mañana o tarde. 299 €.
 
-5 · 6 · 7 de diciembre Mañana o tarde 299 €
+4 · 5 · 6 de diciembre Mañana o tarde 299 €
 
 Ver fechas
 WhatsApp
 
-Rally Experience Circuito El Hito BMW E36 Peugeot 206 Tierra 4 horas
+Rally Experience Circuito El Hito Tracción delantera Propulsión trasera Tierra 4 horas
 
 Elige tu experiencia
 
@@ -1357,13 +1340,13 @@ Elige tu experiencia
 
 RALLY EXPERIENCE
 
-5-7 dic · Cuenca
-Curso de conducción · 5, 6 y 7 de diciembre
+4-6 dic · Cuenca
+Curso de conducción · 4, 5 y 6 de diciembre
 
 ### Rally Experience
-Curso de rally de 4 horas sobre tierra: Peugeot 206 de tracción delantera y BMW E36 de propulsión, instructor por grupo y comida.
+Curso de rally de 4 horas sobre tierra: dos coches de tracción delantera y dos de propulsión trasera, instructor por grupo y comida.
 
-5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
+4 de diciembre · 5 de diciembre · 6 de diciembre · 299 €
 
 Ver fechas y reservar
 
@@ -1371,65 +1354,45 @@ Próximas fechas
 
 ## Reserva tu turno
 
-Pago seguro con tarjeta en Stripe. La plaza queda confirmada al momento.
+16 plazas por turno. Deja tus datos, elige día y turno y paga online.
+
+4 dic
+Rally Experience Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+16 plazas
+299 €
+Elegir este turno
+
+4 dic
+Rally Experience Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+16 plazas
+299 €
+Elegir este turno
 
 5 dic
 Rally Experience Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
 5 dic
 Rally Experience Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
 6 dic
 Rally Experience Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
 6 dic
 Rally Experience Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
-7 dic
-Rally Experience Lunes 7 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
-299 €
-Reservar y pagar
-
-7 dic
-Rally Experience Lunes 7 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
-299 €
-Reservar y pagar
-
-En resumen
-
-## Datos clave
-
-Experiencias
-Rally Experience: curso de rally sobre tierra de 4 horas (5, 6 y 7 de diciembre)
-
-Lugar
-Circuito El Hito (Cuenca), circuito de tierra
-
-Coches
-BMW E36 (propulsión) y Peugeot 206 (tracción delantera) preparados para competición
-
-Formato
-Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, grupos de 8 a 12
-
-Precio
-299 € por persona, pago con tarjeta en Stripe
-
-Requisitos
-Carnet de conducir en vigor; no hace falta experiencia
+Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista puede haber cambios de horario o de fecha: somos exigentes con que el circuito esté en las condiciones apropiadas para que la jornada se haga con total garantía de calidad.
 
 Cómo funciona
 
@@ -1443,7 +1406,7 @@ Experiencia, día y turno.
 Paso 02
 
 ### Reserva
-Deja tus datos y paga con tarjeta en Stripe.
+Deja tus datos, elige día y turno y paga online.
 
 Paso 03
 
@@ -1453,14 +1416,36 @@ Confirmación por email y, unos días antes, el horario y la ubicación.
 Paso 04
 
 ### Pilota
-5 ejercicios, 2 coches y clasificación final.
+4 horas de ejercicios y circuito completo con tu monitor.
+
+En resumen
+
+## Datos clave
+
+Experiencias
+Rally Experience: curso de rally sobre tierra de 4 horas (4, 5 y 6 de diciembre)
+
+Lugar
+Circuito El Hito (Cuenca), circuito de tierra
+
+Coches
+4 coches de rally preparados para competición: 2 de tracción delantera y 2 de propulsión trasera
+
+Formato
+Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, 16 plazas por turno
+
+Precio
+299 € por persona, pago online seguro al reservar
+
+Requisitos
+Carnet de conducir en vigor; no hace falta experiencia
 
 Cómo elegir
 
 ## ¿Cuál es la tuya?
 
 ## ¿Qué es la Rally Experience?
-La Rally Experience es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con el Peugeot 206 (tracción delantera) y el BMW E36 (propulsión trasera), con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (5, 6 o 7 de diciembre) y turno.
+La Rally Experience es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (4, 5 o 6 de diciembre) y turno.
 
 ## ¿Qué se aprende en una jornada sobre tierra?
 A leer el agarre y a mover el coche con las transferencias de peso: provocar y corregir un derrape, frenar fuerte, usar el freno de mano y elegir la trazada. Es la base de cualquier piloto de rally y, además, te hace mejor conductor en el día a día. Si te interesa la competición, lee cómo empezar en los rallies .
@@ -1470,10 +1455,10 @@ Preguntas frecuentes
 ## Todo claro
 
 ¿Necesito experiencia o licencia? No. Solo carnet de conducir en vigor. Los monitores adaptan cada ejercicio a tu nivel.
-¿Cuánto cuesta? 299 € por persona en cualquiera de las fechas. Se paga con tarjeta en la pasarela segura de Stripe al reservar.
+¿Cuánto cuesta? 299 € por persona en cualquiera de las fechas. Se paga online al reservar.
 ¿Dónde son? En el Circuito El Hito, en la provincia de Cuenca. Al reservar te enviamos la ubicación exacta y el horario de tu turno.
 ¿Se puede regalar? Sí. Reserva con los datos de la persona que va a conducir o escríbenos y te preparamos un cheque regalo.
-¿Qué coches se usan? Nuestro Peugeot 206 1.6 XS de 118 CV (tracción delantera) y nuestro BMW E36 de 135 CV (propulsión trasera), preparados en el taller de Torrelaguna.
+¿Qué coches se usan? Cuatro coches de rally preparados en nuestro taller de Torrelaguna: dos de tracción delantera y dos de propulsión trasera.
 
 Del blog
 
@@ -1533,62 +1518,62 @@ Inicio / Experiencias / Rally Experience
 
 Aprende a pilotar en tierra
 
-¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36, con instructores especializados. ¡Comida incluida!
+¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. ¡Comida incluida!
 
-5, 6 y 7 de diciembre 4 horas · mañana o tarde 299 €
+4, 5 y 6 de diciembre 4 horas · mañana o tarde 299 €
 
 Ver fechas y reservar
 WhatsApp
 
-Conduce Aprende Disfruta 206 vs E36 BMW E36 Peugeot 206 Circuito El Hito
+Conduce Aprende Disfruta Delantera vs trasera Tracción delantera Propulsión trasera Circuito El Hito
 
 4 horas de práctica
 4 coches de rally
 4 zonas de ejercicios
-12 personas máx. por grupo
+16 plazas por turno
 – días para la primera fecha
 
 Fechas y plazas
 
 ## Elige día y turno
 
-Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.
+16 plazas por turno. Deja tus datos, elige día y turno y paga en un minuto.
+
+4 dic
+Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
+16 plazas
+299 €
+Elegir este turno
+
+4 dic
+Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
+16 plazas
+299 €
+Elegir este turno
 
 5 dic
 Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
 5 dic
 Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
 6 dic
 Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
+Elegir este turno
 
 6 dic
 Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
+16 plazas
 299 €
-Reservar y pagar
-
-7 dic
-Lunes 7 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
-299 €
-Reservar y pagar
-
-7 dic
-Lunes 7 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-12 plazas
-299 €
-Reservar y pagar
+Elegir este turno
 
 Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista puede haber cambios de horario o de fecha: somos exigentes con que el circuito esté en las condiciones apropiadas para que la jornada se haga con total garantía de calidad.
 
@@ -1597,7 +1582,7 @@ En resumen
 ## La jornada en datos
 
 Fechas
-5, 6 y 7 de diciembre de 2026, turno de mañana o de tarde
+4, 5 y 6 de diciembre de 2026, turno de mañana o de tarde
 
 Duración
 4 horas de práctica: 2 h de ejercicios en 4 zonas y 2 h de circuito completo
@@ -1605,11 +1590,11 @@ Duración
 Lugar
 Circuito El Hito (Cuenca)
 
-Grupos
-De 8 a 12 personas como máximo, con monitor
+Plazas
+16 personas por turno, en grupos reducidos con monitor. Si un turno no se completa, te reubicamos en otro
 
 Coches
-2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36), con arco de seguridad, arneses y extinción
+2 de tracción delantera y 2 de propulsión trasera, con arco de seguridad, arneses y extinción
 
 Precio
 299 € por persona: comida, bebida, welcome pack y seguro de RC incluidos
@@ -1618,7 +1603,7 @@ Precio
 
 ## Tierra, derrapes y cronómetro
 
-La Rally Experience es el curso de rally de Deyscom : 4 horas de práctica sobre tierra con coches de rally equipados para competir, con arco de seguridad, arneses y extinción . Las dos primeras horas el circuito se divide en 4 zonas : haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las dos últimas horas se abre el circuito completo y das vueltas aplicando lo aprendido con un coche de tracción delantera (Peugeot 206) y otro de propulsión trasera (BMW E36). No hay parte teórica: en cada ejercicio el monitor te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el 5, 6 o 7 de diciembre , en turno de mañana o tarde .
+La Rally Experience es el curso de rally de Deyscom : 4 horas de práctica sobre tierra con coches de rally equipados para competir, con arco de seguridad, arneses y extinción . Las dos primeras horas el circuito se divide en 4 zonas : haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las dos últimas horas se abre el circuito completo y das vueltas aplicando lo aprendido con un coche de tracción delantera y otro de propulsión trasera . No hay parte teórica: en cada ejercicio el monitor te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el 4, 5 o 6 de diciembre , en turno de mañana o tarde .
 
 RALLY
 
@@ -1664,7 +1649,7 @@ LLEGADA
 Momento 1 de 6
 
 ### Llegada
-Recoges tu welcome pack y conoces a tu instructor y a tu grupo (de 8 a 12 personas como máximo, para no hacer largas esperas).
+Recoges tu welcome pack y conoces a tu instructor y a tu grupo. Grupos reducidos para no hacer largas esperas.
 
 4 ZONAS DE
 
@@ -1678,14 +1663,14 @@ TRACCIÓN D
 Momento 3 de 6
 
 ### Tracción delantera
-Peugeot 206: cambios de peso y freno con pie izquierdo. Sin teoría: tu monitor te lo explica en pista y te corrige.
+Cambios de peso y freno con pie izquierdo. Sin teoría: tu monitor te lo explica en pista y te corrige.
 
 PROPULSIÓN
 
 Momento 4 de 6
 
 ### Propulsión trasera
-BMW E36: conducción en tierra y control del sobreviraje, con las correcciones de tu monitor.
+Conducción en tierra y control del sobreviraje, con las correcciones de tu monitor.
 
 CIRCUITO C
 
@@ -1707,22 +1692,22 @@ Los coches
 
 Coches de rally equipados para competir (arco de seguridad, arneses y extinción), preparados en nuestro taller de Torrelaguna.
 
-PEUGEOT
+RALLY
 
-118 CV Peugeot 206 1.6 XS Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza.
-BMW
+2 coches Tracción delantera Ligeros y nobles: aprendes a usar los cambios de peso y el freno con pie izquierdo.
+RALLY
 
-135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos.
+2 coches Propulsión trasera El coche se mueve bajo tus manos: gas, contravolante y control del sobreviraje.
 
 Duelo en tierra
 
-## 206 vs E36
+## Delantera vs trasera
 
 Tracción delantera contra propulsión trasera. Elige coche, espera a que se apaguen los semáforos y acelera. En el curso no tienes que elegir: conduces los dos .
 
 1 Elige tu coche
 
-Peugeot 206 118 CV · Tracción delantera Ágil y noble: entra en la curva como un rayo. BMW E36 135 CV · Propulsión trasera Empuja desde atrás y sale de lado.
+Tracción delantera Tira de ti desde delante Ágil y noble: entra en la curva como un rayo. Propulsión trasera Empuja desde atrás Gas, contravolante y sale de lado.
 
 2 Cuando se apaguen las luces, ¡acelera!
 
@@ -1742,10 +1727,10 @@ Qué incluye
 
 4 horas de práctica en el Circuito El Hito (Cuenca), turno de mañana o de tarde
 2 horas de ejercicios en 4 zonas + 2 horas de circuito completo
-4 coches de rally: 2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)
+4 coches de rally: 2 de tracción delantera y 2 de propulsión trasera
 Coches equipados para competir: arco de seguridad, arneses y extinción
 Monitor que te explica cada ejercicio en pista y te corrige
-Grupos de 8 a 12 personas como máximo, para no hacer largas esperas
+16 plazas por turno, en grupos reducidos para no hacer largas esperas
 Welcome pack del equipo Deyscom
 Comida y bebida durante el evento
 Seguro de responsabilidad civil para el día del curso
@@ -1756,7 +1741,7 @@ Rally Experience
 
 Precio por persona 299 €
 
-5 de diciembre · 6 de diciembre · 7 de diciembre
+4 de diciembre · 5 de diciembre · 6 de diciembre
 Circuito El Hito (Cuenca)
 Plazas limitadas por turno
 Instructor cualificado por grupo
@@ -1792,7 +1777,7 @@ A controlar un coche de rally sobre tierra : usar los cambios de peso, frenar co
 Es la mejor forma de empezar en los rallies antes de pensar en licencia o coche propio.
 
 ## ¿Tracción delantera o propulsión trasera?
-Las dos. Los dos primeros ejercicios se hacen con el Peugeot 206 (tracción delantera) y los dos siguientes con el BMW E36 (propulsión trasera), para que notes cómo cambia la forma de conducir. Si quieres saber más, lee qué es un coche de rally .
+Las dos. Los dos primeros ejercicios se hacen con un coche de tracción delantera y los dos siguientes con uno de propulsión trasera , para que notes cómo cambia la forma de conducir. Si quieres saber más, lee qué es un coche de rally .
 
 ## ¿Es un buen regalo?
 Sí: es uno de los regalos favoritos de quien disfruta del motor. Al reservar, pon los datos de la persona que va a conducir y escríbenos si quieres un cheque regalo para entregar.
@@ -1804,7 +1789,8 @@ Preguntas frecuentes
 ¿Necesito experiencia o licencia? No. Solo carnet de conducir en vigor. No hay parte teórica: el monitor te explica cada ejercicio en pista y te va corrigiendo, adaptándose a tu nivel.
 ¿Cuánto dura? 4 horas de práctica, en turno de mañana o de tarde. Las dos primeras, ejercicios por zonas; las dos últimas, circuito completo. Al confirmar tu plaza te enviamos el horario exacto.
 ¿Y si hace mal tiempo? Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista el curso puede sufrir cambios de horario o de fecha. Somos exigentes con que el circuito esté en las condiciones apropiadas para que el curso se haga con total garantía de calidad. Si hay cambios, te avisamos y te ofrecemos otra fecha.
-¿Cuántas personas hay por turno? Los grupos son de 8 a 12 personas como máximo, para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera.
+¿Qué pasa si mi turno no se completa? Si un turno no llega a completarse, te reubicamos en otro turno (de mañana o de tarde, u otro día) y te avisamos con antelación para que te venga bien.
+¿Cuántas personas hay por turno? 16 personas por turno, en grupos reducidos para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera. Si un turno no llega a completarse, te reubicamos en otro turno.
 ¿Qué incluye el precio? 299 € por persona: el curso de 4 horas, los coches, el instructor, el welcome pack, la comida y la bebida y el seguro de responsabilidad civil del día.
 ¿Es seguro? Los coches están equipados para competir, con arco de seguridad, arneses y extinción, y cada grupo va con su instructor. Además, el curso incluye seguro de responsabilidad civil para ese día.
 ¿Dónde es? En el Circuito El Hito (Cuenca), un circuito de tierra.
@@ -1971,11 +1957,11 @@ Comunicación Fotos, vídeos y redes para contar cada proyecto.
 
 Al frente Néstor Aguado · Fundador y propietario de Deyscom Motorsport Héctor Guzmán · Responsable de marketing de Deyscom Motorsport
 
-Nuestro primer rally · 2026
+En competición · 2026
 
 ## II Rallye Comunidad de Madrid El Molar
 
-En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally con el Peugeot 206 del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
+En 2026 Néstor Aguado y Héctor Guzmán corrieron el II Rallye Comunidad de Madrid – El Molar con el coche del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
 
 Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.
 
@@ -2154,7 +2140,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -2287,7 +2273,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -2405,7 +2391,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -2525,7 +2511,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -2650,7 +2636,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -2767,7 +2753,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -2899,7 +2885,7 @@ Reserva para imprevistos y reparaciones.
 Alquilar un coche preparado concentra casi todas estas partidas en un solo precio y es, con diferencia, la forma más previsible de debutar.
 
 ## Nuestra experiencia: el primer rally de Deyscom
-En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos su primer rally, el II Rallye Comunidad de Madrid – El Molar , con el Peugeot 206 del equipo. Lo que más aprendimos: la preparación no termina en el taller. Verificaciones, horarios, asistencia y comunicación dentro del coche pesan tanto como la mecánica. Por eso diseñamos nuestras experiencias y nuestro curso de copiloto pensando en lo que nos habría gustado saber antes de nuestra primera salida.
+En 2026 Néstor Aguado y Héctor Guzmán corrieron juntos el II Rallye Comunidad de Madrid – El Molar , con el Peugeot 206 del equipo. Lo que más aprendimos: la preparación no termina en el taller. Verificaciones, horarios, asistencia y comunicación dentro del coche pesan tanto como la mecánica. Por eso diseñamos nuestras experiencias y nuestro curso de copiloto pensando en lo que nos habría gustado saber antes de nuestra primera salida.
 
 ## Preguntas frecuentes
 
@@ -2919,7 +2905,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -3014,7 +3000,7 @@ Cableado nuevo, iluminación, instrumentación, asientos y tapicería a medida. 
 En España, las modificaciones que alteran las características del vehículo se consideran reformas y deben tramitarse según el Manual de Reformas de Vehículos del Ministerio de Industria, con la documentación técnica correspondiente y su inspección en la ITV. Plantearlo desde el principio evita sorpresas y permite elegir piezas que se puedan legalizar.
 
 ## Cómo trabajamos los restomod en Deyscom
-Diseñamos el proyecto contigo, lo dividimos en fases con presupuesto cerrado para cada una y te enviamos fotos y vídeos del avance. Puedes ver ejemplos en nuestra página de restomod y restauración en Madrid .
+Diseñamos el proyecto contigo, lo dividimos en fases con presupuesto detallado para cada una y te enviamos fotos y vídeos del avance. Puedes ver ejemplos en nuestra página de restomod y restauración en Madrid .
 
 ## Preguntas frecuentes
 
@@ -3033,7 +3019,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 
@@ -3155,7 +3141,7 @@ NA
 Sobre el autor
 
 ### Néstor Aguado
-Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió su primer rally como equipo, el II Rallye Comunidad de Madrid – El Molar.
+Fundador y propietario de Deyscom Motorsport Néstor Aguado dirige Deyscom Motorsport, el taller de preparación de coches de competición, restomod, pintura y banco de potencia de Torrelaguna (Madrid). En 2026 corrió con el equipo el II Rallye Comunidad de Madrid – El Molar.
 
 Conoce al equipo
 

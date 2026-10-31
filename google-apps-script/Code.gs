@@ -596,7 +596,11 @@ function sincronizarStripe() { Logger.log(JSON.stringify(withLock_(syncStripe_))
 function syncStripe_() {
   if (!stripeKey_()) return { ok: false, error: 'Falta la clave de Stripe (propiedad del script STRIPE_KEY). Ver README.' };
   var eds = siteEditions_();
-  var byUrl = {}; eds.forEach(function (e) { if (e.stripe) byUrl[String(e.stripe).split('?')[0].replace(/\/$/, '')] = e; });
+  // Si un enlace de pago es de una sola fecha, la venta se asigna a esa fecha. Si es un enlace general (varias fechas),
+  // la fecha sale de la reserva hecha en la web (client_reference_id → lead → edición elegida).
+  var byUrl = {}, urlCount = {};
+  eds.forEach(function (e) { if (!e.stripe) return; var u = String(e.stripe).split('?')[0].replace(/\/$/, ''); urlCount[u] = (urlCount[u] || 0) + 1; byUrl[u] = e; });
+  Object.keys(urlCount).forEach(function (u) { if (urlCount[u] > 1) delete byUrl[u]; });
   var byId = {}; eds.forEach(function (e) { byId[e.id] = e; });
   var linkEd = {};
   stripeList_('payment_links', {}).forEach(function (pl) { var e = byUrl[String(pl.url).replace(/\/$/, '')]; if (e) linkEd[pl.id] = e; });
@@ -611,7 +615,7 @@ function syncStripe_() {
     var leadId = cs.client_reference_id && findRow_(L, cs.client_reference_id) > 0 ? cs.client_reference_id : '';
     var lead = null;
     if (leadId) { var row = L.sheet.getRange(findRow_(L, leadId), 1, 1, L.headers.length).getDisplayValues()[0]; lead = {}; L.headers.forEach(function (h, j) { lead[h] = row[j]; }); }
-    var ed = (cs.payment_link && linkEd[cs.payment_link]) || (lead && byId[lead.edicion]) || null;
+    var ed = (lead && byId[lead.edicion]) || (cs.payment_link && linkEd[cs.payment_link]) || null;
     var plazas = ed && Number(ed.precio) ? Math.max(1, Math.round(importe / Number(ed.precio))) : 1;
     var fields = { estado: 'Ganado', valor: String(importe), plazas: String(plazas) };
     if (ed) fields.edicion = ed.id;

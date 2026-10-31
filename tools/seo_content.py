@@ -23,11 +23,11 @@ FACTS = {
                     ("Dónde", "Taller en Torrelaguna (Madrid); asistencia en pruebas de toda España")],
     "restomod": [("Qué es", "Restauración + modernización: estética clásica con mecánica, frenos y seguridad actuales"),
                  ("Coches", "Clásicos, youngtimers y todoterrenos: BMW E30, Land Rover Defender, Nissan Patrol…"),
-                 ("Método", "Proyecto por fases con presupuesto cerrado por fase y diario de obra con fotos"),
+                 ("Método", "Proyecto por fases con presupuesto detallado por fase y diario de obra con fotos"),
                  ("Legalización", "Reformas tramitadas según el Manual de Reformas de Vehículos e ITV")],
     "pintura": [("Servicios", "Pintura completa y parcial en cabina, chapa, chasis y decoraciones de competición"),
                 ("Acabados", "Colores originales, especiales, perlados, mates y bitono"),
-                ("Precio", "Presupuesto cerrado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura"),
+                ("Precio", "Presupuesto detallado tras ver el coche: depende de superficie, estado de chapa, desmontaje y tipo de pintura"),
                 ("Dónde", "Torrelaguna (Madrid), con clientes de la Sierra Norte, Madrid y Guadalajara")],
     "banco-de-potencia": [("Qué mide", "Potencia (CV/kW) y par (Nm) en todo el rango de revoluciones"),
                           ("Para qué", "Diagnóstico, comparativa antes/después de una modificación y puesta a punto"),
@@ -66,19 +66,19 @@ GUIDES = {
 </ul>
 <p>Te contamos más en la guía <a href="blog-coche-de-rally-que-es-y-categorias.html">coche de rally: qué es y qué categorías hay</a>.</p>"""),
         ("¿Hacéis asistencia en carrera fuera de Madrid?", """
-<p>Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en nuestro primer rally, el II Rallye Comunidad de Madrid – El Molar 2026.</p>"""),
+<p>Sí. Además de preparar y mantener el coche en nuestro taller de Torrelaguna, nos desplazamos al parque de asistencia de rallies, rallysprints y slaloms para resolver incidencias entre tramos. Lo vivimos en primera persona en carreras como el II Rallye Comunidad de Madrid – El Molar 2026.</p>"""),
     ],
     "restomod": [
         ("¿Qué es exactamente un restomod?", """
 <p>Un <strong>restomod</strong> une <em>restoration</em> y <em>modification</em>: se conserva el aspecto y el carácter del clásico, pero se actualiza lo que se conduce —motor, frenos, suspensión, electricidad y confort—. A diferencia de una restauración, no busca la fidelidad total a fábrica, sino un clásico que se pueda disfrutar a diario. Lo explicamos a fondo en <a href="blog-que-es-un-restomod.html">qué es un restomod y cómo plantearlo por fases</a>.</p>"""),
         ("¿Cuánto cuesta un restomod o una restauración?", """
-<p>Depende sobre todo de tres cosas: el <strong>estado de la base</strong> (chasis y óxido), el <strong>alcance de la modificación</strong> (mecánica original reconstruida o actualizada) y los <strong>acabados</strong> (pintura, interior). Por eso trabajamos por fases, con presupuesto cerrado para cada una y un diagnóstico previo de la base antes de comprometer nada.</p>"""),
+<p>Depende sobre todo de tres cosas: el <strong>estado de la base</strong> (chasis y óxido), el <strong>alcance de la modificación</strong> (mecánica original reconstruida o actualizada) y los <strong>acabados</strong> (pintura, interior). Por eso trabajamos por fases, con presupuesto detallado para cada una y un diagnóstico previo de la base antes de comprometer nada.</p>"""),
         ("¿Se puede legalizar un restomod en la ITV?", """
 <p>Sí. Las modificaciones que cambian las características del vehículo son <strong>reformas</strong> y se tramitan según el Manual de Reformas de Vehículos, con su documentación técnica e inspección en la ITV. Si el coche tiene más de 30 años, conviene valorar también su catalogación como vehículo histórico. Tienes todos los detalles en <a href="blog-reformas-itv-y-vehiculos-historicos.html">reformas en la ITV y vehículos históricos</a>.</p>"""),
     ],
     "pintura": [
         ("¿Cuánto cuesta pintar un coche?", """
-<p>El precio de pintar un coche depende de la <strong>superficie</strong> (una pieza o el coche completo), del <strong>estado de la chapa</strong>, del <strong>desmontaje</strong> necesario y del <strong>tipo de pintura</strong> (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto cerrado tras ver el coche y te explicamos cada partida en <a href="blog-cuanto-cuesta-pintar-un-coche.html">cuánto cuesta pintar un coche</a>.</p>"""),
+<p>El precio de pintar un coche depende de la <strong>superficie</strong> (una pieza o el coche completo), del <strong>estado de la chapa</strong>, del <strong>desmontaje</strong> necesario y del <strong>tipo de pintura</strong> (monocapa, bicapa, tricapa, perlada o mate). Un cambio de color completo, con vanos y marcos, no es comparable a igualar un paragolpes. Te damos presupuesto detallado tras ver el coche y te explicamos cada partida en <a href="blog-cuanto-cuesta-pintar-un-coche.html">cuánto cuesta pintar un coche</a>.</p>"""),
         ("¿Por qué pintar en cabina de pintura?", """
 <p>La cabina de pintura controla el polvo, la temperatura y la ventilación durante la aplicación y el secado. El resultado es un acabado más limpio y duradero que pintar al aire libre. En nuestra cabina pintamos carrocerías completas, piezas sueltas y también <strong>chasis, subchasis y brazos</strong>, como los que ves en las fotos.</p>"""),
         ("¿Hacéis decoraciones y rotulación de coches de rally?", """

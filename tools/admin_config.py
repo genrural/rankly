@@ -95,10 +95,10 @@ def build_config(g):
               f("Turno", "turno", "select", options=["Mañana", "Tarde", "Día completo"]),
               f("Horario", "horario", required=False, hint="Opcional. Ej. 09:00–14:00"),
               f("Lugar", "lugar", default="Circuito El Hito (Cuenca)"),
-              f("Plazas", "plazas", "number", value_type="int", min=1, default=20),
+              f("Plazas", "plazas", "number", value_type="int", min=1, default=16),
               f("Precio por persona (€)", "precio", "number", value_type="float", default=299),
               f("Enlace de pago de Stripe", "stripe", required=False, pattern=["^(https://(buy|checkout)\\.stripe\\.com/.+)?$", "Pega el enlace de pago de Stripe (https://buy.stripe.com/…)"],
-                hint="Stripe → Enlaces de pago → crea uno por turno (299 €) y pégalo aquí. Vacío = la web recoge la reserva y os avisa para cobrarla."),
+                hint="Normalmente vacío: se usa el enlace de pago general (Ajustes). Rellénalo solo si este turno necesita un enlace distinto."),
               f("Estado", "estado", "select", options=["Abierta", "Completa", "Cancelada"], default="Abierta"),
               f("Mostrar en la web", "visible", "boolean", default=True)])]}
     event_files = [{"label": e["name"] + " · textos", "name": k, "file": f"content/paginas/{k}.json", "fields": page_fields(True)} for k, e in g["EVENTS"].items()]
@@ -115,6 +115,9 @@ def build_config(g):
         f("Teléfono (formato +34…)", "telefono"), f("Teléfono visible", "telefono_visible"),
         f("WhatsApp (solo números, con 34)", "whatsapp", pattern=["^[0-9]{9,15}$", "Solo números, p. ej. 34615972233"]), f("Email", "email"),
         f("Aviso de la barra superior", "aviso_superior", "object", fields=[f("Mostrar", "activo", "boolean", default=True), f("Texto", "texto"), f("Enlace", "enlace", hint="Ej. ds-copilot-course.html")]),
+        f("Enlace de pago general de la Rally Experience", "pago_rally_experience", required=False,
+          pattern=["^(https://(buy|checkout)\\.stripe\\.com/.+)?$", "Pega el enlace de pago de Stripe (https://buy.stripe.com/…)"],
+          hint="Un solo enlace para todos los turnos. El día y el turno los elige el cliente en el formulario y quedan en el CRM."),
         f("Juego AX Rally (home)", "juego", "object", required=False, fields=[f("Mostrar el juego", "activo", "boolean", default=True),
           f("Premio para el 1.º del ranking", "premio", hint="Ej. un pack de productos de limpieza para tu coche"),
           f("Cierre del ranking (fecha)", "fin", "datetime", format="YYYY-MM-DD", date_format="DD/MM/YYYY", time_format=False, hint="Ese día se cierra el ranking y gana el 1.º")]),

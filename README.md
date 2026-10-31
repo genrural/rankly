@@ -14,7 +14,7 @@ Se puede alojar en cualquier hosting: Netlify, Vercel, GitHub Pages, Cloudflare 
 | Banco de potencia | `banco-de-potencia.html` |
 | Experiencias (todas las fechas, con pago) | `experiencias.html` |
 | Experiencia Rally Eurocem · 4 dic 2026 | `experiencia-rally-eurocem.html` |
-| Rally Experience · 5, 6 y 7 dic 2026 | `ds-pilot-course.html` |
+| Rally Experience · 4, 5 y 6 dic 2026 | `ds-pilot-course.html` |
 | Gracias (tras pagar en Stripe; fuera de Google) | `gracias.html` |
 | Tienda: merchandising + coches en venta (Wallapop) | `tienda.html` |
 | Fichas de producto | `camiseta-edicion-especial-el-molar-2026.html`, `camiseta-deyscom.html`, `sudadera-capucha-deyscom.html`, `chaqueta-deyscom.html`, `gorra-deyscom.html`, `pegatinas-deyscom.html` |

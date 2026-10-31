@@ -2,6 +2,34 @@
  "actualizado": "2026-10-31",
  "ediciones": [
   {
+   "id": "dspilot-2026-12-04-manana",
+   "experiencia": "ds-pilot-course",
+   "nombre": "Rally Experience",
+   "fecha": "2026-12-04",
+   "turno": "Mañana",
+   "horario": "",
+   "lugar": "Circuito El Hito (Cuenca)",
+   "plazas": 16,
+   "precio": 299,
+   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "estado": "Abierta",
+   "etiqueta": "Viernes 4 de diciembre · turno de mañana"
+  },
+  {
+   "id": "dspilot-2026-12-04-tarde",
+   "experiencia": "ds-pilot-course",
+   "nombre": "Rally Experience",
+   "fecha": "2026-12-04",
+   "turno": "Tarde",
+   "horario": "",
+   "lugar": "Circuito El Hito (Cuenca)",
+   "plazas": 16,
+   "precio": 299,
+   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "estado": "Abierta",
+   "etiqueta": "Viernes 4 de diciembre · turno de tarde"
+  },
+  {
    "id": "dspilot-2026-12-05-manana",
    "experiencia": "ds-pilot-course",
    "nombre": "Rally Experience",
@@ -9,9 +37,9 @@
    "turno": "Mañana",
    "horario": "",
    "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 12,
+   "plazas": 16,
    "precio": 299,
-   "stripe": "",
+   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
    "estado": "Abierta",
    "etiqueta": "Sábado 5 de diciembre · turno de mañana"
   },
@@ -23,9 +51,9 @@
    "turno": "Tarde",
    "horario": "",
    "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 12,
+   "plazas": 16,
    "precio": 299,
-   "stripe": "",
+   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
    "estado": "Abierta",
    "etiqueta": "Sábado 5 de diciembre · turno de tarde"
   },
@@ -37,9 +65,9 @@
    "turno": "Mañana",
    "horario": "",
    "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 12,
+   "plazas": 16,
    "precio": 299,
-   "stripe": "",
+   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
    "estado": "Abierta",
    "etiqueta": "Domingo 6 de diciembre · turno de mañana"
   },
@@ -51,39 +79,11 @@
    "turno": "Tarde",
    "horario": "",
    "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 12,
+   "plazas": 16,
    "precio": 299,
-   "stripe": "",
+   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
    "estado": "Abierta",
    "etiqueta": "Domingo 6 de diciembre · turno de tarde"
-  },
-  {
-   "id": "dspilot-2026-12-07-manana",
-   "experiencia": "ds-pilot-course",
-   "nombre": "Rally Experience",
-   "fecha": "2026-12-07",
-   "turno": "Mañana",
-   "horario": "",
-   "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 12,
-   "precio": 299,
-   "stripe": "",
-   "estado": "Abierta",
-   "etiqueta": "Lunes 7 de diciembre · turno de mañana"
-  },
-  {
-   "id": "dspilot-2026-12-07-tarde",
-   "experiencia": "ds-pilot-course",
-   "nombre": "Rally Experience",
-   "fecha": "2026-12-07",
-   "turno": "Tarde",
-   "horario": "",
-   "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 12,
-   "precio": 299,
-   "stripe": "",
-   "estado": "Abierta",
-   "etiqueta": "Lunes 7 de diciembre · turno de tarde"
   }
  ]
 }

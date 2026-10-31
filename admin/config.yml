@@ -198,8 +198,20 @@
        "value": "caja-cambios-competicion-preparacion"
       },
       {
+       "label": "Caja de madera de un Land Rover Defender pick-up verde restaurado (defender-pickup-verde-caja-madera)",
+       "value": "defender-pickup-verde-caja-madera"
+      },
+      {
+       "label": "Carrocería con masilla preparada para pintar en la cabina de Deyscom (carroceria-preparacion-pintura-masilla)",
+       "value": "carroceria-preparacion-pintura-masilla"
+      },
+      {
        "label": "Cartel de la Experiencia Rally Eurocem: 4 de diciembre de 2026 en el Circuito El Hito (Cuenca), con BMW E36 y Peugeot 206 (cartel-experiencia-rally-eurocem-4-diciembre)",
        "value": "cartel-experiencia-rally-eurocem-4-diciembre"
+      },
+      {
+       "label": "Chasis de Land Rover Defender restaurado visto desde arriba (chasis-defender-restomod-vista-cenital)",
+       "value": "chasis-defender-restomod-vista-cenital"
       },
       {
        "label": "Chasis de todoterreno en restauración completa (todoterreno-chasis-restauracion-completa)",
@@ -210,8 +222,20 @@
        "value": "cabina-pintura-chasis-rosa"
       },
       {
+       "label": "Chasis restaurado con la carrocería del Defender lista para montar (chasis-defender-restomod-carroceria)",
+       "value": "chasis-defender-restomod-carroceria"
+      },
+      {
        "label": "Chasis tubular de buggy en preparación (chasis-tubular-buggy-preparacion)",
        "value": "chasis-tubular-buggy-preparacion"
+      },
+      {
+       "label": "Chasis turquesa con ejes y ruedas durante un restomod (chasis-turquesa-restomod-defender)",
+       "value": "chasis-turquesa-restomod-defender"
+      },
+      {
+       "label": "Chasis y carrocerías desmontados durante un restomod en el taller de Deyscom (taller-deyscom-restomod-chasis-desmontado)",
+       "value": "taller-deyscom-restomod-chasis-desmontado"
       },
       {
        "label": "Colección oficial Deyscom Motorsport: sudadera, gorra y camiseta negras con logo rosa (tienda-online-coleccion-deyscom-motorsport)",
@@ -238,8 +262,16 @@
        "value": "motor-competicion-detalle-admision"
       },
       {
+       "label": "Diferencial y frenos nuevos sobre un chasis pintado en turquesa (defender-restomod-diferencial-chasis-turquesa)",
+       "value": "defender-restomod-diferencial-chasis-turquesa"
+      },
+      {
        "label": "Eje trasero y suspensión de un 4x4 en restauración (eje-trasero-suspension-restauracion-4x4)",
        "value": "eje-trasero-suspension-restauracion-4x4"
+      },
+      {
+       "label": "Eje y suspensión de un Defender restomod sobre el elevador (defender-restomod-eje-suspension-elevador)",
+       "value": "defender-restomod-eje-suspension-elevador"
       },
       {
        "label": "Elevadores del taller de Deyscom en Torrelaguna (elevadores-taller-deyscom-torrelaguna)",
@@ -262,6 +294,10 @@
        "value": "extintor-baquet-sparco-coche-competicion"
       },
       {
+       "label": "Interior de un Defender restomod con asientos de cuero rojo (defender-restomod-interior-asientos-rojos)",
+       "value": "defender-restomod-interior-asientos-rojos"
+      },
+      {
        "label": "Jaula de seguridad multipunto en un coche de competición (jaula-seguridad-multipunto-coche-competicion)",
        "value": "jaula-seguridad-multipunto-coche-competicion"
       },
@@ -278,12 +314,32 @@
        "value": "jeep-wrangler-elevador-taller-deyscom"
       },
       {
+       "label": "Land Rover Defender negro con barra de faros y baca en el taller (land-rover-defender-negro-barra-faros)",
+       "value": "land-rover-defender-negro-barra-faros"
+      },
+      {
+       "label": "Land Rover Defender negro restomod con baca en el taller de Deyscom (land-rover-defender-negro-taller-deyscom)",
+       "value": "land-rover-defender-negro-taller-deyscom"
+      },
+      {
+       "label": "Land Rover Defender negro restomod de Deyscom en una carretera de montaña (land-rover-defender-negro-restomod-carretera)",
+       "value": "land-rover-defender-negro-restomod-carretera"
+      },
+      {
        "label": "Land Rover Defender restomod de Deyscom (land-rover-defender-restomod-deyscom)",
        "value": "land-rover-defender-restomod-deyscom"
       },
       {
        "label": "Land Rover Defender restomod verde con baca (land-rover-defender-restomod-verde)",
        "value": "land-rover-defender-restomod-verde"
+      },
+      {
+       "label": "Land Rover Defender verde restaurado en el taller de Deyscom (land-rover-defender-verde-taller-deyscom)",
+       "value": "land-rover-defender-verde-taller-deyscom"
+      },
+      {
+       "label": "Land Rover Defender verde restomod de Deyscom en el campo (land-rover-defender-verde-restomod-campo)",
+       "value": "land-rover-defender-verde-restomod-campo"
       },
       {
        "label": "Latiguillos de freno de competición (latiguillos-freno-competicion-detalle)",
@@ -308,6 +364,14 @@
       {
        "label": "Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport (mitsubishi-lancer-evo-rally-taller-deyscom)",
        "value": "mitsubishi-lancer-evo-rally-taller-deyscom"
+      },
+      {
+       "label": "Motor V8 en preparación para un restomod en el taller de Deyscom (motor-v8-restomod-preparacion-taller)",
+       "value": "motor-v8-restomod-preparacion-taller"
+      },
+      {
+       "label": "Motor V8 rojo montado en un Land Rover Defender restomod de Deyscom (defender-restomod-motor-v8-rojo)",
+       "value": "defender-restomod-motor-v8-rojo"
       },
       {
        "label": "Motor con admisión Deyscom en un Peugeot 206 (motor-admision-deyscom-peugeot-206)",
@@ -394,6 +458,10 @@
        "value": "piloto-copiloto-rally-interior-coche-competicion"
       },
       {
+       "label": "Pintor trabajando en la cabina de pintura de Deyscom (pintor-cabina-pintura-deyscom)",
+       "value": "pintor-cabina-pintura-deyscom"
+      },
+      {
        "label": "Plano de diseño de una jaula de seguridad de competición (plano-jaula-seguridad-diseno-competicion)",
        "value": "plano-jaula-seguridad-diseno-competicion"
       },
@@ -426,8 +494,16 @@
        "value": "cabina-pintura-subchasis-rosa-deyscom"
       },
       {
+       "label": "Suspensión con muelles amarillos y neumáticos todoterreno en un Defender restomod (defender-restomod-suspension-muelles-amarillos)",
+       "value": "defender-restomod-suspension-muelles-amarillos"
+      },
+      {
        "label": "Trasera del Peugeot 206 de rally con la rotulación rosa de Deyscom Motorsport (peugeot-206-deyscom-rally-trasera-rotulacion)",
        "value": "peugeot-206-deyscom-rally-trasera-rotulacion"
+      },
+      {
+       "label": "Vista del taller de Deyscom con chasis y Land Rover Defender en restauración (taller-deyscom-restomod-defender-chasis)",
+       "value": "taller-deyscom-restomod-defender-chasis"
       },
       {
        "label": "Vista panorámica de un tramo de rally con el Peugeot 206 de Deyscom Motorsport (peugeot-206-deyscom-tramo-rally-vista-panoramica)",
@@ -647,7 +723,7 @@
          "widget": "number",
          "value_type": "int",
          "min": 1,
-         "default": 20
+         "default": 16
         },
         {
          "label": "Precio por persona (€)",
@@ -665,7 +741,7 @@
           "^(https://(buy|checkout)\\.stripe\\.com/.+)?$",
           "Pega el enlace de pago de Stripe (https://buy.stripe.com/…)"
          ],
-         "hint": "Stripe → Enlaces de pago → crea uno por turno (299 €) y pégalo aquí. Vacío = la web recoge la reserva y os avisa para cobrarla."
+         "hint": "Normalmente vacío: se usa el enlace de pago general (Ajustes). Rellénalo solo si este turno necesita un enlace distinto."
         },
         {
          "label": "Estado",
@@ -2271,6 +2347,17 @@
          "hint": "Ej. ds-copilot-course.html"
         }
        ]
+      },
+      {
+       "label": "Enlace de pago general de la Rally Experience",
+       "name": "pago_rally_experience",
+       "widget": "string",
+       "required": false,
+       "pattern": [
+        "^(https://(buy|checkout)\\.stripe\\.com/.+)?$",
+        "Pega el enlace de pago de Stripe (https://buy.stripe.com/…)"
+       ],
+       "hint": "Un solo enlace para todos los turnos. El día y el turno los elige el cliente en el formulario y quedan en el CRM."
       },
       {
        "label": "Juego AX Rally (home)",

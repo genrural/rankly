@@ -1,6 +1,6 @@
 {
   "pagina": "Rally Experience",
-  "intro": "La **Rally Experience** es el **curso de rally de Deyscom**: 4 horas de práctica sobre tierra con coches de rally equipados para competir, con **arco de seguridad, arneses y extinción**. Las **dos primeras horas** el circuito se divide en **4 zonas**: haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las **dos últimas horas** se abre el **circuito completo** y das vueltas aplicando lo aprendido con un coche de **tracción delantera** (Peugeot 206) y otro de **propulsión trasera** (BMW E36). No hay parte teórica: en cada ejercicio el **monitor** te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el **5, 6 o 7 de diciembre**, en turno de **mañana o tarde**.",
+  "intro": "La **Rally Experience** es el **curso de rally de Deyscom**: 4 horas de práctica sobre tierra con coches de rally equipados para competir, con **arco de seguridad, arneses y extinción**. Las **dos primeras horas** el circuito se divide en **4 zonas**: haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las **dos últimas horas** se abre el **circuito completo** y das vueltas aplicando lo aprendido con un coche de **tracción delantera** y otro de **propulsión trasera**. No hay parte teórica: en cada ejercicio el **monitor** te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el **4, 5 o 6 de diciembre**, en turno de **mañana o tarde**.",
   "ejercicios": [
     {
       "titulo": "Control y cambios de peso",
@@ -26,10 +26,10 @@
   "incluye": [
     "4 horas de práctica en el Circuito El Hito (Cuenca), turno de mañana o de tarde",
     "2 horas de ejercicios en 4 zonas + 2 horas de circuito completo",
-    "4 coches de rally: 2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36)",
+    "4 coches de rally: 2 de tracción delantera y 2 de propulsión trasera",
     "Coches equipados para competir: arco de seguridad, arneses y extinción",
     "Monitor que te explica cada ejercicio en pista y te corrige",
-    "Grupos de 8 a 12 personas como máximo, para no hacer largas esperas",
+    "16 plazas por turno, en grupos reducidos para no hacer largas esperas",
     "Welcome pack del equipo Deyscom",
     "Comida y bebida durante el evento",
     "Seguro de responsabilidad civil para el día del curso"
@@ -37,7 +37,7 @@
   "datos_clave": [
     {
       "dato": "Fechas",
-      "valor": "5, 6 y 7 de diciembre de 2026, turno de mañana o de tarde"
+      "valor": "4, 5 y 6 de diciembre de 2026, turno de mañana o de tarde"
     },
     {
       "dato": "Duración",
@@ -48,12 +48,12 @@
       "valor": "Circuito El Hito (Cuenca)"
     },
     {
-      "dato": "Grupos",
-      "valor": "De 8 a 12 personas como máximo, con monitor"
+      "dato": "Plazas",
+      "valor": "16 personas por turno, en grupos reducidos con monitor. Si un turno no se completa, te reubicamos en otro"
     },
     {
       "dato": "Coches",
-      "valor": "2 de tracción delantera (Peugeot 206) y 2 de propulsión trasera (BMW E36), con arco de seguridad, arneses y extinción"
+      "valor": "2 de tracción delantera y 2 de propulsión trasera, con arco de seguridad, arneses y extinción"
     },
     {
       "dato": "Precio",
@@ -67,7 +67,7 @@
     },
     {
       "pregunta": "¿Tracción delantera o propulsión trasera?",
-      "respuesta": "Las dos. Los dos primeros ejercicios se hacen con el **Peugeot 206** (tracción delantera) y los dos siguientes con el **BMW E36** (propulsión trasera), para que notes cómo cambia la forma de conducir. Si quieres saber más, lee [qué es un coche de rally](blog-coche-de-rally-que-es-y-categorias.html)."
+      "respuesta": "Las dos. Los dos primeros ejercicios se hacen con un coche de **tracción delantera** y los dos siguientes con uno de **propulsión trasera**, para que notes cómo cambia la forma de conducir. Si quieres saber más, lee [qué es un coche de rally](blog-coche-de-rally-que-es-y-categorias.html)."
     },
     {
       "pregunta": "¿Es un buen regalo?",
@@ -88,8 +88,12 @@
       "respuesta": "Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista el curso puede sufrir cambios de horario o de fecha. Somos exigentes con que el circuito esté en las condiciones apropiadas para que el curso se haga con total garantía de calidad. Si hay cambios, te avisamos y te ofrecemos otra fecha."
     },
     {
+      "pregunta": "¿Qué pasa si mi turno no se completa?",
+      "respuesta": "Si un turno no llega a completarse, te reubicamos en otro turno (de mañana o de tarde, u otro día) y te avisamos con antelación para que te venga bien."
+    },
+    {
       "pregunta": "¿Cuántas personas hay por turno?",
-      "respuesta": "Los grupos son de 8 a 12 personas como máximo, para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera."
+      "respuesta": "16 personas por turno, en grupos reducidos para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera. Si un turno no llega a completarse, te reubicamos en otro turno."
     },
     {
       "pregunta": "¿Qué incluye el precio?",
