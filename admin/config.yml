@@ -2273,6 +2273,35 @@
        ]
       },
       {
+       "label": "Juego AX Rally (home)",
+       "name": "juego",
+       "widget": "object",
+       "required": false,
+       "fields": [
+        {
+         "label": "Mostrar el juego",
+         "name": "activo",
+         "widget": "boolean",
+         "default": true
+        },
+        {
+         "label": "Premio para el 1.º del ranking",
+         "name": "premio",
+         "widget": "string",
+         "hint": "Ej. un pack de productos de limpieza para tu coche"
+        },
+        {
+         "label": "Cierre del ranking (fecha)",
+         "name": "fin",
+         "widget": "datetime",
+         "format": "YYYY-MM-DD",
+         "date_format": "DD/MM/YYYY",
+         "time_format": false,
+         "hint": "Ese día se cierra el ranking y gana el 1.º"
+        }
+       ]
+      },
+      {
        "label": "Enlaces de pago de la tienda (Stripe, PayPal…)",
        "name": "enlaces_pago",
        "widget": "list",

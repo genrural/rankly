@@ -11,7 +11,7 @@
       "precio": 299,
       "stripe": "",
       "estado": "Abierta",
-      "visible": true
+      "visible": false
     },
     {
       "id": "eurocem-2026-12-04-tarde",
@@ -24,7 +24,7 @@
       "precio": 299,
       "stripe": "",
       "estado": "Abierta",
-      "visible": true
+      "visible": false
     },
     {
       "id": "dspilot-2026-12-05-manana",

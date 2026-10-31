@@ -3,7 +3,7 @@
   "datos_clave": [
     {
       "dato": "Experiencias",
-      "valor": "Experiencia Rally Eurocem (4 dic) y Rally Experience (5, 6 y 7 dic)"
+      "valor": "Rally Experience: curso de rally sobre tierra de 4 horas (5, 6 y 7 de diciembre)"
     },
     {
       "dato": "Lugar",
@@ -15,7 +15,7 @@
     },
     {
       "dato": "Formato",
-      "valor": "Turno de mañana o de tarde, 5 ejercicios puntuables por equipos y clasificación final"
+      "valor": "Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, grupos de 8 a 12"
     },
     {
       "dato": "Precio",
@@ -28,8 +28,8 @@
   ],
   "guias": [
     {
-      "pregunta": "¿Qué experiencia elegir?",
-      "respuesta": "- **[Experiencia Rally Eurocem](experiencia-rally-eurocem.html)** (4 de diciembre): la jornada especial con Eurocem Morteros, con equipos, camisetas personalizadas y comida con barra libre.\n- **[Rally Experience](ds-pilot-course.html)** (5, 6 y 7 de diciembre): el curso de rally de Deyscom: 4 horas con instructor por grupo, freno con pie izquierdo, sobreviraje y circuito completo, comida y seguro incluidos. Eliges día y turno."
+      "pregunta": "¿Qué es la Rally Experience?",
+      "respuesta": "La **[Rally Experience](ds-pilot-course.html)** es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con el Peugeot 206 (tracción delantera) y el BMW E36 (propulsión trasera), con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (5, 6 o 7 de diciembre) y turno."
     },
     {
       "pregunta": "¿Qué se aprende en una jornada sobre tierra?",

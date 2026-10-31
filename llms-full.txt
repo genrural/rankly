@@ -1,6 +1,6 @@
 # Deyscom Motorsport
 
-> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y Rally Experience) en el Circuito El Hito (Cuenca).
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Rally Experience) en el Circuito El Hito (Cuenca).
 
 - Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
 - Teléfono y WhatsApp: (+34) 615 97 22 33
@@ -24,7 +24,6 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
-- [Experiencia Rally Eurocem](https://deyscom.com/experiencia-rally-eurocem.html): Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre. Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde.
 - [Rally Experience](https://deyscom.com/ds-pilot-course.html): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra al volante de un Peugeot 206 y un BMW E36, con instructores especializados. ¡Comida incluida! Fechas: Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde; Lunes 7 de diciembre · turno de mañana; Lunes 7 de diciembre · turno de tarde.
 
 ## Tienda
@@ -310,6 +309,60 @@ TikTok @deyscom_motorsport · Arranques, sonidos y vídeos cortos.
 YouTube Deyscom Motorsport · Proyectos completos, onboards y procesos.
 Facebook /deyscom · Novedades, eventos y comunidad.
 
+AX Rally Challenge
+
+## Juega, suma monedas y gana
+
+Pilota nuestro Citroën AX de rally por los circuitos y tramos más famosos del mundo, en tierra o en asfalto. Quien esté 1.º del ranking el 31 de diciembre de 2026 se lleva un pack de productos de limpieza para tu coche. Gratis y todas las veces que quieras.
+
+Tiempo 0:00,00
+Monedas 0/60
+Velocidad 0 km/h
+❚❚
+✕
+
+⏸ Pausa · toca para seguir
+
+◀
+FRENO
+▶
+← → para girar · ↓ o espacio para frenar · P para pausar. El AX acelera solo.
+
+🟫 Rally de tierra
+⬛ Asfalto
+
+🪙 0 monedas
+
+Elige circuito ·
+
+🏁 ¡A correr!
+← → para girar · ↓ o espacio para frenar · P para pausar. El AX acelera solo. En móvil, usa los botones de debajo.
+
+¡Bandera a cuadros!
+0 puntos
+
+Corres como .
+
+🏆 Guardar en el ranking No soy yo
+
+↻ Otra vez
+Cambiar circuito
+Retar a un amigo
+
+¿Y si lo conduces de verdad? Rally Experience: 4 horas sobre tierra
+
+🎁
+Premio para el 1.º Un pack de productos de limpieza para tu coche. Ranking abierto hasta el 31 de diciembre de 2026.
+Ver bases
+
+🏆 Ranking general 0 pilotos
+
+Cargando…
+
+🔧 Tu garaje Gasta tus monedas
+
+🎖️ Logros 0/8
+
 Preguntas frecuentes
 
 ## Antes de arrancar
@@ -481,9 +534,9 @@ Configurador
 
 ## Monta tu coche de rally
 
-Arrastra cada pieza hasta nuestro Peugeot 206 (o tócala) y mira cómo cambia. Así preparamos los coches en el taller.
+Arrastra cada pieza hasta el Citroën AX (o tócala) y mira cómo cambia. Así preparamos los coches en el taller.
 
-75 CV 0 /6 piezas
+60 CV 0 /6 piezas
 
 Potencia
 Tracción
@@ -502,7 +555,7 @@ Llantas Sin montar
 Rosas Deyscom El sello de la casa Blancas de rally Clásicas de tramo Negras Discretas y duras
 
 Motor Sin montar
-1.6 16V 118 CV · ligero y fiable 2.0 S16 180 CV · empuje en salida 2.0 Kit Car 230 CV · a fondo
+1.4 GTI 100 CV · el clásico 1.6 16V 125 CV · empuje en salida 1.6 Kit Car 165 CV · a fondo
 
 Autoblocante Sin montar
 Mecánico Más tracción al salir de curva De rampas regulable Ajustable para tierra o asfalto
@@ -1287,32 +1340,20 @@ Inicio / Experiencias
 
 Ponte al volante de un rally
 
-Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. 4, 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.
+Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca) con nuestro Peugeot 206 y nuestro BMW E36. 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.
 
-4 · 5 · 6 · 7 de diciembre Mañana o tarde 299 €
+5 · 6 · 7 de diciembre Mañana o tarde 299 €
 
 Ver fechas
 WhatsApp
 
-Experiencia Rally Eurocem Rally Experience Circuito El Hito BMW E36 Peugeot 206 Tierra
+Rally Experience Circuito El Hito BMW E36 Peugeot 206 Tierra 4 horas
 
 Elige tu experiencia
 
-## Dos formas de acelerar
+## Conduce un coche de rally
 
-El mismo formato de 5 ejercicios puntuables, en dos ocasiones distintas.
-
-RALLY EUROCEM
-
-4 dic · Cuenca
-Evento especial · 4 de diciembre
-
-### Experiencia Rally Eurocem
-Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.
-
-4 de diciembre · 299 €
-
-Ver fechas y reservar
+4 horas de práctica sobre tierra con instructores especializados. ¡Comida incluida!
 
 RALLY EXPERIENCE
 
@@ -1331,18 +1372,6 @@ Próximas fechas
 ## Reserva tu turno
 
 Pago seguro con tarjeta en Stripe. La plaza queda confirmada al momento.
-
-4 dic
-Experiencia Rally Eurocem Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
-299 €
-Reservar y pagar
-
-4 dic
-Experiencia Rally Eurocem Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
-299 €
-Reservar y pagar
 
 5 dic
 Rally Experience Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
@@ -1385,7 +1414,7 @@ En resumen
 ## Datos clave
 
 Experiencias
-Experiencia Rally Eurocem (4 dic) y Rally Experience (5, 6 y 7 dic)
+Rally Experience: curso de rally sobre tierra de 4 horas (5, 6 y 7 de diciembre)
 
 Lugar
 Circuito El Hito (Cuenca), circuito de tierra
@@ -1394,7 +1423,7 @@ Coches
 BMW E36 (propulsión) y Peugeot 206 (tracción delantera) preparados para competición
 
 Formato
-Turno de mañana o de tarde, 5 ejercicios puntuables por equipos y clasificación final
+Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, grupos de 8 a 12
 
 Precio
 299 € por persona, pago con tarjeta en Stripe
@@ -1430,9 +1459,8 @@ Cómo elegir
 
 ## ¿Cuál es la tuya?
 
-## ¿Qué experiencia elegir?
-Experiencia Rally Eurocem (4 de diciembre): la jornada especial con Eurocem Morteros, con equipos, camisetas personalizadas y comida con barra libre.
-Rally Experience (5, 6 y 7 de diciembre): el curso de rally de Deyscom: 4 horas con instructor por grupo, freno con pie izquierdo, sobreviraje y circuito completo, comida y seguro incluidos. Eliges día y turno.
+## ¿Qué es la Rally Experience?
+La Rally Experience es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con el Peugeot 206 (tracción delantera) y el BMW E36 (propulsión trasera), con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (5, 6 o 7 de diciembre) y turno.
 
 ## ¿Qué se aprende en una jornada sobre tierra?
 A leer el agarre y a mover el coche con las transferencias de peso: provocar y corregir un derrape, frenar fuerte, usar el freno de mano y elegir la trazada. Es la base de cualquier piloto de rally y, además, te hace mejor conductor en el día a día. Si te interesa la competición, lee cómo empezar en los rallies .
@@ -1486,341 +1514,6 @@ Néstor Aguado · 23 de octubre de 2026
 ## Regala adrenalina
 
 Una jornada de rally en tierra es el regalo perfecto para cualquier apasionado del motor.
-
-Ver fechas
-WhatsApp
-(+34) 615 97 22 33
-
-
----
-
-# Experiencia Rally Eurocem · 4 de diciembre en Cuenca | Deyscom
-URL: https://deyscom.com/experiencia-rally-eurocem.html
-
-299
-
-Inicio / Experiencias / Experiencia Rally Eurocem
-
-# Experiencia Rally Eurocem: jornada de conducción de rally en tierra
-
-Conduce, aprende, disfruta
-
-Jornada de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca) con BMW E36 y Peugeot 206 preparados para competición: 5 ejercicios puntuables por equipos, monitores y comida con barra libre.
-
-Viernes 4 de diciembre Circuito El Hito · Cuenca 299 €
-
-Ver fechas y reservar
-WhatsApp
-
-Conduce Aprende Disfruta En equipo BMW E36 Peugeot 206 Circuito El Hito
-
-4 coches de rally
-5 ejercicios puntuables
-20 plazas por turno
-4 equipos
-– días para la primera fecha
-
-Fechas y plazas
-
-## Elige día y turno
-
-Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.
-
-4 dic
-Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
-299 €
-Reservar y pagar
-
-4 dic
-Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-20 plazas
-299 €
-Reservar y pagar
-
-Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista puede haber cambios de horario o de fecha: somos exigentes con que el circuito esté en las condiciones apropiadas para que la jornada se haga con total garantía de calidad.
-
-En resumen
-
-## La jornada en datos
-
-Fecha
-Viernes 4 de diciembre de 2026, turno de mañana o de tarde
-
-Lugar
-Circuito El Hito (Cuenca)
-
-Participantes
-40 en total: 20 por la mañana y 20 por la tarde
-
-Coches
-4 coches: 2 BMW E36 y 2 Peugeot 206
-
-Equipos
-4 equipos de 5 personas, cada uno con su color y camiseta
-
-Precio
-299 € por persona, comida incluida
-
-¿En qué consiste?
-
-## Tierra, derrapes y cronómetro
-
-Una jornada exclusiva de conducción deportiva sobre tierra en el Circuito El Hito (Cuenca), organizada por Deyscom Motorsport y Liebre Racing junto a Eurocem Morteros . Combina aprendizaje, adrenalina y trabajo en equipo al volante de coches preparados para competición, siempre acompañados por monitores especializados.
-Con Organizan Deyscom Motorsport y Liebre Racing.
-
-RALLY
-
-Circuito El Hito · Cuenca
-
-5 ejercicios puntuables
-
-## Lo que vas a hacer
-
-Monitores especializados te acompañan y puntúan cada ejercicio.
-
-1
-
-### Control del vehículo
-Derrapajes, corrección de sobrevirajes y gestión de las transferencias de peso.
-2
-
-### Frenada y trazadas
-Frenada deportiva, uso del freno de mano y elección de la trazada correcta.
-3
-
-### Slalom en tierra
-Precisión y control del coche entre conos sobre superficie de tierra.
-4
-
-### Circuito cronometrado
-Una vuelta cronometrada al circuito aplicando todo lo aprendido.
-5
-
-### Diferentes vehículos
-Tracción delantera con el Peugeot 206 y propulsión trasera con el BMW E36 para sentir sus diferencias.
-
-Tu día
-
-## Así se vive la jornada
-
-Toca cada momento para ver qué te espera.
-
-01 Bienvenida 02 Briefing 03 Control y frenada 04 Slalom y cambio de coche 05 Circuito cronometrado 06 Comida y clasificación
-
-BIENVENIDA
-
-Momento 1 de 6
-
-### Bienvenida
-Llegas al Circuito El Hito, recoges tu camiseta y conoces a tu equipo.
-
-BRIEFING
-
-Momento 2 de 6
-
-### Briefing
-Seguridad, coches y reglas del juego: así se puntúa cada ejercicio.
-
-CONTROL Y
-
-Momento 3 de 6
-
-### Control y frenada
-Derrapes, transferencias de peso, freno de mano y trazadas sobre tierra.
-
-SLALOM Y C
-
-Momento 4 de 6
-
-### Slalom y cambio de coche
-Precisión entre conos y la diferencia entre tracción delantera y propulsión.
-
-CIRCUITO C
-
-Momento 5 de 6
-
-### Circuito cronometrado
-Tu vuelta al crono aplicando todo lo aprendido. Aquí se deciden los puntos.
-
-COMIDA Y C
-
-Momento 6 de 6
-
-### Comida y clasificación
-Comida con barra libre, repaso de las mejores pasadas y clasificación final.
-
-Los coches
-
-## Tracción delantera y propulsión
-
-Coches de rally equipados para competir (arco de seguridad, arneses y extinción), preparados en nuestro taller de Torrelaguna.
-
-PEUGEOT
-
-118 CV Peugeot 206 1.6 XS Ligero, ágil y noble. El coche perfecto para aprender a pilotar rápido y con confianza.
-BMW
-
-135 CV BMW E36 Propulsión trasera y carácter puro. Para quien quiere sentir el coche moverse bajo sus manos.
-
-Equipos y puntuación
-
-## Compite en equipo
-
-Los participantes se reparten en 4 equipos de 5 personas , cada uno con su color y su camiseta personalizada. Cada ejercicio suma puntos y al final hay clasificación .
-
-1 Elige tu equipo
-
-A Equipo azul B Equipo rojo C Equipo amarillo D Equipo verde
-
-2 Pon tu nombre en la tarjeta
-
-3 Simula tu jornada y reserva
-
-🎲 Simular mi jornada Reservar en el equipo azul
-
-Equipo azul · Tarjeta de puntuación
-
-Nombre: Tu nombre
-
-1. Control del vehículo 5
-2. Frenada y trazadas 5
-3. Slalom en tierra 5
-4. Circuito cronometrado 5
-5. Diferentes vehículos 5
-
-Total 25 /50
-
-Piloto en progreso
-
-Qué incluye
-
-## Todo incluido
-
-Jornada de conducción en el Circuito El Hito (Cuenca), turno de mañana o de tarde
-Conducción de BMW E36 y Peugeot 206 preparados para competición
-5 ejercicios puntuables con monitores especializados
-Equipo con color y camiseta personalizada
-Tarjeta de puntuación personalizada y clasificación final
-Comida y barra libre para todos los participantes
-
-Rally Eurocem
-
-### Experiencia Rally Eurocem
-
-Precio por persona 299 €
-
-4 de diciembre
-Circuito El Hito (Cuenca)
-Plazas limitadas por turno
-Monitores especializados
-
-Elegir fecha y pagar
-Preguntar por WhatsApp
-
-Así se vive
-
-## Rally de verdad
-
-Nuestros coches en carrera. Los mismos que conducirás tú.
-
-RALLY
-
-RALLY
-
-RALLY
-
-RALLY
-
-RALLY
-
-RALLY
-
-Cartel oficial
-
-## Todo el evento de un vistazo
-
-Fecha, circuito, coches, ejercicios y equipos. Descárgalo y compártelo con tu equipo.
-
-Descargar cartel Reservar plaza
-
-Guía rápida
-
-## Lo que debes saber
-
-## ¿Cómo funciona la puntuación?
-Cada participante recibe una tarjeta personalizada con su nombre. En cada uno de los 5 ejercicios los monitores puntúan tu manejo y, al terminar la jornada, se hace una clasificación final individual y por equipos.
-
-¿Quieres seguir aprendiendo después? Mira el Rally Experience del 5, 6 y 7 de diciembre.
-
-## ¿Qué coches voy a conducir?
-Conducirás los dos coches del equipo Deyscom: el Peugeot 206 (tracción delantera, ligero y noble) y el BMW E36 (propulsión trasera). Notar la diferencia entre ambos es uno de los ejercicios de la jornada. Si quieres saber más, lee qué es un coche de rally .
-
-Preguntas frecuentes
-
-## Antes de arrancar
-
-¿Necesito experiencia previa? No. La jornada está pensada para cualquier conductor con carnet: los monitores adaptan cada ejercicio a tu nivel.
-¿Dónde es? En el Circuito El Hito, en la provincia de Cuenca. Al confirmar tu plaza te enviamos la ubicación exacta y el horario de tu turno.
-¿Qué incluye el precio? 299 € por persona: la jornada completa de tu turno, los 5 ejercicios con monitores, los coches, la camiseta de tu equipo y la comida con barra libre.
-¿Cómo se paga? Eliges fecha y turno, dejas tus datos y pagas con tarjeta en la pasarela segura de Stripe. Recibes la confirmación al momento por email.
-¿Qué pasa si no puedo ir? Escríbenos cuanto antes: según la antelación te ayudamos a cambiar la plaza a otra persona o a otra fecha disponible.
-
-Del blog
-
-## Artículos relacionados
-
-Guías escritas por el equipo del taller, con fuentes oficiales.
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno
-
-Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 6 min
-
-### Slalom de coches: qué es, cómo funciona y cómo empezar a competir
-
-Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
-
-Néstor Aguado · 23 de octubre de 2026
-
-COMPETICIÓN
-
-Competición · 8 min
-
-### Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto
-
-Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
-
-Néstor Aguado · 12 de octubre de 2026
-
-También te puede gustar
-
-## Otra forma de acelerar
-
-RALLY EXPERIENCE
-
-5-7 dic · Cuenca
-Curso de conducción · 5, 6 y 7 de diciembre
-
-### Rally Experience
-Curso de rally de 4 horas sobre tierra: Peugeot 206 de tracción delantera y BMW E36 de propulsión, instructor por grupo y comida.
-
-5 de diciembre · 6 de diciembre · 7 de diciembre · 299 €
-
-Ver fechas y reservar
-
-## ¿Te atreves?
-
-Plazas limitadas por turno. Elige fecha y reserva en un minuto.
 
 Ver fechas
 WhatsApp
@@ -2156,18 +1849,6 @@ Néstor Aguado · 23 de octubre de 2026
 También te puede gustar
 
 ## Otra forma de acelerar
-
-RALLY EUROCEM
-
-4 dic · Cuenca
-Evento especial · 4 de diciembre
-
-### Experiencia Rally Eurocem
-Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.
-
-4 de diciembre · 299 €
-
-Ver fechas y reservar
 
 ## ¿Te atreves?
 

@@ -73,5 +73,10 @@
       "url": ""
     }
   ],
-  "redes": {}
+  "redes": {},
+  "juego": {
+    "activo": true,
+    "premio": "un pack de productos de limpieza para tu coche",
+    "fin": "2026-12-31"
+  }
 }

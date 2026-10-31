@@ -65,11 +65,11 @@
       btn.setAttribute("aria-expanded", open);
     });
     it.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeSubs(); btn.focus(); } });
-    it.addEventListener("focusout", function (e) { if (!it.contains(e.relatedTarget) && window.innerWidth > 1360) { it.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); } });
+    it.addEventListener("focusout", function (e) { if (!it.contains(e.relatedTarget) && window.innerWidth > 1100) { it.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); } });
   });
-  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item.has-sub") && window.innerWidth > 1360) closeSubs(); });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item.has-sub") && window.innerWidth > 1100) closeSubs(); });
   // En móvil se abre desplegado el apartado de la página actual
-  subs.forEach(function (it) { if ($('.nav__sub [aria-current="page"]', it) && window.innerWidth <= 1360) { it.classList.add("is-open"); $(".nav__toggle", it).setAttribute("aria-expanded", "true"); } });
+  subs.forEach(function (it) { if ($('.nav__sub [aria-current="page"]', it) && window.innerWidth <= 1100) { it.classList.add("is-open"); $(".nav__toggle", it).setAttribute("aria-expanded", "true"); } });
 
   var header = $(".header");
   var onScroll = function () { if (header) header.classList.toggle("is-scrolled", window.scrollY > 20); };
@@ -554,7 +554,7 @@
   $$("[data-builder]").forEach(function (box) {
     var DATA = {}; try { DATA = JSON.parse(box.getAttribute("data-builder")); } catch (e) { return; }
     var svg = $("[data-bc-svg]", box), drop = $("[data-bc-drop]", box), parts = $$(".bc__part", box);
-    var cats = Object.keys(DATA), state = {}, BASE_CV = 75;
+    var cats = Object.keys(DATA), state = {}, BASE_CV = 60;
     var NAMES = { llantas: "Llantas", motor: "Motor", autoblocante: "Autoblocante", frenos: "Frenos", suspension: "Suspensión", jaula: "Jaula" };
     var pct = function (v) { return Math.max(4, Math.min(100, Math.round(v))) + "%"; };
     var render = function () {
@@ -572,7 +572,7 @@
       if (!state.llantas) svg.style.removeProperty("--rim");
       parts.forEach(function (b) { b.setAttribute("aria-pressed", state[b.getAttribute("data-cat")] === b.getAttribute("data-opt") ? "true" : "false"); });
       $("[data-bc-cv]", box).textContent = cv; var badge = $("[data-bc-cv-badge]", box); if (badge) badge.textContent = cv + " CV";
-      $('[data-bc-bar="potencia"]', box).style.width = pct(cv / 250 * 100);
+      $('[data-bc-bar="potencia"]', box).style.width = pct(cv / 170 * 100);
       $('[data-bc-bar="traccion"]', box).style.width = pct(tr);
       $('[data-bc-bar="control"]', box).style.width = pct(ct);
       $('[data-bc-bar="seguridad"]', box).style.width = pct(sg);
@@ -581,7 +581,7 @@
       var full = n === cats.length;
       $$("[data-bc-done]", box).forEach(function (x) { x.hidden = !full; });
       if (full) {
-        var tt = cv >= 220 ? "🔥 ¡Un 206 Kit Car de verdad!" : cv >= 170 ? "🏁 ¡Listo para el tramo!" : "✅ ¡Tu 206 de rally está montado!";
+        var tt = cv >= 160 ? "🔥 ¡Un AX Kit Car de verdad!" : cv >= 120 ? "🏁 ¡Listo para el tramo!" : "✅ ¡Tu AX de rally está montado!";
         var sm = cats.map(function (c) { return NAMES[c] + ": " + DATA[c][state[c]].label.split(" · ")[0]; }).join(" · ");
         $$("[data-bc-title]", box).forEach(function (x) { x.textContent = tt; });
         $$("[data-bc-sum]", box).forEach(function (x) { x.textContent = sm; });
@@ -642,11 +642,25 @@
       var list = cats.filter(function (c) { return state[c]; }).map(function (c) { return "- " + NAMES[c] + ": " + DATA[c][state[c]].label; });
       var msg = $("textarea[name=mensaje]", form), veh = $("input[name=vehiculo]", form);
       if (msg && list.length) msg.value = "Quiero preparar un coche de rally así (configurador web):\n" + list.join("\n") + (msg.value ? "\n\n" + msg.value : "");
-      if (veh && !veh.value) veh.value = "Peugeot 206 (configurador)";
+      if (veh && !veh.value) veh.value = "Citroën AX (configurador)";
       track("build_quote", { parts: list.length });
     }); });
     render();
   });
+  // Juego AX Rally: el motor del juego solo se descarga cuando el visitante se acerca a él
+  var axBox = $("[data-axgame]");
+  if (axBox) {
+    var axLoad = function () {
+      if (axBox.getAttribute("data-loaded")) return; axBox.setAttribute("data-loaded", "1");
+      var me = document.querySelector('script[src*="assets/js/main.js"]'), v = me ? (me.getAttribute("src").split("?")[1] || "") : "";
+      var sc = document.createElement("script"); sc.src = "assets/js/ax-rally.js" + (v ? "?" + v : ""); sc.defer = true; document.body.appendChild(sc);
+    };
+    if ("IntersectionObserver" in window && !/axdebug/.test(location.search)) {
+      var axIo = new IntersectionObserver(function (en) { if (en.some(function (x) { return x.isIntersecting; })) { axIo.disconnect(); axLoad(); } }, { rootMargin: "800px 0px" });
+      axIo.observe(axBox);
+    } else axLoad();
+    if (location.hash === "#ax-rally") axLoad();
+  }
   // el equipo elegido viaja a la reserva
   if (buy) {
     var teamInput = $("input[name=equipo_preferido]", buy), teamNote = $("[data-buy-team]", buy);

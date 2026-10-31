@@ -2,34 +2,6 @@
  "actualizado": "2026-10-31",
  "ediciones": [
   {
-   "id": "eurocem-2026-12-04-manana",
-   "experiencia": "experiencia-rally-eurocem",
-   "nombre": "Experiencia Rally Eurocem",
-   "fecha": "2026-12-04",
-   "turno": "Mañana",
-   "horario": "",
-   "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 20,
-   "precio": 299,
-   "stripe": "",
-   "estado": "Abierta",
-   "etiqueta": "Viernes 4 de diciembre · turno de mañana"
-  },
-  {
-   "id": "eurocem-2026-12-04-tarde",
-   "experiencia": "experiencia-rally-eurocem",
-   "nombre": "Experiencia Rally Eurocem",
-   "fecha": "2026-12-04",
-   "turno": "Tarde",
-   "horario": "",
-   "lugar": "Circuito El Hito (Cuenca)",
-   "plazas": 20,
-   "precio": 299,
-   "stripe": "",
-   "estado": "Abierta",
-   "etiqueta": "Viernes 4 de diciembre · turno de tarde"
-  },
-  {
    "id": "dspilot-2026-12-05-manana",
    "experiencia": "ds-pilot-course",
    "nombre": "Rally Experience",

@@ -29,7 +29,8 @@ ITALIC = 'font-style="italic" '
 # Valores por defecto de content/ajustes.json (se editan desde el panel /admin)
 AJUSTES = {
     "telefono": PHONE, "telefono_visible": PHONE_TXT, "whatsapp": "34615972233", "email": EMAIL,
-    "aviso_superior": {"activo": True, "texto": "Diciembre: Experiencia Rally Eurocem y Rally Experience · plazas limitadas", "enlace": "experiencias.html"},
+    "aviso_superior": {"activo": True, "texto": "Rally Experience · 5, 6 y 7 de diciembre · plazas limitadas", "enlace": "experiencias.html"},
+    "juego": {"activo": True, "premio": "un pack de productos de limpieza para tu coche", "fin": "2026-12-31"},
     "sheets_endpoint": "", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
     "precios": [], "enlaces_pago": [],
     "redes": {"instagram": "https://www.instagram.com/deyscom_motorsport/", "facebook": "https://www.facebook.com/deyscom/",
@@ -129,10 +130,8 @@ NAV = [
     ("pintura.html", "Chapa y pintura"),
     ("banco-de-potencia.html", "Banco de potencia"),
     ("experiencias.html", "Experiencias"),
-    ("nosotros.html", "Nosotros"),
-    ("contacto.html", "Contacto"),
 ]
-FOOTER_NAV = NAV + [("tienda.html", "Tienda online")]
+FOOTER_NAV = NAV + [("tienda.html", "Tienda online"), ("nosotros.html", "Nosotros"), ("contacto.html", "Contacto")]
 
 # ---------------------------------------------------------------- precios (None = "Consultar")
 PRICES = {
@@ -178,7 +177,7 @@ ORG_LD = {
     "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{SITE}/{u}"}} for n, u in (
         ("Preparación de coches de rally y competición", "competicion.html"), ("Restomod y restauración de coches clásicos", "restomod.html"),
         ("Pintura de coches en cabina", "pintura.html"), ("Banco de potencia", "banco-de-potencia.html"),
-        ("Experiencia Rally Eurocem", "experiencia-rally-eurocem.html"), ("Rally Experience: curso de conducción de rally en tierra", "ds-pilot-course.html"))],
+        ("Rally Experience: curso de conducción de rally en tierra", "ds-pilot-course.html"),)],
     "foundingDate": "2011",
     "slogan": "Hechos para correr. Pensados para ti.",
     "geo": {"@type": "GeoCoordinates", "latitude": 40.8277, "longitude": -3.5381},
@@ -369,7 +368,7 @@ MENU_CAPTION = {
 def subnav():
     """Submenús del menú principal (se calculan en tiempo de ejecución)."""
     return {
-        "experiencias.html": ([(f"{k}.html", e["name"], e["kicker"].split(" · ")[-1].capitalize() + " · Circuito El Hito") for k, e in EVENTS.items()], "Ver todas las fechas"),
+        "experiencias.html": ([(f"{k}.html", e["name"], e["kicker"].split(" · ")[-1].capitalize() + " · Circuito El Hito") for k, e in pub_events().items()], "Ver todas las fechas"),
     }
 
 
@@ -432,7 +431,7 @@ def header(slug):
 
 def footer():
     col1 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV[:4])
-    col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [("experiencias.html", "Experiencias")] + [(f"{k}.html", e["name"]) for k, e in EVENTS.items()]
+    col2 = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in [("experiencias.html", "Experiencias")] + [(f"{k}.html", e["name"]) for k, e in pub_events().items()]
                    + [("tienda.html", "Tienda"), ("tienda.html#coches", "Coches en venta"), ("blog.html", "Blog")])
     return f"""</main>
 <footer class="footer">
@@ -949,9 +948,9 @@ BUILD_PARTS = [
         ("blanca", "Blancas de rally", "Clásicas de tramo", {"control": 5}, "#eeeeee"),
         ("negra", "Negras", "Discretas y duras", {"control": 5}, "#202024")]),
     ("motor", "Motor", "gauge", [
-        ("16v", "1.6 16V", "118 CV · ligero y fiable", {"cv": 118}, ""),
-        ("s16", "2.0 S16", "180 CV · empuje en salida", {"cv": 180}, ""),
-        ("kit", "2.0 Kit Car", "230 CV · a fondo", {"cv": 230}, "")]),
+        ("gti", "1.4 GTI", "100 CV · el clásico", {"cv": 100}, ""),
+        ("16v", "1.6 16V", "125 CV · empuje en salida", {"cv": 125}, ""),
+        ("kit", "1.6 Kit Car", "165 CV · a fondo", {"cv": 165}, "")]),
     ("autoblocante", "Autoblocante", "flag", [
         ("mecanico", "Mecánico", "Más tracción al salir de curva", {"traccion": 30, "control": 5}, ""),
         ("rampas", "De rampas regulable", "Ajustable para tierra o asfalto", {"traccion": 40, "control": 10}, "")]),
@@ -965,53 +964,76 @@ BUILD_PARTS = [
         ("atornillada", "Atornillada", "Arco homologado", {"seguridad": 45}, ""),
         ("soldada", "Soldada multipunto", "Máxima rigidez y protección", {"seguridad": 80}, "")]),
 ]
-BUILD_HOT = {"llantas": (232, 214), "motor": (630, 150), "autoblocante": (602, 214), "frenos": (270, 90), "suspension": (420, 312), "jaula": (370, 80)}
+BUILD_HOT = {"llantas": (228, 262), "motor": (636, 152), "autoblocante": (598, 262), "frenos": (250, 86), "suspension": (410, 310), "jaula": (380, 80)}
+
+
+def ax_svg(pid="bc", builder=True, cls="bc__svg", label="Citroën AX de rally de Deyscom Motorsport con los logos de sus patrocinadores"):
+    """Citroën AX de 3 puertas visto de lado, rotulado Deyscom y con los patrocinadores. builder=True añade las piezas del configurador."""
+    win = "M160 116 L298 112 L298 168 L142 168 Z M316 111 L418 108 Q428 108 434 114 L506 168 L316 168 Z"
+    body = ("M120 262 L116 230 L118 196 L128 182 L150 112 Q154 100 170 99 L420 96 Q432 96 440 104 L532 168 L676 184 Q700 188 706 204 "
+            "L710 236 Q710 262 696 262 L642 262 A44 44 0 0 0 554 262 L272 262 A44 44 0 0 0 184 262 Z")
+    F = "Jost, Futura, Arial, sans-serif"
+
+    def decal(img, x, y, w, h):
+        return (f'<rect x="{x - 2}" y="{y - 2}" width="{w + 4}" height="{h + 4}" rx="3" fill="#fff"/>'
+                f'<image href="assets/img/patrocinadores/{img}" x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid meet"/>')
+
+    def wheel(cx, front):
+        lsd = ('<g class="bc__lsd"><circle r="12" fill="none" stroke="#ff66c4" stroke-width="5" stroke-dasharray="4 3"/><circle r="5" fill="#ff66c4"/></g>' if front and builder else "")
+        return (f'<g class="bc__wheel" transform="translate({cx} 262)"><circle r="39" fill="#0d0d0f"/><circle r="35" fill="none" stroke="#222" stroke-width="3"/>'
+                f'<circle class="bc__rim" r="24"/>'
+                f'<path d="M0 -22V22M-21 -7L21 7M-13 18L13 -18M21 -7L-21 7M13 18L-13 -18" stroke="rgba(0,0,0,.45)" stroke-width="4.5"/>'
+                f'<circle r="6" fill="#111"/>{lsd}</g>')
+    extra_in = extra_out = hots = ""
+    if builder:
+        extra_in = f"""<g clip-path="url(#{pid}-win)">
+      <g class="bc__cage"><path d="M300 112 V172 M160 124 L300 166 M316 112 L500 168 M330 166 L470 136" stroke="#e9e9ec" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path class="bc__cage-x" d="M330 136 L470 166 M150 150 L300 120 M230 112 V170" stroke="#e9e9ec" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+      <g class="bc__hb"><path d="M262 172 L274 130" stroke="#0a0a0a" stroke-width="7" stroke-linecap="round"/><circle cx="275" cy="127" r="7" fill="#e3262f"/></g>
+    </g>"""
+        extra_out = f"""<g class="bc__engine"><ellipse cx="620" cy="178" rx="66" ry="24" fill="url(#{pid}-glow)"/>
+      <g transform="translate(622 140)"><rect x="-46" y="-16" width="92" height="30" rx="8" fill="#0b0b0e" stroke="#ff66c4" stroke-width="2"/><text text-anchor="middle" y="5" font-family="{F}" font-style="italic" font-weight="900" font-size="15" fill="#fff" data-bc-cv-badge>60 CV</text></g></g>"""
+        hots = "".join(f'<g class="bc__hot" data-hot="{k}" transform="translate({x} {y})"><circle r="15"/><path class="bc__hot-plus" d="M-6 0h12M0 -6v12"/><path class="bc__hot-ok" d="M-6 0l4 4 8-8"/></g>'
+                       for k, (x, y) in BUILD_HOT.items())
+    return f"""<svg class="{cls}" viewBox="40 66 700 268" role="img" aria-label="{label}"{' data-bc-svg' if builder else ''}>
+  <defs><clipPath id="{pid}-win"><path d="{win}"/></clipPath>
+    <linearGradient id="{pid}-shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="{pid}-glow"><stop offset="0" stop-color="#ff66c4" stop-opacity=".85"/><stop offset="1" stop-color="#ff66c4" stop-opacity="0"/></radialGradient></defs>
+  <ellipse cx="415" cy="304" rx="320" ry="13" fill="rgba(0,0,0,.55)"/>
+  <g class="bc__body">
+    <g class="bc__flame"><path d="M106 250 L68 242 L86 254 L60 260 L106 260 Z" fill="#ff9a1f"/><path d="M106 252 L82 248 L92 255 L78 258 L106 258 Z" fill="#ffe14d"/></g>
+    <rect x="100" y="250" width="16" height="8" rx="2" fill="#8a8a90"/>
+    <path d="{body}" fill="#2b2d33"/>
+    <path d="{body}" fill="url(#{pid}-shine)"/>
+    <path d="M170 99 L420 96 Q432 96 440 104 L444 108 L152 112 Q158 100 170 99Z" fill="#ff66c4"/>
+    <path d="M540 172 L676 186 Q692 189 698 196 L556 194 Z" fill="#ff66c4"/>
+    <path d="{win}" fill="#121821"/>
+    <path d="M170 124 L288 121 M330 120 L410 118" stroke="rgba(255,255,255,.18)" stroke-width="4" stroke-linecap="round"/>
+    {extra_in}
+    <rect x="298" y="108" width="18" height="62" fill="#141416"/>
+    <path d="M316 172 L316 250 M532 172 L536 250" stroke="rgba(0,0,0,.5)" stroke-width="2"/>
+    <path d="M492 146 Q508 140 514 152 L500 160 Z" fill="#141416"/>
+    <path d="M116 228 L142 228 L142 262 L120 262 Z" fill="#141416"/>
+    <path d="M684 226 L710 226 L710 248 Q709 262 696 262 L690 262 Z" fill="#141416"/>
+    <rect x="272" y="238" width="282" height="9" fill="#141416"/>
+    <rect x="142" y="238" width="42" height="9" fill="#141416"/>
+    <rect x="642" y="238" width="44" height="9" fill="#141416"/>
+    <path d="M676 192 L704 198 L706 212 L678 208 Z" fill="#e7edf3"/><path d="M698 214 L708 216 L708 222 L698 220 Z" fill="#ff9a1f"/>
+    <path d="M117 190 L130 186 L130 214 L118 214 Z" fill="#d6242e"/>
+    <text x="320" y="214" font-family="{F}" font-style="italic" font-weight="900" font-size="44" fill="#fff" letter-spacing="-1">DEYS<tspan fill="#ff66c4">COM</tspan></text>
+    <text x="364" y="231" font-family="{F}" font-style="italic" font-weight="600" font-size="11" fill="#fff" letter-spacing="6">MOTORSPORT</text>
+    {decal("ebc-frenos.png", 152, 180, 54, 23)}{decal("hel-performance.png", 216, 180, 50, 23)}
+    {decal("king-elements.png", 152, 210, 112, 22)}{decal("mishimoto.png", 600, 196, 30, 25)}
+    <rect x="142" y="250" width="544" height="5" fill="#ff66c4" opacity=".9"/>
+    {extra_out}
+  </g>
+  {wheel(228, False)}{wheel(598, True)}
+  {hots}
+</svg>"""
 
 
 def builder_car_svg():
-    win = "M198 124 L308 121 L308 172 L150 172 Z M322 120 L388 118 Q401 118 411 127 L510 172 L322 172 Z"
-    hots = "".join(f'<g class="bc__hot" data-hot="{k}" transform="translate({x} {y})"><circle r="15"/><path class="bc__hot-plus" d="M-6 0h12M0 -6v12"/><path class="bc__hot-ok" d="M-6 0l4 4 8-8"/></g>'
-                   for k, (x, y) in BUILD_HOT.items())
-
-    def wheel(cx, front):
-        lsd = ('<g class="bc__lsd"><circle r="13" fill="none" stroke="#ff66c4" stroke-width="5" stroke-dasharray="4 3"/><circle r="5" fill="#ff66c4"/></g>' if front else "")
-        return (f'<g class="bc__wheel" transform="translate({cx} 262)"><circle r="44" fill="#0d0d0f"/><circle r="40" fill="none" stroke="#222" stroke-width="3"/>'
-                f'<circle class="bc__rim" r="28"/>'
-                f'<g class="bc__spokes"><path d="M0 -26V26M-24.7 -8L24.7 8M-15.3 21L15.3 -21M24.7 -8L-24.7 8M15.3 21L-15.3 -21" stroke="rgba(0,0,0,.45)" stroke-width="5"/></g>'
-                f'<circle r="7" fill="#111"/>{lsd}</g>')
-    return f"""<svg class="bc__svg" viewBox="40 66 700 268" role="img" aria-label="Peugeot 206 de rally de Deyscom Motorsport que vas montando con las piezas elegidas" data-bc-svg>
-  <defs><clipPath id="bc-win"><path d="{win}"/></clipPath>
-    <linearGradient id="bc-shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
-    <radialGradient id="bc-glow"><stop offset="0" stop-color="#ff66c4" stop-opacity=".85"/><stop offset="1" stop-color="#ff66c4" stop-opacity="0"/></radialGradient></defs>
-  <ellipse cx="415" cy="308" rx="330" ry="14" fill="rgba(0,0,0,.55)"/>
-  <g class="bc__body">
-    <g class="bc__flame"><path d="M104 248 L66 240 L84 252 L58 258 L104 258 Z" fill="#ff9a1f"/><path d="M104 250 L80 246 L90 253 L76 256 L104 256 Z" fill="#ffe14d"/></g>
-    <rect x="98" y="248" width="16" height="8" rx="2" fill="#8a8a90"/>
-    <path d="M118 262 L112 214 Q110 192 124 180 L184 116 Q196 104 216 102 L388 98 Q408 98 422 110 L540 172 L672 186 Q706 192 712 214 L714 250 Q714 262 700 262 L652 262 A50 50 0 0 0 552 262 L282 262 A50 50 0 0 0 182 262 Z" fill="#2b2d33"/>
-    <path d="M118 262 L112 214 Q110 192 124 180 L184 116 Q196 104 216 102 L388 98 Q408 98 422 110 L540 172 L672 186 Q706 192 712 214 L714 250 Q714 262 700 262 L652 262 A50 50 0 0 0 552 262 L282 262 A50 50 0 0 0 182 262 Z" fill="url(#bc-shine)"/>
-    <path d="M216 102 L388 98 Q408 98 422 110 L428 115 L196 118 L190 112 Q200 102 216 102Z" fill="#ff66c4"/>
-    <path d="M556 172 L640 182 L588 238 L520 238 Z" fill="#ff66c4"/>
-    <path d="{win}" fill="#121821"/>
-    <path d="M210 128 L296 126 M336 124 L392 122" stroke="rgba(255,255,255,.18)" stroke-width="4" stroke-linecap="round"/>
-    <g clip-path="url(#bc-win)">
-      <g class="bc__cage"><path d="M304 120 V176 M196 130 L304 172 M318 120 L500 176 M330 172 L470 140" stroke="#e9e9ec" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <path class="bc__cage-x" d="M330 140 L470 172 M180 160 L304 128 M250 120 V176" stroke="#e9e9ec" stroke-width="4" fill="none" stroke-linecap="round"/></g>
-      <g class="bc__hb"><path d="M286 178 L298 134" stroke="#0a0a0a" stroke-width="7" stroke-linecap="round"/><circle cx="299" cy="131" r="7" fill="#e3262f"/></g>
-    </g>
-    <rect x="308" y="118" width="14" height="56" fill="#2b2d33"/>
-    <path d="M322 176 L322 250 M524 176 L528 250" stroke="rgba(0,0,0,.45)" stroke-width="2"/>
-    <path d="M500 158 Q516 152 522 164 L506 172 Z" fill="#ff66c4"/>
-    <path d="M674 192 L708 202 L704 214 L670 206 Z" fill="#e7edf3"/>
-    <path d="M113 194 L128 188 L130 214 L113 214 Z" fill="#d6242e"/>
-    <text x="246" y="226" font-family="Jost, Futura, Arial, sans-serif" font-style="italic" font-weight="900" font-size="50" fill="#fff" letter-spacing="-1">DEYS<tspan fill="#ff66c4">COM</tspan></text>
-    <text x="300" y="246" font-family="Jost, Futura, Arial, sans-serif" font-style="italic" font-weight="600" font-size="12" fill="#fff" letter-spacing="7">MOTORSPORT</text>
-    <rect x="114" y="236" width="600" height="6" fill="#ff66c4" opacity=".9"/>
-    <g class="bc__engine"><ellipse cx="610" cy="176" rx="70" ry="26" fill="url(#bc-glow)"/>
-      <g transform="translate(610 132)"><rect x="-46" y="-16" width="92" height="30" rx="8" fill="#0b0b0e" stroke="#ff66c4" stroke-width="2"/><text text-anchor="middle" y="5" font-family="Jost, Futura, Arial, sans-serif" font-style="italic" font-weight="900" font-size="15" fill="#fff" data-bc-cv-badge>118 CV</text></g></g>
-  </g>
-  {wheel(232, False)}{wheel(602, True)}
-  {hots}
-</svg>"""
+    return ax_svg()
 
 
 def builder_block():
@@ -1040,12 +1062,12 @@ def builder_block():
         </div>"""
     return f"""<section class="section section--ink builder-sec" id="monta-tu-coche">
   <div class="container">
-    {section_head("Configurador", "Monta tu <span class='outline'>coche de rally</span>", "Arrastra cada pieza hasta nuestro Peugeot 206 (o tócala) y mira cómo cambia. Así preparamos los coches en el taller.")}
+    {section_head("Configurador", "Monta tu <span class='outline'>coche de rally</span>", "Arrastra cada pieza hasta el Citroën AX (o tócala) y mira cómo cambia. Así preparamos los coches en el taller.")}
     <div class="bc" data-builder='{js}'>
       <div class="bc__stage reveal">
         <div class="bc__car" data-bc-drop>{builder_car_svg()}</div>
         <div class="bc__hud">
-          <div class="bc__cv"><b data-bc-cv>75</b><span>CV</span><small class="bc__mini"><b data-bc-count>0</b>/{len(BUILD_PARTS)} piezas</small></div>
+          <div class="bc__cv"><b data-bc-cv>60</b><span>CV</span><small class="bc__mini"><b data-bc-count>0</b>/{len(BUILD_PARTS)} piezas</small></div>
           <div class="bc__stats">{stats}</div>
         </div>
         {foot}
@@ -1379,6 +1401,7 @@ RESERVED = {"ds-pilot-weekend-circuit", "ds-pilot-weekend-rally", "ds-pilot-week
 
 EVENTS = {
     "experiencia-rally-eurocem": dict(
+        publicado=False,  # en la recámara: no se publica (página, fechas, menú, sitemap)
         name="Experiencia Rally Eurocem", short="Rally Eurocem", kicker="Evento especial · 4 de diciembre", tag="4 dic · Cuenca",
         teaser="Jornada de rally sobre tierra con Eurocem Morteros: 5 ejercicios puntuables, equipos y comida con barra libre.",
         hero="peugeot-206-deyscom-rally-frontal-pilotos", card="bmw-e36-deyscom-salida-tramo-rally", intro_img="peugeot-206-rally-tierra-deyscom-motorsport",
@@ -1438,8 +1461,13 @@ def ed_label(e):
     return f"{ed_date(e)} · turno de {e.get('turno', '').lower()}" + (f" ({e['horario']})" if e.get("horario") else "")
 
 
+def pub_events():
+    """Experiencias publicadas en la web (las que tienen publicado=False quedan en la recámara)."""
+    return {k: v for k, v in EVENTS.items() if v.get("publicado", True)}
+
+
 def editions(slug=None, upcoming=True):
-    out = [e for e in EDITIONS if e.get("visible", True) and e.get("estado") != "Cancelada"
+    out = [e for e in EDITIONS if e.get("visible", True) and e.get("estado") != "Cancelada" and EVENTS.get(e.get("experiencia"), {}).get("publicado", True)
            and (not slug or e.get("experiencia") == slug) and (not upcoming or e.get("fecha", "") >= TODAY)]
     order = {"Mañana": 0, "Tarde": 1}
     return sorted(out, key=lambda e: (e["fecha"], order.get(e.get("turno"), 2)))
@@ -1689,7 +1717,7 @@ def event_page(slug):
     <figure class="poster reveal" data-delay="1"><a href="assets/img/fotos/{ev['poster']}.jpg" target="_blank" rel="noopener">{pic(ev['poster'], sizes="(max-width: 900px) 100vw, 480px")}</a></figure>
   </div>
 </section>"""
-    others = "".join(event_card(s, x) for s, x in EVENTS.items() if s != slug)
+    others = "".join(event_card(s, x) for s, x in pub_events().items() if s != slug)
     html += f"""<section class="section" id="fechas">
   <div class="container">
     {section_head("Fechas y plazas", "Elige día <span class='outline'>y turno</span>", "Plazas limitadas por turno. Reserva y paga en un minuto: la plaza queda confirmada al instante.")}
@@ -1775,20 +1803,20 @@ def experiencias():
     eds = editions()
     lds = [breadcrumbs_ld("experiencias", "Experiencias"), faq_ld(faqs),
            {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
-               {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}.html", "name": x["name"]} for i, (s, x) in enumerate(EVENTS.items())]}]
+               {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}.html", "name": x["name"]} for i, (s, x) in enumerate(pub_events().items())]}]
     lds += [event_ld(e) for e in eds]
     html = head("Experiencias de rally | Deyscom Motorsport", "Experiencias de conducción de rally sobre tierra con Deyscom Motorsport.",
                 "experiencias", "las experiencias de rally", "bmw-e36-rally-tierra-contraluz-deyscom", lds,
                 "experiencia rally, conducir coche de rally, curso de pilotaje, curso conducción tierra, regalo experiencia motor, Circuito El Hito") + header("experiencias")
     html += hero("Experiencias", ["Ponte", "<span class='pink'>al volante</span>", "<span class='outline'>de un rally</span>"],
-                 "Jornadas de conducción sobre tierra en el Circuito El Hito (Cuenca) con nuestro BMW E36 y nuestro Peugeot 206. 4, 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.",
-                 "XP", "bmw-e36-rally-tierra-contraluz-deyscom", ["4 · 5 · 6 · 7 de diciembre", "Mañana o tarde", "299 €"], "las experiencias de rally",
+                 "Rally Experience: 4 horas de rally sobre tierra en el Circuito El Hito (Cuenca) con nuestro Peugeot 206 y nuestro BMW E36. 5, 6 y 7 de diciembre, turno de mañana o tarde. 299 €.",
+                 "XP", "bmw-e36-rally-tierra-contraluz-deyscom", ["5 · 6 · 7 de diciembre", "Mañana o tarde", "299 €"], "las experiencias de rally",
                  ("Ver fechas", "#fechas"))
-    html += ticker(["Experiencia Rally Eurocem", "Rally Experience", "Circuito El Hito", "BMW E36", "Peugeot 206", "Tierra"])
+    html += ticker(["Rally Experience", "Circuito El Hito", "BMW E36", "Peugeot 206", "Tierra", "4 horas"])
     html += f"""<section class="section" id="experiencias">
   <div class="container">
-    {section_head("Elige tu experiencia", "Dos formas de <span class='outline'>acelerar</span>", "El mismo formato de 5 ejercicios puntuables, en dos ocasiones distintas.")}
-    <div class="exps exps--2">{"".join(event_card(s, x) for s, x in EVENTS.items())}</div>
+    {section_head("Elige tu experiencia", "Conduce <span class='outline'>un coche de rally</span>", "4 horas de práctica sobre tierra con instructores especializados. ¡Comida incluida!")}
+    <div class="exps exps--1">{"".join(event_card(s, x) for s, x in pub_events().items())}</div>
   </div>
 </section>
 <section class="section section--ink" id="fechas">
@@ -2391,6 +2419,116 @@ def product_page(slug):
 
 
 # ------------------------------------------------------------------ inicio
+def game_block():
+    """Juego AX Rally Challenge de la home (assets/js/ax-rally.js se carga al acercarse)."""
+    j = AJUSTES.get("juego") or {}
+    if not j.get("activo", True):
+        return ""
+    premio = escape(j.get("premio") or "un pack de productos de limpieza para tu coche")
+    fin = str(j.get("fin") or "")[:10]
+    fin_txt = ""
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", fin):
+        y, m, d = fin.split("-")
+        fin_txt = f"{int(d)} de {MESES[int(m) - 1]} de {y}"
+    hint = "← → para girar · ↓ o espacio para frenar · P para pausar. El AX acelera solo."
+    return f"""<section class="section ax-sec" id="ax-rally">
+  <div class="container">
+    {section_head("AX Rally Challenge", "Juega, suma monedas <span class='outline'>y gana</span>",
+                  f"Pilota nuestro Citroën AX de rally por los circuitos y tramos más famosos del mundo, en tierra o en asfalto. Quien esté 1.º del ranking {'el ' + fin_txt if fin_txt else 'al cierre'} se lleva {premio}. Gratis y todas las veces que quieras.")}
+    <div class="ax" data-axgame>
+      <div class="ax__main">
+        <div class="ax__stage">
+          <canvas class="ax__canvas" width="960" height="540" aria-label="Juego de carreras AX Rally: el Citroën AX de Deyscom en la carretera"></canvas>
+          <div class="ax__hud" data-ax-hud hidden>
+            <span><small>Tiempo</small><b data-ax-time>0:00,00</b></span>
+            <span><small>Monedas</small><b data-ax-coins>0/60</b></span>
+            <span><small>Velocidad</small><b data-ax-speed>0 km/h</b></span>
+            <button type="button" class="ax__hudbtn" data-ax-pause aria-label="Pausa">❚❚</button>
+            <button type="button" class="ax__hudbtn" data-ax-quit aria-label="Salir al menú">✕</button>
+            <i class="ax__progress"><b data-ax-progress></b></i>
+          </div>
+          <button type="button" class="ax__paused" data-ax-paused hidden>⏸ Pausa · toca para seguir</button>
+        </div>
+        <div class="ax__pad" data-ax-pad hidden>
+          <button type="button" data-pad="l" aria-label="Girar a la izquierda">◀</button>
+          <button type="button" data-pad="b" aria-label="Frenar">FRENO</button>
+          <button type="button" data-pad="r" aria-label="Girar a la derecha">▶</button>
+          <p class="ax__keys">{hint}</p>
+        </div>
+
+        <div class="ax__panel ax__menu" data-ax-menu>
+          <div class="ax__row">
+            <div class="ax__seg" role="group" aria-label="Superficie">
+              <button type="button" data-surface="tierra" aria-pressed="true">🟫 Rally de tierra</button>
+              <button type="button" data-surface="asfalto" aria-pressed="false">⬛ Asfalto</button>
+            </div>
+            <span class="ax__wallet">🪙 <b data-ax-wallet>0</b> monedas</span>
+          </div>
+          <p class="ax__sel">Elige circuito · <b data-ax-sel></b></p>
+          <div class="ax__circuits" data-ax-circuits></div>
+          <div class="ax__go">
+            <button type="button" class="btn" data-ax-start>🏁 ¡A correr!</button>
+            <p class="ax__keys">{hint} En móvil, usa los botones de debajo.</p>
+          </div>
+        </div>
+
+        <div class="ax__panel ax__end" data-ax-end hidden>
+          <span class="eyebrow" data-ax-r-title>¡Bandera a cuadros!</span>
+          <p class="ax__pts"><b data-ax-r-pts>0</b> puntos</p>
+          <p class="ax__detail" data-ax-r-detail></p>
+          <ul class="ax__extra" data-ax-r-extra></ul>
+          <div class="ax__known" data-ax-known hidden>
+            <p>Corres como <b data-ax-known-name></b>.</p>
+            <div class="btn-row"><button type="button" class="btn" data-ax-save>🏆 Guardar en el ranking</button><button type="button" class="btn btn--ghost btn--sm" data-ax-change>No soy yo</button></div>
+          </div>
+          <form class="ax__form" data-ax-form novalidate>
+            <p class="ax__form-t">Entra en el ranking y opta al premio</p>
+            <div class="form-grid">
+              <div class="field"><label for="ax-alias">Nombre en el ranking <span class="req">*</span></label><input class="input" id="ax-alias" name="alias" maxlength="18" required placeholder="Ej. LauraRally"></div>
+              <div class="field"><label for="ax-n">Nombre y apellidos <span class="req">*</span></label><input class="input" id="ax-n" name="nombre" autocomplete="name" required></div>
+              <div class="field"><label for="ax-e">Email <span class="req">*</span></label><input class="input" id="ax-e" name="email" type="email" autocomplete="email" required placeholder="tu@email.com"></div>
+              <div class="field"><label for="ax-t">Teléfono <span class="req">*</span></label><input class="input" id="ax-t" name="telefono" type="tel" autocomplete="tel" required inputmode="tel" pattern="[0-9 +]{{9,20}}"></div>
+              <label class="check full"><input type="checkbox" name="bases" required> <span>Acepto las <a href="bases-ax-rally.html" target="_blank" rel="noopener">bases del juego</a> y la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>. <span class="req">*</span></span></label>
+              <label class="check full"><input type="checkbox" name="comunicaciones"> <span>Quiero recibir ofertas y novedades de Deyscom Motorsport (opcional).</span></label>
+              <input type="text" name="_hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+            </div>
+            <button class="btn btn--block mt-1" type="submit">🏆 Guardar mi puntuación</button>
+          </form>
+          <div class="form-msg" role="alert" data-ax-msg></div>
+          <div class="btn-row mt-2">
+            <button type="button" class="btn btn--ghost" data-ax-start>↻ Otra vez</button>
+            <button type="button" class="btn btn--ghost" data-ax-menu-btn>Cambiar circuito</button>
+            <button type="button" class="btn btn--ghost" data-ax-share>Retar a un amigo</button>
+          </div>
+          <p class="ax__cta">¿Y si lo conduces de verdad? <a href="ds-pilot-course.html">Rally Experience: 4 horas sobre tierra {I['arrow']}</a></p>
+        </div>
+      </div>
+
+      <aside class="ax__side">
+        <div class="ax__card ax__prize">
+          <span class="ax__prize-ic">🎁</span>
+          <div><b>Premio para el 1.º</b><p>{premio[0].upper() + premio[1:]}{'. Ranking abierto hasta el ' + fin_txt if fin_txt else ''}.</p><a href="bases-ax-rally.html">Ver bases</a></div>
+        </div>
+        <div class="ax__card">
+          <div class="ax__card-h"><b>🏆 Ranking general</b><small><span data-ax-players>0</span> pilotos</small></div>
+          <ol class="ax__rank" data-ax-rank><li class="ax-empty">Cargando…</li></ol>
+          <p class="ax__note" data-ax-rank-note></p>
+        </div>
+        <div class="ax__card ax__garage-card">
+          <div class="ax__card-h"><b>🔧 Tu garaje</b><small>Gasta tus monedas</small></div>
+          {ax_svg("gx", builder=False, cls="axg__svg", label="Citroën AX de rally de Deyscom Motorsport con los logos de EBC Frenos, HEL Performance, King Elements y Mishimoto")}
+          <div class="ax__unlocks" data-ax-garage></div>
+        </div>
+        <div class="ax__card">
+          <div class="ax__card-h"><b>🎖️ Logros</b><small data-ax-achn>0/8</small></div>
+          <ul class="ax__ach" data-ax-ach></ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>"""
+
+
 def home():
     svc = [
         ("competicion.html", "01", "Competición", "Preparación, seguridad y asistencia de coches de rally, slalom y circuito.", "RACE", "mitsubishi-lancer-evo-rally-taller-deyscom", "60%"),
@@ -2520,6 +2658,8 @@ def home():
 
 {social_wall()}
 
+{game_block()}
+
 <section class="section section--ink">
   <div class="container">
     {section_head("Preguntas frecuentes", "Antes de <span class='outline'>arrancar</span>")}
@@ -2622,7 +2762,7 @@ def contacto():
     html = head("Contacto · Deyscom Motorsport | Taller en Torrelaguna, Madrid",
                 "Contacta con Deyscom Motorsport: (+34) 615 97 22 33 · info@deyscom.com · C/ Canal de Isabel II, 2 Nave 3, 28180 Torrelaguna (Madrid). Lunes a viernes 07:00-15:00.",
                 "contacto", "un presupuesto", "og", [breadcrumbs_ld("contacto", "Contacto")]) + header("contacto")
-    opts = ["Competición", "Mecánica y mantenimiento", "Restomod", "Chapa y pintura", "Banco de potencia", "Asistencia en carreras", "Rally Experience", "Experiencia Rally Eurocem", "Tienda online", "Coches en venta", "Otro"]
+    opts = ["Competición", "Mecánica y mantenimiento", "Restomod", "Chapa y pintura", "Banco de potencia", "Asistencia en carreras", "Rally Experience", "Tienda online", "Coches en venta", "Otro"]
     sel = "".join(f'<option value="{o}">{o}</option>' for o in opts)
     html += f"""<section class="hero page-hero" style="min-height:52svh">
   <div class="hero__bg"></div><div class="hero__grid"></div><div class="hero__speed" aria-hidden="true"></div>
@@ -2753,6 +2893,8 @@ def legal_pages():
 <div class="table-wrap"><table class="cookie-table">
 <thead><tr><th>Finalidad</th><th>Base legal</th><th>Conservación</th></tr></thead>
 <tbody>
+<tr><td>Gestionar el juego AX Rally Challenge: ranking, contacto con el ganador y entrega del premio (en el ranking público solo se muestra el nombre que elijas)</td><td>Consentimiento al aceptar las bases (art. 6.1.a RGPD)</td><td>Hasta 12 meses después del cierre del ranking</td></tr>
+<tr><td>Enviarte ofertas y novedades si lo marcas en el juego o en un formulario</td><td>Consentimiento (art. 6.1.a RGPD), que puedes retirar cuando quieras</td><td>Hasta que te des de baja</td></tr>
 <tr><td>Responder a consultas y solicitudes de presupuesto</td><td>Consentimiento (art. 6.1.a RGPD) y medidas precontractuales (art. 6.1.b)</td><td>Hasta resolver la consulta y, como máximo, 12 meses si no hay contratación</td></tr>
 <tr><td>Gestionar reservas de experiencias, cursos y pedidos de la tienda, incluida la emisión del diploma del curso</td><td>Ejecución del contrato (art. 6.1.b RGPD)</td><td>Durante la relación y después los plazos legales (fiscales y mercantiles, hasta 6 años)</td></tr>
 <tr><td>Prestar servicios de taller y emitir facturas</td><td>Ejecución del contrato y obligación legal (art. 6.1.b y 6.1.c)</td><td>Plazos legales de conservación</td></tr>
@@ -2813,7 +2955,7 @@ def legal_pages():
 <p>Si eres consumidor, dispones de <strong>14 días naturales</strong> desde la recepción del producto para desistir de la compra sin necesidad de justificación. Comunícanoslo por escrito a <a href="mailto:{EMAIL}">{EMAIL}</a> (puedes usar el modelo de abajo) y devuélvenos el producto sin usar y en su estado original en los 14 días siguientes. Te reembolsaremos el importe, incluidos los gastos de envío estándar, en un máximo de 14 días desde que recibamos tu comunicación, por el mismo medio de pago. Los gastos de devolución corren de tu cuenta. No se admite el desistimiento de productos personalizados.</p>
 <div class="legal-box"><p><strong>Modelo de desistimiento:</strong> «A la atención de DEYSCOM MOTORSPORT, S.L., C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid), {EMAIL}: le comunico que desisto de mi contrato de compra del siguiente producto: [producto], pedido el [fecha] / recibido el [fecha]. Nombre, dirección, firma (solo en papel) y fecha.»</p></div>
 <h2>6. Experiencias y cursos</h2>
-<p>Las experiencias y cursos de conducción (como la Experiencia Rally Eurocem o el Rally Experience) son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
+<p>Las experiencias y cursos de conducción (como la Rally Experience) son servicios de ocio y formación con fecha determinada, por lo que, conforme al artículo 103.l) del RDL 1/2007, <strong>no les es aplicable el derecho de desistimiento</strong>. Se aplica la siguiente política de cancelación:</p>
 <ul>{cancel}</ul>
 <p><strong>Requisitos:</strong> para conducir es necesario ser mayor de edad, tener carnet de conducir en vigor y, en pruebas federadas, la licencia correspondiente (te ayudamos a tramitarla). Debes seguir en todo momento las indicaciones de seguridad del equipo y de la organización. Deyscom podrá excluir de la actividad a quien ponga en riesgo su seguridad o la de terceros. Antes de la experiencia te informaremos de las condiciones de uso del coche, del seguro y, en su caso, de la fianza.</p>
 <h2>7. Garantía</h2>
@@ -2823,6 +2965,30 @@ def legal_pages():
 <h2>9. Legislación aplicable</h2>
 <p>Estas condiciones se rigen por la legislación española. Si eres consumidor, serán competentes los juzgados de tu domicilio.</p>
 """)
+    j = AJUSTES.get("juego") or {}
+    premio = j.get("premio") or "un pack de productos de limpieza para tu coche"
+    fin = str(j.get("fin") or "")[:10]
+    fin_txt = fin
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", fin):
+        y, m, d = fin.split("-")
+        fin_txt = f"{int(d)} de {MESES[int(m) - 1]} de {y}"
+    pages["bases-ax-rally"] = legal_page("bases-ax-rally", "Bases del juego AX Rally Challenge | Deyscom Motorsport",
+        "Bases del juego AX Rally Challenge de Deyscom Motorsport: participación gratuita, ranking, premio para el primer clasificado y protección de datos.",
+        "Bases del <span class='outline'>AX Rally Challenge</span>", f"""
+<h2>1. Organizador</h2>
+<p>El juego AX Rally Challenge (en adelante, «el juego») lo organiza DEYSCOM MOTORSPORT, S.L. (CIF {COMPANY["cif"]}, {COMPANY["address"]}), en su web deyscom.com.</p>
+<h2>2. Participación</h2>
+<p>Es gratuita y no requiere ninguna compra. Puede participar cualquier persona mayor de 18 años residente en España. Se puede jugar todas las veces que se quiera; en el ranking cuenta la mejor puntuación de cada participante (identificado por su email).</p>
+<h2>3. Mecánica y puntuación</h2>
+<p>Cada partida es una carrera con el Citroën AX de Deyscom en el circuito o tramo elegido, sobre tierra o asfalto. Todos los recorridos tienen la misma longitud. Los puntos se calculan así: 100 puntos por moneda recogida (máximo 60) más 60 puntos por cada segundo por debajo de {85} segundos; en tierra la puntuación se multiplica por 1,1. Para entrar en el ranking hay que facilitar nombre en el ranking, nombre y apellidos, email y teléfono, y aceptar estas bases.</p>
+<h2>4. Ranking y periodo</h2>
+<p>El ranking general está abierto desde la publicación del juego hasta el {fin_txt} a las 23:59 (hora peninsular). En el ranking público solo se muestra el nombre que elija cada participante. Deyscom puede excluir puntuaciones obtenidas mediante trampas, manipulación del juego o datos falsos, y anular partidas técnicamente imposibles.</p>
+<h2>5. Premio</h2>
+<p>Quien ocupe el primer puesto del ranking al cierre recibirá {escape(premio)}. En caso de empate gana quien consiguió antes la puntuación. Contactaremos con el ganador por teléfono o email en los 7 días siguientes al cierre; si no responde en 15 días, el premio pasará al siguiente clasificado. El premio no se puede cambiar por dinero y se recoge en el taller de Torrelaguna o se envía sin coste dentro de la península. Su valor podrá estar sujeto a la normativa fiscal aplicable.</p>
+<h2>6. Protección de datos</h2>
+<p>Los datos se tratan para gestionar el juego, contactar con el ganador y entregar el premio, y solo si lo marcas, para enviarte ofertas y novedades. Puedes ejercer tus derechos en {EMAIL}. Más información en la <a href="politica-privacidad.html">política de privacidad</a>.</p>
+<h2>7. Aceptación</h2>
+<p>Participar implica aceptar estas bases. Deyscom puede modificarlas o cancelar el juego por causas justificadas, avisando en esta página.</p>""")
     return pages
 
 
@@ -3250,7 +3416,7 @@ def crm_page():
     nav_html += f'<a class="crm-nav__btn crm-nav__ext" href="index.html" target="_blank" rel="noopener" data-site-link>{I["eye"]}<span>Ver la web ↗</span></a>'
     nav_html += f'<a class="crm-nav__btn crm-nav__ext crm-nav__ext--2" href="admin/" target="_blank" rel="noopener" data-site-link>{I["book"]}<span>Contenido web ↗</span></a>'
     estados = "".join(f"<option>{e}</option>" for e in ["Nuevo", "Contactado", "Presupuesto enviado", "Negociación", "Ganado", "Perdido"])
-    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Experiencia Rally Eurocem", "Rally Experience", "Restomod", "Pintura", "Banco de potencia",
+    servicios = "".join(f"<option>{e}</option>" for e in ["Competición", "Rally Experience", "Restomod", "Pintura", "Banco de potencia",
                                                          "DS Pilot Weekend – Circuit", "DS Pilot Weekend – Rally", "DS Pilot Weekend – Slalom", "DS Copilot Course", "Tienda", "Otro"])
     return f"""<!doctype html>
 <html lang="es-ES">
@@ -3469,7 +3635,7 @@ def crm_page():
 def llms_txt():
     return f"""# Deyscom Motorsport
 
-> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Experiencia Rally Eurocem y Rally Experience) en el Circuito El Hito (Cuenca).
+> Taller de motorsport en Torrelaguna (Madrid, España): preparación de coches de competición (rally, slalom, montaña y circuito), restomod y restauración de clásicos y 4x4, pintura y chapa en cabina, banco de potencia, experiencias de conducción de rally sobre tierra (Rally Experience) en el Circuito El Hito (Cuenca).
 
 - Dirección: C/ Canal de Isabel II, 2, Nave 3, 28180 Torrelaguna (Madrid)
 - Teléfono y WhatsApp: {PHONE_TXT}
@@ -3493,7 +3659,7 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Texto completo de las páginas principales para modelos de lenguaje: {SITE}/llms-full.txt
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
-""" + "".join(f"- [{e['name']}]({SITE}/{k}.html): {e['lead']} Fechas: " + "; ".join(ed_label(x) for x in editions(k)) + ".\n" for k, e in EVENTS.items()) + f"""
+""" + "".join(f"- [{e['name']}]({SITE}/{k}.html): {e['lead']} Fechas: " + "; ".join(ed_label(x) for x in editions(k)) + ".\n" for k, e in pub_events().items()) + f"""
 ## Tienda
 - [Tienda]({SITE}/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
 
@@ -3520,7 +3686,7 @@ def page_404():
 
 def llms_full(pages):
     """Texto plano de las páginas clave para modelos de lenguaje (llms-full.txt)."""
-    keys = ["index", "competicion", "restomod", "pintura", "banco-de-potencia", "experiencias", *EVENTS, "nosotros", "contacto"] + [pp["slug"] for pp in POSTS]
+    keys = ["index", "competicion", "restomod", "pintura", "banco-de-potencia", "experiencias", *pub_events(), "nosotros", "contacto"] + [pp["slug"] for pp in POSTS]
     out = [llms_txt().strip(), ""]
     for k in keys:
         html = pages[k]
@@ -3610,7 +3776,7 @@ def main():
     content.apply(globals())
     (ROOT / "assets/js/config.js").write_text(config_js(), encoding="utf-8")
     pages = {"index": home(), "experiencias": experiencias(), "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
-    for s in EVENTS:
+    for s in pub_events():
         pages[s] = event_page(s)
     pages["gracias"] = gracias_page()
     pages.update(legal_pages())

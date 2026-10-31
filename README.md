@@ -367,3 +367,15 @@ En Cloudflare Pages:
 **Notas**
 - Las devoluciones (reembolsos) no se descuentan solas: si devolvéis una plaza, pasad el lead a «Perdido» en el CRM y se libera la plaza.
 - Si cambias el precio o las plazas de un turno, cámbialo también en su enlace de Stripe.
+
+## 16. Juego AX Rally Challenge (home)
+
+Juego de carreras con el Citroën AX de Deyscom al final de la home (`assets/js/ax-rally.js`, se descarga solo cuando el visitante se acerca).
+
+- **Cómo se juega:** tierra o asfalto, 21 circuitos y tramos famosos (todos miden lo mismo para que el ranking sea justo). El AX acelera solo; ← → para girar, ↓/espacio para frenar (en móvil, botones en pantalla).
+- **Puntos:** 100 por moneda (máx. 60) + 60 por cada segundo por debajo de 85 s; en tierra ×1,1. Las reglas están en `ax-rally.js` (`RULES`) y en `Code.gs` (`GAME`): si cambias una, cambia la otra.
+- **Ranking general:** al terminar, el jugador deja nombre en el ranking, nombre, email y teléfono y acepta las bases. Se guarda en la pestaña **Ranking** de la hoja y crea **un solo lead por jugador** en el CRM (formulario `juego-ax`, etiqueta `juego`); las partidas siguientes se añaden a su ficha. El ranking público solo muestra el alias.
+- **Antitrampas:** cada partida pide un token al empezar; el servidor recalcula los puntos, comprueba monedas máximas, tiempo mínimo y que la partida haya durado lo que dice. Las partidas no válidas quedan en la hoja con `valida = no` y no puntúan.
+- **Premio y cierre:** se editan en el panel → Ajustes → «Juego AX Rally» (premio, fecha de cierre o desactivar el juego). Las bases están en `bases-ax-rally.html`. Al cierre, el ganador es el 1.º de la pestaña Ranking (filtra `valida = sí`).
+- **Gamificación:** monedas acumuladas para el garaje (llantas doradas, carrocería blanca, alerón), 8 logros, circuito del día con monedas ×2, botón «Retar a un amigo» y enlace a la Rally Experience. Todo eso se guarda en el navegador del jugador.
+- **Tras actualizar `Code.gs`:** Implementar → Gestionar implementaciones → editar → Nueva versión (la URL /exec no cambia).

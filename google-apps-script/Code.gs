@@ -43,6 +43,13 @@ var DEPLOY_HOOK_URL = '';
 var EMPRESA = { nombre: 'DEYSCOM MOTORSPORT, S.L.', cif: 'B09939471', direccion: 'C/ Canal de Isabel II, 2, Nave 3 · 28180 Torrelaguna (Madrid)',
   telefono: '(+34) 615 97 22 33', email: 'info@deyscom.com', web: 'deyscom.com' };
 
+// ---------------- JUEGO AX RALLY (home) ----------------
+// Ranking general: pestaña "Ranking" (una fila por partida guardada). Gana el 1.º al cierre (fecha en el panel de la web).
+var RANKING_SHEET = 'Ranking';
+var RANKING_COLUMNS = ['fecha', 'alias', 'nombre', 'email', 'telefono', 'circuito', 'superficie', 'monedas', 'tiempo', 'golpes', 'puntos', 'lead_id', 'valida'];
+// Reglas del juego (deben coincidir con assets/js/ax-rally.js): todos los circuitos miden lo mismo.
+var GAME = { MAX_COINS: 60, PAR: 85, MIN_TIME: 55, MAX_TIME: 900, COIN_POINTS: 100, TIME_POINTS: 60, DIRT_BONUS: 1.1 };
+
 // ---------------- CRM: usuarios y seguridad ----------------
 var ESTADOS = ['Nuevo', 'Contactado', 'Presupuesto enviado', 'Negociación', 'Ganado', 'Perdido'];
 var SESSION_SECONDS = 21600;       // la sesión caduca tras 6 h sin actividad
@@ -336,6 +343,7 @@ function doPost(e) {
       }
     });
 
+    if (p.formulario === 'juego-ax') return json_(gameScore_(p, L));
     var webId = String(p.id || '');
     p.id = /^w[a-z0-9]{11}$/.test(webId) && findRow_(L, webId) < 0 ? webId : Utilities.getUuid().slice(0, 8);
     p.recibido = new Date().toISOString();
@@ -361,6 +369,8 @@ function doPost(e) {
 function doGet(e) {
   var action = e && e.parameter && e.parameter.action;
   if (action === 'plazas' || action === 'ediciones') return json_({ ok: true, ediciones: publicEditions_(e.parameter.producto) });
+  if (action === 'juego_inicio') return json_(gameStart_());
+  if (action === 'ranking') return json_(gameRanking_());
   if (action === 'stock') {
     var refresh = e.parameter.refresh === '1';
     return json_(getStock_(refresh));
@@ -832,4 +842,81 @@ function informeMensual() {
     '<p style="margin-top:22px"><a href="' + CRM_URL + '">Abrir el CRM</a></p></div>';
   var to = digestRecipients_();
   if (to.length) MailApp.sendEmail({ to: to.join(','), name: 'CRM Deyscom', subject: '📊 Informe de ' + mes + ': ' + leads.length + ' leads, ' + won.length + ' ganados', htmlBody: html });
+}
+
+
+// ---------------- JUEGO AX RALLY ----------------
+function gamePoints_(monedas, tiempo, superficie) {
+  var base = monedas * GAME.COIN_POINTS + Math.max(0, Math.round((GAME.PAR - tiempo) * GAME.TIME_POINTS));
+  return Math.round(base * (superficie === 'tierra' ? GAME.DIRT_BONUS : 1));
+}
+
+// Al empezar cada partida la web pide un token: sirve para comprobar que la partida ha durado lo que dice.
+function gameStart_() {
+  var token = Utilities.getUuid().replace(/-/g, '').slice(0, 20);
+  CacheService.getScriptCache().put('jg_' + token, String(Date.now()), 7200);
+  return { ok: true, token: token };
+}
+
+function gameRanking_() {
+  var cache = CacheService.getScriptCache();
+  var c = cache.get('ranking');
+  if (c) return JSON.parse(c);
+  var sh = getSheet_(RANKING_SHEET, RANKING_COLUMNS);
+  var last = sh.getLastRow(), best = {}, total = 0;
+  if (last >= 2) {
+    sh.getRange(2, 1, last - 1, RANKING_COLUMNS.length).getValues().forEach(function (r) {
+      if (String(r[12]) !== 'sí') return;
+      total++;
+      var key = String(r[3] || r[1]).toLowerCase(), pts = Number(r[10]) || 0;
+      if (!best[key] || pts > best[key].puntos) best[key] = { alias: String(r[1]).slice(0, 18), puntos: pts, circuito: String(r[5]), superficie: String(r[6]), tiempo: Number(r[8]) || 0 };
+    });
+  }
+  var list = Object.keys(best).map(function (k) { return best[k]; }).sort(function (a, b) { return b.puntos - a.puntos || a.tiempo - b.tiempo; });
+  var res = { ok: true, jugadores: list.length, partidas: total, top: list.slice(0, 20) };
+  cache.put('ranking', JSON.stringify(res), 30);
+  return res;
+}
+
+function gameScore_(p, L) {
+  var cache = CacheService.getScriptCache();
+  var token = String(p.token || ''), started = Number(cache.get('jg_' + token) || 0);
+  var monedas = Math.floor(Number(p.monedas)), tiempo = Number(p.tiempo), superficie = p.superficie === 'tierra' ? 'tierra' : 'asfalto';
+  var alias = String(p.alias || p.nombre || 'Piloto').replace(/[<>"']/g, '').trim().slice(0, 18) || 'Piloto';
+  var email = String(p.email || '').trim().toLowerCase().slice(0, 120);
+  var valid = !!started && monedas >= 0 && monedas <= GAME.MAX_COINS && tiempo >= GAME.MIN_TIME && tiempo <= GAME.MAX_TIME
+    && (Date.now() - started) / 1000 >= tiempo - 3 && /^[a-z0-9-]{2,40}$/.test(String(p.circuito || ''));
+  if (started) cache.remove('jg_' + token); // cada token sirve para una sola partida
+  var puntos = valid ? gamePoints_(monedas, tiempo, superficie) : 0;
+
+  // 1) Lead en el CRM: uno por jugador (por email); las partidas siguientes actualizan su ficha
+  var headers = L.headers, sheet = L.sheet, col = function (n) { return headers.indexOf(n); };
+  var row = -1, emailCol = col('email'), formCol = col('formulario');
+  if (email && emailCol > -1 && sheet.getLastRow() >= 2) {
+    var vals = sheet.getRange(2, 1, sheet.getLastRow() - 1, headers.length).getValues();
+    for (var i = vals.length - 1; i >= 0; i--) {
+      if (String(vals[i][emailCol]).toLowerCase() === email && String(vals[i][formCol]) === 'juego-ax') { row = i + 2; break; }
+    }
+  }
+  var resumen = 'Juego AX Rally · ' + (valid ? puntos + ' puntos' : 'partida no válida') + ' · ' + monedas + ' monedas · ' + tiempo + ' s · ' + p.circuito + ' (' + superficie + ')'
+    + (p.acepta_comunicaciones === 'sí' ? ' · Acepta comunicaciones comerciales' : '');
+  var leadId;
+  if (row > -1) {
+    leadId = String(sheet.getRange(row, col('id') + 1).getValues()[0][0]).replace(/^'/, '');
+    var msgCell = sheet.getRange(row, col('mensaje') + 1);
+    msgCell.setValue(clean_((resumen + '\n' + msgCell.getValues()[0][0]).slice(0, 4000)));
+    if (col('actualizado') > -1) sheet.getRange(row, col('actualizado') + 1).setValue(text_(new Date().toISOString()));
+  } else {
+    leadId = Utilities.getUuid().slice(0, 8);
+    var lead = { id: leadId, recibido: new Date().toISOString(), fecha: p.fecha || '', formulario: 'juego-ax', servicio: 'Juego AX Rally',
+      nombre: p.nombre, telefono: p.telefono, email: email, mensaje: resumen, pagina: p.pagina, landing: p.landing, referrer: p.referrer,
+      utm_source: p.utm_source, utm_medium: p.utm_medium, utm_campaign: p.utm_campaign, estado: 'Nuevo', etiquetas: 'juego' };
+    sheet.appendRow(headers.map(function (h) { return lead[h] === undefined ? '' : TEXT_COLS.indexOf(h) > -1 ? text_(lead[h]) : clean_(lead[h]); }));
+  }
+  // 2) Partida en el ranking
+  var rk = getSheet_(RANKING_SHEET, RANKING_COLUMNS);
+  rk.appendRow([text_(new Date().toISOString()), clean_(alias), clean_(p.nombre), clean_(email), clean_(p.telefono), clean_(p.circuito), superficie,
+    monedas, tiempo, Math.floor(Number(p.golpes) || 0), puntos, leadId, valid ? 'sí' : 'no']);
+  cache.remove('ranking');
+  return { ok: true, valida: valid, puntos: puntos };
 }
