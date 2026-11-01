@@ -8,7 +8,7 @@
 - Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
 - Propietario y fundador: Néstor Aguado. Marketing: Héctor Guzmán. Detrás hay un equipo de mecánicos, chapistas, pintores, técnicos de asistencia y formadores.
 - Competición: II Rallye Comunidad de Madrid – El Molar 2026, entre otras pruebas de rally, rallysprint, slalom y resistencia.
-- Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
+- Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements, GT2i.
 
 ## Servicios
 - [Coches de competición](https://deyscom.com/competicion.html): preparación, jaulas de seguridad, set-up y asistencia en carrera.
@@ -1312,7 +1312,7 @@ WhatsApp
 
 ---
 
-# Experiencias de rally: conduce un coche de rally en tierra | Deyscom
+# Experiencias de rally: conduce un coche de rally | Deyscom
 URL: https://deyscom.com/experiencias.html
 
 XP
@@ -1507,7 +1507,7 @@ WhatsApp
 
 ---
 
-# Rally Experience · Curso de conducción de rally en tierra | Deyscom
+# Rally Experience · Curso de rally en tierra en Cuenca | Deyscom
 URL: https://deyscom.com/ds-pilot-course.html
 
 299
@@ -2078,7 +2078,7 @@ Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo fu
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 BMW E36 de competición en una curva del circuito
 Respuesta rápida El Circuito del Jarama está en San Sebastián de los Reyes (Madrid), lo gestiona el Real Automóvil Club de España (RACE) y se inauguró en 1967 . Su trazado actual mide 3.850 metros y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en tandas o con una experiencia guiada. Si lo que te atrae es aprender a controlar el coche, nuestro Rally Experience trabaja el derrape, la frenada y la trazada sobre tierra.
@@ -2201,7 +2201,7 @@ Qué es un coche de rally, en qué se diferencia de uno de calle, las categoría
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport
 Respuesta rápida Un coche de rally es un coche derivado de serie y preparado para competir en tramos cerrados de asfalto o tierra: lleva jaula de seguridad, baquets, arneses, extinción y suspensión de competición , y debe cumplir el reglamento técnico de su categoría. La FIA ordena los coches actuales en una pirámide de Rally1 (la más alta) a Rally5 (la de acceso) , y las federaciones nacionales y autonómicas añaden sus propias clases. Para empezar, lo más sensato es un coche ligero de tracción delantera, como un Peugeot 206.
@@ -2334,7 +2334,7 @@ De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Nissan Patrol pintándose en verde en la cabina de pintura
 Respuesta rápida El precio de pintar un coche depende sobre todo de cuánta preparación necesita la chapa (golpes, óxido, masillas), del tamaño del coche, del tipo de pintura (sólida, metalizada, perlada, mate), de si hay cambio de color (con interiores, marcos y vanos) y del nivel de desmontaje . La preparación suele llevar más horas que la propia aplicación. Un presupuesto fiable solo se puede dar viendo el coche.
@@ -2452,7 +2452,7 @@ Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 BMW E30 en restauración sobre el elevador
 Respuesta rápida En España, cualquier modificación que altere las características de un vehículo es una reforma y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos , normalmente con un informe de conformidad o proyecto técnico, un certificado de taller e inspección en la ITV. Para los clásicos, el Reglamento de Vehículos Históricos (Real Decreto 892/2024) , en vigor desde el 1 de octubre de 2024, fija como regla general una antigüedad mínima de 30 años y que el vehículo conserve su configuración original.
@@ -2572,9 +2572,9 @@ Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
-BMW E36 rotulado con el logotipo de Deyscom Motorsport
+Peugeot 206 de Deyscom Motorsport saliendo de una horquilla en un tramo de rally
 Respuesta rápida El slalom de coches es una disciplina de automovilismo en la que cada participante recorre, de uno en uno y contra el cronómetro, un trazado marcado con conos sobre una superficie cerrada. Se hacen varias mangas , tocar o derribar conos suele penalizar con segundos y gana el tiempo más bajo. Es la forma más asequible y segura de empezar a competir y de aprender a mover un coche con precisión.
 
 En este artículo ¿Qué es un slalom de coches?
@@ -2697,7 +2697,7 @@ Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en m
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Curva de potencia y par en la pantalla del banco de potencia
 Respuesta rápida Un banco de potencia mide la potencia y el par reales de un coche en todo el rango de revoluciones. El resultado es una curva que muestra dónde rinde el motor, si hay pérdidas o fallos y qué ha aportado cada modificación. Para comparar mediciones hay que hacerlas en las mismas condiciones y con el mismo factor de corrección.
@@ -2814,7 +2814,7 @@ Guía práctica para correr tu primer rally en España: qué licencia necesitas,
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Peugeot 206 de Deyscom Motorsport entre el polvo en un rally de tierra
 Respuesta rápida Para correr tu primer rally en España necesitas cuatro cosas: una licencia federativa de piloto (y otra de copiloto para tu acompañante), un coche que cumpla el reglamento técnico de la prueba, el equipamiento de seguridad homologado y la inscripción en la carrera. La forma más sencilla de empezar es alquilar un coche ya preparado o probar antes en un slalom.
@@ -2966,7 +2966,7 @@ Qué es un restomod, en qué se diferencia de una restauración y cómo plantear
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Chasis de todoterreno en restauración completa
 Respuesta rápida Un restomod combina restauración y modificación : conserva el aspecto y el alma de un clásico, pero le da mecánica, frenos, suspensión, seguridad y confort actuales. Se planifica mejor por fases , empezando por un diagnóstico de la base, y las reformas importantes deben legalizarse en la ITV .
@@ -3080,7 +3080,7 @@ Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las nota
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 31 de octubre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 1 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Copiloto revisando las notas dentro del coche de rally
 Respuesta rápida El copiloto de rally guía al piloto cantando las notas del tramo, gestiona el libro de ruta en los enlaces y controla el carnet de control y los horarios para evitar penalizaciones. También coordina la seguridad y la comunicación con la asistencia. Es tan determinante en el resultado como el propio piloto.

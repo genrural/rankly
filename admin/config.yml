@@ -182,10 +182,6 @@
        "value": "bmw-e36-atardecer-circuito-competicion"
       },
       {
-       "label": "BMW E36 rotulado con el logotipo de Deyscom Motorsport (bmw-e36-rotulado-deyscom-motorsport)",
-       "value": "bmw-e36-rotulado-deyscom-motorsport"
-      },
-      {
        "label": "BMW clásicos en el taller de Deyscom (bmw-clasicos-restomod-taller-deyscom)",
        "value": "bmw-clasicos-restomod-taller-deyscom"
       },
@@ -354,6 +350,10 @@
        "value": "soldadura-chispas-taller-deyscom"
       },
       {
+       "label": "Mecánicos de Deyscom revisando el informe de una medición en el taller (equipo-deyscom-revisando-informe-banco-potencia)",
+       "value": "equipo-deyscom-revisando-informe-banco-potencia"
+      },
+      {
        "label": "Mecánicos de Deyscom trabajando en el box en carrera de resistencia (mecanicos-deyscom-box-resistencia)",
        "value": "mecanicos-deyscom-box-resistencia"
       },
@@ -496,6 +496,10 @@
       {
        "label": "Suspensión con muelles amarillos y neumáticos todoterreno en un Defender restomod (defender-restomod-suspension-muelles-amarillos)",
        "value": "defender-restomod-suspension-muelles-amarillos"
+      },
+      {
+       "label": "Toyota Supra midiendo potencia en el banco de potencia del taller de Deyscom en Torrelaguna (toyota-supra-banco-de-potencia-deyscom)",
+       "value": "toyota-supra-banco-de-potencia-deyscom"
       },
       {
        "label": "Trasera del Peugeot 206 de rally con la rotulación rosa de Deyscom Motorsport (peugeot-206-deyscom-rally-trasera-rotulacion)",

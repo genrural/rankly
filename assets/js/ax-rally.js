@@ -125,7 +125,7 @@
       if (rnd() < 0.5) segments[i].sprites.push({ k: props[Math.floor(rnd() * props.length)], x: -side * (1.4 + rnd() * 3.2) });
     }
     // vallas publicitarias: Deyscom y patrocinadores
-    var ads = ["deyscom", "ebc", "hel", "mishimoto", "king", "deyscom"];
+    var ads = ["deyscom", "ebc", "hel", "gt2i", "mishimoto", "king", "deyscom"];
     for (i = 80, k = 0; i < TRACK_SEGS; i += 140, k++) segments[i].sprites.push({ k: "ad_" + ads[k % ads.length], x: (k % 2 ? 1.3 : -1.3), w: 1.6 });
     segments[16].sprites.push({ k: "arch", x: 0, w: 2.6, arch: true });
     segments[TRACK_SEGS - 2].sprites.push({ k: "arch_finish", x: 0, w: 2.6, arch: true });
@@ -192,7 +192,7 @@
       });
     };
     SPR.ad_deyscom = board(function (g) { g.fillStyle = "#0b0b0e"; g.fillRect(8, 8, 304, 114); g.font = "italic 900 54px Jost, Arial"; g.textBaseline = "middle"; g.fillStyle = "#fff"; g.fillText("DEYS", 26, 58); g.fillStyle = "#ff66c4"; g.fillText("COM", 166, 58); g.fillStyle = "#fff"; g.font = "italic 600 16px Jost, Arial"; g.fillText("M O T O R S P O R T", 70, 100); });
-    [["ebc", "ebc-frenos.png"], ["hel", "hel-performance.png"], ["mishimoto", "mishimoto.png"], ["king", "king-elements.png"]].forEach(function (a) {
+    [["ebc", "ebc-frenos.png"], ["hel", "hel-performance.png"], ["mishimoto", "mishimoto.png"], ["king", "king-elements.png"], ["gt2i", "gt2i.png"]].forEach(function (a) {
       SPR["ad_" + a[0]] = board(function () {});
       var img = new Image(); img.onload = function () {
         var g = SPR["ad_" + a[0]].getContext("2d"), r = Math.min(280 / img.width, 100 / img.height);
@@ -205,36 +205,75 @@
   var CAR = {};
   var makeCar = function () {
     var skin = save.skin || {};
-    var bodyCol = skin.white ? "#f1f1f3" : "#2b2d33", rimCol = skin.gold ? "#e6b422" : "#ff66c4";
+    var bodyCol = skin.white ? "#f1f1f3" : "#2b2d33", bodyDark = skin.white ? "#d4d4d8" : "#1f2025", rimCol = skin.gold ? "#e6b422" : "#ff66c4";
+    var rr = function (g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); };
+    // Citroën AX visto desde atrás (proporciones reales: 1,56 m de ancho por 1,35 m de alto)
     var draw = function (turn, brake) {
-      return mk(300, 200, function (g) {
-        var sk = turn * 10;
-        // ruedas
-        g.fillStyle = "#0d0d0f"; g.fillRect(30, 140, 50, 56); g.fillRect(220, 140, 50, 56);
-        g.fillStyle = rimCol; g.fillRect(40, 160, 30, 22); g.fillRect(230, 160, 30, 22);
-        // carrocería
-        g.fillStyle = bodyCol; g.beginPath(); g.moveTo(24, 178); g.lineTo(22, 118); g.lineTo(46 + sk, 52); g.lineTo(254 + sk, 52); g.lineTo(278, 118); g.lineTo(276, 178); g.closePath(); g.fill();
-        // techo y luneta (el AX tiene una luneta grande casi vertical)
-        g.fillStyle = "#ff66c4"; g.beginPath(); g.moveTo(52 + sk, 40); g.lineTo(248 + sk, 40); g.lineTo(256 + sk, 54); g.lineTo(44 + sk, 54); g.closePath(); g.fill();
-        g.fillStyle = "#121821"; g.beginPath(); g.moveTo(56 + sk, 60); g.lineTo(244 + sk, 60); g.lineTo(262, 112); g.lineTo(38, 112); g.closePath(); g.fill();
-        g.strokeStyle = "rgba(255,255,255,.25)"; g.lineWidth = 3; g.beginPath(); g.moveTo(70 + sk, 68); g.lineTo(52, 104); g.stroke();
-        // jaula vista a través de la luneta
-        g.strokeStyle = "rgba(230,230,235,.7)"; g.lineWidth = 4; g.beginPath(); g.moveTo(80 + sk, 62); g.lineTo(80, 110); g.moveTo(220 + sk, 62); g.lineTo(220, 110); g.moveTo(80 + sk, 64); g.lineTo(220, 108); g.stroke();
-        // alerón
-        g.fillStyle = skin.wing ? "#ff66c4" : "#141416"; g.fillRect(skin.wing ? 30 + sk : 50 + sk, skin.wing ? 30 : 50, skin.wing ? 240 : 200, skin.wing ? 10 : 6);
-        // pilotos traseros (horizontales)
-        g.fillStyle = brake ? "#ff2a2a" : "#b0121b"; g.fillRect(26, 120, 48, 20); g.fillRect(226, 120, 48, 20);
-        if (brake) { g.fillStyle = "rgba(255,40,40,.35)"; g.fillRect(16, 112, 68, 36); g.fillRect(216, 112, 68, 36); }
-        g.fillStyle = "#ffb000"; g.fillRect(26, 140, 14, 6); g.fillRect(260, 140, 14, 6);
-        // portón con DEYSCOM
-        g.fillStyle = skin.white ? "#ff66c4" : "#ff66c4"; g.fillRect(80, 118, 140, 4);
-        g.font = "italic 900 30px Jost, Arial"; g.textBaseline = "middle"; g.textAlign = "left";
-        var w1 = g.measureText("DEYS").width, w2 = g.measureText("COM").width, x0 = 150 - (w1 + w2) / 2;
-        g.fillStyle = skin.white ? "#111" : "#fff"; g.fillText("DEYS", x0, 137); g.fillStyle = "#ff66c4"; g.fillText("COM", x0 + w1, 137); g.textAlign = "center";
-        // paragolpes y matrícula
-        g.fillStyle = "#141416"; g.fillRect(20, 152, 260, 28);
-        g.fillStyle = "#fff"; g.fillRect(112, 156, 76, 18); g.fillStyle = "#111"; g.font = "700 12px Arial"; g.fillText("AX · RALLY", 150, 166);
-        g.fillStyle = "#8a8a90"; g.fillRect(48, 178, 18, 8);
+      return mk(300, 250, function (g) {
+        var sk = turn * 9, cx = 150;
+        // sombra
+        g.fillStyle = "rgba(0,0,0,.45)"; g.beginPath(); g.ellipse(cx, 238, 140, 12, 0, 0, 7); g.fill();
+        // neumáticos anchos y llantas
+        [[18, 80], [220, 282]].forEach(function (w) {
+          g.fillStyle = "#0d0d0f"; rr(g, w[0], 176, w[1] - w[0], 62, 10); g.fill();
+          g.fillStyle = "#1c1c20"; for (var y = 182; y < 234; y += 8) g.fillRect(w[0] + 4, y, w[1] - w[0] - 8, 3);
+          g.fillStyle = rimCol; rr(g, w[0] + 12, 196, w[1] - w[0] - 24, 26, 5); g.fill();
+        });
+        // carrocería baja (laterales casi verticales, pasos de rueda ensanchados)
+        g.fillStyle = bodyCol; g.beginPath();
+        g.moveTo(20, 200); g.lineTo(18, 150); g.quadraticCurveTo(20, 128, 34, 122); g.lineTo(266, 122); g.quadraticCurveTo(280, 128, 282, 150); g.lineTo(280, 200); g.closePath(); g.fill();
+        // pasos de rueda ensanchados (Kit Car) y faldón negro
+        g.fillStyle = bodyCol; g.strokeStyle = "#16161a"; g.lineWidth = 3;
+        rr(g, 4, 140, 92, 46, 12); g.fill(); g.stroke(); rr(g, 204, 140, 92, 46, 12); g.fill(); g.stroke();
+        g.fillStyle = "#141416"; rr(g, 8, 176, 84, 10, 4); g.fill(); rr(g, 208, 176, 84, 10, 4); g.fill();
+        // habitáculo: el AX tiene mucho cristal y pilares finos
+        g.fillStyle = bodyCol; g.beginPath();
+        g.moveTo(40, 124); g.lineTo(62 + sk, 46); g.quadraticCurveTo(66 + sk, 38, 78 + sk, 37); g.lineTo(222 + sk, 37); g.quadraticCurveTo(234 + sk, 38, 238 + sk, 46); g.lineTo(260, 124); g.closePath(); g.fill();
+        // techo rosa y alerón de techo
+        g.fillStyle = "#ff66c4"; g.beginPath(); g.moveTo(70 + sk, 38); g.lineTo(230 + sk, 38); g.lineTo(236 + sk, 46); g.lineTo(64 + sk, 46); g.closePath(); g.fill();
+        // alerón grande sobre el techo, con sus soportes y derivas
+        g.fillStyle = skin.wing ? "#ff66c4" : "#141416";
+        g.fillRect(86 + sk, 22, 8, 18); g.fillRect(206 + sk, 22, 8, 18);
+        rr(g, 34 + sk, 14, 232, 11, 3); g.fill();
+        g.fillRect(30 + sk, 6, 8, 26); g.fillRect(262 + sk, 6, 8, 26);
+        // luneta grande, casi vertical, con esquinas redondeadas
+        var glass = g.createLinearGradient(0, 50, 0, 118); glass.addColorStop(0, "#2b394b"); glass.addColorStop(1, "#0d1219");
+        g.fillStyle = glass; g.beginPath();
+        g.moveTo(74 + sk, 52); g.lineTo(226 + sk, 52); g.quadraticCurveTo(234 + sk, 53, 236 + sk * 0.6, 62); g.lineTo(246, 110); g.quadraticCurveTo(247, 118, 238, 118);
+        g.lineTo(62, 118); g.quadraticCurveTo(53, 118, 54, 110); g.lineTo(64 + sk * 0.6, 62); g.quadraticCurveTo(66 + sk, 53, 74 + sk, 52); g.closePath(); g.fill();
+        // jaula y reposacabezas vistos a través de la luneta
+        g.fillStyle = "#08090c"; rr(g, 92 + sk * 0.7, 70, 34, 30, 8); g.fill(); rr(g, 174 + sk * 0.7, 70, 34, 30, 8); g.fill();
+        g.strokeStyle = "rgba(230,230,235,.75)"; g.lineWidth = 4; g.beginPath();
+        g.moveTo(80 + sk * 0.8, 60); g.lineTo(76, 116); g.moveTo(220 + sk * 0.8, 60); g.lineTo(224, 116); g.moveTo(80 + sk * 0.8, 62); g.lineTo(220 + sk * 0.8, 62); g.moveTo(80 + sk * 0.8, 64); g.lineTo(224, 114); g.stroke();
+        g.strokeStyle = "rgba(255,255,255,.22)"; g.lineWidth = 3; g.beginPath(); g.moveTo(84 + sk, 58); g.lineTo(66, 108); g.stroke();
+        // limpiaparabrisas trasero
+        g.strokeStyle = "#0a0a0a"; g.lineWidth = 3; g.beginPath(); g.moveTo(150, 116); g.lineTo(112 + sk * 0.5, 96); g.stroke();
+        // retrovisores
+        g.fillStyle = "#141416"; rr(g, 16 + sk * 0.5, 104, 26, 16, 5); g.fill(); rr(g, 258 + sk * 0.5, 104, 26, 16, 5); g.fill();
+        // portón: pilotos horizontales en las esquinas y matrícula en el centro
+        g.fillStyle = bodyDark; g.fillRect(30, 124, 240, 3);
+        var red = brake ? "#ff2a2a" : "#b0121b";
+        [[30, 98], [202, 270]].forEach(function (t) {
+          g.fillStyle = "#1a0405"; rr(g, t[0], 130, t[1] - t[0], 30, 4); g.fill();
+          g.fillStyle = red; g.fillRect(t[0] + 3, 133, t[1] - t[0] - 6, 14);
+          g.fillStyle = "#ff9a1f"; g.fillRect(t[0] + 3, 149, (t[1] - t[0] - 6) / 2, 8);
+          g.fillStyle = "#e9e9ee"; g.fillRect(t[0] + 3 + (t[1] - t[0] - 6) / 2, 149, (t[1] - t[0] - 6) / 2, 8);
+          if (brake) { g.fillStyle = "rgba(255,40,40,.32)"; g.fillRect(t[0] - 8, 124, t[1] - t[0] + 16, 40); }
+        });
+        // chevrones de Citroën y DEYSCOM
+        g.strokeStyle = skin.white ? "#555" : "#d9d9de"; g.lineWidth = 3; g.beginPath();
+        g.moveTo(140, 136); g.lineTo(150, 130); g.lineTo(160, 136); g.moveTo(140, 142); g.lineTo(150, 136); g.lineTo(160, 142); g.stroke();
+        g.font = "italic 900 17px Jost, Arial"; g.textBaseline = "middle"; g.textAlign = "left";
+        var w1 = g.measureText("DEYS").width, w2 = g.measureText("COM").width, x0 = cx - (w1 + w2) / 2;
+        g.fillStyle = skin.white ? "#111" : "#fff"; g.fillText("DEYS", x0, 154); g.fillStyle = "#ff66c4"; g.fillText("COM", x0 + w1, 154);
+        // paragolpes negro de plástico con la matrícula
+        g.fillStyle = "#141416"; rr(g, 14, 166, 272, 30, 10); g.fill();
+        g.fillStyle = "#fff"; rr(g, 108, 170, 84, 20, 3); g.fill(); g.fillStyle = "#1f4fbf"; g.fillRect(108, 170, 10, 20);
+        g.fillStyle = "#111"; g.font = "700 12px Arial"; g.textAlign = "center"; g.fillText("AX · RALLY", 156, 180);
+        g.fillStyle = "#ff66c4"; g.fillRect(20, 194, 260, 3);
+        // escape y gancho de remolque
+        g.fillStyle = "#8a8a90"; rr(g, 52, 196, 22, 9, 4); g.fill(); g.fillStyle = "#222"; g.beginPath(); g.ellipse(63, 200, 7, 3, 0, 0, 7); g.fill();
+        g.fillStyle = "#ffd400"; g.fillRect(222, 194, 14, 8);
       });
     };
     CAR.c = draw(0, false); CAR.l = draw(-1, false); CAR.r = draw(1, false);
@@ -354,7 +393,7 @@
     }
     // partículas, coche y efectos
     particles.forEach(function (p) { ctx.fillStyle = "rgba(" + p.col + "," + p.a.toFixed(2) + ")"; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill(); });
-    var cw2 = W < 700 ? W * 0.3 : W * 0.2, ch2 = cw2 * 200 / 300, bounce = S.phase === "race" ? (Math.random() * (S.speed / S.max) * (dirt ? 4 : 1.5)) : 0;
+    var cw2 = W < 700 ? W * 0.3 : W * 0.2, ch2 = cw2 * 250 / 300, bounce = S.phase === "race" ? (Math.random() * (S.speed / S.max) * (dirt ? 4 : 1.5)) : 0;
     var steer = S.steer || 0, key = (steer < 0 ? "l" : steer > 0 ? "r" : "c") + (S.braking ? "b" : "");
     ctx.drawImage(CAR[key], W / 2 - cw2 / 2, H - ch2 - 12 - bounce, cw2, ch2);
     pops.forEach(function (p) { ctx.globalAlpha = Math.max(0, p.a); ctx.fillStyle = p.c; ctx.font = "italic 900 34px Jost, Arial"; ctx.textAlign = "center"; ctx.fillText(p.t, W / 2, p.y); ctx.globalAlpha = 1; });
@@ -626,5 +665,5 @@
   show("menu"); renderMenu(); loadRanking();
   root.classList.add("is-ready");
   // ganchos para pruebas automáticas
-  if (/axdebug/.test(location.search)) window.__ax = { S: function () { return S; }, jump: function (f) { S.pos = (TRACK_SEGS - 3) * SEG * f; }, coins: function (n) { S.coins = n; } };
+  if (/axdebug/.test(location.search)) window.__ax = { car: function (k) { return CAR[k || "c"].toDataURL(); }, S: function () { return S; }, jump: function (f) { S.pos = (TRACK_SEGS - 3) * SEG * f; }, coins: function (n) { S.coins = n; } };
 })();

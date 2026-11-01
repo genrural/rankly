@@ -294,11 +294,6 @@
   "w": 1200,
   "h": 1600
  },
- "bmw-e36-rotulado-deyscom-motorsport": {
-  "alt": "BMW E36 rotulado con el logotipo de Deyscom Motorsport",
-  "w": 1056,
-  "h": 1408
- },
  "mecanicos-deyscom-box-resistencia": {
   "alt": "Mecánicos de Deyscom trabajando en el box en carrera de resistencia",
   "w": 929,
@@ -463,5 +458,15 @@
   "alt": "Carrocería con masilla preparada para pintar en la cabina de Deyscom",
   "w": 1068,
   "h": 1600
+ },
+ "toyota-supra-banco-de-potencia-deyscom": {
+  "alt": "Toyota Supra midiendo potencia en el banco de potencia del taller de Deyscom en Torrelaguna",
+  "w": 1200,
+  "h": 1600
+ },
+ "equipo-deyscom-revisando-informe-banco-potencia": {
+  "alt": "Mecánicos de Deyscom revisando el informe de una medición en el taller",
+  "w": 1600,
+  "h": 1066
  }
 }

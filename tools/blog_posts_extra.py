@@ -68,7 +68,7 @@ EXTRA_POSTS = [
         desc="Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.",
         keywords="slalom, slalom coches, slalom de coches, qué es un slalom, campeonato de slalom, slalom Madrid, empezar en el automovilismo",
         category="Competición", author="nestor", editor="hector", date="2026-10-23", minutes=6,
-        img="bmw-e36-rotulado-deyscom-motorsport",
+        img="peugeot-206-deyscom-horquilla-tramo-rally",
         tldr="El <strong>slalom de coches</strong> es una disciplina de automovilismo en la que cada participante recorre, de uno en uno y contra el cronómetro, un <strong>trazado marcado con conos</strong> sobre una superficie cerrada. Se hacen varias <strong>mangas</strong>, tocar o derribar conos suele penalizar con segundos y gana el tiempo más bajo. Es la forma más <strong>asequible y segura</strong> de empezar a competir y de aprender a mover un coche con precisión.",
         sections=[
             ("¿Qué es un slalom de coches?", """

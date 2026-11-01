@@ -644,10 +644,10 @@ def success_block(title="¡Bandera a cuadros!", text="Hemos recibido tu solicitu
 
 def consent():
     return ('<label class="check full"><input type="checkbox" name="consentimiento" value="sí" required> '
-            '<span>Acepto la <a href="politica-privacidad.html" target="_blank">política de privacidad</a> y que Deyscom Motorsport me contacte sobre mi solicitud.</span></label>'
+            '<span>Acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Deyscom Motorsport me contacte sobre mi solicitud.</span></label>'
             '<p class="gdpr full"><b>Responsable:</b> Deyscom Motorsport S.L. · <b>Finalidad:</b> responder a tu solicitud, presupuesto, reserva o pedido · '
             '<b>Legitimación:</b> tu consentimiento y, en su caso, la ejecución del contrato · <b>Destinatarios:</b> no se ceden datos salvo obligación legal · '
-            '<b>Derechos:</b> acceso, rectificación, supresión y otros, en info@deyscom.com · <a href="politica-privacidad.html" target="_blank">Más información</a></p>'
+            '<b>Derechos:</b> acceso, rectificación, supresión y otros, en info@deyscom.com · <a href="politica-privacidad.html" target="_blank" rel="noopener">Más información</a></p>'
             '<div class="hp" aria-hidden="true"><label>No rellenar<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>')
 
 
@@ -883,7 +883,7 @@ SERVICES = {
         eyebrow="Banco de potencia",
         lines=["Los números", "<span class='pink'>no</span>", "<span class='outline'>mienten</span>"],
         lead="Descubre cuántos caballos y cuánto par tiene de verdad tu coche. Medimos, diagnosticamos y afinamos con datos reales, sin suposiciones.",
-        number="04", hero="motor-caja-cambios-desmontado-taller",
+        number="04", hero="toyota-supra-banco-de-potencia-deyscom",
         chips=["Potencia y par reales", "Antes / después", "Coches de calle y competición"],
         ticker=["Potencia", "Par motor", "Curvas", "Diagnóstico", "Puesta a punto", "Antes / después"],
         intro=("Datos, no sensaciones", "¿Cuántos CV tiene <span class='pink'>de verdad</span> tu coche?",
@@ -905,7 +905,7 @@ SERVICES = {
                ("Análisis", "Revisamos las curvas contigo y detectamos qué se puede mejorar."), ("Informe", "Te llevas tus gráficas y nuestras recomendaciones.")],
         gallery=[("banco-de-potencia-medicion-deyscom", "Sala del banco de potencia"), ("motor-competicion-detalle-admision", "Admisión"),
                  ("caja-cambios-competicion-preparacion", "Transmisión"), ("colector-escape-motor-competicion", "Colector de escape"),
-                 ("latiguillos-freno-competicion-detalle", "Frenos"), ("motor-admision-deyscom-peugeot-206", "Motor Deyscom"),
+                 ("equipo-deyscom-revisando-informe-banco-potencia", "El equipo"), ("motor-admision-deyscom-peugeot-206", "Motor Deyscom"),
                  ("radiador-intercooler-preparacion-motor", "Refrigeración")],
         word="POWER",
         faq=[
@@ -961,14 +961,16 @@ BUILD_PARTS = [
         ("atornillada", "Atornillada", "Arco homologado", {"seguridad": 45}, ""),
         ("soldada", "Soldada multipunto", "Máxima rigidez y protección", {"seguridad": 80}, "")]),
 ]
-BUILD_HOT = {"llantas": (228, 262), "motor": (636, 152), "autoblocante": (598, 262), "frenos": (250, 86), "suspension": (410, 310), "jaula": (380, 80)}
+BUILD_HOT = {"llantas": (228, 262), "motor": (634, 152), "autoblocante": (598, 262), "frenos": (240, 80), "suspension": (410, 318), "jaula": (370, 72)}
 
 
 def ax_svg(pid="bc", builder=True, cls="bc__svg", label="Citroën AX de rally de Deyscom Motorsport con los logos de sus patrocinadores"):
-    """Citroën AX de 3 puertas visto de lado, rotulado Deyscom y con los patrocinadores. builder=True añade las piezas del configurador."""
-    win = "M160 116 L298 112 L298 168 L142 168 Z M316 111 L418 108 Q428 108 434 114 L506 168 L316 168 Z"
-    body = ("M120 262 L116 230 L118 196 L128 182 L150 112 Q154 100 170 99 L420 96 Q432 96 440 104 L532 168 L676 184 Q700 188 706 204 "
-            "L710 236 Q710 262 696 262 L642 262 A44 44 0 0 0 554 262 L272 262 A44 44 0 0 0 184 262 Z")
+    """Citroën AX de 3 puertas visto de lado (proporciones reales: 3,5 m de largo y 2,28 m entre ejes), rotulado Deyscom
+    y con los patrocinadores. builder=True añade las piezas del configurador."""
+    win = ("M176 114 Q180 104 194 102 L298 98 L298 166 L160 166 Z "
+           "M318 98 L414 94 Q427 94 435 102 L534 166 L318 166 Z")
+    body = ("M140 284 L134 248 L136 232 L142 206 L150 168 L166 112 Q172 98 192 95 L416 86 Q434 85 446 96 L556 166 Q634 176 680 186 "
+            "Q700 191 704 204 L710 246 L706 284 L645 284 L645 272 A48 48 0 1 0 551 272 L551 284 L275 284 L275 272 A48 48 0 1 0 181 272 L181 284 Z")
     F = "Jost, Futura, Arial, sans-serif"
 
     def decal(img, x, y, w, h):
@@ -977,51 +979,61 @@ def ax_svg(pid="bc", builder=True, cls="bc__svg", label="Citroën AX de rally de
 
     def wheel(cx, front):
         lsd = ('<g class="bc__lsd"><circle r="12" fill="none" stroke="#ff66c4" stroke-width="5" stroke-dasharray="4 3"/><circle r="5" fill="#ff66c4"/></g>' if front and builder else "")
-        return (f'<g class="bc__wheel" transform="translate({cx} 262)"><circle r="39" fill="#0d0d0f"/><circle r="35" fill="none" stroke="#222" stroke-width="3"/>'
-                f'<circle class="bc__rim" r="24"/>'
-                f'<path d="M0 -22V22M-21 -7L21 7M-13 18L13 -18M21 -7L-21 7M13 18L-13 -18" stroke="rgba(0,0,0,.45)" stroke-width="4.5"/>'
-                f'<circle r="6" fill="#111"/>{lsd}</g>')
+        return (f'<g class="bc__wheel" transform="translate({cx} 262)"><circle r="43" fill="#0d0d0f"/><circle r="39" fill="none" stroke="#25252a" stroke-width="3"/>'
+                f'<circle class="bc__rim" r="27"/>'
+                f'<path d="M0 -25V25M-23.8 -7.7L23.8 7.7M-14.7 20.2L14.7 -20.2M23.8 -7.7L-23.8 7.7M14.7 20.2L-14.7 -20.2" stroke="rgba(0,0,0,.45)" stroke-width="5"/>'
+                f'<circle r="7" fill="#111"/>{lsd}</g>')
     extra_in = extra_out = hots = ""
     if builder:
         extra_in = f"""<g clip-path="url(#{pid}-win)">
-      <g class="bc__cage"><path d="M300 112 V172 M160 124 L300 166 M316 112 L500 168 M330 166 L470 136" stroke="#e9e9ec" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <path class="bc__cage-x" d="M330 136 L470 166 M150 150 L300 120 M230 112 V170" stroke="#e9e9ec" stroke-width="4" fill="none" stroke-linecap="round"/></g>
-      <g class="bc__hb"><path d="M262 172 L274 130" stroke="#0a0a0a" stroke-width="7" stroke-linecap="round"/><circle cx="275" cy="127" r="7" fill="#e3262f"/></g>
+      <g class="bc__cage"><path d="M298 100 V172 M176 120 L298 166 M318 100 L510 170 M330 166 L470 130" stroke="#e9e9ec" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path class="bc__cage-x" d="M330 130 L470 166 M164 150 L298 116 M232 100 V170" stroke="#e9e9ec" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+      <g class="bc__hb"><path d="M262 172 L272 128" stroke="#0a0a0a" stroke-width="7" stroke-linecap="round"/><circle cx="273" cy="125" r="7" fill="#e3262f"/></g>
     </g>"""
-        extra_out = f"""<g class="bc__engine"><ellipse cx="620" cy="178" rx="66" ry="24" fill="url(#{pid}-glow)"/>
-      <g transform="translate(622 140)"><rect x="-46" y="-16" width="92" height="30" rx="8" fill="#0b0b0e" stroke="#ff66c4" stroke-width="2"/><text text-anchor="middle" y="5" font-family="{F}" font-style="italic" font-weight="900" font-size="15" fill="#fff" data-bc-cv-badge>60 CV</text></g></g>"""
+        extra_out = f"""<g class="bc__engine"><ellipse cx="618" cy="182" rx="66" ry="22" fill="url(#{pid}-glow)"/>
+      <g transform="translate(618 142)"><rect x="-46" y="-16" width="92" height="30" rx="8" fill="#0b0b0e" stroke="#ff66c4" stroke-width="2"/><text text-anchor="middle" y="5" font-family="{F}" font-style="italic" font-weight="900" font-size="15" fill="#fff" data-bc-cv-badge>60 CV</text></g></g>"""
         hots = "".join(f'<g class="bc__hot" data-hot="{k}" transform="translate({x} {y})"><circle r="15"/><path class="bc__hot-plus" d="M-6 0h12M0 -6v12"/><path class="bc__hot-ok" d="M-6 0l4 4 8-8"/></g>'
                        for k, (x, y) in BUILD_HOT.items())
-    return f"""<svg class="{cls}" viewBox="40 66 700 268" role="img" aria-label="{label}"{' data-bc-svg' if builder else ''}>
+    return f"""<svg class="{cls}" viewBox="40 56 700 282" role="img" aria-label="{label}"{' data-bc-svg' if builder else ''}>
   <defs><clipPath id="{pid}-win"><path d="{win}"/></clipPath>
-    <linearGradient id="{pid}-shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="{pid}-shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="{pid}-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3646"/><stop offset=".55" stop-color="#121821"/><stop offset="1" stop-color="#0b0f15"/></linearGradient>
     <radialGradient id="{pid}-glow"><stop offset="0" stop-color="#ff66c4" stop-opacity=".85"/><stop offset="1" stop-color="#ff66c4" stop-opacity="0"/></radialGradient></defs>
-  <ellipse cx="415" cy="304" rx="320" ry="13" fill="rgba(0,0,0,.55)"/>
+  <ellipse cx="420" cy="306" rx="310" ry="12" fill="rgba(0,0,0,.55)"/>
   <g class="bc__body">
-    <g class="bc__flame"><path d="M106 250 L68 242 L86 254 L60 260 L106 260 Z" fill="#ff9a1f"/><path d="M106 252 L82 248 L92 255 L78 258 L106 258 Z" fill="#ffe14d"/></g>
-    <rect x="100" y="250" width="16" height="8" rx="2" fill="#8a8a90"/>
+    <g class="bc__flame"><path d="M120 274 L82 266 L100 278 L74 284 L120 284 Z" fill="#ff9a1f"/><path d="M120 276 L96 272 L106 279 L92 282 L120 282 Z" fill="#ffe14d"/></g>
+    <rect x="114" y="274" width="18" height="8" rx="2" fill="#8a8a90"/>
     <path d="{body}" fill="#2b2d33"/>
     <path d="{body}" fill="url(#{pid}-shine)"/>
-    <path d="M170 99 L420 96 Q432 96 440 104 L444 108 L152 112 Q158 100 170 99Z" fill="#ff66c4"/>
-    <path d="M540 172 L676 186 Q692 189 698 196 L556 194 Z" fill="#ff66c4"/>
-    <path d="{win}" fill="#121821"/>
-    <path d="M170 124 L288 121 M330 120 L410 118" stroke="rgba(255,255,255,.18)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M192 95 L416 86 Q434 85 446 96 L451 101 L182 105 Q184 98 192 95Z" fill="#ff66c4"/>
+    <path d="M562 170 Q636 180 680 189 Q694 192 700 199 L572 184 Z" fill="#ff66c4"/>
+    <path d="{win}" fill="url(#{pid}-glass)"/>
+    <path d="M153 164 L167 112 L175 106 L161 164 Z" fill="#0d1117"/>
+    <path d="M190 120 L280 117 M336 116 L404 113" stroke="rgba(255,255,255,.2)" stroke-width="4" stroke-linecap="round"/>
     {extra_in}
-    <rect x="298" y="108" width="18" height="62" fill="#141416"/>
-    <path d="M316 172 L316 250 M532 172 L536 250" stroke="rgba(0,0,0,.5)" stroke-width="2"/>
-    <path d="M492 146 Q508 140 514 152 L500 160 Z" fill="#141416"/>
-    <path d="M116 228 L142 228 L142 262 L120 262 Z" fill="#141416"/>
-    <path d="M684 226 L710 226 L710 248 Q709 262 696 262 L690 262 Z" fill="#141416"/>
-    <rect x="272" y="238" width="282" height="9" fill="#141416"/>
-    <rect x="142" y="238" width="42" height="9" fill="#141416"/>
-    <rect x="642" y="238" width="44" height="9" fill="#141416"/>
-    <path d="M676 192 L704 198 L706 212 L678 208 Z" fill="#e7edf3"/><path d="M698 214 L708 216 L708 222 L698 220 Z" fill="#ff9a1f"/>
-    <path d="M117 190 L130 186 L130 214 L118 214 Z" fill="#d6242e"/>
-    <text x="320" y="214" font-family="{F}" font-style="italic" font-weight="900" font-size="44" fill="#fff" letter-spacing="-1">DEYS<tspan fill="#ff66c4">COM</tspan></text>
-    <text x="364" y="231" font-family="{F}" font-style="italic" font-weight="600" font-size="11" fill="#fff" letter-spacing="6">MOTORSPORT</text>
-    {decal("ebc-frenos.png", 152, 180, 54, 23)}{decal("hel-performance.png", 216, 180, 50, 23)}
-    {decal("king-elements.png", 152, 210, 112, 22)}{decal("mishimoto.png", 600, 196, 30, 25)}
-    <rect x="142" y="250" width="544" height="5" fill="#ff66c4" opacity=".9"/>
+    <rect x="298" y="92" width="20" height="80" fill="#141416"/>
+    <path d="M150 168 L540 168" stroke="#141416" stroke-width="5"/>
+    <path d="M318 172 L318 262 M540 170 L546 252" stroke="rgba(0,0,0,.5)" stroke-width="2"/>
+    <path d="M500 196 L520 196" stroke="#141416" stroke-width="4" stroke-linecap="round"/>
+    <path d="M524 148 Q540 140 548 150 L552 162 L532 166 Z" fill="#141416"/>
+    <path d="M134 238 L158 238 L158 284 L140 284 Z" fill="#141416"/>
+    <path d="M670 230 L712 236 L712 286 L662 288 Z" fill="#141416"/>
+    <path d="M688 250 L710 253 L710 268 L688 268 Z" fill="#050506"/>
+    <circle cx="676" cy="274" r="5" fill="#ffe7a3"/>
+    <path d="M598 176 L642 183 L638 190 L596 184 Z M604 186 L636 191" fill="#141416" stroke="#141416" stroke-width="2"/>
+    <rect x="272" y="256" width="282" height="22" rx="3" fill="#141416"/><rect x="272" y="256" width="282" height="3" fill="#3a3a42"/>
+    <path d="M284 204 L304 204 L298 240 L278 240 Z" fill="#141416"/><path d="M286 214 L300 214 M284 224 L298 224 M282 232 L296 232" stroke="#3a3a42" stroke-width="2"/>
+    {"".join(f'<path class="bc__flare" fill-rule="evenodd" fill="#30323a" stroke="#18181c" stroke-width="2" d="M{x - 66} 276 L{x - 61} 226 Q{x - 57} 206 {x - 38} 204 L{x + 38} 204 Q{x + 57} 206 {x + 61} 226 L{x + 66} 276 Z M{x + 48} 272 A48 48 0 1 0 {x - 48} 272 Z"/>'
+             f'<path d="M{x - 48} 272 A48 48 0 1 1 {x + 48} 272" fill="none" stroke="#141416" stroke-width="7"/>' for x in (228, 598))}
+    <g class="bc__wing"><path d="M200 97 L207 70 L215 70 L210 96 Z M276 93 L283 68 L291 68 L286 92 Z" fill="#141416"/>
+      <path d="M132 64 L304 59 L305 68 L132 74 Z" fill="#141416"/><path d="M128 52 L144 52 L144 82 L128 84 Z" fill="#141416"/></g>
+    <path d="M668 191 L702 199 L705 214 L670 209 Z" fill="#e7edf3"/><path d="M696 216 L706 218 L706 224 L696 222 Z" fill="#ff9a1f"/>
+    <path d="M136 198 L148 196 L148 230 L138 230 Z" fill="#d6242e"/><rect x="138" y="222" width="10" height="6" fill="#ff9a1f"/>
+    <text x="330" y="214" font-family="{F}" font-style="italic" font-weight="900" font-size="40" fill="#fff" letter-spacing="-1">DEYS<tspan fill="#ff66c4">COM</tspan></text>
+    <text x="370" y="229" font-family="{F}" font-style="italic" font-weight="600" font-size="10" fill="#fff" letter-spacing="5">MOTORSPORT</text>
+    {decal("ebc-frenos.png", 164, 178, 50, 21)}{decal("hel-performance.png", 222, 178, 44, 21)}
+    {decal("king-elements.png", 342, 236, 96, 16)}{decal("gt2i.png", 446, 236, 40, 16)}{decal("mishimoto.png", 566, 180, 26, 22)}
+    <rect x="158" y="250" width="530" height="4" fill="#ff66c4" opacity=".9"/>
     {extra_out}
   </g>
   {wheel(228, False)}{wheel(598, True)}
@@ -1889,7 +1901,7 @@ def events_promo():
 def cars_sale_block():
     return f"""<section class="section cars-sale">
   <div class="container cars-sale__inner">
-    <div class="cars-sale__media reveal">{pic("bmw-e36-rotulado-deyscom-motorsport", sizes="(max-width: 900px) 100vw, 50vw")}</div>
+    <div class="cars-sale__media reveal">{pic("bmw-e36-competicion-circuito-curva", sizes="(max-width: 900px) 100vw, 50vw")}</div>
     <div class="cars-sale__text reveal" data-delay="1">
       <span class="eyebrow">Compraventa</span>
       <h2>Coches <span class="outline">en venta</span></h2>
@@ -2529,7 +2541,7 @@ def game_block():
         </div>
         <div class="ax__card ax__garage-card">
           <div class="ax__card-h"><b>🔧 Tu garaje</b><small>Gasta tus monedas</small></div>
-          {ax_svg("gx", builder=False, cls="axg__svg", label="Citroën AX de rally de Deyscom Motorsport con los logos de EBC Frenos, HEL Performance, King Elements y Mishimoto")}
+          {ax_svg("gx", builder=False, cls="axg__svg", label="Citroën AX de rally de Deyscom Motorsport con los logos de EBC Frenos, HEL Performance, King Elements, GT2i y Mishimoto")}
           <div class="ax__unlocks" data-ax-garage></div>
         </div>
         <div class="ax__card">
@@ -3081,6 +3093,7 @@ SPONSORS = [
     ("HEL Performance", "hel-performance.png", None),
     ("Mishimoto", "mishimoto.png", None),
     ("King Elements", "king-elements.png", "https://www.kingelements.com/es/"),
+    ("GT2i", "gt2i.png", None),
 ]
 
 
@@ -3669,7 +3682,7 @@ def llms_txt():
 - Horario: lunes a viernes de 07:00 a 15:00; sábado y domingo cerrado
 - Propietario y fundador: Néstor Aguado. Marketing: Héctor Guzmán. Detrás hay un equipo de mecánicos, chapistas, pintores, técnicos de asistencia y formadores.
 - Competición: II Rallye Comunidad de Madrid – El Molar 2026, entre otras pruebas de rally, rallysprint, slalom y resistencia.
-- Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements.
+- Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements, GT2i.
 
 ## Servicios
 - [Coches de competición]({SITE}/competicion.html): preparación, jaulas de seguridad, set-up y asistencia en carrera.
@@ -3839,7 +3852,7 @@ def main():
         return "".join(found[:20])
     urls = "".join(
         f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
-        for n in pages if n not in NOINDEX and n not in ("404", "crm", "gracias", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra"))
+        for n in pages if n not in NOINDEX and n not in ("404", "crm", "gracias", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra", "bases-ax-rally"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
     ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot",
                "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot", "meta-externalagent", "Amazonbot", "DuckAssistBot", "MistralAI-User"]

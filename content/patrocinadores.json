@@ -19,6 +19,11 @@
       "nombre": "King Elements",
       "logo": "assets/img/patrocinadores/king-elements.png",
       "web": "https://www.kingelements.com/es/"
+    },
+    {
+      "nombre": "GT2i",
+      "logo": "assets/img/patrocinadores/gt2i.png",
+      "web": ""
     }
   ]
 }
