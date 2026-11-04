@@ -30,7 +30,7 @@ ITALIC = 'font-style="italic" '
 AJUSTES = {
     "telefono": PHONE, "telefono_visible": PHONE_TXT, "whatsapp": "34615972233", "email": EMAIL,
     "aviso_superior": {"activo": True, "texto": "Rally Experience · 4, 5 y 6 de diciembre · plazas limitadas", "enlace": "experiencias.html"},
-    "pago_rally_experience": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+    "pago_rally_experience": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
     "juego": {"activo": True, "premio": "un pack de productos de limpieza para tu coche", "fin": "2026-12-31"},
     "sheets_endpoint": "", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
     "precios": [], "enlaces_pago": [],
@@ -2455,11 +2455,11 @@ def game_block():
     if re.match(r"^\d{4}-\d{2}-\d{2}$", fin):
         y, m, d = fin.split("-")
         fin_txt = f"{int(d)} de {MESES[int(m) - 1]} de {y}"
-    hint = "← → para girar · ↓ o espacio para frenar · P para pausar. El AX acelera solo."
+    hint = "Teclado: ↑ acelera · ↓ frena · ← → gira · espacio, freno de mano · R reinicia · P pausa · M sonido. También con mando."
     return f"""<section class="section ax-sec" id="ax-rally">
   <div class="container">
     {section_head("AX Rally Challenge", "Juega, suma monedas <span class='outline'>y gana</span>",
-                  f"Pilota nuestro Citroën AX de rally por los circuitos y tramos más famosos del mundo, en tierra o en asfalto. Quien esté 1.º del ranking {'el ' + fin_txt if fin_txt else 'al cierre'} se lleva {premio}. Gratis y todas las veces que quieras.")}
+                  f"Pilota nuestro Citroën AX de rally en los circuitos más famosos del mundo con su trazado real y en tramos míticos de rally. Adelanta a 5 rivales, coge monedas y escucha a tu copiloto. Quien esté 1.º del ranking {'el ' + fin_txt if fin_txt else 'al cierre'} se lleva {premio}. Gratis y todas las veces que quieras.")}
     <div class="ax" data-axgame>
       <div class="ax__main">
         <div class="ax__stage">
@@ -2467,33 +2467,58 @@ def game_block():
           <div class="ax__hud" data-ax-hud hidden>
             <span><small>Tiempo</small><b data-ax-time>0:00,00</b></span>
             <span><small>Monedas</small><b data-ax-coins>0/60</b></span>
-            <span><small>Velocidad</small><b data-ax-speed>0 km/h</b></span>
-            <button type="button" class="ax__hudbtn" data-ax-pause aria-label="Pausa">❚❚</button>
-            <button type="button" class="ax__hudbtn" data-ax-quit aria-label="Salir al menú">✕</button>
+            <span><small>Posición</small><b data-ax-pos>P6/6</b></span>
+            <span class="ax__hud-speed"><small>Velocidad · <i data-ax-gear>N</i></small><b data-ax-speed>0 km/h</b></span>
+            <span class="ax__hud-btns">
+              <button type="button" class="ax__hudbtn" data-ax-mute aria-label="Silenciar">🔊</button>
+              <button type="button" class="ax__hudbtn" data-ax-fs aria-label="Pantalla completa">⛶</button>
+              <button type="button" class="ax__hudbtn" data-ax-restart aria-label="Reiniciar">↻</button>
+              <button type="button" class="ax__hudbtn" data-ax-pause aria-label="Pausa">❚❚</button>
+              <button type="button" class="ax__hudbtn" data-ax-quit aria-label="Salir al menú">✕</button>
+            </span>
             <i class="ax__progress"><b data-ax-progress></b></i>
           </div>
           <button type="button" class="ax__paused" data-ax-paused hidden>⏸ Pausa · toca para seguir</button>
+          <div class="ax__pad" data-ax-pad hidden>
+            <div class="ax__pad-side">
+              <button type="button" data-pad="l" aria-label="Girar a la izquierda">◀</button>
+              <button type="button" data-pad="r" aria-label="Girar a la derecha">▶</button>
+            </div>
+            <div class="ax__pad-side">
+              <button type="button" data-pad="b" class="ax__pad-brake" aria-label="Frenar">FRENO</button>
+              <button type="button" data-pad="g" class="ax__pad-gas" aria-label="Acelerar">GAS</button>
+            </div>
+          </div>
         </div>
-        <div class="ax__pad" data-ax-pad hidden>
-          <button type="button" data-pad="l" aria-label="Girar a la izquierda">◀</button>
-          <button type="button" data-pad="b" aria-label="Frenar">FRENO</button>
-          <button type="button" data-pad="r" aria-label="Girar a la derecha">▶</button>
-          <p class="ax__keys">{hint}</p>
-        </div>
+        <p class="ax__keys ax__keys--race">{hint}</p>
 
         <div class="ax__panel ax__menu" data-ax-menu>
           <div class="ax__row">
+            <div class="ax__seg" role="group" aria-label="Tipo de recorrido">
+              <button type="button" data-kind="Circuito" aria-pressed="true">🏁 Circuitos</button>
+              <button type="button" data-kind="Rally" aria-pressed="false">🌲 Rallies</button>
+            </div>
             <div class="ax__seg" role="group" aria-label="Superficie">
-              <button type="button" data-surface="tierra" aria-pressed="true">🟫 Rally de tierra</button>
-              <button type="button" data-surface="asfalto" aria-pressed="false">⬛ Asfalto</button>
+              <button type="button" data-surface="asfalto" aria-pressed="true">⬛ Asfalto</button>
+              <button type="button" data-surface="tierra" aria-pressed="false">🟫 Tierra</button>
             </div>
             <span class="ax__wallet">🪙 <b data-ax-wallet>0</b> monedas</span>
           </div>
-          <p class="ax__sel">Elige circuito · <b data-ax-sel></b></p>
-          <div class="ax__circuits" data-ax-circuits></div>
+          <div class="ax__pick">
+            <div class="ax__circuits" data-ax-circuits></div>
+            <div class="ax__mapcard">
+              <canvas class="ax__mapprev" data-ax-mapprev width="320" height="240" aria-label="Plano del recorrido elegido"></canvas>
+              <p class="ax__info" data-ax-info></p>
+            </div>
+          </div>
+          <p class="ax__sel">Recorrido elegido · <b data-ax-sel></b></p>
+          <div class="ax__opts">
+            <label class="check"><input type="checkbox" data-ax-autogas> <span>Acelerar solo (recomendado en móvil)</span></label>
+            <label class="check"><input type="checkbox" data-ax-voice checked> <span>Voz del copiloto en los rallies</span></label>
+          </div>
           <div class="ax__go">
             <button type="button" class="btn" data-ax-start>🏁 ¡A correr!</button>
-            <p class="ax__keys">{hint} En móvil, usa los botones de debajo.</p>
+            <p class="ax__keys">{hint} En móvil: botones de dirección a la izquierda y gas y freno a la derecha. Usa ⛶ para jugar a pantalla completa.</p>
           </div>
         </div>
 
@@ -2545,7 +2570,7 @@ def game_block():
           <div class="ax__unlocks" data-ax-garage></div>
         </div>
         <div class="ax__card">
-          <div class="ax__card-h"><b>🎖️ Logros</b><small data-ax-achn>0/8</small></div>
+          <div class="ax__card-h"><b>🎖️ Logros</b><small data-ax-achn>0/10</small></div>
           <ul class="ax__ach" data-ax-ach></ul>
         </div>
       </aside>
@@ -3005,7 +3030,7 @@ def legal_pages():
 <h2>2. Participación</h2>
 <p>Es gratuita y no requiere ninguna compra. Puede participar cualquier persona mayor de 18 años residente en España. Se puede jugar todas las veces que se quiera; en el ranking cuenta la mejor puntuación de cada participante (identificado por su email).</p>
 <h2>3. Mecánica y puntuación</h2>
-<p>Cada partida es una carrera con el Citroën AX de Deyscom en el circuito o tramo elegido, sobre tierra o asfalto. Todos los recorridos tienen la misma longitud. Los puntos se calculan así: 100 puntos por moneda recogida (máximo 60) más 60 puntos por cada segundo por debajo de {85} segundos; en tierra la puntuación se multiplica por 1,1. Para entrar en el ranking hay que facilitar nombre en el ranking, nombre y apellidos, email y teléfono, y aceptar estas bases.</p>
+<p>Cada partida es una carrera con el Citroën AX de Deyscom contra cinco rivales en el circuito o tramo elegido, sobre tierra o asfalto. Todos los recorridos tienen la misma longitud de juego. Los puntos se calculan así: 100 puntos por moneda recogida (máximo 60), 60 puntos por cada segundo por debajo de 95 segundos y 150 puntos por cada rival adelantado (máximo 5); en tierra la puntuación se multiplica por 1,1. Para entrar en el ranking hay que facilitar nombre en el ranking, nombre y apellidos, email y teléfono, y aceptar estas bases.</p>
 <h2>4. Ranking y periodo</h2>
 <p>El ranking general está abierto desde la publicación del juego hasta el {fin_txt} a las 23:59 (hora peninsular). En el ranking público solo se muestra el nombre que elija cada participante. Deyscom puede excluir puntuaciones obtenidas mediante trampas, manipulación del juego o datos falsos, y anular partidas técnicamente imposibles.</p>
 <h2>5. Premio</h2>
@@ -3813,6 +3838,11 @@ window.DEYSCOM = {{
 def main():
     import content
     content.apply(globals())
+    try:
+        import game_tracks
+        game_tracks.build()
+    except Exception as e:  # el juego sigue funcionando con el último ax-tracks.js generado
+        print("Aviso: no se pudieron regenerar los trazados del juego:", e)
     (ROOT / "assets/js/config.js").write_text(config_js(), encoding="utf-8")
     pages = {"index": home(), "experiencias": experiencias(), "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
     for s in pub_events():

@@ -668,7 +668,9 @@
     var axLoad = function () {
       if (axBox.getAttribute("data-loaded")) return; axBox.setAttribute("data-loaded", "1");
       var me = document.querySelector('script[src*="assets/js/main.js"]'), v = me ? (me.getAttribute("src").split("?")[1] || "") : "";
-      var sc = document.createElement("script"); sc.src = "assets/js/ax-rally.js" + (v ? "?" + v : ""); sc.defer = true; document.body.appendChild(sc);
+      var tr = document.createElement("script"); tr.src = "assets/js/ax-tracks.js" + (v ? "?" + v : "");
+      tr.onload = tr.onerror = function () { var sc = document.createElement("script"); sc.src = "assets/js/ax-rally.js" + (v ? "?" + v : ""); document.body.appendChild(sc); };
+      document.body.appendChild(tr);
     };
     if ("IntersectionObserver" in window && !/axdebug/.test(location.search)) {
       var axIo = new IntersectionObserver(function (en) { if (en.some(function (x) { return x.isIntersecting; })) { axIo.disconnect(); axLoad(); } }, { rootMargin: "800px 0px" });

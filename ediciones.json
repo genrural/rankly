@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-01",
+ "actualizado": "2026-11-04",
  "ediciones": [
   {
    "id": "dspilot-2026-12-04-manana",
@@ -11,7 +11,7 @@
    "lugar": "Circuito El Hito (Cuenca)",
    "plazas": 16,
    "precio": 299,
-   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "stripe": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
    "estado": "Abierta",
    "etiqueta": "Viernes 4 de diciembre · turno de mañana"
   },
@@ -25,7 +25,7 @@
    "lugar": "Circuito El Hito (Cuenca)",
    "plazas": 16,
    "precio": 299,
-   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "stripe": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
    "estado": "Abierta",
    "etiqueta": "Viernes 4 de diciembre · turno de tarde"
   },
@@ -39,7 +39,7 @@
    "lugar": "Circuito El Hito (Cuenca)",
    "plazas": 16,
    "precio": 299,
-   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "stripe": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
    "estado": "Abierta",
    "etiqueta": "Sábado 5 de diciembre · turno de mañana"
   },
@@ -53,7 +53,7 @@
    "lugar": "Circuito El Hito (Cuenca)",
    "plazas": 16,
    "precio": 299,
-   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "stripe": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
    "estado": "Abierta",
    "etiqueta": "Sábado 5 de diciembre · turno de tarde"
   },
@@ -67,7 +67,7 @@
    "lugar": "Circuito El Hito (Cuenca)",
    "plazas": 16,
    "precio": 299,
-   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "stripe": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
    "estado": "Abierta",
    "etiqueta": "Domingo 6 de diciembre · turno de mañana"
   },
@@ -81,7 +81,7 @@
    "lugar": "Circuito El Hito (Cuenca)",
    "plazas": 16,
    "precio": 299,
-   "stripe": "https://buy.stripe.com/3cIfZa0qX0o74ha0yn1RC00",
+   "stripe": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
    "estado": "Abierta",
    "etiqueta": "Domingo 6 de diciembre · turno de tarde"
   }

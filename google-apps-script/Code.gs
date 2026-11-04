@@ -46,9 +46,9 @@ var EMPRESA = { nombre: 'DEYSCOM MOTORSPORT, S.L.', cif: 'B09939471', direccion:
 // ---------------- JUEGO AX RALLY (home) ----------------
 // Ranking general: pestaña "Ranking" (una fila por partida guardada). Gana el 1.º al cierre (fecha en el panel de la web).
 var RANKING_SHEET = 'Ranking';
-var RANKING_COLUMNS = ['fecha', 'alias', 'nombre', 'email', 'telefono', 'circuito', 'superficie', 'monedas', 'tiempo', 'golpes', 'puntos', 'lead_id', 'valida'];
+var RANKING_COLUMNS = ['fecha', 'alias', 'nombre', 'email', 'telefono', 'circuito', 'superficie', 'monedas', 'tiempo', 'golpes', 'puntos', 'lead_id', 'valida', 'adelantamientos'];
 // Reglas del juego (deben coincidir con assets/js/ax-rally.js): todos los circuitos miden lo mismo.
-var GAME = { MAX_COINS: 60, PAR: 85, MIN_TIME: 55, MAX_TIME: 900, COIN_POINTS: 100, TIME_POINTS: 60, DIRT_BONUS: 1.1 };
+var GAME = { MAX_COINS: 60, PAR: 95, MIN_TIME: 55, MAX_TIME: 900, COIN_POINTS: 100, TIME_POINTS: 60, OVERTAKE_POINTS: 150, MAX_OVERTAKES: 5, DIRT_BONUS: 1.1 };
 
 // ---------------- CRM: usuarios y seguridad ----------------
 var ESTADOS = ['Nuevo', 'Contactado', 'Presupuesto enviado', 'Negociación', 'Ganado', 'Perdido'];
@@ -850,8 +850,9 @@ function informeMensual() {
 
 
 // ---------------- JUEGO AX RALLY ----------------
-function gamePoints_(monedas, tiempo, superficie) {
-  var base = monedas * GAME.COIN_POINTS + Math.max(0, Math.round((GAME.PAR - tiempo) * GAME.TIME_POINTS));
+function gamePoints_(monedas, tiempo, superficie, adelantamientos) {
+  var base = monedas * GAME.COIN_POINTS + Math.max(0, Math.round((GAME.PAR - tiempo) * GAME.TIME_POINTS))
+    + Math.min(GAME.MAX_OVERTAKES, adelantamientos || 0) * GAME.OVERTAKE_POINTS;
   return Math.round(base * (superficie === 'tierra' ? GAME.DIRT_BONUS : 1));
 }
 
@@ -886,12 +887,13 @@ function gameScore_(p, L) {
   var cache = CacheService.getScriptCache();
   var token = String(p.token || ''), started = Number(cache.get('jg_' + token) || 0);
   var monedas = Math.floor(Number(p.monedas)), tiempo = Number(p.tiempo), superficie = p.superficie === 'tierra' ? 'tierra' : 'asfalto';
+  var adel = Math.floor(Number(p.adelantamientos) || 0);
   var alias = String(p.alias || p.nombre || 'Piloto').replace(/[<>"']/g, '').trim().slice(0, 18) || 'Piloto';
   var email = String(p.email || '').trim().toLowerCase().slice(0, 120);
   var valid = !!started && monedas >= 0 && monedas <= GAME.MAX_COINS && tiempo >= GAME.MIN_TIME && tiempo <= GAME.MAX_TIME
-    && (Date.now() - started) / 1000 >= tiempo - 3 && /^[a-z0-9-]{2,40}$/.test(String(p.circuito || ''));
+    && (Date.now() - started) / 1000 >= tiempo - 3 && /^[a-z0-9-]{2,40}$/.test(String(p.circuito || '')) && adel >= 0 && adel <= GAME.MAX_OVERTAKES;
   if (started) cache.remove('jg_' + token); // cada token sirve para una sola partida
-  var puntos = valid ? gamePoints_(monedas, tiempo, superficie) : 0;
+  var puntos = valid ? gamePoints_(monedas, tiempo, superficie, adel) : 0;
 
   // 1) Lead en el CRM: uno por jugador (por email); las partidas siguientes actualizan su ficha
   var headers = L.headers, sheet = L.sheet, col = function (n) { return headers.indexOf(n); };
@@ -902,7 +904,7 @@ function gameScore_(p, L) {
       if (String(vals[i][emailCol]).toLowerCase() === email && String(vals[i][formCol]) === 'juego-ax') { row = i + 2; break; }
     }
   }
-  var resumen = 'Juego AX Rally · ' + (valid ? puntos + ' puntos' : 'partida no válida') + ' · ' + monedas + ' monedas · ' + tiempo + ' s · ' + p.circuito + ' (' + superficie + ')'
+  var resumen = 'Juego AX Rally · ' + (valid ? puntos + ' puntos' : 'partida no válida') + ' · ' + monedas + ' monedas · ' + adel + ' adelantamientos · ' + tiempo + ' s · ' + p.circuito + ' (' + superficie + ')'
     + (p.acepta_comunicaciones === 'sí' ? ' · Acepta comunicaciones comerciales' : '');
   var leadId;
   if (row > -1) {
@@ -920,7 +922,7 @@ function gameScore_(p, L) {
   // 2) Partida en el ranking
   var rk = getSheet_(RANKING_SHEET, RANKING_COLUMNS);
   rk.appendRow([text_(new Date().toISOString()), clean_(alias), clean_(p.nombre), clean_(email), clean_(p.telefono), clean_(p.circuito), superficie,
-    monedas, tiempo, Math.floor(Number(p.golpes) || 0), puntos, leadId, valid ? 'sí' : 'no']);
+    monedas, tiempo, Math.floor(Number(p.golpes) || 0), puntos, leadId, valid ? 'sí' : 'no', adel]);
   cache.remove('ranking');
   return { ok: true, valida: valid, puntos: puntos };
 }
