@@ -3879,6 +3879,13 @@ def main():
     except Exception as e:  # el juego sigue funcionando con el último ax-tracks.js generado
         print("Aviso: no se pudieron regenerar los trazados del juego:", e)
     (ROOT / "assets/js/config.js").write_text(config_js(), encoding="utf-8")
+    # Versión de CSS/JS = huella de su contenido: si cambian, los navegadores descargan la nueva (caché de 1 año)
+    global VERSION
+    import hashlib
+    hsh = hashlib.sha256()
+    for f in sorted(list((ROOT / "assets/js").glob("*.js")) + list((ROOT / "assets/css").glob("*.css"))):
+        hsh.update(f.read_bytes())
+    VERSION = hsh.hexdigest()[:10]
     pages = {"index": home(), "experiencias": experiencias(), "nosotros": nosotros(), "contacto": contacto(), "tienda": tienda()}
     for s in pub_events():
         pages[s] = event_page(s)
