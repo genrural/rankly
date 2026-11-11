@@ -140,6 +140,7 @@ def build_config(g):
     product_files = [{"label": p["name"], "name": s, "file": f"content/productos/{s}.json", "fields": [
         f("Nombre", "nombre"), f("Nombre corto", "nombre_corto"), f("Precio (€)", "precio", "number", value_type="float"),
         f("Etiqueta", "etiqueta", hint="Ej. Nuevo, Más vendido, Edición limitada"), f("Agotado", "agotado", "boolean", default=False),
+        f("Publicado en la tienda", "publicado", "boolean", default=True, hint="Desactívalo para retirar el producto de la web."),
         f("Descripción", "descripcion", "text"), f("Características", "caracteristicas", "list", field=f("Característica", "item"))]} for s, p in g["PRODUCTS"].items()]
 
     return {

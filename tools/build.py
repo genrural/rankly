@@ -21,6 +21,7 @@ VERSION = "5"
 # Etiquetas de medición. Rellena uno de los dos (GTM recomendado). Con ambos vacíos no se carga nada de Google.
 GTM_ID = ""   # p. ej. "GTM-XXXXXXX"
 GA4_ID = "G-LLGMMVL7M1"   # Google Analytics 4 · flujo deyscom.com
+META_PIXEL_ID = "2184468885811523"   # Píxel de Meta (Facebook e Instagram Ads). Solo se carga si el visitante acepta la publicidad.
 GSC_VERIFICATION = "_x_mE5JlzHMblp_mzIOxFVX8XV2_VuzrmZg7E8Tc5Ks"   # Google Search Console
 TODAY = date.today().isoformat()
 AC = ' aria-current="page"'
@@ -324,7 +325,7 @@ def consent_head():
           "ad_personalization:c.m?'granted':'denied',personalization_storage:c.p?'granted':'denied'});}}catch(e){}")
     tags = ""
     if not (GTM_ID or GA4_ID):
-        return f"<script>{js}</script>"
+        return f"<script>{js}</script>{meta_pixel_head()}"
     if GTM_ID:
         tags = ("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
                 "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
@@ -333,12 +334,25 @@ def consent_head():
         tags = ('<link rel="preconnect" href="https://www.googletagmanager.com">'
                 f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
                 f"<script>window.DM_USE_GTAG=true;gtag('js',new Date());gtag('config','{GA4_ID}');</script>")
-    return f"<script>{js}</script>{tags}"
+    return f"<script>{js}</script>{tags}{meta_pixel_head()}"
+
+
+def meta_pixel_head():
+    """Píxel de Meta: se carga solo con el permiso de «Publicidad» del aviso de cookies (RGPD).
+    main.js llama a window.dmPixel() cuando el visitante lo acepta."""
+    if not META_PIXEL_ID:
+        return ""
+    return ("<script>window.dmPixel=function(){if(window.fbq&&window.fbq.dmOn)return;"
+            "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};"
+            "if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;"
+            "t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');"
+            f"fbq('consent','grant');if(!fbq.dmOn){{fbq.dmOn=1;fbq('init','{META_PIXEL_ID}');fbq('track','PageView');}}}};"
+            "try{var c=JSON.parse(localStorage.getItem('dm_consent')||'null');if(c&&c.v===1&&c.m)window.dmPixel();}catch(e){}</script>")
 
 
 def cookie_banner():
     cats = [("a", "Analítica", "Nos ayuda a saber cuántas personas visitan la web y qué páginas funcionan mejor (Google Analytics)."),
-            ("m", "Publicidad", "Permite medir nuestras campañas y mostrarte anuncios relevantes de Deyscom en Google y otras plataformas."),
+            ("m", "Publicidad", "Permite medir nuestras campañas y mostrarte anuncios relevantes de Deyscom en Google, Facebook e Instagram (Google Ads y píxel de Meta)."),
             ("p", "Personalización", "Recuerda preferencias para adaptar el contenido que ves.")]
     rows = "".join(f'<label class="cc__row"><span><b>{t}</b><small>{d}</small></span><input type="checkbox" data-cc-cat="{k}"><i class="cc__sw" aria-hidden="true"></i></label>' for k, t, d in cats)
     return f"""<div class="cc" id="cc" role="dialog" aria-labelledby="cc-title" aria-describedby="cc-desc" hidden>
@@ -1434,27 +1448,27 @@ EVENTS = {
                  ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Paisaje de rally"), ("bmw-e36-rally-tierra-deyscom-motorsport", "BMW E36 en el aire")],
     ),
     "ds-pilot-course": dict(
-        name="Rally Experience", short="Rally Experience", kicker="Curso de conducción · 4, 5 y 6 de diciembre", tag="4-6 dic · Cuenca",
-        teaser="Curso de rally de 4 horas sobre tierra: dos coches de tracción delantera y dos de propulsión trasera, instructor por grupo y comida.",
+        name="Rally Experience", short="Rally Experience", intro_title="La Experiencia <span class='pink'>Rally</span> Deyscom", kicker="Curso de conducción · 4, 5 y 6 de diciembre", tag="4-6 dic · Cuenca",
+        teaser="Curso de rally de 4 horas sobre tierra: dos coches de tracción delantera y dos de propulsión trasera, instructor por grupo y grupos reducidos.",
         hero="peugeot-206-deyscom-horquilla-tramo-rally", card="peugeot-206-deyscom-curva-tramo-rally-paisaje", intro_img="bmw-e36-rally-tierra-contraluz-deyscom",
         lines=["Aprende", "<span class='pink'>a pilotar</span>", "<span class='outline'>en tierra</span>"],
-        lead="¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. ¡Comida incluida!",
+        lead="¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados.",
         chips=["4, 5 y 6 de diciembre", "4 horas · mañana o tarde", "299 €"],
         keywords="curso de pilotaje, curso conducción rally, curso conducción tierra, curso pilotaje Cuenca, curso de derrape, conducir coche de rally",
         partner=None, organizers=["Deyscom Motorsport"], poster=None, teams=False, race=True, intro="", ejercicios=[], incluye=[],
         team_size=4, team_note="cada uno con su color y su instructor", duration="PT4H", staff="Instructor cualificado por grupo",
-        stats=[("4", "horas de práctica"), ("4", "coches de rally"), ("4", "zonas de ejercicios"), ("16", "plazas por turno")], tee=False,
-        day=[("Llegada", "Recoges tu welcome pack y conoces a tu instructor y a tu grupo. Grupos reducidos para no hacer largas esperas.", "equipo-deyscom-motorsport-atardecer"),
+        stats=[("4", "horas de práctica"), ("4", "coches de rally"), ("4", "zonas de ejercicios"), ("2", "turnos al día")], tee=False,
+        day=[("Llegada", "Conoces a tu monitor y a tu grupo. Grupos reducidos para no hacer largas esperas.", "equipo-deyscom-motorsport-atardecer"),
              ("4 zonas de ejercicios", "Las dos primeras horas el circuito se divide en 4 zonas. Haces cada ejercicio 4 o 5 veces por turnos y vas pasando por las cuatro.", "peugeot-206-deyscom-curva-rally-castillo"),
              ("Tracción delantera", "Cambios de peso y freno con pie izquierdo. Sin teoría: tu monitor te lo explica en pista y te corrige.", "peugeot-206-deyscom-rally-frontal-cascos"),
              ("Propulsión trasera", "Conducción en tierra y control del sobreviraje, con las correcciones de tu monitor.", "bmw-e36-rally-tierra-contraluz-deyscom"),
-             ("Circuito completo", "Las dos últimas horas se abre el circuito entero: das vueltas aplicando lo aprendido con un tracción delantera y con un propulsión.", "peugeot-206-rally-polvo-contraluz-deyscom"),
-             ("Comida", "Comida y bebida con el grupo, y repaso con tu instructor de lo que has mejorado.", "equipo-deyscom-motorsport-circuito")],
+             ("Circuito completo", "Las dos últimas horas se abre el circuito entero: das vueltas aplicando lo aprendido con un tracción delantera y con un propulsión.", "peugeot-206-rally-polvo-contraluz-deyscom")],
         gallery=[("peugeot-206-deyscom-rally-frontal-pilotos", "Pie izquierdo"), ("bmw-e36-deyscom-salida-tramo-rally", "BMW E36: propulsión"),
                  ("peugeot-206-deyscom-horquilla-tramo-rally", "Horquilla"), ("bmw-e36-rally-tierra-contraluz-deyscom", "Sobre tierra"),
                  ("peugeot-206-deyscom-curva-tramo-rally-paisaje", "En el tramo"), ("peugeot-206-deyscom-tramo-rally-vista-panoramica", "Vista de tramo")],
     ),
 }
+RETIRED_PRODUCTS = []  # productos retirados de la tienda (content/productos/*.json con publicado: false)
 EDITIONS = []          # content/ediciones.json (se editan en el panel /admin → Experiencias → Fechas y plazas)
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
@@ -1506,7 +1520,7 @@ def dates_block(slug=None, show_name=False):
         btn = (f'<span class="date-row__full">Completo</span>' if full else
                f'<button class="btn btn--sm btn--ghost" type="button" data-pick="{e["id"]}">Elegir este turno</button>')
         exp_link = f'<a class="date-row__exp" href="{e["experiencia"]}.html">{ev["name"]}</a>' if show_name else ""
-        seats = "Sin plazas" if full else (f'{e["plazas"]} plazas' if e.get("plazas") else "Plazas limitadas")
+        seats = "Completo" if full else "Plazas limitadas"  # sin cifras: no se publican las plazas
         rows += (f'<div class="date-row{" is-full" if full else ""}" data-ed="{e["id"]}">'
                  f'<div class="date-row__day"><b>{int(e["fecha"][8:])}</b><span>{MESES[int(e["fecha"][5:7]) - 1][:3]}</span></div>'
                  f'<div class="date-row__info">{exp_link}'
@@ -1542,7 +1556,7 @@ def buy_dialog(eds):
       <label class="check full"><input type="checkbox" name="regalo" value="sí"> <span>Es un regalo 🎁</span></label>
       {consent()}
     </div>
-    <p class="book__note">{I["users"]} <span>16 plazas por turno. Si el turno que eliges no se completa, te reubicaremos en otro turno y te avisaremos con antelación.</span></p>
+    <p class="book__note">{I["users"]} <span>Grupos reducidos. Si el turno que eliges no se completa, te reubicaremos en otro turno y te avisaremos con antelación.</span></p>
     <div class="buy__total"><span>Total</span><b data-buy-price>{price}</b></div>
     <button class="btn btn--block" type="submit">{I['ticket']} <span data-buy-cta>Reservar y pagar {price}</span></button>
     <p class="buy__note">🔒 Pago online seguro. Recibes la confirmación por email.</p>
@@ -1740,7 +1754,7 @@ def event_page(slug):
     others = "".join(event_card(s, x) for s, x in pub_events().items() if s != slug)
     html += f"""<section class="section" id="fechas">
   <div class="container">
-    {section_head("Fechas y plazas", "Elige día <span class='outline'>y turno</span>", "16 plazas por turno. Deja tus datos, elige día y turno y paga en un minuto.")}
+    {section_head("Fechas y plazas", "Elige día <span class='outline'>y turno</span>", "Deja tus datos, elige día y turno y paga en un minuto.")}
     <div class="book-wrap">
       <div>{dates_block(slug)}
         <p class="dates__note">{I["cal"]} <span>{WEATHER_NOTE}</span></p></div>
@@ -1751,7 +1765,7 @@ def event_page(slug):
 {facts_box(slug, "La jornada en datos")}
 <section class="section section--ink">
   <div class="container">
-    {split("¿En qué consiste?", "Tierra, <span class='pink'>derrapes</span> y cronómetro", ev["intro"] + partner, "RALLY", ev["intro_img"], "Circuito El Hito · Cuenca")}
+    {split("¿En qué consiste?", ev.get("intro_title", "Tierra, <span class='pink'>derrapes</span> y cronómetro"), ev["intro"] + partner, "RALLY", ev["intro_img"], "Circuito El Hito · Cuenca")}
   </div>
 </section>
 <section class="section">
@@ -1774,7 +1788,7 @@ def event_page(slug):
   <div class="container exp-layout">
     <div>
       <span class="eyebrow reveal">Qué incluye</span>
-      <h2 class="reveal">Todo <span class="outline">incluido</span></h2>
+      <h2 class="reveal">Lo que <span class="outline">incluye</span></h2>
       {includes_list(ev["incluye"])}
     </div>
     <aside class="buybox reveal">
@@ -1837,13 +1851,13 @@ def experiencias():
     html += ticker(["Rally Experience", "Circuito El Hito", "Tracción delantera", "Propulsión trasera", "Tierra", "4 horas"])
     html += f"""<section class="section" id="experiencias">
   <div class="container">
-    {section_head("Elige tu experiencia", "Conduce <span class='outline'>un coche de rally</span>", "4 horas de práctica sobre tierra con instructores especializados. ¡Comida incluida!")}
+    {section_head("Elige tu experiencia", "Conduce <span class='outline'>un coche de rally</span>", "4 horas de práctica sobre tierra con instructores especializados.")}
     <div class="exps exps--1">{"".join(event_card(s, x) for s, x in pub_events().items())}</div>
   </div>
 </section>
 <section class="section section--ink" id="fechas">
   <div class="container">
-    {section_head("Próximas fechas", "Reserva <span class='outline'>tu turno</span>", "16 plazas por turno. Deja tus datos, elige día y turno y paga online.")}
+    {section_head("Próximas fechas", "Reserva <span class='outline'>tu turno</span>", "Deja tus datos, elige día y turno y paga online.")}
     <div class="book-wrap">
       <div>{dates_block(show_name=True)}
         <p class="dates__note">{I["cal"]} <span>{WEATHER_NOTE}</span></p></div>
@@ -1879,7 +1893,7 @@ def events_promo():
     feats = [("cal", when, "Turno de mañana o de tarde en el Circuito El Hito (Cuenca)."),
              ("car", "4 coches de rally", "Dos de tracción delantera y dos de propulsión trasera, preparados para competir."),
              ("helmet", "Instructores especializados", "Te explican cada ejercicio y te corrigen en pista."),
-             ("ticket", "299 € · comida incluida", "16 plazas por turno. Si un turno no se completa, te reubicamos en otro.")]
+             ("ticket", "299 € por persona", "Grupos reducidos. Si un turno no se completa, te reubicamos en otro.")]
     f = "".join(f'<li><span class="ic">{I[ic]}</span><div><b>{t}</b><span>{d}</span></div></li>' for ic, t, d in feats)
     return f"""<section class="course-promo">
   <div class="course-promo__bg">{pic("peugeot-206-deyscom-curva-rally-castillo", sizes="100vw")}</div>
@@ -1888,7 +1902,7 @@ def events_promo():
       <span class="course-promo__badge">{I['cal']} Experiencias de conducción · Plazas limitadas</span>
       <h2>Rally <span class="pink">Experience</span></h2>
       <p class="course-promo__sub">Vive la emoción del rally sobre tierra.</p>
-      <p class="lead"><strong>¡Siente la emoción de conducir un auténtico coche de rally!</strong> 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera. Aprende a dominar los dos con instructores especializados. ¡Comida incluida!</p>
+      <p class="lead"><strong>¡Siente la emoción de conducir un auténtico coche de rally!</strong> 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera. Aprende a dominar los dos con instructores especializados.</p>
       <div class="btn-row mt-2">
         <a class="btn" href="ds-pilot-course.html#fechas">{I['ticket']} ¡Reserva tu experiencia!</a>
       </div>
@@ -2984,6 +2998,7 @@ def legal_pages():
 <tr><td>dm_utm_*, dm_landing, dm_referrer</td><td>Deyscom</td><td>Saber desde dónde llegaste cuando envías un formulario</td><td>Técnica (sesión)</td><td>Hasta cerrar el navegador</td></tr>
 <tr><td>_ga, _ga_*</td><td>Google Analytics</td><td>Estadísticas de uso de la web</td><td>Analítica · requiere consentimiento</td><td>Hasta 2 años</td></tr>
 <tr><td>_gcl_au y similares</td><td>Google Ads</td><td>Medir la conversión de nuestras campañas</td><td>Publicidad · requiere consentimiento</td><td>Hasta 90 días</td></tr>
+<tr><td>_fbp, fr</td><td>Meta (Facebook e Instagram)</td><td>Medir las conversiones de nuestras campañas y mostrarte anuncios de Deyscom</td><td>Publicidad · requiere consentimiento</td><td>Hasta 90 días</td></tr>
 </tbody></table></div>
 <p>El mapa de la página de contacto se carga desde Google Maps, que puede usar sus propias cookies cuando interactúas con él. La lista de cookies de terceros puede variar según las herramientas activas; la mantendremos actualizada.</p>
 <h2>Cómo gestionar o retirar tu consentimiento</h2>
@@ -3147,8 +3162,8 @@ def molar_block():
       <h2>II Rallye Comunidad de Madrid <span class="outline">El Molar</span></h2>
       <div class="mt-2">
         <p class="lead">En 2026 Néstor Aguado y Héctor Guzmán corrieron el II Rallye Comunidad de Madrid – El Molar con el coche del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.</p>
-        <p class="muted">Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.</p>
-        <div class="btn-row mt-2"><a class="btn" href="camiseta-edicion-especial-el-molar-2026.html">{I['bag']} Edición especial El Molar 2026</a><a class="btn btn--ghost" href="experiencias.html">Conduce nuestros coches</a></div>
+        <p class="muted">Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra.</p>
+        <div class="btn-row mt-2"><a class="btn" href="experiencias.html">Conduce nuestros coches</a></div>
       </div>
     </div>
     <div class="split__media reveal" data-delay="1">{art("EL MOLAR", "50%", "35%", "peugeot-206-rally-el-molar-tramo", "El Molar 2026")}<span class="split__tag">El Molar · 2026</span></div>
@@ -3835,6 +3850,25 @@ window.DEYSCOM = {{
 """
 
 
+
+ROOT_FILES = ("favicon.ico", "site.webmanifest", "ediciones.json", "llms.txt", "llms-full.txt", "robots.txt", "sitemap.xml")
+
+
+def clean_urls(text, names):
+    """Direcciones limpias: «restomod.html» → «/restomod/», «index.html» → «/» y rutas de archivos desde la raíz
+    («assets/…» → «/assets/…»), para que todo funcione igual desde /restomod/ que desde la portada."""
+    def page(m):
+        slug, rest = m.group(2), m.group(3) or ""
+        if slug not in names:
+            return m.group(0)
+        return m.group(1) + ("/" if slug == "index" else f"/{slug}/") + rest
+    text = re.sub(re.escape(SITE) + r"/index\.html", SITE + "/", text)
+    text = re.sub(re.escape(SITE) + r"/([a-z0-9-]+)\.html", lambda m: f"{SITE}/{m.group(1)}/" if m.group(1) in names else m.group(0), text)
+    text = re.sub(r"""(["'(\s,=])([a-z0-9-]+)\.html(#[^"'\s)]*)?(?=["'\s)#])""", page, text)
+    text = re.sub(r"""(["'(\s,=])(assets/|admin/|""" + "|".join(re.escape(f) for f in ROOT_FILES) + ")", r"\1/\2", text)
+    return text
+
+
 def main():
     import content
     content.apply(globals())
@@ -3864,13 +3898,17 @@ def main():
     (ROOT / "llms-full.txt").write_text(llms_full(pages), encoding="utf-8")
     (ROOT / "ediciones.json").write_text(json.dumps({"actualizado": TODAY, "ediciones": [ed_public(e) for e in editions(upcoming=False)]},
                                                     ensure_ascii=False, indent=1), encoding="utf-8")
-    for old in ("performance", "legal", *RESERVED):  # páginas retiradas o en la recámara
+    names = set(pages)
+    for f in ("llms.txt", "llms-full.txt", "ediciones.json"):
+        (ROOT / f).write_text(clean_urls((ROOT / f).read_text(encoding="utf-8"), names), encoding="utf-8")
+    for old in ("performance", "legal", *RESERVED, *RETIRED_PRODUCTS):  # páginas retiradas o en la recámara
         f = ROOT / f"{old}.html"
         if f.exists():
             f.unlink()
     for name, html in pages.items():
         html = re.sub(r"\n\s*\n", "\n", html)
         html = facts_to_bottom(html)
+        html = clean_urls(html, names)
         (ROOT / f"{name}.html").write_text(html, encoding="utf-8")
     prio = {"index": "1.0", "experiencias": "0.9", "experiencia-rally-eurocem": "0.9", "ds-pilot-course": "0.9", "competicion": "0.8", "restomod": "0.8",
             "pintura": "0.8", "banco-de-potencia": "0.8", "tienda": "0.8", "blog": "0.7"}
@@ -3881,13 +3919,13 @@ def main():
             found.append(f"<image:image><image:loc>{SITE}/assets/img/{folder}/{name}.jpg</image:loc></image:image>")
         return "".join(found[:20])
     urls = "".join(
-        f"<url><loc>{SITE}/{'' if n == 'index' else n + '.html'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
+        f"<url><loc>{SITE}/{'' if n == 'index' else n + '/'}</loc><lastmod>{TODAY}</lastmod><priority>{prio.get(n, '0.6')}</priority>{imgs_of(pages[n])}</url>\n"
         for n in pages if n not in NOINDEX and n not in ("404", "crm", "gracias", "aviso-legal", "politica-privacidad", "politica-cookies", "condiciones-compra", "bases-ax-rally"))
     (ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}</urlset>\n', encoding="utf-8")
     ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot",
                "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot", "meta-externalagent", "Amazonbot", "DuckAssistBot", "MistralAI-User"]
-    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\nDisallow: /gracias.html\n\n"
-    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm.html\nDisallow: /admin/\n\n"
+    robots = "User-agent: *\nAllow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm/\nDisallow: /crm.html\nDisallow: /admin/\nDisallow: /gracias/\nDisallow: /gracias.html\n\n"
+    robots += "# Buscadores y asistentes de IA: bienvenidos (GEO)\n" + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /google-apps-script/\nDisallow: /tools/\nDisallow: /crm/\nDisallow: /crm.html\nDisallow: /admin/\n\n"
     robots += f"Sitemap: {SITE}/sitemap.xml\n# Resumen para modelos de lenguaje: {SITE}/llms.txt\n"
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
     print("Generadas:", ", ".join(f"{n}.html" for n in pages))

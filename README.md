@@ -379,3 +379,14 @@ Juego de carreras con el Citroën AX de Deyscom al final de la home (`assets/js/
 - **Premio y cierre:** se editan en el panel → Ajustes → «Juego AX Rally» (premio, fecha de cierre o desactivar el juego). Las bases están en `bases-ax-rally.html`. Al cierre, el ganador es el 1.º de la pestaña Ranking (filtra `valida = sí`).
 - **Gamificación:** monedas acumuladas para el garaje (llantas doradas, carrocería blanca, alerón), 8 logros, circuito del día con monedas ×2, botón «Retar a un amigo» y enlace a la Rally Experience. Todo eso se guarda en el navegador del jugador.
 - **Tras actualizar `Code.gs`:** Implementar → Gestionar implementaciones → editar → Nueva versión (la URL /exec no cambia).
+
+## 17. Píxel de Meta (Facebook e Instagram Ads)
+
+- El píxel `2184468885811523` está en `tools/build.py` (`META_PIXEL_ID`). Solo se carga si el visitante acepta **Publicidad** en el aviso de cookies.
+- Eventos que envía la web:
+  - `PageView`: cada página.
+  - `Lead`: cualquier formulario enviado.
+  - `InitiateCheckout`: al pulsar «Reservar y pagar» en una experiencia.
+  - `Purchase`: en la página de gracias tras pagar.
+  - `ReservaRallyExperience` (evento propio): al enviar el formulario de reserva del Rally Experience.
+- **Conversión personalizada:** Administrador de eventos → Conversiones personalizadas → Crear → origen: el píxel, evento: `ReservaRallyExperience` → nombre «Reserva Rally Experience», categoría «Cliente potencial», valor 299 €.

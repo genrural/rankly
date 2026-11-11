@@ -11,10 +11,10 @@
 - Patrocinadores: EBC Frenos, HEL Performance, Mishimoto, King Elements, GT2i.
 
 ## Servicios
-- [Coches de competición](https://deyscom.com/competicion.html): preparación, jaulas de seguridad, set-up y asistencia en carrera.
-- [Restomod](https://deyscom.com/restomod.html): restauración y modernización de clásicos y todoterrenos por fases.
-- [Pintura](https://deyscom.com/pintura.html): pintura en cabina, chapa, chasis y decoraciones de competición.
-- [Banco de potencia](https://deyscom.com/banco-de-potencia.html): medición de potencia y par, diagnóstico y comparativas antes/después.
+- [Coches de competición](https://deyscom.com/competicion/): preparación, jaulas de seguridad, set-up y asistencia en carrera.
+- [Restomod](https://deyscom.com/restomod/): restauración y modernización de clásicos y todoterrenos por fases.
+- [Pintura](https://deyscom.com/pintura/): pintura en cabina, chapa, chasis y decoraciones de competición.
+- [Banco de potencia](https://deyscom.com/banco-de-potencia/): medición de potencia y par, diagnóstico y comparativas antes/después.
 
 ## Zona de servicio
 Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del Guadalix, Algete, San Sebastián de los Reyes, Alcobendas, Colmenar Viejo, Tres Cantos), Madrid capital, Alcalá de Henares, Guadalajara y la Sierra Norte de Madrid. Clientes de toda España.
@@ -24,21 +24,21 @@ Torrelaguna y su entorno (El Molar, Talamanca de Jarama, Uceda, San Agustín del
 - Texto completo de las páginas principales para modelos de lenguaje: https://deyscom.com/llms-full.txt
 
 ## Experiencias de conducción (Circuito El Hito, Cuenca · 299 € por persona · pago con Stripe)
-- [Rally Experience](https://deyscom.com/ds-pilot-course.html): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. ¡Comida incluida! Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde; Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde.
+- [Rally Experience](https://deyscom.com/ds-pilot-course/): ¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. Fechas: Viernes 4 de diciembre · turno de mañana; Viernes 4 de diciembre · turno de tarde; Sábado 5 de diciembre · turno de mañana; Sábado 5 de diciembre · turno de tarde; Domingo 6 de diciembre · turno de mañana; Domingo 6 de diciembre · turno de tarde.
 
 ## Tienda
-- [Tienda](https://deyscom.com/tienda.html): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
+- [Tienda](https://deyscom.com/tienda/): merchandising oficial (camiseta, sudadera, chaqueta, gorra, pegatinas y edición especial El Molar 2026) y coches en venta en Wallapop.
 
 ## Blog
-- [Circuito del Jarama: historia, trazado y cómo rodar en tandas](https://deyscom.com/blog-circuito-del-jarama-tandas.html): Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
-- [Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno](https://deyscom.com/blog-coche-de-rally-que-es-y-categorias.html): Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
-- [Cuánto cuesta pintar un coche: factores que cambian el precio](https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche.html): De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
-- [Reformas en la ITV y vehículos históricos: guía práctica 2026](https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos.html): Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
-- [Slalom de coches: qué es, cómo funciona y cómo empezar a competir](https://deyscom.com/blog-slalom-de-coches-que-es.html): Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
-- [Banco de potencia: qué mide y cómo leer la curva de potencia y par](https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva.html): Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.
-- [Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto](https://deyscom.com/blog-como-empezar-en-los-rallies.html): Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
-- [Qué es un restomod y cómo plantear el proyecto por fases](https://deyscom.com/blog-que-es-un-restomod.html): Qué es un restomod, en qué se diferencia de una restauración y cómo plantear el proyecto por fases: diagnóstico, mecánica, seguridad, legalización en la ITV y presupuesto.
-- [Qué hace un copiloto de rally: notas, libro de ruta y controles horarios](https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html): Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
+- [Circuito del Jarama: historia, trazado y cómo rodar en tandas](https://deyscom.com/blog-circuito-del-jarama-tandas/): Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo funcionan las tandas, qué necesitas para conducir en el Jarama y cómo vivirlo como piloto.
+- [Coche de rally: qué es, categorías (Rally1 a Rally5) y cómo elegir uno](https://deyscom.com/blog-coche-de-rally-que-es-y-categorias/): Qué es un coche de rally, en qué se diferencia de uno de calle, las categorías FIA de Rally1 a Rally5, qué lleva por dentro y cómo elegir uno para empezar.
+- [Cuánto cuesta pintar un coche: factores que cambian el precio](https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche/): De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo de pintura, cambio de color, cabina de pintura y desmontaje. Cómo pedir un presupuesto fiable.
+- [Reformas en la ITV y vehículos históricos: guía práctica 2026](https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos/): Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y qué cambia con el Reglamento de Vehículos Históricos (Real Decreto 892/2024).
+- [Slalom de coches: qué es, cómo funciona y cómo empezar a competir](https://deyscom.com/blog-slalom-de-coches-que-es/): Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y penalizaciones), qué coche y licencia necesitas y por qué es la mejor forma de empezar.
+- [Banco de potencia: qué mide y cómo leer la curva de potencia y par](https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva/): Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en motor, cómo se relacionan par y potencia y qué mirar en una curva antes y después de modificar tu coche.
+- [Cómo empezar en los rallies: licencia, coche, equipamiento y presupuesto](https://deyscom.com/blog-como-empezar-en-los-rallies/): Guía práctica para correr tu primer rally en España: qué licencia necesitas, qué coche elegir, el equipamiento obligatorio, el copiloto y cómo planificar el presupuesto.
+- [Qué es un restomod y cómo plantear el proyecto por fases](https://deyscom.com/blog-que-es-un-restomod/): Qué es un restomod, en qué se diferencia de una restauración y cómo plantear el proyecto por fases: diagnóstico, mecánica, seguridad, legalización en la ITV y presupuesto.
+- [Qué hace un copiloto de rally: notas, libro de ruta y controles horarios](https://deyscom.com/blog-que-hace-un-copiloto-de-rally/): Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las notas, el libro de ruta, el carnet de control, los controles horarios y la seguridad.
 
 
 
@@ -144,7 +144,7 @@ Experiencias de conducción · Plazas limitadas
 
 Vive la emoción del rally sobre tierra.
 
-¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera. Aprende a dominar los dos con instructores especializados. ¡Comida incluida!
+¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera. Aprende a dominar los dos con instructores especializados.
 
 ¡Reserva tu experiencia!
 
@@ -154,7 +154,7 @@ Vive la emoción del rally sobre tierra.
 
 Instructores especializados Te explican cada ejercicio y te corrigen en pista.
 
-299 € · comida incluida 16 plazas por turno. Si un turno no se completa, te reubicamos en otro.
+299 € por persona Grupos reducidos. Si un turno no se completa, te reubicamos en otro.
 
 Tienda online Deyscom
 
@@ -163,13 +163,6 @@ Tienda online Deyscom
 Descubre nuestra colección oficial de ropa y accesorios Deyscom Motorsport. Diseñada para quienes viven la competición dentro y fuera del circuito.
 
 Descubre la colección
-
-Edición limitada
-
-### Camiseta Edición Especial El Molar 2026
-35 €
-
-Ver producto
 
 Más vendido
 
@@ -282,9 +275,9 @@ En competición · 2026
 
 En 2026 Néstor Aguado y Héctor Guzmán corrieron el II Rallye Comunidad de Madrid – El Molar con el coche del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
 
-Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.
+Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra.
 
-Edición especial El Molar 2026 Conduce nuestros coches
+Conduce nuestros coches
 
 EL MOLAR
 
@@ -442,7 +435,7 @@ WhatsApp
 ---
 
 # Preparación de coches de rally y competición en Madrid | Deyscom
-URL: https://deyscom.com/competicion.html
+URL: https://deyscom.com/competicion/
 
 01
 
@@ -720,7 +713,7 @@ WhatsApp
 ---
 
 # Restomod y restauración de coches clásicos en Madrid | Deyscom
-URL: https://deyscom.com/restomod.html
+URL: https://deyscom.com/restomod/
 
 02
 
@@ -928,7 +921,7 @@ WhatsApp
 ---
 
 # Taller de pintura de coches en Madrid · Cabina | Deyscom
-URL: https://deyscom.com/pintura.html
+URL: https://deyscom.com/pintura/
 
 03
 
@@ -1128,7 +1121,7 @@ WhatsApp
 ---
 
 # Banco de potencia en Madrid: mide CV y par | Deyscom
-URL: https://deyscom.com/banco-de-potencia.html
+URL: https://deyscom.com/banco-de-potencia/
 
 04
 
@@ -1327,7 +1320,7 @@ WhatsApp
 ---
 
 # Experiencias de rally: conduce un coche de rally | Deyscom
-URL: https://deyscom.com/experiencias.html
+URL: https://deyscom.com/experiencias/
 
 XP
 
@@ -1350,7 +1343,7 @@ Elige tu experiencia
 
 ## Conduce un coche de rally
 
-4 horas de práctica sobre tierra con instructores especializados. ¡Comida incluida!
+4 horas de práctica sobre tierra con instructores especializados.
 
 RALLY EXPERIENCE
 
@@ -1358,7 +1351,7 @@ RALLY EXPERIENCE
 Curso de conducción · 4, 5 y 6 de diciembre
 
 ### Rally Experience
-Curso de rally de 4 horas sobre tierra: dos coches de tracción delantera y dos de propulsión trasera, instructor por grupo y comida.
+Curso de rally de 4 horas sobre tierra: dos coches de tracción delantera y dos de propulsión trasera, instructor por grupo y grupos reducidos.
 
 4 de diciembre · 5 de diciembre · 6 de diciembre · 299 €
 
@@ -1368,41 +1361,41 @@ Próximas fechas
 
 ## Reserva tu turno
 
-16 plazas por turno. Deja tus datos, elige día y turno y paga online.
+Deja tus datos, elige día y turno y paga online.
 
 4 dic
 Rally Experience Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 4 dic
 Rally Experience Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 5 dic
 Rally Experience Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 5 dic
 Rally Experience Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 6 dic
 Rally Experience Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 6 dic
 Rally Experience Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
@@ -1446,7 +1439,7 @@ Coches
 4 coches de rally preparados para competición: 2 de tracción delantera y 2 de propulsión trasera
 
 Formato
-Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, 16 plazas por turno
+Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, en grupos reducidos
 
 Precio
 299 € por persona, pago online seguro al reservar
@@ -1459,7 +1452,7 @@ Cómo elegir
 ## ¿Cuál es la tuya?
 
 ## ¿Qué es la Rally Experience?
-La Rally Experience es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (4, 5 o 6 de diciembre) y turno.
+La Rally Experience es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con monitor que te explica cada ejercicio y te corrige en pista. Seguro de responsabilidad civil incluido. Eliges día (4, 5 o 6 de diciembre) y turno.
 
 ## ¿Qué se aprende en una jornada sobre tierra?
 A leer el agarre y a mover el coche con las transferencias de peso: provocar y corregir un derrape, frenar fuerte, usar el freno de mano y elegir la trazada. Es la base de cualquier piloto de rally y, además, te hace mejor conductor en el día a día. Si te interesa la competición, lee cómo empezar en los rallies .
@@ -1522,7 +1515,7 @@ WhatsApp
 ---
 
 # Rally Experience · Curso de rally en tierra en Cuenca | Deyscom
-URL: https://deyscom.com/ds-pilot-course.html
+URL: https://deyscom.com/ds-pilot-course/
 
 299
 
@@ -1532,7 +1525,7 @@ Inicio / Experiencias / Rally Experience
 
 Aprende a pilotar en tierra
 
-¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados. ¡Comida incluida!
+¡Siente la emoción de conducir un auténtico coche de rally! 4 horas de adrenalina sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con instructores especializados.
 
 4, 5 y 6 de diciembre 4 horas · mañana o tarde 299 €
 
@@ -1544,48 +1537,48 @@ Conduce Aprende Disfruta Delantera vs trasera Tracción delantera Propulsión tr
 4 horas de práctica
 4 coches de rally
 4 zonas de ejercicios
-16 plazas por turno
+2 turnos al día
 – días para la primera fecha
 
 Fechas y plazas
 
 ## Elige día y turno
 
-16 plazas por turno. Deja tus datos, elige día y turno y paga en un minuto.
+Deja tus datos, elige día y turno y paga en un minuto.
 
 4 dic
 Viernes 4 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 4 dic
 Viernes 4 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 5 dic
 Sábado 5 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 5 dic
 Sábado 5 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 6 dic
 Domingo 6 de diciembre · Mañana Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
 6 dic
 Domingo 6 de diciembre · Tarde Horario exacto al confirmar · Circuito El Hito (Cuenca)
-16 plazas
+Plazas limitadas
 299 €
 Elegir este turno
 
@@ -1602,22 +1595,34 @@ Duración
 4 horas de práctica: 2 h de ejercicios en 4 zonas y 2 h de circuito completo
 
 Lugar
-Circuito El Hito (Cuenca)
+Circuito El Hito (Cuenca), a 1 hora de Madrid
 
 Plazas
-16 personas por turno, en grupos reducidos con monitor. Si un turno no se completa, te reubicamos en otro
+Grupos reducidos con monitor. Si un turno no se completa, te reubicamos en otro
 
 Coches
 2 de tracción delantera y 2 de propulsión trasera, con arco de seguridad, arneses y extinción
 
 Precio
-299 € por persona: comida, bebida, welcome pack y seguro de RC incluidos
+299 € por persona, con seguro de responsabilidad civil incluido
 
 ¿En qué consiste?
 
-## Tierra, derrapes y cronómetro
+## La Experiencia Rally Deyscom
 
-La Rally Experience es el curso de rally de Deyscom : 4 horas de práctica sobre tierra con coches de rally equipados para competir, con arco de seguridad, arneses y extinción . Las dos primeras horas el circuito se divide en 4 zonas : haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las dos últimas horas se abre el circuito completo y das vueltas aplicando lo aprendido con un coche de tracción delantera y otro de propulsión trasera . No hay parte teórica: en cada ejercicio el monitor te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el 4, 5 o 6 de diciembre , en turno de mañana o tarde .
+El curso consiste en 4 horas de conducción práctica sobre tierra , donde aprenderás diferentes técnicas de pilotaje al volante de vehículos de tracción delantera y trasera .
+
+Durante las primeras 2 horas , dividimos el circuito en 4 zonas , cada una con un ejercicio diferente. Los participantes van rotando por las distintas zonas, repitiendo cada ejercicio entre 4 y 5 veces para mejorar progresivamente su técnica.
+
+En las últimas 2 horas , abrimos el circuito completo para que puedas poner en práctica todo lo aprendido, dando vueltas tanto con vehículos de tracción delantera como de tracción trasera.
+
+El curso es totalmente práctico, sin clases teóricas . En cada ejercicio, nuestros monitores explican cómo realizarlo y acompañan al alumno, corrigiendo su conducción para ayudarle a mejorar.
+
+Disponemos de 4 vehículos (2 de tracción delantera y 2 de tracción trasera) y trabajamos con grupos reducidos de máximo 16 participantes , para evitar largas esperas y aprovechar al máximo el tiempo de conducción.
+
+📍 Circuito El Hito , a 1 hora de Madrid.
+
+Más información e inscripciones: elige día y turno .
 
 RALLY
 
@@ -1656,49 +1661,42 @@ Tu día
 
 Toca cada momento para ver qué te espera.
 
-01 Llegada 02 4 zonas de ejercicios 03 Tracción delantera 04 Propulsión trasera 05 Circuito completo 06 Comida
+01 Llegada 02 4 zonas de ejercicios 03 Tracción delantera 04 Propulsión trasera 05 Circuito completo
 
 LLEGADA
 
-Momento 1 de 6
+Momento 1 de 5
 
 ### Llegada
-Recoges tu welcome pack y conoces a tu instructor y a tu grupo. Grupos reducidos para no hacer largas esperas.
+Conoces a tu monitor y a tu grupo. Grupos reducidos para no hacer largas esperas.
 
 4 ZONAS DE
 
-Momento 2 de 6
+Momento 2 de 5
 
 ### 4 zonas de ejercicios
 Las dos primeras horas el circuito se divide en 4 zonas. Haces cada ejercicio 4 o 5 veces por turnos y vas pasando por las cuatro.
 
 TRACCIÓN D
 
-Momento 3 de 6
+Momento 3 de 5
 
 ### Tracción delantera
 Cambios de peso y freno con pie izquierdo. Sin teoría: tu monitor te lo explica en pista y te corrige.
 
 PROPULSIÓN
 
-Momento 4 de 6
+Momento 4 de 5
 
 ### Propulsión trasera
 Conducción en tierra y control del sobreviraje, con las correcciones de tu monitor.
 
 CIRCUITO C
 
-Momento 5 de 6
+Momento 5 de 5
 
 ### Circuito completo
 Las dos últimas horas se abre el circuito entero: das vueltas aplicando lo aprendido con un tracción delantera y con un propulsión.
-
-COMIDA
-
-Momento 6 de 6
-
-### Comida
-Comida y bebida con el grupo, y repaso con tu instructor de lo que has mejorado.
 
 Los coches
 
@@ -1737,16 +1735,14 @@ Hazlo de verdad · 299 € ↻ Revancha
 
 Qué incluye
 
-## Todo incluido
+## Lo que incluye
 
 4 horas de práctica en el Circuito El Hito (Cuenca), turno de mañana o de tarde
 2 horas de ejercicios en 4 zonas + 2 horas de circuito completo
 4 coches de rally: 2 de tracción delantera y 2 de propulsión trasera
 Coches equipados para competir: arco de seguridad, arneses y extinción
 Monitor que te explica cada ejercicio en pista y te corrige
-16 plazas por turno, en grupos reducidos para no hacer largas esperas
-Welcome pack del equipo Deyscom
-Comida y bebida durante el evento
+Grupos reducidos de máximo 16 participantes, para no hacer largas esperas
 Seguro de responsabilidad civil para el día del curso
 
 Rally Experience
@@ -1804,10 +1800,10 @@ Preguntas frecuentes
 ¿Cuánto dura? 4 horas de práctica, en turno de mañana o de tarde. Las dos primeras, ejercicios por zonas; las dos últimas, circuito completo. Al confirmar tu plaza te enviamos el horario exacto.
 ¿Y si hace mal tiempo? Al ser una actividad al aire libre, por motivos meteorológicos o del estado de la pista el curso puede sufrir cambios de horario o de fecha. Somos exigentes con que el circuito esté en las condiciones apropiadas para que el curso se haga con total garantía de calidad. Si hay cambios, te avisamos y te ofrecemos otra fecha.
 ¿Qué pasa si mi turno no se completa? Si un turno no llega a completarse, te reubicamos en otro turno (de mañana o de tarde, u otro día) y te avisamos con antelación para que te venga bien.
-¿Cuántas personas hay por turno? 16 personas por turno, en grupos reducidos para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera. Si un turno no llega a completarse, te reubicamos en otro turno.
-¿Qué incluye el precio? 299 € por persona: el curso de 4 horas, los coches, el instructor, el welcome pack, la comida y la bebida y el seguro de responsabilidad civil del día.
+¿Cuántas personas hay por turno? Trabajamos con grupos reducidos de máximo 16 participantes, para evitar largas esperas y aprovechar al máximo el tiempo de conducción. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera. Si un turno no llega a completarse, te reubicamos en otro turno.
+¿Qué incluye el precio? 299 € por persona: el curso de 4 horas, los coches, el monitor y el seguro de responsabilidad civil del día.
 ¿Es seguro? Los coches están equipados para competir, con arco de seguridad, arneses y extinción, y cada grupo va con su instructor. Además, el curso incluye seguro de responsabilidad civil para ese día.
-¿Dónde es? En el Circuito El Hito (Cuenca), un circuito de tierra.
+¿Dónde es? En el Circuito El Hito (Cuenca), un circuito de tierra a 1 hora de Madrid.
 ¿Puedo ir con amigos? Sí. Reserva una plaza por persona y dinos que queréis ir en el mismo grupo.
 
 Del blog
@@ -1862,7 +1858,7 @@ WhatsApp
 ---
 
 # Nosotros · Deyscom Motorsport desde 2011, Torrelaguna
-URL: https://deyscom.com/nosotros.html
+URL: https://deyscom.com/nosotros/
 
 DM
 
@@ -1977,9 +1973,9 @@ En competición · 2026
 
 En 2026 Néstor Aguado y Héctor Guzmán corrieron el II Rallye Comunidad de Madrid – El Molar con el coche del equipo: verificaciones, tramos de tierra, polvo, asistencia y la emoción de cruzar la meta.
 
-Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra y de la edición especial que hemos creado para celebrarlo.
+Todo lo que aprendimos ese fin de semana está detrás de nuestras experiencias de conducción en tierra.
 
-Edición especial El Molar 2026 Conduce nuestros coches
+Conduce nuestros coches
 
 EL MOLAR
 
@@ -2036,7 +2032,7 @@ WhatsApp
 ---
 
 # Contacto · Taller motorsport en Torrelaguna (Madrid) | Deyscom
-URL: https://deyscom.com/contacto.html
+URL: https://deyscom.com/contacto/
 
 GO
 
@@ -2081,7 +2077,7 @@ Cómo llegar
 ---
 
 # Circuito del Jarama: historia, trazado y cómo rodar en tandas
-URL: https://deyscom.com/blog-circuito-del-jarama-tandas.html
+URL: https://deyscom.com/blog-circuito-del-jarama-tandas/
 
 Inicio / Blog / Circuito
 Circuito · 6 min de lectura
@@ -2092,7 +2088,7 @@ Guía del Circuito del Jarama: historia desde 1967, trazado de 3.850 m, cómo fu
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 BMW E36 de competición en una curva del circuito
 Respuesta rápida El Circuito del Jarama está en San Sebastián de los Reyes (Madrid), lo gestiona el Real Automóvil Club de España (RACE) y se inauguró en 1967 . Su trazado actual mide 3.850 metros y acogió el Gran Premio de España de Fórmula 1 en varias ediciones. Hoy puedes rodar en él con tu coche en tandas o con una experiencia guiada. Si lo que te atrae es aprender a controlar el coche, nuestro Rally Experience trabaja el derrape, la frenada y la trazada sobre tierra.
@@ -2204,7 +2200,7 @@ WhatsApp
 ---
 
 # Coche de rally: qué es, categorías Rally1 a Rally5 y cuál elegir
-URL: https://deyscom.com/blog-coche-de-rally-que-es-y-categorias.html
+URL: https://deyscom.com/blog-coche-de-rally-que-es-y-categorias/
 
 Inicio / Blog / Competición
 Competición · 8 min de lectura
@@ -2215,7 +2211,7 @@ Qué es un coche de rally, en qué se diferencia de uno de calle, las categoría
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Mitsubishi Lancer Evo de rally en el taller de Deyscom Motorsport
 Respuesta rápida Un coche de rally es un coche derivado de serie y preparado para competir en tramos cerrados de asfalto o tierra: lleva jaula de seguridad, baquets, arneses, extinción y suspensión de competición , y debe cumplir el reglamento técnico de su categoría. La FIA ordena los coches actuales en una pirámide de Rally1 (la más alta) a Rally5 (la de acceso) , y las federaciones nacionales y autonómicas añaden sus propias clases. Para empezar, lo más sensato es un coche ligero de tracción delantera, como un Peugeot 206.
@@ -2337,7 +2333,7 @@ WhatsApp
 ---
 
 # Cuánto cuesta pintar un coche: de qué depende el precio
-URL: https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche.html
+URL: https://deyscom.com/blog-cuanto-cuesta-pintar-un-coche/
 
 Inicio / Blog / Pintura
 Pintura · 6 min de lectura
@@ -2348,7 +2344,7 @@ De qué depende el precio de pintar un coche: tamaño, estado de la chapa, tipo 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Nissan Patrol pintándose en verde en la cabina de pintura
 Respuesta rápida El precio de pintar un coche depende sobre todo de cuánta preparación necesita la chapa (golpes, óxido, masillas), del tamaño del coche, del tipo de pintura (sólida, metalizada, perlada, mate), de si hay cambio de color (con interiores, marcos y vanos) y del nivel de desmontaje . La preparación suele llevar más horas que la propia aplicación. Un presupuesto fiable solo se puede dar viendo el coche.
@@ -2455,7 +2451,7 @@ WhatsApp
 ---
 
 # Reformas ITV y vehículos históricos: guía práctica 2026
-URL: https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos.html
+URL: https://deyscom.com/blog-reformas-itv-y-vehiculos-historicos/
 
 Inicio / Blog / Restomod
 Restomod · 7 min de lectura
@@ -2466,7 +2462,7 @@ Cómo legalizar reformas en la ITV según el Manual de Reformas de Vehículos y 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 BMW E30 en restauración sobre el elevador
 Respuesta rápida En España, cualquier modificación que altere las características de un vehículo es una reforma y debe tramitarse según el Real Decreto 866/2010 y el Manual de Reformas de Vehículos , normalmente con un informe de conformidad o proyecto técnico, un certificado de taller e inspección en la ITV. Para los clásicos, el Reglamento de Vehículos Históricos (Real Decreto 892/2024) , en vigor desde el 1 de octubre de 2024, fija como regla general una antigüedad mínima de 30 años y que el vehículo conserve su configuración original.
@@ -2575,7 +2571,7 @@ WhatsApp
 ---
 
 # Slalom de coches: qué es, cómo funciona y cómo empezar
-URL: https://deyscom.com/blog-slalom-de-coches-que-es.html
+URL: https://deyscom.com/blog-slalom-de-coches-que-es/
 
 Inicio / Blog / Competición
 Competición · 6 min de lectura
@@ -2586,7 +2582,7 @@ Qué es el slalom de coches, cómo es una prueba (recorrido con conos, mangas y 
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 23 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 23 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Peugeot 206 de Deyscom Motorsport saliendo de una horquilla en un tramo de rally
 Respuesta rápida El slalom de coches es una disciplina de automovilismo en la que cada participante recorre, de uno en uno y contra el cronómetro, un trazado marcado con conos sobre una superficie cerrada. Se hacen varias mangas , tocar o derribar conos suele penalizar con segundos y gana el tiempo más bajo. Es la forma más asequible y segura de empezar a competir y de aprender a mover un coche con precisión.
@@ -2700,7 +2696,7 @@ WhatsApp
 ---
 
 # Banco de potencia: cómo leer la curva de potencia y par
-URL: https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva.html
+URL: https://deyscom.com/blog-banco-de-potencia-como-leer-la-curva/
 
 Inicio / Blog / Técnica
 Técnica · 7 min de lectura
@@ -2711,7 +2707,7 @@ Qué es un banco de potencia, qué diferencia hay entre potencia en rueda y en m
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Curva de potencia y par en la pantalla del banco de potencia
 Respuesta rápida Un banco de potencia mide la potencia y el par reales de un coche en todo el rango de revoluciones. El resultado es una curva que muestra dónde rinde el motor, si hay pérdidas o fallos y qué ha aportado cada modificación. Para comparar mediciones hay que hacerlas en las mismas condiciones y con el mismo factor de corrección.
@@ -2817,7 +2813,7 @@ WhatsApp
 ---
 
 # Cómo empezar en los rallies: licencia, coche y presupuesto
-URL: https://deyscom.com/blog-como-empezar-en-los-rallies.html
+URL: https://deyscom.com/blog-como-empezar-en-los-rallies/
 
 Inicio / Blog / Competición
 Competición · 8 min de lectura
@@ -2828,7 +2824,7 @@ Guía práctica para correr tu primer rally en España: qué licencia necesitas,
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Peugeot 206 de Deyscom Motorsport entre el polvo en un rally de tierra
 Respuesta rápida Para correr tu primer rally en España necesitas cuatro cosas: una licencia federativa de piloto (y otra de copiloto para tu acompañante), un coche que cumpla el reglamento técnico de la prueba, el equipamiento de seguridad homologado y la inscripción en la carrera. La forma más sencilla de empezar es alquilar un coche ya preparado o probar antes en un slalom.
@@ -2969,7 +2965,7 @@ WhatsApp
 ---
 
 # Qué es un restomod y cómo plantearlo por fases
-URL: https://deyscom.com/blog-que-es-un-restomod.html
+URL: https://deyscom.com/blog-que-es-un-restomod/
 
 Inicio / Blog / Restomod
 Restomod · 6 min de lectura
@@ -2980,7 +2976,7 @@ Qué es un restomod, en qué se diferencia de una restauración y cómo plantear
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Chasis de todoterreno en restauración completa
 Respuesta rápida Un restomod combina restauración y modificación : conserva el aspecto y el alma de un clásico, pero le da mecánica, frenos, suspensión, seguridad y confort actuales. Se planifica mejor por fases , empezando por un diagnóstico de la base, y las reformas importantes deben legalizarse en la ITV .
@@ -3083,7 +3079,7 @@ WhatsApp
 ---
 
 # Qué hace un copiloto de rally: notas y controles horarios
-URL: https://deyscom.com/blog-que-hace-un-copiloto-de-rally.html
+URL: https://deyscom.com/blog-que-hace-un-copiloto-de-rally/
 
 Inicio / Blog / Formación
 Formación · 7 min de lectura
@@ -3094,7 +3090,7 @@ Todo sobre el trabajo del copiloto de rally: cómo se toman y se cantan las nota
 
 NA
 Néstor Aguado Fundador y propietario de Deyscom Motorsport
-Publicado el 12 de octubre de 2026 · Actualizado el 4 de noviembre de 2026 · Edición: Héctor Guzmán
+Publicado el 12 de octubre de 2026 · Actualizado el 11 de noviembre de 2026 · Edición: Héctor Guzmán
 
 Copiloto revisando las notas dentro del coche de rally
 Respuesta rápida El copiloto de rally guía al piloto cantando las notas del tramo, gestiona el libro de ruta en los enlaces y controla el carnet de control y los horarios para evitar penalizaciones. También coordina la seguridad y la comunicación con la asistencia. Es tan determinante en el resultado como el propio piloto.

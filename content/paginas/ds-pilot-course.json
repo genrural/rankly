@@ -1,6 +1,6 @@
 {
   "pagina": "Rally Experience",
-  "intro": "La **Rally Experience** es el **curso de rally de Deyscom**: 4 horas de práctica sobre tierra con coches de rally equipados para competir, con **arco de seguridad, arneses y extinción**. Las **dos primeras horas** el circuito se divide en **4 zonas**: haces cada ejercicio 4 o 5 veces por turnos y vas rotando por las cuatro. Las **dos últimas horas** se abre el **circuito completo** y das vueltas aplicando lo aprendido con un coche de **tracción delantera** y otro de **propulsión trasera**. No hay parte teórica: en cada ejercicio el **monitor** te explica en qué consiste y te corrige para que lo hagas lo mejor posible. Elige el **4, 5 o 6 de diciembre**, en turno de **mañana o tarde**.",
+  "intro": "El curso consiste en **4 horas de conducción práctica sobre tierra**, donde aprenderás diferentes técnicas de pilotaje al volante de vehículos de **tracción delantera y trasera**.\n\nDurante las **primeras 2 horas**, dividimos el circuito en **4 zonas**, cada una con un ejercicio diferente. Los participantes van rotando por las distintas zonas, repitiendo cada ejercicio entre 4 y 5 veces para mejorar progresivamente su técnica.\n\nEn las **últimas 2 horas**, abrimos el **circuito completo** para que puedas poner en práctica todo lo aprendido, dando vueltas tanto con vehículos de tracción delantera como de tracción trasera.\n\nEl curso es **totalmente práctico, sin clases teóricas**. En cada ejercicio, nuestros monitores explican cómo realizarlo y acompañan al alumno, corrigiendo su conducción para ayudarle a mejorar.\n\nDisponemos de **4 vehículos** (2 de tracción delantera y 2 de tracción trasera) y trabajamos con grupos reducidos de **máximo 16 participantes**, para evitar largas esperas y aprovechar al máximo el tiempo de conducción.\n\n📍 **Circuito El Hito**, a 1 hora de Madrid.\n\nMás información e inscripciones: [elige día y turno](#fechas).",
   "ejercicios": [
     {
       "titulo": "Control y cambios de peso",
@@ -29,9 +29,7 @@
     "4 coches de rally: 2 de tracción delantera y 2 de propulsión trasera",
     "Coches equipados para competir: arco de seguridad, arneses y extinción",
     "Monitor que te explica cada ejercicio en pista y te corrige",
-    "16 plazas por turno, en grupos reducidos para no hacer largas esperas",
-    "Welcome pack del equipo Deyscom",
-    "Comida y bebida durante el evento",
+    "Grupos reducidos de máximo 16 participantes, para no hacer largas esperas",
     "Seguro de responsabilidad civil para el día del curso"
   ],
   "datos_clave": [
@@ -45,11 +43,11 @@
     },
     {
       "dato": "Lugar",
-      "valor": "Circuito El Hito (Cuenca)"
+      "valor": "Circuito El Hito (Cuenca), a 1 hora de Madrid"
     },
     {
       "dato": "Plazas",
-      "valor": "16 personas por turno, en grupos reducidos con monitor. Si un turno no se completa, te reubicamos en otro"
+      "valor": "Grupos reducidos con monitor. Si un turno no se completa, te reubicamos en otro"
     },
     {
       "dato": "Coches",
@@ -57,7 +55,7 @@
     },
     {
       "dato": "Precio",
-      "valor": "299 € por persona: comida, bebida, welcome pack y seguro de RC incluidos"
+      "valor": "299 € por persona, con seguro de responsabilidad civil incluido"
     }
   ],
   "guias": [
@@ -93,11 +91,11 @@
     },
     {
       "pregunta": "¿Cuántas personas hay por turno?",
-      "respuesta": "16 personas por turno, en grupos reducidos para no hacer largas esperas. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera. Si un turno no llega a completarse, te reubicamos en otro turno."
+      "respuesta": "Trabajamos con grupos reducidos de máximo 16 participantes, para evitar largas esperas y aprovechar al máximo el tiempo de conducción. Disponemos de 4 coches: dos de tracción delantera y dos de propulsión trasera. Si un turno no llega a completarse, te reubicamos en otro turno."
     },
     {
       "pregunta": "¿Qué incluye el precio?",
-      "respuesta": "299 € por persona: el curso de 4 horas, los coches, el instructor, el welcome pack, la comida y la bebida y el seguro de responsabilidad civil del día."
+      "respuesta": "299 € por persona: el curso de 4 horas, los coches, el monitor y el seguro de responsabilidad civil del día."
     },
     {
       "pregunta": "¿Es seguro?",
@@ -105,7 +103,7 @@
     },
     {
       "pregunta": "¿Dónde es?",
-      "respuesta": "En el Circuito El Hito (Cuenca), un circuito de tierra."
+      "respuesta": "En el Circuito El Hito (Cuenca), un circuito de tierra a 1 hora de Madrid."
     },
     {
       "pregunta": "¿Puedo ir con amigos?",

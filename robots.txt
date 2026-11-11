@@ -2,8 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /google-apps-script/
 Disallow: /tools/
+Disallow: /crm/
 Disallow: /crm.html
 Disallow: /admin/
+Disallow: /gracias/
 Disallow: /gracias.html
 
 # Buscadores y asistentes de IA: bienvenidos (GEO)
@@ -27,6 +29,7 @@ User-agent: MistralAI-User
 Allow: /
 Disallow: /google-apps-script/
 Disallow: /tools/
+Disallow: /crm/
 Disallow: /crm.html
 Disallow: /admin/
 

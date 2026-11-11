@@ -279,6 +279,10 @@ def apply(g):
         s, d = f.stem, json.loads(f.read_text(encoding="utf-8"))
         if s not in g["PRODUCTS"]:
             continue
+        if d.get("publicado") is False:  # retirado de la tienda
+            del g["PRODUCTS"][s]
+            g["RETIRED_PRODUCTS"].append(s)
+            continue
         p = g["PRODUCTS"][s]
         for k_es, k in (("nombre", "name"), ("nombre_corto", "short"), ("etiqueta", "tag"), ("descripcion", "desc")):
             if d.get(k_es):

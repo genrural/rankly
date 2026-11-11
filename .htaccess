@@ -1,5 +1,5 @@
 # Deyscom Motorsport · configuración para servidores Apache
-Options -Indexes
+Options -Indexes -MultiViews
 ErrorDocument 404 /404.html
 
 # Forzar HTTPS y dominio sin www
@@ -13,25 +13,36 @@ RewriteRule ^(tools|google-apps-script|content|\.github)/ - [F,L]
 RewriteRule ^(_headers|_redirects|netlify\.toml|requirements\.txt)$ - [F,L]
 
 # Redirecciones 301 de la web antigua → nueva (una línea por URL antigua; ver README → IONOS)
-# Redirect 301 /antigua-url/ https://deyscom.com/competicion.html
-Redirect 301 /experiencia-rally-eurocem.html https://deyscom.com/experiencias.html
+# RewriteRule ^antigua-url/?$ https://deyscom.com/competicion/ [R=301,L,NC]
+RewriteRule ^experiencia-rally-eurocem(\.html|/)?$ https://deyscom.com/experiencias/ [R=301,L]
+RewriteRule ^camiseta-edicion-especial-el-molar-2026(\.html|/)?$ https://deyscom.com/tienda/ [R=301,L]
 
-# Direcciones típicas de la web antigua → páginas nuevas (sin .html, con barra final o con otro nombre)
+# Direcciones típicas de la web antigua → páginas nuevas
 RewriteRule ^index\.php$ https://deyscom.com/ [R=301,L]
-RewriteRule ^(quienes-somos|sobre-nosotros|about|empresa|historia)/?$ https://deyscom.com/nosotros.html [R=301,L,NC]
-RewriteRule ^(contactar|contact|presupuesto|donde-estamos)/?$ https://deyscom.com/contacto.html [R=301,L,NC]
-RewriteRule ^(taller|preparacion|preparaciones|taller-competicion|coches-de-competicion|rally|mecanica)/?$ https://deyscom.com/competicion.html [R=301,L,NC]
-RewriteRule ^(chapa-y-pintura|chapa|carroceria)/?$ https://deyscom.com/pintura.html [R=301,L,NC]
-RewriteRule ^(restauracion|restauraciones|clasicos)/?$ https://deyscom.com/restomod.html [R=301,L,NC]
-RewriteRule ^(banco|dinamometro|potencia)/?$ https://deyscom.com/banco-de-potencia.html [R=301,L,NC]
-RewriteRule ^(cursos|curso|experiencia|rally-experience|alquiler|alquiler-coches)/?$ https://deyscom.com/experiencias.html [R=301,L,NC]
-RewriteRule ^(shop|productos|merchandising|coches-en-venta|venta)/?$ https://deyscom.com/tienda.html [R=301,L,NC]
-RewriteRule ^(noticias|news|actualidad)/?$ https://deyscom.com/blog.html [R=301,L,NC]
-# /pagina o /pagina/ → /pagina.html cuando esa página existe
-RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(quienes-somos|sobre-nosotros|about|empresa|historia)/?$ https://deyscom.com/nosotros/ [R=301,L,NC]
+RewriteRule ^(contactar|contact|presupuesto|donde-estamos)/?$ https://deyscom.com/contacto/ [R=301,L,NC]
+RewriteRule ^(taller|preparacion|preparaciones|taller-competicion|coches-de-competicion|rally|mecanica)/?$ https://deyscom.com/competicion/ [R=301,L,NC]
+RewriteRule ^(chapa-y-pintura|chapa|carroceria)/?$ https://deyscom.com/pintura/ [R=301,L,NC]
+RewriteRule ^(restauracion|restauraciones|clasicos)/?$ https://deyscom.com/restomod/ [R=301,L,NC]
+RewriteRule ^(banco|dinamometro|potencia)/?$ https://deyscom.com/banco-de-potencia/ [R=301,L,NC]
+RewriteRule ^(cursos|curso|experiencia|rally-experience|alquiler|alquiler-coches)/?$ https://deyscom.com/experiencias/ [R=301,L,NC]
+RewriteRule ^(shop|productos|merchandising|coches-en-venta|venta)/?$ https://deyscom.com/tienda/ [R=301,L,NC]
+RewriteRule ^(noticias|news|actualidad)/?$ https://deyscom.com/blog/ [R=301,L,NC]
+
+# Direcciones limpias, sin .html: /restomod.html → /restomod/ y /restomod → /restomod/
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?]
+RewriteRule ^index\.html$ https://deyscom.com/ [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+([a-z0-9-]+)\.html[\s?]
+RewriteRule ^([a-z0-9-]+)\.html$ https://deyscom.com/$1/ [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-RewriteRule ^([a-z0-9-]+)/?$ https://deyscom.com/$1.html [R=301,L]
+RewriteCond %{REQUEST_FILENAME} ^(.*?)/?$
+RewriteCond %1.html -f
+RewriteRule ^([a-z0-9-]+)$ https://deyscom.com/$1/ [R=301,L]
+# /restomod/ muestra restomod.html (sin cambiar la dirección)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} ^(.*?)/?$
+RewriteCond %1.html -f
+RewriteRule ^([a-z0-9-]+)/$ $1.html [L]
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain application/manifest+json

@@ -36,7 +36,7 @@ var SALES_COLUMNS = ['session_id', 'fecha', 'cliente', 'email', 'telefono', 'imp
 var STRIPE_SYNC_DAYS = 120;
 var QUOTES_SHEET = 'Presupuestos';
 var QUOTE_COLUMNS = ['numero', 'lead_id', 'fecha', 'cliente', 'email', 'lineas', 'base', 'iva', 'total', 'validez', 'notas', 'estado', 'pdf_id', 'usuario'];
-var CRM_URL = 'https://deyscom.com/crm.html';
+var CRM_URL = 'https://deyscom.com/crm/';
 // Solo si la web está en Netlify: URL de su «Build hook». En IONOS no hace falta
 // (el despliegue de GitHub Actions ya se ejecuta cada mañana).
 var DEPLOY_HOOK_URL = '';

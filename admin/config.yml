@@ -1994,56 +1994,6 @@
    "label_singular": "producto",
    "files": [
     {
-     "label": "Camiseta Edición Especial El Molar 2026",
-     "name": "camiseta-edicion-especial-el-molar-2026",
-     "file": "content/productos/camiseta-edicion-especial-el-molar-2026.json",
-     "fields": [
-      {
-       "label": "Nombre",
-       "name": "nombre",
-       "widget": "string"
-      },
-      {
-       "label": "Nombre corto",
-       "name": "nombre_corto",
-       "widget": "string"
-      },
-      {
-       "label": "Precio (€)",
-       "name": "precio",
-       "widget": "number",
-       "value_type": "float"
-      },
-      {
-       "label": "Etiqueta",
-       "name": "etiqueta",
-       "widget": "string",
-       "hint": "Ej. Nuevo, Más vendido, Edición limitada"
-      },
-      {
-       "label": "Agotado",
-       "name": "agotado",
-       "widget": "boolean",
-       "default": false
-      },
-      {
-       "label": "Descripción",
-       "name": "descripcion",
-       "widget": "text"
-      },
-      {
-       "label": "Características",
-       "name": "caracteristicas",
-       "widget": "list",
-       "field": {
-        "label": "Característica",
-        "name": "item",
-        "widget": "string"
-       }
-      }
-     ]
-    },
-    {
      "label": "Camiseta Deyscom Motorsport",
      "name": "camiseta-deyscom",
      "file": "content/productos/camiseta-deyscom.json",
@@ -2075,6 +2025,13 @@
        "name": "agotado",
        "widget": "boolean",
        "default": false
+      },
+      {
+       "label": "Publicado en la tienda",
+       "name": "publicado",
+       "widget": "boolean",
+       "default": true,
+       "hint": "Desactívalo para retirar el producto de la web."
       },
       {
        "label": "Descripción",
@@ -2127,6 +2084,13 @@
        "default": false
       },
       {
+       "label": "Publicado en la tienda",
+       "name": "publicado",
+       "widget": "boolean",
+       "default": true,
+       "hint": "Desactívalo para retirar el producto de la web."
+      },
+      {
        "label": "Descripción",
        "name": "descripcion",
        "widget": "text"
@@ -2175,6 +2139,13 @@
        "name": "agotado",
        "widget": "boolean",
        "default": false
+      },
+      {
+       "label": "Publicado en la tienda",
+       "name": "publicado",
+       "widget": "boolean",
+       "default": true,
+       "hint": "Desactívalo para retirar el producto de la web."
       },
       {
        "label": "Descripción",
@@ -2227,6 +2198,13 @@
        "default": false
       },
       {
+       "label": "Publicado en la tienda",
+       "name": "publicado",
+       "widget": "boolean",
+       "default": true,
+       "hint": "Desactívalo para retirar el producto de la web."
+      },
+      {
        "label": "Descripción",
        "name": "descripcion",
        "widget": "text"
@@ -2275,6 +2253,13 @@
        "name": "agotado",
        "widget": "boolean",
        "default": false
+      },
+      {
+       "label": "Publicado en la tienda",
+       "name": "publicado",
+       "widget": "boolean",
+       "default": true,
+       "hint": "Desactívalo para retirar el producto de la web."
       },
       {
        "label": "Descripción",
@@ -2404,10 +2389,6 @@
          "name": "producto",
          "widget": "select",
          "options": [
-          {
-           "label": "Camiseta Edición Especial El Molar 2026",
-           "value": "camiseta-edicion-especial-el-molar-2026"
-          },
           {
            "label": "Camiseta Deyscom Motorsport",
            "value": "camiseta-deyscom"

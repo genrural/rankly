@@ -327,7 +327,7 @@
     [["ebc", "ebc-frenos.png"], ["hel", "hel-performance.png"], ["mishimoto", "mishimoto.png"], ["king", "king-elements.png"], ["gt2i", "gt2i.png"]].forEach(function (a) {
       SPR["ad_" + a[0]] = board2();
       var img = new Image(); img.onload = function () { var g = SPR["ad_" + a[0]].getContext("2d"), r = Math.min(280 / img.width, 100 / img.height); g.drawImage(img, 160 - img.width * r / 2, 65 - img.height * r / 2, img.width * r, img.height * r); };
-      img.src = "assets/img/patrocinadores/" + a[1];
+      img.src = "/assets/img/patrocinadores/" + a[1];
     });
   };
 

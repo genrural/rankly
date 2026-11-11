@@ -15,7 +15,7 @@
     },
     {
       "dato": "Formato",
-      "valor": "Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, 16 plazas por turno"
+      "valor": "Turno de mañana o de tarde: 2 h de ejercicios en 4 zonas y 2 h de circuito completo, en grupos reducidos"
     },
     {
       "dato": "Precio",
@@ -29,7 +29,7 @@
   "guias": [
     {
       "pregunta": "¿Qué es la Rally Experience?",
-      "respuesta": "La **[Rally Experience](ds-pilot-course.html)** es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con monitor que te explica cada ejercicio y te corrige en pista. Comida y seguro incluidos. Eliges día (4, 5 o 6 de diciembre) y turno."
+      "respuesta": "La **[Rally Experience](ds-pilot-course.html)** es el curso de rally de Deyscom: 4 horas de práctica sobre tierra con dos coches de tracción delantera y dos de propulsión trasera, con monitor que te explica cada ejercicio y te corrige en pista. Seguro de responsabilidad civil incluido. Eliges día (4, 5 o 6 de diciembre) y turno."
     },
     {
       "pregunta": "¿Qué se aprende en una jornada sobre tierra?",

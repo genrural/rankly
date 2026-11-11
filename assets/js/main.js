@@ -11,7 +11,21 @@
     var payload = Object.assign({ event: event }, data || {});
     window.dataLayer.push(payload);
     if (window.DM_USE_GTAG && typeof window.gtag === "function") window.gtag("event", event, data || {});
-    if (typeof window.fbq === "function" && event === "generate_lead") window.fbq("track", "Lead", data || {});
+    if (typeof window.fbq === "function") {
+      var fb = { generate_lead: "Lead", begin_checkout: "InitiateCheckout", purchase: "Purchase", add_to_cart: "AddToCart" }[event];
+      if (fb) window.fbq("track", fb, metaData(data));
+    }
+  }
+  function metaData(d) {
+    d = d || {};
+    var o = { content_name: d.servicio || d.form || (d.items && d.items[0] && d.items[0].item_name) || document.title };
+    if (d.form) o.content_category = d.form;
+    if (d.value != null) { o.value = Number(d.value) || 0; o.currency = d.currency || "EUR"; }
+    return o;
+  }
+  /* Conversión propia de Meta para una experiencia (p. ej. «ReservaRallyExperience»). */
+  function trackMeta(name, data) {
+    if (typeof window.fbq === "function") window.fbq("trackCustom", name, data || {});
   }
 
   /* ---------- Enlaces de WhatsApp con mensaje contextual ---------- */
@@ -183,6 +197,8 @@
           personalization_storage: c.p ? "granted" : "denied"
         });
       }
+      if (c.m && typeof window.dmPixel === "function") window.dmPixel();
+      else if (!c.m && typeof window.fbq === "function") window.fbq("consent", "revoke");
       window.dataLayer.push({ event: "consent_update", consent_analytics: !!c.a, consent_ads: !!c.m, consent_personalization: !!c.p });
     }
     function save(a, m, p) {
@@ -339,8 +355,8 @@
       $$("[data-ed]").forEach(function (r) { r.classList.toggle("is-picked", !!e && r.getAttribute("data-ed") === e.id); });
       if (!e) { avail.textContent = "No hay turno ese día a esa hora: elige otra combinación."; bBtn.disabled = true; return; }
       var full = e.estado === "Completa" || e.libres === 0;
-      avail.className = "book__avail full" + (full ? " is-full" : e.libres !== undefined && e.libres <= 5 ? " is-last" : "");
-      avail.textContent = full ? "Ese turno está completo: elige otro." : e.etiqueta + " · " + (e.libres !== undefined && e.libres !== null ? "quedan " + e.libres + " plazas" : (e.plazas || 16) + " plazas por turno");
+      avail.className = "book__avail full" + (full ? " is-full" : "");
+      avail.textContent = full ? "Ese turno está completo: elige otro." : e.etiqueta;
       bBtn.disabled = full;
     };
     $$("input[name=dia], input[name=turno_pref]", bForm).forEach(function (i) { i.addEventListener("change", refresh); });
@@ -372,7 +388,8 @@
       Object.assign(data, attribution());
       var item = { item_id: cur.id, item_name: cur.nombre + " · " + cur.etiqueta, price: Number(cur.precio) || 0, quantity: 1 };
       track("begin_checkout", { currency: "EUR", value: Number(cur.precio) || 0, items: [item] });
-      track("generate_lead", { form: "reserva-" + cur.experiencia, servicio: cur.nombre });
+      track("generate_lead", { form: "reserva-" + cur.experiencia, servicio: cur.nombre, value: Number(cur.precio) || 0, currency: "EUR" });
+      if (cur.experiencia === "ds-pilot-course") trackMeta("ReservaRallyExperience", { content_name: "Rally Experience", fecha: cur.etiqueta, value: Number(cur.precio) || 0, currency: "EUR" });
       try { sessionStorage.setItem("dmx_purchase", JSON.stringify({ lead: data.id, ed: cur, ts: Date.now() })); } catch (err) { /* nada */ }
       var sent = Promise.resolve();
       if (CFG.SHEETS_ENDPOINT) {
@@ -668,8 +685,8 @@
     var axLoad = function () {
       if (axBox.getAttribute("data-loaded")) return; axBox.setAttribute("data-loaded", "1");
       var me = document.querySelector('script[src*="assets/js/main.js"]'), v = me ? (me.getAttribute("src").split("?")[1] || "") : "";
-      var tr = document.createElement("script"); tr.src = "assets/js/ax-tracks.js" + (v ? "?" + v : "");
-      tr.onload = tr.onerror = function () { var sc = document.createElement("script"); sc.src = "assets/js/ax-rally.js" + (v ? "?" + v : ""); document.body.appendChild(sc); };
+      var tr = document.createElement("script"); tr.src = "/assets/js/ax-tracks.js" + (v ? "?" + v : "");
+      tr.onload = tr.onerror = function () { var sc = document.createElement("script"); sc.src = "/assets/js/ax-rally.js" + (v ? "?" + v : ""); document.body.appendChild(sc); };
       document.body.appendChild(tr);
     };
     if ("IntersectionObserver" in window && !/axdebug/.test(location.search)) {
@@ -736,10 +753,7 @@
             row.classList.add("is-full");
             if (s) s.textContent = "Completo";
             var b = $("[data-pick]", row); if (b) { b.outerHTML = '<span class="date-row__full">Completo</span>'; }
-          } else if (s && e.libres !== null) {
-            s.textContent = e.libres <= 5 ? "¡Últimas " + e.libres + " plazas!" : "Quedan " + e.libres + " plazas";
-            if (e.libres <= 5) row.classList.add("is-last");
-          }
+          }  // las plazas libres no se muestran al público: solo «Completo»
         });
       });
       if (window.__dmBookRefresh) window.__dmBookRefresh();
@@ -853,7 +867,7 @@
         if (viaWa) { var n = $("[data-success-note]", wrap); if (n) n.textContent = "Te hemos abierto WhatsApp con tu solicitud. Si no se ha abierto, pulsa el botón."; }
         track("generate_lead", { form: data.formulario, servicio: data.servicio || "" });
         var pay = $("[data-pay]", wrap);
-        var slug = location.pathname.split("/").pop().replace(".html", "");
+        var slug = location.pathname.replace(/\/+$/, "").split("/").pop().replace(".html", "");
         if (pay && CFG.payLinks && CFG.payLinks[slug]) { pay.href = CFG.payLinks[slug]; pay.hidden = false; }
         wrap.scrollIntoView({ behavior: "smooth", block: "center" });
       };
