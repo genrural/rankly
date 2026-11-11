@@ -18,6 +18,9 @@ header('Cache-Control: no-store');
 const NOTIFY_EMAIL = 'info@deyscom.com';
 const MAIL_FROM = 'web@deyscom.com';
 const BOOTSTRAP_EMAIL = 'info@deyscom.com';   // el primer acceso al CRM se envía a este buzón
+// Administradores autorizados (huella SHA-256 del email, para no publicarlo): pueden pedir su primer acceso
+// con «¿Primera vez…?» aunque ya existan otros usuarios. La contraseña solo llega a su buzón.
+const ADMIN_EMAIL_HASHES = ['93460ce97f57c69bc8a8fdd609597890acafa7bd4ab6d652e581b19fef764791'];
 const CRM_URL = 'https://deyscom.com/crm/';
 const WALLAPOP_PROFILE = 'https://es.wallapop.com/user/deyscomm-467502343';
 const ESTADOS = ['Nuevo', 'Contactado', 'Presupuesto enviado', 'Negociación', 'Ganado', 'Perdido'];
@@ -216,10 +219,10 @@ function recover(array $req): array {
     if (kv_get('rec_' . $email)) return $msg;                          // como mucho un envío cada 10 minutos
     kv_set('rec_' . $email, 1, 600);
     $all = users();
-    $first = !$all && $email === BOOTSTRAP_EMAIL;
+    $first = (!$all && $email === BOOTSTRAP_EMAIL) || (!isset($all[$email]) && in_array(hash('sha256', $email), ADMIN_EMAIL_HASHES, true));
     if (!$first && empty($all[$email]['activo'])) return $msg;
     $pass = random_password();
-    if ($first) $all[$email] = make_user('Deyscom Motorsport', 'admin', $pass);
+    if ($first) $all[$email] = make_user($email === BOOTSTRAP_EMAIL ? 'Deyscom Motorsport' : 'Administrador', 'admin', $pass);
     else { $all[$email]['pending'] = password_hash($pass, PASSWORD_DEFAULT); $all[$email]['pending_exp'] = time() + 86400; }
     save_users($all);
     send_mail($email, 'Tu acceso al CRM de Deyscom Motorsport',
