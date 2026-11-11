@@ -10,7 +10,7 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://deyscom.com%{REQUEST_URI} [L,R=301]
 
 # Proteger carpetas internas y archivos de configuración del hosting
-RewriteRule ^(tools|google-apps-script|content|\.github)/ - [F,L]
+RewriteRule ^(tools|google-apps-script|content|\.github|api/datos)/ - [F,L]
 RewriteRule ^(_headers|_redirects|netlify\.toml|requirements\.txt)$ - [F,L]
 
 # Redirecciones 301 de la web antigua → nueva (una línea por URL antigua; ver README → IONOS)

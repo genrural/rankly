@@ -1,6 +1,6 @@
 /* =========================================================
    DEYSCOM MOTORSPORT · CRM (área privada)
-   Habla con la API del Apps Script (google-apps-script/Code.gs).
+   Habla con la API de la web (api/index.php, en el propio hosting).
    Sin SHEETS_ENDPOINT configurado funciona en modo demostración.
    ========================================================= */
 (function () {
@@ -196,7 +196,7 @@
     return '<html><head><meta charset="utf-8"><title>Presupuesto ' + esc(q.numero) + '</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:30px auto;color:#111}h1{border-bottom:4px solid #ff66c4;padding-bottom:8px}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #ddd}th{background:#111;color:#fff;text-align:left}</style></head><body>' +
       "<h1>DEYSCOM MOTORSPORT · Presupuesto " + esc(q.numero) + "</h1><p><b>Cliente:</b> " + esc(l.nombre) + " · " + esc(q.email || "") + "<br><b>Fecha:</b> " + esc(q.fecha) + "</p>" +
       "<table><tr><th>Concepto</th><th>Cant.</th><th>Precio</th><th>Importe</th></tr>" + rows + "</table><p style='text-align:right'>Base " + money(q.base) + " · IVA " + money(q.iva) + "<br><b style='font-size:20px'>Total " + money(q.total) + "</b></p>" +
-      (q.notas ? "<p><b>Observaciones:</b> " + esc(q.notas) + "</p>" : "") + "<p style='color:#777;font-size:12px'>Vista de demostración. Con Google Sheets conectado se genera un PDF real, se guarda en Drive y se puede enviar por email.</p></body></html>";
+      (q.notas ? "<p><b>Observaciones:</b> " + esc(q.notas) + "</p>" : "") + "<p style='color:#777;font-size:12px'>Vista de demostración. Conectado de verdad, el presupuesto se guarda y se puede enviar por email.</p></body></html>";
   }
   function demoApi(action, p) {
     var db = demoDb();
@@ -268,7 +268,7 @@
   $("#crm-login-form").addEventListener("submit", function (ev) {
     ev.preventDefault();
     loginError("");
-    if (!ENDPOINT) { loginError("El CRM todavía no está conectado a Google Sheets. Mientras tanto puedes entrar en modo demostración."); return; }
+    if (!ENDPOINT) { loginError("El CRM todavía no está conectado. Mientras tanto puedes entrar en modo demostración."); return; }
     var btn = $("button[type=submit]", this);
     btn.disabled = true; btn.classList.add("is-loading");
     state.demo = false;
@@ -281,6 +281,15 @@
       })
       .catch(function (err) { loginError(err.message === "Failed to fetch" ? "No hay conexión con el servidor. Inténtalo de nuevo." : err.message); })
       .then(function () { btn.disabled = false; btn.classList.remove("is-loading"); });
+  });
+  $("#crm-recover").addEventListener("click", function () {
+    loginError(""); var ok = $("#crm-recover-ok"); ok.hidden = true;
+    var email = $("#crm-email").value.trim();
+    if (!email) { loginError("Escribe tu email arriba y vuelve a pulsar."); $("#crm-email").focus(); return; }
+    if (!ENDPOINT) { loginError("El CRM todavía no está conectado."); return; }
+    api("recover", { email: email })
+      .then(function (res) { ok.textContent = res.message; ok.hidden = false; })
+      .catch(function (err) { loginError(err.message); });
   });
   $("#crm-demo").addEventListener("click", function () {
     state.demo = true; state.token = "demo"; state.user = { email: "demo@deyscom.com", nombre: "Modo demo", rol: "admin" };
@@ -735,7 +744,7 @@
       return '<tr data-open="' + esc(l.id) + '" tabindex="0"><td data-l="Fecha"><span class="crm-muted">' + fmtDate(l._date, true) + '</span></td><td data-l="Nombre"><b>' + esc(l.nombre) + '</b></td><td data-l="Contacto">' + esc(l.telefono) + "<br><span class=\"crm-muted\">" + esc(l.email) + "</span></td>" +
         '<td data-l="Experiencia">' + esc(e ? edTitle(e) : l.servicio) + '</td><td data-l="Estado"><span class="' + estadoClass(l.estado) + '">' + esc(l.estado) + "</span></td></tr>";
     }).join("") || '<tr><td colspan="5" class="crm-empty">Nadie pendiente de pago.</td></tr>';
-    $("#crm-stripe-status").textContent = state.demo ? "Modo demostración: ventas de ejemplo." : state.stripe ? "Pagos de Stripe de las experiencias. Se sincronizan solos cada 15 minutos." : "Stripe aún no está conectado: añade la clave en el Apps Script (README → Ventas con Stripe).";
+    $("#crm-stripe-status").textContent = state.demo ? "Modo demostración: ventas de ejemplo." : state.stripe ? "Pagos de Stripe de las experiencias. Se sincronizan solos cada 15 minutos." : "Stripe aún no está conectado: falta la clave de Stripe en el hosting (README → Ventas con Stripe).";
   }
   $("#crm-sync-stripe").addEventListener("click", function () {
     var b = this; b.disabled = true;

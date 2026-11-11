@@ -55,5 +55,5 @@ jobs:
             set sftp:auto-confirm yes;
             set net:max-retries 3; set net:timeout 30;
             mkdir -p -f $DIR;
-            mirror --reverse --delete --verbose --parallel=4 dist/ $DIR;
+            mirror --reverse --delete --verbose --parallel=4 --exclude-glob api/datos/ dist/ $DIR;
             bye"

@@ -33,7 +33,7 @@ AJUSTES = {
     "aviso_superior": {"activo": True, "texto": "Rally Experience · 4, 5 y 6 de diciembre · plazas limitadas", "enlace": "experiencias.html"},
     "pago_rally_experience": "https://buy.stripe.com/9B63co7Tp3AjbJCbd11RC01",
     "juego": {"activo": True, "premio": "un pack de productos de limpieza para tu coche", "fin": "2026-12-31"},
-    "sheets_endpoint": "", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
+    "sheets_endpoint": "/api/index.php", "google_review": "", "ga4_id": "", "gtm_id": "", "search_console": "",
     "precios": [], "enlaces_pago": [],
     "redes": {"instagram": "https://www.instagram.com/deyscom_motorsport/", "facebook": "https://www.facebook.com/deyscom/",
               "tiktok": "https://www.tiktok.com/@deyscom_motorsport", "youtube": "https://www.youtube.com/channel/UCBdUbFXBtKdeDkqQ5_S5C6g",
@@ -2969,8 +2969,8 @@ def legal_pages():
 <h2>4. Destinatarios y encargados del tratamiento</h2>
 <p>No cedemos tus datos a terceros salvo obligación legal o cuando sea necesario para prestar el servicio que pides (por ejemplo, la inscripción en una prueba federada ante la organización y la federación correspondiente, o la empresa de transporte de un pedido). Trabajan con nosotros como encargados del tratamiento, con contrato y garantías adecuadas:</p>
 <ul>
-<li><strong>Google Ireland Ltd.</strong> (Google Workspace / Sheets y, si los aceptas, Google Analytics y Google Ads), donde se almacenan las solicitudes enviadas por la web.</li>
-<li><strong>Proveedor de alojamiento web</strong> de deyscom.com.</li>
+<li><strong>IONOS SE</strong>, proveedor de alojamiento de deyscom.com, en cuyos servidores de la Unión Europea se almacenan las solicitudes enviadas por la web.</li>
+<li><strong>Google Ireland Ltd.</strong> (Google Analytics y Google Ads) y <strong>Meta Platforms Ireland Ltd.</strong> (píxel de Meta), solo si aceptas esas cookies.</li>
 <li><strong>Pasarela de pago</strong>, cuando pagues online (por ejemplo Stripe o PayPal).</li>
 <li><strong>WhatsApp (Meta Platforms Ireland Ltd.)</strong>, únicamente si decides contactar por WhatsApp.</li>
 </ul>
@@ -3526,8 +3526,10 @@ def crm_page():
     <div class="crm-pass"><input id="crm-pass" name="password" type="password" autocomplete="current-password" required placeholder="••••••••••"><button type="button" id="crm-pass-toggle" aria-pressed="false">Ver</button></div>
     <p class="crm-login__error" id="crm-login-error" role="alert" hidden></p>
     <button class="cbtn cbtn--pink cbtn--block" type="submit">Entrar</button>
+    <p class="crm-login__help"><button type="button" class="linklike" id="crm-recover">¿Primera vez o has olvidado la contraseña?</button></p>
+    <p class="crm-login__ok" id="crm-recover-ok" role="status" hidden></p>
     <div class="crm-login__demo" id="crm-demo-note" hidden>
-      <p>El CRM aún no está conectado a Google Sheets (ver README → «CRM y área privada»). Puedes probarlo con datos de ejemplo:</p>
+      <p>El CRM aún no está conectado. Puedes probarlo con datos de ejemplo:</p>
       <button class="cbtn cbtn--block" type="button" id="crm-demo">Entrar en modo demostración</button>
     </div>
     <p class="crm-login__foot"><a href="index.html">← Volver a deyscom.com</a></p>
@@ -3630,7 +3632,7 @@ def crm_page():
         </div>
         <button class="cbtn cbtn--pink" type="submit">Crear y generar contraseña</button>
       </form>
-      <div class="crm-box"><h2>Emails automáticos</h2><p class="crm-muted">Cada día a las 08:00 se envía a los usuarios un resumen con los leads nuevos, las llamadas de hoy y las atrasadas, y el día 1 de cada mes un informe por canal y servicio (se activan con <code>activarResumenes</code> en el Apps Script).</p>
+      <div class="crm-box"><h2>Emails automáticos</h2><p class="crm-muted">Cada día a las 08:00 se envía a los usuarios un resumen con los leads nuevos, las llamadas de hoy y las atrasadas, y el día 1 de cada mes un informe por canal y servicio (se envían solos desde el servidor de la web).</p>
         <button class="cbtn cbtn--sm" type="button" id="crm-digest">Enviar el resumen de hoy ahora</button></div>
     </section>
 
@@ -3825,9 +3827,8 @@ def config_js():
    Edítalo desde el panel de contenido (/admin → Ajustes), no aquí.
    ========================================================= */
 window.DEYSCOM = {{
-  // URL del Web App de Google Apps Script (README → "Conectar formularios a Google Sheets").
-  // Mientras esté vacío, los formularios abren WhatsApp con los datos rellenados para no perder ningún lead
-  // y el CRM (crm.html) solo funciona en modo demostración.
+  // API propia de la web (api/index.php, en el hosting de IONOS): guarda los formularios y alimenta el CRM.
+  // Si se dejara vacío, los formularios abrirían WhatsApp con los datos y el CRM solo funcionaría en modo demostración.
   SHEETS_ENDPOINT: {j(a.get("sheets_endpoint") or "")},
 
   phone: {j(PHONE)},

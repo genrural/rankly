@@ -42,21 +42,13 @@ Menú principal: Competición · Restomod · Pintura · Banco de potencia · Exp
 - Eventos `dataLayer` listos para Google Tag Manager, GA4 y Meta Pixel: `generate_lead`, `whatsapp_click`, `phone_click`, `begin_checkout`…
 - SEO: títulos y descripciones por página, schema.org `AutoRepair` y `Product`, `sitemap.xml` y Open Graph.
 
-## 1. Conectar formularios a Google Sheets (≈5 minutos)
+## 1. Formularios y CRM: API propia en IONOS (sin Google Sheets)
 
-1. Crea una hoja de cálculo nueva en Google Drive, por ejemplo «Leads web Deyscom».
-2. Menú **Extensiones → Apps Script**. Borra el contenido y pega el de `google-apps-script/Code.gs`. Guarda.
-3. En el desplegable de funciones elige `setup` y pulsa **Ejecutar**. Acepta los permisos. Se crean las pestañas **Leads** y **Stock**.
-4. **Implementar → Nueva implementación → Tipo: Aplicación web**.
-   - Ejecutar como: **Yo**
-   - Quién tiene acceso: **Cualquier usuario**
-5. Copia la URL que termina en `/exec` y pégala en `assets/js/config.js`:
-   ```js
-   SHEETS_ENDPOINT: "https://script.google.com/macros/s/XXXX/exec",
-   ```
-6. Listo. Cada formulario añade una fila en «Leads» con fecha, servicio, datos de contacto, vehículo, presupuesto, origen y una columna `estado` para hacer el seguimiento («Nuevo», «Llamado», «Presupuestado»…).
-
-> Si más adelante cambias el código del Apps Script, usa **Implementar → Gestionar implementaciones → Editar → Nueva versión** para mantener la misma URL.
+- Los formularios, las reservas, el juego y el CRM hablan con `api/index.php`, que se publica junto con la web.
+- Los datos se guardan en una base SQLite **fuera de la carpeta pública**: `/deyscom-datos/crm.sqlite`, junto a `/deyscom-web` en el espacio de IONOS. Si el hosting no dejara crearla, usa `api/datos/` (bloqueada por `.htaccess` y excluida de la publicación para no borrarse).
+- Cada lead nuevo llega también por email a `info@deyscom.com`.
+- Estado de la API: `https://deyscom.com/api/index.php?action=estado`.
+- **Copia de seguridad:** descarga por SFTP `/deyscom-datos/crm.sqlite` de vez en cuando (se abre con «DB Browser for SQLite»). En el CRM, «Exportar CSV» saca los leads a Excel.
 
 ## 2. Tienda: coches en venta conectados a Wallapop
 
@@ -198,15 +190,11 @@ Un CRM dentro de la web para ver y gestionar todos los leads. Lee y escribe en l
   - Cada día a las 08:00, un resumen con los leads nuevos, las llamadas de hoy y las atrasadas.
   - El día 1 de cada mes, un informe por canal y servicio.
 
-**Activarlo (después del apartado 1)**
-1. En el Apps Script, busca la función `crearUsuarios` y cambia `TU_EMAIL@ejemplo.com` por tu email. El del cliente ya está puesto: `info@deyscom.com`.
-2. Elige `crearUsuarios` en el desplegable y pulsa **Ejecutar**. En **Registro de ejecución** aparecen las dos contraseñas generadas.
-   - Guárdalas: no se vuelven a mostrar.
-   - Envía la del cliente por un canal privado.
-3. Vuelve a ejecutar `setup`. Crea las pestañas **Actividad**, **Ediciones** y **Presupuestos** y pide los permisos nuevos (Drive para los PDF y activadores para los emails).
-4. Ejecuta `activarResumenes` una vez para programar el resumen diario y el informe mensual.
-5. **Implementar → Gestionar implementaciones → editar → Nueva versión**. Así la URL `/exec` se mantiene y la web la sigue usando.
-6. Entra en `https://deyscom.com/crm.html`. Hay un enlace discreto «Área privada» en el pie de la web.
+**Primer acceso**
+1. Entra en `https://deyscom.com/crm/`, escribe `info@deyscom.com` y pulsa «¿Primera vez o has olvidado la contraseña?».
+2. Llega a ese buzón una contraseña. Con ella entras como administrador. Solo funciona para `info@deyscom.com` mientras no haya ningún usuario.
+3. En **Usuarios** creas el resto de accesos (la contraseña se muestra una vez).
+4. Si alguien olvida su contraseña, el mismo botón le envía una nueva por email (vale 24 h; la anterior sigue sirviendo hasta que use la nueva).
 
 **Seguridad**
 - **Contraseñas:** se guardan cifradas (hash con sal), nunca en claro.
@@ -218,7 +206,7 @@ Un CRM dentro de la web para ver y gestionar todos los leads. Lee y escribe en l
   - Desde la web nadie puede fijar el estado ni el valor de un lead.
 - **Buscadores:** `crm.html` no se indexa (`noindex`, `robots.txt` y cabeceras) y no está en el sitemap.
 
-Mientras `SHEETS_ENDPOINT` esté vacío, el CRM se puede probar en **modo demostración** con datos de ejemplo.
+Si `sheets_endpoint` (Ajustes) se dejara vacío, el CRM funcionaría en **modo demostración** con datos de ejemplo.
 
 ## 13. Panel de contenido (`/admin`, tipo WordPress)
 
@@ -338,12 +326,12 @@ En Cloudflare Pages:
 1. En la web, cada turno tiene su botón **«Reservar y pagar»**.
 2. El cliente deja nombre, teléfono y email: se crea el lead en el CRM, con su fecha y turno.
 3. La web le lleva al **enlace de pago de Stripe** de ese turno, con su email ya rellenado y una referencia al lead (`client_reference_id`).
-4. Al pagar, Stripe le devuelve a `deyscom.com/gracias.html`. Allí ve la confirmación y GA4 registra la compra (`purchase`).
-5. Cada 15 minutos, el Apps Script lee los pagos de Stripe y:
+4. Al pagar, Stripe le devuelve a `deyscom.com/gracias/`. Allí ve la confirmación y GA4 registra la compra (`purchase`).
+5. Cada 15 minutos (al abrir el CRM), la API de la web lee los pagos de Stripe y:
    - pasa el lead a **Ganado** con el importe y las plazas;
-   - apunta la venta en la pestaña **Ventas** y en la actividad del lead;
+   - apunta la venta en **Ventas** y en la actividad del lead;
    - avisa por email;
-   - descuenta las plazas, que la web muestra en directo («¡Últimas 3 plazas!» o «Completo»).
+   - descuenta las plazas (la web no muestra cifras: solo «Completo» cuando se llena).
 6. Si alguien deja sus datos pero no paga, aparece en el CRM → Ventas → **Reservas sin pagar**. Se le escribe con la plantilla de WhatsApp «Completar el pago», que incluye su enlace.
 
 **Configurar Stripe (una vez)**
@@ -353,16 +341,13 @@ En Cloudflare Pages:
      - «Recopilar el número de teléfono» activado.
      - «Limitar el número de pagos» = plazas del turno (20). Así nunca se vende de más.
    - Después del pago → «No mostrar la página de confirmación» → redirigir a:
-     `https://deyscom.com/gracias.html?session_id={CHECKOUT_SESSION_ID}`
+     `https://deyscom.com/gracias/?session_id={CHECKOUT_SESSION_ID}`
 2. **Pegar cada enlace** en el panel → Experiencias → Fechas, plazas y pago → campo «Enlace de pago de Stripe» del turno.
    - Mientras un turno no tenga enlace, la web recoge la reserva y os avisa para cobrarla a mano.
 3. **Clave para el CRM:**
    1. En Stripe → Desarrolladores → Claves de API → **Crear clave restringida**, con solo **Checkout Sessions: lectura** y **Payment Links: lectura**.
-   2. En el Apps Script: ⚙️ Configuración del proyecto → **Propiedades del script** → añade `STRIPE_KEY` con esa clave. No la pegues en el código.
-4. **En el Apps Script:**
-   - Ejecuta `activarResumenes`: programa la sincronización cada 15 min, además del resumen diario y el informe mensual.
-   - Ejecuta `sincronizarStripe` una vez para probarlo.
-   - Desde el CRM → Ventas también hay un botón «Sincronizar con Stripe».
+   2. Por SFTP, crea el archivo `/deyscom-datos/config.json` (fuera de la web) con `{"stripe_key": "rk_live_…"}`. Nunca la pegues en el código ni en el repositorio.
+4. Desde el CRM → Ventas, el botón «Sincronizar con Stripe» lo prueba al momento.
 
 **Notas**
 - Las devoluciones (reembolsos) no se descuentan solas: si devolvéis una plaza, pasad el lead a «Perdido» en el CRM y se libera la plaza.

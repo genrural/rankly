@@ -27,8 +27,10 @@
     <div class="crm-pass"><input id="crm-pass" name="password" type="password" autocomplete="current-password" required placeholder="••••••••••"><button type="button" id="crm-pass-toggle" aria-pressed="false">Ver</button></div>
     <p class="crm-login__error" id="crm-login-error" role="alert" hidden></p>
     <button class="cbtn cbtn--pink cbtn--block" type="submit">Entrar</button>
+    <p class="crm-login__help"><button type="button" class="linklike" id="crm-recover">¿Primera vez o has olvidado la contraseña?</button></p>
+    <p class="crm-login__ok" id="crm-recover-ok" role="status" hidden></p>
     <div class="crm-login__demo" id="crm-demo-note" hidden>
-      <p>El CRM aún no está conectado a Google Sheets (ver README → «CRM y área privada»). Puedes probarlo con datos de ejemplo:</p>
+      <p>El CRM aún no está conectado. Puedes probarlo con datos de ejemplo:</p>
       <button class="cbtn cbtn--block" type="button" id="crm-demo">Entrar en modo demostración</button>
     </div>
     <p class="crm-login__foot"><a href="/">← Volver a deyscom.com</a></p>
@@ -123,7 +125,7 @@
         </div>
         <button class="cbtn cbtn--pink" type="submit">Crear y generar contraseña</button>
       </form>
-      <div class="crm-box"><h2>Emails automáticos</h2><p class="crm-muted">Cada día a las 08:00 se envía a los usuarios un resumen con los leads nuevos, las llamadas de hoy y las atrasadas, y el día 1 de cada mes un informe por canal y servicio (se activan con <code>activarResumenes</code> en el Apps Script).</p>
+      <div class="crm-box"><h2>Emails automáticos</h2><p class="crm-muted">Cada día a las 08:00 se envía a los usuarios un resumen con los leads nuevos, las llamadas de hoy y las atrasadas, y el día 1 de cada mes un informe por canal y servicio (se envían solos desde el servidor de la web).</p>
         <button class="cbtn cbtn--sm" type="button" id="crm-digest">Enviar el resumen de hoy ahora</button></div>
     </section>
     <section class="crm-view" id="view-cuenta" hidden>

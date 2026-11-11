@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 FILES = [".htaccess", "robots.txt", "sitemap.xml", "llms.txt", "llms-full.txt", "ediciones.json", "favicon.ico", "site.webmanifest", "_headers", "_redirects"]
-DIRS = ["assets", "admin"]
+DIRS = ["assets", "admin", "api"]
 
 if DIST.exists():
     shutil.rmtree(DIST)

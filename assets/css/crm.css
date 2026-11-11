@@ -328,3 +328,6 @@ code { background: var(--ink-3); padding: 1px 5px; border-radius: 3px; font-size
 .ed-kpis { margin: 14px 0; }
 .ed-kpis .kpi b { font-size: 1.4rem; }
 .small { font-size: .85rem; }
+.crm-login__help { margin: 12px 0 0; text-align: center; }
+.crm-login__help button { background: none; border: 0; padding: 0; color: var(--pink, #ff66c4); font: inherit; font-size: .88rem; text-decoration: underline; cursor: pointer; }
+.crm-login__ok { margin: 12px 0 0; padding: 10px 12px; border-radius: var(--r); background: rgba(80, 200, 120, .1); border: 1px solid rgba(80, 200, 120, .4); color: #b6f0c8; font-size: .88rem; }
