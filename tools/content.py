@@ -40,7 +40,7 @@ def inline(t):
 
 
 def md(text):
-    """Párrafos, listas (- y 1.), ### subtítulos, **negrita**, *cursiva* y [enlaces](url)."""
+    """Párrafos, listas (- y 1.), ### subtítulos, **negrita**, *cursiva*, [enlaces](url), ![imágenes](ruta) y | tablas |."""
     out, para = [], []
     lines = str(text or "").replace("\r", "").split("\n")
 
@@ -60,6 +60,27 @@ def md(text):
             lvl = max(3, len(h.group(1)))
             out.append(f"<h{lvl}>{inline(h.group(2))}</h{lvl}>")
             i += 1; continue
+        img = re.match(r'^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$', s)
+        if img:
+            # ![texto alternativo](foto:nombre | /assets/img/blog/esquema.svg | svg:ax "pie de foto opcional")
+            flush()
+            alt, src, cap = img.group(1), img.group(2), img.group(3) or img.group(1)
+            out.append(f'<figure class="post__fig"><img src="{escape(src)}" alt="{escape(alt)}" loading="lazy" decoding="async">'
+                       f'<figcaption>{inline(cap)}</figcaption></figure>')
+            i += 1; continue
+        if s.startswith("|"):
+            # Tabla: | col | col | (la 1.ª fila es la cabecera; la fila |---| se ignora)
+            flush()
+            rows = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{2,}:?", c) for c in cells):
+                    rows.append(cells)
+                i += 1
+            head, body = rows[0], rows[1:]
+            out.append('<div class="table-wrap"><table><thead><tr>' + "".join(f"<th>{inline(c)}</th>" for c in head) + "</tr></thead><tbody>"
+                       + "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in body) + "</tbody></table></div>")
+            continue
         if LIST_RE.match(s):
             flush()
             ordered = s[0].isdigit()

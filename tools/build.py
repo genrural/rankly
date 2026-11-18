@@ -68,6 +68,24 @@ def pic(name, cls="", eager=False, sizes="(max-width: 800px) 100vw, 50vw"):
             f'width="{m["w"]}" height="{m["h"]}" alt="{escape(m["alt"])}" {load}></picture>')
 
 
+def post_figures(html):
+    """Imágenes dentro de un artículo: foto:nombre → <picture> optimizado, svg:ax → el Citroën AX dibujado,
+    y los .svg propios con su ancho y alto (sin saltos de diseño al cargar)."""
+    def rep(m):
+        src, alt = m.group(1), m.group(2)
+        if src.startswith("foto:") and src[5:] in IMG:
+            return pic(src[5:], sizes="(max-width: 900px) 100vw, 860px")
+        if src == "svg:ax":
+            return ax_svg("bax", builder=False, cls="post__ax", label=alt)
+        f = ROOT / src.lstrip("/")
+        if src.endswith(".svg") and f.exists():
+            vb = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', f.read_text(encoding="utf-8"))
+            if vb:
+                return m.group(0).replace("<img ", f'<img width="{vb.group(1)}" height="{vb.group(2)}" ', 1)
+        return m.group(0)
+    return re.sub(r'<img src="([^"]+)" alt="([^"]*)"[^>]*>', rep, html)
+
+
 def img_url(name):
     return f"{SITE}/assets/img/fotos/{name}.jpg"
 
@@ -3253,7 +3271,7 @@ def blog_post(pst):
     a = AUTHORS[pst["author"]]
     ed = AUTHORS.get(pst.get("editor"))
     toc = "".join(f'<li><a href="#s{i + 1}">{t}</a></li>' for i, (t, _) in enumerate(pst["sections"]))
-    body = "".join(f'<h2 id="s{i + 1}">{t}</h2>{c}' for i, (t, c) in enumerate(pst["sections"]))
+    body = post_figures("".join(f'<h2 id="s{i + 1}">{t}</h2>{c}' for i, (t, c) in enumerate(pst["sections"])))
     words = len(re.sub(r"<[^>]+>", " ", body).split())
     sources = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in pst["sources"])
     others = [x for x in POSTS if x["slug"] != pst["slug"]]
